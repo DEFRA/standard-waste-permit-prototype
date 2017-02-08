@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+<!-- Section 7 -->
+<h1 class="heading-large">Who can we contact about your application?</h1>
+
+<p>This can be someone acting as a consultant or an ‘agent’ for you.</p>
+
+
+<form action="/contact-billing" method="get" class="form">
+
+<div class="form-group">
+  <label class="form-label" for="contact-application-title">Title (Mr, Mrs, Miss and so on)</label>
+  <input class="form-control" id="contact-application-title" name="contact-application-title" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="contact-application-first-name">First name</label>
+  <input class="form-control" id="contact-application-first-name" name="contact-application-first-name" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="contact-application-last-name">Last name</label>
+  <input class="form-control" id="contact-application-last-name" name="contact-application-last-name" type="text">
+</div>
+
+<!-- Use address finder here? -->
+
+<div class="form-group">
+  <label class="form-label" for="contact-application">Address</label>
+  <input class="form-control" id="contact-application" name="contact-application" type="text">
+</div>
+
+<div class="form-group">
+  <input class="form-control" id="contact-application-line-1" name="contact-application-line-1" type="text">
+</div>
+
+<div class="form-group">
+  <input class="form-control" id="contact-application-line-2" name="contact-application-line-2" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="contact-application-postcode">Postcode</label>
+  <input class="form-control" id="contact-application-postcode" name="contact-application-postcode" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="contact-application-phone">Phone</label>
+  <input class="form-control" id="contact-application-phone" name="contact-application-phone" type="number">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="contact-application-fax">Fax</label>
+  <input class="form-control" id="contact-application-fax" name="contact-application-fax" type="number">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="contact-application-mobile">Mobile</label>
+  <input class="form-control" id="contact-application-mobile" name="contact-application-mobile" type="number">
+</div>
+
+
+<div class="form-group">
+  <label class="form-label" for="contact-application-email">Email</label>
+  <input class="form-control" id="contact-application-email" name="contact-application-email" type="email">
+</div>
+
+
+
+
+<!-- see routes.js -->
+
+<h1 class="heading-medium">
+Who can we contact about your operation?
+</h1>
+
+
+ <div class="form-group">
+    <fieldset>
+
+      <legend class="visually-hidden">Who can we contact about your operation?</legend>
+
+      <label class="block-label selection-button-radio" data-target="contact-by-email" for="operation-contact-different">
+        <input id="operation-contact-different" type="radio" name="OperationContact" value="same">
+        Use the contact details above
+      </label>
+
+      <label class="block-label selection-button-radio" data-target="contact-by-phone" for="operation-contact-same">
+        <input id="operation-contact-same" type="radio" name="OperationContact" value="different">
+        My operation contact details are different from above
+      </label>
+
+
+    </fieldset>
+  </div>
+
+
+
+
+
+
+  <div class="form-group">
+    <input type="submit" class="button" value="Continue">
+  </div>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
+
+

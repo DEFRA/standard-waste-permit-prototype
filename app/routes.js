@@ -36,6 +36,41 @@ router.get('/applicant-type/application-from-a-company', function (req, res) {
 })
 
 
+  // Is your main UK business address different from above?
+
+router.get('/contact-application', function (req, res) {
+  // get the answer from the query string (eg. ?UKBusinessAddress=no)
+  var UKBusinessAddress = req.query.UKBusinessAddress
+
+  if (UKBusinessAddress === 'Yes') {
+    // redirect to the relevant page
+    res.redirect('/main-UK-business-address')
+  } else {
+    // if UKBusinessAddress is any other value (or is missing) render the page requested.
+    // Remember to omit the forward-slash at the start
+    res.render('contact-application')
+  }
+})
+
+
+  // Who can we contact about your operation?
+
+router.get('/contact-billing', function (req, res) {
+  // get the answer from the query string (eg. ?OperationContact=no)
+  var OperationContact = req.query.OperationContact
+
+  if (OperationContact === 'different') {
+    // redirect to the relevant page
+    res.redirect('/contact-operation')
+  } else {
+    // if OperationContact is any other value (or is missing) render the page requested.
+    // Remember to omit the forward-slash at the start
+    res.render('contact-billing')
+  }
+})
+
+
+
 
 
 
