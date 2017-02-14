@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+<!-- 5a Relevant offences (this applies to all except standalone surface water discharges and groundwater discharges – see guidance notes on part B1) -->
+
+<h1 class="heading-large">Have you, or any other relevant person, been convicted of any relevant offence?</h1>
+
+<form>
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visually-hidden">Have you, or any other relevant person, been convicted of any relevant offence?</legend>
+
+      <label class="block-label selection-button-radio" data-target="relevant-person" for="relevant-offences-yes">
+        <input id="relevant-offences-yes" type="radio" name="radio-discussions-group" value="Yes">
+        Yes
+      </label>
+      <div class="panel panel-border-narrow js-hidden" id="relevant-person">
+        <p>Name of the relevant person</p>
+      </div>
+
+      <label class="block-label selection-button-radio" for="relevant-offences-no">
+        <input id="relevant-offences-no" type="radio" name="radio-discussions-group" value="No">
+        No
+      </label>
+
+    </fieldset>
+  </div>
+
+
+
+<a class="button" href="standard-permit-application/technical-ability" role="button">Continue</a>
+
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

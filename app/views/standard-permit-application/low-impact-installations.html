@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+<!-- 3g. Low-impact installation -->
+<h1 class="heading-large">Are any of the regulated facilities low-impact installations?</h1>
+
+<form>
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visually-hidden">Are any of the regulated facilities low-impact installations?</legend>
+
+      <label class="block-label selection-button-radio" data-target="low-impact-description" for="low-impact-yes">
+        <input id="low-impact-yes" type="radio" name="radio-low-impact-group" value="Yes">
+        Yes
+      </label>
+      <div class="panel panel-border-narrow js-hidden" id="low-impact-description">
+		<p>Please give us a description of your proposed activity telling us how you meet the conditions for a low-impact installation and send it to us with your application form. Tell us below the reference number you have given this (see appendix 1 in the guidance
+		notes on part B1).</p>
+
+		<p>Document reference</p>
+
+		<p>Tick the box to confirm you have filled in the low-impact installation
+		checklist in appendix 1 for each regulated facility. </p>
+      </div>
+
+      <label class="block-label selection-button-radio" for="low-impact-no">
+        <input id="low-impact-no" type="radio" name="radio-low-impact-group" value="No">
+        No
+      </label>
+
+    </fieldset>
+  </div>
+ </form>
+
+
+<!-- Proceed to 4a. site plan if NOT Mobile Plant -->
+
+<a class="button" href="/standard-permit-application/site-plan" role="button">Continue</a>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
+
+
