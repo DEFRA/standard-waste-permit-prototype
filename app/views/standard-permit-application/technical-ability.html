@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+<!-- 5b. Technical ability -->
+
+<h1 class="heading-large">Technical ability  (relevant waste operations only – see the guidance notes on part B1) </h1>
+
+<p>Please tick the scheme you are using to show you have the suitable technical skills and knowledge to manage your facility. </p>
+
+<form>
+  <div class="form-group">
+    <fieldset>
+
+      <label class="block-label selection-button-radio" for="technical-scheme-yes">
+        <input id="technical-scheme-yes" type="radio" name="radio-discussions-group" value="ciwm-wamitab">
+        CIWM/WAMITAB
+      </label>
+      <label class="block-label selection-button-radio" for="technical-scheme-no">
+        <input id="technical-scheme-no" type="radio" name="radio-discussions-group" value="esa-eu">
+        ESA/EU 
+      </label>
+
+    </fieldset>
+  </div>
+
+<p>Please send in a registration letter from your scheme as above</p>
+
+<a class="button" href="/standard-permit-application/finances" role="button">Continue</a>
+
+
+</form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

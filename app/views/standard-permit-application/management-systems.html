@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+<!-- 5d. Management systems -->
+
+<h1 class="heading-large">Does your management system meet the conditions set out in our guidance?</h1>
+
+<p>You must have an effective, written management system in place that identifies and reduces the risk of pollution. You may show this by using a certified scheme or your own system.</p>
+
+<p>Your permit requires you (as the operator) to ensure that you manage and operate your activities in accordance with a written management system.</p>
+
+<p>You can find guidance on management systems on our website at www.gov.uk/environment-agency</p>
+
+<form>
+  <div class="form-group">
+    <fieldset>
+
+      <label class="block-label selection-button-radio" data-target="management-systems" for="management-systems-yes">
+        <input id="management-systems-yes" type="radio" name="radio-management-group" value="yes">
+        Yes
+      </label>
+      <div class="panel panel-border-narrow js-hidden" id="management-systems">
+              <form>
+                <div class="form-group">
+                  <fieldset>
+
+                <p>What management system will you provide for your regulated facility?</p>
+
+                    <label class="block-label selection-button-radio" for="radio-1">
+                      <input id="radio-1" type="radio" name="radio-group" value="emas">
+                      EC Eco-Management and Audit Scheme (EMAS)
+                    </label>
+                    <label class="block-label selection-button-radio" for="radio-2">
+                      <input id="radio-2" type="radio" name="radio-group" value="emas-easy">
+                      EMAS Easy
+                    </label>
+                    <label class="block-label selection-button-radio" for="radio-3">
+                      <input id="radio-3" type="radio" name="radio-group" value="iso-14001">
+                      ISO 14001 
+                    </label>
+                    <label class="block-label selection-button-radio" for="radio-4">
+                      <input id="radio-4" type="radio" name="radio-group" value="bs-8555">
+                      BS 8555 (Phases 1–5)
+                    </label>
+
+                  </fieldset>
+                </div>
+              </form>
+    
+
+
+<p class="bold">(Following options are checklist elements on PDF form)</p>
+
+
+<p>
+  Select all options that are relevant to you.
+</p>
+
+<form>
+  <div class="form-group">
+    <fieldset>
+
+      <label class="block-label selection-button-checkbox" for="systems-acorn">
+        <input id="systems-acorn" name="systems" type="checkbox" value="Acorn">
+        Acorn 
+      </label>
+      <label class="block-label selection-button-checkbox" for="systems-green-dragon">
+        <input id="systems-green-dragon" name="systems" type="checkbox" value="Green Dragon">
+        Green Dragon
+      </label>
+      <label class="block-label selection-button-checkbox" for="systems-own">
+        <input id="systems-own" name="systems" type="checkbox" value="Own management system">
+        Own management system
+      </label>
+
+    </fieldset>
+  </div>
+</form>
+
+
+
+
+
+
+      </div>
+
+      <label class="block-label selection-button-radio" for="management-systems-no">
+        <input id="management-systems-no" type="radio" name="radio-management-group" value="no">
+        No
+      </label>
+
+    </fieldset>
+  </div>
+
+
+<p><a href="/">Back to index page</a></p>
+
+<!-- <a class="button" href="/standard-permit-application/finances" role="button">Continue</a> -->
+
+
+</form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+
