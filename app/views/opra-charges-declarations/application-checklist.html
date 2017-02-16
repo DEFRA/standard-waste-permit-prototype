@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+<!--  7. Application checklist
+ -->
+
+<h1 class="heading-large">Application checklist</h1>
+
+<p>If your application is not complete we will return it to you. If you aren’t sure about what you need to send, speak to us before you
+submit your application.</p>
+
+<form style="margin-bottom: 20px">
+  <fieldset>
+
+    <legend class="visually-hidden">Application checklist</legend>
+
+    <label class="block-label selection-button-checkbox" for="supporting-information">
+      <input id="supporting-information" name="application-checklist" type="checkbox" value="supporting-information">
+  Identify relevant supporting information in the form and send
+it with the application
+    </label>
+
+        <label class="block-label selection-button-checkbox" for="list-documents">
+      <input id="list-documents" name="application-checklist" type="checkbox" value="list-documents">
+
+      <!-- there is a table printed on the form with columns for question reference, document title and document reference -->
+  List all the documents you are sending in the table below.
+If necessary, continue on a separate sheet. This separate sheet
+also needs to have a reference number and you should include
+it in the table below
+    </label>
+
+    
+        <label class="block-label selection-button-checkbox" for="site-plan">
+      <input id="site-plan" name="application-checklist" type="checkbox" value="site-plan">
+  For new permits or any changes to the site plan, provide a plan
+that meets the standards given in the guidance note on part F1
+    </label>
+    
+
+        <label class="block-label selection-button-checkbox" for="supporting-letter">
+      <input id="supporting-letter" name="application-checklist" type="checkbox" value="supporting-letter">
+  Provide a supporting letter for any claim that information is
+confidential 
+    </label>
+    
+        <label class="block-label selection-button-checkbox" for="relevant-person">
+      <input id="relevant-person" name="application-checklist" type="checkbox" value="relevant-person">
+  Get the declaration completed by a relevant person
+(not an agent)
+    </label>
+    
+        <label class="block-label selection-button-checkbox" for="correct-fee">
+      <input id="correct-fee" name="application-checklist" type="checkbox" value="correct-fee">
+  Send the correct fee 
+    </label>
+    
+  
+  </fieldset>
+</form>
+
+
+<p><a href="/">Back to index</a></p>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

@@ -1,0 +1,152 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+<!--  4 The Data Protection Act 1998 
+      5 Confidentiality and national security 
+      6 Declaration
+ -->
+
+<h1 class="heading-large">Declaration</h1>
+
+
+<details>
+
+  <summary><span class="summary">Data Protection Act notice</span></summary>
+
+  <div class="panel panel-border-narrow">
+
+  <p>We, the Environment Agency, will process the information you provide so that we can:</p>
+<ul class="list list-bullet">
+<li> deal with your application;</li>
+<li> make sure you keep to the conditions of the licence, permit or registration;</li>
+<li> process renewals; and</li>
+<li> keep the public registers up to date.</li>
+</ul>
+
+<p>We may also process or release the information to:</p>
+<ul class="list list-bullet">
+<li> offer you documents or services relating to environmental matters;</li>
+<li> consult the public, public organisations and other organisations (for example, the Health and Safety Executive, local authorities,
+the emergency services, the Department for Environment, Food and Rural Affairs) on environmental issues;</li>
+<li> carry out research and development work on environmental issues;</li>
+<li> provide information from the public register to anyone who asks;</li>
+<li> prevent anyone from breaking environmental law, investigate cases where environmental law may have been broken, and take any action that is needed;</li>
+<li> assess whether customers are satisfied with our service, and to improve our service; and</li>
+<li> respond to requests for information under the Freedom of Information Act 2000 and the Environmental Information Regulations 2004 (if the Data Protection Act allows). We may pass the information on to our agents or representatives to do these
+things for us</li>
+
+</ul>
+
+  </div>
+
+</details>
+
+
+
+<details>
+
+  <summary><span class="summary">Confidentiality and national security</span></summary>
+
+  <div class="panel panel-border-narrow">
+
+  <label class="form-checkbox" for="confidential-app">
+  <input id="checkbox-confidential-app" name="confidential-app" type="checkbox" value="true">
+  Please treat the information in my application as confidential
+</label>
+
+<p>We will normally put all the information in your application on a public register of environmental information. However, we may
+not include certain information in the public register if this is in the interests of national security, or because the information is
+confidential.</p>
+
+<p>You can ask for information to be made confidential by enclosing a letter with your application giving your reasons. If we agree with
+your request, we will tell you and not include the information in the public register. If we do not agree with your request, we will let you
+know how to appeal against our decision, or you can withdraw your application.</p>
+
+<p class="bold">National security</p>
+<p>You can tell the Secretary of State that you believe including information on a public register would not be in the interests of national
+security. You must enclose a letter with your application telling us that you have told the Secretary of State and you must still include
+the information in your application. We will not include the information in the public register unless the Secretary of State decides
+that it should be included.</p>
+
+<p>You can find guidance on national security in ‘Environmental permitting guidance: core guidance’, published by Defra and available
+via our website at gov.uk.</p>
+
+<p>You cannot apply for national security via this application.</p>
+
+</div>
+
+</details>
+
+
+
+<div class="notice" style="margin: 20px 0;">
+  <i class="icon icon-important">
+    <span class="visually-hidden">Warning</span>
+  </i>
+  <strong class="bold-small">
+    If you knowingly or carelessly make a statement that is false or misleading to help you get an environmental permit (for yourself
+or anyone else), you may be committing an offence under the Environmental Permitting (England and Wales) Regulations 2010.
+  </strong>
+</div>
+
+<p>A relevant person should make the declaration (see guidance notes on part F1). An agent acting on behalf of an applicant is NOT a
+relevant person.</p>
+
+<p>Each individual (or individual trustee) who is applying for their name to appear on the permit must complete this declaration. You will
+have to print a separate copy of this page for each additional individual to complete. </p>
+
+<p>I declare that the information in this application is true to the best of my knowledge and belief. I understand that this application
+may be refused or approval withdrawn if I give false or incomplete information.</p>
+
+<p>If you deliberately make a statement that is false or misleading in order to get approval you may be prosecuted.</p>
+
+<form>
+  <fieldset>
+
+    <label class="block-label selection-button-checkbox" for="declaration-1">
+      <input id="declaration-1" name="declarations" type="checkbox" value="meet-rules">
+     I confirm that my standard facility will fully meet the rules that
+I have applied for (this only applies if the application includes
+standard facilities) 
+    </label>
+    <label class="block-label selection-button-checkbox" for="declaration-2">
+      <input id="declaration-2" name="declarations" type="checkbox" value="agree">
+      Tick this box to confirm that you understand and agree with
+the declaration above, then fill in the details below w	
+(you do not have to provide a signature as well)
+    </label>
+    <label class="block-label selection-button-checkbox" for="declaration-3">
+      <input id="declaration-3" name="declarations" type="checkbox" value="eco-survey">
+      Tick this box if you do not want us to use information from any
+ecological survey that you have supplied with your application
+(for further information please see the guidance notes on part F1)
+    </label>
+
+  </fieldset>
+</form>
+
+
+<p>(Contct details here)</p>
+
+<!-- next part of the section if for transfers only -->
+
+
+
+<a class="button" href="/opra-charges-declarations/application-checklist" role="button">Continue</a>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+
