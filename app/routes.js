@@ -69,6 +69,9 @@ router.get('/about-you/contact-billing', function (req, res) {
 })
 
 
+router.get('/permit-list/index', function (req, res) {
+  res.render('permit-list/index',{"chosenCategory":req.query.chosenCategory})
+})
 
 
 module.exports = router
