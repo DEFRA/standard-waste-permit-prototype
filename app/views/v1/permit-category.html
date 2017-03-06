@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard rules waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+
+<h1 class="heading-large">What do you want the permit for?
+</h1>
+
+
+<form action="/v1/select-permit" method="get" class="form">
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visuallyhidden">What do you want the permit for?</legend>
+
+      <label class="block-label selection-button-radio" for="radio-1">
+        <input id="radio-1" type="radio" name="permitCategory" value="Biological treatment of waste">
+        Biological treatment of waste
+      </label>
+      <label class="block-label selection-button-radio" for="radio-2">
+        <input id="radio-2" type="radio" name="permitCategory" value="Keeping/transfer of waste">
+          Keeping/transfer of waste
+      </label>
+      <label class="block-label selection-button-radio" for="radio-3">
+        <input id="radio-3" type="radio" name="permitCategory" value="Metal recovery/scrap metal">
+        Metal recovery/scrap metal
+      </label>
+      <label class="block-label selection-button-radio" for="radio-4">
+        <input id="radio-4" type="radio" name="permitCategory" value="Materials recovery and recycling">
+        Materials recovery and recycling
+      </label>
+      <label class="block-label selection-button-radio" for="radio-5">
+        <input id="radio-5" type="radio" name="permitCategory" value="Onshore oil and gas exploration, and mining operation">
+        Onshore oil and gas exploration, and mining operation
+      </label>
+      <label class="block-label selection-button-radio" for="radio-6">
+        <input id="radio-6" type="radio" name="permitCategory" value="Radioactive substances for non-nuclear sites">
+        Radioactive substances for non-nuclear sites
+      </label>
+      <label class="block-label selection-button-radio" for="radio-7">
+        <input id="radio-7" type="radio" name="permitCategory" value="Recovery or use of waste on land">
+        Recovery or use of waste on land
+      </label>
+      <label class="block-label selection-button-radio" for="radio-8">
+        <input id="radio-8" type="radio" name="permitCategory" value="Treatment to produce aggregate or construction materials">
+        Treatment to produce aggregate or construction materials
+      </label>
+      
+     <p class="form-block">or</p>
+
+      <label class="block-label selection-button-radio" for="radio-9">
+        <input id="radio-9" type="radio" name="permitCategory" value="None of the above">
+        None of the above
+      </label>
+
+    </fieldset>
+  </div>
+
+  <div class="form-group">
+    <input type="submit" class="button" value="Continue">
+  </div>
+
+</form>
+
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+
