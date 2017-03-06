@@ -36,12 +36,12 @@
       </div>
               
               <h3 class="heading-small">
-                To qualify for a standard rules permit your operation must:
+                To qualify for a standard rules permit your operation must be:
               </h3>
               
               <ul class="list list-bullet">
-                <li>be under {{pData.Form_weight}}</li>
-                <li>be able to meet the <a href="{{pData.Guidance_URL}}" target="_blank">conditions for {{pData.Code}}</a></li>
+                <li>{{ pData.Form_weight | lower }}</li>
+                <li>able to meet the <a href="{{pData.Guidance_URL}}" target="_blank">conditions for {{pData.Code}}</a></li>
               </ul>
               
               <h3 class="heading-small">
