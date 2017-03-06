@@ -80,6 +80,7 @@ router.post('/select-permit/permit-details', function (req, res) {
 
 
 
+/*
 router.get('/company', function(req, res) {
   request({
     url: 'https://api.companieshouse.gov.uk/company/09894423',
@@ -95,5 +96,6 @@ router.get('/company', function(req, res) {
     console.log(json)
   })
 })
+*/
 
 module.exports = router

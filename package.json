@@ -36,7 +36,6 @@
     "portscanner": "^1.0.0",
     "prompt": "^0.2.14",
     "readdir": "0.0.6",
-    "request": "v2.79.0",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.2.2",
     "serve-favicon": "2.3.0",
