@@ -69,9 +69,15 @@ router.get('/about-you/contact-billing', function (req, res) {
 })
 
 
-router.get('/permit-list/index', function (req, res) {
-  res.render('permit-list/index',{"chosenCategory":req.query.chosenCategory})
+router.post('/select-permit/choose-permit', function (req, res) {
+  res.render('select-permit/choose-permit',{"chosenCategory":req.body['chosenCategory']})
 })
+
+router.post('/select-permit/permit-details', function (req, res) {
+  res.render('select-permit/permit-details',{"chosenPermitID":req.body['chosenPermitID']})
+})
+
+
 
 
 module.exports = router

@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% set title = "Which permit do you want?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+      
+      {% import "custom_inc/macros.html" as macros %}
+      {% from "custom_inc/permit-list-json.html" import permits %}
+      
+      <div class="panel panel-border-wide">
+        <p>
+          Showing permits for {{chosenCategory | lower }} 
+          <a href="/select-permit/permit-category">
+            change
+          </a>
+        </p>
+      </div>
+      
+      <form method="post" action="/select-permit/permit-details">
+        <div class="form-group">
+          <fieldset aria-labelledby="radio_label">
+            <legend="Permit">
+            
+            {% for pNumber, pData in permits %}
+              {% if pData.Digital_MVP=="Yes" %}
+                {% if pData.Category==chosenCategory %}
+                {% set label = [pData.Name_GOV_UK," ",pData.Code] %}
+                  {{ macros.radio_button(
+                    label | join,
+                    "chosenPermitID",
+                    loop.index,
+                    pNumber
+                    ) }}
+                    {% endif %}
+              {% endif %}
+            {% else %}
+              <p>No radios</p>
+            {% endfor %}
+
+          </fieldset>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

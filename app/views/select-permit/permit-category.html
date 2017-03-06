@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% set title = "What do you want the permit for?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+      
+      
+      {% import "custom_inc/macros.html" as macros %}
+      {% from "custom_inc/category-list-json.html" import categories %}
+      
+      
+      <form method="post" action="/select-permit/choose-permit">
+        <div class="form-group">
+          <fieldset aria-labelledby="radio_label">
+            <legend="Permit type">
+            
+            {% for category in categories %}
+              {{ macros.radio_button(
+                category,
+                "chosenCategory",
+                loop.index,
+                category
+                ) }}
+            {% else %}
+              <p>No radios</p>
+            {% endfor %}
+
+          </fieldset>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+        </div>
+
+      </form>
+
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
