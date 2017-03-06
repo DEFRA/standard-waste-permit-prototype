@@ -25,13 +25,15 @@
           <fieldset aria-labelledby="radio_label">
             <legend="Permit type">
             
-            {% for category in categories %}
-              {{ macros.radio_button(
-                category,
-                "chosenCategory",
-                loop.index,
-                category
-                ) }}
+            {% for c in categories %}
+              {% if c.Digital_MVP=="Yes" %}
+                {{ macros.radio_button(
+                  c.Category,
+                  "chosenCategory",
+                  loop.index,
+                  c.Category
+                  ) }}
+                {% endif %}
             {% else %}
               <p>No radios</p>
             {% endfor %}
