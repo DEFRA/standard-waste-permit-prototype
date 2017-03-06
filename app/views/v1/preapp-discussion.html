@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard rules waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+
+<h1 class="heading-large">Have you discussed your application with us?</h1>
+
+<p>If you were given pre-application advice we usually give you a reference number. It’s helpful to have this so we can check the advice when we review your application.</p>
+
+
+<form action="/v1/site-operator" method="get" class="form">
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visually-hidden">Have you discussed your application with us?</legend>
+
+      <label class="block-label selection-button-radio" data-target="reference-number" for="yes-reference-number">
+        <input id="yes-reference-number" type="radio" name="radio-contact-group" value="Yes">
+        Yes and I have a reference number
+      </label>
+      <div class="panel panel-border-narrow js-hidden" id="reference-number">
+        <label class="form-label" for="reference-number">Reference number</label>
+        <input class="form-control" name="reference-number" type="text" id="reference-number">
+      </div>
+
+      <label class="block-label selection-button-radio" for="yes-without-ref-number">
+        <input id="yes-without-ref-number" type="radio" name="radio-contact-group" value="YesNoRef">
+        Yes but I was not given a reference number
+      </label>
+
+      <label class="block-label selection-button-radio" for="preapp-no">
+        <input id="preapp-no" type="radio" name="radio-contact-group" value="No">
+        No
+      </label>
+
+    </fieldset>
+  </div>
+
+    <div class="form-group">
+    <input type="submit" class="button" value="Continue">
+  </div>
+
+
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+
