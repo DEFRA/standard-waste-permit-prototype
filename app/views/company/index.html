@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% set title = "Company test" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+      
+{{company.date_of_creation}}
+
+{{info}}
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

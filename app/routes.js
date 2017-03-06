@@ -1,5 +1,6 @@
 var express = require('express')
 var router = express.Router()
+var request = require('request')
 
 // Route index page
 router.get('/', function (req, res) {
@@ -79,5 +80,20 @@ router.post('/select-permit/permit-details', function (req, res) {
 
 
 
+router.get('/company', function(req, res) {
+  request({
+    url: 'https://api.companieshouse.gov.uk/company/09894423',
+    auth: {
+      user: 'B6gG6zj0r_w1K6mOqBiW6GGvoe4ygQwQBoFTfxZo',
+      pass: '',
+      sendImmediately: false
+      }
+  }, function(err, res, json) {
+    if (err) {
+      throw err
+    }
+    console.log(json)
+  })
+})
 
 module.exports = router
