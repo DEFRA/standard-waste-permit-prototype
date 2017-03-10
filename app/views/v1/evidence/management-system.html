@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% set title = "Which management system will you use?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<div class="notice" style="margin-bottom: 20px">
+  <i class="icon icon-important">
+    <span class="visually-hidden">Warning</span>
+  </i>
+  <strong class="bold-small">
+    Your management system must be in place<br> by the time of the permit issue.
+  </strong>
+</div>
+
+
+<form>
+  <div class="form-group">
+    <fieldset>
+      
+      <p>Select all that apply</p>
+
+      <legend class="visually-hidden">{{title}}</legend>
+
+      <label class="block-label selection-button-checkbox" for="manSysECEco">
+        <input id="manSysECEco" name="manSys" type="checkbox" value="British">
+        EC Eco management and audit scheme (EMAS)
+      </label>
+      <label class="block-label selection-button-checkbox" for="manSysISO14001">
+        <input id="manSysISO14001" name="manSys" type="checkbox" value="Irish">
+        ISO 14001
+      </label>
+      <label class="block-label selection-button-checkbox" for="manSysBS8555">
+        <input id="manSysBS8555" name="manSys" type="checkbox" value="Citizen of a different country">
+        BS 8555 (Phases 1-5)
+      </label>
+      <label class="block-label selection-button-checkbox" for="manSysGreenDragon">
+        <input id="manSysGreenDragon" name="manSys" type="checkbox" value="Citizen of a different country">
+        Green Dragon
+      </label>
+      <label class="block-label selection-button-checkbox" for="manSysOwnMeets">
+        <input id="manSysOwnMeets" name="manSys" type="checkbox" value="Citizen of a different country">
+        Our own system that meets your guidance conditions
+      </label>
+      <label class="block-label selection-button-checkbox" for="manSysOwnDoesNotMeets">
+        <input id="manSysOwnDoesNotMeets" name="manSys" type="checkbox" value="Citizen of a different country">
+        Our own system that does not meet your guidance
+      </label>
+    </fieldset>
+  </div>
+</form>
+
+
+<a class="button" href="#" role="button">Continue</a>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

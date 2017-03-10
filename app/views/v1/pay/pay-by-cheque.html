@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% set title = "Pay by cheque" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+<div class="panel panel-border-wide">
+  <p> 
+    <b>The application charge is £1,630.</b>
+  </p>
+</div>
+
+<p>Make your cheque payable to ‘Environment Agency’</p>
+
+<p>Make sure they have ‘A/c Payee’ written across them if it is not already printed on.</p> 
+
+<p>Please write the name of your company and application reference number on the back of your cheque.</p> 
+
+<p>We will not accept cheques with a future date on them.</p>
+
+<p><b>Send your cheque to:</b><br>
+Permitting Support Centre <br>
+Quadrant 2 <br>
+99 Parkway Avenue <br>
+Parkway Business Park <br>
+Sheffield <br>
+S9 4WF
+</p>
+
+  <div class="form-group">
+    <input type="submit" class="button" value="Continue">
+  </div>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

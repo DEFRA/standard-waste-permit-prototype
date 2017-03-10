@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% set title = "Upload a technical evidence certificate" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<div class="form-group">
+  <p><span style="margin-right: 10px">Wamitab_certificate.pdf</span> <a href="#">remove file</a></p>
+  <button class="font-small">Add another file</button>
+</div>
+
+<p><a class="button" href="#" role="button">Continue</a></p>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% set title = "Choose how you want to pay" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+<div class="panel panel-border-wide">
+  <p> 
+    <b>The application charge is £1,630.</b>
+  </p>
+</div>
+
+<form>
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visually-hidden">{{title}}</legend>
+
+      <!-- paymentMethod -->
+
+      <label class="block-label selection-button-radio" for="paymentCard">
+        <input id="paymentCard" type="radio" name="radio-group" value="Debit or credit card">
+        Debit or credit card
+      </label>
+      <label class="block-label selection-button-radio" for="paymentBACS">
+        <input id="paymentBACS" type="radio" name="radio-group" value="Bank transfer">
+        Bank transfer
+      </label>
+      <label class="block-label selection-button-radio" for="paymentCheque">
+        <input id="paymentCheque" type="radio" name="radio-group" value="Cheque">
+        Cheque
+      </label>
+
+    </fieldset>
+  </div>
+</form>
+
+  <div class="form-group">
+    <input type="submit" class="button" value="Continue">
+  </div>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

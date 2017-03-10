@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% set title = "Do you have any offences to declare?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+<h2 class="heading-small">Have you or any relevant person been convicted of a relevant offence?</h2>
+
+<details style="margin-bottom: 20px">
+
+  <summary><span class="summary">Relevant offences and relevant people</span></summary>
+
+  <div class="panel panel-border-narrow">
+    Details
+  </div>
+
+</details>
+
+
+<form>
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visually-hidden">Have you or any relevant person been convicted of a relevant offence?</legend>
+
+      <label class="block-label selection-button-radio" data-target="offences" for="yesOffences">
+        <input id="yesOffences" type="radio" name="radio-contact-group" value="yes">
+        Yes
+      </label>
+
+      <label class="block-label selection-button-radio" for="noOffences">
+        <input id="noOffences" type="radio" name="radio-contact-group" value="no">
+        No
+      </label>
+
+    </fieldset>
+  </div>
+
+    <div class="form-group">
+    <input type="submit" class="button" value="Continue">
+  </div>
+
+
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+
