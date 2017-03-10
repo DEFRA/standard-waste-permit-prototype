@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% set title = "Check permit" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_alpha.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+      
+      {% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/custom_inc/permit-list-json.html" import permits %}
+      
+      <div class="panel panel-border-wide">
+
+        {% for pNumber, pData in permits %}
+          {% if pNumber==chosenPermitID %}
+              <h2 class="heading-medium">
+                {{ pData.Name_GOV_UK }}
+                <span class="font-small">{{pData.Code}}</span>
+              </h2>
+              
+              {% if pData.Form_Description!="" %}
+                <p>{{pData.Form_Description}}</p>
+              {% endif %}
+              
+              <p><span class="font-large">{{pData.Charge}}</span> application charge</br>
+                 by credit card, bank transfer or cheque</p>
+              
+              <p>
+                You also need to pay a fee every year (subsistence charge). We’ll invoice you for that if your application is successful.
+              </p>
+              
+              {% endif %}
+            {% else %}
+              <p>No radios</p>
+            {% endfor %}
+              
+      </div>
+      
+      <p class="text">
+        It takes up to 13 weeks to issue a permit. It may take longer if the information you give us does not meet our requirements.
+      </p>
+              
+
+      <form method="post" action="/{{folder}}/selectpermit/what-need-to-apply">
+        
+        <input type="hidden" name="chosenPermitID" value="{{chosenPermitID}}"></input>
+
+        <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+            or <a href="/{{folder}}/select-permit/permit-category">change permit</a>
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
