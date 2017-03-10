@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Who should we contact about this activity?" %}
+{% set title = "Who should we contact about this application?" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -8,8 +8,10 @@
 
 {% block content %}
 <main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+  
   <div class="grid-row">
-    <div class="column-full">
+      <div class="column-two-thirds">
 
 <h1 class="heading-large">{{title}}</h1>
 
@@ -53,5 +55,3 @@
 </main>
 
 {% endblock %}
-
-
