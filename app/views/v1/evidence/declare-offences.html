@@ -24,25 +24,33 @@
   <summary><span class="summary">Relevant offences and relevant people</span></summary>
 
   <div class="panel panel-border-narrow">
-    Details
-  </div>
+    <p>You must tell us if any of the relevant people or the company itself have been convicted of a relevant offence.</p>
+    <h3 class="heading-small">Relevant people</h3>
+    <p>Relevant people mean each applicant, and in the case of a company, a director, manager, company secretary or any similar officer or employee.</p>
+      
+    <p>In the case of a Limited Liability Partnership (LLP), it includes any partner. It also includes any person who has held a position in a company or LLP when it was convicted of a relevant offence.</p>
+
+    <h3 class="heading-small">Relevant offences</h3>
+    <p>A relevant offence is one relating to the environment or environmental regulation. <a href="https://www.gov.uk/government/publications/relevant-conviction-guidance-for-permit-applications-for-waste-activities-and-installations-only" target="_blank">List of relevant offences (opens new window)</a>.</p>
+    <p>If any of the relevant people in your application have been convicted of an offence you must check our relevant offences guidance. This will help you decide what extra information about the offence you feel we should take into account.</p>
 
 </details>
 
 
-<form>
+<form method="post" action="{{formAction}}" class="form">
+
   <div class="form-group">
     <fieldset>
 
       <legend class="visually-hidden">Have you or any relevant person been convicted of a relevant offence?</legend>
 
-      <label class="block-label selection-button-radio" data-target="offences" for="yesOffences">
-        <input id="yesOffences" type="radio" name="radio-contact-group" value="yes">
+      <label class="block-label selection-button-radio">
+        <input id="yesOffences" type="radio" name="offences" value="yes">
         Yes
       </label>
 
       <label class="block-label selection-button-radio" for="noOffences">
-        <input id="noOffences" type="radio" name="radio-contact-group" value="no">
+        <input id="noOffences" type="radio" name="offences" value="no">
         No
       </label>
 

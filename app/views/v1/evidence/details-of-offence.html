@@ -9,14 +9,16 @@
 {% block content %}
 
 <main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+  
   <div class="grid-row">
-    <div class="column-full">
+      <div class="column-two-thirds">
 
 
 <h1 class="heading-large">{{title}}</h1>
 
 
-<form>
+<form method="post" action="{{formAction}}" class="form">
   <div class="form-group">
   <label class="form-label" for="first-name">First name</label>
   <input class="form-control" id="first-name" name="first-name" type="text">
@@ -53,7 +55,7 @@
               </div>
             </fieldset>
           </div>
-</form>
+
 
 <p><a href="#">Add another person</a></p>
 
@@ -61,6 +63,8 @@
     <div class="form-group">
     <input type="submit" class="button" value="Continue">
   </div>
+  
+  </form>
 
 
     </div>

@@ -20,12 +20,12 @@
     <span class="visually-hidden">Warning</span>
   </i>
   <strong class="bold-small">
-    Your management system must be in place<br> by the time of the permit issue.
+    Your management system must be in place by the time we issue the permit.
   </strong>
 </div>
 
 
-<form>
+<form method="post" action="{{formAction}}" class="form">
   <div class="form-group">
     <fieldset>
       
@@ -59,10 +59,11 @@
       </label>
     </fieldset>
   </div>
+  
+  <div class="form-group">
+      <input type="submit" class="button" value="Continue">
+  </div>
 </form>
-
-
-<a class="button" href="#" role="button">Continue</a>
 
     </div>
   </div>

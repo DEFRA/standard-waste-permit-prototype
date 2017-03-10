@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "What's the site name?" %}
+{% set title = "Upload a fire prevention plan" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -16,19 +16,16 @@
 <h1 class="heading-large">{{title}}</h1>
 
 <form method="post" action="{{formAction}}" class="form">
-    
-  <div class="form-group">
-    <label class="form-label" for="siteName">
-      Site name
-    <span class="form-hint">If it does not already have a name, enter the name you will use</span>
-    </label>
-    <input class="form-control" id="siteName" type="text">
-  </div>
 
-    <div class="form-group">
-        <input type="submit" class="button" value="Continue">
-    </div>
-  </form>
+<div class="form-group">
+  <p><span style="margin-right: 10px">Wamitab_certificate.pdf</span> <a href="#">remove file</a></p>
+  <button class="font-small">Add another file</button>
+</div>
+
+  <div class="form-group">
+      <input type="submit" class="button" value="Continue">
+  </div>
+</form>
 
     </div>
   </div>
