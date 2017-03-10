@@ -30,19 +30,20 @@
 </details>
 
 
-<form>
+<form method="post" action="{{formAction}}" class="form">
+
   <div class="form-group">
     <fieldset>
 
       <legend class="visually-hidden">Have you or any relevant person been convicted of a relevant offence?</legend>
 
-      <label class="block-label selection-button-radio" data-target="offences" for="yesOffences">
-        <input id="yesOffences" type="radio" name="radio-contact-group" value="yes">
+      <label class="block-label selection-button-radio">
+        <input id="yesOffences" type="radio" name="offences" value="yes">
         Yes
       </label>
 
       <label class="block-label selection-button-radio" for="noOffences">
-        <input id="noOffences" type="radio" name="radio-contact-group" value="no">
+        <input id="noOffences" type="radio" name="offences" value="no">
         No
       </label>
 
