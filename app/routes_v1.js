@@ -1,6 +1,9 @@
 var express = require('express')
 var router = express.Router()
 
+
+
+
 // this file deals with all paths starting /version_x
 var folder = "v1";
 
@@ -8,6 +11,7 @@ router.use(function (req, res, next) {
   res.locals.folder=folder;
   next();
 });
+
 
 // How to use folder
 //  res.redirect( '/' + folder + '/exemptions/add_exemptions');
@@ -83,11 +87,13 @@ router.post('/selectpermit/choose-permit', function (req, res) {
 })
 
 router.post('/selectpermit/permit-details', function (req, res) {
-  res.render(folder + "/" +'selectpermit/permit-details',{"chosenPermitID":req.body['chosenPermitID']})
+  res.render(folder + "/" +'selectpermit/permit-details',{
+    "chosenPermitID":req.body['chosenPermitID']})
 })
 
 router.post('/selectpermit/check-permit', function (req, res) {
-  res.render(folder + "/" +'selectpermit/check-permit',{"chosenPermitID":req.body['chosenPermitID']})
+  res.render(folder + "/" +'selectpermit/check-permit',{
+    "chosenPermitID":req.body['chosenPermitID'] })
 })
 
 router.post('/selectpermit/what-need-to-apply', function (req, res) {
