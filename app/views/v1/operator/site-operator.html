@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
 
+{% set title = "Who will be the operator for the site?" %}
+
 {% block page_title %}
-  Apply for a standard rules waste permit
+    {{title}} - GOV.UK
 {% endblock %}
 
 {% block content %}
@@ -11,30 +13,30 @@
     <div class="column-full">
 
 
-<h1 class="heading-large">Who will be the operator for the site?</h1>
+<h1 class="heading-large">{{title}}</h1>
 
 
 <form action="/v1/company-name" method="get" class="form">
   <div class="form-group">
     <fieldset>
 
-      <legend class="visuallyhidden">Who will be the operator for the site?</legend>
+      <legend class="visuallyhidden">{{title}}</legend>
 
       <label class="block-label selection-button-radio" for="radio-1">
         <input id="radio-1" type="radio" name="operatorType" value="Limited company">
         Limited company
       </label>
       <label class="block-label selection-button-radio" for="radio-2">
-        <input id="radio-2" type="radio" name="operatorType" value="Local authority or public body">
-          Local authority or public body
+        <input id="radio-2" type="radio" name="operatorType" value="Individual (eg. sole-trader)">
+        Individual or sole-trader
       </label>
       <label class="block-label selection-button-radio" for="radio-3">
         <input id="radio-3" type="radio" name="operatorType" value="Partnership">
         Partnership
       </label>
       <label class="block-label selection-button-radio" for="radio-4">
-        <input id="radio-4" type="radio" name="operatorType" value="Individual (eg. sole-trader)">
-        Individual (eg. sole-trader)
+        <input id="radio-4" type="radio" name="operatorType" value="Local authority or public body">
+          Local authority or public body
       </label>
       <label class="block-label selection-button-radio" for="radio-5">
         <input id="radio-5" type="radio" name="operatorType" value="Other organisation (eg a trust, charity or club)">

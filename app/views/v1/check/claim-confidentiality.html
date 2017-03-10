@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% set title = "Do you want to claim confidentiality for your application?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+
+<div class="column-two-thirds">
+<div class="notice" style="margin-bottom: 20px">
+  <i class="icon icon-important">
+    <span class="visually-hidden">Warning</span>
+  </i>
+  <strong class="bold-small">
+    Only tick this box if you are very certain that you wish information to be confidential. This may delay your application.
+  </strong>
+</div>
+</div>
+
+
+<form>
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visually-hidden">{{title}}</legend>
+
+      <label class="block-label selection-button-radio" data-target="confidential" for="yesConfClaim">
+        <input id="yesConfClaim" type="radio" name="radio-contact-group" value="yes">
+        Yes, I wish to claim confidentiality for my application
+      </label>
+      <div class="panel panel-border-narrow js-hidden" id="confidential">
+        <label class="form-label" for="confidentialReasons">Give your reasons. If we agree with your request, we will tell you and not include the information in the public register.</label>
+        <textarea class="form-control" name="confidentialReasons" type="text" id="confidentialReasons"></textarea>
+      </div>
+
+      <label class="block-label selection-button-radio" for="notConfidential">
+        <input id="notConfClaim" type="radio" name="radio-contact-group" value="no">
+        No
+      </label>
+
+    </fieldset>
+  </div>
+
+    <div class="form-group">
+    <input type="submit" class="button" value="Continue">
+  </div>
+
+
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

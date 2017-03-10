@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% set title = "Check company details" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+<p>Company number<br>
+<b>0234675</b></p>
+
+
+<p>Company name<br>
+<b>VEOLIA ENVIRONMENTAL SERVICES (UK) PLC</b></p>
+
+<p>Registered office address<br>
+<b>210 Pentonville Road<br>
+London<br>
+N1 9JY</b></p>
+
+
+<!-- companyAddressIsMain -->
+
+<form>
+  <div class="form-group">
+    <fieldset>
+      <legend class="visually-hidden">Is this your main UK business address?</legend>
+      <label class="block-label selection-button-radio" for="radio-1">
+        <input id="radio-1" type="radio" name="radio-group" value="This is our main UK business address">
+        This is our main UK business address
+      </label>
+      <label class="block-label selection-button-radio" for="radio-2">
+        <input id="radio-2" type="radio" name="radio-group" value="We have a different main UK business address">
+        We have a different main UK business address
+      </label>
+    </fieldset>
+  </div>
+</form>
+
+
+
+
+<p><a href="#">These are not the correct company details</a></p>
+
+<a class="button" href="#" role="button">Continue</a>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

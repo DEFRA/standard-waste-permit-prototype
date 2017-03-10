@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
 
+{% set title = "Have you discussed your application with us?" %}
+
 {% block page_title %}
-  Apply for a standard rules waste permit
+    {{title}} - GOV.UK
 {% endblock %}
 
 {% block content %}
@@ -11,33 +13,33 @@
     <div class="column-full">
 
 
-<h1 class="heading-large">Have you discussed your application with us?</h1>
-
-<p>If you were given pre-application advice we usually give you a reference number. It’s helpful to have this so we can check the advice when we review your application.</p>
+<h1 class="heading-large">{{title}}</h1>
 
 
 <form action="/v1/site-operator" method="get" class="form">
   <div class="form-group">
     <fieldset>
 
-      <legend class="visually-hidden">Have you discussed your application with us?</legend>
+      <legend class="visually-hidden">{{title}}</legend>
 
-      <label class="block-label selection-button-radio" data-target="reference-number" for="yes-reference-number">
-        <input id="yes-reference-number" type="radio" name="radio-contact-group" value="Yes">
-        Yes and I have a reference number
+      <label class="block-label selection-button-radio" data-target="preAppDiscussion" for="yesRefName">
+        <input id="yesRefName" type="radio" name="radio-contact-group" value="yesRefName">
+        Yes and I have a reference number or name
       </label>
-      <div class="panel panel-border-narrow js-hidden" id="reference-number">
-        <label class="form-label" for="reference-number">Reference number</label>
-        <input class="form-control" name="reference-number" type="text" id="reference-number">
+      <div class="panel panel-border-narrow js-hidden" id="preAppDiscussion">
+        <label class="form-label" for="preAppDiscussionRefName">Reference number or name of person you spoke to
+         <span class="form-hint">For example, SRP3423 or Julie Jones, Bristol Office</span>
+         </label>
+        <input class="form-control" name="preAppDiscussionRefName" type="text" id="preAppDiscussionRefName">
       </div>
 
-      <label class="block-label selection-button-radio" for="yes-without-ref-number">
-        <input id="yes-without-ref-number" type="radio" name="radio-contact-group" value="YesNoRef">
-        Yes but I was not given a reference number
+      <label class="block-label selection-button-radio" for="yesNoRef">
+        <input id="yesNoRef" type="radio" name="radio-contact-group" value="yes">
+        Yes but I do not have a name or reference number
       </label>
 
-      <label class="block-label selection-button-radio" for="preapp-no">
-        <input id="preapp-no" type="radio" name="radio-contact-group" value="No">
+      <label class="block-label selection-button-radio" for="noPreApp">
+        <input id="noPreApp" type="radio" name="radio-contact-group" value="no">
         No
       </label>
 

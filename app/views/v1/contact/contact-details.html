@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% set title = "Who should we contact about this activity?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<div class="panel panel-border-wide">
+  <p>
+    This can be someone acting as a consultant or an ‘agent’ for you.
+  </p>
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="contactName">
+    Full name
+    <span class="form-hint">
+      For example, John Smith
+    </span>
+  </label>
+  <input class="form-control" id="contactName" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="contactTelephone">
+    Telephone number
+    <span class="form-hint">
+      This can be a landline or mobile
+    </span>
+  </label>
+  <input class="form-control" id="contactTelephone" type="number">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="contactEmail">
+    Email address
+  </label>
+  <input class="form-control" id="contactEmail" type="email">
+</div>
+
+<a class="button" href="#" role="button">Continue</a>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+
