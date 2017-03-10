@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+
+{% block page_title %}
+    {{errorText}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_alpha.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+
+      <h1 class="heading-large">{{errorText}}</h1>
+
+      <p><a href="#" onclick="history.go(-1);return false;">Back</a></p>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

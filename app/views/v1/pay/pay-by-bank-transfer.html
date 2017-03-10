@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Pay by cheque" %}
+{% set title = "Pay by bank transfer" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -25,26 +25,21 @@
 
 <p><a href="javascript:if(window.print)window.print()">Print this page</a></p>
 
-<p>Make your cheque payable to ‘Environment Agency’</p>
+<p>Make a transfer to this account</p>
 
-<p>Make sure they have ‘A/c Payee’ written across them if it is not already printed on.</p> 
+<p>Environment Agency</p> 
 
-<p>Please write the name of your company and application reference number on the back of your cheque.</p> 
+<p>Account number: 42315 25645</p>
 
-<p>We will not accept cheques with a future date on them.</p>
+<p>Sort code: 80 12 34</p> 
 
-<p><b>Send your cheque to:</b><br>
-Permitting Support Centre <br>
-Quadrant 2 <br>
-99 Parkway Avenue <br>
-Parkway Business Park <br>
-Sheffield <br>
-S9 4WF
-</p>
 
+<form method="post" action="{{formAction}}" class="form">
   <div class="form-group">
-    <input type="submit" class="button" value="Continue">
+      <input type="submit" class="button" value="Continue">
+      or <a href="/select-permit/permit-category">change permit</a>
   </div>
+</form>
 
 
     </div>

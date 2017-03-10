@@ -57,12 +57,17 @@
   
   	<div class="grid-row">
   		<div class="column-two-thirds">
-  			<div class="form-group">
-  		 			<a href="{{form_action}}"><button class="button">Confirm payment</button></a>
-  		 		</div>
-  		 		<div class="back">
+
+        <form method="post" action="{{formAction}}" class="form">
+          <div class="form-group">
+              <input type="submit" class="button" value="Continue">
+          </div>
+        </form>
+  		 		
+          <div class="back">
   				<a href="#">Cancel payment</a>
   			</div>
+        
   		 </div>
   	 </div>
   
