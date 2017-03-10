@@ -237,4 +237,12 @@ router.post('/done/index', function (req, res) {
 
 
 
+// Errors ===================================================================
+
+router.get('/error/wrong-company-details', function (req, res) {
+    res.render(folder + '/error/index',{ 
+        "errorText":"If the company details are not correct you can't apply online. Please contact us."
+    })
+})
+
 module.exports = router
