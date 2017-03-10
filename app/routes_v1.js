@@ -1,13 +1,17 @@
 var express = require('express')
 var router = express.Router()
 
+
+
+
 // this file deals with all paths starting /version_x
 var folder = "v1";
 
 router.use(function (req, res, next) {
-  res.locals.version_num=folder;
+  res.locals.folder=folder;
   next();
 });
+
 
 // How to use folder
 //  res.redirect( '/' + folder + '/exemptions/add_exemptions');
@@ -18,6 +22,7 @@ router.use(function (req, res, next) {
 // About you ***************************************
 
 // router.get URL must match the HTML form action URL
+/*
 router.get('/about-you/applicant-type/application-from-a-company', function (req, res) {
   // get the answer from the query string
   var applicantType = req.query.applicantType
@@ -40,6 +45,7 @@ router.get('/about-you/applicant-type/application-from-a-company', function (req
     res.render('/' + folder +'about-you/applicant-type/application-from-a-company')
   }
 })
+*/
 
 
   // Is your main UK business address different from above?
@@ -76,12 +82,22 @@ router.get('/about-you/contact-billing', function (req, res) {
 })
 
 
-router.post('/select-permit/choose-permit', function (req, res) {
-  res.render('/' + folder +'select-permit/choose-permit',{"chosenCategory":req.body['chosenCategory']})
+router.post('/selectpermit/choose-permit', function (req, res) {
+  res.render(folder + "/" + 'selectpermit/choose-permit',{"chosenCategory":req.body['chosenCategory']})
 })
 
-router.post('/select-permit/permit-details', function (req, res) {
-  res.render('/' + folder +'select-permit/permit-details',{"chosenPermitID":req.body['chosenPermitID']})
+router.post('/selectpermit/permit-details', function (req, res) {
+  res.render(folder + "/" +'selectpermit/permit-details',{
+    "chosenPermitID":req.body['chosenPermitID']})
+})
+
+router.post('/selectpermit/check-permit', function (req, res) {
+  res.render(folder + "/" +'selectpermit/check-permit',{
+    "chosenPermitID":req.body['chosenPermitID'] })
+})
+
+router.post('/selectpermit/what-need-to-apply', function (req, res) {
+  res.render(folder + "/" +'selectpermit/what-need-to-apply',{"chosenPermitID":req.body['chosenPermitID']})
 })
 
 module.exports = router
