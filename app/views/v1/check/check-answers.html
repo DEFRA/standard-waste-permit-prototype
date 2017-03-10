@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% set title = "Check your answers" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+
+<p>Check answers mockup here</p>
+
+
+<form>
+
+  <div class="form-group">
+    <input type="submit" class="button" value="Continue">
+  </div>
+
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
