@@ -22,16 +22,29 @@ router.get('/selectpermit/permit-category', function (req, res) {
 })
 
 router.post('/selectpermit/choose-permit', function (req, res) {
-  res.render(folder + '/selectpermit/choose-permit',{
-    "formAction":"/"+ folder + "/selectpermit/check-permit",
-    "chosenCategory":req.body['chosenCategory']
-  })
+  if(typeof req.body['chosenCategory']==='undefined'){  // simple error handling
+    res.render(folder + '/error/index',{ 
+        "errorText":"Please say what you want the permit for"
+    })
+  } else {
+    res.render(folder + '/selectpermit/choose-permit',{
+      "formAction":"/"+ folder + "/selectpermit/check-permit",
+      "chosenCategory":req.body['chosenCategory']
+    })    
+  }
 })
 
 router.post('/selectpermit/check-permit', function (req, res) {
-  res.render(folder + '/selectpermit/check-permit',{
-    "formAction":"/"+ folder + "/selectpermit/what-need-to-apply",
-    "chosenPermitID":req.body['chosenPermitID'] })
+  if(typeof req.body['chosenPermitID']==='undefined'){  // simple error handling
+    res.render(folder + '/error/index',{ 
+        "errorText":"Please select a permit"
+    })
+  } else {
+    res.render(folder + '/selectpermit/check-permit',{
+      "formAction":"/"+ folder + "/selectpermit/what-need-to-apply",
+      "chosenPermitID":req.body['chosenPermitID']
+    })
+}
 })
 
 router.post('/selectpermit/what-need-to-apply', function (req, res) {
