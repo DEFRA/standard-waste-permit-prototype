@@ -7,7 +7,7 @@ var router = express.Router()
 var folder = "v1";
 
 router.use(function (req, res, next) {
-  res.locals.folder=folder;
+  res.locals.folder=folder; // this can then be used in pages as {{folder}}
   next();
 });
 
@@ -236,7 +236,6 @@ router.post('/done/index', function (req, res) {
 // No route needed for /v1/done/email-confirm">Confirmation email
 
 
-
 // Errors ===================================================================
 
 router.get('/error/wrong-company-details', function (req, res) {
@@ -244,5 +243,6 @@ router.get('/error/wrong-company-details', function (req, res) {
         "errorText":"If the company details are not correct you can't apply online. Please contact us."
     })
 })
+
 
 module.exports = router

@@ -13,19 +13,45 @@
   <div class="grid-row">
       <div class="column-two-thirds">
 
-<h1 class="heading-large">{{title}}</h1>
+        <h1 class="heading-large" id="upload-label">{{title}}</h1>
 
-<form method="post" action="{{formAction}}" class="form">
+        <form method="post" action="{{formAction}}" class="form">
 
-<div class="form-group">
-  <p><span style="margin-right: 10px">Wamitab_certificate.pdf</span> <a href="#">remove file</a></p>
-  <button class="font-small">Add another file</button>
-</div>
+          <div class="form-group form-upload">
+              <input id="upload" type="file" aria-labelelledby="upload-label">
+              <input id="filename" name="siteplanFilename" type="hidden">
+            <a href="#">remove file</a>
+          </div>
+          
+          <script>
+            // captures uploaded filename and passes to hidden input
+            document.getElementById('upload').onchange = uploadOnChange;
+            function uploadOnChange() {
+                var filename = this.value;
+                var lastIndex = filename.lastIndexOf("\\");
+                if (lastIndex >= 0) {
+                    filename = filename.substring(lastIndex + 1);
+                }
+                document.getElementById('filename').value = filename;
+            }
+          </script>
+          
+        
+        
+        <details>
+          <summary><span class="summary">What your site plan must include</span></summary>
+          <div class="panel panel-border-narrow">
+            {% include folder+"/guidance/siteplan.html" %}
+          </div>
+        </details>
 
-  <div class="form-group">
-      <input type="submit" class="button" value="Continue">
-  </div>
-</form>
+        </br>
+        
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+
+        </form>
 
     </div>
   </div>
