@@ -35,16 +35,16 @@
             <legend="Permit">
             
             {% for pNumber, pData in permits %}
-              {% if pData.Digital_MVP=="Yes" %}
-                {% if pData.Category==chosenCategory %}
-                {% set label = [pData.Name_GOV_UK," ",pData.Code] %}
+              {% if pData.digitalMVP=="Yes?" %}
+                {% if pData.friendlyCategory==chosenCategory %}
+                {% set label = [pData.friendlyName,"</br>",pData.friendlyWeight," ",pData.code] %}
                   {{ macros.radio_button(
-                    label | join,
+                    label | join | safe,
                     "chosenPermitID",
                     loop.index,
                     pNumber
                     ) }}
-                    {% endif %}
+                {% endif %}
               {% endif %}
             {% else %}
               <p>No radios</p>

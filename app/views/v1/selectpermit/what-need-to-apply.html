@@ -24,13 +24,20 @@
           {% if pNumber==chosenPermitID %}
       
               <h2 class="heading-medium">
-                Things you need to check:
+                Things you need to check or do:
               </h2>
               
               <ul class="list list-border">
-                <li>your operation is {{ pData.Form_weight | lower }}</li>
-                <li>check you can comply with <a href="{{pData.Guidance_URL}}" target="_blank">conditions for {{pData.Code}}</a></li>
-                <li>download and check the <a href="{{pData.Guidance_URL}}" target="_blank">risk assessment</a></li>
+                <li>your operation meets the {{ pData.friendlyWeight | lower }}</li>
+                
+                {% if pData.locationRules!="No" %}
+                  <li>the site is:</br>
+                    {{ pData.locationRules }}
+                  </li>
+                {% endif %}
+                
+                <li>that you can comply with the <a href="{{pData.guidanceURL}}" target="_blank">rules for {{pData.code}}</a></li>
+                <li>download and complete the <a href="{{pData.Guidance_URL}}" target="_blank">risk assessment</a></li>
                 <li>get a <a href="https://www.gov.uk/government/publications/environmental-permit-nature-and-heritage-conservation-screening">nature and heritage conservation screening assessment</a></li>
               </ul>
               
@@ -44,17 +51,21 @@
               
                 <li>a site plan prepared to <a href="#">site plan standards</a></li>
               
-                {% if pData.Fire_Plan_Needed=="Yes" %}
+                {% if pData.firePlanNeeded=="Yes" %}
                   <li>a <a href="#">fire plan</a></li>
                 {% endif %}
                 
-                {% if pData.Baseline_report_required=="Yes" %}
+                {% if pData.baselineReportRequired=="Yes" %}
                   <li>a <a href="#">baseline report</a></li>
                 {% endif %}
                 
-                {% if pData.Technical_ability_evidence=="Yes" %}
+                {% if pData.technicalAbilityEvidence=="Yes" %}
                   <li>evidence of technical ability - for example,  
                   {{pData.WAMITAB}} qualification</li>
+                {% endif %}
+                
+                {% if pData.wasteRecoveryPlan=="Yes" %}
+                  <li>a waste recovery plan</li>
                 {% endif %}
                 
                 {% if pData.Special_Case=="Yes" %}
@@ -73,7 +84,7 @@
         
         <div class="panel panel-border-wide">
           <p>
-            You can’t save your application so you need all of these documents before you start your application.
+            You can’t save your application so you need all of these documents before you start.
           </p>
         </div>      
       

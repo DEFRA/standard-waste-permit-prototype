@@ -25,15 +25,15 @@
         {% for pNumber, pData in permits %}
           {% if pNumber==chosenPermitID %}
               <h2 class="heading-medium">
-                {{ pData.Name_GOV_UK }}
-                <span class="font-small">{{pData.Code}}</span>
+                {{ pData.friendlyName }}
+                <span class="font-small">{{pData.code}}</span>
               </h2>
               
-              {% if pData.Form_Description!="" %}
-                <p>{{pData.Form_Description}}</p>
+              {% if pData.friendlyWeight!="" %}
+                <p>{{ pData.friendlyWeight }}</p>
               {% endif %}
               
-              <p><span class="font-large">{{pData.Charge}}</span> application charge</br>
+              <p><span class="font-large">{{pData.charge}}</span> application charge</br>
                  by credit card, bank transfer or cheque</p>
               
               <p>
