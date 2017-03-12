@@ -52,7 +52,7 @@ router.post('/selectpermit/check-permit', function (req, res) {
     })
   } else {
     // save chosen Permit ID in session
-    req.session.permit.chosenPermitID = req.body['chosenPermitID']
+    for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
     res.render(folder + '/selectpermit/check-permit',{
       "formAction":"/"+ folder + "/selectpermit/what-need-to-apply",
       "chosenPermitID":req.body['chosenPermitID'],
@@ -62,6 +62,7 @@ router.post('/selectpermit/check-permit', function (req, res) {
 })
 
 router.post('/selectpermit/what-need-to-apply', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/selectpermit/what-need-to-apply',{
       "formAction":"/"+ folder + "/preapp/preapp-discussion",
       "chosenPermitID":req.body['chosenPermitID'],
@@ -73,6 +74,7 @@ router.post('/selectpermit/what-need-to-apply', function (req, res) {
 // Pre-app ===================================================================
 
 router.post('/preapp/preapp-discussion', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/preapp/preapp-discussion',{
       "formAction":"/"+ folder + "/operator/site-operator",
       "permit":req.session.permit // always send permit object to page
@@ -83,6 +85,7 @@ router.post('/preapp/preapp-discussion', function (req, res) {
 // Operator ===================================================================
 
 router.post('/operator/site-operator', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/operator/site-operator',{
       "formAction":"/"+ folder + "/operator/checkoperator",
       "permit":req.session.permit // always send permit object to page
@@ -91,6 +94,7 @@ router.post('/operator/site-operator', function (req, res) {
 
 // This is not a real page, just a URL for the route
 router.post('/operator/checkoperator', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   if(req.body['operatorType']=="Limited company"){ // think you need square bracket for radios
     // show company page
       res.render(folder + '/operator/company/company-name',{
@@ -106,7 +110,7 @@ router.post('/operator/checkoperator', function (req, res) {
 })
 
 router.post('/operator/company/check-company-details', function (req, res) {
-  for(var prop in req.body) req.session.permit[prop] = req.body[prop] // add form inputs to session 
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/operator/company/check-company-details',{
       "formAction":"/"+ folder + "/site/site-name",
       "permit":req.session.permit // always send permit object to page
@@ -117,6 +121,7 @@ router.post('/operator/company/check-company-details', function (req, res) {
 // Site ===================================================================
 
 router.post('/site/site-name', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/site/site-name',{
       "formAction":"/"+ folder + "/site/grid-reference",
       "permit":req.session.permit // always send permit object to page
@@ -124,6 +129,7 @@ router.post('/site/site-name', function (req, res) {
 })
 
 router.post('/site/grid-reference', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/site/grid-reference',{
       "formAction":"/"+ folder + "/address/postcode",
       "permit":req.session.permit // always send permit object to page
@@ -131,6 +137,7 @@ router.post('/site/grid-reference', function (req, res) {
 })
 
 router.post('/address/postcode', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/address/postcode',{
       "formAction":"/"+ folder + "/address/address",
       "permit":req.session.permit // always send permit object to page
@@ -138,6 +145,7 @@ router.post('/address/postcode', function (req, res) {
 })
 
 router.post('/address/address', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/address/address',{
       "formAction":"/"+ folder + "/contact/contact-details",
       "permit":req.session.permit // always send permit object to page
@@ -156,6 +164,7 @@ router.get('/address/address-manual', function (req, res) {
 // Contact ===================================================================
 
 router.post('/contact/contact-details', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/contact/contact-details',{
       "formAction":"/"+ folder + "/evidence/upload-site-plan",
       "permit":req.session.permit // always send permit object to page
@@ -166,6 +175,7 @@ router.post('/contact/contact-details', function (req, res) {
 // Evidence ===================================================================
 
 router.post('/evidence/upload-site-plan', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/evidence/upload-site-plan',{
       "formAction":"/"+ folder + "/evidence/upload-fire-plan",
       "permit":req.session.permit // always send permit object to page
@@ -173,6 +183,7 @@ router.post('/evidence/upload-site-plan', function (req, res) {
 })
 
 router.post('/evidence/upload-fire-plan', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/evidence/upload-fire-plan',{ 
       "formAction":"/"+ folder + "/evidence/industry-scheme",
       "permit":req.session.permit // always send permit object to page
@@ -180,6 +191,7 @@ router.post('/evidence/upload-fire-plan', function (req, res) {
 })
 
 router.post('/evidence/industry-scheme', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/evidence/industry-scheme',{
       "formAction":"/"+ folder + "/evidence/upload-technical-evidence",
       "permit":req.session.permit // always send permit object to page
@@ -187,6 +199,7 @@ router.post('/evidence/industry-scheme', function (req, res) {
 })
 
 router.post('/evidence/upload-technical-evidence', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/evidence/upload-technical-evidence',{
       "formAction":"/"+ folder + "/evidence/management-system",
       "permit":req.session.permit // always send permit object to page
@@ -194,6 +207,7 @@ router.post('/evidence/upload-technical-evidence', function (req, res) {
 })
 
 router.post('/evidence/management-system', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/evidence/management-system',{
       "formAction":"/"+ folder + "/evidence/declare-offences",
       "permit":req.session.permit // always send permit object to page
@@ -201,6 +215,7 @@ router.post('/evidence/management-system', function (req, res) {
 })
 
 router.post('/evidence/declare-offences', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/evidence/declare-offences',{
       "formAction":"/"+ folder + "/evidence/offencescheck",
       "permit":req.session.permit // always send permit object to page
@@ -209,6 +224,7 @@ router.post('/evidence/declare-offences', function (req, res) {
 
 // This is not a real page, just a URL for the route
 router.post('/evidence/offencescheck', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   if(req.body['offences']=="yes"){ // think you need square bracket for radios
     // show details page
       res.render(folder + '/evidence/details-of-offence',{
@@ -225,6 +241,7 @@ router.post('/evidence/offencescheck', function (req, res) {
 })
 
 router.post('/evidence/bankruptcy-insolvency', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/evidence/bankruptcy-insolvency',{
       "formAction":"/"+ folder + "/check/claim-confidentiality",
       "permit":req.session.permit // always send permit object to page
@@ -232,6 +249,7 @@ router.post('/evidence/bankruptcy-insolvency', function (req, res) {
 })
 
 router.post('/check/claim-confidentiality', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/check/claim-confidentiality',{
       "formAction":"/"+ folder + "/check/check-answers",
       "permit":req.session.permit // always send permit object to page
@@ -239,6 +257,7 @@ router.post('/check/claim-confidentiality', function (req, res) {
 })
 
 router.post('/check/check-answers', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/check/check-answers',{
       "formAction":"/"+ folder + "/pay/payment-method",
       "permit":req.session.permit // always send permit object to page
