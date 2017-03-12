@@ -52,6 +52,18 @@ $path: "/public/images/";
   }
 }
 
+.list.location-list{
+  li{
+  border:none;
+  padding:5px 0;
+  margin:0;
+  }
+  li:last-child{
+  border:none;
+  }
+  margin-bottom:0;
+}
+
 .form-upload{
 }
 
@@ -442,4 +454,35 @@ table.payment-confirm {
 }
 .check-details {
     margin-bottom: 30px;
+}
+
+// Choose permit radio button list
+fieldset.permitList {
+}
+label.permitItem {
+  display: flex;
+    width:100%;
+}
+span.permitName {
+  width:75%;
+}
+span.permitCode {
+    font-weight: bold;
+    width:25%;
+    text-align:right;
+}
+
+label.permitListxx {
+    width: 90%;
+    margin-right: 6em;
+}
+span.permitNamexx {
+    font-weight: bold;
+    float: right;
+    margin-right: -4em;
+}
+span.permitCodexx {
+    font-weight: bold;
+    float: right;
+    margin-right: -4em;
 }
