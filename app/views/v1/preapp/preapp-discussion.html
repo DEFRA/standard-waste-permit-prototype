@@ -25,23 +25,23 @@
       <legend class="visually-hidden">{{title}}</legend>
 
       <label class="block-label selection-button-radio" data-target="preAppDiscussion" for="yesRefName">
-        <input id="yesRefName" type="radio" name="radio-contact-group" value="yesRefName">
+        <input id="yesRefName" type="radio" name="preAppDiscussion" value="yesRefName">
         Yes and I have a reference number or name
       </label>
       <div class="panel panel-border-narrow js-hidden" id="preAppDiscussion">
         <label class="form-label" for="preAppDiscussionRefName">Reference number or name of person you spoke to
          <span class="form-hint">For example, SRP3423 or Julie Jones, Bristol Office</span>
          </label>
-        <input class="form-control" name="preAppDiscussionRefName" type="text" id="preAppDiscussionRefName">
+        <input class="form-control" id="preAppDiscussionRefName" name="preAppDiscussionRefName" type="text" id="preAppDiscussionRefName">
       </div>
 
       <label class="block-label selection-button-radio" for="yesNoRef">
-        <input id="yesNoRef" type="radio" name="radio-contact-group" value="yes">
+        <input id="yesNoRef" type="radio" name="preAppDiscussion" value="yes">
         Yes but I do not have a name or reference number
       </label>
 
       <label class="block-label selection-button-radio" for="noPreApp">
-        <input id="noPreApp" type="radio" name="radio-contact-group" value="no">
+        <input id="noPreApp" type="radio" name="preAppDiscussion" value="no">
         No
       </label>
 
