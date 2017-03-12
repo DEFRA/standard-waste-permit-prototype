@@ -1,21 +1,7 @@
-{% macro list_permits(Name_GOV_UK,Charge,Code,Category,Guidance_URL,WAMITAB) %}
 
-<h3 class="heading-small">{{Name_GOV_UK}}</h3>
-<p>
-  Category: {{Category}}<br />
-  Reference: {{Code}}<br />
-  Cost: {{Charge}}<br />
-  Qualification needed: {{WAMITAB}}<br />
-  <a href="{{Guidance_URL}}">Rules for permit {{Code}}</a>
-</p>
+{% macro radio_button(label,name,id,value,labelClass='') %}
 
-{% endmacro %}
-
-
-
-{% macro radio_button(label,name,id,value) %}
-
-  <label class="block-label selection-button-radio">
+  <label class="block-label selection-button-radio{{labelClass}}">
     <input id="{{name}}_{{id}}" type="radio" name="{{name}}" value="{{ value }}">
     {{ label }}
   </label>

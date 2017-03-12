@@ -31,18 +31,34 @@
       
       <form method="post" action="{{formAction}}">
         <div class="form-group">
-          <fieldset aria-labelledby="radio_label">
+          <fieldset class="permitList" aria-labelledby="radio_label">
             <legend="Permit">
             
             {% for pNumber, pData in permits %}
               {% if pData.digitalMVP=="Yes?" %}
                 {% if pData.friendlyCategory==chosenCategory %}
-                {% set label = [pData.friendlyName,"</br>",pData.friendlyWeight," ",pData.code] %}
+                
+                  {% if pData.friendlyWeight!="" %}
+                    {% set weight=" - "+pData.friendlyWeight %}
+                  {% else %}
+                    {% set weight="" %}
+                  {% endif %}
+                
+                  {% set label = [
+                    '<span class="permitName">',
+                    pData.friendlyName,
+                    weight | lower,
+                    '</span>',
+                    '<span class="permitCode">',
+                    pData.code,
+                    '</span>'
+                    ] %}
                   {{ macros.radio_button(
                     label | join | safe,
                     "chosenPermitID",
                     loop.index,
-                    pNumber
+                    pNumber,
+                    " permitItem"
                     ) }}
                 {% endif %}
               {% endif %}

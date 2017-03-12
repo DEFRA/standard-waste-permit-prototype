@@ -28,11 +28,15 @@
               </h2>
               
               <ul class="list list-border">
-                <li>your operation meets the {{ pData.friendlyWeight | lower }}</li>
+                {% if pData.friendlyWeight!="" %}
+                  <li>that your operation meets the {{ pData.friendlyWeight | lower }}</li>
+                {% endif %}
                 
                 {% if pData.locationRules!="No" %}
-                  <li>the site is:</br>
-                    {{ pData.locationRules }}
+                  <li>check the site location:
+                    <ul class="list list-bullet location-list">
+                      {{ pData.locationRules | replace("*", "<li>") | safe }}
+                    </ul>
                   </li>
                 {% endif %}
                 
