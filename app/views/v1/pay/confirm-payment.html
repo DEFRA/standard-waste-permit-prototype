@@ -2,8 +2,6 @@
 
 {% set title = "Confirm payment" %}
 
-{% set permit_name = "Household, commercial and industrial waste transfer station (no building) SR2015 No.5:" %}
-{% set permit_cost = "£1,630" %}
 {% set name = "Alan Smith" %}
 {% set email_address = "alansmith@gmail.com" %}
 {% set address = "2 Acacia Avenue, Redland, Bristol BS1 2FT" %}
@@ -43,11 +41,11 @@
   		      </tr>
   		      <tr>
   		        <td>Payment for</td>
-  		        <td class="table-info">{{permit_name}}</td>
+  		        <td class="table-info">{{ permit.permitName }} {{ permit.permitCode }}</td>
   		      </tr>
   		      <tr>
   		        <td>Amount to pay</td>
-  		        <td class="table-info">{{permit_cost}}</td>
+  		        <td class="table-info">{{ permit.permitCost }}</td>
   		      </tr>
   		    </tbody>
     		</table>

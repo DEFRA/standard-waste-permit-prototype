@@ -2,9 +2,6 @@
 
 {% set title = "Enter card details" %}
 
-{% set permit_name = "Household, commercial and industrial waste transfer station (no building) SR2015 No.5:" %}
-{% set permit_cost = "£1,630" %}
-
 {% block page_title %}
     {{title}} - GOV.UK
 {% endblock %}
@@ -102,9 +99,9 @@
         <div class="payment-summary-small">
   				<h2>Payment summary</h2>
   
-  			      <p class="payment-info">{{permit_name}}</p>
+  			      <p class="payment-info">{{ permit.permitName }} {{ permit.permitCode }}</p>
   			       <h3>Amount to pay:</h3>
-  			       <p class="payment-amount"> {{permit_cost}} </p>
+  			       <p class="payment-amount">{{ permit.permitCost }}</p>
   			</div>
   		</div>
   	  </div>

@@ -40,7 +40,16 @@
               <input type="hidden" name="permitSpecialCase" value="{{ pData.specialCase }}">                
               <input type="hidden" name="permitBaselineReportRequired" value="{{ pData.BaselineReportRequired }}">    
               <input type="hidden" name="permitTechnicalAbilityEvidence" value="{{ pData.technicalAbilityEvidence }}"> 
-              <input type="hidden" name="permitWasteRecoveryPlan" value="{{ pData.wasteRecoveryPlan }}"> 
+              <input type="hidden" name="permitWasteRecoveryPlan" value="{{ pData.wasteRecoveryPlan }}">
+              
+              {% set num1 = [1,2,3,4,5,6,7,8,9] | random %}
+              {% set num2 = [1,2,3,4,5,6,7,8,9,0] | random %}
+              {% set num3 = [1,2,3,4,5,6,7,8,9,0] | random %}
+              {% set num4 = [1,2,3,4,5,6,7,8,9,0] | random %}
+              {% set num5 = [1,2,3,4,5,6,7,8,9,0] | random %}
+              {% set refnum = "SRP"+num1+num2+num3+num4+num5 %}
+              
+              <input type="hidden" name="permitRefNumber" value="{{ refnum }}"> 
 
               {% if pData.friendlyWeight!="" %}
                 <p>{{ pData.friendlyWeight }}</p>
