@@ -19,15 +19,14 @@
 
 <h2 class="heading-small" style="margin-bottom:20px">Do you or any relevant person have any current or past bankruptcy or insolvency proceedings against you?</h2>
 
-
-<form>
+<form method="post" action="{{formAction}}" class="form">
   <div class="form-group">
     <fieldset>
 
       <legend class="visually-hidden">Do you or any relevant person have any current or past bankruptcy or insolvency proceedings against you?</legend>
 
       <label class="block-label selection-button-radio" data-target="bankruptcyInsolvency" for="yesBankruptcyInsolvency">
-        <input id="yesBankruptcyInsolvency" type="radio" name="radio-contact-group" value="yes">
+        <input id="yesBankruptcyInsolvency" type="radio" name="bankruptcyInsolvency" value="yes">
         Yes, there are bankruptcy or insolvency proceedings
       </label>
       <div class="panel panel-border-narrow js-hidden" id="bankruptcyInsolvency">
@@ -36,7 +35,7 @@
       </div>
 
       <label class="block-label selection-button-radio" for="noBankruptcyInsolvency">
-        <input id="noBankruptcyInsolvency" type="radio" name="radio-contact-group" value="no">
+        <input id="noBankruptcyInsolvency" type="radio" name="bankruptcyInsolvency" value="no">
         No
       </label>
 

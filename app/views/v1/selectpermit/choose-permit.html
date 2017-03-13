@@ -29,22 +29,38 @@
         </p>
       </div>
       
-      <form method="post" action="/{{folder}}/selectpermit/check-permit">
+      <form method="post" action="{{formAction}}">
         <div class="form-group">
-          <fieldset aria-labelledby="radio_label">
+          <fieldset class="permitList" aria-labelledby="radio_label">
             <legend="Permit">
             
             {% for pNumber, pData in permits %}
-              {% if pData.Digital_MVP=="Yes" %}
-                {% if pData.Category==chosenCategory %}
-                {% set label = [pData.Name_GOV_UK," ",pData.Code] %}
+              {% if pData.digitalMVP=="Yes?" %}
+                {% if pData.friendlyCategory==chosenCategory %}
+                
+                  {% if pData.friendlyWeight!="" %}
+                    {% set weight=" - "+pData.friendlyWeight %}
+                  {% else %}
+                    {% set weight="" %}
+                  {% endif %}
+                
+                  {% set label = [
+                    '<span class="permitName">',
+                    pData.friendlyName,
+                    weight | lower,
+                    '</span>',
+                    '<span class="permitCode">',
+                    pData.code,
+                    '</span>'
+                    ] %}
                   {{ macros.radio_button(
-                    label | join,
+                    label | join | safe,
                     "chosenPermitID",
                     loop.index,
-                    pNumber
+                    pNumber,
+                    " permitItem"
                     ) }}
-                    {% endif %}
+                {% endif %}
               {% endif %}
             {% else %}
               <p>No radios</p>

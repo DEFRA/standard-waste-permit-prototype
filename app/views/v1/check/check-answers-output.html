@@ -1,26 +1,40 @@
 {% extends "layout.html" %}
 
-{% set title = "Upload a technical evidence certificate" %}
+{% set title = "Check your answers" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
 {% endblock %}
 
 {% block content %}
+
 <main id="content" role="main">
   {% include "includes/phase_banner_alpha.html" %}
   
   <div class="grid-row">
       <div class="column-two-thirds">
 
+
 <h1 class="heading-large">{{title}}</h1>
 
-<div class="form-group">
-  <p><span style="margin-right: 10px">Wamitab_certificate.pdf</span> <a href="#">remove file</a></p>
-  <button class="font-small">Add another file</button>
-</div>
 
-<p><a class="button" href="#" role="button">Continue</a></p>
+<p>Check answers mockup here</p>
+
+{% for item, value in permit %}
+  <p>{{ item }} : {{value}}</p>
+{% else %}
+  <p>NO ITEMS</p>
+{% endfor %}
+
+
+<form method="post" action="{{formAction}}" class="form">
+
+  <div class="form-group">
+    <input type="submit" class="button" value="Continue">
+  </div>
+
+</form>
+
 
     </div>
   </div>

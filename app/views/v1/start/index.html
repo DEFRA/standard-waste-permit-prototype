@@ -179,7 +179,7 @@ body.search #global-header .search-toggle {
             <div class="header-logo">
                 <a href="https://www.gov.uk" title="Go to the GOV.UK homepage" id="logo" class="content"> <img src="https://assets.publishing.service.gov.uk/static/gov.uk_logotype_crown_invert_trans-203e1db49d3eff430d7dc450ce723c1002542fe1d2bce661b6d8571f14c1043c.png" width="36" height="32" alt=""> GOV.UK </a>
             </div> <a href="#search" class="search-toggle js-header-toggle">Search</a>
-            <form id="search" class="site-search" action="/search" method="get" role="search">
+            <form id="search" class="site-search" action="/search" method="post" role="search">
                 <div class="content"> <label for="site-search-text">Search</label> <input type="search" name="q" id="site-search-text" title="Search" class="js-search-focus"> <input class="submit" type="submit" value="Search"> </div>
             </form>
         </div>
@@ -235,7 +235,7 @@ body.search #global-header .search-toggle {
 			<p>When you select a permit at the start of your application, we'll tell you what documents you need to upload as evidence.</p>
 
 			<p class="call-to-action">
-					<a href="/v1/selectpermit/permit-category">Apply for a standard rules waste permit</a>
+					<a href="/{{folder}}/selectpermit/permit-category">Apply for a standard rules waste permit</a>
 			</p>
       
       <h3 class="heading-small">Before you start</h3>

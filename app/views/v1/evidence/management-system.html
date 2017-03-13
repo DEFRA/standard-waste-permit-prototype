@@ -20,12 +20,12 @@
     <span class="visually-hidden">Warning</span>
   </i>
   <strong class="bold-small">
-    Your management system must be in place<br> by the time of the permit issue.
+    Your management system must be in place by the time we issue the permit.
   </strong>
 </div>
 
 
-<form>
+<form method="post" action="{{formAction}}" class="form">
   <div class="form-group">
     <fieldset>
       
@@ -34,35 +34,36 @@
       <legend class="visually-hidden">{{title}}</legend>
 
       <label class="block-label selection-button-checkbox" for="manSysECEco">
-        <input id="manSysECEco" name="manSys" type="checkbox" value="British">
+        <input id="manSysECEco" name="manSysECEco" type="checkbox" value="EC Eco management and audit scheme (EMAS)">
         EC Eco management and audit scheme (EMAS)
       </label>
       <label class="block-label selection-button-checkbox" for="manSysISO14001">
-        <input id="manSysISO14001" name="manSys" type="checkbox" value="Irish">
+        <input id="manSysISO14001" name="manSysISO14001" type="checkbox" value="ISO 14001">
         ISO 14001
       </label>
       <label class="block-label selection-button-checkbox" for="manSysBS8555">
-        <input id="manSysBS8555" name="manSys" type="checkbox" value="Citizen of a different country">
+        <input id="manSysBS8555" name="manSysBS8555" type="checkbox" value="BS 8555 (Phases 1-5)">
         BS 8555 (Phases 1-5)
       </label>
       <label class="block-label selection-button-checkbox" for="manSysGreenDragon">
-        <input id="manSysGreenDragon" name="manSys" type="checkbox" value="Citizen of a different country">
+        <input id="manSysGreenDragon" name="manSysGreenDragon" type="checkbox" value="Green Dragon">
         Green Dragon
       </label>
       <label class="block-label selection-button-checkbox" for="manSysOwnMeets">
-        <input id="manSysOwnMeets" name="manSys" type="checkbox" value="Citizen of a different country">
+        <input id="manSysOwnMeets" name="manSysOwnMeets" type="checkbox" value="Our own system that meets your guidance conditions">
         Our own system that meets your guidance conditions
       </label>
       <label class="block-label selection-button-checkbox" for="manSysOwnDoesNotMeets">
-        <input id="manSysOwnDoesNotMeets" name="manSys" type="checkbox" value="Citizen of a different country">
+        <input id="manSysOwnDoesNotMeets" name="manSysOwnDoesNotMeets" type="checkbox" value="Our own system that does not meet your guidance">
         Our own system that does not meet your guidance
       </label>
     </fieldset>
   </div>
+  
+  <div class="form-group">
+      <input type="submit" class="button" value="Continue">
+  </div>
 </form>
-
-
-<a class="button" href="#" role="button">Continue</a>
 
     </div>
   </div>

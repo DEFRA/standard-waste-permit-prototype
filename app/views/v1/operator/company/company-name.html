@@ -16,14 +16,20 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
-<div class="form-group">
+    <form action="{{formAction}}" method="post" class="form">
+
+          <div class="form-group">
             <label class="form-label" for="companyRegNum">
               Company name or registration number
             </label>
-            <input class="form-control" id="companyRegNum" type="text">
+            <input class="form-control" id="companyRegNum" name="companyRegNum" type="text">
           </div>
 
-<a class="button" href="#" role="button">Continue</a>
+          <div class="form-group">
+          <input type="submit" class="button" value="Continue">
+        </div>
+
+      </form>
 
 
     </div>
