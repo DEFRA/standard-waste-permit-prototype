@@ -18,12 +18,11 @@
 <h1 class="heading-large">{{title}}</h1>
 
 
-
 <table class="check-your-answers" style="margin-bottom: 30px">
   <tbody>
     <tr>
       <td>Standard rule</td>
-      <td>SR2015 No.4: 75kte</td>
+      <td>{{permit.chosenPermitID}}</td>
 	    <td class="change-answer">
 	      <a href="#">
 	        Change <span class="visuallyhidden">Standard rule</span>
@@ -32,7 +31,7 @@
     </tr>
     <tr>
       <td>Pre-application reference</td>
-      <td>ABC123456</td>
+      <td>{{permit.preAppDiscussionRefName}}</td>
 	    <td class="change-answer">
 	      <a href="#">
 	        Change <span class="visuallyhidden">Pre-application reference</span>
@@ -40,43 +39,48 @@
 	    </td>
 	</tr>
     <tr>
-      <td>Operator details</td>
-      <td>Careful Contractor Ltd<br>
-		First line of address<br>
-		Second line of address<br>
-		England<br>
-		AB1 2CD</td>
+      <td>Operator name</td>
+      <td>{{permit.companyName}}
+		</td>
 	    <td class="change-answer">
 	      <a href="#">
-	        Change <span class="visuallyhidden">Operator details</span>
+	        Change <span class="visuallyhidden">Operator name</span>
+	      </a>
+	    </td>
+	</tr>
+    <tr>
+      <td>Operator address</td>
+      <td>{{permit.companyAddress}}
+		</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Operator address</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Site name</td>
+      <td>{{permit.siteName}}
+		</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Site name</span>
 	      </a>
 	    </td>
 	</tr>
 	<tr>
       <td>Site details</td>
-      <td>Name of site<br>
-		First line of address<br>
-		Second line of address<br>
-		England<br>
-		AB1 2CD</td>
+      <td>{{permit.siteAddress}}
+		</td>
 	    <td class="change-answer">
 	      <a href="#">
-	        Change <span class="visuallyhidden">Site details</span>
+	        Change <span class="visuallyhidden">Site address</span>
 	      </a>
 	    </td>
 	</tr>
 	<tr>
       <td>Grid reference for the site</td>
-      <td>58132 72695</td>
-	    <td class="change-answer">
-	      <a href="#">
-	        Change <span class="visuallyhidden">Grid reference for the site</span>
-	      </a>
-	    </td>
-	</tr>
-	<tr>
-      <td>Grid reference for the site</td>
-      <td>58132 72695</td>
+      <td>{{permit.siteGridRef}}</td>
 	    <td class="change-answer">
 	      <a href="#">
 	        Change <span class="visuallyhidden">Grid reference for the site</span>
@@ -85,9 +89,9 @@
 	</tr>
 	<tr>
       <td>Who we will contact</td>
-      <td>Sarah Sitemanager<br>
-		  Tel: 01234 567 890<br>
-          Email: sarah@address.com</td>
+      <td>{{permit.contactName}}<br>
+		  {{permit.contactTelephone}}<br>
+          {{permit.contactEmail}}</td>
 	    <td class="change-answer">
 	      <a href="#">
 	        Change <span class="visuallyhidden">Grid reference for the site</span>
@@ -96,7 +100,7 @@
 	</tr>
 	<tr>
       <td>Site plan</td>
-      <td>mysiteplan.pdf</td>
+      <td>{{permit.sitePlanFilename}}</td>
 	    <td class="change-answer">
 	      <a href="#">
 	        Change <span class="visuallyhidden">Site plan</span>
@@ -105,7 +109,7 @@
 	</tr>
 	<tr>
       <td>Fire prevention plan</td>
-      <td>myfireplan.docx</td>
+      <td>{{permit.firePlanFirename}}</td>
 	    <td class="change-answer">
 	      <a href="#">
 	        Change <span class="visuallyhidden">Fire prevention plan</span>
@@ -114,7 +118,7 @@
 	</tr>
 	<tr>
       <td>Industry scheme</td>
-      <td>CIWM/WAMITAB</td>
+      <td>{{permit.industryScheme}}</td>
 	    <td class="change-answer">
 	      <a href="#">
 	        Change <span class="visuallyhidden">Industry scheme</span>
@@ -123,7 +127,7 @@
 	</tr>
 	<tr>
       <td>Technical evidence certificate</td>
-      <td>WAMITAB-certificate.pdf</td>
+      <td>{{permit.technicalCertificateFile}}</td>
 	    <td class="change-answer">
 	      <a href="#">
 	        Change <span class="visuallyhidden">Technical evidence certificate</span>
@@ -132,7 +136,7 @@
 	</tr>
 	<tr>
       <td>Management system</td>
-      <td>ISO 14001</td>
+      <td>{{permit.manSys}}</td>
 	    <td class="change-answer">
 	      <a href="#">
 	        Change <span class="visuallyhidden">ISO 14001</span>
@@ -141,7 +145,7 @@
 	</tr>
 	<tr>
       <td>Relevant offences</td>
-      <td>No</td>
+      <td>{{permit.offences}}</td>
 	    <td class="change-answer">
 	      <a href="#">
 	        Change <span class="visuallyhidden">Relevant offences</span>
@@ -150,7 +154,7 @@
 	</tr>
 	<tr>
       <td>Bankruptcy or insolvency</td>
-      <td>No</td>
+      <td>{{permit.bankruptcyInsolvency}}</td>
 	    <td class="change-answer">
 	      <a href="#">
 	        Change <span class="visuallyhidden">Bankruptcy or insolvency</span>
@@ -159,7 +163,7 @@
 	</tr>
 	<tr>
       <td>Confidentiality request</td>
-      <td>No</td>
+      <td>{{permit.confidential}}</td>
 	    <td class="change-answer">
 	      <a href="#">
 	        Change <span class="visuallyhidden">Confidentiality request</span>
@@ -189,11 +193,7 @@
 </form>
 
 
-{% for item, value in permit %}
-  <p>{{ item }} : {{value}}</p>
-{% else %}
-  <p>NO ITEMS</p>
-{% endfor %}
+
 
 
     </div>
