@@ -170,10 +170,6 @@
 </table>
 
 
-
-<form method="post" action="{{formAction}}" class="form">
-
-
 <div class="notice" style="margin-bottom: 30px">
   <i class="icon icon-important">
     <span class="visually-hidden">Warning</span>
@@ -183,11 +179,21 @@
   </strong>
 </div>
 
+
+<form method="post" action="{{formAction}}" class="form">
+
   <div class="form-group">
     <input type="submit" class="button" value="Accept and continue">
   </div>
 
 </form>
+
+
+{% for item, value in permit %}
+  <p>{{ item }} : {{value}}</p>
+{% else %}
+  <p>NO ITEMS</p>
+{% endfor %}
 
 
     </div>
