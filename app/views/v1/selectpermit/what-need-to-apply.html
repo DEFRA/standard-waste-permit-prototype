@@ -33,10 +33,17 @@
                 {% endif %}
                 
                 {% if pData.locationRules!="No" %}
-                  <li>check the site location:
-                    <ul class="list list-bullet location-list">
-                      {{ pData.locationRules | replace("*", "<li>") | safe }}
-                    </ul>
+                  <li>check the site meets the location rules:
+                    
+                    <details>
+                      <summary><span class="summary">Site location rules</span></summary>
+                      <div class="panel panel-border-narrow">
+                        <ul class="list list-bullet location-list">
+                          {{ pData.locationRules | replace("*", "<li>") | safe }}
+                        </ul>
+                      </div>
+                    </details>
+
                   </li>
                 {% endif %}
                 
@@ -53,7 +60,16 @@
               
               <ul class="list list-border">
               
-                <li>a site plan prepared to <a href="#" target="_blank">site plan standards</a></li>
+                <li>a site plan prepared to site plan standards
+                  
+                  <details>
+                    <summary><span class="summary">Site plan standards</span></summary>
+                    <div class="panel panel-border-narrow">
+                      {% include folder+"/guidance/siteplan.html" %}
+                    </div>
+                  </details>
+
+                </li>
               
                 {% if pData.firePlanNeeded=="Yes" %}
                   <li>a <a href="https://www.gov.uk/government/publications/fire-prevention-plans-environmental-permits/fire-prevention-plans-environmental-permits" target="_blank">fire plan</a></li>
@@ -64,8 +80,18 @@
                 {% endif %}
                 
                 {% if pData.technicalAbilityEvidence=="Yes" %}
-                  <li>evidence of technical ability - for example,  
-                  {{pData.WAMITAB}} qualification</li>
+                  <li>evidence of technical ability, for example, qualifications from <abbr title="Waste Management Industry Training and Advisory Board">WAMITAB</abbr>
+                
+                  <details>
+                    <summary><span class="summary">Relevant WAMITAB qualifications</span></summary>
+                    <div class="panel panel-border-narrow">
+                      {{pData.WAMITAB}}
+                    </div>
+                  </details>
+                
+                
+                
+                </li>
                 {% endif %}
                 
                 {% if pData.wasteRecoveryPlan=="Yes" %}
@@ -86,8 +112,8 @@
           <p>No radios</p>
         {% endfor %}
         
-        <div class="panel panel-border-wide">
-          <p>
+        <div class="panel panel-border-wide" style="margin:2em 0;">
+          <p class="heading-small">
             You can’t save your application so you need all of these documents before you start.
           </p>
         </div>      
