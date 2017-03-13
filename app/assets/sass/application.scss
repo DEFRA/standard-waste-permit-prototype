@@ -486,3 +486,84 @@ span.permitCodexx {
     float: right;
     margin-right: -4em;
 }
+
+
+// 6. Form control widths
+// ==========================================================================
+
+// TODO: Update these
+// Form control widths
+
+// chars	width in ems
+// 50	    26
+// 35	    18.5
+// 25	    13.5
+// 15	    8.5
+// 10	    6
+// 5	    3.5
+// 3	    2.5
+
+.form-control-char-auto { // intended for select options that have pre-populated text
+  width: 100%;
+
+  @include media(tablet) {
+    width: auto;
+  }
+}
+
+.form-control-char-50 {
+  width: 100%;
+
+  @include media(tablet) {
+    width: 26em;
+  }
+}
+
+.form-control-char-35 {
+  width: 100%;
+
+  @include media(tablet) {
+    width: 18.5em;
+  }
+}
+
+.form-control-char-25 {
+  width: 100%;
+
+  @include media(tablet) {
+    width: 13.5em;
+  }
+}
+
+.form-control-char-15 {
+  width: 100%;
+
+  @include media(tablet) {
+    width: 8.5em;
+  }
+}
+
+.form-control-char-10 {
+  width: 100%;
+
+  @include media(tablet) {
+    width: 6em;
+  }
+}
+
+.form-control-char-5 {
+  width: 100%;
+
+  @include media(tablet) {
+    width: 3.5em;
+  }
+}
+
+.form-control-char-3 {
+  width: 100%;
+
+  @include media(tablet) {
+    width: 2.5em;
+  }
+}
+// end Form control widths
