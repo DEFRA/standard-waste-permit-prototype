@@ -19,19 +19,17 @@
 
 <div class="panel panel-border-wide">
   <p> 
-    <b>The application charge is £1,630.</b>
+    <b>The application charge is {{ permit.permitCost }}.</b>
   </p>
 </div>
 
+
+<p>Make a transfer to this account:<br>
+Environment Agency<br>
+Account number: 42315 25645<br>
+Sort code: 80 12 34</p> 
+
 <p><a href="javascript:if(window.print)window.print()">Print this page</a></p>
-
-<p>Make a transfer to this account</p>
-
-<p>Environment Agency</p> 
-
-<p>Account number: 42315 25645</p>
-
-<p>Sort code: 80 12 34</p> 
 
 
 <form method="post" action="{{formAction}}" class="form">
