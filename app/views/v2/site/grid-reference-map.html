@@ -60,7 +60,13 @@
                       </span>
                     </label>
                     <input type="text" class="form-control form-control-char-25" id="grid-reference" name="siteGridRef" aria-describedby="ngr_help" />
-                    <input value="Check this on a map" onclick="onConvertGridRef()" type="button">
+                    <input value="Check this on a map" onclick="onConvertGridRef()" type="button" class="button button-secondary">
+                  </div>
+                  
+                  
+                  <div id="mapdivcontainer" style="padding:1em 0;"> 
+                      <object type="text/html" data="" id="mapdiv" width="400px" height="400px" style="overflow:auto;border:1px solid #DEDEDE;">
+                      </object>
                   </div>
 
 
@@ -84,11 +90,7 @@
                   </ul>
                   </div>
                 </details>
-                
-                <div id="mapdivcontainer" style="padding:1em 0;"> 
-                    <object type="text/html" data="" id="mapdiv" width="400px" height="400px" style="overflow:auto;border:1px solid #DEDEDE;">
-                    </object>
-                </div>
+
 
                 <!-- Primary button -->
                 <div class="form-group">

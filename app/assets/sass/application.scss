@@ -567,3 +567,22 @@ span.permitCodexx {
   }
 }
 // end Form control widths
+
+.button-secondary{
+  background-color:#dee0e2;
+  color:#444444;
+  box-shadow: 0 2px 0 #b5babe;
+  font-size:90%;
+  &:active{
+      background-color:#d0d3d6;
+      color:#444444;
+  }
+  &:focus{
+      background-color:#d0d3d6;
+      color:#444444;
+  }
+  &:hover{
+      background-color:#d0d3d6;
+      color:#444444;
+  }
+}
