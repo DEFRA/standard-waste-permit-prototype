@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+<!-- Section 7b -->
+<h1 class="heading-large">Who can we contact about your operation?</h1>
+
+
+<form action="/v0/about-you/contact-billing" method="post" class="form">
+
+<div class="form-group">
+  <label class="form-label" for="contact-operation-title">Title (Mr, Mrs, Miss and so on)</label>
+  <input class="form-control" id="contact-operation-title" name="contact-operation-title" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="contact-operation-first-name">First name</label>
+  <input class="form-control" id="contact-operation-first-name" name="contact-operation-first-name" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="contact-operation-last-name">Last name</label>
+  <input class="form-control" id="contact-operation-last-name" name="contact-operation-last-name" type="text">
+</div>
+
+<!-- Use address finder here? -->
+
+<div class="form-group">
+  <label class="form-label" for="contact-operation">Address</label>
+  <input class="form-control" id="contact-operation" name="contact-operation" type="text">
+</div>
+
+<div class="form-group">
+  <input class="form-control" id="contact-operation-line-1" name="contact-operation-line-1" type="text">
+</div>
+
+<div class="form-group">
+  <input class="form-control" id="contact-operation-line-2" name="contact-operation-line-2" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="contact-operation-postcode">Postcode</label>
+  <input class="form-control" id="contact-operation-postcode" name="contact-operation-postcode" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="contact-operation-phone">Phone</label>
+  <input class="form-control" id="contact-operation-phone" name="contact-operation-phone" type="number">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="contact-operation-fax">Fax</label>
+  <input class="form-control" id="contact-operation-fax" name="contact-operation-fax" type="number">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="contact-operation-mobile">Mobile</label>
+  <input class="form-control" id="contact-operation-mobile" name="contact-operation-mobile" type="number">
+</div>
+
+
+<div class="form-group">
+  <label class="form-label" for="contact-operation-email">Email</label>
+  <input class="form-control" id="contact-operation-email" name="contact-operation-email" type="email">
+</div>
+
+
+  <div class="form-group">
+    <input type="submit" class="button" value="Continue">
+  </div>
+
+  </form>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
+
+

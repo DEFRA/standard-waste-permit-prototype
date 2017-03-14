@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% set title = "Upload a fire prevention plan" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<p class="text form-hint">
+  PDF or JPG files, 5MB maximum file size
+</p>
+
+  <form method="post" action="{{formAction}}" class="form">
+
+    <div class="form-group form-upload">
+        <input id="upload" type="file" aria-labelelledby="upload-label">
+        <input id="filename" name="firePlanFilename" type="hidden">
+      <a href="#">remove file</a>
+    </div>
+    
+    <script>
+      // captures uploaded filename and passes to hidden input
+      document.getElementById('upload').onchange = uploadOnChange;
+      function uploadOnChange() {
+          var filename = this.value;
+          var lastIndex = filename.lastIndexOf("\\");
+          if (lastIndex >= 0) {
+              filename = filename.substring(lastIndex + 1);
+          }
+          document.getElementById('filename').value = filename;
+      }
+    </script>
+    
+
+
+  <details>
+    <summary><span class="summary">What your fire prevention plan must include</span></summary>
+    <div class="panel panel-border-narrow">
+      {% include folder+"/guidance/fireplan.html" %}
+    </div>
+  </details>
+
+  </br>
+
+    <div class="form-group">
+      <input type="submit" class="button" value="Continue">
+    </div>
+
+  </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

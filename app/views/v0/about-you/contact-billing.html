@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+<!-- Section 7c -->
+<h1 class="heading-large">Who can we contact about your billing or invoice?</h1>
+
+<form>
+
+
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visually-hidden">Who can we contact about your billing or invoice?</legend>
+
+      <label class="block-label selection-button-radio" for="example-contact-by-email">
+        <input id="example-contact-by-email" type="radio" name="radio-contact-group" value="Yes">
+        (As in question 7a)
+      </label>
+
+      <label class="block-label selection-button-radio" for="example-contact-by-phone">
+        <input id="example-contact-by-phone" type="radio" name="radio-contact-group" value="No">
+      (As in question 7b)
+
+      </label>
+
+      <label class="block-label selection-button-radio" data-target="billing-details" for="example-contact-by-text">
+        <input id="example-contact-by-text" type="radio" name="radio-contact-group" value="No">
+        (Please give details below if different from question 7a or 7b)
+      </label>
+
+
+
+      <div class="panel panel-border-narrow js-hidden" id="billing-details">
+
+<div class="form-group">
+  <label class="form-label" for="billing-details-title">Title (Mr, Mrs, Miss and so on)</label>
+  <input class="form-control" id="billing-details-title" name="billing-details-title" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="billing-details-first-name">First name</label>
+  <input class="form-control" id="billing-details-first-name" name="billing-details-first-name" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="billing-details-last-name">Last name</label>
+  <input class="form-control" id="billing-details-last-name" name="billing-details-last-name" type="text">
+</div>
+
+<!-- Use address finder here? -->
+
+<div class="form-group">
+  <label class="form-label" for="billing-details">Address</label>
+  <input class="form-control" id="billing-details" name="billing-details" type="text">
+</div>
+
+<div class="form-group">
+  <input class="form-control" id="billing-details-line-1" name="billing-details-line-1" type="text">
+</div>
+
+<div class="form-group">
+  <input class="form-control" id="billing-details-line-2" name="billing-details-line-2" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="billing-details-postcode">Postcode</label>
+  <input class="form-control" id="billing-details-postcode" name="billing-details-postcode" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="billing-details-phone">Phone</label>
+  <input class="form-control" id="billing-details-phone" name="billing-details-phone" type="number">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="billing-details-fax">Fax</label>
+  <input class="form-control" id="billing-details-fax" name="billing-details-fax" type="number">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="billing-details-mobile">Mobile</label>
+  <input class="form-control" id="billing-details-mobile" name="billing-details-mobile" type="number">
+</div>
+
+
+<div class="form-group">
+  <label class="form-label" for="billing-details-email">Email</label>
+  <input class="form-control" id="billing-details-email" name="billing-details-email" type="email">
+</div>
+
+</div>
+
+    </fieldset>
+  </div>
+
+
+  <div class="form-group">
+  <a href="/" class="button">Back to index</a>
+  </div>
+
+</form>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
+
+

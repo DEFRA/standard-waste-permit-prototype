@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+<!-- 2. About the site -->
+<h1 class="heading-large">About the site</h1>
+
+<form class="form">
+
+<div class="form-group">
+  <label class="form-label" for="about-site-title">Site name</label>
+  <input class="form-control" id="about-site-title" name="about-site-title" type="text">
+</div>
+
+<!-- Use address finder here? -->
+
+<div class="form-group">
+  <label class="form-label" for="about-site">Address</label>
+  <input class="form-control" id="about-site" name="about-site" type="text">
+</div>
+
+<div class="form-group">
+  <input class="form-control" id="about-site-line-1" name="about-site-line-1" type="text">
+</div>
+
+<div class="form-group">
+  <input class="form-control" id="about-site-line-2" name="about-site-line-2" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="about-site-postcode">Postcode</label>
+  <input class="form-control" id="about-site-postcode" name="about-site-postcode" type="text">
+</div>
+
+
+<!-- this is a conditional question. For water standard rules only -->
+
+<div class="form-group">
+  <label class="form-label" for="about-site-gridref">National grid reference for the site or discharge point (for water standard rules only) (for example, ST 12345 67890)</label>
+  <input class="form-control" id="about-site-gridref" name="about-site-gridref" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="reg-facility-gridref">National grid reference for the regulated facility</label>
+  <input class="form-control" id="reg-facility-gridref" name="reg-facility-gridref" type="text">
+</div>
+
+
+
+  <div class="form-group">
+  <a href="/v0/standard-permit-application/about-this-application" class="button">Continue</a>
+  </div>
+
+</form>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
+
+

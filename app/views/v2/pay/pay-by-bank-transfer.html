@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% set title = "Pay by bank transfer" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_alpha.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+<div class="panel panel-border-wide">
+  <p> 
+    <b>The application charge is {{ permit.permitCost }}.</b>
+  </p>
+</div>
+
+
+<p>Make a transfer to this account:<br>
+Environment Agency<br>
+Account number: 42315 25645<br>
+Sort code: 80 12 34</p> 
+
+<p><a href="javascript:if(window.print)window.print()">Print this page</a></p>
+
+
+<form method="post" action="{{formAction}}" class="form">
+  <div class="form-group">
+      <input type="submit" class="button" value="Continue">
+  </div>
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

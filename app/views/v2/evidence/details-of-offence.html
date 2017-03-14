@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% set title = "Details of the offence" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+
+<form method="post" action="{{formAction}}" class="form">
+  <div class="form-group">
+  <label class="form-label" for="first-name">First name</label>
+  <input class="form-control" id="first-name" name="offencesDetailsFirstName" type="text">
+</div>
+<div class="form-group">
+  <label class="form-label" for="last-name">Last name</label>
+  <input class="form-control" id="last-name" name="offencesDetailsLastName" type="text">
+</div>
+<div class="form-group">
+  <label class="form-label" for="organisation-position">Position in organisation</label>
+  <input class="form-control" id="organisation-position" name="offencesDetailsPosition" type="text">
+</div>
+<div class="form-group">
+  <label class="form-label" for="offence-penalty">Offence and penalty set</label>
+  <textarea class="form-control" id="offence-penalty" name="offencesPenalty" type="text"></textarea>
+</div>
+
+<div class="form-group">
+            <fieldset>
+              <legend>
+                <span class="form-label">Date of birth</span>
+                <span class="form-hint" id="dob-hint">For example, 26 5 1976</span>
+              </legend>
+              <div class="form-date">
+                <div class="form-group form-group-day">
+                  <label class="form-label" for="dob-day">Day</label>
+                  <input class="form-control" id="dob-day" name="offencesDetailsDobDay" type="number" pattern="[0-9]*" min="0" max="31" aria-describedby="dob-hint">
+                </div>
+                <div class="form-group form-group-month">
+                  <label class="form-label" for="dob-month">Month</label>
+                  <input class="form-control" id="dob-month" name="offencesDetailsDobMonth" type="number" pattern="[0-9]*" min="0" max="12">
+                </div>
+                <div class="form-group form-group-year">
+                  <label class="form-label" for="dob-year">Year</label>
+                  <input class="form-control" id="dob-year" name="offencesDetailsDobYear" type="number" pattern="[0-9]*" min="0" max="2016">
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+
+<p><a href="#">Add another person</a></p>
+
+
+    <div class="form-group">
+    <input type="submit" class="button" value="Continue">
+  </div>
+  
+  </form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

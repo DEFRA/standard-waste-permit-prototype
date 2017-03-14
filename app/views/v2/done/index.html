@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% set title = "Application submitted" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+
+
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+        <div class="govuk-box-highlight">
+          <h1 class="bold-large">
+            {{title}}
+          </h1>
+
+          <p>
+            Your reference is:
+            <br />
+            <strong class="heading-medium">{{ permit.permitRefNumber }}</strong>
+          </p>
+        </div>
+
+        <p class="text">
+          We've sent a confirmation to {{ permit.contactEmail }}.
+        </p>
+
+        <h2 class="heading-medium">What happens next</h2>
+
+        <p class="text">
+          One of our staff will check the evidence you've uploaded. We'll email you to let you know when we've started our checks.
+        </p>
+
+        <div class="panel panel-border-wide">
+          <p class="text">
+            It takes up to 13 weeks to issue a permit. It may take longer if the information you give us does not meet our requirements.
+          </p>
+        </div>
+
+
+
+        <br />
+
+        <p class="text"><a href="#" class="link">What do you think of this service?</a> (takes 30 seconds)</p>
+
+        <p>&nbsp;</p>
+        <p class="bold-medium">For testing: emails</p>
+        <ul class="list list-bullet">
+          <li><a href="/v1/done/email-confirm">Confirmation email</a></li>
+        </ul>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

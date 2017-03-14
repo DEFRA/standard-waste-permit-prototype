@@ -1,0 +1,146 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+
+<h1 class="heading-large">Application from public bodies</h1>
+
+    <div class="form-group">
+      <label class="form-label" for="pubic-body-type">Type of public body</label>
+       <p class="form-hint">For example, NHS trust, local authority, English county council</p>
+      <input type="text" class="form-control" id="public-body-type">
+    </div>
+
+
+    <div class="form-group">
+      <label class="form-label" for="pubic-body-name">Name of the public body</label>
+      <input type="text" class="form-control" id="public-body-name">
+    </div>
+
+<h2 class="heading-medium">Please give us the following details of the executive</h2>
+<p>An officer of the public body authorised to sign on your behalf</p>
+
+
+<div class="form-group">
+  <label class="form-label" for="applicant-title">Title (Mr, Mrs, Miss and so on)</label>
+  <input class="form-control" id="applicant-title" name="applicant-title" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="first-name">First name</label>
+  <input class="form-control" id="first-name" name="first-name" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="last-name">Last name</label>
+  <input class="form-control" id="last-name" name="last-name" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="position">Position</label>
+  <input class="form-control" id="position" name="position" type="text">
+</div>
+
+
+
+<!-- One way of showing the different types of public body - is there a controlled list of types?
+
+<h2 class="heading-medium">What type of public body are you?</h2>
+
+<form action="" method="post" class="form">
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visuallyhidden">What type of public body are you?</legend>
+
+      <label class="block-label selection-button-radio" for="radio-1">
+        <input id="radio-1" type="radio" name="publicBodyType" value="County council">
+        County council
+      </label>
+      
+      <label class="block-label selection-button-radio" for="radio-2">
+        <input id="radio-2" type="radio" name="publicBodyType" value="District council">
+        District council
+      </label>
+
+      <label class="block-label selection-button-radio" for="radio-3">
+        <input id="radio-3" type="radio" name="publicBodyType" value="Metropolitan council">
+        Metropolitan council
+      </label>
+
+      <label class="block-label selection-button-radio" for="radio-4">
+        <input id="radio-4" type="radio" name="publicBodyType" value="Unitary authority">
+        Unitary authority
+      </label>
+
+      <label class="block-label selection-button-radio" for="radio-5">
+        <input id="radio-5" type="radio" name="publicBodyType" value="London borough council">
+        London borough council
+      </label>
+
+      <label class="block-label selection-button-radio" for="radio-6">
+        <input id="radio-6" type="radio" name="publicBodyType" value="Town council">
+        Town council
+      </label>
+
+      <label class="block-label selection-button-radio" for="radio-7">
+        <input id="radio-7" type="radio" name="publicBodyType" value="Parish council">
+        Parish council
+      </label>
+
+      <label class="block-label selection-button-radio" for="radio-8">
+        <input id="radio-8" type="radio" name="publicBodyType" value="Other government authority">
+        Other government authority
+      </label>
+
+      <label class="block-label selection-button-radio" for="radio-9">
+        <input id="radio-9" type="radio" name="publicBodyType" value="Fire authority">
+        Fire authority
+      </label>
+
+        <label class="block-label selection-button-radio" for="radio-10">
+        <input id="radio-10" type="radio" name="publicBodyType" value="NHS trust">
+        NHS trust
+      </label>
+
+        <label class="block-label selection-button-radio" for="radio-11">
+        <input id="radio-11" type="radio" name="publicBodyType" value="Primary care trust">
+        Primary care trust
+      </label>
+
+      <label class="block-label selection-button-radio" for="radio-12">
+        <input id="radio-12" type="radio" name="publicBodyType" value="Other health body">
+        Other health body
+      </label>
+
+        <label class="block-label selection-button-radio" for="radio-13">
+        <input id="radio-13" type="radio" name="publicBodyType" value="Other public body">
+        Other public body
+      </label>
+
+    </fieldset>
+  </div>
+</form>
+
+-->
+
+  <div class="form-group">
+    <a href="/v0/about-you/your-address" class="button" value="Continue">Continue</a>
+  </div>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+<!-- Section 6b -->
+<!-- Only go to this page if user answered 'Yes' to the question on /your-address -->
+
+<h1 class="heading-large">Main UK business address</h1>
+
+<form action="/v0/about-you/contact-application" method="post" class="form">
+
+<div class="form-group">
+  <label class="form-label" for="UK-business-address-title">Title (Mr, Mrs, Miss and so on)</label>
+  <input class="form-control" id="UK-business-address-title" name="UK-business-address-title" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="UK-business-address-first-name">First name</label>
+  <input class="form-control" id="UK-business-address-first-name" name="UK-business-address-first-name" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="UK-business-address-last-name">Last name</label>
+  <input class="form-control" id="UK-business-address-last-name" name="UK-business-address-last-name" type="text">
+</div>
+
+<!-- Use address finder here? -->
+
+<div class="form-group">
+  <label class="form-label" for="UK-business-address>Address</label>
+  <input class="form-control" id="UK-business-address" name="UK-business-address" type="text">
+</div>
+
+<div class="form-group">
+  <input class="form-control" id="UK-business-address-line-1" name="UK-business-address-line-1" type="text">
+</div>
+
+<div class="form-group">
+  <input class="form-control" id="UK-business-address-line-2" name="UK-business-address-line-2" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="UK-business-address-postcode">Postcode</label>
+  <input class="form-control" id="UK-business-address-postcode" name="UK-business-address-postcode" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="UK-business-address-phone">Phone</label>
+  <input class="form-control" id="UK-business-address-phone" name="UK-business-address-phone" type="number">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="UK-business-address-fax">Fax</label>
+  <input class="form-control" id="UK-business-address-fax" name="UK-business-address-fax" type="number">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="UK-business-address-mobile">Mobile</label>
+  <input class="form-control" id="UK-business-address-mobile" name="UK-business-address-mobile" type="number">
+</div>
+
+
+<div class="form-group">
+  <label class="form-label" for="UK-business-address-email">Email</label>
+  <input class="form-control" id="UK-business-address-email" name="UK-business-address-email" type="email">
+</div>
+
+
+  <div class="form-group">
+    <input type="submit" class="button" value="Continue">
+  </div>
+
+</form>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
+
+
