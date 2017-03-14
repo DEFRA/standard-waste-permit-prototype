@@ -1,0 +1,205 @@
+{% extends "layout.html" %}
+
+{% set title = "Check your answers" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+
+<table class="check-your-answers" style="margin-bottom: 30px">
+  <tbody>
+    <tr>
+      <td>Standard rule</td>
+      <td>{{permit.chosenPermitID}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Standard rule</span>
+	      </a>
+	    </td>
+    </tr>
+    <tr>
+      <td>Pre-application reference</td>
+      <td>{{permit.preAppDiscussionRefName}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Pre-application reference</span>
+	      </a>
+	    </td>
+	</tr>
+    <tr>
+      <td>Operator name</td>
+      <td>{{permit.companyName}}
+		</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Operator name</span>
+	      </a>
+	    </td>
+	</tr>
+    <tr>
+      <td>Operator address</td>
+      <td>{{permit.companyAddress}}
+		</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Operator address</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Site name</td>
+      <td>{{permit.siteName}}
+		</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Site name</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Site details</td>
+      <td>{{permit.siteAddress}}
+		</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Site address</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Grid reference for the site</td>
+      <td>{{permit.siteGridRef}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Grid reference for the site</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Who we will contact</td>
+      <td>{{permit.contactName}}<br>
+		  {{permit.contactTelephone}}<br>
+          {{permit.contactEmail}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Grid reference for the site</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Site plan</td>
+      <td>{{permit.sitePlanFilename}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Site plan</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Fire prevention plan</td>
+      <td>{{permit.firePlanFilename}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Fire prevention plan</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Industry scheme</td>
+      <td>{{permit.industryScheme}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Industry scheme</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Technical evidence certificate</td>
+      <td>{{permit.technicalCertificateFile}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Technical evidence certificate</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Management system</td>
+      <td>
+          {{ permit.manSys }}
+      </td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">ISO 14001</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Relevant offences</td>
+      <td>{{permit.offences}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Relevant offences</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Bankruptcy or insolvency</td>
+      <td>{{permit.bankruptcyInsolvency}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Bankruptcy or insolvency</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Confidentiality request</td>
+      <td>{{permit.confidential}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Confidentiality request</span>
+	      </a>
+	    </td>
+	</tr>
+  </tbody>
+</table>
+
+
+<div class="notice" style="margin-bottom: 30px">
+  <i class="icon icon-important">
+    <span class="visually-hidden">Warning</span>
+  </i>
+  <strong class="bold-small">
+    You can be prosecuted and fined if you <br>give false or misleading information.
+  </strong>
+</div>
+
+
+<form method="post" action="{{formAction}}" class="form">
+
+  <div class="form-group">
+    <input type="submit" class="button" value="Accept and continue">
+  </div>
+
+</form>
+
+
+
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

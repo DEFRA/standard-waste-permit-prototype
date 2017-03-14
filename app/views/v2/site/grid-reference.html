@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% set title = "What’s the grid reference for the site?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+    {% include "includes/phase_banner_alpha.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+
+          <form method="post" class="form" action="{{formAction}}">
+
+              <header class="text">
+            <h1 class="form-title heading-large">
+                  {{title}}
+                </h1>
+        </header>
+
+
+                  <!-- Grid reference -->
+                  <div class="form-group">
+                    <label class="form-label" for="grid-reference">National Grid reference
+                      <span class="form-hint text">
+                        Enter 2 letters and 10 digits. For example, ST 58132 72695.
+                      </span>
+                    </label>
+                    <input type="text" class="form-control form-control-char-25" id="grid-reference" name="siteGridRef" aria-describedby="ngr_help" />
+                  </div>
+
+
+                <!-- Find grid reference -->
+                <details style="padding-bottom: 18px;" id="ngr_help">
+                  <summary><span class="summary">Help finding a grid reference</span></summary>
+                  <div class="panel panel-border-narrow">
+                    <p>
+                      Use the free <a href="http://gridreferencefinder.com/" rel="external" target="_blank">UK Grid Reference Finder (opens new window)</a>.
+                    </p>
+                    <ul class="list list-number">
+                      <li>
+                      Search for the location or postcode on the right of the page.
+                    </li>
+                    <li>
+                      Right-click to display the grid reference.
+                    </li>
+                    <li>
+                      Select the grid reference then copy and paste back on this page.
+                    </li>
+                  </ul>
+                  </div>
+                </details>
+
+
+                <!-- Primary button -->
+                <div class="form-group">
+                  <input type="submit" class="button" value="Continue" />
+                </div>
+
+          </form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

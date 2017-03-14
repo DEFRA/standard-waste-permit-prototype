@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+<!-- 1b. Is the permit for a site or for mobile plant?  -->
+
+<h1 class="heading-large">Is the permit for a site or for mobile plant?</h1>
+
+<p>Note: The term ‘mobile plant’ does not include mobile sheep dipping units.</p>
+
+<form>
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visually-hidden">Is the permit for a site or for mobile plant?</legend>
+
+      <label class="block-label selection-button-radio" for="site">
+        <input id="site" type="radio" name="radio-about-site-group" value="site">
+        Site
+      </label>
+    
+
+      <label class="block-label selection-button-radio" for="mobile-plant">
+        <input id="mobile-plant" type="radio" name="radio-about-site-group" value="mobile-plant">
+        Mobile plant
+      </label>
+
+    </fieldset>
+  </div>
+</form>
+
+<a class="button" href="/v0/standard-permit-application/about-the-site" role="button">Continue</a>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+
+<h1 class="heading-large">Applications from companies or corporate bodies</h1>
+
+      <form action="/" method="post" class="form">
+
+    <div class="form-group">
+      <label class="form-label" for="company-name">Name of the company</label>
+      <input type="text" class="form-control" id="company-name">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="company-number">Company registration number</label>
+      <input type="text" class="form-control" id="company-number">
+    </div>
+
+<!-- dor = date of registation -->
+
+<div class="form-group">
+    <fieldset>
+      <legend>
+        <span class="form-label-bold">
+          Date of registration
+        </span>
+      </legend>
+      <div class="form-date">
+        <div class="form-group form-group-day">
+          <label class="form-label" for="dor-day">Day</label>
+          <input class="form-control" id="dor-day" name="dor-day" type="number" pattern="[0-9]*" min="0" max="31" aria-describedby="dob-hint">
+        </div>
+        <div class="form-group form-group-month">
+          <label class="form-label" for="dor-month">Month</label>
+          <input class="form-control" id="dor-month" name="dor-month" type="number" pattern="[0-9]*" min="0" max="12">
+        </div>
+        <div class="form-group form-group-year">
+          <label class="form-label" for="dor-year">Year</label>
+          <input class="form-control" id="dor-year" name="dor-year" type="number" pattern="[0-9]*" min="0" max="2016">
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+
+      <div class="form-group">
+      <label class="form-label" for="corporate-status">If you are applying as a corporate organisation that is not a limited company, please provide evidence of your status and tell us below the reference you have given the document containing this evidence.</label>
+      <input type="text" class="form-control" id="corporate-status">
+    </div>
+
+
+
+  <div class="form-group">
+    <a href="/v0/about-you/your-address" class="button" value="Continue">Continue</a>
+  </div>
+
+  </form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

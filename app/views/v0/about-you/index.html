@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+
+<h1 class="heading-large">Are you applying as an individual, an organisation of individuals, a company or a public body?</h1>
+
+
+<form>
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visuallyhidden">Are you applying as an individual, an organisation of individuals, a company or a public body?</legend>
+
+      <label class="block-label selection-button-radio" for="radio-1">
+        <input id="radio-1" type="radio" name="applicantType" value="An individual">
+        An individual
+      </label>
+      <label class="block-label selection-button-radio" for="radio-2">
+        <input id="radio-2" type="radio" name="applicantType" value="An organisation of individuals">
+          An organisation of individuals (for example, a partnership)
+      </label>
+      <label class="block-label selection-button-radio" for="radio-3">
+        <input id="radio-3" type="radio" name="applicantType" value="A public body">
+        A public body
+      </label>
+      <label class="block-label selection-button-radio" for="radio-4">
+        <input id="radio-4" type="radio" name="applicantType" value="A company">
+        A registered company (this includes Limited Liability Partnerships) or other corporate body
+      </label>
+
+      <!-- Add another option during testing for 'other' and text field? 
+           Give users a chance to describe their organisation? -->
+
+    </fieldset>
+  </div>
+
+  <div class="form-group">
+
+    <a href="/v0/about-you/applicant-type/application-from-a-company" class="button">Continue</a>
+
+  </div>
+
+</form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

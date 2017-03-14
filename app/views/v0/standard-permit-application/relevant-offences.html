@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+<!-- 5a Relevant offences (this applies to all except standalone surface water discharges and groundwater discharges – see guidance notes on part B1) -->
+
+<h1 class="heading-large">Have you, or any other relevant person, been convicted of any relevant offence?</h1>
+
+<form>
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visually-hidden">Have you, or any other relevant person, been convicted of any relevant offence?</legend>
+
+      <label class="block-label selection-button-radio" data-target="relevant-person" for="relevant-offences-yes">
+        <input id="relevant-offences-yes" type="radio" name="radio-discussions-group" value="Yes">
+        Yes
+      </label>
+      <div class="panel panel-border-narrow js-hidden" id="relevant-person">
+        <p>Name of the relevant person</p>
+
+
+<div class="form-group">
+  <label class="form-label" for="relvevant-offences-title">Title (Mr, Mrs, Miss and so on)</label>
+  <input class="form-control" id="relvevant-offences-title" name="relvevant-offences-title" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="relvevant-offences-first-name">First name</label>
+  <input class="form-control" id="relvevant-offences-first-name" name="relvevant-offences-first-name" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="relvevant-offences-last-name">Last name</label>
+  <input class="form-control" id="relvevant-offences-last-name" name="relvevant-offences-last-name" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="relvevant-offences-dob">Date of birth</label>
+  <input class="form-control" id="relvevant-offences-dob" name="relvevant-offences-dob" type="number">
+</div>
+
+
+<div class="form-group">
+  <label class="form-label" for="relvevant-offences-position">Position held at time of offence</label>
+  <input class="form-control" id="relvevant-offences-position" name="relvevant-offences-position" type="text">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="relvevant-offences-court">Name of the court where the case was dealt with</label>
+  <input class="form-control" id="relvevant-offences-court" name="relvevant-offences-court" type="text">
+</div>
+
+
+<div class="form-group">
+  <label class="form-label" for="relvevant-offences-doc">Date of the conviction (DD/MM/YYYY) </label>
+  <input class="form-control" id="relvevant-offences-doc" name="relvevant-offences-doc" type="number">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="relvevant-offences-appeal">Date any appeal against the conviction will be heard</label>
+  <input class="form-control" id="relvevant-offences-appeal" name="relvevant-offences-appeal" type="number">
+</div>
+
+
+<p>If necessary, use a separate sheet to give us details of other relevant offences and tell us below the reference number you
+have given the extra sheet. (add other relevant/environmental offences?)</p>
+
+
+      </div>
+
+      <label class="block-label selection-button-radio" for="relevant-offences-no">
+        <input id="relevant-offences-no" type="radio" name="radio-discussions-group" value="No">
+        No
+      </label>
+
+    </fieldset>
+  </div>
+
+
+
+<a class="button" href="/v0/standard-permit-application/technical-ability" role="button">Continue</a>
+
+</form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

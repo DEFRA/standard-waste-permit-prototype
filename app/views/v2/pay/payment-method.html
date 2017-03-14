@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% set title = "Choose how you want to pay" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_alpha.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+<div class="panel panel-border-wide">
+  <p> 
+    <b>The application charge is {{ permit.permitCost }}.</b>
+  </p>
+</div>
+
+<form method="post" action="{{formAction}}" class="form">
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visually-hidden">{{title}}</legend>
+
+      <!-- paymentMethod -->
+
+      <label class="block-label selection-button-radio" for="paymentCard">
+        <input id="paymentCard" type="radio" name="paymentMethod" value="Debit or credit card">
+        Debit or credit card
+      </label>
+      <label class="block-label selection-button-radio" for="paymentBACS">
+        <input id="paymentBACS" type="radio" name="paymentMethod" value="Bank transfer">
+        Bank transfer
+      </label>
+      <label class="block-label selection-button-radio" for="paymentCheque">
+        <input id="paymentCheque" type="radio" name="paymentMethod" value="Cheque">
+        Cheque
+      </label>
+
+    </fieldset>
+  </div>
+
+
+  <div class="form-group">
+    <input type="submit" class="button" value="Continue">
+  </div>
+</form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

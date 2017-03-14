@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+<!-- 2. Opra -->
+
+<h1 class="heading-large">Opra (does not apply to standard facilities, any other tier 2 permit applications (e.g. groundwater land spreading activities), or water-discharge or groundwater point source discharge activities)</h1>
+
+<ul class="list list-bullet">
+<li>If you are submitting a bespoke application, you must include a completed electronic copy in Excel of the current Opra spreadsheet.</li>
+<li>For most variations, full and partial surrenders you willneed to submit a copy of your current Opra profile based on your existing profile, not any new profile following the variation or surrender. Check the latest charges guidance for further advice.</li>
+<li>For transfers you will need to submit a revsed Opra profile to include your own operator performance. Note: this will not change the
+set transfer fee. </li>
+</ul>
+
+<label class="form-checkbox" for="checkbox-opra-spreadsheet">
+  <input id="checkbox-opra-spreadsheet" name="checkbox-opra-spreadsheet" type="checkbox" value="true">
+  Tick this box to confirm that you have included the OPRA spreadsheet 
+</label>
+
+<a class="button" href="/v0/opra-charges-declarations/payment" role="button">Continue</a>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+
