@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-xlarge">
+		Apply for a standard waste permit prototype: experimental pages
+	  </h1>
+      
+  
+      <h2 class="heading-medium">Select a permit</h2>
+      <ul class="list list-bullet">
+        <li><a href="/v2/selectpermit/ex_permit_dropdown">Select permit: dropdown</a></li>
+        <li><a href="/v2/selectpermit/ex_permit_radios_all">Select permit: radio buttons, full list</a></li>
+        <li><a href="/v2/selectpermit/ex_permit_autocomplete">Select permit: basic autocomplete</a></li>
+        <li><a href="/v2/selectpermit/ex_permit_popular">Select permit: popular</a></li>
+        <li><a href="/v2/selectpermit/permit-category">Select permit: category first</a></li>
+      </ul>
+      
+      <h2 class="heading-medium">Guidance</h2>
+      <ul class="list list-bullet">
+        <li><a href="/v1/guidance/overview">Overview slides</a></li>
+      </ul>
+
+      
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
