@@ -586,3 +586,23 @@ span.permitCodexx {
       color:#444444;
   }
 }
+
+// autocomplete exeriment
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+
+.autosearch {
+  position: relative;
+
+  input {
+   width: 40em;
+  }
+}
+
+.autosearch input { text-indent: 32px;}
+
+.autosearch .fa-search { 
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  color: #aaa;
+}
