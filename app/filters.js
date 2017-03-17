@@ -37,6 +37,10 @@ module.exports = function (env) {
     documentation.
 
   ------------------------------------------------------------------ */
+  
+  filters.nl2br = function(textStr) {
+      return textStr.replace(/\r|\n|\r\n/g, '<br />')
+  }
 
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app

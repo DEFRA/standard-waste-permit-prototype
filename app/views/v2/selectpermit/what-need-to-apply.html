@@ -50,6 +50,18 @@
                 <li>that you can comply with the <a href="{{pData.guidanceURL}}" target="_blank">rules for {{pData.code}}</a></li>
                 <li>that you can comply with the <a href="{{pData.Guidance_URL}}" target="_blank">risk assessment</a></li>
                 <li>get a <a href="https://www.gov.uk/government/publications/environmental-permit-nature-and-heritage-conservation-screening" target="_blank">nature and heritage conservation screening assessment</a></li>
+                
+                {% if pData.specialCase=="Yes" %}
+                  <li>there are extra questions for this permit<br>
+                  </li>
+                  <details>
+                    <summary><span class="summary">Extra questions for this permit</span></summary>
+                    <div class="panel panel-border-narrow">
+                      {{pData.specialCaseText | nl2br | safe }}
+                    </div>
+                  </details>
+                {% endif %}
+                
               </ul>
               
               
@@ -88,20 +100,13 @@
                       {{pData.WAMITAB}}
                     </div>
                   </details>
-                
-                
-                
                 </li>
                 {% endif %}
                 
                 {% if pData.wasteRecoveryPlan=="Yes" %}
                   <li>a waste recovery plan</li>
                 {% endif %}
-                
-                {% if pData.Special_Case=="Yes" %}
-                  <li>there is a special case</li>
-                {% endif %}
-                
+
                 <li>a written <a href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits" target="_blank">management system</a></li>
               
             </ul>
