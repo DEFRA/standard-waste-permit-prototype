@@ -45,6 +45,7 @@ router.post('/selectpermit/choose-permit', function (req, res) {
   }
 })
 
+// Check permit via POST is from previous selection page - there is also a GET route for links
 router.post('/selectpermit/check-permit', function (req, res) {
   if(typeof req.body['chosenPermitID']==='undefined'){  // simple error handling
     res.render(folder + '/error/index',{ 
@@ -57,6 +58,23 @@ router.post('/selectpermit/check-permit', function (req, res) {
       "formAction":"/"+ folder + "/selectpermit/what-need-to-apply",
       "chosenPermitID":req.body['chosenPermitID'],
       "permit":req.session.permit // always send permit object to page
+    })
+}
+})
+
+// Check permit via GET route for links
+// Example link:  http://localhost:3000/v2/selectpermit/check-permit?chosenPermitID=SR-2008-16
+router.get('/selectpermit/check-permit', function (req, res) {
+  if(typeof req.query['chosenPermitID']==='undefined'){  // simple error handling
+    res.render(folder + '/error/index',{ 
+        "errorText":"Please select a permit"
+    })
+  } else {
+    // save chosen Permit ID in session
+    // no form entries to add to session 
+    res.render(folder + '/selectpermit/check-permit',{
+      "formAction":"/"+ folder + "/selectpermit/what-need-to-apply",
+      "chosenPermitID":req.query['chosenPermitID']
     })
 }
 })
