@@ -462,30 +462,31 @@ fieldset.permitList {
 label.permitItem {
   display: flex;
     width:100%;
+    span.permitName {
+      width:75%;
+    }
+    span.permitCode {
+        font-weight: bold;
+        width:25%;
+        text-align:right;
+    }
 }
-span.permitName {
-  width:75%;
-}
-span.permitCode {
-    font-weight: bold;
-    width:25%;
-    text-align:right;
+p.permitItem {
+  display: flex;
+    width:100%;
+    span.notOnline{
+      width:58px;
+    }
+    span.permitName {
+      width:85%;
+    }
+    span.permitCode {
+        font-weight: bold;
+        width:25%;
+        text-align:right;
+    }
 }
 
-label.permitListxx {
-    width: 90%;
-    margin-right: 6em;
-}
-span.permitNamexx {
-    font-weight: bold;
-    float: right;
-    margin-right: -4em;
-}
-span.permitCodexx {
-    font-weight: bold;
-    float: right;
-    margin-right: -4em;
-}
 
 
 // 6. Form control widths
