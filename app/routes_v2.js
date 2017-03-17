@@ -22,6 +22,13 @@ router.use(function (req, res, next) {
 });
 
 
+// CLEAR SESSION ==============================================================
+router.get('/cls', function (req, res) {
+  req.session.destroy()
+  res.render('index')
+})
+
+
 // Guide page on GDS (start) links to permit category ==============
 
 // Select permit ==============================================================
@@ -202,10 +209,19 @@ router.post('/evidence/upload-site-plan', function (req, res) {
 
 router.post('/evidence/upload-fire-plan', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
-  res.render(folder + '/evidence/upload-fire-plan',{ 
-      "formAction":"/"+ folder + "/evidence/industry-scheme",
-      "permit":req.session.permit // always send permit object to page
-  })
+  // check if a fire plan is needed for this permit
+  if(req.session.permit['permitFirePlanNeeded'] = "No"){
+    // jump to industry scheme
+    res.render(folder + '/evidence/industry-scheme',{
+        "formAction":"/"+ folder + "/evidence/upload-technical-evidence",
+        "permit":req.session.permit // always send permit object to page
+    })
+  } else {
+    res.render(folder + '/evidence/upload-fire-plan',{ 
+        "formAction":"/"+ folder + "/evidence/industry-scheme",
+        "permit":req.session.permit // always send permit object to page
+    })
+  }
 })
 
 router.post('/evidence/industry-scheme', function (req, res) {
