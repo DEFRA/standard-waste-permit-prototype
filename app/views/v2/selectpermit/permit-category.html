@@ -28,14 +28,14 @@
             <legend="Permit type">
             
             {% for c in categories %}
-              {% if c.digitalMVP=="Yes" %}
+              {#% if c.digitalMVP=="Yes" %#}
                 {{ macros.radio_button(
                   c.friendlyCategory,
                   "chosenCategory",
                   loop.index,
                   c.friendlyCategory
                   ) }}
-                {% endif %}
+              {#% endif %#}
             {% else %}
               <p>No radios</p>
             {% endfor %}

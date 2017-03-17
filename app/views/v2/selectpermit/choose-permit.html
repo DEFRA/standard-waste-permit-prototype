@@ -34,37 +34,48 @@
           <fieldset class="permitList" aria-labelledby="radio_label">
             <legend="Permit">
             
-            {% for pNumber, pData in permits %}
-              {% if pData.digitalMVP=="Yes?" %}
-                {% if pData.friendlyCategory==chosenCategory %}
-                
-                  {% if pData.friendlyWeight!="" %}
-                    {% set weight=" - "+pData.friendlyWeight %}
-                  {% else %}
-                    {% set weight="" %}
-                  {% endif %}
-                
-                  {% set label = [
-                    '<span class="permitName">',
-                    pData.friendlyName,
-                    weight | lower,
-                    '</span>',
-                    '<span class="permitCode">',
-                    pData.code,
-                    '</span>'
-                    ] %}
-                  {{ macros.radio_button(
-                    label | join | safe,
-                    "chosenPermitID",
-                    loop.index,
-                    pNumber,
-                    " permitItem"
-                    ) }}
-                {% endif %}
-              {% endif %}
-            {% else %}
-              <p>No radios</p>
-            {% endfor %}
+{% for pNumber, pData in permits %}
+
+  {% if pData.friendlyCategory==chosenCategory %}
+    {% if pData.canApplyOnPaper=="Yes" %}
+    
+      {% if pData.friendlyWeight!="" %}
+        {% set weight=" - "+pData.friendlyWeight %}
+      {% else %}
+        {% set weight="" %}
+      {% endif %}
+
+      {% set label = [
+        '<span class="permitName">',
+        pData.friendlyName,
+        weight | lower,
+        '</span>',
+        '<span class="permitCode">',
+        pData.code,
+        '</span>'
+        ] %}
+    
+      {% if pData.digitalMVP=="Yes?" %}
+        {{ macros.radio_button(
+          label | join | safe,
+          "chosenPermitID",
+          loop.index,
+          pNumber,
+          " permitItem"
+        ) }}
+      {% else %}
+        <p class="permitItem">
+        <span class="notOnline"><a href="#">Get form</a></span>
+          {{ label | join | safe }}<br>
+        </p>
+      {% endif %}
+        
+    {% endif %}
+  {% endif %}
+  
+{% else %}
+  <p>No radios</p>
+{% endfor %}
 
           </fieldset>
         </div>
