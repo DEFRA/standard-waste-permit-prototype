@@ -191,10 +191,70 @@ router.get('/address/address-manual', function (req, res) {
 router.post('/contact/contact-details', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/contact/contact-details',{
-      "formAction":"/"+ folder + "/evidence/upload-site-plan",
+      "formAction":"/"+ folder + "/check-special-cases",
       "permit":req.session.permit // always send permit object to page
   })
 })
+
+
+// Special cases ==============================================================
+
+
+router.post('/check-special-cases', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session
+  
+  var nextPage =  "/evidence/upload-site-plan" // the next page after the special case pages with slash
+  
+  // check if there is a special case for this permit
+  if(req.session.permit['permitID'] == "SR-2009-4"){
+    res.render(folder + '/specialcases/sr-2009-4',{
+        "formAction":"/"+ folder + nextPage,
+        "permit":req.session.permit // always send permit object to page
+    })
+  } else if (req.session.permit['permitID'] == "SR-2009-8") {
+    res.render(folder + '/specialcases/sr-2009-8',{
+        "formAction":"/"+ folder + nextPage,
+        "permit":req.session.permit // always send permit object to page
+    })
+  } else if (req.session.permit['permitID'] == "SR-2010-2") {
+    res.render(folder + '/specialcases/sr-2010-2_3',{
+        "formAction":"/"+ folder + nextPage,
+        "permit":req.session.permit // always send permit object to page
+    })
+  } else if (req.session.permit['permitID'] == "SR-2010-3") {
+    res.render(folder + '/specialcases/sr-2010-2_3',{
+        "formAction":"/"+ folder + nextPage,
+        "permit":req.session.permit // always send permit object to page
+    })
+  } else if (req.session.permit['permitID'] == "SR-2014-2") {
+    res.render(folder + '/specialcases/sr-2014-2',{
+        "formAction":"/"+ folder + nextPage,
+        "permit":req.session.permit // always send permit object to page
+    })
+  } else if (req.session.permit['permitID'] == "SR-2015-17") {
+    res.render(folder + '/specialcases/sr-2015-17_18',{
+        "formAction":"/"+ folder + nextPage,
+        "permit":req.session.permit // always send permit object to page
+    })
+  } else if (req.session.permit['permitID'] == "SR-2015-18") {
+    res.render(folder + '/specialcases/sr-2015-17_18',{
+        "formAction":"/"+ folder + nextPage,
+        "permit":req.session.permit // always send permit object to page
+    })
+  } else if (req.session.permit['permitID'] == "SR-2015-39") {
+    res.render(folder + '/specialcases/sr-2015-39',{
+        "formAction":"/"+ folder + nextPage,
+        "permit":req.session.permit // always send permit object to page
+    })
+  } else {
+    res.render(folder + nextPage,{ 
+        "formAction":"/"+ folder + "/evidence/upload-fire-plan",
+        "permit":req.session.permit // always send permit object to page
+    })
+  }
+})
+
+
 
 
 // Evidence ===================================================================
@@ -210,7 +270,7 @@ router.post('/evidence/upload-site-plan', function (req, res) {
 router.post('/evidence/upload-fire-plan', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   // check if a fire plan is needed for this permit
-  if(req.session.permit['permitFirePlanNeeded'] = "No"){
+  if(req.session.permit['permitFirePlanNeeded'] == "No"){
     // jump to industry scheme
     res.render(folder + '/evidence/industry-scheme',{
         "formAction":"/"+ folder + "/evidence/upload-technical-evidence",
