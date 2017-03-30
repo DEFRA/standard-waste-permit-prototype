@@ -6,6 +6,8 @@
     {{title}} - GOV.UK
 {% endblock %}
 
+{% set version = "v3" %}
+
 {% block content %}
 
 <main id="content" role="main">
@@ -28,8 +30,8 @@
     <form method="post" action="{{formAction}}" class="form">
 
       <div class="form-group">
-        <input type="submit" class="button button-start" value="Start now">
-        <input type="submit" class="button button-start" value="Resume" style="background-color: #005ea5">
+        <a href="/{{version}}/returncode/before-you-begin" class="button button-start">Start now</a>
+        <a href="/{{version}}/returncode/continue-application"class="button button-start" style="background-color: #005ea5">Resume</a>
       </div>
 
     </form>

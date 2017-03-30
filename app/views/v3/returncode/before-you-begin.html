@@ -6,6 +6,8 @@
     {{title}} - GOV.UK
 {% endblock %}
 
+{% set version = "v3" %}
+
 {% block content %}
 
 <main id="content" role="main">
@@ -44,7 +46,7 @@
 </details>
 
   <div class="form-group">
-    <input type="submit" class="button" value="Continue">
+    <a href="/{{version}}/selectpermit/permit-category" class="button">Continue</a>
   </div>
 
    

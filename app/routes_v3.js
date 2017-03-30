@@ -28,9 +28,6 @@ router.get('/cls', function (req, res) {
   res.render('index')
 })
 
-
-// Guide page on GDS (start) links to permit category ==============
-
 // Select permit ==============================================================
 
 router.get('/selectpermit/permit-category', function (req, res) {
