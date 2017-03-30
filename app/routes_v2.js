@@ -359,6 +359,7 @@ router.post('/check/check-answers', function (req, res) {
 })
 
 router.post('/pay/payment-method', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/pay/payment-method',{
       "formAction":"/"+ folder + "/pay/how-to-pay",
       "permit":req.session.permit // always send permit object to page
@@ -367,6 +368,7 @@ router.post('/pay/payment-method', function (req, res) {
 
 // This is not a real page, just a URL for the route
 router.post('/pay/how-to-pay', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   if(req.body['paymentMethod']=="Debit or credit card"){ // think you need square bracket for radios
     // show details page
       res.render(folder + '/pay/enter-card-details',{
