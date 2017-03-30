@@ -71,17 +71,21 @@
 
               
               <ul class="list list-border">
+                
+                {% if pData.sitePlanNeeded=="Yes" %}
               
-                <li>a site plan prepared to site plan standards
-                  
-                  <details>
-                    <summary><span class="summary">Site plan standards</span></summary>
-                    <div class="panel panel-border-narrow">
-                      {% include folder+"/guidance/siteplan.html" %}
-                    </div>
-                  </details>
+                  <li>a site plan prepared to site plan standards
+                    
+                    <details>
+                      <summary><span class="summary">Site plan standards</span></summary>
+                      <div class="panel panel-border-narrow">
+                        {% include folder+"/guidance/siteplan.html" %}
+                      </div>
+                    </details>
 
-                </li>
+                  </li>
+                
+                {% endif %}
               
                 {% if pData.firePlanNeeded=="Yes" %}
                   <li>a <a href="https://www.gov.uk/government/publications/fire-prevention-plans-environmental-permits/fire-prevention-plans-environmental-permits" target="_blank">fire plan</a></li>
