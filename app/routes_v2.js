@@ -404,7 +404,14 @@ router.post('/done/index', function (req, res) {
   })
 })
 
-// No route needed for /v1/done/email-confirm">Confirmation email
+// /v2/done/email-confirm Confirmation email
+
+router.get('/done/email-confirm', function (req, res) {
+  res.render(folder + '/done/email-confirm',{
+      "formAction":"NOT_NEEDED",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
 
 
 // Errors ===================================================================
