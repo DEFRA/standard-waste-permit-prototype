@@ -4,7 +4,7 @@ var router = express.Router()
 // this file deals with all paths starting /version_x
 // How to use folder variable:
 // res.redirect( '/' + folder + '/exemptions/add_exemptions');
-var folder = "v2";
+var folder = "v3";
 
 router.use(function (req, res, next) {
   // set a folder and store oin locals
