@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% set title = "Start or resume your application" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% set version = "v3" %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+
+
+<div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">{{title}}</h1>
+
+      <p>Use this service to:</p>
+
+      <ul class="list list-bullet">
+        <li>do something</li>
+        <li>update your name, address or other details</li>
+        <li>you need to do this in order to do something else</li>
+      </ul>
+
+    <form method="post" action="{{formAction}}" class="form">
+
+      <div class="form-group">
+        <input class="button" type="submit" value="Start now">
+         or <a href="/{{folder}}/returncode/continue-application">resume application</a>
+      </div>
+
+    </form>
+
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

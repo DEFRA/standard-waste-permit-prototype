@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% set title = "Before you begin" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<!-- See https://permissions-finder.licensing-uat.service.trade.gov.uk/start-application -->
+
+<h1 class="heading-large">{{title}}</h1>
+
+<form action="{{formAction}}" method="post" class="form">
+
+  <p>
+    You don't have to complete everything in one go.
+    If you want to return to this service later, you can use this code to recover your previous answers:
+  </p>
+
+    <div class="panel panel-border-wide">
+    <span class="bold-xlarge">AB12-CDEF</span>
+  </div>
+
+<details class="expanded-details" role="group" style="margin-bottom: 10px;">
+  <summary aria-expanded="false" aria-controls="Email me this code" role="button">
+    <span class="summary">Email me this code</span>
+  </summary>
+  <div aria-hidden="true" class="panel panel-border-wide" id="Email me this code">
+    <div class="form-group ">
+    <label class="form-label" for="emailAddress">
+      Your email address (optional)
+    </label>
+    <input class="form-control " id="emailAddress" name="emailAddress" type="text" value="" data-validation="">
+    </div>
+  </div>
+</details>
+
+  <div class="form-group">
+        <input class="button" type="submit" value="Continue">
+  </div>
+
+   
+   <p>
+      <a href="javascript:window.print();">Print this page</a>
+    </p>
+
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
