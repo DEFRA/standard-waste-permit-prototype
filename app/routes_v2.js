@@ -7,7 +7,7 @@ var router = express.Router()
 var folder = "v2";
 
 router.use(function (req, res, next) {
-  // set a folder and store oin locals
+  // set a folder and store in locals
   // this can then be used in pages as {{folder}}
   res.locals.folder=folder
   
@@ -101,42 +101,6 @@ router.post('/selectpermit/what-need-to-apply', function (req, res) {
 router.post('/preapp/preapp-discussion', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/preapp/preapp-discussion',{
-      "formAction":"/"+ folder + "/operator/site-operator",
-      "permit":req.session.permit // always send permit object to page
-  })
-})
-
-
-// Operator ===================================================================
-
-router.post('/operator/site-operator', function (req, res) {
-  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
-  res.render(folder + '/operator/site-operator',{
-      "formAction":"/"+ folder + "/operator/checkoperator",
-      "permit":req.session.permit // always send permit object to page
-  })
-})
-
-// This is not a real page, just a URL for the route
-router.post('/operator/checkoperator', function (req, res) {
-  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
-  if(req.body['operatorType']=="Limited company"){ // think you need square bracket for radios
-    // show company page
-      res.render(folder + '/operator/company/company-name',{
-          "formAction":"/"+ folder + "/operator/company/check-company-details",
-          "permit":req.session.permit // always send permit object to page
-      })
-  } else {
-    // go on to error
-    res.render(folder + '/error/index',{ 
-        "errorText":"We only cover limited companies in this prototype"
-    })
-  }
-})
-
-router.post('/operator/company/check-company-details', function (req, res) {
-  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
-  res.render(folder + '/operator/company/check-company-details',{
       "formAction":"/"+ folder + "/site/site-name",
       "permit":req.session.permit // always send permit object to page
   })
@@ -172,7 +136,7 @@ router.post('/address/postcode', function (req, res) {
 router.post('/address/address', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/address/address',{
-      "formAction":"/"+ folder + "/contact/contact-details",
+      "formAction":"/"+ folder + "/check-special-cases",
       "permit":req.session.permit // always send permit object to page
   })
 })
@@ -180,21 +144,11 @@ router.post('/address/address', function (req, res) {
 // Manual address is a link - so a GET
 router.get('/address/address-manual', function (req, res) {
   res.render(folder + '/address/address-manual',{
-      "formAction":"/"+ folder + "/contact/contact-details",
-      "permit":req.session.permit // always send permit object to page
-  })
-})
-
-
-// Contact ===================================================================
-
-router.post('/contact/contact-details', function (req, res) {
-  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
-  res.render(folder + '/contact/contact-details',{
       "formAction":"/"+ folder + "/check-special-cases",
       "permit":req.session.permit // always send permit object to page
   })
 })
+
 
 
 // Special cases ==============================================================
@@ -308,10 +262,63 @@ router.post('/evidence/upload-technical-evidence', function (req, res) {
 router.post('/evidence/management-system', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/evidence/management-system',{
+      "formAction":"/"+ folder + "/operator/site-operator",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+
+
+// Operator ===================================================================
+
+router.post('/operator/site-operator', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/operator/site-operator',{
+      "formAction":"/"+ folder + "/operator/checkoperator",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+// This is not a real page, just a URL for the route
+router.post('/operator/checkoperator', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  if(req.body['operatorType']=="Limited company"){ // think you need square bracket for radios
+    // show company page
+      res.render(folder + '/operator/company/company-name',{
+          "formAction":"/"+ folder + "/operator/company/check-company-details",
+          "permit":req.session.permit // always send permit object to page
+      })
+  } else {
+    // go on to error
+    res.render(folder + '/error/index',{ 
+        "errorText":"We only cover limited companies in this prototype"
+    })
+  }
+})
+
+router.post('/operator/company/check-company-details', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/operator/company/check-company-details',{
+      "formAction":"/"+ folder + "/contact/contact-details",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+
+
+
+// Contact ===================================================================
+
+router.post('/contact/contact-details', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/contact/contact-details',{
       "formAction":"/"+ folder + "/evidence/declare-offences",
       "permit":req.session.permit // always send permit object to page
   })
 })
+
+
+// Offences ===================================================================
 
 router.post('/evidence/declare-offences', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
