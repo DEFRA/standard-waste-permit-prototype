@@ -28,21 +28,32 @@ router.get('/cls', function (req, res) {
   res.render('index')
 })
 
-
-
 // Start or resume ============================================================
 
-router.post('/start/start-or-resume', function (req, res) {
+router.get('/start/start-or-resume', function (req, res) {
   res.render(folder + '/start/start-or-resume',{
     "formAction":"/"+ folder + "/returncode/before-you-begin"
   })
 })
 
 
+// Before you begin ===========================================================
+
+router.post('/returncode/before-you-begin', function (req, res) {
+  res.render(folder + '/returncode/before-you-begin',{
+    "formAction":"/"+ folder + "/selectpermit/permit-category"
+  })
+})
+
+router.get('/returncode/continue-application', function (req, res) {
+  res.render(folder + '/returncode/continue-application',{
+    "formAction":"/"+ folder + "/selectpermit/permit-category"
+  })
+})
 
 // Select permit ==============================================================
 
-router.get('/selectpermit/permit-category', function (req, res) {
+router.post('/selectpermit/permit-category', function (req, res) {
   res.render(folder + '/selectpermit/permit-category',{
     "formAction":"/"+ folder + "/selectpermit/choose-permit"
   })

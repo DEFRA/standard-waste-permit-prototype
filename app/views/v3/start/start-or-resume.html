@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Apply for a standard rules waste permit" %}
+{% set title = "Start or resume your application" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -17,7 +17,7 @@
 <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-xlarge">{{title}}</h1>
+      <h1 class="heading-large">{{title}}</h1>
 
       <p>Use this service to:</p>
 
@@ -30,36 +30,13 @@
     <form method="post" action="{{formAction}}" class="form">
 
       <div class="form-group">
-        <input class="button button-start" type="submit" value="Start now">
-
-        <!-- <a href="/{{version}}/returncode/before-you-begin" class="button button-start">Start now</a>
-        <a href="/{{version}}/returncode/continue-application"class="button button-start" style="background-color: #005ea5">Resume</a> -->
+        <input class="button" type="submit" value="Start now">
+         or <a href="/{{folder}}/returncode/continue-application">resume application</a>
       </div>
 
     </form>
 
-      <h3 class="heading-small">Other ways to apply</h3>
 
-      <p>Contact our National Customer Contact Centre<br>
-          <a href="mailto:enquiries@environment-agency.gov.uk">enquiries@environment-agency.gov.uk</a><br>
-          Telephone 03708 506 506<br>
-          Monday to Friday, 8am to 6pm
-        </p>
-
-
-    </div>
-    <div class="column-third">
-
-      <aside class="govuk-related-items" role="complementary">
-        <h2 class="heading-medium" id="subsection-title">Subsection</h2>
-        <nav role="navigation" aria-labelledby="subsection-title">
-          <ul class="font-xsmall">
-            <li><a href="#">Related link</a></li>
-            <li><a href="#">Related link</a></li>
-            <li><a href="#" class="bold-xsmall">More <span class="visuallyhidden">in Subsection</span></a></li>
-          </ul>
-        </nav>
-      </aside>
 
     </div>
   </div>
