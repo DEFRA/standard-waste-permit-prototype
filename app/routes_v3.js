@@ -28,6 +28,18 @@ router.get('/cls', function (req, res) {
   res.render('index')
 })
 
+
+
+// Start or resume ============================================================
+
+router.post('/start/start-or-resume', function (req, res) {
+  res.render(folder + '/start/start-or-resume',{
+    "formAction":"/"+ folder + "/returncode/before-you-begin"
+  })
+})
+
+
+
 // Select permit ==============================================================
 
 router.get('/selectpermit/permit-category', function (req, res) {
