@@ -17,8 +17,30 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
-<!-- pre-app ref number can become the application number -->
-<p>Pre-application reference: {{permit.preAppDiscussionRefName}}</p>
+
+<div class="grid-row">
+
+	<div class="column-half">
+<p>
+Standard rule: <b>{{permit.chosenPermitID}}</b><br>
+Application charge: <b>£1,630</b><br>
+Pre-application advice given:</b> <b>Yes</b><br>
+Application reference number:</b> <b>123456</b><!-- If pre-app number, use this. Otherwise generate new.) --> <br>
+Nature and heritage conservation screening</b>: <b>Eligible</b></p>
+	</div>
+
+	<div class="column-half">
+<p><b>Who we will contact</b></br>
+	{{permit.contactName}}<br>
+	{{permit.contactTelephone}}<br>
+	{{permit.contactEmail}}<br>
+	<a href="">Edit</a></p>
+	</div>
+
+</div>
+
+
+
 
 
 <h2 class="heading-medium">Site name</h2>
@@ -26,7 +48,48 @@
 <hr>
 
 
+<h2 class="heading-medium">Site details<h2>
 
+<p>{{permit.siteName}}<br>
+	{{permit.siteAddress}}<br>
+	{{site.GridRef}}
+</p> 
+<hr>
+
+
+<!-- Look at simpler way of doing this -->
+
+<style>
+.p-05 { padding: .5em }
+.mt-0 { margin-top: 0 }
+.mb-0 { margin-bottom: 0 }
+.ta-r { text-align: right }
+</style>
+
+<div class="grid-row p-05">
+	<div class="column-two-thirds">
+<h2 class="heading-medium mt-0 mb-0">Fire prevention plan</h2>
+	</div>
+	<div class="column-one-third ta-r">
+<a href="#">Add</a>
+	</div>
+</div>
+
+
+<hr>
+
+<h2 class="heading-medium">Operator details</h2>
+<hr>
+
+<h2 class="heading-medium">Company details</h2>
+<hr>
+
+<h2 class="heading-medium">Offences/Bankruptcy</h2>
+<hr>
+
+<p>Confidentiality</p>
+
+<!--
 <table class="check-your-answers" style="margin-bottom: 30px">
   <tbody>
     <tr>
@@ -184,6 +247,8 @@
   </tbody>
 </table>
 
+-->
+
 
 <h2 class="heading-medium">
   Declaration
@@ -256,9 +321,9 @@
 
     </form>
 
+</div>
+</div>
 
-    </div>
-  </div>
 </main>
 
 {% endblock %}

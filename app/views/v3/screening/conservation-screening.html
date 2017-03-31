@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% set title = "Have you already asked the Environment Agency for a heritage and nature conservation screen on your proposed activity?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+  <!-- Conservation screening -->
+  <details style="padding-bottom: 18px;" id="screening_help">
+    <summary><span class="summary">What is nature and heritage conservation screening?</span></summary>
+    <div class="panel panel-border-narrow">
+      <p>The Environment Agency has a legal duty to screen all of the activities they permit to identify those that may have a detrimental effect on heritage and nature conservation sites, protected species and habitats.</p>
+
+      <p>A heritage and nature conservation screen will identify if there are any of these sites relevant to your proposed activity. Where there are you’ll be given a map and information pack.</p>
+
+      <p>Fill in the form at <a href="http://www.smartsurvey.co.uk/s/HeritageForm/" target="_blank">www.smartsurvey.co.uk/s/HeritageForm/</a>
+    </div>
+  </details>
+
+<form action="{{formAction}}" method="post" class="form">
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visually-hidden">{{title}}</legend>
+
+      <label class="block-label selection-button-radio" data-target="screeningYes" for="yes">
+        <input id="yes" type="radio" name="screening" value="yes">
+        Yes and I have an application reference number
+      </label>
+      <div class="panel panel-border-narrow js-hidden" id="screeningYes">
+        <label class="form-label" for="yes">Application reference number
+         <span class="form-hint">For example, EPR/EB1234AB/A001</span>
+         </label>
+         <input class="form-control" name="screeningRef" type="text" id="screeningRef">
+      </div>
+
+      <label class="block-label selection-button-radio" for="pending">
+        <input id="pending" type="radio" name="screening" value="pending">
+        Yes, I don't have a reference number or am waiting for a decision
+      </label>
+
+      <label class="block-label selection-button-radio" data-target="screeningNo" for="no">
+        <input id="no" type="radio" name="screening" value="no">
+        No
+      </label>
+        <div class="panel panel-border-narrow js-hidden" id="screeningNo">
+        <p>You may require a conservation risk assessment prior to submitting your environmental permit application</p>
+      </div>
+
+    </fieldset>
+  </div>
+
+    <div class="form-group">
+    <input type="submit" class="button" value="Continue">
+  </div>
+
+
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
