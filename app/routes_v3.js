@@ -149,7 +149,7 @@ router.post('/contact/contact-details', function (req, res) {
 })
 
 
-// Overview ===================================================================
+// Application overview ======================================================
 
 router.post('/check/overview', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
