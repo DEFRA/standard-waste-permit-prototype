@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Start or resume your application" %}
+{% set title = "Apply for a standard rules waste permit" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -19,19 +19,15 @@
 
       <h1 class="heading-large">{{title}}</h1>
 
-      <p>Use this service to:</p>
-
-      <ul class="list list-bullet">
-        <li>do something</li>
-        <li>update your name, address or other details</li>
-        <li>you need to do this in order to do something else</li>
-      </ul>
+      <p>&nbsp;</p>
 
     <form method="post" action="{{formAction}}" class="form">
 
       <div class="form-group">
-        <input class="button" type="submit" value="Start now">
-         or <a href="/{{folder}}/returncode/continue-application">resume application</a>
+        <input class="button" type="submit" value="New application">
+         <span class="resume-link">
+           or <a href="/{{folder}}/returncode/continue-application">carry on with an existing application</a>
+         </span>
       </div>
 
     </form>

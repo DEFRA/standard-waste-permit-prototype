@@ -47,7 +47,13 @@ router.post('/returncode/before-you-begin', function (req, res) {
 
 router.get('/returncode/continue-application', function (req, res) {
   res.render(folder + '/returncode/continue-application',{
-    "formAction":"/"+ folder + "/selectpermit/permit-category"
+    "formAction":"/"+ folder + "/check/overview"
+  })
+})
+
+router.get('/returncode/email-code', function (req, res) {
+  res.render(folder + '/returncode/email-code',{
+    "rtnCode":req.query["rtnCode"]
   })
 })
 
