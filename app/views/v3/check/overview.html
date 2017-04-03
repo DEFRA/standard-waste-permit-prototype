@@ -11,8 +11,8 @@
 <main id="content" role="main">
   {% include "includes/phase_banner_alpha.html" %}
   
-  <div class="grid-row">
-      <div class="column-full">
+  <div class="grid-row overview">
+      <div class="column-two-thirds">
 
 
 <h1 class="heading-large">{{title}}</h1>
@@ -26,7 +26,25 @@ Nature and heritage conservation screening carried out:</b> <b>Yes</b></p>
 
 <hr>
 
+<!-- start overview sections -->
+<style>
+.overviewHead {
+  display: flex; 
+  justify-content: space-between;
+}
+
+.heading-medium { margin-top: 0; }
+
+.txa { text-align: right; }
+
+hr { margin-top: 0; }
+
+</style>
+
+<div class="overviewHead">
 <h2 class="heading-medium">Contact details</h2>
+<p><a href="">Edit</a></p>
+</div>
 <p>John Smith<br>
    Telephone number: 0777 123 4567<br>
    Email address: johnsmith@me.com</p>
@@ -35,49 +53,66 @@ Nature and heritage conservation screening carried out:</b> <b>Yes</b></p>
 	{{permit.contactTelephone}}<br>
 	{{permit.contactEmail}}<br> -->
 
-<p><a href="">Edit</a></p>
 <hr>
 
+<div class="overviewHead">
 <h2 class="heading-medium">Site name</h2>
-<p><a href="">Add</a></p>
+<p class="txa"><a href="">Add</a></p>
+</div>
 <hr>
 
+<div class="overviewHead">
 <h2 class="heading-medium">Site address<h2>
 <p><a href="">Add</a></p>
+</div>
 <hr>
 
+<div class="overviewHead">
 <h2 class="heading-medium">Site plan<h2>
 <p><a href="">Add</a></p>
+</div>
 <hr>
 
+<div class="overviewHead">
 <h2 class="heading-medium">Industry scheme<h2>
 <p><a href="">Add</a></p>
+</div>
 <hr>
 
+<div class="overviewHead">
 <h2 class="heading-medium">Management system<h2>
 <p><a href="">Add</a></p>
+</div>
 <hr>
 
+<div class="overviewHead">
 <h2 class="heading-medium">Fire prevention plan<h2>
 <p><a href="">Add</a></p>
+</div>
 <hr>
 
+<div class="overviewHead">
 <h2 class="heading-medium">Operator details</h2>
 <p><a href="">Add</a></p>
+</div>
 <hr>
 
-
-
+<div class="overviewHead">
 <h2 class="heading-medium">Relevant offences</h2>
 <p><a href="">Add</a></p>
+</div>
 <hr>
 
+<div class="overviewHead">
 <h2 class="heading-medium">Bankruptcy or insolvency</h2>
 <p><a href="">Add</a></p>
+</div>
 <hr>
 
+<div class="overviewHead">
 <h2 class="heading-medium">Confidentiality request</h2>
 <p><a href="">Add</a></p>
+</div>
 <hr>
 
 
