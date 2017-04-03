@@ -88,7 +88,7 @@ router.post('/selectpermit/check-permit', function (req, res) {
     // save chosen Permit ID in session
     for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
     res.render(folder + '/selectpermit/check-permit',{
-      "formAction":"/"+ folder + "/selectpermit/what-need-to-apply",
+      "formAction":"/"+ folder + "/preapp/preapp-discussion",
       "chosenPermitID":req.body['chosenPermitID'],
       "permit":req.session.permit // always send permit object to page
     })
@@ -106,7 +106,7 @@ router.get('/selectpermit/check-permit', function (req, res) {
     // save chosen Permit ID in session
     // no form entries to add to session 
     res.render(folder + '/selectpermit/check-permit',{
-      "formAction":"/"+ folder + "/selectpermit/what-need-to-apply",
+      "formAction":"/"+ folder + "/preapp/preapp-discussion",
       "chosenPermitID":req.query['chosenPermitID']
     })
 }
