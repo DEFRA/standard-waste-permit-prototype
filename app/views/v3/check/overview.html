@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
 
-{% set title = "Application overview" %}
+{% set title = "Application for "+permit.permitCode %}
+
+{% set addTxt = "Start this section" %}
+{% set editTxt = "Edit" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -8,306 +11,174 @@
 
 {% block content %}
 
-<main id="content" role="main">
+<main id="content" role="main" class="overview">
   {% include "includes/phase_banner_alpha.html" %}
   
-  <div class="grid-row overview">
-      <div class="column-two-thirds">
+<div class="grid-row overview">
+<div class="column-two-thirds">
 
-
-<h1 class="heading-large">{{title}}</h1>
-
-<div class="panel panel-border-wide">
-<h2 class="font-medium">
-Anaerobic digestion facility including use of biogas
-<span class="bold-small">SR2010 No 15</span>
-</h2>
-</div>
-<hr>
-
-<style>
-.overviewHead {
-  display: flex; 
-  justify-content: space-between;
-}
-
-.heading-medium { margin-top: 0; margin-bottom: 0;}
-
-hr { margin-top: 0; }
-
-</style>
-
+<h1 class="heading-large">{{title}}<br>
+  <span class="font-medium">{{permit.permitName}}</span>
+  </h1>
+  
+  
+  
+<!-- CONTACT ############################################################### -->
 <div class="overviewHead">
-<h2 class="heading-medium">Pre application and screening</h2>
-<p><a href="/{{folder}}/s">Add</a></p>
-</div>
-<p>{{permit.preAppDiscussionRefName}}</p>
+  <h2 class="heading-medium">Pre application and screening</h2>
+  <p class="ov_action"><a href="/{{folder}}/preapp/preapp-discussion?ov=1">
+  {{ addTxt if permit.preAppDiscussion==null else editTxt }}
+  </a></p>
+  </div>
+  <div class="ov_details">
+  {% if permit.preAppDiscussion!=null %}   <p>Pre-application discussion: {{permit.preAppDiscussion}}</p>    {% endif %}
+  {% if permit.preAppDiscussionRefName!=null %}   <p>{{permit.preAppDiscussionRefName}}</p>    {% endif %}
+  {% if permit.screening!=null %}   <p>Screening: {{permit.screening}}</p>    {% endif %}
+  </div>
 
 
-<hr>
 
-
+<!-- CONTACT ############################################################### -->
 <div class="overviewHead">
-<h2 class="heading-medium">Contact details</h2>
-<p><a href="/{{folder}}/s">Edit</a></p>
-</div>
-<p>{{permit.contactName}}<br>
-   Telephone number: {{permit.contactTelephone}}<br>
-   Email address: {{permit.contactEmail}}</p>
-<hr>
+  <h2 class="heading-medium">Contact details</h2>
+  <p class="ov_action"><a href="/{{folder}}/contact/contact-details?ov=1">
+  {{ addTxt if permit.contactName==null else editTxt }}
+  </a></p>
+  </div>
+  <div class="ov_details">
+  {% if permit.contactName!=null %}   <p>{{permit.contactName}}</p>    {% endif %}
+  {% if permit.contactTelephone!=null %}   <p>Telephone number: {{permit.contactTelephone}}</p>    {% endif %}
+  {% if permit.contactEmail!=null %}   <p>Email address: {{permit.contactEmail}}</p>    {% endif %}
+  </div>
 
+  
+  
+<!-- SITE    ############################################################### -->
 <div class="overviewHead">
-<h2 class="heading-medium">Site</h2>
-<p><a href="/{{folder}}/site/site-name">Add</a></p>
-</div>
+  <h2 class="heading-medium">Site</h2>
+  <p class="ov_action"><a href="/{{folder}}/site/site-name">
+  {{ addTxt if permit.siteName==null else editTxt }}
+  </a></p>
+  </div>
+  <div class="ov_details">
+  {% if permit.siteName!=null %}  <p>Site name: {{permit.siteName}}</p>   {% endif %}
+  {% if permit.siteAddress!=null %}  <p>Site address: {{permit.siteAddress}}</p>   {% endif %}
+  {% if permit.siteGridRef!=null %}  <p>Grid reference: {{permit.siteGridRef}}</p>   {% endif %}
+  {% if permit.sitePlanFilename!=null %}  <p>Site plan: {{permit.sitePlanFilename}}</p>   {% endif %}
+  </div>
 
-{% if permit.siteName!="" %}
-  <p>Site name: {{permit.siteName}}</p>
+  
+<!-- SPECIAL CASES ####################################################### -->
+{% if permit.permitSpecialCase=="Yes" %}
+  <div class="overviewHead">
+    <h2 class="heading-medium">Extra information for this permit<h2>
+    <p class="ov_action"><a href="/{{folder}}/check-special-cases">
+    {{ addTxt if permit.specialCasePageVisited==null else editTxt }}
+    </a></p>
+    </div>
+    <div class="ov_details">
+    <!-- NEED TO FIX THIS -->
+    {% if permit.specialCasePageVisited!=null %}  <p>Extra information added</p>   {% endif %}
+    </div>
+{% endif %}
+  
+  
+<!-- FIREPLAN ############################################################## -->
+{% if pData.firePlanNeeded=="Yes" %}
+  <div class="overviewHead">
+    <h2 class="heading-medium">Fire prevention plan<h2>
+    <p class="ov_action"><a href="/{{folder}}/evidence/upload-fire-plan">
+    {{ addTxt if permit.firePlanFilename==null else editTxt }}
+    </a></p>
+    </div>
+    <div class="ov_details">
+    {% if permit.firePlanFilename!=null %}  <p>Fire prevention plan: {{permit.firePlanFilename}}</p>   {% endif %}
+    </div>
 {% endif %}
 
-<p>Site address
-{{permit.siteAddress}}</p>
-
-<p>Grid reference:  
-{{permit.siteGridRef}}</p>
-
-<p>Site plan: 
-{{permit.sitePlanFilename}}</p>
-
-<hr>
-
+  
+<!-- TECHNICAL ############################################################# -->
 <div class="overviewHead">
-<h2 class="heading-medium">Fire prevention plan<h2>
-<p><a href="/{{folder}}/evidence/upload-fire-plan">Add</a></p>
+  <h2 class="heading-medium">Evidence of technical ability</h2>
+  <p class="ov_action"><a href="/{{folder}}/evidence/industry-scheme">
+  {{ addTxt if permit.industryScheme==null else editTxt }}
+  </a></p>
+  </div>
+  <div class="ov_details">
+  {% if permit.industryScheme!=null %}  <p>Industry scheme: {{permit.industryScheme}}</p>   {% endif %}
+  {% if permit.technicalCertificateFile!=null %}  <p>Technical evidence certificate: {{permit.technicalCertificateFile}}</p>   {% endif %}
+  </div>
+
+  
+  
+<!-- MANAGEMENT SYSTEM ##################################################### -->
+<div class="overviewHead">
+  <h2 class="heading-medium">Management system<h2>
+  <p class="ov_action"><a href="/{{folder}}/evidence/management-system">
+  {{ addTxt if permit.manSys==null else editTxt }}
+  </a></p>
+  </div>
+  <div class="ov_details">
+  {% if permit.manSys!=null %}  <p>Management system: {{permit.manSys}}</p>   {% endif %}
+  </div>
+
+
+  
+<!-- OPERATOR ############################################################## -->
+<div class="overviewHead">
+  <h2 class="heading-medium">Operator details</h2>
+  <p class="ov_action"><a href="/{{folder}}/operator/site-operator">
+  {{ addTxt if permit.operatorType==null else editTxt }}
+  </a></p>
+  </div>
+  <div class="ov_details">
+  {% if permit.operatorType!=null %}  <p>Operator type: {{permit.operatorType}}</p>   {% endif %}
+  {% if permit.companyName!=null %}  <p>Company name: {{permit.companyName}}</p>   {% endif %}
+  {% if permit.companyAddress!=null %}  <p>Company address: {{permit.companyAddress}}</p>   {% endif %}
+  </div>
+
+  
+  
+<!-- OFFENCES ############################################################## -->
+<div class="overviewHead">
+  <h2 class="heading-medium">Relevant offences</h2>
+  <p class="ov_action"><a href="/{{folder}}/evidence/declare-offences">
+  {{ addTxt if permit.offences==null else editTxt }}
+  </a></p>
+  </div>
+  <div class="ov_details">
+  {% if permit.offences!=null %}  <p>Relevant offences: {{permit.offences}}</p>   {% endif %}
+  </div>
+
+
+  
+<!-- BANKRUPTCY ############################################################ -->
+<div class="overviewHead">
+  <h2 class="heading-medium">Bankruptcy or insolvency</h2>
+  <p class="ov_action"><a href="/{{folder}}/evidence/bankruptcy-insolvency">
+  {{ addTxt if permit.bankruptcyInsolvency==null else editTxt }}
+  </a></p>
+  </div>
+  <div class="ov_details">
+  {% if permit.bankruptcyInsolvency!=null %}  <p>Bankruptcy or insolvency: {{permit.bankruptcyInsolvency}}</p>   {% endif %}
+  </div>
+
+
+
+<!-- CONFIDENTIALITY ####################################################### -->
+<div class="overviewHead">
+  <h2 class="heading-medium">Confidentiality request</h2>
+  <p class="ov_action"><a href="/{{folder}}/check/claim-confidentiality">
+  {{ addTxt if permit.confidential==null else editTxt }}
+  </a></p>
+  </div>
+  <div class="ov_details">
+  {% if permit.confidential!=null %}  <p>Confidentiality request: {{permit.confidential}}</p>   {% endif %}
+  </div>
+  
+<div class="overviewEnd"> 
 </div>
 
-<p>Fire prevention plan:
-{{permit.firePlanFilename}}</p>
-<hr>
-
-<div class="overviewHead">
-<h2 class="heading-medium">Evidence of technical ability</h2>
-<p><a href="/{{folder}}/evidence/industry-scheme">Add</a></p>
-</div>
-
-<p>Industry scheme:
-{{permit.industryScheme}}</p>
-
-<p>Technical evidence certificate:
-{{permit.technicalCertificateFile}}</p>
-<hr>
-
-<div class="overviewHead">
-<h2 class="heading-medium">Management system<h2>
-<p><a href="/{{folder}}/evidence/management-system">Add</a></p>
-</div>
-
-<p>Management system:
-{{permit.manSys}}</p>
-<hr>
-
-<div class="overviewHead">
-<h2 class="heading-medium">Operator details</h2>
-<p><a href="/{{folder}}/operator/site-operator">Add</a></p>
-</div>
-
-<p>Operator type:
-{{permit.operatorType}}</p>
-
-<p>Company name:
-{{permit.companyName}}</p>
-
-<p>Company address:
-{{permit.companyAddress}}</p>
-<hr>
-
-<div class="overviewHead">
-<h2 class="heading-medium">Relevant offences</h2>
-<p><a href="/{{folder}}/evidence/declare-offences">Add</a></p>
-</div>
-
-<p>Relevant offences:
-{{permit.offences}}</p>
-<hr>
-
-<div class="overviewHead">
-<h2 class="heading-medium">Bankruptcy or insolvency</h2>
-<p><a href="/{{folder}}/evidence/bankruptcy-insolvency">Add</a></p>
-</div>
-
-<p>Bankruptcy or insolvency:
-{{permit.bankruptcyInsolvency}}</p>
-<hr>
-
-<div class="overviewHead">
-<h2 class="heading-medium">Confidentiality request</h2>
-<p><a href="/{{folder}}/check/claim-confidentiality">Add</a></p>
-</div>
-
-<p>Confidentiality request:
-{{permit.confidential}}</p>
-<hr>
-
-
-<!--
-<table class="check-your-answers" style="margin-bottom: 30px">
-  <tbody>
-    <tr>
-      <td>Standard rule</td>
-      <td>{{permit.chosenPermitID}}</td>
-	    <td class="change-answer">
-	      <a href="#">
-	        Change <span class="visuallyhidden">Standard rule</span>
-	      </a>
-	    </td>
-    </tr>
-    <tr>
-      <td>Pre-application reference</td>
-      <td>{{permit.preAppDiscussionRefName}}</td>
-	    <td class="change-answer">
-	      <a href="#">
-	        Change <span class="visuallyhidden">Pre-application reference</span>
-	      </a>
-	    </td>
-	</tr>
-    <tr>
-      <td>Operator name</td>
-      <td>{{permit.companyName}}
-		</td>
-	    <td class="change-answer">
-	      <a href="#">
-	        Change <span class="visuallyhidden">Operator name</span>
-	      </a>
-	    </td>
-	</tr>
-    <tr>
-      <td>Operator address</td>
-      <td>{{permit.companyAddress}}
-		</td>
-	    <td class="change-answer">
-	      <a href="#">
-	        Change <span class="visuallyhidden">Operator address</span>
-	      </a>
-	    </td>
-	</tr>
-	<tr>
-      <td>Site name</td>
-      <td>{{permit.siteName}}
-		</td>
-	    <td class="change-answer">
-	      <a href="#">
-	        Change <span class="visuallyhidden">Site name</span>
-	      </a>
-	    </td>
-	</tr>
-	<tr>
-      <td>Site details</td>
-      <td>{{permit.siteAddress}}
-		</td>
-	    <td class="change-answer">
-	      <a href="#">
-	        Change <span class="visuallyhidden">Site address</span>
-	      </a>
-	    </td>
-	</tr>
-	<tr>
-      <td>Grid reference for the site</td>
-      <td>{{permit.siteGridRef}}</td>
-	    <td class="change-answer">
-	      <a href="#">
-	        Change <span class="visuallyhidden">Grid reference for the site</span>
-	      </a>
-	    </td>
-	</tr>
-	<tr>
-      <td>Who we will contact</td>
-      <td>{{permit.contactName}}<br>
-		  {{permit.contactTelephone}}<br>
-          {{permit.contactEmail}}</td>
-	    <td class="change-answer">
-	      <a href="#">
-	        Change <span class="visuallyhidden">Grid reference for the site</span>
-	      </a>
-	    </td>
-	</tr>
-	<tr>
-      <td>Site plan</td>
-      <td>{{permit.sitePlanFilename}}</td>
-	    <td class="change-answer">
-	      <a href="#">
-	        Change <span class="visuallyhidden">Site plan</span>
-	      </a>
-	    </td>
-	</tr>
-	<tr>
-      <td>Fire prevention plan</td>
-      <td>{{permit.firePlanFilename}}</td>
-	    <td class="change-answer">
-	      <a href="#">
-	        Change <span class="visuallyhidden">Fire prevention plan</span>
-	      </a>
-	    </td>
-	</tr>
-	<tr>
-      <td>Industry scheme</td>
-      <td>{{permit.industryScheme}}</td>
-	    <td class="change-answer">
-	      <a href="#">
-	        Change <span class="visuallyhidden">Industry scheme</span>
-	      </a>
-	    </td>
-	</tr>
-	<tr>
-      <td>Technical evidence certificate</td>
-      <td>{{permit.technicalCertificateFile}}</td>
-	    <td class="change-answer">
-	      <a href="#">
-	        Change <span class="visuallyhidden">Technical evidence certificate</span>
-	      </a>
-	    </td>
-	</tr>
-	<tr>
-      <td>Management system</td>
-      <td>
-          {{ permit.manSys }}
-      </td>
-	    <td class="change-answer">
-	      <a href="#">
-	        Change <span class="visuallyhidden">ISO 14001</span>
-	      </a>
-	    </td>
-	</tr>
-	<tr>
-      <td>Relevant offences</td>
-      <td>{{permit.offences}}</td>
-	    <td class="change-answer">
-	      <a href="#">
-	        Change <span class="visuallyhidden">Relevant offences</span>
-	      </a>
-	    </td>
-	</tr>
-	<tr>
-      <td>Bankruptcy or insolvency</td>
-      <td>{{permit.bankruptcyInsolvency}}</td>
-	    <td class="change-answer">
-	      <a href="#">
-	        Change <span class="visuallyhidden">Bankruptcy or insolvency</span>
-	      </a>
-	    </td>
-	</tr>
-	<tr>
-      <td>Confidentiality request</td>
-      <td>{{permit.confidential}}</td>
-	    <td class="change-answer">
-	      <a href="#">
-	        Change <span class="visuallyhidden">Confidentiality request</span>
-	      </a>
-	    </td>
-	</tr>
-  </tbody>
-</table>
-
--->
 
     <form method="post" action="{{formAction}}" class="form">
 
@@ -321,74 +192,64 @@ hr { margin-top: 0; }
 
 <div class="column-third">
 
-<style>
-.doc-summary {
-    background-color: #F8F8F8;
-    padding: 15px;
-    margin-top: 50px;
-}
-</style>
 
-<div class="doc-summary">
+<div class="docSummary">
 
-<h3 class="heading-small">Documents you'll need</h3>
+{% import folder+"/custom_inc/macros.html" as macros %}
+{% from folder+"/custom_inc/permit-list-json.html" import permits %}
 
-<ul class="list list-border">
-<li>site plan</li>
-<li>fire prevention plan</li>
-<li>evidence of technical ability</li>
-<li>a written <a href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits" target="_blank">management system</a></li>
-</ul>
+  {% for pNumber, pData in permits %}
+    {% if pNumber==permit.chosenPermitID %}
 
-</div>
+        <h2 class="heading-medium">
+          You'll need:
+        </h2>
+        
+        <ul class="list list-border">
+          
+          {% if pData.sitePlanNeeded=="Yes" %}
+            <li>a <a href="/{{folder}}/guidance/siteplan.html" target="_blank">site plan</a></li>
+          {% endif %}
+          
+          <li>the grid reference and address of the site</li>
+        
+          {% if pData.firePlanNeeded=="Yes" %}
+            <li>a <a href="https://www.gov.uk/government/publications/fire-prevention-plans-environmental-permits/fire-prevention-plans-environmental-permits" target="_blank">fire prevention plan</a></li>
+          {% endif %}
+          
+          {% if pData.baselineReportRequired=="Yes" %}
+            <li>a <a href="#" target="_blank">baseline report</a></li>
+          {% endif %}
+          
+          {% if pData.technicalAbilityEvidence=="Yes" %}
+            <li>evidence of technical ability, for example, qualifications from <abbr title="Waste Management Industry Training and Advisory Board">WAMITAB</abbr>
+            <details>
+              <summary><span class="summary">Relevant WAMITAB qualifications</span></summary>
+              <div class="panel panel-border-narrow">
+                {{pData.WAMITAB}}
+              </div>
+            </details>
+          </li>
+          {% endif %}
+          
+          {% if pData.wasteRecoveryPlan=="Yes" %}
+            <li>a waste recovery plan</li>
+          {% endif %}
 
-<!-- selectpermit/what-need-to-apply 
+          <li>a written <a href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits" target="_blank">management system</a></li>
+          
+          <li>to pay {{permit.permitCost}} by card, BACS or cheque</li>
+        
+      </ul>
+      
+      <p>Your save and return code is: <span class="font-large">{{permit.rtnCode}}</span></p>
+      
+    {% endif %}
+  {% else %}
+    <p>No radios</p>
+  {% endfor %}
 
-              <ul class="list list-border">
-                
-                {% if pData.sitePlanNeeded=="Yes" %}
-              
-                  <li>a site plan prepared to site plan standards
-                    
-                    <details>
-                      <summary><span class="summary">Site plan standards</span></summary>
-                      <div class="panel panel-border-narrow">
-                        {% include folder+"/guidance/siteplan.html" %}
-                      </div>
-                    </details>
-
-                  </li>
-                
-                {% endif %}
-              
-                {% if pData.firePlanNeeded=="Yes" %}
-                  <li>a <a href="https://www.gov.uk/government/publications/fire-prevention-plans-environmental-permits/fire-prevention-plans-environmental-permits" target="_blank">fire plan</a></li>
-                {% endif %}
-                
-                {% if pData.baselineReportRequired=="Yes" %}
-                  <li>a <a href="#" target="_blank">baseline report</a></li>
-                {% endif %}
-                
-                {% if pData.technicalAbilityEvidence=="Yes" %}
-                  <li>evidence of technical ability, for example, qualifications from <abbr title="Waste Management Industry Training and Advisory Board">WAMITAB</abbr>
-                
-                  <details>
-                    <summary><span class="summary">Relevant WAMITAB qualifications</span></summary>
-                    <div class="panel panel-border-narrow">
-                      {{pData.WAMITAB}}
-                    </div>
-                  </details>
-                </li>
-                {% endif %}
-                
-                {% if pData.wasteRecoveryPlan=="Yes" %}
-                  <li>a waste recovery plan</li>
-                {% endif %}
-
-                <li>a written <a href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits" target="_blank">management system</a></li>
-              
-            </ul>
--->
+</div><!-- END docSummary -->
 
 
 

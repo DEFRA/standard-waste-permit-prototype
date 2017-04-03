@@ -612,3 +612,43 @@ span.resume-link{
   display:inline-block;
   padding:10px 0 0 0;
 }
+
+.overview{
+    .overviewHead {
+      display: flex; 
+      justify-content: space-between;
+      border-top:1px solid #ccc;
+      padding-top:1em;
+      margin-top:1em;
+    }
+    h2{
+      margin-top: 0; 
+      margin-bottom: 0;
+    }
+    p{
+      margin-top: 0; 
+      margin-bottom: 0;
+    }
+    hr {
+      margin-top: 0;
+    }
+}
+.ov_details{
+  p{
+    margin:0;
+    padding:0;
+  }
+}
+p.ov_action{
+  font-weight:bold;
+}
+.overviewEnd {
+  border-bottom:1px solid #ccc;
+  padding-bottom:0.5em;
+  margin-bottom:2em;
+}
+.docSummary {
+    background-color: #F8F8F8;
+    padding: 15px;
+    margin-top: 50px;
+}

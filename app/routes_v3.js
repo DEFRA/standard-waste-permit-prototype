@@ -40,28 +40,34 @@ router.get('/start/start-or-resume', function (req, res) {
 // Before you begin ===========================================================
 
 router.post('/returncode/before-you-begin', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/returncode/before-you-begin',{
-    "formAction":"/"+ folder + "/selectpermit/permit-category"
+    "formAction":"/"+ folder + "/selectpermit/permit-category",
+    "permit":req.session.permit // always send permit object to page
   })
 })
 
 router.get('/returncode/continue-application', function (req, res) {
   res.render(folder + '/returncode/continue-application',{
-    "formAction":"/"+ folder + "/check/overview"
+    "formAction":"/"+ folder + "/check/overview",
+    "permit":req.session.permit // always send permit object to page
   })
 })
 
 router.get('/returncode/email-code', function (req, res) {
   res.render(folder + '/returncode/email-code',{
-    "rtnCode":req.query["rtnCode"]
+    "rtnCode":req.query["rtnCode"],
+    "permit":req.session.permit // always send permit object to page
   })
 })
 
 // Select permit ==============================================================
 
 router.post('/selectpermit/permit-category', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/selectpermit/permit-category',{
-    "formAction":"/"+ folder + "/selectpermit/choose-permit"
+    "formAction":"/"+ folder + "/selectpermit/choose-permit",
+    "permit":req.session.permit // always send permit object to page
   })
 })
 
@@ -132,6 +138,14 @@ router.post('/preapp/preapp-discussion', function (req, res) {
   })
 })
 
+router.get('/preapp/preapp-discussion', function (req, res) {
+  res.render(folder + '/preapp/preapp-discussion',{
+      "formAction":"/"+ folder + "/screening/conservation-screening",
+      "permit":req.session.permit,
+      "backToOverview":req.query["ov"]  // tracks if page journey is from overview
+  })
+})
+
 
 // Screening =================================================================
 
@@ -139,7 +153,8 @@ router.post('/screening/conservation-screening', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/screening/conservation-screening',{
       "formAction":"/"+ folder + "/contact/contact-details", 
-      "permit":req.session.permit // always send permit object to page
+      "permit":req.session.permit,
+      "backToOverview":req.body["backToOverview"]  // tracks if page journey is from overview
   })
 })
 
@@ -148,6 +163,18 @@ router.post('/screening/conservation-screening', function (req, res) {
 
 router.post('/contact/contact-details', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  if(req.body["backToOverview"]=="1"){
+    res.redirect('/'+folder + '/check/overview')
+  } else {
+    res.render(folder + '/contact/contact-details',{
+        "formAction":"/"+ folder + "/check/overview",
+        "permit":req.session.permit // always send permit object to page
+    })
+  }
+})
+
+// route for link from overview
+router.get('/contact/contact-details', function (req, res) {
   res.render(folder + '/contact/contact-details',{
       "formAction":"/"+ folder + "/check/overview",
       "permit":req.session.permit // always send permit object to page
@@ -375,10 +402,10 @@ router.get('/check/claim-confidentiality', function (req, res) {
 // Special cases ==============================================================
 
 
-router.post('/check-special-cases', function (req, res) {
+router.get('/check-special-cases', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session
   
-  var nextPage =  "/evidence/upload-site-plan" // the next page after the special case pages with slash
+  var nextPage =  "/check/overview" // the next page after the special case pages with slash
   
   // check if there is a special case for this permit
   if(req.session.permit['permitID'] == "SR-2009-4"){
@@ -422,7 +449,7 @@ router.post('/check-special-cases', function (req, res) {
         "permit":req.session.permit // always send permit object to page
     })
   } else { // NO SPECIAL CASES
-    res.redirect('/'+folder+'/evidence/check-site-plan')
+    res.redirect('/'+folder+'/check/overview')
   }
 })
 

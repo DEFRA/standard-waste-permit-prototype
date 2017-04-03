@@ -33,9 +33,11 @@
   {% set rtnCode = char1+char2+char3+char4+char5 %}
   {% set rtnCode = rtnCode | lower %}
 
-    <div class="panel panel-border-wide">
+  <div class="panel panel-border-wide">
     <span class="bold-xlarge">{{rtnCode}}</span>
   </div>
+  
+  <input type="hidden" name="rtnCode" value="{{rtnCode}}">
 
 <details class="expanded-details" role="group" style="margin-bottom: 10px;">
   <summary aria-expanded="false" aria-controls="Email me this code" role="button">
