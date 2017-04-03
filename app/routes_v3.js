@@ -186,6 +186,14 @@ router.post('/check/declaration', function (req, res) {
 
 // Site ===================================================================
 
+// Link from overview will be a get
+router.get('/site/site-name', function (req, res) {
+  res.render(folder + '/site/site-name',{
+      "formAction":"/"+ folder + "/site/grid-reference",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
 router.post('/site/site-name', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/site/site-name',{
@@ -213,7 +221,7 @@ router.post('/address/postcode', function (req, res) {
 router.post('/address/address', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/address/address',{
-      "formAction":"/"+ folder + "", // was /contact/contact-details
+      "formAction":"/"+ folder + "/evidence/check-site-plan", 
       "permit":req.session.permit // always send permit object to page
   })
 })
@@ -221,10 +229,25 @@ router.post('/address/address', function (req, res) {
 // Manual address is a link - so a GET
 router.get('/address/address-manual', function (req, res) {
   res.render(folder + '/address/address-manual',{
-      "formAction":"/"+ folder + "", // was /contact/contact-details
+      "formAction":"/"+ folder + "/evidence/check-site-plan", 
       "permit":req.session.permit // always send permit object to page
   })
 })
+
+// Site plan conditional routing
+router.post('/evidence/check-site-plan', function (req, res) {
+  // check if site plan is needed for this permit 
+  if(req.session.permit['sitePlanNeeded'] == "No"){
+      res.redirect('/'+folder + '/check/overview')
+  } else {
+      for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session
+      res.render(folder + '/evidence/upload-site-plan',{
+          "formAction":"/"+ folder + "/check/overview",
+          "permit":req.session.permit // always send permit object to page
+      })
+  }
+})
+
 
 // Operator ===================================================================
 
@@ -318,24 +341,7 @@ router.post('/check-special-cases', function (req, res) {
 
 // Evidence ===================================================================
 
-// Site plan conditional routing
-router.get('/evidence/check-site-plan', function (req, res) {
-  // check if site plan is needed for this permit 
-  if(req.session.permit['sitePlanNeeded'] == "No"){
-      res.redirect('/'+folder + '/evidence/upload-fire-plan')
-  } else {
-      res.redirect('/'+folder + '/evidence/upload-site-plan')
-  }
-})
 
-
-router.post('/evidence/upload-site-plan', function (req, res) {
-  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session
-    res.render(folder + '/evidence/upload-site-plan',{
-        "formAction":"/"+ folder + "/evidence/upload-fire-plan",
-        "permit":req.session.permit // always send permit object to page
-    })
-})
 
 router.post('/evidence/upload-fire-plan', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
