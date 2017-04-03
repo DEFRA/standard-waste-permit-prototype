@@ -154,6 +154,24 @@ router.post('/contact/contact-details', function (req, res) {
 router.post('/check/overview', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/check/overview',{
+      "formAction":"/"+ folder + "/check/declaration",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+// Back to overview via link is a GET
+router.get('/check/overview', function (req, res) {
+  res.render(folder + '/check/overview',{
+      "formAction":"/"+ folder + "/check/declaration",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+// Declaration ================================================================
+
+router.post('/check/declaration', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/check/declaration',{
       "formAction":"/"+ folder + "/pay/payment-method",
       "permit":req.session.permit // always send permit object to page
   })
@@ -403,6 +421,9 @@ router.post('/check/check-answers', function (req, res) {
       "permit":req.session.permit // always send permit object to page
   })
 })
+
+
+
 
 router.post('/pay/payment-method', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
