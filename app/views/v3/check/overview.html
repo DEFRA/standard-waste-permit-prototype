@@ -64,8 +64,9 @@ hr { margin-top: 0; }
 
 </div>
 
-<p>Site name: 
-{{permit.siteName}}</p>
+{% if permit.siteName!="" %}
+  <p>Site name: {{permit.siteName}}</p>
+{% endif %}
 
 <p>Site address
 {{permit.siteAddress}}</p>
