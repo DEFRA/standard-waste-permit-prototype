@@ -33,15 +33,13 @@ Anaerobic digestion facility including use of biogas
 
 .heading-medium { margin-top: 0; margin-bottom: 0;}
 
-.txa { text-align: right; }
-
 hr { margin-top: 0; }
 
 </style>
 
 <div class="overviewHead">
 <h2 class="heading-medium">Pre application and screening</h2>
-<p class="txa"><a href="">Add</a></p>
+<p><a href="/{{folder}}/s">Add</a></p>
 </div>
 <p>{{permit.preAppDiscussionRefName}}</p>
 
@@ -51,7 +49,7 @@ hr { margin-top: 0; }
 
 <div class="overviewHead">
 <h2 class="heading-medium">Contact details</h2>
-<p><a href="">Edit</a></p>
+<p><a href="/{{folder}}/s">Edit</a></p>
 </div>
 <p>{{permit.contactName}}<br>
    Telephone number: {{permit.contactTelephone}}<br>
@@ -60,8 +58,7 @@ hr { margin-top: 0; }
 
 <div class="overviewHead">
 <h2 class="heading-medium">Site</h2>
-<p class="txa"><a href="/{{folder}}/site/site-name">Add</a></p>
-
+<p><a href="/{{folder}}/site/site-name">Add</a></p>
 </div>
 
 <p>Site name: 
@@ -80,45 +77,74 @@ hr { margin-top: 0; }
 
 <div class="overviewHead">
 <h2 class="heading-medium">Fire prevention plan<h2>
-<p><a href="">Add</a></p>
+<p><a href="/{{folder}}/evidence/upload-fire-plan">Add</a></p>
 </div>
+
+<p>Fire prevention plan:
+{{permit.firePlanFilename}}</p>
 <hr>
 
 <div class="overviewHead">
 <h2 class="heading-medium">Evidence of technical ability</h2>
-<p><a href="">Add</a></p>
+<p><a href="/{{folder}}/evidence/industry-scheme">Add</a></p>
 </div>
+
+<p>Industry scheme:
+{{permit.industryScheme}}</p>
+
+<p>Technical evidence certificate:
+{{permit.technicalCertificateFile}}</p>
 <hr>
 
 <div class="overviewHead">
 <h2 class="heading-medium">Management system<h2>
-<p><a href="">Add</a></p>
+<p><a href="/{{folder}}/evidence/management-system">Add</a></p>
 </div>
+
+<p>Management system:
+{{permit.manSys}}</p>
 <hr>
 
 <div class="overviewHead">
 <h2 class="heading-medium">Operator details</h2>
-<p><a href="">Add</a></p>
+<p><a href="/{{folder}}/operator/site-operator">Add</a></p>
 </div>
-<hr>
 
+<p>Operator type:
+{{permit.operatorType}}</p>
+
+<p>Company name:
+{{permit.companyName}}</p>
+
+<p>Company address:
+{{permit.companyAddress}}</p>
+<hr>
 
 <div class="overviewHead">
 <h2 class="heading-medium">Relevant offences</h2>
-<p><a href="">Add</a></p>
+<p><a href="/{{folder}}/evidence/declare-offences">Add</a></p>
 </div>
+
+<p>Relevant offences:
+{{permit.offences}}</p>
 <hr>
 
 <div class="overviewHead">
 <h2 class="heading-medium">Bankruptcy or insolvency</h2>
-<p><a href="">Add</a></p>
+<p><a href="/{{folder}}/evidence/bankruptcy-insolvency">Add</a></p>
 </div>
+
+<p>Bankruptcy or insolvency:
+{{permit.bankruptcyInsolvency}}</p>
 <hr>
 
 <div class="overviewHead">
 <h2 class="heading-medium">Confidentiality request</h2>
-<p><a href="">Add</a></p>
+<p><a href="/{{folder}}/check/claim-confidentiality">Add</a></p>
 </div>
+
+<p>Confidentiality request:
+{{permit.confidential}}</p>
 <hr>
 
 
