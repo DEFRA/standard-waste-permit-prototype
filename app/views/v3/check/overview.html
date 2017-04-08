@@ -2,14 +2,15 @@
 
 {% set title = "Application for "+permit.permitCode %}
 
-{% set addTxt = "Start this section" %}
-{% set editTxt = "Edit" %}
-
 {% block page_title %}
     {{title}} - GOV.UK
 {% endblock %}
 
 {% block content %}
+
+{% import folder+"/custom_inc/macros.html" as macros %}
+{% from folder+"/custom_inc/permit-list-json.html" import permits %}
+
 
 <main id="content" role="main">
   {% include "includes/phase_banner_alpha.html" %}
@@ -18,7 +19,8 @@
     <div class="column-two-thirds column-minimum">
 
 <h1 class="heading-large">{{title}}<br>
-  <span class="font-medium">{{permit.permitName}}</span>
+  <span class="font-medium">{{permit.permitName}}
+  </span>
   </h1>
 
       <ol class="task-list">
@@ -89,24 +91,10 @@
             </li>
           </ul>
         </li>
-        <!-- FIRE PREVENTION PLAN ############################################################## -->
-        <li>
-          <h2 class="task-list-section">
-            <span class="task-list-section-number">4. </span> Fire prevention plan
-          </h2>
-          <ul class="task-list-items">
-            <li class="task-list-item">
-              <a class="task-name" href="/{{folder}}/evidence/upload-fire-plan" aria-describedby="fireplan-completed">
-                Upload fire prevention plan
-              </a>
-              {% if permit.firePlanFilename!==null %} <strong class="task-completed" id="fireplan-completed">Completed</strong> {% endif %}
-            </li>
-          </ul>
-        </li>
         <!-- TECHNICAL/MANAGEMENT SYSTEM ############################################################# -->
         <li>
           <h2 class="task-list-section">
-            <span class="task-list-section-number">5. </span> Technical ability and management systems
+            <span class="task-list-section-number">4. </span> Technical ability and management systems
           </h2>
           <ul class="task-list-items">
             <li class="task-list-item">
@@ -132,9 +120,17 @@
         <!-- OPERATOR DETAILS ############################################################# -->
         <li>
           <h2 class="task-list-section">
-            <span class="task-list-section-number">6. </span> Operator details
+            <span class="task-list-section-number">5. </span> Operator details
           </h2>
+          <!-- Requires conditionality. Operator type is the first step. Other tasks depend on which type is seleted -->
           <ul class="task-list-items">
+            <li class="task-list-item">
+              <a class="task-name" href="/{{folder}}/operator/site-operator" aria-describedby="site-operator-completed">
+                Operator type
+              </a>
+              {% if permit.operatorType!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong> {% endif %}
+            </li>
+            <!--
             <li class="task-list-item">
               <a class="task-name" href="/{{folder}}/operator/checkoperator" aria-describedby="company-name-completed">
                 Company name
@@ -153,8 +149,49 @@
               </a>
               {% if permit.companyAddress!=null %} <strong class="task-completed" id="company-address-completed">Completed</strong> {% endif %}
             </li>
+            -->
+              <li class="task-list-item">
+              <a class="task-name" href="/{{folder}}/check/claim-confidentiality" aria-describedby="confidentialty-completed">
+                Confidentiality request
+              </a>
+              {% if permit.confidential!=null %} <strong class="task-completed" id="confidentialty-completed">Completed</strong> {% endif %}
+            </li>
+              <li class="task-list-item">
+              <a class="task-name" href="/evidence/declare-offences" aria-describedby="offences-completed">
+                Declare any relevant offences
+              </a>
+              {% if permit.offences!=null %} <strong class="task-completed" id="offences-completed">Completed</strong> {% endif %}
+            </li>
+            </li>
+              <li class="task-list-item">
+              <a class="task-name" href="/evidence/bankruptcy-insolvency" aria-describedby="bankruptcy-insolvency-completed">
+                Bankruptcy or insolvency
+              </a>
+              {% if permit.bankruptcyInsolvency!=null %} <strong class="task-completed" id="offences-completed">Completed</strong> {% endif %}
+            </li>
           </ul>
-        </li>  
+        </li>
+	  {% for pNumber, pData in permits %}
+	    {% if pNumber==permit.chosenPermitID %}
+	        <!-- FIRE PREVENTION PLAN ############################################################## -->
+	        {% if pData.firePlanNeeded=="No" %}
+	        <li>
+	          <h2 class="task-list-section">
+	            <span class="task-list-section-number">6. </span> Fire prevention plan
+	          </h2>
+	          <ul class="task-list-items">
+	            <li class="task-list-item">
+	              <a class="task-name" href="/{{folder}}/evidence/upload-fire-plan" aria-describedby="fireplan-completed">
+	                Upload fire prevention plan
+	              </a>
+	              {% if permit.firePlanFilename!==null %} <strong class="task-completed" id="fireplan-completed">Completed</strong> {% endif %}
+	            </li>
+	          </ul>
+	        </li>
+	        {% endif %}
+
+	    {% endif %}
+	  {% endfor %}  
       </ol>
 
     </div>
