@@ -531,5 +531,20 @@ router.get('/error/wrong-company-details', function (req, res) {
     })
 })
 
+// Permit search ===================================================================
+
+router.get('/search-permit/index', function (req, res) {
+    res.render(folder + '/search-permit/index',{ 
+      "formAction":"/"+ folder + "/search-permit/index"
+    })
+})
+
+router.post('/search-permit/index', function (req, res) {
+    res.render(folder + '/search-permit/index',{ 
+      "formAction":"/"+ folder + "/search-permit/index",
+      "searchTerm":req.body.searchTerm 
+    })
+})
+
 
 module.exports = router
