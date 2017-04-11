@@ -15,7 +15,7 @@
         <div class="column-two-thirds">
 
 
-      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+      <h1 class="heading-xlarge" id="radio_label">{{title}}</h1>
       
       <form method="post" action="{{formAction}}">
         
@@ -31,8 +31,11 @@
               <input type="submit" class="button" value="Search">
         </div>
 
-
-      
+      {# 
+      all-permit-types-json stored in:  https://docs.google.com/spreadsheets/d/1FFgU1GOmKsErBB9Vr2X3WuKvAkt4SQ9GHC1IIqgGV3k/edit#gid=0
+      Converted here:
+      http://www.convertcsv.com/csv-to-json.htm 
+      #}
       {% from folder+"/custom_inc/all-permit-types-json.html" import permits %}
 
 {% if searchTerm %}
