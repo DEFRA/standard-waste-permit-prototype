@@ -32,7 +32,7 @@ router.get('/cls', function (req, res) {
 
 router.get('/start/start-or-resume', function (req, res) {
   res.render(folder + '/start/start-or-resume',{
-    "formAction":"/"+ folder + "/returncode/before-you-begin"
+    "formAction":"/"+ folder + "/selectpermit/permit-category"
   })
 })
 
@@ -78,14 +78,14 @@ router.post('/selectpermit/choose-permit', function (req, res) {
     })
   } else {
     res.render(folder + '/selectpermit/choose-permit',{
-      "formAction":"/"+ folder + "/selectpermit/check-permit",
+      "formAction":"/"+ folder + "/selectpermit/cost",
       "chosenCategory":req.body['chosenCategory']
     })    
   }
 })
 
 // Check permit via POST is from previous selection page - there is also a GET route for links
-router.post('/selectpermit/check-permit', function (req, res) {
+router.post('/selectpermit/cost', function (req, res) {
   if(typeof req.body['chosenPermitID']==='undefined'){  // simple error handling
     res.render(folder + '/error/index',{ 
         "errorText":"Please select a permit"
@@ -93,8 +93,8 @@ router.post('/selectpermit/check-permit', function (req, res) {
   } else {
     // save chosen Permit ID in session
     for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
-    res.render(folder + '/selectpermit/check-permit',{
-      "formAction":"/"+ folder + "/preapp/preapp-discussion",
+    res.render(folder + '/selectpermit/cost',{
+      "formAction":"/"+ folder + "/selectpermit/time",
       "chosenPermitID":req.body['chosenPermitID'],
       "permit":req.session.permit // always send permit object to page
     })
@@ -103,7 +103,7 @@ router.post('/selectpermit/check-permit', function (req, res) {
 
 // Check permit via GET route for links
 // Example link:  http://localhost:3000/v2/selectpermit/check-permit?chosenPermitID=SR-2008-16
-router.get('/selectpermit/check-permit', function (req, res) {
+router.get('/selectpermit/cost', function (req, res) {
   if(typeof req.query['chosenPermitID']==='undefined'){  // simple error handling
     res.render(folder + '/error/index',{ 
         "errorText":"Please select a permit"
@@ -111,8 +111,8 @@ router.get('/selectpermit/check-permit', function (req, res) {
   } else {
     // save chosen Permit ID in session
     // no form entries to add to session 
-    res.render(folder + '/selectpermit/check-permit',{
-      "formAction":"/"+ folder + "/preapp/preapp-discussion",
+    res.render(folder + '/selectpermit/cost',{
+      "formAction":"/"+ folder + "/selectpermit/time",
       "chosenPermitID":req.query['chosenPermitID']
     })
 }

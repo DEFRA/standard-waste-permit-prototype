@@ -17,18 +17,15 @@
 <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-large">{{title}}</h1>
-
-      <p>&nbsp;</p>
+      <h1 class="heading-xlarge">{{title}}</h1>
 
     <form method="post" action="{{formAction}}" class="form">
 
       <div class="form-group">
-        <input class="button" type="submit" value="New application">
-         <span class="resume-link">
-           or <a href="/{{folder}}/returncode/continue-application">carry on with an existing application</a>
-         </span>
+        <input class="button" type="submit" value="Start a new application">
       </div>
+
+         <p><a href="/{{folder}}/returncode/continue-application">Return to an application</a>  you've already started.</p>
 
     </form>
 
