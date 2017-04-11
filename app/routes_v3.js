@@ -401,7 +401,6 @@ router.get('/check/claim-confidentiality', function (req, res) {
 
 // Special cases ==============================================================
 
-
 router.get('/check-special-cases', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session
   
