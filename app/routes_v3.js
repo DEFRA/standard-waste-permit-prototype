@@ -61,6 +61,8 @@ router.get('/returncode/email-code', function (req, res) {
   })
 })
 
+
+
 // Select permit ==============================================================
 
 router.post('/selectpermit/permit-category', function (req, res) {
@@ -84,63 +86,97 @@ router.post('/selectpermit/choose-permit', function (req, res) {
   }
 })
 
-
-
-// LOOK AT PREVIOUS VERSION TO WORK OUT ERROR
-
-
-// Check permit via POST is from previous selection page - there is also a GET route for links
 router.post('/selectpermit/cost', function (req, res) {
-  if(typeof req.body['chosenPermitID']==='undefined'){  // simple error handling
-    res.render(folder + '/error/index',{ 
-        "errorText":"Please select a permit"
-    })
-  } else {
-    // save chosen Permit ID in session
-    for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
-    res.render(folder + '/selectpermit/cost',{
-      "formAction":"/"+ folder + "/selectpermit/time",
-      "chosenPermitID":req.body['chosenPermitID'],
-      "permit":req.session.permit // always send permit object to page
-    })
-}
-})
-
-// Check permit via GET route for links
-// Example link:  http://localhost:3000/v2/selectpermit/check-permit?chosenPermitID=SR-2008-16
-router.get('/selectpermit/cost', function (req, res) {
-  if(typeof req.query['chosenPermitID']==='undefined'){  // simple error handling
-    res.render(folder + '/error/index',{ 
-        "errorText":"Please select a permit"
-    })
-  } else {
-    // save chosen Permit ID in session
-    // no form entries to add to session 
-    res.render(folder + '/selectpermit/cost',{
-      "formAction":"/"+ folder + "/selectpermit/time",
-      "chosenPermitID":req.query['chosenPermitID'],
-    })
-}
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-router.post('/selectpermit/what-need-to-apply', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
-  res.render(folder + '/selectpermit/what-need-to-apply',{
-      "formAction":"/"+ folder + "/preapp/preapp-discussion",
-      "chosenPermitID":req.body['chosenPermitID'],
+  res.render(folder + '/selectpermit/cost',{
+    "formAction":"/"+ folder + "/selectpermit/time",
+    "chosenPermitID":req.body['chosenPermitID'],
+    "permit":req.session.permit // always send permit object to page
+  })
+})
+
+router.post('/selectpermit/time', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/selectpermit/time',{
+    "formAction":"/"+ folder + "/save-and-return/save-option",
+    "chosenPermitID":req.body['chosenPermitID'],
+    "permit":req.session.permit // always send permit object to page
+  })
+})
+
+
+
+
+// Save and return ==============================================================
+
+// This is not a real page, just a URL for the route
+router.post('/save-and-return/save-option', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  if(req.body['offences']=="yes"){ // think you need square bracket for radios
+    // show details page
+      res.render(folder + '/save-and-return/email-or-phone',{
+          "formAction":"/"+ folder + "/evidence/bankruptcy-insolvency",
+          "permit":req.session.permit // always send permit object to page
+      })
+  } else {
+    // go on to bankruptcy
+    res.render(folder + '/',{ 
+        "formAction":"/"+ folder + "/",
+        "permit":req.session.permit // always send permit object to page
+    })
+  }
+})
+
+
+
+// REPLACE BELOW
+
+router.get('/save-and-return/email-or-phone', function (req, res) {
+  // get the answer from the query string 
+  var wants_save_and_return = req.query.wants_save_and_return;
+    if (wants_save_and_return == "no" ){
+      res.redirect('/v3/check/task-list');
+    } else {
+      res.render('v3/save-and-return/email-or-phone');    
+    }
+})
+
+
+
+
+
+
+
+router.post('/save-and-return/email-or-phone', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/save-and-return/email-or-phone',{
+    "formAction":"/"+ folder + "/save-and-return/confirm",
+    "permit":req.session.permit // always send permit object to page
+  })
+})
+
+router.post('/save-and-return/confirm', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/save-and-return/confirm',{
+    "formAction":"/"+ folder + "/save-and-return/sent",
+    "permit":req.session.permit // always send permit object to page
+  })
+})
+
+router.post('/save-and-return/sent', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/save-and-return/sent',{
+    "formAction":"/"+ folder + "/check/task-list",
+    "permit":req.session.permit // always send permit object to page
+  })
+})
+
+// Task-list ===================================================================
+
+router.post('/check/task-list', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/check/task-list',{
+      "formAction":"/"+ folder + "/check/declaration",
       "permit":req.session.permit // always send permit object to page
   })
 })

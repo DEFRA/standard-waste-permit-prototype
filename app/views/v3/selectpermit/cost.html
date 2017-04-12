@@ -22,12 +22,35 @@
 
         {% for pNumber, pData in permits %}
           {% if pNumber==chosenPermitID %}
+
+
+           <input type="hidden" name="permitName" value="{{ pData.friendlyName }}">
+              <input type="hidden" name="permitCode" value="{{ pData.code }}">
+              <input type="hidden" name="permitID" value="{{ pNumber }}">
+              <input type="hidden" name="permitCost" value="{{ pData.charge }}">
+              <input type="hidden" name="permitWeight" value="{{ pData.friendlyWeight }}">
+              <input type="hidden" name="permitNatureHeritageSurvey" value="{{ pData.natureHeritageSurvey }}">
+              <input type="hidden" name="permitFirePlanNeeded" value="{{ pData.firePlanNeeded }}">              
+              <input type="hidden" name="permitSpecialCase" value="{{ pData.specialCase }}">                
+              <input type="hidden" name="permitBaselineReportRequired" value="{{ pData.BaselineReportRequired }}">    
+              <input type="hidden" name="permitTechnicalAbilityEvidence" value="{{ pData.technicalAbilityEvidence }}"> 
+              <input type="hidden" name="permitWasteRecoveryPlan" value="{{ pData.wasteRecoveryPlan }}">
+              <input type="hidden" name="permitPreAppRequired" value="{{ pData.preAppRequired }}">
+              <input type="hidden" name="sitePlanNeeded" value="{{ pData.sitePlanNeeded }}">
+              
+              {% set num1 = [1,2,3,4,5,6,7,8,9] | random %}
+              {% set num2 = [1,2,3,4,5,6,7,8,9,0] | random %}
+              {% set num3 = [1,2,3,4,5,6,7,8,9,0] | random %}
+              {% set num4 = [1,2,3,4,5,6,7,8,9,0] | random %}
+              {% set num5 = [1,2,3,4,5,6,7,8,9,0] | random %}
+              {% set refnum = "SRP"+num1+num2+num3+num4+num5 %}
+              
               <h2 class="heading-large">
                 {{ pData.friendlyName }}
                 <span class="font-medium">{{ pData.code }}</span>
               </h2>
 
-                    <p class="lede">Money you will need for permit:</p>
+              <p class="lede">Money you will need for permit:</p>
 
        <table>
           <thead>
@@ -57,8 +80,6 @@
               
               {% endif %}
             {% endfor %}
-
-
         
         <input type="hidden" name="chosenPermitID" value="{{chosenPermitID}}"></input>
 
