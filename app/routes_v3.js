@@ -84,6 +84,11 @@ router.post('/selectpermit/choose-permit', function (req, res) {
   }
 })
 
+
+
+// LOOK AT PREVIOUS VERSION TO WORK OUT ERROR
+
+
 // Check permit via POST is from previous selection page - there is also a GET route for links
 router.post('/selectpermit/cost', function (req, res) {
   if(typeof req.body['chosenPermitID']==='undefined'){  // simple error handling
@@ -113,10 +118,23 @@ router.get('/selectpermit/cost', function (req, res) {
     // no form entries to add to session 
     res.render(folder + '/selectpermit/cost',{
       "formAction":"/"+ folder + "/selectpermit/time",
-      "chosenPermitID":req.query['chosenPermitID']
+      "chosenPermitID":req.query['chosenPermitID'],
     })
 }
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 router.post('/selectpermit/what-need-to-apply', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
