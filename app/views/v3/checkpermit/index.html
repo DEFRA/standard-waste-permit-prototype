@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Check if you need a permit: draft
+{% endblock %}
+
+{% block service_name %}
+  Check if you need a permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  
+  <a href="#" class="link-back" id="back">Back</a>
+  
+  <h1 class="heading-large"></h1>
+  
+  <form id="choiceform" class="form">
+  
+  <div class="form-group">
+    <fieldset id="choices">
+      <legend class="visuallyhidden" id="legendtitle"></legend>
+    </fieldset>
+  </div>
+  
+  <div class="form-group">
+    <input id="submit" class="button" type="submit" value="Continue">
+  </div>
+
+  </form>
+  
+</main>
+
+{% endblock %}
+
+
+
+
+{% block custom_script %}
+  <script src="/public/javascripts/routing/toplevel.js"></script>
+  <script src="/public/javascripts/routing/waste.js"></script>
+  <script src="/public/javascripts/routing/join.js"></script>
+  <script src="/public/javascripts/routing/tree.js"></script>
+{% endblock %}
