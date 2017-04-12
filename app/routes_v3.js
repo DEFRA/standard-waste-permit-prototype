@@ -105,54 +105,31 @@ router.post('/selectpermit/time', function (req, res) {
 })
 
 
-
-
 // Save and return ==============================================================
 
-// This is not a real page, just a URL for the route
 router.post('/save-and-return/save-option', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
-  if(req.body['offences']=="yes"){ // think you need square bracket for radios
-    // show details page
-      res.render(folder + '/save-and-return/email-or-phone',{
-          "formAction":"/"+ folder + "/evidence/bankruptcy-insolvency",
+  res.render(folder + '/save-and-return/save-option',{
+      "formAction":"/"+ folder + "/save-and-return/savecheck",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+// This is not a real page, just a URL for the route
+router.post('/save-and-return/savecheck', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  if(req.body['wants_save_and_return']=="no"){ // think you need square bracket for radios
+    // show company page
+      res.render(folder + '/check/task-list',{
+          "formAction":"/"+ folder + "/check/declaration",
           "permit":req.session.permit // always send permit object to page
       })
   } else {
-    // go on to bankruptcy
-    res.render(folder + '/',{ 
-        "formAction":"/"+ folder + "/",
-        "permit":req.session.permit // always send permit object to page
-    })
+      res.render(folder + '/save-and-return/email-or-phone',{
+          "formAction":"/"+ folder + "/save-and-return/confirm",
+          "permit":req.session.permit // always send permit object to page
+      })
   }
-})
-
-
-
-// REPLACE BELOW
-
-router.get('/save-and-return/email-or-phone', function (req, res) {
-  // get the answer from the query string 
-  var wants_save_and_return = req.query.wants_save_and_return;
-    if (wants_save_and_return == "no" ){
-      res.redirect('/v3/check/task-list');
-    } else {
-      res.render('v3/save-and-return/email-or-phone');    
-    }
-})
-
-
-
-
-
-
-
-router.post('/save-and-return/email-or-phone', function (req, res) {
-  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
-  res.render(folder + '/save-and-return/email-or-phone',{
-    "formAction":"/"+ folder + "/save-and-return/confirm",
-    "permit":req.session.permit // always send permit object to page
-  })
 })
 
 router.post('/save-and-return/confirm', function (req, res) {
@@ -173,13 +150,6 @@ router.post('/save-and-return/sent', function (req, res) {
 
 // Task-list ===================================================================
 
-router.post('/check/task-list', function (req, res) {
-  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
-  res.render(folder + '/check/task-list',{
-      "formAction":"/"+ folder + "/check/declaration",
-      "permit":req.session.permit // always send permit object to page
-  })
-})
 
 
 // Pre-app ===================================================================
