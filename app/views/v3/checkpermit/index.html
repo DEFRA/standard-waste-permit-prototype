@@ -34,10 +34,10 @@
 
 {% endblock %}
 
-
-
-
-{% block custom_script %}
+{% block body_end %}
+  {% include "includes/scripts.html" %}
+  <!-- GOV.UK Prototype kit {{releaseVersion}} -->
+  
   <script src="/public/javascripts/routing/toplevel.js"></script>
   <script src="/public/javascripts/routing/waste.js"></script>
   <script src="/public/javascripts/routing/join.js"></script>
