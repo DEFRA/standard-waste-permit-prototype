@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% set title = "Money you will need for licence" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_alpha.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+      
+      <form method="post" action="{{formAction}}">
+      
+      {% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/custom_inc/permit-list-json.html" import permits %}
+
+
+        {% for pNumber, pData in permits %}
+          {% if pNumber==chosenPermitID %}
+
+
+           <input type="hidden" name="permitName" value="{{ pData.friendlyName }}">
+              <input type="hidden" name="permitCode" value="{{ pData.code }}">
+              <input type="hidden" name="permitID" value="{{ pNumber }}">
+              <input type="hidden" name="permitCost" value="{{ pData.charge }}">
+              <input type="hidden" name="permitWeight" value="{{ pData.friendlyWeight }}">
+              <input type="hidden" name="permitNatureHeritageSurvey" value="{{ pData.natureHeritageSurvey }}">
+              <input type="hidden" name="permitFirePlanNeeded" value="{{ pData.firePlanNeeded }}">              
+              <input type="hidden" name="permitSpecialCase" value="{{ pData.specialCase }}">                
+              <input type="hidden" name="permitBaselineReportRequired" value="{{ pData.BaselineReportRequired }}">    
+              <input type="hidden" name="permitTechnicalAbilityEvidence" value="{{ pData.technicalAbilityEvidence }}"> 
+              <input type="hidden" name="permitWasteRecoveryPlan" value="{{ pData.wasteRecoveryPlan }}">
+              <input type="hidden" name="permitPreAppRequired" value="{{ pData.preAppRequired }}">
+              <input type="hidden" name="sitePlanNeeded" value="{{ pData.sitePlanNeeded }}">
+              
+              {% set num1 = [1,2,3,4,5,6,7,8,9] | random %}
+              {% set num2 = [1,2,3,4,5,6,7,8,9,0] | random %}
+              {% set num3 = [1,2,3,4,5,6,7,8,9,0] | random %}
+              {% set num4 = [1,2,3,4,5,6,7,8,9,0] | random %}
+              {% set num5 = [1,2,3,4,5,6,7,8,9,0] | random %}
+              {% set refnum = "SRP"+num1+num2+num3+num4+num5 %}
+              
+              <h2 class="heading-large">
+                {{ pData.friendlyName }}
+                <span class="font-medium">{{ pData.code }}</span>
+              </h2>
+
+              <p class="lede">Money you will need for permit:</p>
+
+       <table>
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th class="numeric" scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+             <td>Application fee:</td>
+              <td class="numeric">{{pData.charge}}</td>
+            </tr>
+
+            <tr>
+             <td>Subsistence fee:</td>
+              <td class="numeric">?</td>
+            </tr>
+
+          </tbody>
+        </table>
+              
+              <p style="margin-top: 20px;">
+                You need to pay a fee every year (subsistence charge). We’ll invoice you for that if your application is successful.
+              </p>
+              
+              {% endif %}
+            {% endfor %}
+        
+        <input type="hidden" name="chosenPermitID" value="{{chosenPermitID}}"></input>
+
+        <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+            or <a href="/{{folder}}/selectpermit/permit-category">change permit</a>
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

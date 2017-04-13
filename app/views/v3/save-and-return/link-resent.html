@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% set title = "Check your email" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+        <h1 class="heading-large">Check your email</h1>
+
+        <p class="lede">You've been sent another email with a link to finish your application.</p>
+
+    </div>
+  </div>
+
+</main>
+{% endblock %}
