@@ -36,7 +36,6 @@ router.get('/start/start-or-resume', function (req, res) {
   })
 })
 
-
 // Before you begin ===========================================================
 
 router.post('/returncode/before-you-begin', function (req, res) {
@@ -119,12 +118,13 @@ router.post('/save-and-return/save-option', function (req, res) {
 router.post('/save-and-return/savecheck', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   if(req.body['wants_save_and_return']=="no"){ // think you need square bracket for radios
-    // show company page
+    // show task-list
       res.render(folder + '/check/task-list',{
           "formAction":"/"+ folder + "/check/declaration",
           "permit":req.session.permit // always send permit object to page
       })
   } else {
+        // show email-or-phone
       res.render(folder + '/save-and-return/email-or-phone',{
           "formAction":"/"+ folder + "/save-and-return/confirm",
           "permit":req.session.permit // always send permit object to page
@@ -152,6 +152,14 @@ router.post('/save-and-return/sent', function (req, res) {
 
 // Read rules ===================================================================
 
+router.post('/read-rules/index', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/read-rules/index',{
+      "formAction":"/"+ folder + "/check/task-list", 
+      "permit":req.session.permit,
+      "backToOverview":req.body["backToOverview"]  // tracks if page journey is from overview
+  })
+})
 
 // Pre-app ===================================================================
 
@@ -189,7 +197,7 @@ router.post('/screening/conservation-screening', function (req, res) {
 router.post('/contact/contact-details', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   if(req.body["backToOverview"]=="1"){
-    res.redirect('/'+folder + '/check/overview')
+    res.redirect('/'+folder + '/check/task-list')
   } else {
     res.render(folder + '/contact/contact-details',{
         "formAction":"/"+ folder + "/check/overview",
@@ -201,7 +209,7 @@ router.post('/contact/contact-details', function (req, res) {
 // route for link from overview
 router.get('/contact/contact-details', function (req, res) {
   res.render(folder + '/contact/contact-details',{
-      "formAction":"/"+ folder + "/check/overview",
+      "formAction":"/"+ folder + "/check/task-list",
       "permit":req.session.permit // always send permit object to page
   })
 })
