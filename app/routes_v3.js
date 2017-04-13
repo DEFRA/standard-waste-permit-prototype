@@ -197,39 +197,20 @@ router.get('/contact/contact-details', function (req, res) {
 })
 
 
-// Application overview ======================================================
-
-router.post('/check/overview', function (req, res) {
-  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
-  res.render(folder + '/check/overview',{
-      "formAction":"/"+ folder + "/check/declaration",
-      "permit":req.session.permit // always send permit object to page
-  })
-})
-
-// Back to overview via link is a GET
-router.get('/check/overview', function (req, res) {
-  res.render(folder + '/check/overview',{
-      "formAction":"/"+ folder + "/check/declaration",
-      "permit":req.session.permit // always send permit object to page
-  })
-})
-
-// Declaration ================================================================
-
-router.post('/check/declaration', function (req, res) {
-  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
-  res.render(folder + '/check/declaration',{
-      "formAction":"/"+ folder + "/pay/payment-method",
-      "permit":req.session.permit // always send permit object to page
-  })
-})
-
-
 // Site ===================================================================
 
-// Link from overview will be a get
-router.get('/site/site-name', function (req, res) {
+// site/site-name > /site/grid-reference > /address/postcode > /address/address 
+// > /evidence/check-site-plan > /check/task-list
+
+// Add new page site/reason. Link from task-list will be a get
+router.get('/site/reason', function (req, res) {
+  res.render(folder + '/site/reason',{
+      "formAction":"/"+ folder + "/site/site-name",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+router.post('/site/site-name', function (req, res) {
   res.render(folder + '/site/site-name',{
       "formAction":"/"+ folder + "/site/grid-reference",
       "permit":req.session.permit // always send permit object to page
@@ -280,15 +261,46 @@ router.get('/address/address-manual', function (req, res) {
 router.post('/evidence/check-site-plan', function (req, res) {
   // check if site plan is needed for this permit 
   if(req.session.permit['sitePlanNeeded'] == "No"){
-      res.redirect('/'+folder + '/check/overview')
+      res.redirect('/'+folder + '/check/task-list')
   } else {
       for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session
       res.render(folder + '/evidence/upload-site-plan',{
-          "formAction":"/"+ folder + "/check/overview",
+          "formAction":"/"+ folder + "/check/task-list",
           "permit":req.session.permit // always send permit object to page
       })
   }
 })
+
+
+// Application overview ======================================================
+
+router.post('/check/overview', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/check/overview',{
+      "formAction":"/"+ folder + "/check/declaration",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+// Back to overview via link is a GET
+router.get('/check/overview', function (req, res) {
+  res.render(folder + '/check/overview',{
+      "formAction":"/"+ folder + "/check/declaration",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+// Declaration ================================================================
+
+router.post('/check/declaration', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/check/declaration',{
+      "formAction":"/"+ folder + "/pay/payment-method",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+
 
 
 // Fire prevention plan ========================================================
