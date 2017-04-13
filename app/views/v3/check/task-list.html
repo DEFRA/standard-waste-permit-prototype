@@ -66,7 +66,11 @@
               {% if permit.contactName!=null %} <strong class="task-completed" id="contact-details-completed">Completed</strong> {% endif %}
             </li>
              <li class="task-list-item">
-              <a class="task-name" href="/{{folder}}/site/reason" aria-describedby="site-name-completed">
+              <a class="task-name" href="{% if permit.siteName!=null %}
+                /{{folder}}/site/check-your-answers
+              {% else %}
+                /{{folder}}/site/reason
+              {% endif %}" aria-describedby="site-name-completed">
                 Site name and location
               </a>
               {% if permit.siteName!=null %} <strong class="task-completed" id="site-name-completed">Completed</strong> {% endif %}
