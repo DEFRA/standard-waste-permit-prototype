@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% set title = "Read rules" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+     <h1 class="heading-large">{{title}}</h1>
+
+    <form method="post" action="{{formAction}}">
+
+{% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/custom_inc/permit-list-json.html" import permits %}
+      
+        {% for pNumber, pData in permits %}
+          {% if pNumber==chosenPermitID %}
+
+
+             <h2 class="heading-medium">
+                Things you need to check:
+              </h2>
+
+               <ul class="list list-border">
+              <!-- comply with rules -->
+               <li>that you can comply with the <a href="{{pData.guidanceURL}}" target="_blank">rules for {{pData.code}}</a></li>
+              <!-- comply with risk assessment -->
+               <li>that you can comply with the <a href="{{pData.Guidance_URL}}" target="_blank">risk assessment</a></li>
+
+              <!-- conditional on permit  -->
+                {% if pData.friendlyWeight!="" %}
+                  <li>that your operation meets the {{ pData.friendlyWeight | lower }}</li>
+                {% endif %}
+                
+                {% if pData.locationRules!="No" %}
+                  <li>check the site meets the location rules:
+                    
+                    <details>
+                      <summary><span class="summary">Site location rules</span></summary>
+                      <div class="panel panel-border-narrow">
+                        <ul class="list list-bullet location-list">
+                          {{ pData.locationRules | replace("*", "<li>") | safe }}
+                        </ul>
+                      </div>
+                    </details>
+
+                  </li>
+                {% endif %}
+      
+                </ul>
+
+
+{% endif %}
+{% endfor %}
+
+
+
+        <div class="form-group">
+          <input type="submit" class="button" value="I accept these rules">
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</main>
+{% endblock %}

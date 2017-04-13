@@ -150,6 +150,7 @@ router.post('/save-and-return/sent', function (req, res) {
 
 // Task-list ===================================================================
 
+// Read rules ===================================================================
 
 
 // Pre-app ===================================================================
@@ -157,14 +158,14 @@ router.post('/save-and-return/sent', function (req, res) {
 router.post('/preapp/preapp-discussion', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/preapp/preapp-discussion',{
-      "formAction":"/"+ folder + "/screening/conservation-screening", // changed from /operator/site-operator
+      "formAction":"/"+ folder + "/check/task-list", 
       "permit":req.session.permit // always send permit object to page
   })
 })
 
 router.get('/preapp/preapp-discussion', function (req, res) {
   res.render(folder + '/preapp/preapp-discussion',{
-      "formAction":"/"+ folder + "/screening/conservation-screening",
+      "formAction":"/"+ folder + "/check/task-list",
       "permit":req.session.permit,
       "backToOverview":req.query["ov"]  // tracks if page journey is from overview
   })
@@ -176,7 +177,7 @@ router.get('/preapp/preapp-discussion', function (req, res) {
 router.post('/screening/conservation-screening', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/screening/conservation-screening',{
-      "formAction":"/"+ folder + "/contact/contact-details", 
+      "formAction":"/"+ folder + "/check/task-list", 
       "permit":req.session.permit,
       "backToOverview":req.body["backToOverview"]  // tracks if page journey is from overview
   })

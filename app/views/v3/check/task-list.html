@@ -32,7 +32,7 @@
           <ul class="task-list-items">
              <!-- 'comply with the rules' section from selectpermit/what-need-to-apply -->
              <li class="task-list-item">
-              <a class="task-name" href="#" aria-describedby="read-rules">
+              <a class="task-name" href="/{{folder}}/read-rules/" aria-describedby="read-rules">
                 Read rules
               </a>
               {% if permit.readrules!=null %} <strong class="task-completed" id="read-rules">Completed</strong> {% endif %}
@@ -44,7 +44,7 @@
               {% if permit.preAppDiscussion!=null %} <strong class="task-completed" id="preapp-completed">Completed</strong> {% endif %}
             </li>
             <li class="task-list-item">
-              <a class="task-name" href="#" aria-describedby="screening-completed">
+              <a class="task-name" href="/{{folder}}/screening/conservation-screening" aria-describedby="screening-completed">
                 Request nature and heritage conservation check
               </a>
               {% if permit.screening!=null %} <strong class="task-completed" id="screening-completed">Completed</strong> {% endif %}
