@@ -30,15 +30,17 @@
             <span class="task-list-section-number">1. </span> Before you apply
           </h2>
           <ul class="task-list-items">
-             <!-- 'comply with the rules' section from selectpermit/what-need-to-apply -->
              <li class="task-list-item">
-              <a class="task-name" href="/{{folder}}/read-rules/" aria-describedby="read-rules">
+              <a class="task-name" href="/{{folder}}/read-rules/index" aria-describedby="read-rules">
                 Read rules
               </a>
-              {% if permit.readrules!=null %} <strong class="task-completed" id="read-rules">Completed</strong> {% endif %}
+              <!-- use data variable from read-rules page? -->
+              {% if data.readRules=="yes" %} 
+              <strong class="task-completed" id="read-rules">Completed</strong> 
+              {% endif %}
             </li>
             <li class="task-list-item">
-              <a class="task-name" href="/{{folder}}/preapp/preapp-discussion?ov=1" aria-describedby="preapp-completed">
+              <a class="task-name" href="/{{folder}}/preapp/preapp-discussion" aria-describedby="preapp-completed">
                 Discuss pre-application
               </a>
               {% if permit.preAppDiscussion!=null %} <strong class="task-completed" id="preapp-completed">Completed</strong> {% endif %}
@@ -58,10 +60,9 @@
           </h2>
           <ul class="task-list-items">
             <li class="task-list-item">
-              <a class="task-name" href="/{{folder}}/contact/contact-details?ov=1" aria-describedby="contact-details-completed">
+              <a class="task-name" href="/{{folder}}/contact/contact-details" aria-describedby="contact-details-completed">
                 Your contact details 
               </a>
-              <!--  UPDATE SO THAT if permit.contactName + permit.contactTelephone + permit.contactEmail -->
               {% if permit.contactName!=null %} <strong class="task-completed" id="contact-details-completed">Completed</strong> {% endif %}
             </li>
              <li class="task-list-item">
@@ -130,18 +131,6 @@
                 Submit and pay
               </a>
               {% if permit.siteName!=null %} <strong class="task-completed" id="submit-and-pay">Completed</strong> {% endif %}
-            </li>
-            <li class="task-list-item">
-              <a class="task-name" href="/{{folder}}/" aria-describedby="decision">
-                Wait for a decision
-              </a>
-              {% if permit.siteName!=null %} <strong class="task-completed" id="decision">Completed</strong> {% endif %}
-            </li>
-            <li class="task-list-item">
-              <a class="task-name" href="/{{folder}}/" aria-describedby="get-permit">
-                Get permit
-              </a>
-              {% if permit.siteName!=null %} <strong class="task-completed" id="get-permit">Completed</strong> {% endif %}
             </li>
           </ul>
         </li>

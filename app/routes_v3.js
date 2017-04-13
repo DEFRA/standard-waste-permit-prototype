@@ -132,6 +132,14 @@ router.post('/save-and-return/savecheck', function (req, res) {
   }
 })
 
+router.post('/check/task-list', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/check/task-list',{
+    "formAction":"/"+ folder + "/fix-path-later",
+    "permit":req.session.permit // always send permit object to page
+  })
+})
+
 router.post('/save-and-return/confirm', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/save-and-return/confirm',{
@@ -152,65 +160,39 @@ router.post('/save-and-return/sent', function (req, res) {
 
 // Read rules ===================================================================
 
-router.post('/read-rules/index', function (req, res) {
-  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+router.get('/read-rules/index', function (req, res) {
   res.render(folder + '/read-rules/index',{
       "formAction":"/"+ folder + "/check/task-list", 
-      "permit":req.session.permit,
-      "backToOverview":req.body["backToOverview"]  // tracks if page journey is from overview
+      "permit":req.session.permit
   })
 })
 
 // Pre-app ===================================================================
 
-router.post('/preapp/preapp-discussion', function (req, res) {
-  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
-  res.render(folder + '/preapp/preapp-discussion',{
-      "formAction":"/"+ folder + "/check/task-list", 
-      "permit":req.session.permit // always send permit object to page
-  })
-})
-
 router.get('/preapp/preapp-discussion', function (req, res) {
   res.render(folder + '/preapp/preapp-discussion',{
       "formAction":"/"+ folder + "/check/task-list",
-      "permit":req.session.permit,
-      "backToOverview":req.query["ov"]  // tracks if page journey is from overview
+      "permit":req.session.permit
   })
 })
 
 
 // Screening =================================================================
 
-router.post('/screening/conservation-screening', function (req, res) {
-  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+router.get('/screening/conservation-screening', function (req, res) {
   res.render(folder + '/screening/conservation-screening',{
       "formAction":"/"+ folder + "/check/task-list", 
-      "permit":req.session.permit,
-      "backToOverview":req.body["backToOverview"]  // tracks if page journey is from overview
+      "permit":req.session.permit
   })
 })
 
 
 // Contact ===================================================================
 
-router.post('/contact/contact-details', function (req, res) {
-  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
-  if(req.body["backToOverview"]=="1"){
-    res.redirect('/'+folder + '/check/task-list')
-  } else {
-    res.render(folder + '/contact/contact-details',{
-        "formAction":"/"+ folder + "/check/overview",
-        "permit":req.session.permit // always send permit object to page
-    })
-  }
-})
-
-// route for link from overview
 router.get('/contact/contact-details', function (req, res) {
   res.render(folder + '/contact/contact-details',{
-      "formAction":"/"+ folder + "/check/task-list",
-      "permit":req.session.permit // always send permit object to page
+      "formAction":"/"+ folder + "/check/task-list", 
+      "permit":req.session.permit
   })
 })
 
