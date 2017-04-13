@@ -7,7 +7,7 @@ var router = express.Router()
 var folder = "v3";
 
 router.use(function (req, res, next) {
-  // set a folder and store oin locals
+  // set a folder and store in locals
   // this can then be used in pages as {{folder}}
   res.locals.folder=folder
   
@@ -595,6 +595,14 @@ router.post('/search-permit/index', function (req, res) {
       "searchTerm":req.body.searchTerm 
     })
 })
+
+// Send permit data in session to every page ==================================
+router.all('*', function (req, res, next) {
+  // set a folder and store in locals
+  // this can then be used in pages as {{folder}}
+  res.locals.permit=req.session.permit
+  next()
+});
 
 
 module.exports = router
