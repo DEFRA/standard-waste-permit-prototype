@@ -34,19 +34,26 @@
               <a class="task-name" href="/{{folder}}/read-rules/index" aria-describedby="read-rules">
                 Read rules
               </a>
-              <!-- use data variable from read-rules page? -->
-              {% if data.readRules=="yes" %} 
+              {% if permit.readRules %} 
               <strong class="task-completed" id="read-rules">Completed</strong> 
               {% endif %}
             </li>
             <li class="task-list-item">
-              <a class="task-name" href="/{{folder}}/preapp/preapp-discussion" aria-describedby="preapp-completed">
+              <a class="task-name" href="{% if permit.preAppDiscussion!=null %}
+                /{{folder}}/preapp/check-your-answers
+              {% else %}
+                /{{folder}}/preapp/preapp-discussion
+              {% endif %}" aria-describedby="preapp-completed">
                 Discuss pre-application
               </a>
               {% if permit.preAppDiscussion!=null %} <strong class="task-completed" id="preapp-completed">Completed</strong> {% endif %}
             </li>
             <li class="task-list-item">
-              <a class="task-name" href="/{{folder}}/screening/conservation-screening" aria-describedby="screening-completed">
+             <a class="task-name" href="{% if permit.screening!=null %}
+                /{{folder}}/screening/check-your-answers
+              {% else %}
+                /{{folder}}/screening/conservation-screening
+              {% endif %}" aria-describedby="screening-completed">
                 Request nature and heritage conservation check
               </a>
               {% if permit.screening!=null %} <strong class="task-completed" id="screening-completed">Completed</strong> {% endif %}
@@ -60,7 +67,11 @@
           </h2>
           <ul class="task-list-items">
             <li class="task-list-item">
-              <a class="task-name" href="/{{folder}}/contact/contact-details" aria-describedby="contact-details-completed">
+              <a class="task-name" href="{% if permit.contactName!=null %}
+                /{{folder}}/contact/check-your-answers
+              {% else %}
+                /{{folder}}/contact/contact-details
+              {% endif %}" aria-describedby="contact-details-completed">
                 Your contact details 
               </a>
               {% if permit.contactName!=null %} <strong class="task-completed" id="contact-details-completed">Completed</strong> {% endif %}
@@ -76,35 +87,54 @@
               {% if permit.siteName!=null %} <strong class="task-completed" id="site-name-completed">Completed</strong> {% endif %}
             </li>
                <li class="task-list-item">
-              <a class="task-name" href="/{{folder}}/evidence/industry-scheme" aria-describedby="industry-scheme-completed">
+              <a class="task-name" href="{% if permit.industryScheme!=null %}
+                /{{folder}}/evidence/industry-check-answers
+              {% else %}
+                /{{folder}}/evidence/industry-scheme
+              {% endif %}" aria-describedby="industry-scheme-completed">
                 Prove technical ability
               </a>
               {% if permit.industryScheme!=null %} <strong class="task-completed" id="industry-scheme-completed">Completed</strong> {% endif %}
             </li>
             <li class="task-list-item">
-              <a class="task-name" href="/{{folder}}/evidence/management-system" aria-describedby="management-system-completed">
+              <a class="task-name" href="{% if permit.manSys!=null %}
+                /{{folder}}/evidence/management-check-answers
+              {% else %}
+                /{{folder}}/evidence/management-system
+              {% endif %}" aria-describedby="management-system-completed">
                 List management systems
               </a>
               {% if permit.manSys!=null %} <strong class="task-completed" id="management-system-completed">Completed</strong> {% endif %}
             </li>
             <li class="task-list-item">
-              <a class="task-name" href="/{{folder}}/operator/reason" aria-describedby="site-operator-completed">
+            <a class="task-name" href="{% if permit.operatorType!=null %}/{{folder}}/operator/check-your-answers
+              {% else %}
+                /{{folder}}/operator/reason
+              {% endif %}" aria-describedby="site-operator-completed">
                 Operator details
               </a>
               {% if permit.operatorType!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong> {% endif %}
             </li>
             </li>
               <li class="task-list-item">
-              <a class="task-name" href="/evidence/declare-offences" aria-describedby="offences-completed">
+            <a class="task-name" href="{% if permit.offences!=null %}
+                /{{folder}}/evidence/offences-check-answers
+              {% else %}
+                /{{folder}}/evidence/declare-offences
+              {% endif %}" aria-describedby="offences-completed">
                 Declare any relevant offences
               </a>
               {% if permit.offences!=null %} <strong class="task-completed" id="offences-completed">Completed</strong> {% endif %}
             </li>
             <li class="task-list-item">
-              <a class="task-name" href="/evidence/bankruptcy-insolvency" aria-describedby="bankruptcy-insolvency-completed">
+              <a class="task-name" href="{% if permit.bankruptcyInsolvency!=null %}
+                /{{folder}}/evidence/bankruptcy-check-answers
+              {% else %}
+                /{{folder}}/evidence/bankruptcy-insolvency
+              {% endif %}" aria-describedby="bankruptcy-insolvency-completed">
                 Tell us about any bankruptcy or insolvency
               </a>
-              {% if permit.bankruptcyInsolvency!=null %} <strong class="task-completed" id="offences-completed">Completed</strong> {% endif %}
+              {% if permit.bankruptcyInsolvency!=null %} <strong class="task-completed" id="bankruptcy-insolvency-completed">Completed</strong> {% endif %}
             </li>
    
     {% for pNumber, pData in permits %}
@@ -112,7 +142,11 @@
           <!-- FIRE PREVENTION PLAN ############################################################## -->
           {% if pData.firePlanNeeded=="No" %}
               <li class="task-list-item">
-                <a class="task-name" href="/{{folder}}/evidence/upload-fire-plan" aria-describedby="fireplan-completed">
+                 <a class="task-name" href="{% if permit.firePlanFilename!=null %}
+                /{{folder}}/evidence/fire-plan-check-answers
+              {% else %}
+                /{{folder}}/evidence/upload-fire-plan
+              {% endif %}" aria-describedby="fireplan-completed">
                   Upload fire prevention plan
                 </a>
                 {% if permit.firePlanFilename!==null %} <strong class="task-completed" id="fireplan-completed">Completed</strong> {% endif %}
@@ -131,10 +165,10 @@
           </h2>
           <ul class="task-list-items">
              <li class="task-list-item">
-              <a class="task-name" href="/{{folder}}/" aria-describedby="submit-and-pay">
+              <a class="task-name" href="/{{folder}}/check/declaration" aria-describedby="submit-and-pay">
                 Submit and pay
               </a>
-              {% if permit.siteName!=null %} <strong class="task-completed" id="submit-and-pay">Completed</strong> {% endif %}
+              {% if permit.xxxxxxxx!=null %} <strong class="task-completed" id="submit-and-pay">Completed</strong> {% endif %}
             </li>
           </ul>
         </li>
