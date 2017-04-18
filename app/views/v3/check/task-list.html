@@ -137,10 +137,8 @@
               {% if permit.bankruptcyInsolvency!=null %} <strong class="task-completed" id="bankruptcy-insolvency-completed">Completed</strong> {% endif %}
             </li>
    
-    {% for pNumber, pData in permits %}
-      {% if pNumber==permit.chosenPermitID %}
           <!-- FIRE PREVENTION PLAN ############################################################## -->
-          {% if pData.firePlanNeeded=="No" %}
+          {% if permit.firePlanNeeded=="Yes" %}
               <li class="task-list-item">
                  <a class="task-name" href="{% if permit.firePlanFilename!=null %}
                 /{{folder}}/evidence/fire-plan-check-answers
@@ -153,8 +151,6 @@
               </li>
           {% endif %}
 
-      {% endif %}
-    {% endfor %}  
 
           </ul>
         </li>
