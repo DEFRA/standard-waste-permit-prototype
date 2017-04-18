@@ -306,9 +306,16 @@ router.get('/evidence/management-system', function (req, res) {
 // Operator ===================================================================
 
 // Add new page site/reason. Link from task-list will be a get
-router.get('/operator/reason', function (req, res) {
-  res.render(folder + '/operator/reason',{
-      "formAction":"/"+ folder + "/operator/site-operator",
+//router.get('/operator/reason', function (req, res) {
+//  res.render(folder + '/operator/reason',{
+//      "formAction":"/"+ folder + "/operator/site-operator",
+//      "permit":req.session.permit // always send permit object to page
+//  })
+//})
+
+router.get('/operator/site-operator', function (req, res) {
+  res.render(folder + '/operator/site-operator',{
+      "formAction":"/"+ folder + "/operator/checkoperator",
       "permit":req.session.permit // always send permit object to page
   })
 })
