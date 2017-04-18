@@ -14,29 +14,28 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-
      <h1 class="heading-large">{{title}}</h1>
 
     <form method="post" action="{{formAction}}">
 
 
              <h2 class="heading-medium">
-                Things you need to check:
+                You need to check that your operation:
               </h2>
               <!-- list-bullet instead? -->
                <ul class="list list-border">
               <!-- comply with rules -->
-               <li>that you can comply with the <a href="{{permit.guidanceURL}}" target="_blank">rules for {{permit.permitCode}}</a></li>
+               <li>complies with the <a href="{{permit.guidanceURL}}" target="_blank">rules for {{permit.permitCode}}</a></li>
               <!-- comply with risk assessment -->
-               <li>that you can comply with the <a href="{{permit.guidance_URL}}" target="_blank">risk assessment</a></li>
+               <li>complies with the <a href="{{permit.guidance_URL}}" target="_blank">risk assessment</a></li>
 
               <!-- conditional on permit  -->
                 {% if permit.friendlyWeight!="" %}
-                  <li>that your operation meets the {{ permit.friendlyWeight | lower }}</li>
+                  <li>handles {{ permit.friendlyWeight | lower }}</li>
                 {% endif %}
                 
                 {% if permit.locationRules!="No" %}
-                  <li>check the site meets the location rules:
+                  <li>meets the location rules:
                     
                     <details>
                       <summary><span class="summary">Site location rules</span></summary>
