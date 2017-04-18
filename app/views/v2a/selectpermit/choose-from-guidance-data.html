@@ -1,7 +1,7 @@
 {% extends "layout_unbranded.html" %}
 
 {% block page_title %}
-	Apply for a standard rules waste permit
+	Standard rules: environmental permitting
 {% endblock %}
 
 {% block content %}
@@ -169,6 +169,32 @@ body.search #global-header .search-toggle {
     padding: 10px 60px 10px 15px;
     position: relative;
 }
+.data-exchange-protocol h3.group-document-list-item-title {
+    font-size: 19px;
+    line-height: 1.31579;
+}
+.group-document-list-item-attributes li {
+    font-size: 14px;
+    line-height: 1.42857;
+}
+.group-document-list-item {
+    overflow: hidden;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #bfc1c3;
+}
+.data-exchange-protocol h3.group-title {
+    margin-top: 45px;
+    margin-bottom: 20px;
+		font-size: 27px;
+		line-height: 1.11111;
+}
+p.applylink{
+	margin-bottom:0.3em;
+}
+
+
+
 </style>
 <header class="page-header">
 	<script src="/public/javascripts/jquery-1.11.1.min.js"></script>
@@ -193,8 +219,8 @@ body.search #global-header .search-toggle {
                         <li> <a class="" href="/government/how-government-works">How government works</a> </li>
                         <li> <a class="" href="/government/get-involved">Get involved</a> </li>
                         <li class="clear-child"> <a class="" href="/government/policies">Policies</a> </li>
-                        <li> <a class="" href="/government/publications">Publications</a> </li>
-                        <li> <a class="" href="/government/publications?publication_filter_option=consultations">Consultations</a> </li>
+                        <li> <a class="" href="https://www.gov.uk/government/publications">Publications</a> </li>
+                        <li> <a class="" href="https://www.gov.uk/government/publications?publication_filter_option=consultations">Consultations</a> </li>
                         <li> <a class="" href="/government/statistics">Statistics</a> </li>
                         <li> <a class="" href="/government/announcements">Announcements</a> </li>
                     </ul>
@@ -203,70 +229,109 @@ body.search #global-header .search-toggle {
         </div>
     </div>
 </header>
+
+
+{% from folder+"/custom_inc/category-list-json.html" import categories %}
+{% from folder+"/custom_inc/permit-list-json.html" import permits %}
+
+
 <main id="content" role="main" class="data-exchange-protocol">
 	<div class="heading">
-		<p class="type font-medium">Environmental management – guidance</p>
-		<h1 class="bold-large">Apply for a standard rules waste permit</h1>
+		<p class="type font-medium">Collection</p>
+		<h1 class="bold-large">Standard rules: environmental permitting</h1>
 	</div>
-	<p class="lede">How to apply for a standard rules waste permit and comply with the rules for the permits.</p>
+	<p class="lede">For each activity there is a set of rules, guidance on how to comply with the rules and a risk assessment.</p>
 	<div class="grid-row">
 		<div class="column-third">
 			<nav class="contextual-info" id="page-navigation">
 				<h1>Contents</h1>
 				<ol class="dash-list">
-					<li><a href="#howapply1">How to apply</a></li>
-					<li><a href="#gencond1">General conditions for standard rules waste permits</a></li>
+
+					{% for c in categories %}
+								<li><a href="#{{ c.friendlyCategory | replace(" ", "-") | replace(",", "") | lower }}">{{c.friendlyCategory}}</a></li>
+					{% else %}
+						<p>No data</p>
+					{% endfor %}
+					
 				</ol>
 			</nav>
 		</div>
 		<div class="column-two-thirds">
-      
-      <section id="gencond1">
-      		<article>
-            <p>You can apply online for a standard rules waste permit. Check the list of <a href="https://www.gov.uk/government/collections/standard-rules-environmental-permitting">standard rules permits</a> to find out whether your activity is covered by standard rules. If you can't meet the conditions for  standard rules you will need to apply for a <a href="https://www.gov.uk/guidance/a1-installations-environmental-permits#apply-for-a-bespoke-permit">bespoke permit</a>. You must apply for a bespoke permit by email or post.</p>
-      		</article>
-      <section>      
-      
-      
+			
+			
 
-
-<section id="howapply1">
-		<article>
-			<h2 class="heading-medium">How to apply</h2>
-			<p>When you select a permit at the start of your application, we'll tell you what documents you need to upload as evidence.</p>
-
-			<p class="call-to-action">
-					<a href="/{{folder}}/start/start-or-resume">Apply for a standard rules waste permit</a>
-			</p>
-      
-      <h3 class="heading-small">Before you start</h3>
-      <p>You must read the guidance to:</p>
-      <ul class="list list-bullet">
-        <li>decide if the permit applies to your operations</li>
-        <li>check you can meet all the limits and conditions set</li>
-      </ul>
-
-			<h3 class="heading-small">Other ways to apply</h3>
-        <p>Contact our National Customer Contact Centre</br>
-          <a href="mailto:enquiries@environment-agency.gov.uk">enquiries@environment-agency.gov.uk</a></br>
-          Telephone 03708 506 506</br>
-          Monday to Friday, 8am to 6pm
-        </p>
-  
+			
+<section id="intro">
+		<article>		
+			<p>Check if you need a <a href="https://www.gov.uk/government/publications/environmental-permit-nature-and-heritage-conservation-screening">conservation risk assessment</a> before you submit your permit application.</p>
   </article>
 <section>
+	
+				{% for c in categories %}
+				<section id="biological">
+						<article>
+							<h3 class="group-title" id="{{ c.friendlyCategory | replace(" ", "-") | replace(",", "") | lower }}">{{c.friendlyCategory}}</h3>
+										<ol class="group-document-list">
 
-<section id="gencond1">
-		<article>
-			<h2 class="heading-medium">General conditions for standard rules waste permits</h2>
-      <p>Before you apply you need to be aware that:</p>
-      <ul class="list list-bullet">
-        <li>you cannot vary the rules and you have no right of appeal against them</li>
-        <li>if you want to change your operations so a standard permit no longer works for your operation you’ll have to apply to make it a bespoke permit instead</li>
-        <li>if there is a change in your local environment after your permit has been issued (for example due to a change in the definition of a groundwater source protection zone), you may need to upgrade the operation to a standard sufficient for the changed environment, or change to a bespoke permit</li>
-      </ul>
-		</article>
-<section>
+							{% for pNumber, pData in permits %}
+
+							  {% if pData.friendlyCategory==c.friendlyCategory %}
+							    {% if pData.canApplyOnPaper=="Yes" %}
+							    
+							      {% if pData.friendlyWeight!="" %}
+							        {% set weight=" - "+pData.friendlyWeight %}
+							      {% else %}
+							        {% set weight="" %}
+							      {% endif %}
+
+							      {% set label = [
+							        '<span class="permitName">',
+							        pData.friendlyName,
+							        weight | lower,
+							        '</span> ',
+							        '<span class="permitCode">',
+							        pData.code,
+							        '</span>'
+							        ] %}
+							    
+							      {% if pData.digitalMVP=="Yes?" %}
+
+												<li class="group-document-list-item">
+						              <h3 class="group-document-list-item-title">
+						                <a href="{{pData.guidanceURL}}">{{ label | join | safe }}</a>
+						              </h3>
+						 						 <p class="applylink">
+						 							 <a href="/{{folder}}/selectpermit/check-permit?chosenPermitID={{pNumber}}">Apply for permit {{pNumber}}
+						 							 </a>
+						 						 </p>
+						              <ul class="group-document-list-item-attributes">
+						                <li>
+						                  <time datetime="2013-06-07T00:00:00Z">
+						                     7 June 2013
+						                  </time>
+						                </li>
+						                <li>Statutory guidance</li>
+						              </ul>
+						            </li>
+												
+												
+												
+							      {% endif %}
+							        
+							    {% endif %}
+							  {% endif %}
+
+							{% else %}
+							  <p>No data</p>
+							{% endfor %}
+							
+						</ol>
+			 </article>
+		 <section> 
+				{% else %}
+					<p>No data</p>
+				{% endfor %}
+
 
 		</div>
 	</div>
