@@ -203,14 +203,15 @@ router.get('/contact/contact-details', function (req, res) {
 // > /evidence/check-site-plan > /check/task-list
 
 // Add new page site/reason. Link from task-list will be a get
-router.get('/site/reason', function (req, res) {
-  res.render(folder + '/site/reason',{
-      "formAction":"/"+ folder + "/site/site-name",
-      "permit":req.session.permit // always send permit object to page
-  })
-})
+//router.get('/site/reason', function (req, res) {
+//  res.render(folder + '/site/reason',{
+//      "formAction":"/"+ folder + "/site/site-name",
+//      "permit":req.session.permit // always send permit object to page
+//  })
+//})
 
-router.post('/site/site-name', function (req, res) {
+// first site name visit is a get
+router.get('/site/site-name', function (req, res) {
   res.render(folder + '/site/site-name',{
       "formAction":"/"+ folder + "/site/grid-reference",
       "permit":req.session.permit // always send permit object to page
