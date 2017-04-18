@@ -27,7 +27,7 @@
         <!-- Before you apply ############################################################### -->
         <li>
           <h2 class="task-list-section">
-            <span class="task-list-section-number">1. </span> Before you apply
+            <span class="task-list-section-number">1. </span> Before you start
           </h2>
           <ul class="task-list-items">
              <li class="task-list-item">
@@ -80,7 +80,7 @@
               <a class="task-name" href="{% if permit.siteName!=null %}
                 /{{folder}}/site/check-your-answers
               {% else %}
-                /{{folder}}/site/reason
+                /{{folder}}/site/site-name
               {% endif %}" aria-describedby="site-name-completed">
                 Site name and location
               </a>
@@ -109,7 +109,7 @@
             <li class="task-list-item">
             <a class="task-name" href="{% if permit.operatorType!=null %}/{{folder}}/operator/check-your-answers
               {% else %}
-                /{{folder}}/operator/reason
+                /{{folder}}/operator/site-operator
               {% endif %}" aria-describedby="site-operator-completed">
                 Operator details
               </a>
@@ -137,10 +137,8 @@
               {% if permit.bankruptcyInsolvency!=null %} <strong class="task-completed" id="bankruptcy-insolvency-completed">Completed</strong> {% endif %}
             </li>
    
-    {% for pNumber, pData in permits %}
-      {% if pNumber==permit.chosenPermitID %}
           <!-- FIRE PREVENTION PLAN ############################################################## -->
-          {% if pData.firePlanNeeded=="No" %}
+          {% if permit.firePlanNeeded=="Yes" %}
               <li class="task-list-item">
                  <a class="task-name" href="{% if permit.firePlanFilename!=null %}
                 /{{folder}}/evidence/fire-plan-check-answers
@@ -153,8 +151,6 @@
               </li>
           {% endif %}
 
-      {% endif %}
-    {% endfor %}  
 
           </ul>
         </li>
@@ -165,7 +161,7 @@
           </h2>
           <ul class="task-list-items">
              <li class="task-list-item">
-              <a class="task-name" href="/{{folder}}/check/declaration" aria-describedby="submit-and-pay">
+              <a class="task-name" href="/{{folder}}/check/check-answers" aria-describedby="submit-and-pay">
                 Submit and pay
               </a>
               {% if permit.xxxxxxxx!=null %} <strong class="task-completed" id="submit-and-pay">Completed</strong> {% endif %}

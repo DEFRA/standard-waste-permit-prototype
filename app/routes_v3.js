@@ -203,14 +203,15 @@ router.get('/contact/contact-details', function (req, res) {
 // > /evidence/check-site-plan > /check/task-list
 
 // Add new page site/reason. Link from task-list will be a get
-router.get('/site/reason', function (req, res) {
-  res.render(folder + '/site/reason',{
-      "formAction":"/"+ folder + "/site/site-name",
-      "permit":req.session.permit // always send permit object to page
-  })
-})
+//router.get('/site/reason', function (req, res) {
+//  res.render(folder + '/site/reason',{
+//      "formAction":"/"+ folder + "/site/site-name",
+//      "permit":req.session.permit // always send permit object to page
+//  })
+//})
 
-router.post('/site/site-name', function (req, res) {
+// first site name visit is a get
+router.get('/site/site-name', function (req, res) {
   res.render(folder + '/site/site-name',{
       "formAction":"/"+ folder + "/site/grid-reference",
       "permit":req.session.permit // always send permit object to page
@@ -305,9 +306,16 @@ router.get('/evidence/management-system', function (req, res) {
 // Operator ===================================================================
 
 // Add new page site/reason. Link from task-list will be a get
-router.get('/operator/reason', function (req, res) {
-  res.render(folder + '/operator/reason',{
-      "formAction":"/"+ folder + "/operator/site-operator",
+//router.get('/operator/reason', function (req, res) {
+//  res.render(folder + '/operator/reason',{
+//      "formAction":"/"+ folder + "/operator/site-operator",
+//      "permit":req.session.permit // always send permit object to page
+//  })
+//})
+
+router.get('/operator/site-operator', function (req, res) {
+  res.render(folder + '/operator/site-operator',{
+      "formAction":"/"+ folder + "/operator/checkoperator",
       "permit":req.session.permit // always send permit object to page
   })
 })
@@ -474,7 +482,14 @@ router.get('/check-special-cases', function (req, res) {
 
 
 // Check answers ===================================================================
-// Page no longer linked to
+
+router.get('/check/check-answers', function (req, res) {
+  res.render(folder + '/check/check-answers',{
+      "formAction":"/"+ folder + "/pay/payment-method",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
 router.post('/check/check-answers', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/check/check-answers',{

@@ -17,9 +17,7 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
-<p>
-  <a class="back" href="/{{folder}}/check/overview">Back to your application</a>
-</p>
+
 
 <div class="notice" style="margin-bottom: 30px">
   <i class="icon icon-important">
@@ -42,10 +40,14 @@
     <form method="post" action="{{formAction}}" class="form">
 
       <div class="form-group">
-        <input type="submit" class="button" value="Accept and continue">
+        <input type="submit" class="button" value="Accept and continue"> 
+        <span class="resume-link">
+          or <a href="/{{folder}}/check/overview">return to your application</a>
+        </span>
       </div>
 
     </form>
+
 
 </div>
 </div>
