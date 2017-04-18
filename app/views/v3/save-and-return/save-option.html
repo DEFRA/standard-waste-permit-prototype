@@ -10,6 +10,7 @@
 
 <main id="content" role="main">
   {% include "includes/phase_banner_alpha.html" %}
+  
 
   <div class="grid-row">
     <div class="column-two-thirds">
@@ -23,7 +24,7 @@
             Do you want to save your information to return to it later at any time?
           </legend>
 
-          <p>We can send you an email that allows you to save your progress and return your information at any time.</p></p>
+          <p>We can send you an email that allows you to save your progress and return your information at any time.</p>
 
           <div class="form-group">
             <label for="wants_save_and_return_1" class="block-label">
@@ -39,6 +40,8 @@
           </div>
 
         </fieldset>
+        
+        <input type="hidden" name="seenSaveReturn" value="yes">
 
         <div class="form-group">
           <input type="submit" class="button" value="Continue" />

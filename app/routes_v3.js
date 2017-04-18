@@ -97,7 +97,7 @@ router.post('/selectpermit/cost', function (req, res) {
 router.post('/selectpermit/time', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/selectpermit/time',{
-    "formAction":"/"+ folder + "/save-and-return/save-option",
+    "formAction":"/"+ folder + "/check/task-list",   // just to task list
     "chosenPermitID":req.body['chosenPermitID'],
     "permit":req.session.permit // always send permit object to page
   })
@@ -133,11 +133,25 @@ router.post('/save-and-return/save-choice', function (req, res) {
 })
 
 router.post('/check/task-list', function (req, res) {
-  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
-  res.render(folder + '/check/task-list',{
-    "formAction":"/"+ folder + "/fix-path-later",
-    "permit":req.session.permit // always send permit object to page
-  })
+  for(var input in req.body) req.session.permit[input] = req.body[input] // form to session
+  
+  if(req.body['previousPage']=="time"){ 
+    // they've already seen the same and return option so go to task list
+    res.render(folder + '/check/task-list',{
+      "formAction":"/"+ folder + "/NOT-NEEDED",
+      "permit":req.session.permit // always send permit object to page
+    })
+  } else if (req.session.permit['seenSaveReturn']=="yes"){
+    res.render(folder + '/check/task-list',{
+      "formAction":"/"+ folder + "/NOT-NEEDED",
+      "permit":req.session.permit // always send permit object to page
+    })
+  } else {
+    res.render(folder + '/save-and-return/save-option',{ // show save and return pages
+        "formAction":"/"+ folder + "/save-and-return/save-choice",
+        "permit":req.session.permit // always send permit object to page
+    })
+  }
 })
 
 router.post('/save-and-return/confirm', function (req, res) {
@@ -432,7 +446,7 @@ router.get('/check/claim-confidentiality', function (req, res) {
 router.get('/check-special-cases', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session
   
-  var nextPage =  "/check/overview" // the next page after the special case pages with slash
+  var nextPage =  "/check/task-list" // the next page after the special case pages with slash
   
   // check if there is a special case for this permit
   if(req.session.permit['permitID'] == "SR-2009-4"){
