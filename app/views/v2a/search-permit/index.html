@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% set title = "Find waste licences for your business" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_alpha.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+      
+      <form method="post" action="{{formAction}}">
+        
+        <div class="form-group">
+          <label class="form-label" for="contactName">
+            
+            <span class="form-hint">
+              Search for words related to your business activity.<br>
+              For example, cars, biogas, soil or wood.
+            </span>
+          </label>
+          <input class="form-control" id="searchTerm" name="searchTerm" type="text" value="{{searchTerm}}" style="font-size:120%">
+              <input type="submit" class="button" value="Search">
+        </div>
+
+
+      
+      {% from folder+"/custom_inc/all-permit-types-json.html" import permits %}
+
+{% if searchTerm %}
+
+      <h2 class="heading-small">
+      Search results for '{{searchTerm}}'
+      </h2>
+      
+      {% for pNumber, pData in permits %}
+      
+      {% set searchText = pData.title + " " + pData.keywords %}
+      
+        {% if searchTerm | lower in searchText | lower %}
+        
+          <p>
+          <a href="{{ pData.url }}">{{ pData.title }}</a>
+          {{ pData.type }}, {{ pData.subType }} 
+          <span class="font-small">{{ pData.code }}</span>
+          </p>
+          
+        {% endif %}
+        
+      {% else %}
+        <p>No radios</p>
+      {% endfor %}
+      
+{% endif %}
+
+      </form>
+      
+      {% if searchTerm %}
+      
+      <h2 class="heading-small">
+      Register as a waste carrier, broker or dealer
+      </h2>
+        <p>You may need to <a href="https://www.gov.uk/waste-carrier-or-broker-registration">register as a waste carrier, broker or dealer</a> if you:</p>
+        <ul class="list list-bullet">
+          <li>transport waste</li>
+          <li>buy, sell or dispose of waste</li>
+          <li>arrange for someone else to buy, sell or dispose of waste</li>
+        </ul>
+          
+      {% endif %}
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

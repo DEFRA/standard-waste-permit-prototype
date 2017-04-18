@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard waste permit v2a
+{% endblock %}
+
+{% set version = "v2a" %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-xlarge">
+		Apply for a standard waste permit prototype: Alpha
+	  </h1>
+      
+      <p>
+        Protoype of the standard waste permit application journey
+      </p>
+      
+      <h3 class="heading-medium">Version 2a: Pages</h3>
+
+      <p>* New pages</p>
+      <ul class="list list-bullet">
+        
+      <li><a href="/{{version}}/start/index">Guide page on GDS</a></li>
+      <li><a href="/{{version}}/start/start-or-resume">Start or resume your application *</a></li>
+      <li><a href="/{{version}}/returncode/before-you-begin">Before you begin (save and return code) *</a></li>
+      <li><a href="/{{version}}/returncode/continue-application">Returning to this service *</a></li>
+      <li><a href="/{{version}}/selectpermit/permit-category">What do you want the permit for?</a></li>
+      <li><a href="/{{version}}/selectpermit/choose-permit">Select permit</a></li>
+      <li><a href="/{{version}}/selectpermit/check-permit">Check permit</a></li>
+      <li><a href="/{{version}}/selectpermit/what-need-to-apply">What you need</a></li>
+      
+      <li><a href="/{{version}}/preapp/preapp-discussion">Have you discussed your application with us?</a></li>
+
+      <li><a href="/{{version}}/check/overview">Application overview *</a></li>
+      
+      <li><a href="/{{version}}/operator/site-operator">Who will be the operator for the site?</a></li>
+      <li><a href="/{{version}}/operator/company/company-name">What's the company name or registration number?</a></li>
+      <li><a href="/{{version}}/operator/company/check-company-details">Check company details</a></li>
+      
+      <li><a href="/{{version}}/site/site-name">What's the site name?</a></li>
+      <li><a href="/{{version}}/site/grid-reference">Grid reference</a></li>
+      <li><a href="/{{version}}/address/postcode">Site address: postcode</a></li>
+      <li><a href="/{{version}}/address/address">Site address: address</a></li>
+      <li><a href="/{{version}}/address/address-manual">Site address: enter address manually</a></li>
+
+      <li><a href="/{{version}}/contact/contact-details">Who should we contact about this application?</a></li>
+      
+      <li><a href="/{{version}}/evidence/upload-site-plan">Upload your site plan</a></li>
+      <li><a href="/{{version}}/evidence/upload-fire-plan">Upload a fire prevention plan</a></li>
+      <li><a href="/{{version}}/evidence/industry-scheme">Evidence of technical ability</a></li>
+      <li><a href="/{{version}}/evidence/upload-technical-evidence">Upload a technical evidence certificate</a></li>
+      <li><a href="/{{version}}/evidence/management-system">Which management system will you use?</a></li>
+      <li><a href="/{{version}}/evidence/declare-offences">Do you have any offences to declare?</a></li>
+      <li><a href="/{{version}}/evidence/details-of-offence">Details of the offence</a></li>
+      <li><a href="/{{version}}/evidence/bankruptcy-insolvency">Tell us about any bankruptcy or insolvency</a></li>
+      
+      <li><a href="/{{version}}/check/claim-confidentiality">Do you want to claim confidentiality</a></li>
+      
+      <li><a href="/{{version}}/check/declaration">Declaration *</a></li>
+      
+      <li><a href="/{{version}}/pay/payment-method">Choose how you want to pay</a></li>
+      <li><a href="/{{version}}/pay/pay-by-cheque">Pay by cheque</a></li>
+      <li><a href="/{{version}}/pay/pay-by-bank-transfer">Pay by bank transfer</a></li>
+      <li><a href="/{{version}}/pay/enter-card-details">Pay - enter card details</a></li>
+      <li><a href="/{{version}}/pay/confirm-payment">Pay - confirm payment</a></li>
+      
+      <li><a href="/{{version}}/done/index">Confirmation (done) page</a></li>
+      <li><a href="/{{version}}/done/email-confirm">Confirmation email</a></li>
+
+      </ul>
+      
+      <p>Special cases</p>
+      
+      <ul class="list list-bullet">
+        
+        <li><a href="/{{version}}/specialcases/sr-2009-4">SR 2009-4</a> | 
+          <a href="/{{version}}/selectpermit/check-permit?chosenPermitID=SR-2009-4">apply for permit</a></li>
+        
+        <li><a href="/{{version}}/specialcases/sr-2009-8">SR 2009-8</a> | 
+          <a href="/{{version}}/selectpermit/check-permit?chosenPermitID=SR-2009-8">apply for permit</a></li>
+          
+        <li><a href="/{{version}}/specialcases/sr-2010-2_3">SR 2010-2 and SR 2010-3</a> | 
+          <a href="/{{version}}/selectpermit/check-permit?chosenPermitID=SR-2010-2">apply for permit SR 2010-2</a></li>
+          
+        <li><a href="/{{version}}/specialcases/sr-2014-2">SR 2014-2</a> | 
+          <a href="/{{version}}/selectpermit/check-permit?chosenPermitID=SR-2014-2">apply for permit</a></li>
+          
+        <li><a href="/{{version}}/specialcases/sr-2015-17_18">SR 2015-17 and SR 2015-18</a> | 
+          <a href="/{{version}}/selectpermit/check-permit?chosenPermitID=SR-2015-17">apply for permit 2015-17</a></li>
+          
+        <li><a href="/{{version}}/specialcases/sr-2015-39">SR 2015-39</a> | 
+          <a href="/{{version}}/selectpermit/check-permit?chosenPermitID=SR-2015-39">apply for permit</a></li>
+
+
+      </ul>
+      
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

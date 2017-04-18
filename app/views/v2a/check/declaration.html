@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% set title = "Declaration" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+  
+  <div class="grid-row overview">
+      <div class="column-two-thirds">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+<p>
+  <a class="back" href="/{{folder}}/check/overview">Back to your application</a>
+</p>
+
+<div class="notice" style="margin-bottom: 30px">
+  <i class="icon icon-important">
+    <span class="visually-hidden">Warning</span>
+  </i>
+  <strong class="bold-small text">
+    You can be prosecuted and fined if you give false or misleading information.
+  </strong>
+</div>
+
+<p class="text">
+  I confirm that:
+</p>
+<ul class="list list-bullet">
+  <li>the information I have given is true</li>
+  <li>the facility will fully meet the rules that I have applied for</li>
+  <li>I am authorised to apply for this permit by the organisation or individual responsible</li>
+</ul>
+
+    <form method="post" action="{{formAction}}" class="form">
+
+      <div class="form-group">
+        <input type="submit" class="button" value="Accept and continue">
+      </div>
+
+    </form>
+
+</div>
+</div>
+
+</main>
+
+{% endblock %}
