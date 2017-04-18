@@ -50,6 +50,8 @@
 <input type="hidden" name="wasteRecoveryPlan" value="{{ pData.wasteRecoveryPlan }}"></input>
 
 
+
+
               {% set num1 = [1,2,3,4,5,6,7,8,9] | random %}
               {% set num2 = [1,2,3,4,5,6,7,8,9,0] | random %}
               {% set num3 = [1,2,3,4,5,6,7,8,9,0] | random %}
@@ -62,16 +64,33 @@
                 <span class="font-medium">{{ pData.code }}</span>
               </h2>
 
-              <p class="lede">Application charge: </p>
+              <p class="lede">Permit costs</p>
 
-              <div class="data">
-                <h2 class="bold-xlarge">{{pData.charge}}</h2>
-              </div>
-                
-              <p class="text" style="margin-top: 20px;">
-              You will also need to pay a fee every year (subsistence charge). We’ll invoice you for that if your application is successful.
+       <table>
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th class="numeric" scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+             <td>Application charge:</td>
+              <td class="numeric">{{pData.charge}}</td>
+            </tr>
+
+            <tr>
+             <td>Subsistence charge:</td>
+              <td class="numeric">?</td>
+            </tr>
+
+          </tbody>
+        </table>
+              
+              <p style="margin-top: 20px;">
+                You need to pay a fee every year (subsistence charge). We’ll invoice you for that if your application is successful.
               </p>
-
               
               {% endif %}
             {% endfor %}

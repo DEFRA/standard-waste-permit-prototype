@@ -482,7 +482,14 @@ router.get('/check-special-cases', function (req, res) {
 
 
 // Check answers ===================================================================
-// Page no longer linked to
+
+router.get('/check/check-answers', function (req, res) {
+  res.render(folder + '/check/check-answers',{
+      "formAction":"/"+ folder + "/pay/payment-method",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
 router.post('/check/check-answers', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/check/check-answers',{

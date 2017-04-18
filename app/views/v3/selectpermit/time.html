@@ -16,26 +16,17 @@
       
       <form method="post" action="{{formAction}}">
       
-      {% import folder+"/custom_inc/macros.html" as macros %}
-      {% from folder+"/custom_inc/permit-list-json.html" import permits %}
-
-
-        {% for pNumber, pData in permits %}
-          {% if pNumber==chosenPermitID %}
               <h2 class="heading-large">
-                {{ pData.friendlyName }}
-                <span class="font-medium">{{ pData.code }}</span>
+                {{ permit.permitName }}
+                <span class="font-medium">{{ permit.permitCode }}</span>
               </h2>
 
                     <p class="lede">Time to wait after applying:</p>
       
             <div class="data">
-              <h2 class="bold-xxlarge">13 weeks</h2>
+              <h2 class="bold-xlarge">up to 13 weeks</h2>
             </div>
-              {% endif %}
-            {% endfor %}
               
-      
       <p class="text">
         It may take longer if the information you give us does not meet our requirements.
       </p>
