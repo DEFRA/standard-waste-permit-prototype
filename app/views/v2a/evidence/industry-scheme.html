@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% set title = "Which qualification does the operator have?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<form method="post" action="{{formAction}}" class="form">
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visually-hidden">Which industry scheme are you using?</legend>
+
+      <!-- industryScheme -->
+
+      <label class="block-label selection-button-radio" for="radio-1">
+        <input id="radio-1" type="radio" name="industryScheme" value="CIWM-WAMITAB">
+        CIWM (Chartered Institute of Wastes Management) and WAMITAB (Waste Management Industry Training and Advisory Board) scheme
+      </label>
+      <label class="block-label selection-button-radio" for="radio-2">
+        <input id="radio-2" type="radio" name="industryScheme" value="ESA-EU">
+        ESA (Environmental Services Association) and EU (Energy and Utility Skills) scheme
+      </label>
+      <label class="block-label selection-button-radio" data-target="provideDetails" for="radio-3">
+        <input id="radio-3" type="radio" name="industryScheme" value="getting-qualification">
+        I’m getting a relevant qualification and I will have it if a permit is issued
+      </label>
+      <div class="panel panel-border-narrow js-hidden" id="provideDetails">
+        <label class="form-label" for="industrySchemeDetails">Provide details:</label>
+        <input class="form-control" name="industrySchemeDetails" type="text" id="industrySchemeDetails">
+      </div>
+      <label class="block-label selection-button-radio" for="radio-4">
+        <input id="radio-4" type="radio" name="industryScheme" value="no-relevant-qualification">
+        I do not have a relevant qualification
+      </label>
+
+    </fieldset>
+  </div>
+  
+  <div class="form-group">
+      <input type="submit" class="button" value="Continue">
+  </div>
+</form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

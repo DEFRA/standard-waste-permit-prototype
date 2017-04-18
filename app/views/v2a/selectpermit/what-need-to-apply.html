@@ -1,0 +1,142 @@
+{% extends "layout.html" %}
+
+{% set title = "What you need" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_alpha.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+      
+      {% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/custom_inc/permit-list-json.html" import permits %}
+      
+        {% for pNumber, pData in permits %}
+          {% if pNumber==chosenPermitID %}
+      
+              <h2 class="heading-medium">
+                Things you need to check or do:
+              </h2>
+              
+              <ul class="list list-border">
+                {% if pData.friendlyWeight!="" %}
+                  <li>that your operation meets the {{ pData.friendlyWeight | lower }}</li>
+                {% endif %}
+                
+                {% if pData.locationRules!="No" %}
+                  <li>check the site meets the location rules:
+                    
+                    <details>
+                      <summary><span class="summary">Site location rules</span></summary>
+                      <div class="panel panel-border-narrow">
+                        <ul class="list list-bullet location-list">
+                          {{ pData.locationRules | replace("*", "<li>") | safe }}
+                        </ul>
+                      </div>
+                    </details>
+
+                  </li>
+                {% endif %}
+                
+                <li>that you can comply with the <a href="{{pData.guidanceURL}}" target="_blank">rules for {{pData.code}}</a></li>
+                <li>that you can comply with the <a href="{{pData.Guidance_URL}}" target="_blank">risk assessment</a></li>
+                <li>get a <a href="https://www.gov.uk/government/publications/environmental-permit-nature-and-heritage-conservation-screening" target="_blank">nature and heritage conservation screening assessment</a></li>
+                
+                {% if pData.specialCase=="Yes" %}
+                  <li>there are extra questions for this permit<br>
+                  </li>
+                  <details>
+                    <summary><span class="summary">Extra questions for this permit</span></summary>
+                    <div class="panel panel-border-narrow">
+                      {{pData.specialCaseText | nl2br | safe }}
+                    </div>
+                  </details>
+                {% endif %}
+                
+              </ul>
+              
+              
+              <h2 class="heading-medium">
+                Documents you need to have:
+              </h2>
+
+              
+              <ul class="list list-border">
+                
+                {% if pData.sitePlanNeeded=="Yes" %}
+              
+                  <li>a site plan prepared to site plan standards
+                    
+                    <details>
+                      <summary><span class="summary">Site plan standards</span></summary>
+                      <div class="panel panel-border-narrow">
+                        {% include folder+"/guidance/siteplan.html" %}
+                      </div>
+                    </details>
+
+                  </li>
+                
+                {% endif %}
+              
+                {% if pData.firePlanNeeded=="Yes" %}
+                  <li>a <a href="https://www.gov.uk/government/publications/fire-prevention-plans-environmental-permits/fire-prevention-plans-environmental-permits" target="_blank">fire plan</a></li>
+                {% endif %}
+                
+                {% if pData.baselineReportRequired=="Yes" %}
+                  <li>a <a href="#" target="_blank">baseline report</a></li>
+                {% endif %}
+                
+                {% if pData.technicalAbilityEvidence=="Yes" %}
+                  <li>evidence of technical ability, for example, qualifications from <abbr title="Waste Management Industry Training and Advisory Board">WAMITAB</abbr>
+                
+                  <details>
+                    <summary><span class="summary">Relevant WAMITAB qualifications</span></summary>
+                    <div class="panel panel-border-narrow">
+                      {{pData.WAMITAB}}
+                    </div>
+                  </details>
+                </li>
+                {% endif %}
+                
+                {% if pData.wasteRecoveryPlan=="Yes" %}
+                  <li>a waste recovery plan</li>
+                {% endif %}
+
+                <li>a written <a href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits" target="_blank">management system</a></li>
+              
+            </ul>
+
+            
+          {% endif %}
+        {% else %}
+          <p>No radios</p>
+        {% endfor %}
+        
+        <div class="panel panel-border-wide" style="margin:2em 0;">
+          <p class="heading-small">
+            You can’t save your application so you need all of these documents before you start.
+          </p>
+        </div>      
+      
+      <form method="post" action="{{formAction}}">
+        <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+            or <a href="/{{folder}}/selectpermit/permit-category">change permit</a>
+        </div>
+      </form>
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

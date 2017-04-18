@@ -1,0 +1,255 @@
+{% extends "layout.html" %}
+
+{% set title = "Check your answers" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+
+<table class="check-your-answers" style="margin-bottom: 30px">
+  <tbody>
+    <tr>
+      <td>Standard rule</td>
+      <td>{{permit.chosenPermitID}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Standard rule</span>
+	      </a>
+	    </td>
+    </tr>
+    <tr>
+      <td>Pre-application reference</td>
+      <td>{{permit.preAppDiscussionRefName}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Pre-application reference</span>
+	      </a>
+	    </td>
+	</tr>
+    <tr>
+      <td>Operator name</td>
+      <td>{{permit.companyName}}
+		</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Operator name</span>
+	      </a>
+	    </td>
+	</tr>
+    <tr>
+      <td>Operator address</td>
+      <td>{{permit.companyAddress}}
+		</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Operator address</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Site name</td>
+      <td>{{permit.siteName}}
+		</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Site name</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Site details</td>
+      <td>{{permit.siteAddress}}
+		</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Site address</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Grid reference for the site</td>
+      <td>{{permit.siteGridRef}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Grid reference for the site</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Who we will contact</td>
+      <td>{{permit.contactName}}<br>
+		  {{permit.contactTelephone}}<br>
+          {{permit.contactEmail}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Grid reference for the site</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Site plan</td>
+      <td>{{permit.sitePlanFilename}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Site plan</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Fire prevention plan</td>
+      <td>{{permit.firePlanFilename}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Fire prevention plan</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Industry scheme</td>
+      <td>{{permit.industryScheme}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Industry scheme</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Technical evidence certificate</td>
+      <td>{{permit.technicalCertificateFile}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Technical evidence certificate</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Management system</td>
+      <td>
+          {{ permit.manSys }}
+      </td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">ISO 14001</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Relevant offences</td>
+      <td>{{permit.offences}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Relevant offences</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Bankruptcy or insolvency</td>
+      <td>{{permit.bankruptcyInsolvency}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Bankruptcy or insolvency</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Confidentiality request</td>
+      <td>{{permit.confidential}}</td>
+	    <td class="change-answer">
+	      <a href="#">
+	        Change <span class="visuallyhidden">Confidentiality request</span>
+	      </a>
+	    </td>
+	</tr>
+  </tbody>
+</table>
+
+
+<h2 class="heading-medium">
+  Declaration
+</h2>
+
+<div class="notice" style="margin-bottom: 30px">
+  <i class="icon icon-important">
+    <span class="visually-hidden">Warning</span>
+  </i>
+  <strong class="bold-small text">
+    You can be prosecuted and fined if you give false or misleading information.
+  </strong>
+</div>
+
+<p class="text">
+  I confirm that:
+</p>
+<ul class="list list-bullet">
+  <li>the information I have given is true</li>
+  <li>the facility will fully meet the rules that I have applied for</li>
+  <li>I am authorised to apply for this permit by the organisation or individual responsible</li>
+</ul>
+
+<h3 class="heading-medium">
+  Use of your information and privacy
+</h3>
+<p>
+  Some of the information you give will be added to a public register.
+</p>
+
+<details style="margin-bottom:2em;">
+  <summary><span class="summary">How we use your personal information</span></summary>
+  <div class="panel panel-border-narrow">
+
+    <p>
+      The Environment Agency runs this service. Their <a href="https://www.gov.uk/government/organisations/environment-agency/about/personal-information-charter
+    ">personal information charter</a> explains how they deal with your information.
+    </p>
+
+    <p>
+      We normally put all the information in your application on a public register unless you've asked us to treat some information as confidential, and we agree with your request.
+    </p>
+
+    <p>
+      We may also use the personal information you give us to:
+    </p>
+    <ul class="list list-bullet">
+      <li>contact you about our customer service</li>
+      <li>send you environmental information, or consult you about environmental issues</li>
+      <li>carry out research on environmental issues</li>
+      <li>prevent someone from breaking environmental laws</li>
+      <li>investigate and take action when someone may have broken environmental laws</li>
+      <li>respond to freedom of information requests (if data protection law allows it)</li>
+    </ul>
+
+
+    <p>
+      We may give your information to our agents or representatives, so they can do any of these things for us. And we may share your information with other organisations if the law says we must.
+    </p>
+
+  </div>
+</details>
+
+
+    <form method="post" action="{{formAction}}" class="form">
+
+      <div class="form-group">
+        <input type="submit" class="button" value="Accept and continue">
+      </div>
+
+    </form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
