@@ -432,7 +432,7 @@ router.get('/check/claim-confidentiality', function (req, res) {
 router.get('/check-special-cases', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session
   
-  var nextPage =  "/check/overview" // the next page after the special case pages with slash
+  var nextPage =  "/check/task-list" // the next page after the special case pages with slash
   
   // check if there is a special case for this permit
   if(req.session.permit['permitID'] == "SR-2009-4"){
