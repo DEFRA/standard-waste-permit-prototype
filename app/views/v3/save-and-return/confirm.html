@@ -18,7 +18,7 @@
  
         <h1 class="heading-large">{{title}}</h1>
 
-        {% if data.user_phone %}
+        {% if permit.saveReturnPhone %}
 
           <fieldset>
             <legend class="visuallyhidden">
@@ -26,7 +26,7 @@
             </legend>
 
             <div class="form-group">
-              <input class="form-control" id="send_email_here" name="send_email_here" type="text" value="{{ data.user_phone }}">
+              <input class="form-control" id="send_email_here" name="send_email_here" type="text" value="{{ permit.saveReturnPhone }}">
             </div>
 
             <br>
@@ -48,7 +48,7 @@
             </legend>
 
             <div class="form-group">
-              <input class="form-control form-control-3-4" id="send_email_here" name="send_email_here" type="text" value="{{ data.user_email }}">
+              <input class="form-control form-control-3-4" id="send_email_here" name="send_email_here" type="text" value="{{ permit.saveReturnEmail }}">
             </div>
 
             <br>
