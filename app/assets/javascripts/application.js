@@ -25,4 +25,10 @@ $(document).ready(function () {
   // to toggle hidden content
   var showHideContent = new GOVUK.ShowHideContent()
   showHideContent.init()
+  
+  // On pages with multiple details, close all when new one is opened
+  $('details.closeOnOpen').click(function(){
+    $('details.closeOnOpen').not(this).removeAttr('open');
+  })
+
 })
