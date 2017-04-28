@@ -1,0 +1,321 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard waste permit v0
+{% endblock %}
+
+<!-- 
+REGEXP replacements for google HTML
+ class="c[0-9][0-9]? ?c?[0-9][0-9]?" 
+</?span>
+
+<h2 class="heading-large"   with  <h2 class="heading-large" class="heading-large"
+-->
+
+{% block content %}
+
+<style>
+  td{vertical-align:top;}
+  table td, table th{padding:0.5em;width:50%;}
+  th,th p{font-weight:bold;background-color:#EDEDED;}
+  th p, td p{margin:0.2em 0;}
+</style>
+
+<main id="content" role="main">
+
+
+      <h1 class="heading-xlarge">
+		Protoype change log
+	  </h1>
+    
+
+      <p>This summarises the main changes we&rsquo;ve made in response to feedback.</p>
+    	<h2 class="heading-large" id="h.py5adz5bbmp0">Version 0 to 1</h2>
+    	<p><a href="index-v0">Version 0</a> was a baseline version based closely on the paper forms.</p>
+    	<p><a href="index-v1">Version 1</a> was our first main iteration for testing</p>
+      
+    	<table>
+    		<tbody>
+    			<tr>
+    				<th colspan="1" rowspan="1">
+    					<p>Summary of change in v1</p>
+    				</th>
+    				<th colspan="1" rowspan="1">
+    					<p>Reason/source</p>
+    				</th>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Moved permit selection to start and give custom data about permit and customised flow for permit</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>Based on GDS <a href="https://www.google.com/url?q=https://check-before-you-start.herokuapp.com/&amp;sa=D&amp;ust=1493385821202000&amp;usg=AFQjCNHay38Jbgid73PKjhiy68CAgOQ0-g">&lsquo;check before you start&rsquo; pattern</a>. Allows users to find out correct rules and cost and also to customise the form based on the things the user needs to do.</p>
+    				</td>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Add payment options based on GOV.UK pay screens</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>Use of GOV.UK Pay platform instead of credit card form allows users to pay online</p>
+    				</td>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Remove &lsquo;confirmations&rsquo; where these are implicit (eg for uploads)</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>Simplify for users</p>
+    				</td>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Remove multiple declarations and contact details for those declarations</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>Simplify for users - based on us seeking legal agreement to allow agent to declare on behalf of the operator.</p>
+    				</td>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Add done page and email confirmation</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>Standard patterns</p>
+    				</td>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Add mockup of GOV.UK guidance page</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>Shows likely journey as we won&rsquo;t be allowed a start page due to volume of transactions</p>
+    				</td>
+    			</tr>
+    		</tbody>
+    	</table>
+
+      
+    	<h2 class="heading-large" id="h.z0gvv6cfwels">Version 1 to 2</h2>
+    	<p><a href="index-v2">Version 2</a> incorporates feedback from the first round of user testing.</p>
+    	<table>
+    		<tbody>
+    			<tr>
+    				<th colspan="1" rowspan="1">
+    					<p>Summary of change in v2</p>
+    				</th>
+    				<th colspan="1" rowspan="1">
+    					<p>Reason/source</p>
+    				</th>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Move &lsquo;harder to complete&rsquo; sections to start before easier to complete sections, such as about the operator.</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>V1 research - users don&rsquo;t think they can complete in one go</p>
+    				</td>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>For cheque and BACS we need to provide payment reminder on or after the &#39;done&#39; page. - Cheque and BACS details added to done screen and email</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>User research and UX best practice - users may forget</p>
+    				</td>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Added permits that may not be available for online application - eg landspreading</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>User feedback - users were not sure why permits were not displayed.</p>
+    				</td>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Add &#39;special case&#39; extra questions for 7 permits</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>Did not have time to add in v1</p>
+    				</td>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Link to full guidance for Fire Prevention Plan, not summary.</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>User feedback, and need to test reaction to full guidance</p>
+    				</td>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Technical competence: correct the guidance to explain there are other ways to meet the competence check.</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p></p>
+    				</td>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Add indicative declaration text</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>Missing in v1</p>
+    				</td>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Add indicative data protection text</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>Missing in v1</p>
+    				</td>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Make site plan conditional for permits that don&rsquo;t need them</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>User feedback</p>
+    				</td>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Change risk assessment text &lsquo;Download and complete&rsquo; to &lsquo;Check that you can comply with the&hellip;&rsquo;</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>User feedback</p>
+    				</td>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Inconsistency between 5mb and 10mb upload limit - switch to 10MB</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>We have feedback on 5MB &lsquo;straw man&rsquo; so switch to higher limit.</p>
+    				</td>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Use Data Returns multiple upload pattern for file uploads</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>User feedback - did not know they could upload more than one</p>
+    				</td>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Management system - wording around &lsquo;Our management system does not meet your guidance&rsquo; - improve wording.</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>User and business feedback - this was a poor conversion from the paper form - still &nbsp;needs further discussion.</p>
+    				</td>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Add &lsquo;BACS&rsquo; text to bank transfer page</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>Users are familiar with &lsquo;BACS&rsquo;</p>
+    				</td>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Could you have the name and address of the site in the email - added to email</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>User feedback.</p>
+    				</td>
+    			</tr>
+    		</tbody>
+    	</table>
+      
+      
+      
+    	<h2 class="heading-large" id="h.ydye94crluma">Version 2 to 2a</h2>
+    	<p><a href="index-v2a">Version 2a</a> adds a save and return code and a task list based on the PAFS code</p>
+      
+    	<table>
+    		<tbody>
+    			<tr>
+    				<th colspan="1" rowspan="1">
+    					<p>Summary of change in v2a</p>
+    				</th>
+    				<th colspan="1" rowspan="1">
+    					<p>Reason/source</p>
+    				</th>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Add a save and return code based on DIT export licences</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>V1 research - users don&rsquo;t think they can complete in one go</p>
+    				</td>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Add a task list of sections to complete based on PAFS pattern</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>V1 research - users don&rsquo;t think they can complete in one go</p>
+    				</td>
+    			</tr>
+    		</tbody>
+    	</table>
+      
+      
+    	<h2 class="heading-large" id="h.oqh6m4r1qqq1">Version 2a to 3</h2>
+    	<p><a href="index-v3">Version 3</a> uses the newly-published GDS pattern for the task list.</p>
+      
+    	<table>
+    		<tbody>
+    			<tr>
+    				<th colspan="1" rowspan="1">
+    					<p>Summary of change in v3</p>
+    				</th>
+    				<th colspan="1" rowspan="1">
+    					<p>Reason/source</p>
+    				</th>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Replace the save and return code with version based on GDS examples. Note: &#39;Save and return&#39; is not an official GDS pattern yet.</p>
+    					<p></p>
+    					<p>We plan that the save and return will use GOV.UK Notify.</p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>Feedback from the data protection team - we can&rsquo;t rely on all the data being made public so we need a higher standard of save and return authentication than the single code.</p>
+    				</td>
+    			</tr>
+    			<tr>
+    				<td colspan="1" rowspan="1">
+    					<p>Replace the PAFS task pattern with the beta GDS <a href="https://www.gov.uk/service-manual/design/task-list-pages-beta">&lsquo;task list pages&rsquo; pattern</a></p>
+    				</td>
+    				<td colspan="1" rowspan="1">
+    					<p>GDS service standard - use the GOV.UK design patterns</p>
+    				</td>
+    			</tr>
+    		</tbody>
+    	</table>
+    	<p></p>
+    	<h2 class="heading-large" id="h.txrm6h26pbg2">Needs further research:</h2>
+    	<p>Guidance for &lsquo;who is the operator&rsquo; &nbsp;- action: discuss with legal. Consider using &#39;permit holder&#39;.</p>
+
+    	<p>Site for the company or the site we want the permit on - make sure the context or content make this clear. Consider combining with grid ref page to give context.</p>
+    	<p>Use PAFS multiple upload pattern on V2 - we can&rsquo;t implement all of this as it needs JavaScript.</p>
+    	<p>Review content on technical evidence two pages.</p>
+    	<p>The company can have a conviction, so difficult to specify in current guise. Would be good to have ability to upload a supporting doc (post-conviction plan) Some companies use standard text - Review all convictions pages in light of these needs.<br></p>
+    	<p>Review any needs for a &lsquo;back&rsquo; function after v3 research.</p>
+
+    	<p>Look also at comments in wireframe <a href="https://www.google.com/url?q=https://docs.google.com/presentation/d/1rag0bGfX-NZPsV2z9WCCGtLNYNzkeVLtqzbYC-wfCPE/&amp;sa=D&amp;ust=1493385821247000&amp;usg=AFQjCNHsqNRKbc-PAM1rFKQ56BK9bOxq4A">https://docs.google.com/presentation/d/1rag0bGfX-NZPsV2z9WCCGtLNYNzkeVLtqzbYC-wfCPE/</a></p>
+
+    	<p>And feedback from EA staff</p>
+    	<p><a href="https://www.google.com/url?q=https://docs.google.com/spreadsheets/d/1l9rOKtvEv3bDHRTY1mMIomZILgJTXKMBqeambUU_kg8/&amp;sa=D&amp;ust=1493385821250000&amp;usg=AFQjCNH2AiVeDgjATBcVLRyyzzt_dSbxNQ">https://docs.google.com/spreadsheets/d/1l9rOKtvEv3bDHRTY1mMIomZILgJTXKMBqeambUU_kg8/</a></p>
+
+
+
+</main>
+
+{% endblock %}
