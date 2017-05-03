@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% set title = "Check your answers for this task" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+
+  <h1 class="heading-large">
+    {{title}}
+  </h1>
+
+  <table class="check-your-answers">
+
+    <thead>
+      <tr>
+        <th colspan="2">
+          <h2 class="heading-medium">
+            Fire prevention plan
+          </h2>
+        </th>
+        <th>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          Fire prevention plan filename
+        </td>
+        <td>
+          {{permit.firePlanFilename}} 
+        </td>
+        <td class="change-answer">
+          <a href="#">
+            Change <span class="visuallyhidden">Name</span>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+
+  <a href="/{{folder}}/check/task-list">Return to task list</a>
+
+</main>
+
+{% endblock %}
