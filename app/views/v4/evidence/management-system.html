@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% set title = "Which management system will you use?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<div class="notice" style="margin-bottom: 20px">
+  <i class="icon icon-important">
+    <span class="visually-hidden">Warning</span>
+  </i>
+  <strong class="bold-small">
+    You must have have a written management system must be in place by the time we issue the permit.
+  </strong>
+</div>
+
+
+<form method="post" action="{{formAction}}" class="form">
+  <div class="form-group">
+    <fieldset>
+      
+      <p>Select all that apply</p>
+
+      <legend class="visually-hidden">{{title}}</legend>
+
+      <label class="block-label selection-button-checkbox" for="manSysECEco">
+        <input id="manSysECEco" name="manSys" type="checkbox" value="EC Eco management and audit scheme (EMAS)">
+        EC Eco management and audit scheme (EMAS)
+      </label>
+      <label class="block-label selection-button-checkbox" for="manSysISO14001">
+        <input id="manSysISO14001" name="manSys" type="checkbox" value="ISO 14001">
+        ISO 14001
+      </label>
+      <label class="block-label selection-button-checkbox" for="manSysBS8555">
+        <input id="manSysBS8555" name="manSys" type="checkbox" value="BS 8555 (Phases 1-5)">
+        BS 8555 (Phases 1-5)
+      </label>
+      <label class="block-label selection-button-checkbox" for="manSysGreenDragon">
+        <input id="manSysGreenDragon" name="manSys" type="checkbox" value="Green Dragon">
+        Green Dragon
+      </label>
+      <!--
+      <label class="block-label selection-button-checkbox" for="manSysOwnMeets">
+        <input id="manSysOwnMeets" name="manSys" type="checkbox" value="Our own system that meets your guidance conditions">
+        Our own system that meets your guidance conditions
+      </label>
+    -->
+      <label class="block-label selection-button-checkbox" for="manSysOwnMeets">
+        <input id="manSysOwnMeets" name="manSys" type="checkbox" value="Our own system that meets your guidance conditions">
+        Own management system
+        <span class="form-hint">Your own system must meet <a href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits" target="_blank">guidance about developing a management system</a></span>
+      </label>
+    </fieldset>
+  </div>
+  
+  <div class="form-group">
+      <input type="submit" class="button" value="Continue">
+  </div>
+</form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% set title = "Enter an address" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+
+      <form method="post" action="{{formAction}}">
+        
+        <p>
+          <span class="postcode-prefix">Postcode</span>
+          <span class="visuallyhidden">:</span>
+          <span class="postcode">BS1 5AH</span>
+          <a href="/{{folder}}/address/postcode" class="change-postcode-button">
+              Change<span class="visuallyhidden"> postcode</span>
+          </a>
+        </p>
+
+            <!-- Manual entered address -->
+            <fieldset>
+              <legend class="visuallyhidden">Address for manual entry</legend>
+
+              <div class="form-group">
+                <label class="form-label" for="premises">Building name or number
+                  <span class="form-hint">For example, a business premises name or house number</span>
+                </label>
+                <input type="text" class="form-control form-control-char-50" id="premises" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="street_address">Address line 1</label>
+                <input type="text" class="form-control form-control-char-50" id="street_address" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="locality">Address line 2 (optional)</label>
+                <input type="text" class="form-control form-control-char-50" id="locality" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="town">Town or city</label>
+                <input type="text" class="form-control form-control-char-35" id="town" />
+              </div>
+
+            </fieldset>
+
+
+        <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+        </div>
+
+      </form>
+
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

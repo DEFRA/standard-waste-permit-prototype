@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% set title = "Check your answers for this task" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+
+  <h1 class="heading-large">
+    {{title}}
+  </h1>
+
+  <table class="check-your-answers">
+
+    <thead>
+      <tr>
+        <th colspan="2">
+          <h2 class="heading-medium">
+            Pre-application discussion
+          </h2>
+        </th>
+        <th>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          Pre-application discussion
+        </td>
+        <td>
+        <!-- preapp data -->
+          {{permit.preAppDiscussion}} 
+        </td>
+        <td class="change-answer">
+          <a href="/{{folder}}/preapp/preapp-discussion">
+            Change <span class="visuallyhidden">pre-application discussion</span>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+
+  <a href="/{{folder}}/check/task-list">Return to task list</a>
+
+</main>
+
+{% endblock %}
