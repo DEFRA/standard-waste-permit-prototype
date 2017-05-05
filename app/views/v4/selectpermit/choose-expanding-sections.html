@@ -28,11 +28,11 @@
 			{% for c in categories %}
 				
 				<details class="closeOnOpen">
-					<summary><span class="summary">{{c.friendlyCategory}}</span>
+					<summary><span class="summary">{{c.category}}</span>
 						
 						{% set permitCount=0 %}
 						{% for pNumber, pData in permits %}
-								  {% if pData.friendlyCategory==c.friendlyCategory %}
+								  {% if pData.category==c.category %}
 								    {% if pData.canApplyOnPaper=="Yes" %}
 														{% set permitCount=permitCount+1 %}
 				            {% endif %}
@@ -45,7 +45,7 @@
 
 						{% for pNumber, pData in permits %}
 
-							  {% if pData.friendlyCategory==c.friendlyCategory %}
+							  {% if pData.category==c.category %}
 							    {% if pData.canApplyOnPaper=="Yes" %}
 			                
 			                  {% if pData.friendlyWeight!="" %}
@@ -53,10 +53,11 @@
 			                  {% else %}
 			                    {% set weight="" %}
 			                  {% endif %}
+                        
 			                
 			                  {% set label = [
 			                    '<span class="permitName">',
-			                    pData.friendlyName,
+			                    pData.nameGOVUK,
 			                    weight | lower,
 			                    '</span>',
 			                    '<span class="permitCode">',
