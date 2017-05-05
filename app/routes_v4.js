@@ -74,6 +74,14 @@ router.post('/selectpermit/choose-expanding-sections', function (req, res) {
     }) 
 })
 
+router.get('/selectpermit/choose-expanding-sections', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] 
+    res.render(folder + '/selectpermit/choose-expanding-sections',{
+      "formAction":"/"+ folder + "/selectpermit/cost",
+      "chosenCategory":req.body['chosenCategory']
+    }) 
+})
+
 // Category method
 
 router.post('/selectpermit/permit-category', function (req, res) {
