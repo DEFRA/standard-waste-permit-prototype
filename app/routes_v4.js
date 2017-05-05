@@ -153,6 +153,14 @@ router.post('/save-and-return/save-option', function (req, res) {
   })
 })
 
+router.get('/save-and-return/save-option', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/save-and-return/save-option',{
+      "formAction":"/"+ folder + "/save-and-return/save-choice",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
 // This is not a real page, just a URL for the route
 router.post('/save-and-return/save-choice', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
