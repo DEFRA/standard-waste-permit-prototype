@@ -97,6 +97,16 @@ router.post('/selectpermit/cost', function (req, res) {
 router.post('/selectpermit/time', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/selectpermit/time',{
+    "formAction":"/"+ folder + "/selectpermit/what-need-to-apply",   // just to task list
+    "chosenPermitID":req.body['chosenPermitID'],
+    "permit":req.session.permit // always send permit object to page
+  })
+})
+
+// What you need list ==============================================================
+router.post('/selectpermit/what-need-to-apply', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/selectpermit/what-need-to-apply',{
     "formAction":"/"+ folder + "/check/task-list",   // just to task list
     "chosenPermitID":req.body['chosenPermitID'],
     "permit":req.session.permit // always send permit object to page
@@ -135,7 +145,7 @@ router.post('/save-and-return/save-choice', function (req, res) {
 router.post('/check/task-list', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // form to session
   
-  if(req.body['previousPage']=="time"){ 
+  if(req.body['previousPage']=="timeOrNeed"){ 
     // they've already seen the same and return option so go to task list
     res.render(folder + '/check/task-list',{
       "formAction":"/"+ folder + "/NOT-NEEDED",
