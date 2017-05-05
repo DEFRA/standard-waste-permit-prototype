@@ -64,6 +64,10 @@
                 {{ pData.friendlyName }}
                 <span class="font-medium" style="white-space: nowrap;">{{ pData.code }}</span>
               </h2>
+              
+              <p class="change-permit">
+                <a href="/{{folder}}/selectpermit/permit-category">Change permit</a>
+              </p>
 
               <p class="lede">Application charge: </p>
 
@@ -81,10 +85,8 @@
         
 
         <div class="form-group">
-            <input type="submit" class="button" value="Continue">
-            <span class="resume-link">
-              or <a href="/{{folder}}/selectpermit/permit-category">change permit</a>
-            </span>
+            <input type="submit" class="button" value="Apply for this permit">
+
         </div>
 
       </form>

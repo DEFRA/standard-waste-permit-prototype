@@ -16,10 +16,14 @@
       
       <form method="post" action="{{formAction}}">
       
-              <h2 class="heading-large">
-                {{ permit.permitName }}
-                <span class="font-medium">{{ permit.permitCode }}</span>
-              </h2>
+        <h2 class="heading-large">
+          {{ permit.permitName }}
+          <span class="font-medium" style="white-space: nowrap;">{{ permit.permitID }}</span>
+        </h2>
+        
+        <p class="change-permit">
+          <a href="/{{folder}}/selectpermit/permit-category">Change permit</a>
+        </p>
 
                     <p class="lede">Time to wait after applying:</p>
       
@@ -41,9 +45,7 @@
 
         <div class="form-group">
             <input type="submit" class="button" value="Continue">
-            <span class="resume-link">
-            or <a href="/{{folder}}/selectpermit/permit-category">change permit</a>
-            </span>
+
         </div>
 
       </form>
