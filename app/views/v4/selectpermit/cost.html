@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Money you will need for licence" %}
+{% set title = "Money you will need for the permit" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -64,16 +64,21 @@
                 {{ pData.friendlyName }}
                 <span class="font-medium" style="white-space: nowrap;">{{ pData.code }}</span>
               </h2>
-
-              <p class="lede">Application charge: </p>
-
-              <div class="data">
-                <h2 class="bold-xlarge">{{pData.charge}}</h2>
-              </div>
-                
-              <p class="text" style="margin-top: 20px;">
-              You will also need to pay a fee every year (subsistence charge). We’ll invoice you for that if your application is successful.
+              
+              <p class="change-permit">
+                <a href="/{{folder}}/selectpermit/choose-expanding-sections">Change permit</a>
               </p>
+
+              <p class="lede text">Application charge: </p>
+
+              <p>
+                <span class="bold-xlarge">{{pData.charge}}</span>
+              </p>
+                
+              <p class="lede text" style="margin-top: 20px;">
+              You'll also have to pay <span class="bold-medium">{{pData.subsistenceFee}}</span> every year in advance (the 'subsistence charge').  We’ll invoice you for this if your application is successful. 
+              </p>
+
 
               
               {% endif %}
@@ -81,10 +86,8 @@
         
 
         <div class="form-group">
-            <input type="submit" class="button" value="Continue">
-            <span class="resume-link">
-              or <a href="/{{folder}}/selectpermit/permit-category">change permit</a>
-            </span>
+            <input type="submit" class="button" value="Apply for this permit">
+
         </div>
 
       </form>

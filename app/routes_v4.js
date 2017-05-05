@@ -32,7 +32,7 @@ router.get('/cls', function (req, res) {
 
 router.get('/start/start-or-resume', function (req, res) {
   res.render(folder + '/start/start-or-resume',{
-    "formAction":"/"+ folder + "/selectpermit/permit-category"
+    "formAction":"/"+ folder + "/selectpermit/choose-expanding-sections"
   })
 })
 
@@ -64,6 +64,18 @@ router.get('/returncode/email-code', function (req, res) {
 
 // Select permit ==============================================================
 
+// Expanding section method
+
+router.post('/selectpermit/choose-expanding-sections', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] 
+    res.render(folder + '/selectpermit/choose-expanding-sections',{
+      "formAction":"/"+ folder + "/selectpermit/cost",
+      "chosenCategory":req.body['chosenCategory']
+    }) 
+})
+
+// Category method
+
 router.post('/selectpermit/permit-category', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/selectpermit/permit-category',{
@@ -92,6 +104,23 @@ router.post('/selectpermit/cost', function (req, res) {
     "chosenPermitID":req.body['chosenPermitID'],
     "permit":req.session.permit // always send permit object to page
   })
+})
+
+// Check permit via GET route for links
+// Example link:  http://localhost:3000/v4/selectpermit/cost?chosenPermitID=SR-2008-16
+router.get('/selectpermit/cost', function (req, res) {
+  if(typeof req.query['chosenPermitID']==='undefined'){  // simple error handling
+    res.render(folder + '/error/index',{ 
+        "errorText":"Please select a permit"
+    })
+  } else {
+    // save chosen Permit ID in session
+    // no form entries to add to session 
+    res.render(folder + '/selectpermit/cost',{
+      "formAction":"/"+ folder + "/selectpermit/time",
+      "chosenPermitID":req.query['chosenPermitID']
+    })
+}
 })
 
 router.post('/selectpermit/time', function (req, res) {
