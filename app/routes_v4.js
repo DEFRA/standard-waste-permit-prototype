@@ -32,7 +32,7 @@ router.get('/cls', function (req, res) {
 
 router.get('/start/start-or-resume', function (req, res) {
   res.render(folder + '/start/start-or-resume',{
-    "formAction":"/"+ folder + "/selectpermit/permit-category"
+    "formAction":"/"+ folder + "/selectpermit/choose-expanding-sections"
   })
 })
 
@@ -63,6 +63,18 @@ router.get('/returncode/email-code', function (req, res) {
 
 
 // Select permit ==============================================================
+
+// Expanding section method
+
+router.post('/selectpermit/choose-expanding-sections', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] 
+    res.render(folder + '/selectpermit/choose-expanding-sections',{
+      "formAction":"/"+ folder + "/selectpermit/cost",
+      "chosenCategory":req.body['chosenCategory']
+    }) 
+})
+
+// Category method
 
 router.post('/selectpermit/permit-category', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 

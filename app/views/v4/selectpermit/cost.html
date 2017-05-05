@@ -66,18 +66,19 @@
               </h2>
               
               <p class="change-permit">
-                <a href="/{{folder}}/selectpermit/permit-category">Change permit</a>
+                <a href="/{{folder}}/selectpermit/choose-expanding-sections">Change permit</a>
               </p>
 
-              <p class="lede">Application charge: </p>
+              <p class="lede text">Application charge: </p>
 
-              <div class="data">
-                <h2 class="bold-xlarge">{{pData.charge}}</h2>
-              </div>
+              <p>
+                <span class="bold-xlarge">{{pData.charge}}</span>
+              </p>
                 
-              <p class="text" style="margin-top: 20px;">
-              You will also need to pay a fee every year (subsistence charge). We’ll invoice you for that if your application is successful.
+              <p class="lede text" style="margin-top: 20px;">
+              You'll also have to pay <span class="bold-medium">{{pData.subsistenceFee}}</span> every year in advance (the 'subsistence charge').  We’ll invoice you for this if your application is successful. 
               </p>
+
 
               
               {% endif %}
