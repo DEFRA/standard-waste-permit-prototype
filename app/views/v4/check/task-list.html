@@ -24,6 +24,12 @@
   </span>
   </h1>
 
+{% if permit.saveReturnEmail!=null or permit.saveReturnPhone!=null %} 
+{% else %}
+  <p class="save-for-later"><a href="/{{folder}}/save-and-return/save-option">
+Save this application to complete later</a></p>
+{% endif %}
+
       <ol class="task-list">
         <!-- Before you apply ############################################################### -->
         <li>
