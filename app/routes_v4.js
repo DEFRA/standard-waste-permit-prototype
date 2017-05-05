@@ -94,6 +94,23 @@ router.post('/selectpermit/cost', function (req, res) {
   })
 })
 
+// Check permit via GET route for links
+// Example link:  http://localhost:3000/v4/selectpermit/cost?chosenPermitID=SR-2008-16
+router.get('/selectpermit/cost', function (req, res) {
+  if(typeof req.query['chosenPermitID']==='undefined'){  // simple error handling
+    res.render(folder + '/error/index',{ 
+        "errorText":"Please select a permit"
+    })
+  } else {
+    // save chosen Permit ID in session
+    // no form entries to add to session 
+    res.render(folder + '/selectpermit/cost',{
+      "formAction":"/"+ folder + "/selectpermit/time",
+      "chosenPermitID":req.query['chosenPermitID']
+    })
+}
+})
+
 router.post('/selectpermit/time', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/selectpermit/time',{
