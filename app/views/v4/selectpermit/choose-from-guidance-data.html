@@ -248,7 +248,7 @@ p.applylink{
 				<ol class="dash-list">
 
 					{% for c in categories %}
-								<li><a href="#{{ c.friendlyCategory | replace(" ", "-") | replace(",", "") | lower }}">{{c.friendlyCategory}}</a></li>
+								<li><a href="#{{ c.category | replace(" ", "-") | replace(",", "") | lower }}">{{c.category}}</a></li>
 					{% else %}
 						<p>No data</p>
 					{% endfor %}
@@ -270,12 +270,12 @@ p.applylink{
 				{% for c in categories %}
 				<section id="biological">
 						<article>
-							<h3 class="group-title" id="{{ c.friendlyCategory | replace(" ", "-") | replace(",", "") | lower }}">{{c.friendlyCategory}}</h3>
+							<h3 class="group-title" id="{{ c.category | replace(" ", "-") | replace(",", "") | lower }}">{{c.category}}</h3>
 										<ol class="group-document-list">
 
 							{% for pNumber, pData in permits %}
 
-							  {% if pData.friendlyCategory==c.friendlyCategory %}
+							  {% if pData.category==c.category %}
 							    {% if pData.canApplyOnPaper=="Yes" %}
 							    
 							      {% if pData.friendlyWeight!="" %}
@@ -284,10 +284,10 @@ p.applylink{
 							        {% set weight="" %}
 							      {% endif %}
 
+<!-- Removed weight | lower, from label array -->
 							      {% set label = [
 							        '<span class="permitName">',
-							        pData.friendlyName,
-							        weight | lower,
+							        pData.nameGOVUK,
 							        '</span> ',
 							        '<span class="permitCode">',
 							        pData.code,
