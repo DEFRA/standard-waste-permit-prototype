@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% set title = "Have you discussed your application with us?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+{% if permit.permitPreAppRequired=="Yes" %}
+  <div class="notice" style="margin-bottom: 20px">
+    <i class="icon icon-important">
+      <span class="visually-hidden">Warning</span>
+    </i>
+    <strong class="bold-small">
+      You must contact us for a pre-application discussion before you can apply for permit {{ permit.permitCode }} - {{ permit.permitName | lower }}.
+    </strong>
+  </div>
+{% endif %}
+
+
+<form action="{{formAction}}" method="post" class="form">
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visually-hidden">{{title}}</legend>
+
+      <label class="block-label selection-button-radio" data-target="preAppDiscussion" for="yesRefName">
+        <input id="yesRefName" type="radio" name="preAppDiscussion" value="yesRefName">
+        Yes and I have a reference number or name
+      </label>
+      <div class="panel panel-border-narrow js-hidden" id="preAppDiscussion">
+        <label class="form-label" for="preAppDiscussionRefName">Reference number or name of person you spoke to
+         <span class="form-hint">For example, SRP3423 or Julie Jones, Bristol Office</span>
+         </label>
+        <input class="form-control" name="preAppDiscussionRefName" type="text" id="preAppDiscussionRefName">
+      </div>
+
+      <label class="block-label selection-button-radio" for="yesNoRef">
+        <input id="yesNoRef" type="radio" name="preAppDiscussion" value="yes">
+        Yes but I do not have a name or reference number
+      </label>
+
+      <label class="block-label selection-button-radio" for="noPreApp">
+        <input id="noPreApp" type="radio" name="preAppDiscussion" value="no">
+        No
+      </label>
+
+    </fieldset>
+  </div>
+  
+  
+  
+
+    <div class="form-group">
+    <input type="submit" class="button" value="Continue">
+  </div>
+
+
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% set title = "Who should we contact about this application?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<form method="post" action="{{formAction}}" class="form">
+
+<div class="panel panel-border-wide">
+  <p>
+    This can be someone acting as a consultant or an ‘agent’ for you.
+  </p>
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="contactName">
+    Full name
+    <span class="form-hint">
+      For example, John Smith
+    </span>
+  </label>
+  <input class="form-control" id="contactName" name="contactName" type="text" value="{{permit.contactName}}">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="contactTelephone">
+    Telephone number
+    <span class="form-hint">
+      This can be a landline or mobile
+    </span>
+  </label>
+  <input class="form-control form-control-char-25" id="contactTelephone" name="contactTelephone" type="number" value="{{permit.contactTelephone}}">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="contactEmail">
+    Email address
+  </label>
+  <input class="form-control" id="contactEmail" name="contactEmail" type="email" value="{{permit.contactEmail}}">
+</div>
+
+
+
+<div class="form-group">
+  <h2 class="heading-medium">
+    Use of your information and privacy
+  </h2>
+  <p>
+    We normally put all the information in your application on a public register unless you've asked us to treat some information as confidential, and we agree with your request.
+  </p>
+
+  <details style="margin-bottom:2em;">
+    <summary><span class="summary">How we use your personal information</span></summary>
+    <div class="panel panel-border-narrow">
+
+      <p>
+        The Environment Agency runs this service. Their <a href="https://www.gov.uk/government/organisations/environment-agency/about/personal-information-charter
+      ">personal information charter</a> explains how they deal with your information.
+      </p>
+
+
+
+      <p>
+        We may also use the personal information you give us to:
+      </p>
+      <ul class="list list-bullet">
+        <li>contact you about our customer service</li>
+        <li>send you environmental information, or consult you about environmental issues</li>
+        <li>carry out research on environmental issues</li>
+        <li>prevent someone from breaking environmental laws</li>
+        <li>investigate and take action when someone may have broken environmental laws</li>
+        <li>respond to freedom of information requests (if data protection law allows it)</li>
+      </ul>
+
+
+      <p>
+        We may give your information to our agents or representatives, so they can do any of these things for us. And we may share your information with other organisations if the law says we must.
+      </p>
+
+    </div>
+  </details>
+
+</div>
+
+
+
+<div class="form-group">
+    <input type="submit" class="button" value="Continue">
+</div>
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

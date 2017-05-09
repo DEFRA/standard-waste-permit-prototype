@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% set title = "Apply for a standard rules waste permit" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% set version = "v3" %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+
+
+<div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-xlarge">{{title}}</h1>
+
+    <form method="post" action="{{formAction}}" class="form">
+
+      <div class="form-group">
+        <input class="button" type="submit" value="Start a new application">
+      </div>
+
+         <p><a href="/{{folder}}/save-and-return/already-started">Return to an application</a>  you've already started.</p>
+
+    </form>
+
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

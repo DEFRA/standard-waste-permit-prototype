@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% set title = "Confirm permit selection" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_alpha.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+      
+      <form method="post" action="{{formAction}}">
+      
+      {% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/custom_inc/permit-list-json.html" import permits %}
+      
+      <div class="panel panel-border-wide">
+
+        {% for pNumber, pData in permits %}
+          {% if pNumber==chosenPermitID %}
+              <h2 class="heading-medium">
+                {{ pData.friendlyName }}
+                <span class="font-small">{{ pData.code }}</span>
+              </h2>
+              
+              <input type="hidden" name="permitName" value="{{ pData.friendlyName }}">
+              <input type="hidden" name="permitCode" value="{{ pData.code }}">
+              <input type="hidden" name="permitID" value="{{ pNumber }}">
+              <input type="hidden" name="permitCost" value="{{ pData.charge }}">
+              <input type="hidden" name="permitWeight" value="{{ pData.friendlyWeight }}">
+              <input type="hidden" name="permitNatureHeritageSurvey" value="{{ pData.natureHeritageSurvey }}">
+              <input type="hidden" name="permitFirePlanNeeded" value="{{ pData.firePlanNeeded }}">              
+              <input type="hidden" name="permitSpecialCase" value="{{ pData.specialCase }}">                
+              <input type="hidden" name="permitBaselineReportRequired" value="{{ pData.BaselineReportRequired }}">    
+              <input type="hidden" name="permitTechnicalAbilityEvidence" value="{{ pData.technicalAbilityEvidence }}"> 
+              <input type="hidden" name="permitWasteRecoveryPlan" value="{{ pData.wasteRecoveryPlan }}">
+              <input type="hidden" name="permitPreAppRequired" value="{{ pData.preAppRequired }}">
+              <input type="hidden" name="sitePlanNeeded" value="{{ pData.sitePlanNeeded }}">
+              
+              {% set num1 = [1,2,3,4,5,6,7,8,9] | random %}
+              {% set num2 = [1,2,3,4,5,6,7,8,9,0] | random %}
+              {% set num3 = [1,2,3,4,5,6,7,8,9,0] | random %}
+              {% set num4 = [1,2,3,4,5,6,7,8,9,0] | random %}
+              {% set num5 = [1,2,3,4,5,6,7,8,9,0] | random %}
+              {% set refnum = "SRP"+num1+num2+num3+num4+num5 %}
+              
+              <input type="hidden" name="permitRefNumber" value="{{ refnum }}"> 
+
+              {% if pData.friendlyWeight!="" %}
+                <p>{{ pData.friendlyWeight }}</p>
+                
+              {% endif %}
+              
+              <p><span class="font-large">{{pData.charge}}</span> application charge</p>
+
+              <p>
+                You also need to pay a fee every year (subsistence charge). We’ll invoice you for that if your application is successful.
+              </p>
+              
+              {% endif %}
+            {% else %}
+              <p>No radios</p>
+            {% endfor %}
+              
+      </div>
+      
+      <p class="text">
+        It takes up to 13 weeks to issue a permit. It may take longer if the information you give us does not meet our requirements.
+      </p>
+              
+
+
+        
+        <input type="hidden" name="chosenPermitID" value="{{chosenPermitID}}"></input>
+
+        <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+            or <a href="/{{folder}}/selectpermit/permit-category">change permit</a>
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

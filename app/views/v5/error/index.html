@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+
+{% block page_title %}
+    {{errorText}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_alpha.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+          
+          <div class="error-summary" role="group" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+            <h1 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+              {{errorText}}
+            </h1>
+            
+            <p><a href="#" onclick="history.go(-1);return false;">Back</a></p>
+
+          </div>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

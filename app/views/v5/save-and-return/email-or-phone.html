@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% set title = "Save and return later" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <form action="{{formAction}}" method="post" class="form">
+ 
+        <h1 class="heading-large">{{title}}</h1>
+
+        <fieldset>
+          <legend class="visuallyhidden">
+            Save and return later
+          </legend>
+
+          <div class="form-group">
+            <label class="form-label" for="user_email">Email address</label>
+            <input class="form-control form-control-3-4" id="user_email" name="saveReturnEmail" type="text">
+          </div>
+
+          <details>
+
+          <summary><span class="summary">I don't have a email address</span></summary>
+
+          <div class="panel panel-border-narrow">
+
+            <p>
+              If you don't have an email, you can save and return with a text message.
+            </p>
+
+            <legend class="visuallyhidden">
+              Mobile phone number
+            </legend>
+
+            <label class="form-label" for="user_phone">
+              Mobile phone number
+            </label>
+            <input class="form-control" id="user_phone" type="text" name="saveReturnPhone">
+
+          </div>
+
+          </details>
+
+          <br>
+
+        </fieldset>
+
+        <div class="form-group">
+          <input type="submit" class="button" value="Continue" />
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</main>
+{% endblock %}
