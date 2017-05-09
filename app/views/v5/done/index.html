@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+        <div class="govuk-box-highlight">
+          <h1 class="bold-large">
+            {% if permit.paymentMethod=="Debit or credit card" %}
+              Application submitted
+            {% elseif permit.paymentMethod=="Bank transfer" %}
+              Application sent - 
+              you now need to make your BACS payment
+            {% elseif permit.paymentMethod=="Cheque" %}
+              Application sent - 
+              you now need to post your cheque
+            {% endif %}
+          </h1>
+
+          <p>
+            Your reference is:
+            <br />
+            <strong class="heading-medium">{{ permit.permitRefNumber }}</strong>
+          </p>
+        </div>
+
+        <p class="text">
+          We've sent a confirmation to {{ permit.contactEmail }}.
+        </p>
+        
+        {% if permit.paymentMethod=="Bank transfer" %}
+          <h2 class="heading-medium">You need to make your BACS payment</h2>
+          
+          <p>We won't start checking your application until we get your payment.</p>
+          
+          <p>Make a transfer of {{ permit.permitCost }} to:</p>
+          <p>
+            Account number: 1001 4411<br />
+            Sort code: 60 70 80<br />
+            Account name: EA RECEIPTS<br />
+            Payment reference: PSCAPP-{{ permit.permitRefNumber }}
+          </p>
+
+        {% elseif permit.paymentMethod=="Cheque" %}
+
+        <h2 class="heading-medium">You need send us your cheque</h2>
+        
+        <p>We can't start checking your application until we get your payment.</p>
+          
+          <p>Make your cheque for {{ permit.permitCost }} payable to ‘Environment Agency’<br />
+          Make sure the cheque has ‘A/C Payee’ written across it, if it is not already printed on it.<br />
+          Write the name of your company and application reference number on the back of your cheque.<br />
+          Application reference number: {{ permit.permitRefNumber }}</p>
+          <p>We won't accept cheques with a future date.</p>
+          <p><b>Send your cheque to:</b><br>
+          Permitting Support Centre<br>
+          Quadrant 2<br>
+          99 Parkway Avenue<br>
+          Parkway Business Park<br>
+          Sheffield S9 4WF
+          </p>
+
+        {% endif %}
+
+        <h2 class="heading-medium">What happens next</h2>
+
+        <p class="text">
+          One of our staff will check the evidence you've uploaded. We'll email you to let you know when we've started our checks.
+        </p>
+
+        <div class="panel panel-border-wide">
+          <p class="text">
+            It takes up to 13 weeks to issue a permit. It may take longer if the information you give us does not meet our requirements.
+          </p>
+        </div>
+
+
+
+        <br />
+
+        <p class="text"><a href="#" class="link">What do you think of this service?</a> (takes 30 seconds)</p>
+
+        <p>&nbsp;</p>
+        <p class="bold-medium">For testing: emails</p>
+        <ul class="list list-bullet">
+          <li><a href="/{{folder}}/done/email-confirm">Confirmation email</a></li>
+        </ul>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

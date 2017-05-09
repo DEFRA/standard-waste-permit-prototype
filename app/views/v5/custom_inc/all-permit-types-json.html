@@ -1,0 +1,1311 @@
+{% set permits = 
+  
+  {
+     "P01": {
+        "type": "Waste exemption",
+        "subType": "Using waste",
+        "code": "U1",
+        "title": "Use of waste in construction",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P02": {
+        "type": "Waste exemption",
+        "subType": "Using waste",
+        "code": "U2",
+        "title": "Use of baled end-of-life tyres in construction",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P03": {
+        "type": "Waste exemption",
+        "subType": "Using waste",
+        "code": "U3",
+        "title": "Construction of entertainment or educational installations",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P04": {
+        "type": "Waste exemption",
+        "subType": "Using waste",
+        "code": "U4",
+        "title": "Burning of waste as a fuel in a small appliance",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P05": {
+        "type": "Waste exemption",
+        "subType": "Using waste",
+        "code": "U5",
+        "title": "Using biodiesel produced from waste as fuel",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P06": {
+        "type": "Waste exemption",
+        "subType": "Using waste",
+        "code": "U6",
+        "title": "Using sludge to re-seed a waste water treatment plant",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P07": {
+        "type": "Waste exemption",
+        "subType": "Using waste",
+        "code": "U7",
+        "title": "Using effluent to clean a highway gravel bed",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P08": {
+        "type": "Waste exemption",
+        "subType": "Using waste",
+        "code": "U8",
+        "title": "Using waste for a specified purpose",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P09": {
+        "type": "Waste exemption",
+        "subType": "Using waste",
+        "code": "U9",
+        "title": "Using waste to manufacture finished goods",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P10": {
+        "type": "Waste exemption",
+        "subType": "Using waste",
+        "code": "U10",
+        "title": "Spreading waste to benefit agricultural land",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P11": {
+        "type": "Waste exemption",
+        "subType": "Using waste",
+        "code": "U11",
+        "title": "Spreading waste to benefit non-agricultural land",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P12": {
+        "type": "Waste exemption",
+        "subType": "Using waste",
+        "code": "U12",
+        "title": "Using mulch",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P13": {
+        "type": "Waste exemption",
+        "subType": "Using waste",
+        "code": "U13",
+        "title": "Spreading plant matter to provide benefits",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P14": {
+        "type": "Waste exemption",
+        "subType": "Using waste",
+        "code": "U14",
+        "title": "Incorporating ash into soil",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P15": {
+        "type": "Waste exemption",
+        "subType": "Using waste",
+        "code": "U15",
+        "title": "Spreading of pig and poultry ash",
+        "keywords": "pigs chickens",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P16": {
+        "type": "Waste exemption",
+        "subType": "Using waste",
+        "code": "U16",
+        "title": "Using depolluted end-of-life vehicles for parts",
+        "keywords": "cars vans",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P17": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T1",
+        "title": "Cleaning, washing, spraying or coating relevant waste",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P18": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T2",
+        "title": "Recovering textiles",
+        "keywords": "fabrics",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P19": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T4",
+        "title": "Preparatory treatments (baling, sorting, shredding etc)",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P20": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T5",
+        "title": "Screening and blending waste",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P21": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T6",
+        "title": "Treating waste wood and waste plant matter by chipping, shredding, cutting or pulverising",
+        "keywords": "plants trees logs",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P22": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T8",
+        "title": "Mechanically treating end-of-life tyres",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P23": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T9",
+        "title": "Recovering scrap metal",
+        "keywords": "metals",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P24": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T10",
+        "title": "Sorting mixed waste",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P25": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T12",
+        "title": "Manually treating waste",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P26": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T13",
+        "title": "Treating waste food",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P27": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T14",
+        "title": "Crushing and emptying vehicle waste oil filters",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P28": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T15",
+        "title": "Treating waste aerosol cans",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P29": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T16",
+        "title": "Treating waste toner and ink cartridges",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P30": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T17",
+        "title": "Crushing waste fluorescent tubes",
+        "keywords": "light lamp",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P31": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T18",
+        "title": "Using flocculants to remove water from waste",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P32": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T19",
+        "title": "Physical and chemical treatment of waste edible oil and fat to produce biodiesel",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P33": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T20",
+        "title": "Treating waste at a water treatment works",
+        "keywords": "sewage",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P34": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T21",
+        "title": "Recovery of waste at a waste water treatment works",
+        "keywords": "sewage",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P35": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T23",
+        "title": "Aerobic composting and associated prior treatment",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P36": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T24",
+        "title": "Anaerobic digestion at premises used for agriculture and burning resulting biogas",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P37": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T25",
+        "title": "Anaerobic digestion at premises not used for agriculture and burning resulting biogas",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P38": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T26",
+        "title": "Treatment of kitchen waste in a wormery",
+        "keywords": "worms",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P39": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T27",
+        "title": "Treatment of sheep dip using organophosphate-degrading enzyme",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P40": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T28",
+        "title": "Sort and denature controlled drugs for disposal",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P41": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T29",
+        "title": "Treatment of non-hazardous pesticide washings by carbon filtration for disposal",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P42": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T30",
+        "title": "Recovery of silver",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P43": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T31",
+        "title": "Recovery of monopropylene glycol from aircraft antifreeze fluids",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P44": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T32",
+        "title": "Treatment of waste in a biobed or biofilter",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P45": {
+        "type": "Waste exemption",
+        "subType": "Treating waste",
+        "code": "T33",
+        "title": "Recovery of central heating oil by filtration",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P46": {
+        "type": "Waste exemption",
+        "subType": "Disposing of waste",
+        "code": "D1",
+        "title": "Depositing waste from dredging inland waters",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P47": {
+        "type": "Waste exemption",
+        "subType": "Disposing of waste",
+        "code": "D2",
+        "title": "Depositing waste from a railway sanitary convenience",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P48": {
+        "type": "Waste exemption",
+        "subType": "Disposing of waste",
+        "code": "D3",
+        "title": "Depositing waste from a portable sanitary convenience",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P49": {
+        "type": "Waste exemption",
+        "subType": "Disposing of waste",
+        "code": "D4",
+        "title": "Depositing agricultural waste consisting of plant tissue under a Plant Health Notice",
+        "keywords": "plants",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P50": {
+        "type": "Waste exemption",
+        "subType": "Disposing of waste",
+        "code": "D5",
+        "title": "Depositing waste samples for testing or analysis",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P51": {
+        "type": "Waste exemption",
+        "subType": "Disposing of waste",
+        "code": "D6",
+        "title": "Disposal by incineration",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P52": {
+        "type": "Waste exemption",
+        "subType": "Disposing of waste",
+        "code": "D7",
+        "title": "Burning waste in the open",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P53": {
+        "type": "Waste exemption",
+        "subType": "Disposing of waste",
+        "code": "D8",
+        "title": "Burning waste at a port under a Plant Health Notice",
+        "keywords": "plants",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P54": {
+        "type": "Waste exemption",
+        "subType": "Storing waste",
+        "code": "S1",
+        "title": "Storing waste in secure containers",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P55": {
+        "type": "Waste exemption",
+        "subType": "Storing waste",
+        "code": "S2",
+        "title": "Storing waste in a secure place",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P56": {
+        "type": "Waste exemption",
+        "subType": "Storing waste",
+        "code": "S3",
+        "title": "Storing sludge",
+        "keywords": "",
+        "url": "https://www.gov.uk/guidance/register-your-waste-exemptions-environmental-permits"
+     },
+     "P57": {
+        "type": "Regulatory position statement",
+        "subType": "Treating waste",
+        "code": "",
+        "title": "Building biobeds in a groundwater source protection zone 1",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P58": {
+        "type": "Regulatory position statement",
+        "subType": "Disposing of waste",
+        "code": "",
+        "title": "Burning dunnage",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P59": {
+        "type": "Regulatory position statement",
+        "subType": "Disposing of waste",
+        "code": "",
+        "title": "Burning of waste on campfires and bonfires",
+        "keywords": "fires",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P60": {
+        "type": "Regulatory position statement",
+        "subType": "Using waste",
+        "code": "",
+        "title": "Civil engineering activities involving grouts or other media",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P61": {
+        "type": "Regulatory position statement",
+        "subType": "Storing waste",
+        "code": "",
+        "title": "Collecting and storing sewage at marinas and lock sites",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P62": {
+        "type": "Regulatory position statement",
+        "subType": "Storing waste",
+        "code": "",
+        "title": "Collection and storage of mixed fuel",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P63": {
+        "type": "Regulatory position statement",
+        "subType": "Using waste",
+        "code": "",
+        "title": "Combustion plant: burning biogas derived from sewage sludge",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P64": {
+        "type": "Regulatory position statement",
+        "subType": "Storing waste",
+        "code": "",
+        "title": "Contaminated waste water from gas pipelines: temporary storage",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P65": {
+        "type": "Regulatory position statement",
+        "subType": "Onshore oil and gas",
+        "code": "",
+        "title": "Decommissioning onshore oil and gas wells drilled before 1 October 2013",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P66": {
+        "type": "Regulatory position statement",
+        "subType": "Treating waste",
+        "code": "",
+        "title": "Denaturing of controlled drugs",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P67": {
+        "type": "Regulatory position statement",
+        "subType": "Disposing of waste",
+        "code": "",
+        "title": "Deposit and dewatering of non-hazardous silts",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P68": {
+        "type": "Regulatory position statement",
+        "subType": "Storing waste",
+        "code": "",
+        "title": "Dewatering of street sweepings",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P69": {
+        "type": "Regulatory position statement",
+        "subType": "Disposing of waste",
+        "code": "",
+        "title": "Disposal of septic tank and cesspool sludge",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P70": {
+        "type": "Regulatory position statement",
+        "subType": "Disposing of waste",
+        "code": "",
+        "title": "Disposal of trees and plants infected with specified plant diseases",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P71": {
+        "type": "Regulatory position statement",
+        "subType": "Using waste",
+        "code": "",
+        "title": "Effect of exemptions review on Environment Agency low risk positions",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P72": {
+        "type": "Regulatory position statement",
+        "subType": "Using waste",
+        "code": "",
+        "title": "End of life fire extinguishers: re-use and dismantling",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P73": {
+        "type": "Regulatory position statement",
+        "subType": "Treating waste",
+        "code": "",
+        "title": "Environmental permits: ‘orphan’ waste treatment plants",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P74": {
+        "type": "Regulatory position statement",
+        "subType": "Storing waste",
+        "code": "",
+        "title": "Fly-tipped waste: temporary secure storage",
+        "keywords": "fly tipping",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P75": {
+        "type": "Regulatory position statement",
+        "subType": "Storing waste",
+        "code": "",
+        "title": "Food waste: how to store food waste prior to recovery or collection",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P76": {
+        "type": "Regulatory position statement",
+        "subType": "Disposing of waste",
+        "code": "RPS8",
+        "title": "Leaving decommissioned pipes in excavations: RPS 8",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P77": {
+        "type": "Regulatory position statement",
+        "subType": "Disposing of waste",
+        "code": "RPS202",
+        "title": "LPG flaring at end-of-life vehicle sites: RPS 202",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P78": {
+        "type": "Regulatory position statement",
+        "subType": "Treating waste",
+        "code": "",
+        "title": "Permitting of air separation units",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P79": {
+        "type": "Regulatory position statement",
+        "subType": "Disposing of waste",
+        "code": "",
+        "title": "Pet cemeteries: bury and spread ash regulatory position statement",
+        "keywords": "cemetery pets",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P80": {
+        "type": "Regulatory position statement",
+        "subType": "Using waste",
+        "code": "",
+        "title": "Regulation of the use of unbound pulverised fuel ash and furnace bottom ash",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P81": {
+        "type": "Regulatory position statement",
+        "subType": "Radioactive waste",
+        "code": "",
+        "title": "Regulatory position statement: the management of radioactive items found in scrap metal",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P82": {
+        "type": "Regulatory position statement",
+        "subType": "Treating waste",
+        "code": "",
+        "title": "Small scale heat treatment of waste plastics for recovery",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P83": {
+        "type": "Regulatory position statement",
+        "subType": "Storing waste",
+        "code": "",
+        "title": "Stack, store or treat litter, straw, manure and slurry arising from an exotic animal disease outbreak: RPS 36",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P84": {
+        "type": "Regulatory position statement",
+        "subType": "Treating waste",
+        "code": "",
+        "title": "Stack, store or treat litter, straw, manure and slurry arising from an exotic animal disease outbreak: RPS 36",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P85": {
+        "type": "Regulatory position statement",
+        "subType": "Storing waste",
+        "code": "",
+        "title": "Storage of waste aerosol containers",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P86": {
+        "type": "Regulatory position statement",
+        "subType": "Storing waste",
+        "code": "",
+        "title": "Storage of waste incapacitant sprays",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P87": {
+        "type": "Regulatory position statement",
+        "subType": "Storing waste",
+        "code": "RPS200",
+        "title": "Storing catalytic converters at metal recycling sites: RPS 200",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P88": {
+        "type": "Regulatory position statement",
+        "subType": "Storing waste",
+        "code": "RPS205",
+        "title": "Temporary storage of ELVs at a motor manufacturer’s dealership: RPS 205",
+        "keywords": "cars vehicles scrap",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P89": {
+        "type": "Regulatory position statement",
+        "subType": "Treating waste",
+        "code": "",
+        "title": "The application of treated landfill leachate to short rotation coppice",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P90": {
+        "type": "Regulatory position statement",
+        "subType": "Treating waste",
+        "code": "",
+        "title": "The treatment of liquid crystal display units containing mercury to comply with BATRRT",
+        "keywords": "LCD",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P91": {
+        "type": "Regulatory position statement",
+        "subType": "Treating waste",
+        "code": "",
+        "title": "Treating solid waste from composting toilets",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P92": {
+        "type": "Regulatory position statement",
+        "subType": "Disposing of waste",
+        "code": "RPS178",
+        "title": "Treatment and disposal of invasive non-native plants: RPS 178",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P93": {
+        "type": "Regulatory position statement",
+        "subType": "Using waste",
+        "code": "RPS203",
+        "title": "Use mobile plant for landspreading in England or Wales: RPS 203",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P94": {
+        "type": "Regulatory position statement",
+        "subType": "Disposing of waste",
+        "code": "",
+        "title": "Use of auxiliary (back up) flares",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P95": {
+        "type": "Regulatory position statement",
+        "subType": "Using waste",
+        "code": "",
+        "title": "Use of PAS 108 tyre bales in civil engineering and landfill infrastructure works",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P96": {
+        "type": "Regulatory position statement",
+        "subType": "Treating waste",
+        "code": "",
+        "title": "Use of up flow anaerobic sludge blanket anaerobic digestion systems",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P97": {
+        "type": "Regulatory position statement",
+        "subType": "Using waste",
+        "code": "",
+        "title": "Using manufactured topsoil for recovery operations",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P98": {
+        "type": "Regulatory position statement",
+        "subType": "Using waste",
+        "code": "RPS075",
+        "title": "Using treated asphalt waste: regulatory position statement 075",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P99": {
+        "type": "Regulatory position statement",
+        "subType": "Using waste",
+        "code": "",
+        "title": "Wash waters from intermediate animal by-product plants",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P100": {
+        "type": "Regulatory position statement",
+        "subType": "Storing waste",
+        "code": "",
+        "title": "Waste collection authorities: contingency planning",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P101": {
+        "type": "Regulatory position statement",
+        "subType": "Using waste",
+        "code": "",
+        "title": "Waste management: regulation of trials of new waste management techniques",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/collections/basic-rules-environmental-permitting-regulatory-positions"
+     },
+     "P102": {
+        "type": "Standard rules permit",
+        "subType": "Metal recovery/scrap metal",
+        "code": "SR2015 No 17",
+        "title": "Vehicle storage depollution and dismantling authorised treatment facility: less than 5,000 tonnes per site",
+        "keywords": "cars scrap breakers",
+        "url": "https://www.gov.uk/government/publications/sr2015-no17-vehicle-storage-depollution-and-dismantling-authorised-treatment-facility"
+     },
+     "P103": {
+        "type": "Standard rules permit",
+        "subType": "Treatment to produce aggregate or construction materials",
+        "code": "SR2010 No 12",
+        "title": "Treatment of waste to produce soil, soil substitutes and aggregate: less than 75,000 tonnes per year",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2010-number-12"
+     },
+     "P104": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2015 No 6",
+        "title": "75kte household, commercial and industrial waste transfer station with treatment: less than 75,000 tonnes per year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no6-75kte-household-commercial-and-industrial-waste-transfer-station-with-treatment"
+     },
+     "P105": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2012 No 10",
+        "title": "On-farm anaerobic digestion facility using farm wastes only, including use of the resultant biogas: less than 100 tonnes per day",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2012-no10-on-farm-anaerobic-digestion-facility-using-farm-wastes-only-including-use-of-the-resultant-biogas"
+     },
+     "P106": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2012 No 15",
+        "title": "Storage of electrical insulating oils: less than 500 tonnes a year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2012-no15-storage-of-electrical-insulating-oils"
+     },
+     "P107": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2008 No 9",
+        "title": "Asbestos waste transfer station: less than 3,650 tonnes per year",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2008-no9-asbestos-waste-transfer-station"
+     },
+     "P108": {
+        "type": "Standard rules permit",
+        "subType": "Recovery or use of waste on land",
+        "code": "SR2015 No 39",
+        "title": "Use of waste in a deposit for recovery operation: maximum volumetric capacity of recovery operation 60,000 m3",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no39-use-of-waste-in-a-deposit-for-recovery-operation"
+     },
+     "P109": {
+        "type": "Standard rules permit",
+        "subType": "Metal recovery/scrap metal",
+        "code": "SR2015 No 18",
+        "title": "Metal recycling, vehicle storage, depollution and dismantling facility: less than 25,000 tonnes a year of waste metal and less than 5,000 tonnes a year of waste motor vehicles",
+        "keywords": "cars scrap breakers",
+        "url": "https://www.gov.uk/government/publications/sr2015-no18-metal-recycling-vehicle-storage-depollution-and-dismantling-facility"
+     },
+     "P110": {
+        "type": "Standard rules permit",
+        "subType": "Metal recovery/scrap metal",
+        "code": "SR2015 No 15",
+        "title": "75kte WEEE authorised treatment facility excluding ozone depleting substances: less than 75,000 tonnes per year ",
+        "keywords": "electrical",
+        "url": "https://www.gov.uk/government/publications/sr2015-no15-75kte-weee-authorised-treatment-facility-excluding-ozone-depleting-substances"
+     },
+     "P111": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2015 No 4",
+        "title": "75kte household, commercial and industrial waste transfer station: less than 75,000 tonnes per year",
+        "keywords": "rubbish",
+        "url": "https://www.gov.uk/government/publications/sr2015-no4-75kte-household-commercial-and-industrial-waste-transfer-station"
+     },
+     "P112": {
+        "type": "Standard rules permit",
+        "subType": "Recovery or use of waste on land",
+        "code": "SR2008 No 27",
+        "title": "Mobile plant for the treatment of soils and contaminated material, substances or products: ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/standard-rules-sr2008-number-27"
+     },
+     "P113": {
+        "type": "Standard rules permit",
+        "subType": "Materials recovery and recycling",
+        "code": "SR2015 No 23",
+        "title": "Treatment of waste wood for recovery: less than 5,000 tonnes per year",
+        "keywords": "chipboard",
+        "url": "https://www.gov.uk/government/publications/sr2015-no23-treatment-of-waste-wood-for-recovery"
+     },
+     "P114": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2010 No 17",
+        "title": "Storage of digestate from anaerobic digestion plants: less than 75,000 tonnes storage at any one time",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2010-no17-storage-of-digestate-from-anaerobic-digestion-plants"
+     },
+     "P115": {
+        "type": "Standard rules permit",
+        "subType": "Metal recovery/scrap metal",
+        "code": "SR2015 No 13",
+        "title": "75kte vehicle storage depollution and dismantling (authorised treatment) facility: less than 75,000 tonnes per year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no13-75kte-vehicle-storage-depollution-and-dismantling-authorised-treatment-facility"
+     },
+     "P116": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2013 No 1",
+        "title": "Treatment of 100 t/y of clinical and healthcare waste: less than 100 tonnes a year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2013-no-1-treatment-of-100-ty-of-clinical-and-healthcare-waste"
+     },
+     "P117": {
+        "type": "Standard rules permit",
+        "subType": "Onshore oil and gas exploration, and mining operation",
+        "code": "SR2009 No 8",
+        "title": "Management of inert wastes and unpolluted soil at mines and quarries: ",
+        "keywords": "quarry",
+        "url": "https://www.gov.uk/government/publications/sr2009-no8-management-of-inert-wastes-and-unpolluted-soil-at-mines-and-quarries"
+     },
+     "P118": {
+        "type": "Standard rules permit",
+        "subType": "Metal recovery/scrap metal",
+        "code": "SR2015 No 14",
+        "title": "75kte metal recycling site: less than 75,000 tonnes per year ",
+        "keywords": "scrap",
+        "url": "https://www.gov.uk/government/publications/sr2015-no14-75kte-metal-recycling-site"
+     },
+     "P119": {
+        "type": "Standard rules permit",
+        "subType": "Metal recovery/scrap metal",
+        "code": "SR2015 No 16",
+        "title": "Metal recycling site: less than 25,000 tonnes per site ",
+        "keywords": "scrap",
+        "url": "https://www.gov.uk/government/publications/sr2015-no16-metal-recycling-site"
+     },
+     "P120": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2012 No 7",
+        "title": "Composting in open systems: limit of 75 tonnes per day",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2012-no7-composting-in-open-systems"
+     },
+     "P121": {
+        "type": "Standard rules permit",
+        "subType": "Materials recovery and recycling",
+        "code": "SR2015 No 20",
+        "title": "75kte non-hazardous and hazardous household waste amenity site: less than 75,000 tonnes per year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no20-75kte-non-hazardous-and-hazardous-household-waste-amenity-site"
+     },
+     "P122": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2015 No 7",
+        "title": "Household, commercial and industrial waste transfer station with treatment (no building): less than 5,000 tonnes per year",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no7-household-commercial-and-industrial-waste-transfer-station-with-treatment-no-building"
+     },
+     "P123": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2015 No 8",
+        "title": "75kte household, commercial and industrial waste transfer station with asbestos storage: less than 75,000 tonnes per year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no8-75kte-household-commercial-and-industrial-waste-transfer-station-with-asbestos-storage"
+     },
+     "P124": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2012 No 12",
+        "title": "Anaerobic digestion facility including use of the resultant biogas (waste recovery operation): less than 75,000 tonnes per year",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2012-no12-anaerobic-digestion-facility-including-use-of-the-resultant-biogas-waste-recovery-operation"
+     },
+     "P125": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2010 No 14",
+        "title": "500t composting biodegradable waste: open and contained  systems. less than 500 tonnes on site at any one time",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2010-no14-500t-composting-biodegradable-waste"
+     },
+     "P126": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2015 No 5",
+        "title": "Household, commercial and industrial waste transfer station (no building): less than 5,000 tonnes per year",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no5-household-commercial-and-industrial-waste-transfer-station-no-building"
+     },
+     "P127": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2015 No 10",
+        "title": "75kte household, commercial and industrial waste transfer station with treatment and asbestos storage: less than 75,000 tonnes per year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no10-75kte-household-commercial-and-industrial-waste-transfer-station-with-treatment-and-asbestos-storage"
+     },
+     "P128": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2009 No 4",
+        "title": "Combustion of biogas in engines at a sewage treatment works: ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2009-no4-combustion-of-biogas-in-engines-at-a-sewage-treatment-works"
+     },
+     "P129": {
+        "type": "Standard rules permit",
+        "subType": "Onshore oil and gas exploration, and mining operation",
+        "code": "SR2014 No 2",
+        "title": "The management of extractive waste: ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2014-no-2-the-management-of-extractive-waste"
+     },
+     "P130": {
+        "type": "Standard rules permit",
+        "subType": "Metal recovery/scrap metal",
+        "code": "SR2015 No 3",
+        "title": "Metal recycling and WEEE authorised treatment facility excluding ozone depleting substances: less than 75,000 tonnes per year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no3-metal-recycling-and-weee-authorised-treatment-facility-excluding-ozone-depleting-substances"
+     },
+     "P131": {
+        "type": "Standard rules permit",
+        "subType": "Onshore oil and gas exploration, and mining operation",
+        "code": "SR2015 No 1",
+        "title": "Onshore oil exploration: only the activities described in 'ref. wmp3'",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no-1-onshore-oil-exploration"
+     },
+     "P132": {
+        "type": "Standard rules permit",
+        "subType": "Materials recovery and recycling",
+        "code": "SR2015 No 21",
+        "title": "75kte - materials recycling facility: less than 75,000 tonnes per year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no21-75kte-materials-recycling-facility"
+     },
+     "P133": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2010 No 15",
+        "title": "Anaerobic digestion facility including use of the resultant biogas",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2010-no15-anaerobic-digestion-facility-including-use-of-the-resultant-biogas"
+     },
+     "P134": {
+        "type": "Standard rules permit",
+        "subType": "Installations",
+        "code": "SR2012 No 11",
+        "title": "Anaerobic digestion facility including use of the resultant biogas: over 100 tonnes per day and up to 100,000 tonnes per year and 5mw thermal input",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2012-number-11-anaerobic-digestion-facility-including-use-of-the-resultant-biogas"
+     },
+     "P135": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2010 No 16",
+        "title": "On-farm anaerobic digestion facility",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2010-no16-on-farm-anaerobic-digestion-facility"
+     },
+     "P136": {
+        "type": "Standard rules permit",
+        "subType": "Radioactive substances for non-nuclear sites",
+        "code": "SR2010 No 1",
+        "title": "Category 5 sealed radioactive sources standard rules",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2010-no1-category-5-sealed-radioactive-sources"
+     },
+     "P137": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2011 No 1",
+        "title": "500t composting biodegradable waste (in open and closed systems): less than 500 tonnes on site at any one time",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2011-no1-500t-composting-biodegradable-waste-in-open-and-closed-systems"
+     },
+     "P138": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2012 No 3",
+        "title": "Composting in closed systems: limit of 75 tonnes per day",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2012-no3-composting-in-closed-systems"
+     },
+     "P139": {
+        "type": "Standard rules permit",
+        "subType": "Installations",
+        "code": "SR2012 No 4",
+        "title": "Composting in closed systems: less than 75,000 tonnes",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2012-number-4-composting-in-closed-systems"
+     },
+     "P140": {
+        "type": "Standard rules permit",
+        "subType": "Installations",
+        "code": "SR2012 No 8",
+        "title": "Composting in open systems: less than 75,000 tonnes",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2012-number-8-composting-in-open-systems"
+     },
+     "P141": {
+        "type": "Standard rules permit",
+        "subType": "Water discharges",
+        "code": "SR2010 No 2",
+        "title": "Discharge to surface water: maximum volume 1,000 cubic metres per day",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/standard-rules-sr2010-number-2-discharge-to-surface-water"
+     },
+     "P142": {
+        "type": "Standard rules permit",
+        "subType": "Water discharges",
+        "code": "SR2010 No 3",
+        "title": "Discharge to surface water: maximum volume between 5 and 20 cubic metres per day",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2010-number-3-discharge-to-surface-water"
+     },
+     "P143": {
+        "type": "Standard rules permit",
+        "subType": "Materials recovery and recycling",
+        "code": "SR2015 No 19",
+        "title": "75kte non-hazardous household waste amenity site: less than 75,000 tonnes per year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no19-75kte-non-hazardous-household-waste-amenity-site"
+     },
+     "P144": {
+        "type": "Standard rules permit",
+        "subType": "Installations",
+        "code": "SR2012 No 13",
+        "title": "Treatment of Incinerator Bottom Ash (IBA): ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2012-number-13-treatment-of-incinerator-bottom-ash-iba"
+     },
+     "P145": {
+        "type": "Standard rules permit",
+        "subType": "Low impact installation",
+        "code": "SR2009 No 2",
+        "title": "Low impact part A installation: ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2009-number-2-low-impact-part-a-installation"
+     },
+     "P146": {
+        "type": "Standard rules permit",
+        "subType": "Low impact installation",
+        "code": "SR2009 No 3",
+        "title": "Low impact part A installation for the production of biodiesel: no more than 2,000 tonnes per year",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2009-number-3-low-impact-part-a-installation-for-the-production-of-biodiesel"
+     },
+     "P147": {
+        "type": "Standard rules permit",
+        "subType": "Recovery or use of waste on land",
+        "code": "SR2010 No 4",
+        "title": "Mobile plant for land-spreading: spreading waste for agricultural or ecological benefit. up to 10 waste types with 50 hectares per deployment",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2010-no4-mobile-plant-for-land-spreading"
+     },
+     "P148": {
+        "type": "Standard rules permit",
+        "subType": "Recovery or use of waste on land",
+        "code": "SR2010 No 6",
+        "title": "Mobile plant for land-spreading of sewage sludge: deployment maximum 250 tonnes per hectare over 50 hectares",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2010-no6-mobile-plant-for-land-spreading-of-sewage-sludge"
+     },
+     "P149": {
+        "type": "Standard rules permit",
+        "subType": "Recovery or use of waste on land",
+        "code": "SR2010 No 5",
+        "title": "Mobile plant for reclamation, restoration or improvement of land: spreading waste to create a soil profile. up to 10 waste types per hectare over 50 hectares",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2010-no5-mobile-plant-for-reclamation-restoration-or-improvement-of-land"
+     },
+     "P150": {
+        "type": "Standard rules permit",
+        "subType": "Treatment to produce aggregate or construction materials",
+        "code": "SR2010 No 11",
+        "title": "Mobile plant for the treatment of waste to produce soil, soil substitutes and aggregate: less than 75,000 tonnes per deployment",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2010-number-11"
+     },
+     "P151": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2015 No 12",
+        "title": "75kte non-hazardous mechanical biological (aerobic) treatment facility: less than 75,000 tonnes per year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no12-75kte-non-hazardous-mechanical-biological-aerobic-treatment-facility"
+     },
+     "P152": {
+        "type": "Standard rules permit",
+        "subType": "Radioactive substances for non-nuclear sites",
+        "code": "SR2014 No 4",
+        "title": "NORM waste from oil and gas production: ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2014-no-4-accumulation-and-disposal-of-radioactive-waste"
+     },
+     "P153": {
+        "type": "Standard rules permit",
+        "subType": "Installations",
+        "code": "SR2012 No 9",
+        "title": "On-farm anaerobic digestion using farm wastes: over 100 tonnes per day and up to 100,000 tonnes per year and 5mw thermal input",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2012-number-9-on-farm-anaerobic-digestion-using-farm-wastes"
+     },
+     "P154": {
+        "type": "Standard rules permit",
+        "subType": "Materials recovery and recycling",
+        "code": "SR2015 No 22",
+        "title": "Materials recycling facility (no building): less than 5,000 tonnes per year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no22-materials-recycling-facility-no-building"
+     },
+     "P155": {
+        "type": "Standard rules permit",
+        "subType": "Onshore oil and gas exploration, and mining operation",
+        "code": "SR2015 No 2",
+        "title": "Storage and handling of crude oil: storage capacity limited to 500 tonnes",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no-2-storage-and-handling-of-crude-oil"
+     },
+     "P156": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2010 No 18",
+        "title": "Storage and treatment of dredgings for recovery: less than 125,000 cubic metres at any one time",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2010-no18-storage-and-treatment-of-dredgings-for-recovery"
+     },
+     "P157": {
+        "type": "Standard rules permit",
+        "subType": "Metal recovery/scrap metal",
+        "code": "SR2008 No 22 ",
+        "title": "75kte: storage of furnace ready scrap metal for recovery: less than 75,000 tonnes per year",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2008-no22-75kte-storage-of-furnace-ready-scrap-metal-for-recovery"
+     },
+     "P158": {
+        "type": "Standard rules permit",
+        "subType": "Metal recovery/scrap metal",
+        "code": "SR2009 No 7",
+        "title": "Storage of furnace ready scrap metal for recovery: less than 1,000,000 tonnes per year",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2009-no7-storage-of-furnace-ready-scrap-metal-for-recovery"
+     },
+     "P159": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2008 No 19 250kte",
+        "title": "250kte non-hazardous sludge biological chemical and physical treatment site: less than 250,000 tonnes per year",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2008-no19-250kte-non-hazardous-sludge-biological-chemical-and-physical-treatment-site"
+     },
+     "P160": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2008 No 19 75kte ",
+        "title": "75kte non-hazardous sludge biological chemical and physical treatment site: less than 75,000 tonnes per year",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2008-no19-75kte-non-hazardous-sludge-biological-chemical-and-physical-treatment-site"
+     },
+     "P161": {
+        "type": "Standard rules permit",
+        "subType": "Treatment to produce aggregate or construction materials",
+        "code": "SR2015 No 24",
+        "title": "Use of waste to manufacture timber or construction products: less than 75,000 tonnes per year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no24-use-of-waste-to-manufacture-timber-or-construction-products"
+     },
+     "P162": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2015 No 9",
+        "title": "Household, commercial and industrial waste transfer station with asbestos storage (no building): less than 5,000 tonnes per year",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no9-household-commercial-and-industrial-waste-transfer-station-with-asbestos-storage-no-building"
+     },
+     "P163": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2015 No 11",
+        "title": "Household, commercial and industrial waste transfer station with treatment and asbestos storage (no building): less than 5,000 tonnes per year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no11-household-commercial-and-industrial-waste-transfer-station-with-treatment-and-asbestos-storage-no-building"
+     }
+
+  }
+  
+ -%}
