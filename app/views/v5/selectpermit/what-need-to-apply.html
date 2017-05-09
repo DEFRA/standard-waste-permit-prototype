@@ -26,9 +26,9 @@
             <ul class="list list-border">
                 
                 {% if pData.sitePlanNeeded=="Yes" %}
-                  <li>a site plan prepared to site plan standards
+                  <li>A site plan.
                     <details>
-                      <summary><span class="summary">Site plan standards</span></summary>
+                      <summary><span class="summary">What your site plan must include</span></summary>
                       <div class="panel panel-border-narrow">
                         {% include folder+"/guidance/siteplan.html" %}
                       </div>
@@ -38,17 +38,19 @@
                 
               
                 {% if pData.firePlanNeeded=="Yes" %}
-                  <li>a <a href="https://www.gov.uk/government/publications/fire-prevention-plans-environmental-permits/fire-prevention-plans-environmental-permits" target="_blank">fire prevention plan</a></li>
+                  <li>A fire prevention plan.<br>
+                     <a href="https://www.gov.uk/government/publications/fire-prevention-plans-environmental-permits/fire-prevention-plans-environmental-permits" target="_blank">Fire prevention plan guidance on GOV.UK (opens new tab)</a></li>
                 {% endif %}
                 
                 
                 {% if pData.baselineReportRequired=="Yes" %}
-                  <li>a <a href="#" target="_blank">baseline report</a></li>
+                  <li>A baseline report.</a><br>
+                  <a href="#" target="_blank">Baseline report guidance on GOV.UK (opens new tab)</a></li>
                 {% endif %}
-                
+
                 
                 {% if pData.technicalAbilityEvidence=="Yes" %}
-                  <li>evidence of technical ability, for example, qualifications from <abbr title="Waste Management Industry Training and Advisory Board">WAMITAB</abbr>
+                  <li>Evidence of technical ability, for example, qualifications from <abbr title="Waste Management Industry Training and Advisory Board">WAMITAB</abbr>.
                   <details>
                     <summary><span class="summary">Relevant WAMITAB qualifications</span></summary>
                     <div class="panel panel-border-narrow">
@@ -61,17 +63,18 @@
                 
                 {% if pData.wasteRecoveryPlan=="Yes" %}
                   <li>
-                    a waste recovery plan
+                    A waste recovery plan.
                   </li>
                 {% endif %}
 
-                <li>a written <a href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits" target="_blank">management system</a>
+                <li>A written management system<br>
+                  <a href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits" target="_blank">Management system guidance on GOV.UK (opens new tab)</a>
                 </li>
                 
                 
-                <li>the grid reference for the site</li>
-                <li>the name and contact details for the operator</li>
-                <li>for registered companies, the company number</li>
+                <li>The grid reference for the site.</li>
+                <li>The name and contact details for the operator.</li>
+                <li>For registered companies, the company number.</li>
               
             </ul>
 
