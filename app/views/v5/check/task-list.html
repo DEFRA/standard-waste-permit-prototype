@@ -19,11 +19,12 @@
   <div class="grid-row">
     <div class="column-two-thirds column-minimum">
 
-
 <h1 class="heading-large">{{title}}<br>
   <span class="font-medium">{{permit.permitCode}} &nbsp; <a class="font-small" href="/{{folder}}/selectpermit/choose-expanding-sections">Select a different permit</a>
   </span>
   </h1>
+  
+
 
 <!-- Save progress is no longer optional
 {% if permit.saveReturnEmail!=null or permit.saveReturnPhone!=null %} 
@@ -80,7 +81,7 @@ Save this application to complete later</a></p>
               {% else %}
                 /{{folder}}/screening/conservation-screening
               {% endif %}" aria-describedby="screening-completed">
-                Request nature and heritage conservation check
+                Request a nature and heritage conservation check
               </a>
               {% if permit.screening!=null %} <strong class="task-completed" id="screening-completed">Completed</strong> {% endif %}
             </li>
