@@ -30,5 +30,7 @@ $(document).ready(function () {
   $('details.closeOnOpen').click(function(){
     $('details.closeOnOpen').not(this).removeAttr('open');
   })
+  
+  $( "form#autoSubmit" ).submit();
 
 })

@@ -1,6 +1,12 @@
 {% extends "layout.html" %}
 
-{% set title = "Application for permit: "+permit.permitName %}
+{% set joiner="a" %}
+{% set fc=permit.permitName | list | first | lower %}
+{% if (fc=="a" or fc=="e" or fc=="i" or fc=="o" or fc=="u") %}
+  {% set joiner="an"  %}
+{% endif %}
+
+{% set title = "Application for "+joiner+" "+permit.permitName+" standard rules permit" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -19,8 +25,11 @@
   <div class="grid-row">
     <div class="column-two-thirds column-minimum">
 
-<h1 class="heading-large">{{title}}<br>
-  <span class="font-medium">{{permit.permitCode}} &nbsp; <a class="font-small" href="/{{folder}}/selectpermit/choose-expanding-sections">Select a different permit</a>
+<h1 class="heading-large">
+  <span class="font-medium">Apply for a standard rules waste permit:</span><br>
+  {{permit.permitName}}<br>
+  <span class="font-medium">{{permit.permitCode}} &nbsp; 
+    <a class="font-small" href="/{{folder}}/selectpermit/choose-expanding-sections">Select a different permit</a>
   </span>
   </h1>
   
