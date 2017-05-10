@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 
-{% set title = "Apply for a standard rules waste permit" %}
+{% set title = "Have you already started an application?" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
 {% endblock %}
 
-{% set version = "v3" %}
+{% set version = "v5" %}
 
 {% block content %}
 
@@ -17,17 +17,58 @@
 <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-xlarge">{{title}}</h1>
 
-    <form method="post" action="{{formAction}}" class="form">
 
+
+ <form action="{{formAction}}" method="post" class="form">
+
+        <h1 class="heading-large">{{title}}</h1>
+
+        <fieldset>
+          <legend class="visuallyhidden">
+            {{title}}
+          </legend>
+
+
+          <div class="form-group">
+            <label for="started-application_1" class="block-label">
+              <input type="radio" id="started-application_1" name="started-application" value="yes">
+              Yes
+            </label>
+
+            <label for="started-application_2" class="block-label">
+              <input type="radio" id="started-application_2" name="started-application" value="no">
+              No
+            </label>
+
+          </div>
+
+        </fieldset>
+        
+        <input type="hidden" name="seenSaveReturn" value="yes">
+
+        <div class="form-group">
+          <input type="submit" class="button" value="Continue" />
+        </div>
+
+      </form>
+
+
+
+
+
+
+<!--
       <div class="form-group">
         <input class="button" type="submit" value="Start a new application">
       </div>
 
          <p><a href="/{{folder}}/save-and-return/already-started">Return to an application</a>  you've already started.</p>
 
-    </form>
+-->
+
+
+
 
 
 

@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Application for permit "+permit.permitCode %}
+{% set title = "Application for permit: "+permit.permitName %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -20,15 +20,17 @@
     <div class="column-two-thirds column-minimum">
 
 <h1 class="heading-large">{{title}}<br>
-  <span class="font-medium">{{permit.permitName}}
+  <span class="font-medium">{{permit.permitCode}} &nbsp; <a class="font-small" href="/{{folder}}/selectpermit/choose-expanding-sections">Select a different permit</a>
   </span>
   </h1>
 
+<!-- Save progress is no longer optional
 {% if permit.saveReturnEmail!=null or permit.saveReturnPhone!=null %} 
 {% else %}
   <p class="save-for-later"><a href="/{{folder}}/save-and-return/save-option">
 Save this application to complete later</a></p>
 {% endif %}
+-->
 
       <ol class="task-list">
         <!-- Before you apply ############################################################### -->
@@ -37,6 +39,22 @@ Save this application to complete later</a></p>
             <span class="task-list-section-number">1. </span> Before you start
           </h2>
           <ul class="task-list-items">
+             <li class="task-list-item">
+              <a class="task-name" href="/{{folder}}/selectpermit/what-need-to-apply" aria-describedby="cost-and-time">
+                Check cost and time
+              </a>
+              {% if permit.xxxxx %} 
+              <strong class="task-completed" id="cost-and-time">Completed</strong> 
+              {% endif %}
+            </li>
+             <li class="task-list-item">
+              <a class="task-name" href="/{{folder}}/selectpermit/what-need-to-apply" aria-describedby="what-need-to-apply">
+                Check what you need to apply
+              </a>
+              {% if permit.xxxxx %} 
+              <strong class="task-completed" id="what-need-to-apply">Completed</strong> 
+              {% endif %}
+            </li>
              <li class="task-list-item">
               <a class="task-name" href="/{{folder}}/read-rules/index" aria-describedby="read-rules">
                 Read rules
@@ -92,6 +110,17 @@ Save this application to complete later</a></p>
                 /{{folder}}/site/site-name
               {% endif %}" aria-describedby="site-name-completed">
                 Site name and location
+              </a>
+              {% if permit.siteName!=null %} <strong class="task-completed" id="site-name-completed">Completed</strong> {% endif %}
+            </li>
+
+        <li class="task-list-item">
+              <a class="task-name" href="{% if permit.siteName!=null %}
+                /{{folder}}/site/check-your-answers
+              {% else %}
+                /{{folder}}/site/site-name
+              {% endif %}" aria-describedby="site-name-completed">
+                Upload a site plan
               </a>
               {% if permit.siteName!=null %} <strong class="task-completed" id="site-name-completed">Completed</strong> {% endif %}
             </li>
