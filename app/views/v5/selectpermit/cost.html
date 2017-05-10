@@ -35,7 +35,7 @@
 <input type="hidden" name="permitCost" value="{{ pData.charge }}"></input>
 <input type="hidden" name="permitFirePlanNeeded" value="{{ pData.firePlanNeeded }}"></input>
 <input type="hidden" name="permitID" value="{{ pNumber }}"></input>
-<input type="hidden" name="permitName" value="{{ pData.friendlyName }}"></input>
+<input type="hidden" name="permitName" value="{{ pData.nameGOVUK }}"></input>
 <input type="hidden" name="permitNatureHeritageSurvey" value="{{ pData.natureHeritageSurvey }}"></input>
 <input type="hidden" name="permitPreAppRequired" value="{{ pData.preAppRequired }}"></input>
 <input type="hidden" name="permitSpecialCase" value="{{ pData.specialCase }}"></input>
@@ -61,7 +61,7 @@
               <input type="hidden" name="permitRefNumber" value="{{ refnum }}"> 
               
               <h2 class="heading-large">
-                {{ pData.friendlyName }}
+                {{ pData.nameGOVUK }}
                 <span class="font-medium" style="white-space: nowrap;">{{ pData.code }}</span>
               </h2>
               
