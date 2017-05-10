@@ -125,6 +125,8 @@ router.get('/check/task-list', function (req, res) {
 
 
 
+
+
 // Category method
 
 router.post('/selectpermit/permit-category', function (req, res) {
@@ -182,6 +184,9 @@ router.post('/selectpermit/time', function (req, res) {
     "permit":req.session.permit // always send permit object to page
   })
 })
+
+
+
 
 
 
