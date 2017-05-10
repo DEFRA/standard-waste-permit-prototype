@@ -17,18 +17,6 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
-{% if permit.permitPreAppRequired=="Yes" %}
-  <div class="notice" style="margin-bottom: 20px">
-    <i class="icon icon-important">
-      <span class="visually-hidden">Warning</span>
-    </i>
-    <strong class="bold-small">
-      You must contact us for a pre-application discussion before you can apply for permit {{ permit.permitCode }} - {{ permit.permitName | lower }}.
-    </strong>
-  </div>
-{% endif %}
-
-
 <form action="{{formAction}}" method="post" class="form">
   <div class="form-group">
     <fieldset>
@@ -39,24 +27,35 @@
         <input id="yesRefName" type="radio" name="preAppDiscussion" value="yesRefName">
         Yes and I have a reference number or name
       </label>
-      <div class="panel panel-border-narrow js-hidden" id="preAppDiscussion">
-        <label class="form-label" for="preAppDiscussionRefName">Reference number or name of person you spoke to
-         <span class="form-hint">For example, SRP3423 or Julie Jones, Bristol Office</span>
-         </label>
-        <input class="form-control" name="preAppDiscussionRefName" type="text" id="preAppDiscussionRefName">
-      </div>
+          <div class="panel panel-border-narrow js-hidden" id="preAppDiscussion">
+            <label class="form-label" for="preAppDiscussionRefName">Reference number or name of person you spoke to
+             <span class="form-hint">For example, SRP3423 or Julie Jones, Bristol Office</span>
+             </label>
+            <input class="form-control" name="preAppDiscussionRefName" type="text" id="preAppDiscussionRefName">
+          </div>
+          
 
       <label class="block-label selection-button-radio" for="yesNoRef">
         <input id="yesNoRef" type="radio" name="preAppDiscussion" value="yes">
         Yes but I do not have a name or reference number
       </label>
+      
 
-      <label class="block-label selection-button-radio" for="noPreApp">
+      <label class="block-label selection-button-radio" for="noPreApp"{% if permit.permitPreAppRequired=="Yes" %} data-target="preAppWarning"{% endif %}>
         <input id="noPreApp" type="radio" name="preAppDiscussion" value="no">
         No
       </label>
+        {% if permit.permitPreAppRequired=="Yes" %}
+          <div class="panel panel-border-narrow js-hidden" id="preAppWarning">
+            <p>
+              We recommend that you contact us for a pre-application discussion about permit {{ permit.permitCode }} - {{ permit.permitName | lower }}.
+            </p>
+          </div>
+        {% endif %}
 
     </fieldset>
+    
+    
   </div>
   
   
