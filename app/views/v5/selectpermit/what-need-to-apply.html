@@ -17,15 +17,11 @@
 
       <h1 class="heading-large" id="radio_label">{{title}}</h1>
       
-      {% import folder+"/custom_inc/macros.html" as macros %}
-      {% from folder+"/custom_inc/permit-list-json.html" import permits %}
-      
-        {% for pNumber, pData in permits %}
-          {% if pNumber==chosenPermitID %}
-              
-            <ul class="list list-border">
+      <form method="post" action="{{formAction}}">
+
+    <ul class="list list-border">
                 
-                {% if pData.sitePlanNeeded=="Yes" %}
+              {% if permit.sitePlanNeeded=="Yes" %}
                   <li>A site plan.
                     <details>
                       <summary><span class="summary">What your site plan must include</span></summary>
@@ -37,19 +33,19 @@
                 {% endif %}
                 
               
-                {% if pData.firePlanNeeded=="Yes" %}
+                {% if permit.firePlanNeeded=="Yes" %}
                   <li>A fire prevention plan.<br>
                      <a href="https://www.gov.uk/government/publications/fire-prevention-plans-environmental-permits/fire-prevention-plans-environmental-permits" target="_blank">Fire prevention plan guidance on GOV.UK (opens new tab)</a></li>
                 {% endif %}
                 
                 
-                {% if pData.baselineReportRequired=="Yes" %}
+                {% if permit.baselineReportRequired=="Yes" %}
                   <li>A baseline report.</a><br>
                   <a href="#" target="_blank">Baseline report guidance on GOV.UK (opens new tab)</a></li>
                 {% endif %}
 
                 
-                {% if pData.technicalAbilityEvidence=="Yes" %}
+                {% if permit.technicalAbilityEvidence=="Yes" %}
                   <li>Evidence of technical ability, for example, qualifications from <abbr title="Waste Management Industry Training and Advisory Board">WAMITAB</abbr>.
                   <details>
                     <summary><span class="summary">Relevant WAMITAB qualifications</span></summary>
@@ -60,8 +56,7 @@
                 </li>
                 {% endif %}
                 
-                
-                {% if pData.wasteRecoveryPlan=="Yes" %}
+                {% if permit.wasteRecoveryPlan=="Yes" %}
                   <li>
                     A waste recovery plan.
                   </li>
@@ -70,25 +65,16 @@
                 <li>A written management system.<br>
                   <a href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits" target="_blank">Management system guidance on GOV.UK (opens new tab)</a>
                 </li>
-                
-                
+                  
                 <li>The grid reference for the site.</li>
                 <li>The name and contact details for the operator.</li>
                 <li>For registered companies, the company number.</li>
               
             </ul>
 
-            
-          {% endif %}
-        {% else %}
-          <p>No data</p>
-        {% endfor %}
-           
-      
-      <form method="post" action="{{formAction}}">
-        
-        <input type="hidden" name="previousPage" value="timeOrNeed"></input>
-        
+                     <!-- set needToApply to yes -->       
+        <input type="hidden" name="needToApply" value="yes">
+                  
         <div class="form-group">
             <input type="submit" class="button" value="Continue">
         </div>
