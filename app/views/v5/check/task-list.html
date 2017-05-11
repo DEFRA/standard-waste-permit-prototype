@@ -45,7 +45,7 @@ Save this application to complete later</a></p>
           </h2>
           <ul class="task-list-items">
              <li class="task-list-item">
-              <a class="task-name" href="/{{folder}}/selectpermit/what-need-to-apply" aria-describedby="cost-and-time">
+              <a class="task-name" href="/{{folder}}/selectpermit/cost-and-time" aria-describedby="cost-and-time">
                 Check cost and time
               </a>
               {% if permit.xxxxx %} 
@@ -56,7 +56,7 @@ Save this application to complete later</a></p>
               <a class="task-name" href="/{{folder}}/selectpermit/what-need-to-apply" aria-describedby="what-need-to-apply">
                 Check what you need to apply
               </a>
-              {% if permit.xxxxx %} 
+              {% if permit.needToApply %} 
               <strong class="task-completed" id="what-need-to-apply">Completed</strong> 
               {% endif %}
             </li>
@@ -119,16 +119,19 @@ Save this application to complete later</a></p>
               {% if permit.siteName!=null %} <strong class="task-completed" id="site-name-completed">Completed</strong> {% endif %}
             </li>
 
+      <!-- Site plan conditional -->
+      {% if permit.sitePlanNeeded=="Yes" %}
         <li class="task-list-item">
-              <a class="task-name" href="{% if permit.siteName!=null %}
+              <a class="task-name" href="{% if permit.sitePlanFilename!=null %}
                 /{{folder}}/site/check-your-answers
               {% else %}
-                /{{folder}}/site/site-name
-              {% endif %}" aria-describedby="site-name-completed">
+                /{{folder}}/evidence/upload-site-plan
+              {% endif %}" aria-describedby="site-plan-completed">
                 Upload a site plan
               </a>
-              {% if permit.siteName!=null %} <strong class="task-completed" id="site-name-completed">Completed</strong> {% endif %}
+              {% if permit.sitePlanFilename!=null %} <strong class="task-completed" id="site-plan-completed">Completed</strong> {% endif %}
             </li>
+        {% endif %}
             
       <li class="task-list-item">
               <a class="task-name" href="{% if permit.industryScheme!=null %}

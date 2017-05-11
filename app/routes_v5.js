@@ -86,6 +86,16 @@ router.post('/selectpermit/choose-expanding-sections', function (req, res) {
     }) 
 })
 
+// required for 'select a different permit' via task list
+router.get('/selectpermit/choose-expanding-sections', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] 
+    res.render(folder + '/selectpermit/choose-expanding-sections',{
+      "formAction":"/"+ folder + "/check/save-permit-details",
+      "chosenCategory":req.body['chosenCategory'],
+      "permit":req.session.permit // always send permit object to page
+    }) 
+})
+
 // This page should not show for long - it just saves permit data
 router.post('/check/save-permit-details', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // form to session
@@ -176,22 +186,6 @@ router.get('/selectpermit/cost', function (req, res) {
 }
 })
 
-router.post('/selectpermit/time', function (req, res) {
-  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
-  res.render(folder + '/selectpermit/time',{
-    "formAction":"/"+ folder + "/selectpermit/what-need-to-apply",   // just to task list
-    "chosenPermitID":req.body['chosenPermitID'],
-    "permit":req.session.permit // always send permit object to page
-  })
-})
-
-
-
-
-
-
-
-
 
 // Before you begin ===========================================================
 
@@ -218,13 +212,12 @@ router.get('/returncode/email-code', function (req, res) {
 })
 
 
-// What you need list ==============================================================
-router.post('/selectpermit/what-need-to-apply', function (req, res) {
+// What you need to apply ==============================================================
+router.get('/selectpermit/what-need-to-apply', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/selectpermit/what-need-to-apply',{
-    "formAction":"/"+ folder + "/check/task-list",   // just to task list
-    "chosenPermitID":req.body['chosenPermitID'],
-    "permit":req.session.permit // always send permit object to page
+      "formAction":"/"+ folder + "/check/task-list",
+      "permit":req.session.permit // always send permit object to page
   })
 })
 
@@ -315,7 +308,7 @@ router.post('/address/postcode', function (req, res) {
 router.post('/address/address', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/address/address',{
-      "formAction":"/"+ folder + "/evidence/check-site-plan", 
+      "formAction":"/"+ folder + "/check/task-list", 
       "permit":req.session.permit // always send permit object to page
   })
 })
@@ -323,24 +316,21 @@ router.post('/address/address', function (req, res) {
 // Manual address is a link - so a GET
 router.get('/address/address-manual', function (req, res) {
   res.render(folder + '/address/address-manual',{
-      "formAction":"/"+ folder + "/evidence/check-site-plan", 
+      "formAction":"/"+ folder + "/check/task-list", 
       "permit":req.session.permit // always send permit object to page
   })
 })
 
-// Site plan conditional routing
-router.post('/evidence/check-site-plan', function (req, res) {
-  // check if site plan is needed for this permit 
-  if(req.session.permit['sitePlanNeeded'] == "No"){
-      res.redirect('/'+folder + '/check/task-list')
-  } else {
-      for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session
-      res.render(folder + '/evidence/upload-site-plan',{
-          "formAction":"/"+ folder + "/check/task-list",
-          "permit":req.session.permit // always send permit object to page
-      })
-  }
+// Upload a site plan ==========================================================
+
+router.get('/evidence/upload-site-plan', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/evidence/upload-site-plan',{
+      "formAction":"/"+ folder + "/check/task-list",
+      "permit":req.session.permit // always send permit object to page
+  })
 })
+
 
 
 // Technical ability ==========================================================
