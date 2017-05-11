@@ -6,7 +6,6 @@
     {{title}} - GOV.UK
 {% endblock %}
 
-{% set version = "v5" %}
 
 {% block content %}
 
@@ -44,30 +43,20 @@
         </fieldset>
         
         <input type="hidden" name="seenSaveReturn" value="yes">
+        
+        {% set num1 = [1,2,3,4,5,6,7,8,9] | random %}
+        {% set num2 = [1,2,3,4,5,6,7,8,9,0] | random %}
+        {% set num3 = [1,2,3,4,5,6,7,8,9,0] | random %}
+        {% set num4 = [1,2,3,4,5,6,7,8,9,0] | random %}
+        {% set num5 = [1,2,3,4,5,6,7,8,9,0] | random %}
+        {% set refnum = "SRP"+num1+num2+num3+num4+num5 %}
+        <input type="hidden" name="permitRefNumber" value="{{ refnum }}"> 
 
         <div class="form-group">
           <input type="submit" class="button" value="Continue" />
         </div>
 
       </form>
-
-
-
-
-
-
-<!--
-      <div class="form-group">
-        <input class="button" type="submit" value="Start a new application">
-      </div>
-
-         <p><a href="/{{folder}}/save-and-return/already-started">Return to an application</a>  you've already started.</p>
-
--->
-
-
-
-
 
 
     </div>
