@@ -80,15 +80,6 @@ router.post('/save-and-return/sent', function (req, res) {
 router.post('/selectpermit/choose-expanding-sections', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] 
     res.render(folder + '/selectpermit/choose-expanding-sections',{
-      "formAction":"/"+ folder + "/check/task-list",
-      "chosenCategory":req.body['chosenCategory'],
-      "permit":req.session.permit // always send permit object to page
-    }) 
-})
-
-router.get('/selectpermit/choose-expanding-sections', function (req, res) {
-  for(var input in req.body) req.session.permit[input] = req.body[input] 
-    res.render(folder + '/selectpermit/choose-expanding-sections',{
       "formAction":"/"+ folder + "/check/save-permit-details",
       "chosenCategory":req.body['chosenCategory'],
       "permit":req.session.permit // always send permit object to page

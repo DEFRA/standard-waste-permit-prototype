@@ -1,12 +1,6 @@
 {% extends "layout.html" %}
 
-{% set joiner="a" %}
-{% set fc=permit.permitName | list | first | lower %}
-{% if (fc=="a" or fc=="e" or fc=="i" or fc=="o" or fc=="u") %}
-  {% set joiner="an"  %}
-{% endif %}
-
-{% set title = "Application for "+joiner+" "+permit.permitName+" standard rules permit" %}
+{% set title = "Application for a "+permit.permitName+" standard rules permit" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
