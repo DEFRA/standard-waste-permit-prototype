@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% set title = "Confirm your permit selection" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_alpha.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+    
+          <h1 class="heading-large" id="radio_label">{{title}}</h1>
+
+      <form method="post" action="{{formAction}}">
+      
+    
+
+    <div class="panel panel-border-wide">
+      <p>{{permit.permitName}}<br>
+      <b>{{permit.permitCode}}</b><br>
+    <a href="/{{folder}}/selectpermit/choose-expanding-sections">Change permit</a></p>
+    </div>
+      
+
+      <table>
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th class="numeric" scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Application charge</td>
+              <td class="numeric">{{permit.permitCost}}</td>
+            </tr>
+            <tr>
+              <td>Annual subsistence charge</td>
+              <td class="numeric">{{permit.subsistenceFee}}</td>
+            </tr>
+            <tr>
+              <td>Time to wait after applying<br></td>
+              <td class="numeric">up to 13 weeks</td>
+            </tr>
+          </tbody>
+        </table>
+<br>
+
+
+
+
+<p>You'll have to pay the 'subsistence charge' every year in advance.  We’ll invoice you for this if your application is successful.</p>
+
+
+<p>
+It may take longer if the information you give us does not meet our requirements.
+</p>
+
+
+         <!-- set costTime to yes -->       
+        <input type="hidden" name="costTime" value="yes">
+
+
+        <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
