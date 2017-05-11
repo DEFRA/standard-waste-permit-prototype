@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Confirm your permit selection" %}
+{% set title = "Cost and time for this permit" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -15,16 +15,11 @@
         <div class="column-two-thirds">
     
           <h1 class="heading-large" id="radio_label">{{title}}</h1>
+          
+            <h2 class="heading-medium">{{permit.permitName}}<br>
+            <span class="font-medium">{{permit.permitCode}}</span></h2>
 
       <form method="post" action="{{formAction}}">
-      
-    
-
-    <div class="panel panel-border-wide">
-      <p>{{permit.permitName}}<br>
-      <b>{{permit.permitCode}}</b><br>
-    <a href="/{{folder}}/selectpermit/choose-expanding-sections">Change permit</a></p>
-    </div>
       
 
       <table>
@@ -36,30 +31,25 @@
           </thead>
           <tbody>
             <tr>
-              <td>Application charge</td>
-              <td class="numeric">{{permit.permitCost}}</td>
+              <td><span class="bold-small">Cost to apply</span><br>
+              Paid with your application</td>
+              <td class="numeric"><span class="bold-medium">{{permit.permitCost}}</span></td>
             </tr>
             <tr>
-              <td>Annual subsistence charge</td>
-              <td class="numeric">{{permit.subsistenceFee}}</td>
+              <td><span class="bold-small">Annual cost ('subsistence charge')</span><br>
+              We’ll invoice you if your application is successful.</td>
+              <td class="numeric"><span class="bold-medium">{{permit.subsistenceFee}}</span></td>
             </tr>
             <tr>
-              <td>Time to wait after applying<br></td>
-              <td class="numeric">up to 13 weeks</td>
+              <td><span class="bold-small">Time to wait after applying</span><br>
+                It may take longer if we need to ask you for more information.</td>
+              <td class="numeric"><span class="bold-medium">up to 13 weeks</span></td>
             </tr>
           </tbody>
         </table>
 <br>
 
 
-
-
-<p>You'll have to pay the 'subsistence charge' every year in advance.  We’ll invoice you for this if your application is successful.</p>
-
-
-<p>
-It may take longer if the information you give us does not meet our requirements.
-</p>
 
 
          <!-- set costTime to yes -->       
