@@ -132,11 +132,6 @@ router.get('/check/task-list', function (req, res) {
 }
 })
 
-
-
-
-
-
 // Category method
 
 router.post('/selectpermit/permit-category', function (req, res) {
@@ -158,32 +153,6 @@ router.post('/selectpermit/choose-permit', function (req, res) {
       "chosenCategory":req.body['chosenCategory']
     })    
   }
-})
-
-router.post('/selectpermit/cost', function (req, res) {
-  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
-  res.render(folder + '/selectpermit/cost',{
-    "formAction":"/"+ folder + "/selectpermit/time",
-    "chosenPermitID":req.body['chosenPermitID'],
-    "permit":req.session.permit // always send permit object to page
-  })
-})
-
-// Check permit via GET route for links
-// Example link:  http://localhost:3000/v4/selectpermit/cost?chosenPermitID=SR-2008-16
-router.get('/selectpermit/cost', function (req, res) {
-  if(typeof req.query['chosenPermitID']==='undefined'){  // simple error handling
-    res.render(folder + '/error/index',{ 
-        "errorText":"Please select a permit"
-    })
-  } else {
-    // save chosen Permit ID in session
-    // no form entries to add to session 
-    res.render(folder + '/selectpermit/cost',{
-      "formAction":"/"+ folder + "/selectpermit/time",
-      "chosenPermitID":req.query['chosenPermitID']
-    })
-}
 })
 
 
@@ -211,6 +180,15 @@ router.get('/returncode/email-code', function (req, res) {
   })
 })
 
+
+// Cost and time ==============================================================
+router.get('/selectpermit/cost-and-time', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/selectpermit/cost-and-time',{
+      "formAction":"/"+ folder + "/check/task-list",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
 
 // What you need to apply ==============================================================
 router.get('/selectpermit/what-need-to-apply', function (req, res) {
