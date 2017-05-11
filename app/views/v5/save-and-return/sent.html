@@ -1,5 +1,11 @@
 {% extends "layout.html" %}
 
+{% if data.user_phone %}
+  {% set title = "Check your phone" %}
+{% else %}
+  {% set title = "Check your email" %}
+{% endif %}
+
 {% block page_title %}
     {{title}} - GOV.UK
 {% endblock %}
@@ -24,22 +30,25 @@
 
           <h1 class="heading-large">Check your email</h1>
 
-          <p>We've sent a link to <span class="bold">{{ permit.saveReturnEmail }}</span> that allows you to return to your information at any time.</p>
+          <p>We've sent a link to <span class="bold">{{ permit.saveReturnEmail }}</span> that allows you to return to your application at any time.</p>
 
         {% endif %}
+        
+        <p>We'll automatically save all the information you enter.</p>
 
-        <fieldset>
-          <legend class="visuallyhidden">
-            Email or phone
-          </legend>
-
-        </fieldset>
 
         <div class="form-group">
           <input type="submit" class="button" value="Continue" />
         </div>
 
       </form>
+      
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>For testing:
+        <a href="/{{folder}}/save-and-return/email-save-link" target="_blank">link email</a>
+      </p>
 
     </div>
   </div>

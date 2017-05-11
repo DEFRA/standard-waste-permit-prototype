@@ -33,14 +33,14 @@ router.get('/cls', function (req, res) {
 router.get('/start/start-or-resume', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/start/start-or-resume',{
-      "formAction":"/"+ folder + "/save-and-return/save-choice",
+      "formAction":"/"+ folder + "/save-and-return/save-choice"
   })
 })
 
 router.post('/start/start-or-resume', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/start/start-or-resume',{
-      "formAction":"/"+ folder + "/save-and-return/save-choice",
+      "formAction":"/"+ folder + "/save-and-return/save-choice"
   })
 })
 
@@ -50,10 +50,12 @@ router.post('/save-and-return/save-choice', function (req, res) {
   if(req.body['started-application']=="no"){ // think you need square bracket for radios
       res.render(folder + '/save-and-return/email-or-phone',{
           "formAction":"/"+ folder + "/save-and-return/confirm",
+          "permit":req.session.permit // always send permit object to page
       })
   } else {
       res.render(folder + '/save-and-return/already-started',{
           "formAction":"/"+ folder + "/save-and-return/link-resent",
+          "permit":req.session.permit // always send permit object to page
       })
   }
 })
@@ -62,6 +64,7 @@ router.post('/save-and-return/confirm', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/save-and-return/confirm',{
     "formAction":"/"+ folder + "/save-and-return/sent",
+    "permit":req.session.permit // always send permit object to page
   })
 })
 
@@ -69,8 +72,20 @@ router.post('/save-and-return/sent', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/save-and-return/sent',{
     "formAction":"/"+ folder + "/selectpermit/choose-expanding-sections",
+    "permit":req.session.permit // always send permit object to page
   })
 })
+
+
+router.get('save-and-return/email-save-link', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + 'save-and-return/email-save-link',{
+    "permit":req.session.permit // always send permit object to page
+  })
+})
+
+
+
 
 
 // Select permit ==============================================================

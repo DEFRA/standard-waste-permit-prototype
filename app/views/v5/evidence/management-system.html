@@ -15,15 +15,6 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
-<div class="notice" style="margin-bottom: 20px">
-  <i class="icon icon-important">
-    <span class="visually-hidden">Warning</span>
-  </i>
-  <strong class="bold-small">
-    You must have a written management system in place by the time we issue the permit.
-  </strong>
-</div>
-
 
 <form method="post" action="{{formAction}}" class="form">
   <div class="form-group">
@@ -49,18 +40,25 @@
         <input id="manSysGreenDragon" name="manSys" type="checkbox" value="Green Dragon">
         Green Dragon
       </label>
-      <!--
-      <label class="block-label selection-button-checkbox" for="manSysOwnMeets">
-        <input id="manSysOwnMeets" name="manSys" type="checkbox" value="Our own system that meets your guidance conditions">
-        Our own system that meets your guidance conditions
-      </label>
-    -->
+
       <label class="block-label selection-button-checkbox" for="manSysOwnMeets">
         <input id="manSysOwnMeets" name="manSys" type="checkbox" value="Our own system that meets your guidance conditions">
         Own management system
-        <span class="form-hint">Your own system must meet <a href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits" target="_blank">guidance about developing a management system</a></span>
+        <span class="form-hint">If you use your own system, it must meet our standards.<br>
+          <a href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits" target="_blank">Guidance about management systems on GOV.UK (opens new tab)</a></span>
       </label>
     </fieldset>
+  </div>
+  
+  <div class="form-group">
+    <div class="notice" style="margin-bottom: 20px">
+      <i class="icon icon-important">
+        <span class="visually-hidden">Warning</span>
+      </i>
+      <strong class="bold-small">
+        You must have a written management system in place by the time we issue the permit.
+      </strong>
+    </div>
   </div>
   
   <div class="form-group">

@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 
+{% set title = "Search for 'Standard rules permit application' in your email" %}
+
 {% block page_title %}
     {{title}} - GOV.UK
 {% endblock %}
@@ -13,10 +15,10 @@
     <div class="column-two-thirds">
 
         <h1 class="heading-large">
-          Search for 'Standard rules permit application' in your email
+          {{title}}
         </h1>
 
-          <p class="lede">You've been sent an email with a link to finish your application.</p>
+          <p>You've been sent an email with a link to finish your application.</p>
 
         <details>
 
@@ -24,7 +26,7 @@
 
           <div class="panel panel-border-narrow">
 
-		    	<form method="get" action="/v5/save-and-return/link-resent" class="form">
+		    	<form method="get" action="/{{folder}}/save-and-return/link-resent" class="form">
 
 	            <fieldset>
 
@@ -47,6 +49,13 @@
 
 
       </form>
+      
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>For testing:
+        <a href="/{{folder}}/save-and-return/email-save-link" target="_blank">link email</a>
+      </p>
 
     </div>
   </div>
