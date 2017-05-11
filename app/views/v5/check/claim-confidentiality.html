@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Do you want to claim confidentiality for your application?" %}
+{% set title = "Is any information in your application commercially or industrially confidential?" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -17,16 +17,11 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
-
-<div class="notice" style="margin-bottom: 20px">
-  <i class="icon icon-important">
-    <span class="visually-hidden">Warning</span>
-  </i>
-  <strong class="bold-small">
-    Only claim confidentiality if you are very certain that you wish information to be confidential. This may delay your application.
-  </strong>
+<div class="panel panel-border-wide">
+  <p>
+    You should only claim confidentiality if you are very certain that you wish information to be confidential. This may delay your application.
+  </p>
 </div>
-
 
 
 <form method="post" action="{{formAction}}" class="form">
@@ -37,11 +32,11 @@
 
       <label class="block-label selection-button-radio" data-target="confidentialReasonsGroup" for="yesConfClaim">
         <input id="yesConfClaim" type="radio" name="confidential" value="yes">
-        Yes, I wish to claim confidentiality for my application
+        Yes, I wish to claim confidentiality for part of my application
       </label>
       <div class="panel panel-border-narrow js-hidden" id="confidentialReasonsGroup">
-        <label class="form-label" for="confidentialReasons">Give your reasons. If we agree with your request, we will tell you and not include the information in the public register.</label>
-        <textarea class="form-control" name="confidentialReasons" type="text" id="confidentialReasons"></textarea>
+        <label class="form-label" for="confidentialReasons">Give your reasons. If we agree with your request, we will not include the information in the public register.</label>
+        <textarea class="form-control" name="confidentialReasons" type="text" id="confidentialReasons" cols="30" rows="4"></textarea>
       </div>
 
       <label class="block-label selection-button-radio" for="notConfClaim">

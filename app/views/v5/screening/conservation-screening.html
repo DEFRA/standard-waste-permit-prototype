@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Have you ordered a nature and heritage conservation check?" %}
+{% set title = "Have you ordered a site location check?" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -40,7 +40,7 @@
 
       <label class="block-label selection-button-radio" for="pending">
         <input id="pending" type="radio" name="screening" value="pending">
-        Yes, I don't have a reference number or am waiting for a reply
+        Yes, but I don't have a reference number or am waiting for a reply
       </label>
 
       <label class="block-label selection-button-radio" data-target="screeningNo" for="no">
@@ -48,7 +48,7 @@
         No
       </label>
         <div class="panel panel-border-narrow js-hidden" id="screeningNo">
-          <p><a href="http://www.smartsurvey.co.uk/s/HeritageForm/" target="_blank">Get a nature and heritage conservation check on the SmartSurvey site</a></p>
+          <p><a href="http://www.smartsurvey.co.uk/s/HeritageForm/" target="_blank">Order a nature and heritage conservation check on the SmartSurvey site</a></p>
       </div>
 
     </fieldset>

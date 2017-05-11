@@ -46,28 +46,29 @@ Save this application to complete later</a></p>
           <ul class="task-list-items">
              <li class="task-list-item">
               <a class="task-name" href="/{{folder}}/selectpermit/cost-and-time" aria-describedby="cost-and-time">
-                Check cost and time
+                Check permit cost and time
               </a>
               {% if permit.costTime %} 
               <strong class="task-completed" id="cost-and-time">Completed</strong> 
               {% endif %}
             </li>
+            <li class="task-list-item">
+             <a class="task-name" href="/{{folder}}/read-rules/index" aria-describedby="read-rules">
+               Read the rules
+             </a>
+             {% if permit.readRules %} 
+             <strong class="task-completed" id="read-rules">Completed</strong> 
+             {% endif %}
+           </li>
              <li class="task-list-item">
               <a class="task-name" href="/{{folder}}/selectpermit/what-need-to-apply" aria-describedby="what-need-to-apply">
-                Check what you need to apply
+                Documents and information you need
               </a>
               {% if permit.needToApply %} 
               <strong class="task-completed" id="what-need-to-apply">Completed</strong> 
               {% endif %}
             </li>
-             <li class="task-list-item">
-              <a class="task-name" href="/{{folder}}/read-rules/index" aria-describedby="read-rules">
-                Read rules
-              </a>
-              {% if permit.readRules %} 
-              <strong class="task-completed" id="read-rules">Completed</strong> 
-              {% endif %}
-            </li>
+
             <li class="task-list-item">
               <a class="task-name" href="{% if permit.preAppDiscussion!=null %}
                 /{{folder}}/preapp/check-your-answers
@@ -84,7 +85,7 @@ Save this application to complete later</a></p>
               {% else %}
                 /{{folder}}/screening/conservation-screening
               {% endif %}" aria-describedby="screening-completed">
-                Request a nature and heritage conservation check
+                Order a site location check
               </a>
               {% if permit.screening!=null %} <strong class="task-completed" id="screening-completed">Completed</strong> {% endif %}
             </li>
@@ -114,7 +115,7 @@ Save this application to complete later</a></p>
               {% else %}
                 /{{folder}}/site/site-name
               {% endif %}" aria-describedby="site-name-completed">
-                Site name and location
+                Give site name and location
               </a>
               {% if permit.siteName!=null %} <strong class="task-completed" id="site-name-completed">Completed</strong> {% endif %}
             </li>
@@ -139,7 +140,7 @@ Save this application to complete later</a></p>
               {% else %}
                 /{{folder}}/evidence/industry-scheme
               {% endif %}" aria-describedby="industry-scheme-completed">
-                Prove technical ability
+                Prove technical qualifications
               </a>
               {% if permit.industryScheme!=null %} <strong class="task-completed" id="industry-scheme-completed">Completed</strong> {% endif %}
             </li>
@@ -150,7 +151,7 @@ Save this application to complete later</a></p>
               {% else %}
                 /{{folder}}/evidence/management-system
               {% endif %}" aria-describedby="management-system-completed">
-                List management systems
+                Tell us which management system you use
               </a>
               {% if permit.manSys!=null %} <strong class="task-completed" id="management-system-completed">Completed</strong> {% endif %}
             </li>
@@ -160,7 +161,7 @@ Save this application to complete later</a></p>
               {% else %}
                 /{{folder}}/operator/site-operator
               {% endif %}" aria-describedby="site-operator-completed">
-                Operator details
+                Give operator details
               </a>
               {% if permit.operatorType!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong> {% endif %}
             </li>
