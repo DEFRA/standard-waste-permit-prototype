@@ -419,8 +419,8 @@ router.post('/evidence/offencescheck', function (req, res) {
           "permit":req.session.permit // always send permit object to page
       })
   } else {
-  res.render(folder + '/evidence/offencescheck',{
-      "formAction":"/"+ folder + "/check/task-list",
+  res.render(folder + '/check/task-list',{
+      "formAction":"/"+ folder + "/check/check-answers",
       "permit":req.session.permit // always send permit object to page
   })  }
 })
