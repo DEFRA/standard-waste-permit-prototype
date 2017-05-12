@@ -18,28 +18,47 @@
 
     <form method="post" action="{{formAction}}">
 
-        <div class="panel panel-border-wide">
-        <p>
-          Read the <a href="{{permit.guidanceURL}}" target="_blank">rules and risk assessment for permit {{permit.permitCode}} on GOV.UK (opens new tab)</a>
-        </p>
-      </div>
-        
-        <p>
-          Check that your operation can keep to the rules.</a>
-        </p>
-        
+      <p class="text">
+        Check that your operation will meet the standard rules for this permit.
+      </p>
 
-          <p>
-          If you can't keep to these rules you may need a different standard rules permit or a bespoke permit instead.
-          </p>
+      <p class="text">
+        <a href="{{permit.guidanceURL}}" target="_blank">Rules and risk assessment for permit {{permit.permitCode}} on GOV.UK (opens new tab)</a>
+      </p>
+      
+      <div class="form-group text">
+        <details>
+          <summary><span class="summary">How to check the rules about site location</span></summary>
+          <div class="panel panel-border-narrow">
+            <p>
+              When you apply for a permit we'll check if your site location meets the rules. For example, if it is too close to heritage and nature conservation sites.
+            </p>
+            <p>
+              If you want us to check this before you complete the rest of your application, you can order a site location check.
+            </p>
+            <p>
+              <a href="http://www.smartsurvey.co.uk/s/HeritageForm/" target="_blank">Order a site location check (opens new tab)</a>
+            </p>
+            <p>
+              We’ll reply within 5 working days.
+            </p>
+          </div>
+        </details>
+      </div>
 
 
          <!-- set readRules to yes -->       
         <input type="hidden" name="readRules" value="yes">
         
 
-        <div class="form-group">
+        <div class="form-group" style="margin-top:1em;">
           <input type="submit" class="button" value="I can keep to these rules">
+        </div>
+        
+        <div class="form-group">
+          <p>
+            If you can't keep to these rules, you may need a different standard rules permit or a bespoke permit instead.
+          </p>
         </div>
 
       </form>

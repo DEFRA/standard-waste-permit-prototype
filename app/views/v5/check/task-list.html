@@ -79,16 +79,7 @@ Save this application to complete later</a></p>
               </a>
               {% if permit.preAppDiscussion!=null %} <strong class="task-completed" id="preapp-completed">Completed</strong> {% endif %}
             </li>
-            <li class="task-list-item">
-             <a class="task-name" href="{% if permit.screening!=null %}
-                /{{folder}}/screening/check-your-answers
-              {% else %}
-                /{{folder}}/screening/conservation-screening
-              {% endif %}" aria-describedby="screening-completed">
-                Order a site location check
-              </a>
-              {% if permit.screening!=null %} <strong class="task-completed" id="screening-completed">Completed</strong> {% endif %}
-            </li>
+
           </ul>
         </li>
         <!-- Prepare to apply ############################################################### -->
