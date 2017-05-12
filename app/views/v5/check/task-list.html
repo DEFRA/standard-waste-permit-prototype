@@ -90,10 +90,9 @@ Save this application to complete later</a></p>
               </a>
               {% if permit.preAppDiscussion!=null %} <strong class="task-completed" id="preapp-completed">Completed</strong> {% endif %}
             </li>
-
           </ul>
         </li>
-        <!-- Prepare to apply ############################################################### -->
+        <!-- Complete application ############################################################### -->
         <li>
           <h2 class="task-list-section">
             <span class="task-list-section-number">3. </span> Complete application
@@ -110,8 +109,6 @@ Save this application to complete later</a></p>
               </a>
               {% if permit.contactName!=null %} <strong class="task-completed" id="contact-details-completed">Completed</strong> {% endif %}
             </li>
-
-            
       <li class="task-list-item">
             <a class="task-name" href="{% if permit.operatorType!=null %}/{{folder}}/operator/check-your-answers
               {% else %}
@@ -168,9 +165,10 @@ Save this application to complete later</a></p>
               </a>
               {% if permit.manSys!=null %} <strong class="task-completed" id="management-system-completed">Completed</strong> {% endif %}
             </li>
+            
 
+             <!--  <li class="task-list-item">
 
-        <li class="task-list-item">
             <a class="task-name" href="{% if permit.offences!=null %}
                 /{{folder}}/evidence/offences-check-answers
               {% else %}
@@ -191,6 +189,10 @@ Save this application to complete later</a></p>
               </a>
               {% if permit.bankruptcyInsolvency!=null %} <strong class="task-completed" id="bankruptcy-insolvency-completed">Completed</strong> {% endif %}
             </li>
+
+          -->
+
+          <!-- Make confidentiality conditional to permit and in context rather than on task list? -->
             
       <li class="task-list-item">
               <a class="task-name" href="{% if permit.confidential!=null %}
@@ -257,10 +259,6 @@ Save this application to complete later</a></p>
               </a>
               {% if permit.xxxxxxxx!=null %} <strong class="task-completed" id="submit-and-pay">Completed</strong> {% endif %}
             </li>
-          </ul>
-        </li>
-
-
           </ul>
         </li>
 
