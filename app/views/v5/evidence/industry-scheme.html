@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Which qualification does the operator have?" %}
+{% set title = "Which qualification does the site manager have?" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -14,6 +14,14 @@
       <div class="column-two-thirds">
 
 <h1 class="heading-large">{{title}}</h1>
+
+<div class="panel panel-border-wide">
+  <p> 
+    Your site must be managed by a 'competent person'. To prove this, they must have a certificate of technical competence or an operator competence scheme certificate.
+  </p>
+</div>
+
+
 
 
 <form method="post" action="{{formAction}}" class="form">
