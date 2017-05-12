@@ -394,12 +394,20 @@ router.post('/operator/checkoperator', function (req, res) {
 router.post('/operator/company/check-company-details', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/operator/company/check-company-details',{
-      "formAction":"/"+ folder + "/check/task-list",
+      "formAction":"/"+ folder + "/evidence/declare-offences",
       "permit":req.session.permit // always send permit object to page
   })
 })
 
-// Relevant offences ===========================================================
+router.post('/evidence/declare-offences', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/evidence/declare-offences',{
+      "formAction":"/"+ folder + "/evidence/offencescheck",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+// Relevant offences & Bankruptcy insolvency ====================
 
 router.get('/evidence/declare-offences', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
@@ -415,17 +423,24 @@ router.post('/evidence/offencescheck', function (req, res) {
   if(req.body['offences']=="yes"){ // think you need square bracket for radios
     // show details page
       res.render(folder + '/evidence/details-of-offence',{
-          "formAction":"/"+ folder + "/check/task-list",
+          "formAction":"/"+ folder + "/evidence/bankruptcy-insolvency",
           "permit":req.session.permit // always send permit object to page
       })
   } else {
-  res.render(folder + '/check/task-list',{
-      "formAction":"/"+ folder + "/check/check-answers",
+  res.render(folder + '/evidence/bankruptcy-insolvency',{
+      "formAction":"/"+ folder + "/check/task-list",
       "permit":req.session.permit // always send permit object to page
-  })  }
+   })  
+  }
 })
 
-// Bankruptcy insolvency ========================================================
+router.post('/evidence/bankruptcy-insolvency', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/evidence/bankruptcy-insolvency',{
+      "formAction":"/"+ folder + "/check/task-list",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
 
 router.get('/evidence/bankruptcy-insolvency', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 

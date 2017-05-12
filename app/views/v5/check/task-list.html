@@ -79,7 +79,7 @@ Save this application to complete later</a></p>
               </a>
               {% if permit.preAppDiscussion!=null %} <strong class="task-completed" id="preapp-completed">Completed</strong> {% endif %}
             </li>
-            <li class="task-list-item">
+            <!-- <li class="task-list-item">
              <a class="task-name" href="{% if permit.screening!=null %}
                 /{{folder}}/screening/check-your-answers
               {% else %}
@@ -89,6 +89,7 @@ Save this application to complete later</a></p>
               </a>
               {% if permit.screening!=null %} <strong class="task-completed" id="screening-completed">Completed</strong> {% endif %}
             </li>
+          -->
           </ul>
         </li>
         <!-- Prepare to apply ############################################################### -->
@@ -107,6 +108,16 @@ Save this application to complete later</a></p>
                 Your contact details 
               </a>
               {% if permit.contactName!=null %} <strong class="task-completed" id="contact-details-completed">Completed</strong> {% endif %}
+            </li>
+
+          <li class="task-list-item">
+            <a class="task-name" href="{% if permit.operatorType!=null %}/{{folder}}/operator/check-your-answers
+              {% else %}
+                /{{folder}}/operator/site-operator
+              {% endif %}" aria-describedby="site-operator-completed">
+                Give operator details
+              </a>
+              {% if permit.operatorType!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong> {% endif %}
             </li>
             
         <li class="task-list-item">
@@ -156,17 +167,8 @@ Save this application to complete later</a></p>
               {% if permit.manSys!=null %} <strong class="task-completed" id="management-system-completed">Completed</strong> {% endif %}
             </li>
             
-      <li class="task-list-item">
-            <a class="task-name" href="{% if permit.operatorType!=null %}/{{folder}}/operator/check-your-answers
-              {% else %}
-                /{{folder}}/operator/site-operator
-              {% endif %}" aria-describedby="site-operator-completed">
-                Give operator details
-              </a>
-              {% if permit.operatorType!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong> {% endif %}
-            </li>
 
-              <li class="task-list-item">
+             <!--  <li class="task-list-item">
             <a class="task-name" href="{% if permit.offences!=null %}
                 /{{folder}}/evidence/offences-check-answers
               {% else %}
@@ -187,6 +189,10 @@ Save this application to complete later</a></p>
               </a>
               {% if permit.bankruptcyInsolvency!=null %} <strong class="task-completed" id="bankruptcy-insolvency-completed">Completed</strong> {% endif %}
             </li>
+
+          -->
+
+          <!-- Make confidentiality conditional to permit and in context rather than on task list? -->
             
       <li class="task-list-item">
               <a class="task-name" href="{% if permit.confidential!=null %}
