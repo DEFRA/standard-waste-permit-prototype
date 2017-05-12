@@ -419,8 +419,10 @@ router.post('/evidence/offencescheck', function (req, res) {
           "permit":req.session.permit // always send permit object to page
       })
   } else {
-      res.redirect('/'+folder+'/check/task-list')
-  }
+  res.render(folder + '/evidence/offencescheck',{
+      "formAction":"/"+ folder + "/check/task-list",
+      "permit":req.session.permit // always send permit object to page
+  })  }
 })
 
 // Bankruptcy insolvency ========================================================
