@@ -14,12 +14,18 @@
 <h1 class="heading-large">{{title}}</h1>
 
 
+<style>
+.check-your-answers td {
+  width: 50%;
+}
+</style>
+
 <table class="check-your-answers">
       <thead>
       <tr>
         <th colspan="2">
           <h2 class="heading-medium">
-            Before you start
+            Before you apply
           </h2>
         </th>
         <th>
@@ -36,70 +42,42 @@
 	      </a>
 	    </td>
 	</tr>
-	<tr>
-      <td>Pre-application discussion</td>
-      <td>{{permit.preAppDiscussion}} <!-- {{permit.preAppDiscussionRefName}} --> </td>
-	    <td class="change-answer">
-	      <a href="/{{folder}}/preapp/preapp-discussion">
-	        Change <span class="visuallyhidden">Pre-application discussion</span>
-	      </a>
-	    </td>
-	</tr>
-	<tr>
-      <td>Site location check</td>
-      <td>{{permit.permitNatureHeritageSurvey}}</td>
-	    <td class="change-answer">
-	      <a href="/{{folder}}/screening/conservation-screening">
-	        Change <span class="visuallyhidden">Site location check</span>
-	      </a>
-	    </td>
-	</tr>
   </tbody>
 </table>
 
 
 <table class="check-your-answers">
-      <thead>
+    <thead>
       <tr>
         <th colspan="2">
           <h2 class="heading-medium">
-            Your contact details
+            Prepare to apply
           </h2>
         </th>
         <th>
         </th>
       </tr>
     </thead> 
-    <tbody> 
-    <tr>
-      <td>Full name</td>
-      <td>{{permit.contactName}}</td>
-	    <td class="change-answer">
-	      <a href="/{{folder}}/contact/contact-details">
-	        Change <span class="visuallyhidden">Full name</span>
-	      </a>
-	    </td>
-	</tr>    
-	<tr>
-      <td>Telephone number</td>
-      <td>{{permit.contactTelephone}}</td>
-	    <td class="change-answer">
-	      <a href="/{{folder}}/contact/contact-details">
-	        Change <span class="visuallyhidden">Telephone number</span>
-	      </a>
-	    </td>
-	</tr>
-	<tr>
-      <td>Email address</td>
-      <td><br>
-          {{permit.contactEmail}}</td>
-	    <td class="change-answer">
-	      <a href="/{{folder}}/contact/contact-details">
-	        Change <span class="visuallyhidden">Email address</span>
-	      </a>
-	    </td>
-	</tr>
-  </tbody>
+    <tbody>
+      <tr>
+      <td>Documents and information you need</td>
+      <td>{{permit.needToApply}}</td>
+      <td class="change-answer">
+        <a href="/{{folder}}/selectpermit/what-need-to-apply">
+          Change <span class="visuallyhidden">Documents and information you need</span>
+        </a>
+      </td>
+    </tr>
+      <tr>
+      <td>Pre-application discussion</td>
+      <td>{{permit.preAppDiscussion}} <!-- {{permit.preAppDiscussionRefName}} --> </td>
+      <td class="change-answer">
+        <a href="/{{folder}}/preapp/preapp-discussion">
+          Change <span class="visuallyhidden">Pre-application discussion</span>
+        </a>
+      </td>
+  </tr>
+ </tbody>
 </table>
 
 
@@ -108,7 +86,7 @@
       <tr>
         <th colspan="2">
           <h2 class="heading-medium">
-            Site name and location
+            Complete application
           </h2>
         </th>
         <th>
@@ -116,16 +94,76 @@
       </tr>
     </thead>  
     <tbody>
-    	<tr>
+    <tr>
+      <td>Your contact details</td>
+      <td>{{permit.contactName}}<br>
+      {{permit.contactTelephone}}<br>
+      {{permit.contactEmail}}
+      </td>
+      <td class="change-answer">
+        <a href="/{{folder}}/contact/contact-details">
+          Change <span class="visuallyhidden">Your contact details</span>
+        </a>
+      </td>
+    </tr> 
+      <tr>
+      <td>Operator for the site</td>
+      <td>{{permit.operatorType}} 
+    </td>
+      <td class="change-answer">
+        <a href="/{{folder}}/operator/site-operator">
+          Change <span class="visuallyhidden">Operator type</span>
+        </a>
+      </td>
+  </tr>
+  <tr>
+      <td>Operator name</td>
+      <td>{{permit.companyName}} 
+    </td>
+      <td class="change-answer">
+        <a href="/{{folder}}/operator/company/checkoperator">
+          Change <span class="visuallyhidden">Operator name</span>
+        </a>
+      </td>
+  </tr>
+  <tr>
+      <td>Operator address</td>
+      <td>{{permit.companyAddress}} 
+    </td>
+      <td class="change-answer">
+        <a href="/{{folder}}/operator/company/check-company-details">
+          Change <span class="visuallyhidden">Operator address</span>
+        </a>
+      </td>
+  </tr>
+        <tr>
+      <td>Offences statement</td>
+      <td>{{permit.offences}}</td>
+      <td class="change-answer">
+        <a href="/{{folder}}/evidence/declare-offences">
+          Change <span class="visuallyhidden">Offences statement</span>
+        </a>
+      </td>
+  </tr>
+  <tr>
+      <td>Bankruptcy or insolvency statement</td>
+      <td>{{permit.bankruptcyInsolvency}}</td>
+      <td class="change-answer">
+        <a href="/{{folder}}/evidence/bankruptcy-insolvency">
+          Change <span class="visuallyhidden">Bankruptcy or insolvency statement</span>
+        </a>
+      </td>
+  </tr>
+  <tr>
       <td>Site name</td>
       <td>{{permit.siteName}}
-		</td>
-	    <td class="change-answer">
-	      <a href="/{{folder}}/site/site-name">
-	        Change <span class="visuallyhidden">Site name</span>
-	      </a>
-	    </td>
-	</tr>
+    </td>
+      <td class="change-answer">
+        <a href="/{{folder}}/site/site-name">
+          Change <span class="visuallyhidden">Site name</span>
+        </a>
+      </td>
+  </tr>
 	<tr>
       <td>Grid reference for the site</td>
       <td>{{permit.siteGridRef}}</td>
@@ -154,28 +192,12 @@
 	      </a>
 	    </td>
 	</tr>
-  </tbody>
-</table>
-
-<table class="check-your-answers">
-      <thead>
-      <tr>
-        <th colspan="2">
-          <h2 class="heading-medium">
-            Technical qualifications and management system
-          </h2>
-        </th>
-        <th>
-        </th>
-      </tr>
-    </thead>  
-    <tbody>
 	<tr>
-      <td>Technical qualifications</td>
+      <td>Site manager qualifications</td>
       <td>{{permit.industryScheme}} <!-- {{permit.technicalCertificateFile}} --></td>
 	    <td class="change-answer">
 	      <a href="/{{folder}}/evidence/industry-scheme">
-	        Change <span class="visuallyhidden">Technical qualifications</span>
+	        Change <span class="visuallyhidden">Site manager qualifications</span>
 	      </a>
 	    </td>
 	</tr>
@@ -190,136 +212,32 @@
 	      </a>
 	    </td>
 	</tr>
-  </tbody>
-</table>
-
-
-
-
-<table class="check-your-answers">
-      <thead>
-      <tr>
-        <th colspan="2">
-          <h2 class="heading-medium">
-            Operator details
-          </h2>
-        </th>
-        <th>
-        </th>
-      </tr>
-    </thead> 
-<tbody>
-      <tr>
-      <td>Operator name</td>
-      <td>{{permit.companyName}}
-		</td>
-	    <td class="change-answer">
-	      <a href="/{{folder}}/operator/checkoperator">
-	        Change <span class="visuallyhidden">Operator name</span>
-	      </a>
-	    </td>
-	</tr>
-    <tr>
-      <td>Operator address</td>
-      <td>{{permit.companyAddress}}
-		</td>
-	    <td class="change-answer">
-	      <a href="/{{folder}}/operator/company/check-company-details">
-	        Change <span class="visuallyhidden">Operator address</span>
-	      </a>
-	    </td>
-	</tr>
-	  </tbody>
-</table>
-
-
-
-<table class="check-your-answers">
-      <thead>
-      <tr>
-        <th colspan="2">
-          <h2 class="heading-medium">
-            Offences, bankruptcy and insolvency statements
-          </h2>
-        </th>
-        <th>
-        </th>
-      </tr>
-    </thead>  
-    <tbody>
-    	<tr>
-      <td>Offences statement</td>
-      <td>{{permit.offences}}</td>
-	    <td class="change-answer">
-	      <a href="/{{folder}}/evidence/declare-offences">
-	        Change <span class="visuallyhidden">Offences statement</span>
-	      </a>
-	    </td>
-	</tr>
-	<tr>
-      <td>Bankruptcy or insolvency statement</td>
-      <td>{{permit.bankruptcyInsolvency}}</td>
-	    <td class="change-answer">
-	      <a href="/{{folder}}/evidence/bankruptcy-insolvency">
-	        Change <span class="visuallyhidden">Bankruptcy or insolvency statement</span>
-	      </a>
-	    </td>
-	</tr>
-  </tbody>
-</table>
-
-
-<table class="check-your-answers">
-      <thead>
-      <tr>
-        <th colspan="2">
-          <h2 class="heading-medium">
-            Confidentiality
-          </h2>
-        </th>
-        <th>
-        </th>
-      </tr>
-    </thead>  
-    <tbody>
- 	<tr>
+  <tr>
       <td>Confidentiality request</td>
       <td>{{permit.confidential}}</td>
-	    <td class="change-answer">
-	      <a href="/{{folder}}/check/claim-confidentiality">
-	        Change <span class="visuallyhidden">Confidentiality request</span>
-	      </a>
-	    </td>
-	</tr>
-  </tbody>
-</table>
-
- {% if permit.firePlanNeeded=="Yes" %}
-<table class="check-your-answers">
-      <thead>
-      <tr>
-        <th colspan="2">
-          <h2 class="heading-medium">
-            Fire prevention plan
-          </h2>
-        </th>
-        <th>
-        </th>
-      </tr>
-    </thead>  
-    <tbody>
-	<tr>
+      <td class="change-answer">
+        <a href="/{{folder}}/check/claim-confidentiality">
+          Change <span class="visuallyhidden">Confidentiality request</span>
+        </a>
+      </td>
+  </tr>
+  {% if permit.firePlanNeeded=="Yes" %}
+  <tr>
       <td>Fire prevention plan </td>
       <td>{{permit.firePlanFilename}}</td>
-	    <td class="change-answer">
-	      <a href="/{{folder}}/evidence/upload-fire-plan">
-	        Change <span class="visuallyhidden">Fire prevention plan</span>
-	      </a>
-	    </td>
-	</tr>
+      <td class="change-answer">
+        <a href="/{{folder}}/evidence/upload-fire-plan">
+          Change <span class="visuallyhidden">Fire prevention plan</span>
+        </a>
+      </td>
+  </tr>
   </tbody>
 </table>
 {% endif %}
+
+  </tbody>
+</table>
+
 
 
 <h2 class="heading-medium">
