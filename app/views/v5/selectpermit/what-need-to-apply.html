@@ -57,8 +57,8 @@
                 {% endif %}
                 
                 {% if permit.wasteRecoveryPlan=="Yes" %}
-                  <li>
-                    A waste recovery plan.
+                  <li>A waste recovery plan.<br>
+                     <a href="https://www.gov.uk/guidance/waste-recovery-plans-and-permits" target="_blank">Waste recovery plan guidance on GOV.UK (opens new tab)</a>
                   </li>
                 {% endif %}
 
@@ -66,8 +66,17 @@
                   <a href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits" target="_blank">Management system guidance on GOV.UK (opens new tab)</a>
                 </li>
                   
-                <li>The grid reference for the site.</li>
+                <li>The grid reference for the site.
+                <details>
+                  <summary><span class="summary">Help finding a grid reference</span></summary>
+                  <div class="panel panel-border-narrow">
+                    {% include folder+"/site/grid-reference-finder.html" %}
+                  </div>
+                </details>
+              </li>
+
                 <li>The name and contact details for the operator.</li>
+
                 <li>For registered companies, the company number.</li>
               
             </ul>
