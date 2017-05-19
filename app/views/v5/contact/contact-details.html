@@ -17,12 +17,6 @@
 
 <form method="post" action="{{formAction}}" class="form">
 
-<div class="panel panel-border-wide">
-  <p>
-    This can be someone acting as an agent or consultant.
-  </p>
-</div>
-
 <div class="form-group">
   <label class="form-label" for="contactName">
     Full name
@@ -31,6 +25,13 @@
     </span>
   </label>
   <input class="form-control" id="contactName" name="contactName" type="text" value="{{permit.contactName}}">
+</div>
+
+<div class="form-group">
+  <label class="block-label selection-button-checkbox" for="isContactAnAgent">
+    <input id="isContactAnAgent" name="isContactAnAgent" type="checkbox" value="yes">
+    This person is an agent or consultant
+  </label>
 </div>
 
 <div class="form-group">
@@ -49,6 +50,7 @@
   </label>
   <input class="form-control" id="contactEmail" name="contactEmail" type="email" value="{{permit.contactEmail}}">
 </div>
+
 
 
 
