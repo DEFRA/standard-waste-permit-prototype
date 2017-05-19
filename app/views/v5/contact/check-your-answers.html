@@ -35,8 +35,12 @@
           Contact details:
         </td>
          <td>{{permit.contactName}}<br>
-             {{permit.contactTelephone}}<br>
-             {{permit.contactEmail}}</td>
+             {% if permit.isContactAnAgent == "yes" %}
+              This person is an agent or consultant<br>
+             {% endif %}
+             Telephone {{permit.contactTelephone}}<br>
+             {{permit.contactEmail}}
+         </td>
         <td class="change-answer">
           <a href="/{{folder}}/contact/contact-details">
             Change <span class="visuallyhidden">Contact details</span>
