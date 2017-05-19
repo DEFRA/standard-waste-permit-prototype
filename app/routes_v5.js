@@ -28,6 +28,14 @@ router.get('/cls', function (req, res) {
   res.render('index')
 })
 
+// Rules page from list ==============================================================
+
+router.get('/start/rules-page', function (req, res) {
+  res.render(folder + '/start/rules-page',{
+      "chosenPermitID":req.query['chosenPermitID']
+  })
+})
+
 // Start or resume ==============================================================
 
 router.get('/start/start-or-resume', function (req, res) {

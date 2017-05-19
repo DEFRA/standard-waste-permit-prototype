@@ -18,10 +18,10 @@
             <div class="header-logo">
                 <a href="https://www.gov.uk" title="Go to the GOV.UK homepage" id="logo" class="content"> <img src="https://assets.publishing.service.gov.uk/static/gov.uk_logotype_crown_invert_trans-203e1db49d3eff430d7dc450ce723c1002542fe1d2bce661b6d8571f14c1043c.png" width="36" height="32" alt=""> GOV.UK </a>
             </div> 
-            <!-- <a href="#search" class="search-toggle js-header-toggle">Search</a> -->
-            <!-- <form id="search" class="site-search" action="/search" method="post" role="search">
+            <a href="#search" class="search-toggle js-header-toggle">Search</a>
+            <form id="search" class="site-search" action="/search" method="post" role="search">
                 <div class="content"> <label for="site-search-text">Search</label> <input type="search" name="q" id="site-search-text" title="Search" class="js-search-focus"> <input class="submit" type="submit" value="Search"> </div>
-            </form> -->
+            </form>
         </div>
         <div class="header-proposition">
             <div class="content"> <a href="#proposition-links" class="js-header-toggle menu">Menu</a>
@@ -111,12 +111,9 @@
 
 												<li class="group-document-list-item">
 						              <h3 class="group-document-list-item-title">
-						                <a href="{{pData.guidanceURL}}">{{ label | join | safe }}</a>
+						                <a href="/{{folder}}/start/rules-page?chosenPermitID={{pNumber}}">{{ label | join | safe }}</a>
 						              </h3>
-						 						 <p class="applylink">
-						 							 <a href="/{{folder}}/selectpermit/cost?chosenPermitID={{pNumber}}">Apply for permit {{pNumber}}
-						 							 </a>
-						 						 </p>
+
 						              <ul class="group-document-list-item-attributes">
 						                <li>
 						                  <time datetime="2013-06-07T00:00:00Z">
