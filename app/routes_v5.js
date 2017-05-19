@@ -626,6 +626,74 @@ router.post('/check/check-answers', function (req, res) {
   })
 })
 
+
+// Sections: check your answers
+
+router.get('/preapp/check-your-answers', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/preapp/check-your-answers',{
+      "formAction":"/"+ folder + "/check/task-list",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+router.get('/contact/check-your-answers', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/contact/check-your-answers',{
+      "formAction":"/"+ folder + "/check/task-list",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+router.get('/operator/check-your-answers', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/operator/check-your-answers',{
+      "formAction":"/"+ folder + "/check/task-list",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+router.get('/site/check-your-answers', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/site/check-your-answers',{
+      "formAction":"/"+ folder + "/check/task-list",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+router.get('/evidence/industry-check-answers', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/evidence/industry-check-answers',{
+      "formAction":"/"+ folder + "/check/task-list",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+router.get('/evidence/management-check-answers', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/evidence/management-check-answers',{
+      "formAction":"/"+ folder + "/check/task-list",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+router.get('/evidence/fire-plan-check-answers', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/evidence/fire-plan-check-answers',{
+      "formAction":"/"+ folder + "/check/task-list",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+router.get('/check/confidentiality-check-answers', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/check/confidentiality-check-answers',{
+      "formAction":"/"+ folder + "/check/task-list",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+
 // Pay ===================================================================
 
 router.post('/pay/payment-method', function (req, res) {

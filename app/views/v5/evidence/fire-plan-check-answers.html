@@ -38,7 +38,7 @@
           {{permit.firePlanFilename}} 
         </td>
         <td class="change-answer">
-          <a href="#">
+          <a href="/{{folder}}/evidence/upload-fire-plan">
             Change <span class="visuallyhidden">Name</span>
           </a>
         </td>
@@ -49,8 +49,14 @@
   <br>
   <br>
 
-  <a href="/{{folder}}/check/task-list">Return to task list</a>
+      <form method="post" action="{{formAction}}" class="form">
 
+      <div class="form-group">
+        <input type="submit" class="button" value="Return to task list">
+      </div>
+
+    </form>
+    
 </main>
 
 {% endblock %}
