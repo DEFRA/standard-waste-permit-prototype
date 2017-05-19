@@ -36,6 +36,16 @@ router.get('/start/rules-page', function (req, res) {
   })
 })
 
+// This page should not show for long - it just saves permit data
+router.get('/check/process-link', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // form to session
+    res.render(folder + '/check/process-link',{ // show save and return pages
+       "formAction":"/"+ folder + "/check/task-list",
+       "chosenPermitID":req.query['chosenPermitID'],
+       "permit":req.session.permit // always send permit object to page
+    })
+})
+
 // Start or resume ==============================================================
 
 router.get('/start/start-or-resume', function (req, res) {
