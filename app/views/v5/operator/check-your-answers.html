@@ -43,6 +43,7 @@
           </a>
         </td>
       </tr>
+      {% if permit.operatorType=="Limited company" %}
       <tr>
         <td>
           Company name
@@ -69,6 +70,37 @@
           </a>
         </td>
       </tr>
+        {% endif %}
+
+      {% if permit.operatorType=="Individual" %}
+      <tr>
+        <td>
+          Individual's name
+        </td>
+        <td>
+          {{permit.individualName}} 
+        </td>
+        <td class="change-answer">
+          <a href="/{{folder}}/operator/individual/individual-details">
+            Change <span class="visuallyhidden">individual's name</span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Individual's address
+        </td>
+        <td>
+          {{permit.individualAddress}} 
+        </td>
+        <td class="change-answer">
+          <a href="/{{folder}}/operator/individual/postcode">
+            Change <span class="visuallyhidden">individual's address</span>
+          </a>
+        </td>
+      </tr>
+      {% endif %}
+
      <tr>
         <td>
           Relevant offences
