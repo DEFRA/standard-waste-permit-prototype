@@ -21,7 +21,7 @@
           <fieldset class="permitList" aria-labelledby="radio_label">
             <legend="Permit">
 			
-			{% from folder+"/custom_inc/category-list-allSR-json.html" import categories %}
+			{% from folder+"/custom_inc/category-list-json.html" import categories %}
 			{% from folder+"/custom_inc/permit-list-json.html" import permits %}
       {% import folder+"/custom_inc/macros.html" as macros %}
 	
@@ -38,8 +38,7 @@
 				            {% endif %}
 									{% endif %}
 						{% endfor %}
-
-						<span class="font-xsmall permitNo">({{permitCount}} permits)</span>
+						<br><span class="form-hint text" style="padding-left:1em;">{{permitCount}} permits</span>
 						
 						</summary>
 					<div class="panel panel-border-narrow" style="margin-bottom: 20px">
@@ -86,44 +85,7 @@
 			{% else %}
 					<p>No categories</p>
 			{% endfor %}
-		<p>or</p>
       
- <details role="group">
-
-          <summary role="button" aria-controls="permit-not-found" aria-expanded="true"><span class="summary">I can’t find the permit I need</span></summary>
-
-          <div class="panel panel-border-narrow" id="permit-not-found" aria-hidden="false">
-
-<p><a href="https://www.gov.uk/guidance/waste-environmental-permits">Read more about Waste environmental permits on GOV.UK</a> or contact the Environment Agency:</p>
-
-
-        <div class="email-url-number">
-            <p class="email">
-              <span class="type">Email</span>
-              <a class="email" href="mailto:enquiries@environment-agency.gov.uk">enquiries@environment-agency.gov.uk</a>
-            </p>
-            <p class="tel">
-              <span class="type">Telephone</span>
-              03708 506 506
-            </p>
-            <p class="tel">
-              <span class="type">Telephone from outside the UK (Monday to Friday, 8am to 6pm GMT)</span>
-              +44 (0) 114 282 5312
-            </p>
-            <p class="tel">
-              <span class="type">Minicom (for the hard of hearing)</span>
-              03702 422 549
-            </p>
-        </div>
-
-        <p class="font-small">Monday to Friday, 8am to 6pm</p>
-
-           
-          </div>
-
-          </details>
-
-
     </fieldset>
   </div>
 
