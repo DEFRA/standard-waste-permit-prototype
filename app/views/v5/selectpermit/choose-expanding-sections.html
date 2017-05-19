@@ -33,7 +33,7 @@
 						{% set permitCount=0 %}
 						{% for pNumber, pData in permits %}
 								  {% if pData.category==c.category %}
-								    {% if pData.canApplyOnPaper=="Yes" %}
+								    {% if pData.digitalMVP=="Yes?" %}
 														{% set permitCount=permitCount+1 %}
 				            {% endif %}
 									{% endif %}
@@ -46,7 +46,7 @@
 						{% for pNumber, pData in permits %}
 
 							  {% if pData.category==c.category %}
-							    {% if pData.canApplyOnPaper=="Yes" %}
+							    {% if pData.digitalMVP=="Yes?" %}
 			                
 			                  {% if pData.friendlyWeight!="" %}
 			                    {% set weight=" - "+pData.friendlyWeight %}
