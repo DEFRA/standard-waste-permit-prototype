@@ -598,7 +598,6 @@ router.post('/check/check-answers', function (req, res) {
   })
 })
 
-
 // Pay ===================================================================
 
 router.post('/pay/payment-method', function (req, res) {
