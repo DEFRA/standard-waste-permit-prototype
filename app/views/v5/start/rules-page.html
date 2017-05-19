@@ -143,9 +143,13 @@
 		<div class="column-two-thirds">
       <section id="gencond1">
       		<article>
-						<p>Standard rules guidance for {{pData.friendlyName}}. {{pData.friendlyWeight}}</p>
+						<p>Standard rules guidance for {{pData.friendlyName | lower }}. {{pData.friendlyWeight}}</p>
 						
-						<p><a href="/{{folder}}/check/process-link?chosenPermitID={{pNumber}}">Apply for this permit online</a></p>
+						<p><a href="/{{folder}}/check/process-link?chosenPermitID={{pNumber}}">Apply for this standard rules waste permit</a> for
+							
+							{{ "" if ( pData.nameGOVUK | truncate(1, true, "") | lower in ["a","e","i","o","u"] ) else "" }}
+							
+							{{ pData.nameGOVUK | lower }}</p>
 					</article>
       <section>      
 		</div>
