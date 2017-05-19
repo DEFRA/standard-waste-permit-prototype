@@ -383,13 +383,21 @@ router.post('/operator/checkoperator', function (req, res) {
           "formAction":"/"+ folder + "/operator/company/check-company-details",
           "permit":req.session.permit // always send permit object to page
       })
+  } else if (req.body['operatorType']=="Individual") {
+    // show individual page
+      res.render(folder + '/operator/individual/individual-details',{
+          "formAction":"/"+ folder + "/operator/individual/postcode",
+          "permit":req.session.permit // always send permit object to page
+      })
   } else {
     // go on to error
     res.render(folder + '/error/index',{ 
-        "errorText":"We only cover limited companies in this prototype"
+        "errorText":"We only cover limited companies and individuals in this prototype"
     })
   }
 })
+
+/* limited company */
 
 router.post('/operator/company/check-company-details', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
@@ -398,6 +406,35 @@ router.post('/operator/company/check-company-details', function (req, res) {
       "permit":req.session.permit // always send permit object to page
   })
 })
+
+/* individual */
+
+router.post('/operator/individual/postcode', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/operator/individual/postcode',{
+      "formAction":"/"+ folder + "/operator/individual/address",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+router.post('/operator/individual/address', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/operator/individual/address',{
+      "formAction":"/"+ folder + "/evidence/declare-offences",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+// Manual address is a link - so a GET
+router.get('/operator/individual/address-manual', function (req, res) {
+  res.render(folder + '/operator/individual/address-manual',{
+      "formAction":"/"+ folder + "/evidence/declare-offences", 
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+
+/* offences */
 
 router.post('/evidence/declare-offences', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
