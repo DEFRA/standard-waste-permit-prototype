@@ -28,6 +28,24 @@ router.get('/cls', function (req, res) {
   res.render('index')
 })
 
+// Rules page from list ==============================================================
+
+router.get('/start/rules-page', function (req, res) {
+  res.render(folder + '/start/rules-page',{
+      "chosenPermitID":req.query['chosenPermitID']
+  })
+})
+
+// This page should not show for long - it just saves permit data
+router.get('/check/process-link', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // form to session
+    res.render(folder + '/check/process-link',{ // show save and return pages
+       "formAction":"/"+ folder + "/start/start-or-resume",
+       "chosenPermitID":req.query['chosenPermitID'],
+       "permit":req.session.permit // always send permit object to page
+    })
+})
+
 // Start or resume ==============================================================
 
 router.get('/start/start-or-resume', function (req, res) {
@@ -94,11 +112,21 @@ router.get('save-and-return/email-save-link', function (req, res) {
 
 router.post('/selectpermit/choose-expanding-sections', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] 
-    res.render(folder + '/selectpermit/choose-expanding-sections',{
-      "formAction":"/"+ folder + "/check/save-permit-details",
-      "chosenCategory":req.body['chosenCategory'],
-      "permit":req.session.permit // always send permit object to page
-    }) 
+    // permit NOT YET selected
+    if( req.session.permit['chosenPermitID']==null ) {
+      res.render(folder + '/selectpermit/choose-expanding-sections',{
+        "formAction":"/"+ folder + "/check/save-permit-details",
+        "chosenCategory":req.body['chosenCategory'],
+        "permit":req.session.permit // always send permit object to page
+      })
+    // permit set via link on a GOV.UK page so skip this page
+    } else {
+      res.render(folder + '/check/task-list',{ // show save and return pages
+         "formAction":"/"+ folder + "/check/check-answers",
+         "chosenPermitID":req.body['chosenPermitID'],
+         "permit":req.session.permit // always send permit object to page
+      })
+    }
 })
 
 // required for 'select a different permit' via task list
