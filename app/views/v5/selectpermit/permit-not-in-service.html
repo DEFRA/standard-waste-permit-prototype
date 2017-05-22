@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% set title = "How to apply for this permit" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_alpha.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+      
+      <form method="post" action="{{formAction}}">
+      
+<h1 class="heading-large">
+  <span class="font-medium">Apply for a standard rules waste permit:</span><br>
+  Anaerobic digestion facility including use of the resultant biogas<br>
+  <span class="font-medium">SR2012 No 11 &nbsp; 
+    <a class="font-small" href="/v5/selectpermit/choose-expanding-sections">Select a different permit</a>
+  </span>
+  </h1>
+
+
+  <h3 class="heading-medium">How to apply</h3>
+
+<p>To apply, download and fill in these forms:</p>
+
+<ul class="list list-bullet">
+  <li><a href="https://www.gov.uk/government/publications/application-for-an-environmental-permit-part-a-about-you">part A: about you</a></li>
+  <li><a href="https://www.gov.uk/government/publications/application-for-an-environmental-permit-part-b1-standard-facilities-permit">part B1: standard facilities permit</a></li>
+  <li><a href="https://www.gov.uk/government/publications/application-for-an-environmental-permit-part-f1-opra-charges-declarations">part F1: <abbr title="Operational risk appraisal">Opra</abbr>, charges and declarations</a></li>
+</ul>
+
+
+<h3 class="heading-medium">What you need to apply:</h3>
+
+<!-- original from https://www.gov.uk/guidance/waste-environmental-permits 
+<ul class="list list-bullet">
+  <li>read the conditions within the standard permit rules to make sure you can comply with them</li>
+  <li>read the instructions in the application form and form guidance</li>
+  <li>check if you need a <a href="https://www.gov.uk/government/publications/environmental-permit-nature-and-heritage-conservation-screening">conservation risk assessment</a> before you submit your permit application</li>
+  <li>read the generic risk assessment for your activity so you can understand the potential risks and make sure you manage them effectively (you can find this with the standard rules permit)</li>
+  <li>check you meet the <a href="https://www.gov.uk/guidance/legal-operator-and-competence-requirements-environmental-permits">legal operator and competency requirements</a> (including technical competency)</li>
+  <li>check <a href="https://www.gov.uk/guidance/control-and-monitor-emissions-for-your-environmental-permit">how to control and monitor your emissions</a> - you don’t need to submit any emissions information as part of a standard rules permit application</li>
+</ul>
+-->
+
+      
+<!-- <p><a href="https://www.gov.uk/government/publications/sr2012-number-11-anaerobic-digestion-facility-including-use-of-the-resultant-biogas">Read the statutory guidance and generic risk assessment for this standard rule</a></p> -->
+
+<ul class="list list-bullet">
+  <li><a href="https://www.gov.uk/government/publications/sr2012-number-11-anaerobic-digestion-facility-including-use-of-the-resultant-biogas">read the conditions within the standard permit rules and the generic risk assessment for your activity</a></li>
+  <!-- <li>read the instructions in the application form and form guidance</li> -->
+  <!-- <li>check if you need a <a href="https://www.gov.uk/government/publications/environmental-permit-nature-and-heritage-conservation-screening">conservation risk assessment</a> before you submit your permit application</li> -->
+  <li>check you meet the <a href="https://www.gov.uk/guidance/legal-operator-and-competence-requirements-environmental-permits">legal operator and competency requirements</a> (including technical competency)</li>
+  <li>check <a href="https://www.gov.uk/guidance/control-and-monitor-emissions-for-your-environmental-permit">how to control and monitor your emissions</a> - you don’t need to submit any emissions information as part of a standard rules permit application</li>
+</ul>
+
+<p>You also need to develop a <a href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits">management system</a> (a written set of procedures that identifies and minimises the risks of pollution).</p>
+
+
+   
+
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
