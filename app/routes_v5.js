@@ -134,7 +134,7 @@ router.get('/selectpermit/choose-expanding-sections', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] 
     res.render(folder + '/selectpermit/choose-expanding-sections',{
       "formAction":"/"+ folder + "/check/save-permit-details",
-      "chosenCategory":req.body['chosenCategory'],
+      "chosenPermitID":req.body['chosenPermitID'],
       "permit":req.session.permit // always send permit object to page
     }) 
 })
@@ -142,40 +142,30 @@ router.get('/selectpermit/choose-expanding-sections', function (req, res) {
 // This page should not show for long - it just saves permit data
 router.post('/check/save-permit-details', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input]
-  // Check if permit is in scope for Digital MVP 
-    if( req.session.permit['digitalMVP']=='No' ) {
       res.render(folder + '/check/save-permit-details',{
-        "formAction":"/"+ folder + "/selectpermit/permit-not-in-service",
-        "chosenCategory":req.body['chosenCategory'],
+        "formAction":"/"+ folder + "/check/task-list",
+        "chosenPermitID":req.body['chosenPermitID'],
         "permit":req.session.permit // always send permit object to page
       })
-    } else {
-      res.render(folder + '/check/save-permit-details',{ // show save and return pages
-         "formAction":"/"+ folder + "/check/task-list",
-         "chosenPermitID":req.body['chosenPermitID'],
-         "permit":req.session.permit // always send permit object to page
-      })
-    }
-})
-
-// if digitalMVP = No, route users to 'permit not in service' 
-router.post('/selectpermit/permit-not-in-service', function (req, res) {
-  for(var input in req.body) req.session.permit[input] = req.body[input] // form to session
-    res.render(folder + '/selectpermit/permit-not-in-service',{ // show save and return pages
-       "formAction":"/"+ folder + "/selectpermit/choose-expanding-sections",
-       "chosenPermitID":req.body['chosenPermitID'],
-       "permit":req.session.permit // always send permit object to page
-    })
 })
 
 
 router.post('/check/task-list', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // form to session
-    res.render(folder + '/check/task-list',{ // show save and return pages
-       "formAction":"/"+ folder + "/check/check-answers",
+
+  if( req.body['digitalMVP']=='No' ) {
+    // Show non-digital route
+    res.render(folder + '/selectpermit/permit-not-in-service',{
+      "chosenPermitID":req.body['chosenPermitID'],
+      "permit":req.session.permit // always send permit object to page
+    })
+  } else {
+    // Show task list
+    res.render(folder + '/check/task-list',{ 
        "chosenPermitID":req.body['chosenPermitID'],
        "permit":req.session.permit // always send permit object to page
     })
+  }
 })
 
 
@@ -195,8 +185,8 @@ router.get('/check/task-list', function (req, res) {
 }
 })
 
-// Category method
 
+// Category method
 router.post('/selectpermit/permit-category', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/selectpermit/permit-category',{
