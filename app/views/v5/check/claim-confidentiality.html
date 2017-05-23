@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Is any information in your application commercially or industrially confidential?" %}
+{% set title = "Is part of your application commercially confidential?" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -19,7 +19,7 @@
 
 <div class="panel panel-border-wide">
   <p>
-    You should only claim confidentiality if you are very certain that you wish information to be confidential. This may delay your application.
+    We put applications into a public register. If you can prove that some information is confidential, we’ll consider removing that part from the register.
   </p>
 </div>
 
@@ -29,20 +29,22 @@
     <fieldset>
 
       <legend class="visually-hidden">{{title}}</legend>
-
-      <label class="block-label selection-button-radio" data-target="confidentialReasonsGroup" for="yesConfClaim">
-        <input id="yesConfClaim" type="radio" name="confidential" value="yes">
-        Yes, I wish to claim confidentiality for part of my application
-      </label>
-      <div class="panel panel-border-narrow js-hidden" id="confidentialReasonsGroup">
-        <label class="form-label" for="confidentialReasons">Give your reasons. If we agree with your request, we will not include the information in the public register.</label>
-        <textarea class="form-control" name="confidentialReasons" type="text" id="confidentialReasons" cols="30" rows="4"></textarea>
-      </div>
-
+      
       <label class="block-label selection-button-radio" for="notConfClaim">
         <input id="notConfClaim" type="radio" name="confidential" value="no">
         No
       </label>
+
+      <label class="block-label selection-button-radio" data-target="confidentialReasonsGroup" for="yesConfClaim">
+        <input id="yesConfClaim" type="radio" name="confidential" value="yes">
+        Yes, I want you to consider my request for confidentiality
+      </label>
+      <div class="panel panel-border-narrow js-hidden" id="confidentialReasonsGroup">
+        <label class="form-label" for="confidentialReasons">Please explain what information is confidential and why.</label>
+        <textarea class="form-control" name="confidentialReasons" type="text" id="confidentialReasons" cols="30" rows="4"></textarea>
+      </div>
+
+
 
     </fieldset>
   </div>
