@@ -36,6 +36,17 @@
   with-proposition
 {% endblock %}
 
+
+{% block footer_top %}
+  <div class="ea-footer">
+    <p>Environment Agency helpline: <a href="tel:+443708506506">03708 506 506</a></p>
+    <ul>
+      <li class="inline"><a title="Privacy - opens in new tab" target="_blank" href="/{{folder}}/pages/privacy">Privacy</a></li>
+      <li class="inline"><a title="Cookies - opens in new tab" target="_blank" href="/{{folder}}/pages/cookies">Cookies</a></li>
+    </ul>
+  </div>
+{% endblock %}
+
 {% block body_end %}
   {% include "includes/scripts.html" %}
   <!-- GOV.UK Prototype kit {{releaseVersion}} -->
