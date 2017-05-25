@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% set title = "Check your details" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+
+<form action="{{formAction}}" method="post" class="form">
+
+<p>Your name<br>
+  
+<b>
+{{permit.individualName}}
+</b>
+</p>
+
+<p>Your date of birth<br>
+  
+<b>
+{{permit.individualDobDay}}/{{permit.individualDobMonth}}/
+ {{permit.individualDobYear}}
+</b>
+</p>
+
+<p>Your address<br>
+  
+<b>3 Grange Road<br>
+Bristol<br>
+BS1 5AH</b></p>
+
+<input type="hidden" name="companyAddress" value="{{ indAddressAll }}">
+
+
+<!-- companyAddressIsMain -->
+
+  <div class="form-group">
+    <fieldset>
+      <legend class="visually-hidden">Is this your main UK business address?</legend>
+      <label class="block-label selection-button-radio" for="radio-1">
+        <input id="radio-1" type="radio" name="companyAddressIsMain" value="This is our main UK business address">
+        This is my main UK business address
+      </label>
+      <label class="block-label selection-button-radio" for="radio-2">
+        <input id="radio-2" type="radio" name="companyAddressIsMain" value="We have a different main UK business address">
+        I have a different main UK business address
+      </label>
+    </fieldset>
+  </div>
+
+
+<div class="form-group">
+<input type="submit" class="button" value="Continue">
+</div>
+
+
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

@@ -458,7 +458,7 @@ router.post('/operator/individual/postcode', function (req, res) {
 router.post('/operator/individual/address', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/operator/individual/address',{
-      "formAction":"/"+ folder + "/evidence/declare-offences",
+      "formAction":"/"+ folder + "/operator/individual/check-individual-details",
       "permit":req.session.permit // always send permit object to page
   })
 })
@@ -466,11 +466,18 @@ router.post('/operator/individual/address', function (req, res) {
 // Manual address is a link - so a GET
 router.get('/operator/individual/address-manual', function (req, res) {
   res.render(folder + '/operator/individual/address-manual',{
-      "formAction":"/"+ folder + "/evidence/declare-offences", 
+      "formAction":"/"+ folder + "/operator/individual/check-individual-details", 
       "permit":req.session.permit // always send permit object to page
   })
 })
 
+router.post('/operator/individual/check-individual-details', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/operator/individual/check-individual-details',{
+      "formAction":"/"+ folder + "/evidence/declare-offences",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
 
 /* offences */
 
