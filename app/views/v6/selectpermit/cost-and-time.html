@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% set title = "Cost and time for this permit" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_alpha.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+    
+          <h1 class="heading-large" id="radio_label">{{title}}</h1>
+          
+            <h2 class="heading-medium">{{permit.permitName}}<br>
+            <span class="font-medium">{{permit.permitCode}}</span></h2>
+
+      <form method="post" action="{{formAction}}">
+      
+
+      <table>
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th class="numeric" scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="bold-small">Cost to apply</span><br>
+              Paid with your application</td>
+              <td class="numeric"><span class="bold-medium">{{permit.permitCost}}</span></td>
+            </tr>
+            <tr>
+              <td><span class="bold-small">Annual cost ('subsistence charge')</span><br>
+              We’ll invoice you if your application is successful.</td>
+              <td class="numeric"><span class="bold-medium">{{permit.subsistenceFee}}</span></td>
+            </tr>
+            <tr>
+              <td><span class="bold-small">Time to wait after applying</span><br>
+                It may take longer if we need to ask you for more information.</td>
+              <td class="numeric"><span class="bold-medium">up to 13 weeks</span></td>
+            </tr>
+          </tbody>
+        </table>
+<br>
+
+
+
+
+         <!-- set costTime to yes -->       
+        <input type="hidden" name="costTime" value="yes">
+
+
+        <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

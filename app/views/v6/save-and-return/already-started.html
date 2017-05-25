@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% set title = "Search for 'Standard rules permit application' in your email" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+        <h1 class="heading-large">
+          {{title}}
+        </h1>
+
+          <p>You've been sent an email with a link to finish your application.</p>
+          
+          <p>If you can't find the email, check your spam folder.</p>
+
+        <details>
+
+          <summary><span class="summary">Resend the email</span></summary>
+
+          <div class="panel panel-border-narrow">
+
+		    	<form method="get" action="/{{folder}}/save-and-return/link-resent" class="form">
+
+	            <fieldset>
+
+	                <div class="form-group">
+	                  <label class="form-label" for="user_email">Email address</label>
+	                  <input class="form-control form-control-3-4" id="user_email" name="user_email" type="text">
+	                </div>
+
+	            </fieldset>
+
+				<br>
+
+	            <div class="form-group">
+	              <input type="submit" class="button" value="Resend email" />
+	            </div>
+          
+          </div>
+
+        </details>
+
+
+      </form>
+      
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>For testing:
+        <a href="/{{folder}}/save-and-return/email-save-link" target="_blank">link email</a>
+      </p>
+
+    </div>
+  </div>
+
+</main>
+{% endblock %}
