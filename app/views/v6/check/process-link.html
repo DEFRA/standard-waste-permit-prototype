@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% set title = "Preparing your permit" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_alpha.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+          
+          <p>
+            {{ title }}
+          </p>
+      
+      <form method="post" action="{{formAction}}" id="autoSubmit">
+      
+      {% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/custom_inc/permit-list-json.html" import permits %}
+
+
+        {% for pNumber, pData in permits %}
+          {% if pNumber==chosenPermitID %}
+          
+
+<input type="hidden" name="baselineReportRequired" value="{{ pData.baselineReportRequired }}"></input>
+<input type="hidden" name="chosenPermitID" value="{{chosenPermitID}}"></input>
+<input type="hidden" name="permitCode" value="{{ pData.code }}"></input>
+<input type="hidden" name="firePlanNeeded" value="{{ pData.firePlanNeeded }}"></input>
+<input type="hidden" name="friendlyWeight" value="{{ pData.friendlyWeight }}"></input>
+<input type="hidden" name="guidanceURL" value="{{ pData.guidanceURL }}"></input>
+<input type="hidden" name="locationRules" value="{{ pData.locationRules }}"></input>
+<input type="hidden" name="permitBaselineReportRequired" value="{{ pData.BaselineReportRequired }}"></input>
+<input type="hidden" name="permitCost" value="{{ pData.charge }}"></input>
+
+<input type="hidden" name="subsistenceFee" value="{{ pData.subsistenceFee }}"></input>
+
+<input type="hidden" name="permitFirePlanNeeded" value="{{ pData.firePlanNeeded }}"></input>
+<input type="hidden" name="permitID" value="{{ pNumber }}"></input>
+<input type="hidden" name="permitName" value="{{ pData.nameGOVUK }}"></input>
+<input type="hidden" name="permitNatureHeritageSurvey" value="{{ pData.natureHeritageSurvey }}"></input>
+<input type="hidden" name="permitPreAppRequired" value="{{ pData.preAppRequired }}"></input>
+<input type="hidden" name="permitSpecialCase" value="{{ pData.specialCase }}"></input>
+<input type="hidden" name="permitTechnicalAbilityEvidence" value="{{ pData.technicalAbilityEvidence }}"></input>
+<input type="hidden" name="permitWasteRecoveryPlan" value="{{ pData.wasteRecoveryPlan }}"></input>
+<input type="hidden" name="permitWeight" value="{{ pData.friendlyWeight }}"></input>
+<input type="hidden" name="sitePlanNeeded" value="{{ pData.sitePlanNeeded }}"></input>
+<input type="hidden" name="specialCase" value="{{ pData.specialCase }}"></input>
+<input type="hidden" name="specialCaseText" value="{{ pData.specialCaseText }}"></input>
+<input type="hidden" name="technicalAbilityEvidence" value="{{ pData.technicalAbilityEvidence }}"></input>
+<input type="hidden" name="WAMITAB" value="{{ pData.WAMITAB }}"></input>
+<input type="hidden" name="wasteRecoveryPlan" value="{{ pData.wasteRecoveryPlan }}"></input>
+
+
+              
+              
+              {% endif %}
+            {% endfor %}
+        
+
+        <div class="form-group">
+            <input type="submit" class="button" value="Next">
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% set title = "Time to wait after applying" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_alpha.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+      
+      <form method="post" action="{{formAction}}">
+      
+        <h2 class="heading-large">
+          {{ permit.permitName }}
+          <span class="font-medium" style="white-space: nowrap;">{{ permit.permitCode }}</span>
+        </h2>
+
+
+            <p class="lede">Time to wait after applying:</p>
+      
+            <div class="data">
+              <h2 class="bold-xlarge">up to 13 weeks</h2>
+            </div>
+              
+      <p class="text">
+        It may take longer if the information you give us does not meet our requirements.
+      </p>
+              
+
+
+        
+        <input type="hidden" name="chosenPermitID" value="{{chosenPermitID}}"></input>
+        
+        
+        <input type="hidden" name="previousPage" value="timeOrNeed"></input>
+
+        <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
