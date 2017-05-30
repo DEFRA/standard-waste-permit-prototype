@@ -18,6 +18,8 @@
 
   <div class="grid-row">
     <div class="column-two-thirds column-minimum">
+      
+      <form method="post" action="/{{folder}}//check/check-answers" class="form" name="tasklist">
 
 <h1 class="heading-large">
   <span class="font-medium">Apply for a standard rules waste permit:</span><br>
@@ -56,6 +58,8 @@ Save this application to complete later</a></p>
               </a>
               {% if permit.costTime %} 
               <strong class="task-completed" id="cost-and-time">Completed</strong> 
+              {% else %}
+              <input type="hidden" name="complete[]" value="no">
               {% endif %}
             </li>
             <li class="task-list-item">
@@ -63,7 +67,9 @@ Save this application to complete later</a></p>
                Check that your operation meets the rules
              </a>
              {% if permit.readRules %} 
-             <strong class="task-completed" id="read-rules">Completed</strong> 
+             <strong class="task-completed" id="read-rules">Completed</strong>  
+             {% else %}
+             <input type="hidden" name="complete[]" value="no">
              {% endif %}
             </li>
           </ul>
@@ -82,6 +88,8 @@ Save this application to complete later</a></p>
               </a>
               {% if permit.needToApply %} 
               <strong class="task-completed" id="what-need-to-apply">Completed</strong> 
+              {% else %}
+              <input type="hidden" name="complete[]" value="no"> 
               {% endif %}
             </li>
 
@@ -93,7 +101,10 @@ Save this application to complete later</a></p>
               {% endif %}" aria-describedby="preapp-completed">
                 Tell us about any pre-application discussions
               </a>
-              {% if permit.preAppDiscussion!=null %} <strong class="task-completed" id="preapp-completed">Completed</strong> {% endif %}
+              {% if permit.preAppDiscussion!=null %} <strong class="task-completed" id="preapp-completed">Completed</strong>  
+              {% else %}
+              <input type="hidden" name="complete[]" value="no">
+              {% endif %}
             </li>
           </ul>
         </li>
@@ -112,7 +123,10 @@ Save this application to complete later</a></p>
               {% endif %}" aria-describedby="contact-details-completed">
                 Your contact details 
               </a>
-              {% if permit.contactName!=null %} <strong class="task-completed" id="contact-details-completed">Completed</strong> {% endif %}
+              {% if permit.contactName!=null %} <strong class="task-completed" id="contact-details-completed">Completed</strong> 
+              {% else %}
+              <input type="hidden" name="complete[]" value="no">
+              {% endif %}
             </li>
       <li class="task-list-item">
             <a class="task-name" href="{% if permit.operatorType!=null %}/{{folder}}/operator/check-your-answers
@@ -121,7 +135,10 @@ Save this application to complete later</a></p>
               {% endif %}" aria-describedby="site-operator-completed">
                 Give operator details
               </a>
-              {% if permit.operatorType!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong> {% endif %}
+              {% if permit.operatorType!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong> 
+              {% else %}
+              <input type="hidden" name="complete[]" value="no">
+              {% endif %}
             </li>
             
 
@@ -147,7 +164,10 @@ Save this application to complete later</a></p>
                 {% endif %}" aria-describedby="site-name-completed">
                   Site name and location
                 </a>
-                {% if permit.siteName!=null %} <strong class="task-completed" id="site-name-completed">Completed</strong> {% endif %}
+                {% if permit.siteName!=null %} <strong class="task-completed" id="site-name-completed">Completed</strong> 
+                {% else %}
+                <input type="hidden" name="complete[]" value="no">
+                {% endif %}
               </li>
             
             {% endif %}
@@ -164,7 +184,10 @@ Save this application to complete later</a></p>
               {% endif %}" aria-describedby="site-plan-completed">
                 Upload a site plan
               </a>
-              {% if permit.sitePlanFilename!=null %} <strong class="task-completed" id="site-plan-completed">Completed</strong> {% endif %}
+              {% if permit.sitePlanFilename!=null %} <strong class="task-completed" id="site-plan-completed">Completed</strong> 
+              {% else %}
+              <input type="hidden" name="complete[]" value="no">
+              {% endif %}
             </li>
         {% endif %}
             
@@ -176,7 +199,10 @@ Save this application to complete later</a></p>
               {% endif %}" aria-describedby="industry-scheme-completed">
                 Upload qualifications for the manager
               </a>
-              {% if permit.industryScheme!=null %} <strong class="task-completed" id="industry-scheme-completed">Completed</strong> {% endif %}
+              {% if permit.industryScheme!=null %} <strong class="task-completed" id="industry-scheme-completed">Completed</strong> 
+              {% else %}
+              <input type="hidden" name="complete[]" value="no">
+              {% endif %}
             </li>
             
       <li class="task-list-item">
@@ -187,7 +213,10 @@ Save this application to complete later</a></p>
               {% endif %}" aria-describedby="management-system-completed">
                 Tell us which management system you use
               </a>
-              {% if permit.manSys!=null %} <strong class="task-completed" id="management-system-completed">Completed</strong> {% endif %}
+              {% if permit.manSys!=null %} <strong class="task-completed" id="management-system-completed">Completed</strong> 
+              {% else %}
+              <input type="hidden" name="complete[]" value="no">
+              {% endif %}
             </li>
             
 
@@ -228,7 +257,10 @@ Save this application to complete later</a></p>
               {% endif %}" aria-describedby="fireplan-completed">
                   Upload fire prevention plan
                 </a>
-                {% if permit.firePlanFilename!==null %} <strong class="task-completed" id="fireplan-completed">Completed</strong> {% endif %}
+                {% if permit.firePlanFilename!==null %} <strong class="task-completed" id="fireplan-completed">Completed</strong> 
+                {% else %}
+                <input type="hidden" name="complete[]" value="no">
+                {% endif %}
               </li>
           {% endif %}
           
@@ -276,7 +308,10 @@ Save this application to complete later</a></p>
               {% endif %}
                   
                 </a>
-                {% if permit.specialCasePageVisited!==null %} <strong class="task-completed">Completed</strong> {% endif %}
+                {% if permit.specialCasePageVisited!==null %} <strong class="task-completed">Completed</strong> 
+                {% else %}
+                <input type="hidden" name="complete[]" value="no">
+                {% endif %}
               </li>
           {% endif %}
 
@@ -290,7 +325,10 @@ Save this application to complete later</a></p>
               {% endif %}" aria-describedby="confidential-completed">
                 Confirm confidentiality needs
               </a>
-              {% if permit.confidential!=null %} <strong class="task-completed" id="confidential-completed">Completed</strong> {% endif %}
+              {% if permit.confidential!=null %} <strong class="task-completed" id="confidential-completed">Completed</strong> 
+              {% else %}
+              <input type="hidden" name="complete[]" value="no">
+              {% endif %}
             </li>
             
           </ul>
@@ -303,15 +341,16 @@ Save this application to complete later</a></p>
           </h2>
           <ul class="task-list-items">
              <li class="task-list-item">
-              <a class="task-name" href="/{{folder}}/check/check-answers" aria-describedby="submit-and-pay">
+              <a onclick="document.tasklist.submit(); return false;" class="task-name" href="#" aria-describedby="submit-and-pay">
                 Submit and pay
               </a>
-              {% if permit.xxxxxxxx!=null %} <strong class="task-completed" id="submit-and-pay">Completed</strong> {% endif %}
             </li>
           </ul>
         </li>
 
       </ol>
+      
+    </form>
 
     </div>
   </div>
