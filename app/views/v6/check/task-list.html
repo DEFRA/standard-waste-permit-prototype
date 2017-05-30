@@ -124,16 +124,35 @@ Save this application to complete later</a></p>
               {% if permit.operatorType!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong> {% endif %}
             </li>
             
-            <li class="task-list-item">
-              <a class="task-name" href="{% if permit.siteName!=null %}
-                /{{folder}}/site/check-your-answers
-              {% else %}
-                /{{folder}}/site/site-name
-              {% endif %}" aria-describedby="site-name-completed">
-                Site name and location
-              </a>
-              {% if permit.siteName!=null %} <strong class="task-completed" id="site-name-completed">Completed</strong> {% endif %}
-            </li>
+
+
+<!-- DONT'T SHOW SITE FOR MOBILE PERMITS -->
+            {% if 
+              permit.permitID=="SR-2010-4" or 
+              permit.permitID=="SR-2010-5" or 
+              permit.permitID=="SR-2010-6" or 
+              permit.permitID=="SR-2010-11" or 
+              permit.permitID=="SR-2008-27"
+             %}
+             
+             <!-- DO NOT SHOW -->
+             
+             {% else %}
+             
+              <li class="task-list-item">
+                <a class="task-name" href="{% if permit.siteName!=null %}
+                  /{{folder}}/site/check-your-answers
+                {% else %}
+                  /{{folder}}/site/site-name
+                {% endif %}" aria-describedby="site-name-completed">
+                  Site name and location
+                </a>
+                {% if permit.siteName!=null %} <strong class="task-completed" id="site-name-completed">Completed</strong> {% endif %}
+              </li>
+            
+            {% endif %}
+
+
 
       <!-- Site plan conditional -->
       {% if permit.sitePlanNeeded=="Yes" %}
@@ -155,7 +174,7 @@ Save this application to complete later</a></p>
               {% else %}
                 /{{folder}}/evidence/industry-scheme
               {% endif %}" aria-describedby="industry-scheme-completed">
-                Upload site manager qualifications
+                Upload qualifications for the manager
               </a>
               {% if permit.industryScheme!=null %} <strong class="task-completed" id="industry-scheme-completed">Completed</strong> {% endif %}
             </li>
