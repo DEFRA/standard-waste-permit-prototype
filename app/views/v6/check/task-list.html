@@ -124,16 +124,35 @@ Save this application to complete later</a></p>
               {% if permit.operatorType!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong> {% endif %}
             </li>
             
-            <li class="task-list-item">
-              <a class="task-name" href="{% if permit.siteName!=null %}
-                /{{folder}}/site/check-your-answers
-              {% else %}
-                /{{folder}}/site/site-name
-              {% endif %}" aria-describedby="site-name-completed">
-                Site name and location
-              </a>
-              {% if permit.siteName!=null %} <strong class="task-completed" id="site-name-completed">Completed</strong> {% endif %}
-            </li>
+
+
+<!-- DONT'T SHOW SITE FOR MOBILE PERMITS -->
+            {% if 
+              permit.permitID=="SR-2010-4" or 
+              permit.permitID=="SR-2010-5" or 
+              permit.permitID=="SR-2010-6" or 
+              permit.permitID=="SR-2010-11" or 
+              permit.permitID=="SR-2008-27"
+             %}
+             
+             <!-- DO NOT SHOW -->
+             
+             {% else %}
+             
+              <li class="task-list-item">
+                <a class="task-name" href="{% if permit.siteName!=null %}
+                  /{{folder}}/site/check-your-answers
+                {% else %}
+                  /{{folder}}/site/site-name
+                {% endif %}" aria-describedby="site-name-completed">
+                  Site name and location
+                </a>
+                {% if permit.siteName!=null %} <strong class="task-completed" id="site-name-completed">Completed</strong> {% endif %}
+              </li>
+            
+            {% endif %}
+
+
 
       <!-- Site plan conditional -->
       {% if permit.sitePlanNeeded=="Yes" %}
@@ -155,7 +174,7 @@ Save this application to complete later</a></p>
               {% else %}
                 /{{folder}}/evidence/industry-scheme
               {% endif %}" aria-describedby="industry-scheme-completed">
-                Upload site manager qualifications
+                Upload qualifications for the manager
               </a>
               {% if permit.industryScheme!=null %} <strong class="task-completed" id="industry-scheme-completed">Completed</strong> {% endif %}
             </li>
@@ -197,18 +216,7 @@ Save this application to complete later</a></p>
 
           -->
 
-          <!-- Make confidentiality conditional to permit and in context rather than on task list? -->
-            
-      <li class="task-list-item">
-              <a class="task-name" href="{% if permit.confidential!=null %}
-                /{{folder}}/check/confidentiality-check-answers
-              {% else %}
-                /{{folder}}/check/claim-confidentiality
-              {% endif %}" aria-describedby="confidential-completed">
-                Confirm confidentiality needs
-              </a>
-              {% if permit.confidential!=null %} <strong class="task-completed" id="confidential-completed">Completed</strong> {% endif %}
-            </li>
+
    
           <!-- FIRE PREVENTION PLAN ############################################ -->
           {% if permit.firePlanNeeded=="Yes" %}
@@ -242,13 +250,49 @@ Save this application to complete later</a></p>
               {% else %}
                 /{{folder}}/check-special-cases
               {% endif %}">
-                  Give extra information for permit {{permit.permitCode}}
+              
+              {% if permit.permitID=="SR-2009-4" %}              
+                Give the stack height
+              {% endif %}
+
+              {% if permit.permitID=="SR-2009-8" %}              
+                pload a waste management plan checklist
+              {% endif %}
+
+              {% if permit.permitID=="SR-2010-2" or permit.permitID=="SR-2010-3" %}              
+                Tell us the date when you want the permit to start
+              {% endif %}
+
+              {% if permit.permitID=="SR-2014-2" %}              
+                Specify the type of mining waste plan
+              {% endif %}
+
+              {% if permit.permitID=="SR-2015-17" or permit.permitID=="SR-2015-17" %}              
+                Confirm the drainage system for your site
+              {% endif %}
+
+              {% if permit.permitID=="SR-2015-39" %}              
+                Upload the waste recovery plan
+              {% endif %}
+                  
                 </a>
-                {% if permit.specialCasePageVisited!==null %} <strong class="task-completed" id="fireplan-completed">Completed</strong> {% endif %}
+                {% if permit.specialCasePageVisited!==null %} <strong class="task-completed">Completed</strong> {% endif %}
               </li>
           {% endif %}
 
-
+          <!-- Make confidentiality conditional to permit and in context rather than on task list? -->
+            
+      <li class="task-list-item">
+              <a class="task-name" href="{% if permit.confidential!=null %}
+                /{{folder}}/check/confidentiality-check-answers
+              {% else %}
+                /{{folder}}/check/claim-confidentiality
+              {% endif %}" aria-describedby="confidential-completed">
+                Confirm confidentiality needs
+              </a>
+              {% if permit.confidential!=null %} <strong class="task-completed" id="confidential-completed">Completed</strong> {% endif %}
+            </li>
+            
           </ul>
         </li>
         
