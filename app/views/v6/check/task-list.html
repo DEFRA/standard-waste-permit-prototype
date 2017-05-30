@@ -197,18 +197,7 @@ Save this application to complete later</a></p>
 
           -->
 
-          <!-- Make confidentiality conditional to permit and in context rather than on task list? -->
-            
-      <li class="task-list-item">
-              <a class="task-name" href="{% if permit.confidential!=null %}
-                /{{folder}}/check/confidentiality-check-answers
-              {% else %}
-                /{{folder}}/check/claim-confidentiality
-              {% endif %}" aria-describedby="confidential-completed">
-                Confirm confidentiality needs
-              </a>
-              {% if permit.confidential!=null %} <strong class="task-completed" id="confidential-completed">Completed</strong> {% endif %}
-            </li>
+
    
           <!-- FIRE PREVENTION PLAN ############################################ -->
           {% if permit.firePlanNeeded=="Yes" %}
@@ -272,7 +261,19 @@ Save this application to complete later</a></p>
               </li>
           {% endif %}
 
-
+          <!-- Make confidentiality conditional to permit and in context rather than on task list? -->
+            
+      <li class="task-list-item">
+              <a class="task-name" href="{% if permit.confidential!=null %}
+                /{{folder}}/check/confidentiality-check-answers
+              {% else %}
+                /{{folder}}/check/claim-confidentiality
+              {% endif %}" aria-describedby="confidential-completed">
+                Confirm confidentiality needs
+              </a>
+              {% if permit.confidential!=null %} <strong class="task-completed" id="confidential-completed">Completed</strong> {% endif %}
+            </li>
+            
           </ul>
         </li>
         
