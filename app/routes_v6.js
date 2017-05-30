@@ -637,15 +637,15 @@ router.get('/check/check-answers', function (req, res) {
 
 router.post('/check/check-answers', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
-  if(req.body['complete']!=""){ 
-    // show error
-    res.render(folder + '/check/not-complete',{
-        "formAction":"/"+ folder + "/check/task-list",
+  if(req.body['complete']=="" || req.body['complete']==null){ 
+    res.render(folder + '/check/check-answers',{
+        "formAction":"/"+ folder + "/pay/payment-method",
         "permit":req.session.permit // always send permit object to page
     })
   } else {
-    res.render(folder + '/check/check-answers',{
-        "formAction":"/"+ folder + "/pay/payment-method",
+    // show error
+    res.render(folder + '/check/not-complete',{
+        "formAction":"/"+ folder + "/check/task-list",
         "permit":req.session.permit // always send permit object to page
     })
   }
