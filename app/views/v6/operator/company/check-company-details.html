@@ -16,9 +16,27 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
+<p>{{numberResults}} result{{'s' if numberResults>1}} for <b>{{searchTerm}}</b> <a href="/{{folder}}/operator/checkoperator">search again</a></p>
+
 
 <form action="{{formAction}}" method="post" class="form">
 
+<p>Company number<br>
+<b>{{company.company_number}}</b>
+</p>
+<input type="hidden" name="companyNumber" value="{{company.company_number}}">
+
+<p>Company name<br>
+<b>{{company.title | title}}</b>
+</p>
+<input type="hidden" name="companyName" value="{{company.title | title}}">
+
+<p>Registered office address<br>
+<b>{{company.address_snippet}}</b></p>
+
+<input type="hidden" name="companyAddress" value="{{company.address_snippet}}">
+
+<!-- OLD FIXED SAMPLE PAGE
 <p>
   Company number<br>
 <b>
@@ -58,6 +76,8 @@ N23 9JY</b></p>
 
 
 <p><a href="/{{folder}}/error/wrong-company-details">These are not the correct company details</a></p>
+
+ -->
 
 
 <!-- companyAddressIsMain -->
