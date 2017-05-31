@@ -19,7 +19,7 @@
   <div class="grid-row">
     <div class="column-two-thirds column-minimum">
       
-      <form method="post" action="/{{folder}}//check/check-answers" class="form" name="tasklist">
+      <form method="post" action="/{{folder}}/check/check-answers" class="form" name="tasklist">
 
 <h1 class="heading-large">
   <span class="font-medium">Apply for a standard rules waste permit:</span><br>
@@ -64,12 +64,12 @@ Save this application to complete later</a></p>
             </li>
             <li class="task-list-item">
              <a class="task-name" href="/{{folder}}/read-rules/index" aria-describedby="read-rules">
-               Check that your operation meets the rules
+               Confirm that your operation meets the rules
              </a>
              {% if permit.readRules %} 
              <strong class="task-completed" id="read-rules">Completed</strong>  
              {% else %}
-             <input type="hidden" name="complete[]" value="Check that your operation meets the rules">
+             <input type="hidden" name="complete[]" value="Confirm that your operation meets the rules">
              {% endif %}
             </li>
           </ul>
