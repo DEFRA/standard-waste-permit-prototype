@@ -1,6 +1,8 @@
 var express = require('express')
 var router = express.Router()
 
+var request = require('request')
+
 // this file deals with all paths starting /version_x
 // How to use folder variable:
 // res.redirect( '/' + folder + '/exemptions/add_exemptions');
