@@ -437,51 +437,15 @@ router.post('/operator/checkoperator', function (req, res) {
   }
 })
 
-/* limited company STATIC PAGE */
+/* limited company */
 
-router.post('/operator/company/check-company-detailsXXXXXXXXXX', function (req, res) {
+router.post('/operator/company/check-company-details', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/operator/company/check-company-details',{
       "formAction":"/"+ folder + "/evidence/declare-offences",
       "permit":req.session.permit // always send permit object to page
   })
 })
-
-/* limited company API PAGE */
-router.post('/operator/company/check-company-details', function (req, res) {
-  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session
-
-    request({
-        url: 'https://api.companieshouse.gov.uk/search/companies', //URL to hit
-        qs: { q:req.body.companyRegNum, items_per_page:99 }, //Query string data
-        method: 'GET',
-        auth: {'username':'B6gG6zj0r_w1K6mOqBiW6GGvoe4ygQwQBoFTfxZo','password':''},
-    }, function(error, response, body){
-        if(error) {
-            console.log(error)
-        } else {
-            //console.log(response.statusCode)
-            //console.log("=============================")
-            //console.log(body)
-            //console.log("=============================")
-            var companyJSON = JSON.parse(body)
-            var company = companyJSON.items[0]
-            res.render(folder + '/operator/company/check-company-details',{
-                "formAction":"/"+ folder + "/contact/contact-details",
-                "permit":req.session.permit, // always send permit object to page
-                "company":company,
-                "searchTerm":req.body.companyRegNum,
-                "numberResults":companyJSON.total_results
-            })
-        }
-    })
-
-})
-
-
-
-
-
 
 /* individual */
 
