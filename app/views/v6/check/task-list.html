@@ -59,7 +59,7 @@ Save this application to complete later</a></p>
               {% if permit.costTime %} 
               <strong class="task-completed" id="cost-and-time">Completed</strong> 
               {% else %}
-              <input type="hidden" name="complete[]" value="no">
+              <input type="hidden" name="complete[]" value="Check permit cost and time">
               {% endif %}
             </li>
             <li class="task-list-item">
@@ -69,7 +69,7 @@ Save this application to complete later</a></p>
              {% if permit.readRules %} 
              <strong class="task-completed" id="read-rules">Completed</strong>  
              {% else %}
-             <input type="hidden" name="complete[]" value="no">
+             <input type="hidden" name="complete[]" value="Check that your operation meets the rules">
              {% endif %}
             </li>
           </ul>
@@ -89,7 +89,7 @@ Save this application to complete later</a></p>
               {% if permit.needToApply %} 
               <strong class="task-completed" id="what-need-to-apply">Completed</strong> 
               {% else %}
-              <input type="hidden" name="complete[]" value="no"> 
+              <input type="hidden" name="complete[]" value="Find out what you need"> 
               {% endif %}
             </li>
 
@@ -103,7 +103,7 @@ Save this application to complete later</a></p>
               </a>
               {% if permit.preAppDiscussion!=null %} <strong class="task-completed" id="preapp-completed">Completed</strong>  
               {% else %}
-              <input type="hidden" name="complete[]" value="no">
+              <input type="hidden" name="complete[]" value="Tell us about any pre-application discussions">
               {% endif %}
             </li>
           </ul>
@@ -125,7 +125,7 @@ Save this application to complete later</a></p>
               </a>
               {% if permit.contactName!=null %} <strong class="task-completed" id="contact-details-completed">Completed</strong> 
               {% else %}
-              <input type="hidden" name="complete[]" value="no">
+              <input type="hidden" name="complete[]" value="Your contact details">
               {% endif %}
             </li>
       <li class="task-list-item">
@@ -137,7 +137,7 @@ Save this application to complete later</a></p>
               </a>
               {% if permit.operatorType!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong> 
               {% else %}
-              <input type="hidden" name="complete[]" value="no">
+              <input type="hidden" name="complete[]" value="Give operator details">
               {% endif %}
             </li>
             
@@ -166,7 +166,7 @@ Save this application to complete later</a></p>
                 </a>
                 {% if permit.siteName!=null %} <strong class="task-completed" id="site-name-completed">Completed</strong> 
                 {% else %}
-                <input type="hidden" name="complete[]" value="no">
+                <input type="hidden" name="complete[]" value="Site name and location">
                 {% endif %}
               </li>
             
@@ -186,7 +186,7 @@ Save this application to complete later</a></p>
               </a>
               {% if permit.sitePlanFilename!=null %} <strong class="task-completed" id="site-plan-completed">Completed</strong> 
               {% else %}
-              <input type="hidden" name="complete[]" value="no">
+              <input type="hidden" name="complete[]" value="Upload a site plan">
               {% endif %}
             </li>
         {% endif %}
@@ -201,7 +201,7 @@ Save this application to complete later</a></p>
               </a>
               {% if permit.industryScheme!=null %} <strong class="task-completed" id="industry-scheme-completed">Completed</strong> 
               {% else %}
-              <input type="hidden" name="complete[]" value="no">
+              <input type="hidden" name="complete[]" value="Upload qualifications for the manager">
               {% endif %}
             </li>
             
@@ -215,7 +215,7 @@ Save this application to complete later</a></p>
               </a>
               {% if permit.manSys!=null %} <strong class="task-completed" id="management-system-completed">Completed</strong> 
               {% else %}
-              <input type="hidden" name="complete[]" value="no">
+              <input type="hidden" name="complete[]" value="Tell us which management system you use">
               {% endif %}
             </li>
             
@@ -259,7 +259,7 @@ Save this application to complete later</a></p>
                 </a>
                 {% if permit.firePlanFilename!==null %} <strong class="task-completed" id="fireplan-completed">Completed</strong> 
                 {% else %}
-                <input type="hidden" name="complete[]" value="no">
+                <input type="hidden" name="complete[]" value="Upload fire prevention plan">
                 {% endif %}
               </li>
           {% endif %}
@@ -310,7 +310,7 @@ Save this application to complete later</a></p>
                 </a>
                 {% if permit.specialCasePageVisited!==null %} <strong class="task-completed">Completed</strong> 
                 {% else %}
-                <input type="hidden" name="complete[]" value="no">
+                <input type="hidden" name="complete[]" value="Extra permit information">
                 {% endif %}
               </li>
           {% endif %}
@@ -327,7 +327,7 @@ Save this application to complete later</a></p>
               </a>
               {% if permit.confidential!=null %} <strong class="task-completed" id="confidential-completed">Completed</strong> 
               {% else %}
-              <input type="hidden" name="complete[]" value="no">
+              <input type="hidden" name="complete[]" value="Confirm confidentiality needs">
               {% endif %}
             </li>
             

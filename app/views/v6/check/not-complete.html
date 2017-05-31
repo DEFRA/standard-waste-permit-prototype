@@ -17,7 +17,11 @@
 
       <h1 class="heading-large">{{title}}</h1>
 
-      <p>Please complete all the tasks before you submit your application.</p>
+      <p>Please complete these tasks before you submit your application:</p>
+      
+      <ul class="list list-bullet">
+        <li>{{permit.complete | join("</li><li>") | safe }}</li>
+      </ul>
       
       <form method="post" action="{{formAction}}" class="form">
         <div class="form-group">
