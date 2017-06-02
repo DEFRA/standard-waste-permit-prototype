@@ -110,13 +110,44 @@ router.get('save-and-return/email-save-link', function (req, res) {
 
 // Expanding section method
 
+
+// required for 'select a different permit' via task list
+router.get('/selectpermit/choose-expanding-sections', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] 
+    res.render(folder + '/selectpermit/choose-expanding-sections',{
+      "formAction":"/"+ folder + "/check/save-permit-details",
+      "chosenPermitID":req.body['chosenPermitID'],
+      "permit":req.session.permit // always send permit object to page
+    }) 
+})
+
+// The POST version
 router.post('/selectpermit/choose-expanding-sections', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] 
     // permit NOT YET selected
     if( req.session.permit['chosenPermitID']==null ) {
       res.render(folder + '/selectpermit/choose-expanding-sections',{
         "formAction":"/"+ folder + "/check/save-permit-details",
-        "chosenCategory":req.body['chosenCategory'],
+        "permit":req.session.permit // always send permit object to page
+      })
+    // permit set via link on a GOV.UK page so skip this page
+    } else {
+      res.render(folder + '/check/task-list',{ // show save and return pages
+         "formAction":"/"+ folder + "/check/check-answers",
+         "chosenPermitID":req.body['chosenPermitID'],
+         "permit":req.session.permit // always send permit object to page
+      })
+    }
+})
+
+
+// Alternative category page
+router.post('/selectpermit/choose-expanding-sections-new-cats', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] 
+    // permit NOT YET selected
+    if( req.session.permit['chosenPermitID']==null ) {
+      res.render(folder + '/selectpermit/choose-expanding-sections-new-cats',{
+        "formAction":"/"+ folder + "/check/save-permit-details",
         "permit":req.session.permit // always send permit object to page
       })
     // permit set via link on a GOV.UK page so skip this page
@@ -130,14 +161,15 @@ router.post('/selectpermit/choose-expanding-sections', function (req, res) {
 })
 
 // required for 'select a different permit' via task list
-router.get('/selectpermit/choose-expanding-sections', function (req, res) {
+router.get('/selectpermit/choose-expanding-sections-new-cats', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] 
-    res.render(folder + '/selectpermit/choose-expanding-sections',{
+    res.render(folder + '/selectpermit/choose-expanding-sections-new-cats',{
       "formAction":"/"+ folder + "/check/save-permit-details",
       "chosenPermitID":req.body['chosenPermitID'],
       "permit":req.session.permit // always send permit object to page
     }) 
 })
+
 
 // This page should not show for long - it just saves permit data
 router.post('/check/save-permit-details', function (req, res) {
