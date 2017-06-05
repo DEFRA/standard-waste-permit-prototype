@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Have you already started an application?" %}
+{% set title = "Apply for a standard rules waste permit" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -29,13 +29,14 @@
 
           <div class="form-group">
             <label for="started-application_1" class="block-label">
-              <input type="radio" id="started-application_1" name="started-application" value="yes">
-              Yes
+              <input type="radio" id="started-application_1" name="started-application" value="no">
+              Start a new application
+              <span class="form-hint">We'll send you a link so you can save and return later</span>
             </label>
 
             <label for="started-application_2" class="block-label">
-              <input type="radio" id="started-application_2" name="started-application" value="no">
-              No
+              <input type="radio" id="started-application_2" name="started-application" value="yes">
+              Open a saved application
             </label>
 
           </div>
