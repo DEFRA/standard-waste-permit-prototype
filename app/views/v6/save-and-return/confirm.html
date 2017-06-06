@@ -20,50 +20,31 @@
 
         {% if permit.saveReturnPhone %}
 
-          <fieldset>
-            <legend class="visuallyhidden">
-              Phone
-            </legend>
-
-            <div class="form-group">
-              <input class="form-control" id="send_email_here" name="send_email_here" type="text" value="{{ permit.saveReturnPhone }}">
-            </div>
-
-            <br>
-            <br>
-
-          </fieldset>
+          <div class="form-group">
+            <label for="send_mob_here" class="visuallyhidden">The mobile number you entered</label>
+            <input class="form-control" id="send_mob_here" name="send_email_here" type="text" value="{{ permit.saveReturnPhone }}">
+          </div>
+          
+          <p>If your mobile phone number is wrong, just change it.</p>
 
           <div class="form-group">
             <input type="submit" class="button" value="Yes - this is my mobile phone number" />
           </div>
 
-          <p>If your mobile phone number is wrong, just change it above.</p>
-
         {% else %}
 
-          <fieldset>
-            <legend class="visuallyhidden">
-              Email
-            </legend>
-
-            <div class="form-group">
-              <input class="form-control form-control-3-4" id="send_email_here" name="send_email_here" type="text" value="{{ permit.saveReturnEmail }}">
-            </div>
-
-            <br>
-            <br>
-
-          </fieldset>
+          <div class="form-group">
+            <label for="send_email_here" class="visuallyhidden">The email you entered</label>
+            <input class="form-control form-control-3-4" id="send_email_here" name="send_email_here" type="text" value="{{ permit.saveReturnEmail }}">
+          </div>
+          
+          <p>If your email address is wrong, just change it.</p>
 
           <div class="form-group">
             <input type="submit" class="button" value="Yes - this is my email" />
           </div>
 
-          <p>If your email address is wrong, just change it above.</p>
-
         {% endif %}
-
 
       </form>
 
