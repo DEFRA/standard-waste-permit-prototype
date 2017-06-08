@@ -246,11 +246,12 @@ router.post('/selectpermit/choose-permit', function (req, res) {
     })
   } else {
     res.render(folder + '/selectpermit/choose-permit',{
-      "formAction":"/"+ folder + "/check/task-list",
+      "formAction":"/"+ folder + "/check/save-permit-details",
       "chosenCategory":req.body['chosenCategory']
     })    
   }
 })
+
 
 
 // Before you begin ===========================================================
