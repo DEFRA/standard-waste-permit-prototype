@@ -238,6 +238,15 @@ router.get('/selectpermit/permit-category', function (req, res) {
   })
 })
 
+// also a get
+router.get('/selectpermit/permit-category2', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/selectpermit/permit-category2',{
+    "formAction":"/"+ folder + "/selectpermit/choose-permit2",
+    "permit":req.session.permit // always send permit object to page
+  })
+})
+
 
 router.post('/selectpermit/choose-permit', function (req, res) {
   if(typeof req.body['chosenCategory']==='undefined'){  // simple error handling
@@ -246,6 +255,19 @@ router.post('/selectpermit/choose-permit', function (req, res) {
     })
   } else {
     res.render(folder + '/selectpermit/choose-permit',{
+      "formAction":"/"+ folder + "/check/save-permit-details",
+      "chosenCategory":req.body['chosenCategory']
+    })    
+  }
+})
+
+router.post('/selectpermit/choose-permit2', function (req, res) {
+  if(typeof req.body['chosenCategory']==='undefined'){  // simple error handling
+    res.render(folder + '/error/index',{ 
+        "errorText":"Please say what you want the permit for"
+    })
+  } else {
+    res.render(folder + '/selectpermit/choose-permit2',{
       "formAction":"/"+ folder + "/check/save-permit-details",
       "chosenCategory":req.body['chosenCategory']
     })    
