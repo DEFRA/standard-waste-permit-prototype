@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Select permit" %}
+{% set title = "Select a permit" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -9,7 +9,7 @@
 {% block content %}
 
 <main id="content" role="main">
-    {% include "includes/phase_banner_alpha.html" %}
+    {% include "includes/phase_banner_beta.html" %}
     
     <div class="grid-row">
         <div class="column-two-thirds">
@@ -17,18 +17,24 @@
 
       <h1 class="heading-large" id="radio_label">{{title}}</h1>
       
-      {% import folder+"/custom_inc/macros.html" as macros %}
-      {% from folder+"/custom_inc/permit-list-json.html" import permits %}
-      
-      <div class="panel panel-border-wide">
-        <p>
-          Showing permits for {{chosenCategory | lower }} 
+      <div class="panel panel-border-wide" style="margin-bottom: 25px;">
+      <p>Showing permits for {{chosenCategory | lower }}. <br>
           <a href="/{{folder}}/selectpermit/permit-category">
-            change
+            Back to all permit groups
           </a>
         </p>
       </div>
+
+
+
+
+      {% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/custom_inc/permit-list-json.html" import permits %}
       
+        <style>
+        span.permitWeight{ color:#6f777b; }
+      </style>
+
       <form method="post" action="{{formAction}}">
         <div class="form-group">
           <fieldset class="permitList" aria-labelledby="radio_label">
@@ -40,22 +46,23 @@
     {% if pData.canApplyOnPaper=="Yes" %}
     
       {% if pData.friendlyWeight!="" %}
-        {% set weight=" - "+pData.friendlyWeight %}
+        {% set weight="<br>"+pData.friendlyWeight %}
       {% else %}
         {% set weight="" %}
       {% endif %}
 
       {% set label = [
         '<span class="permitName">',
-        pData.friendlyName,
-        weight | lower,
+        pData.nameGOVUK,
+        '<span class="permitWeight">',
+          weight,
+          '</span>',
         '</span>',
         '<span class="permitCode">',
         pData.code,
         '</span>'
         ] %}
     
-      {% if pData.digitalMVP=="Yes?" %}
         {{ macros.radio_button(
           label | join | safe,
           "chosenPermitID",
@@ -63,12 +70,6 @@
           pNumber,
           " permitItem"
         ) }}
-      {% else %}
-        <p class="permitItem">
-        <span class="notOnline"><a href="#">Get form</a></span>
-          {{ label | join | safe }}<br>
-        </p>
-      {% endif %}
         
     {% endif %}
   {% endif %}
@@ -80,9 +81,12 @@
           </fieldset>
         </div>
 
+
         <div class="form-group">
             <input type="submit" class="button" value="Continue">
         </div>
+
+
 
       </form>
       
