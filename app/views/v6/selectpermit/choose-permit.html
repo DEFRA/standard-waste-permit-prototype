@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Select permit" %}
+{% set title = "Select a permit" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -9,15 +9,24 @@
 {% block content %}
 
 <main id="content" role="main">
-    {% include "includes/phase_banner_alpha.html" %}
+    {% include "includes/phase_banner_beta.html" %}
     
     <div class="grid-row">
         <div class="column-two-thirds">
 
 
-      <h1 class="heading-large" id="radio_label">{{chosenCategory}}</h1>
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
       
-      <h2 class="heading-medium">Select permit</h2>
+      <div class="panel panel-border-wide" style="margin-bottom: 25px;">
+      <p>Showing permits for {{chosenCategory | lower }}. <br>
+          <a href="/{{folder}}/selectpermit/permit-category">
+            Back to all permit groups
+          </a>
+        </p>
+      </div>
+
+
+
 
       {% import folder+"/custom_inc/macros.html" as macros %}
       {% from folder+"/custom_inc/permit-list-json.html" import permits %}
@@ -72,12 +81,6 @@
           </fieldset>
         </div>
 
-
-        <p>Showing permits for {{chosenCategory}}. <br>
-          <a href="/{{folder}}/selectpermit/permit-category">
-            Back to all permit groups
-          </a>
-        </p>
 
         <div class="form-group">
             <input type="submit" class="button" value="Continue">

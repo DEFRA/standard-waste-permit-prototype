@@ -9,15 +9,13 @@
 {% block content %}
 
 <main id="content" role="main">
-    {% include "includes/phase_banner_alpha.html" %}
+    {% include "includes/phase_banner_beta.html" %}
     
     <div class="grid-row">
         <div class="column-two-thirds">
     
           <h1 class="heading-large" id="radio_label">{{title}}</h1>
-          
-            <h2 class="heading-medium">{{permit.permitName}}<br>
-            <span class="font-medium">{{permit.permitCode}}</span></h2>
+        
 
       <form method="post" action="{{formAction}}">
       
