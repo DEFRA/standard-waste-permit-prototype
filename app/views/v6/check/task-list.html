@@ -29,6 +29,7 @@
   </span>
   </h1>
   
+  
 <!-- Testing digitalMVP condition 
   {% if permit.digitalMVP=="No" %}
   <p>You can't apply for this permit using the digital service</p>
@@ -266,6 +267,31 @@ Save this application to complete later</a></p>
           
 
           <!-- SPECIAL CASES ############################################ -->
+          {% if permit.permitID=="SR-2009-4" %}              
+            {% set linkText="Give the stack height" %}
+          {% endif %}
+
+          {% if permit.permitID=="SR-2009-8" %}
+            {% set linkText="Upload a waste management plan checklist" %}
+          {% endif %}
+
+          {% if permit.permitID=="SR-2010-2" or permit.permitID=="SR-2010-3" %}
+            {% set linkText="Tell us the date when you want the permit to start" %}
+          {% endif %}
+
+          {% if permit.permitID=="SR-2014-2" %}
+            {% set linkText="Specify the type of mining waste plan" %}
+          {% endif %}
+
+          {% if permit.permitID=="SR-2015-17" or permit.permitID=="SR-2015-18" %}
+            {% set linkText="Confirm the drainage system for your site" %}
+          {% endif %}
+
+          {% if permit.permitID=="SR-2015-39" %}
+            {% set linkText="Upload the waste recovery plan" %}
+          {% endif %}
+          
+          
           {% if 
             permit.permitID=="SR-2009-4" or 
             permit.permitID=="SR-2009-8" or 
@@ -277,41 +303,16 @@ Save this application to complete later</a></p>
             permit.permitID=="SR-2015-39"
            %}
               <li class="task-list-item">
-                 <a class="task-name" href="{% if permit.specialCasePageVisited!=null %}
-                /{{folder}}/check-special-cases
-              {% else %}
-                /{{folder}}/check-special-cases
-              {% endif %}">
-              
-              {% if permit.permitID=="SR-2009-4" %}              
-                Give the stack height
-              {% endif %}
-
-              {% if permit.permitID=="SR-2009-8" %}              
-                Upload a waste management plan checklist
-              {% endif %}
-
-              {% if permit.permitID=="SR-2010-2" or permit.permitID=="SR-2010-3" %}              
-                Tell us the date when you want the permit to start
-              {% endif %}
-
-              {% if permit.permitID=="SR-2014-2" %}              
-                Specify the type of mining waste plan
-              {% endif %}
-
-              {% if permit.permitID=="SR-2015-17" or permit.permitID=="SR-2015-17" %}              
-                Confirm the drainage system for your site
-              {% endif %}
-
-              {% if permit.permitID=="SR-2015-39" %}              
-                Upload the waste recovery plan
-              {% endif %}
-                  
+                 <a class="task-name" href="/{{folder}}/check-special-cases">
+                   {{linkText}}
                 </a>
-                {% if permit.specialCasePageVisited!==null %} <strong class="task-completed">Completed</strong> 
+                
+                {% if permit.specialCasePageVisited!==null %}
+                  <strong class="task-completed">Completed</strong> 
                 {% else %}
-                <input type="hidden" name="complete[]" value="Extra permit information">
+                  <input type="hidden" name="complete[]" value="Extra permit information">
                 {% endif %}
+                
               </li>
           {% endif %}
 
