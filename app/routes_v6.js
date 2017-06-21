@@ -91,7 +91,7 @@ router.post('/save-and-return/confirm', function (req, res) {
 router.post('/save-and-return/sent', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/save-and-return/sent',{
-    "formAction":"/"+ folder + "/selectpermit/choose-expanding-sections",
+    "formAction":"/"+ folder + "/selectpermit/permit-category2",
     "permit":req.session.permit // always send permit object to page
   })
 })
@@ -234,6 +234,14 @@ router.get('/selectpermit/permit-category', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/selectpermit/permit-category',{
     "formAction":"/"+ folder + "/selectpermit/choose-permit",
+    "permit":req.session.permit // always send permit object to page
+  })
+})
+
+router.post('/selectpermit/permit-category2', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/selectpermit/permit-category2',{
+    "formAction":"/"+ folder + "/selectpermit/choose-permit2",
     "permit":req.session.permit // always send permit object to page
   })
 })
