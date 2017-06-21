@@ -532,7 +532,7 @@ router.post('/operator/company/check-company-details', function (req, res) {
             var companyJSON = JSON.parse(body)
             var company = companyJSON.items[0]
             res.render(folder + '/operator/company/check-company-details',{
-                "formAction":"/"+ folder + "/contact/contact-details",
+                "formAction":"/"+ folder + "/evidence/declare-offences",
                 "permit":req.session.permit, // always send permit object to page
                 "company":company,
                 "searchTerm":req.body.companyRegNum,
