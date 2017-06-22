@@ -45,9 +45,21 @@
       <li class="inline"><a title="Cookies - opens in new tab" target="_blank" href="/{{folder}}/pages/cookies">Cookies</a></li>
     </ul>
   </div>
+
+{% block footer_support_links %}
+  {% if useAutoStoreData %}
+    <ul>
+      <li>
+        <a href="/prototype-admin/clear-data">Clear data</a>
+      </li>
+    </ul>
+  {% endif %}
 {% endblock %}
 
 {% block body_end %}
-  {% include "includes/scripts.html" %}
+  {% block scripts %}
+    {% include "includes/scripts.html" %}
+    {% block page_scripts %}{% endblock %}
+  {% endblock %}
   <!-- GOV.UK Prototype kit {{releaseVersion}} -->
 {% endblock %}
