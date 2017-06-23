@@ -41,6 +41,11 @@ module.exports = function (env) {
   filters.nl2br = function(textStr) {
       return textStr.replace(/\r|\n|\r\n/g, '<br />')
   }
+  
+  filters.reverseName = function(textStr) {
+    var parts = textStr.split(',')
+    return parts[1] + ' ' + parts[0]
+  }
 
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
