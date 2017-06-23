@@ -27,8 +27,9 @@
 
       <legend class="visually-hidden">{{title}}</legend>
 
-      <label class="block-label selection-button-radio" data-target="screeningYes" for="yes">
+      <div class="multiple-choice">
         <input id="yes" type="radio" name="screening" value="yes">
+<label class="selection-button-radio" data-target="screeningYes" for="yes">
         Yes and I have an application reference number
       </label>
       <div class="panel panel-border-narrow js-hidden" id="screeningYes">
@@ -37,19 +38,24 @@
          </label>
          <input class="form-control" name="screeningRef" type="text" id="screeningRef">
       </div>
+    </div>
 
-      <label class="block-label selection-button-radio" for="pending">
-        <input id="pending" type="radio" name="screening" value="pending">
+      <div class="multiple-choice">
+        <input id="pending" type="radio" name="screening" value="">
+<label class="selection-button-radio" for="pending">
         Yes, but I don't have a reference number or am waiting for a reply
       </label>
+    </div>
 
-      <label class="block-label selection-button-radio" data-target="screeningNo" for="no">
+      <div class="multiple-choice">
         <input id="no" type="radio" name="screening" value="no">
+<label class="selection-button-radio" data-target="screeningNo" for="no">
         No
       </label>
         <div class="panel panel-border-narrow js-hidden" id="screeningNo">
           <p><a href="http://www.smartsurvey.co.uk/s/HeritageForm/" target="_blank">Order a nature and heritage conservation check on the SmartSurvey site</a></p>
       </div>
+    </div>
 
     </fieldset>
   </div>

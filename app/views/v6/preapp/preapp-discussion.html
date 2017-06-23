@@ -23,8 +23,9 @@
 
       <legend class="visually-hidden">{{title}}</legend>
 
-      <label class="block-label selection-button-radio" data-target="preAppDiscussion" for="yesRefName">
-        <input id="yesRefName" type="radio" name="preAppDiscussion" value="yes">
+      <div class="multiple-choice">
+      <input id="yesRefName" type="radio" name="preAppDiscussion" value="yes">
+<label class="selection-button-radio" data-target="preAppDiscussion" for="yesRefName">
         Yes and I have a reference number or name
       </label>
           <div class="panel panel-border-narrow js-hidden" id="preAppDiscussion">
@@ -33,16 +34,20 @@
              </label>
             <input class="form-control" name="preAppDiscussionRefName" type="text" id="preAppDiscussionRefName">
           </div>
+        </div>
           
 
-      <label class="block-label selection-button-radio" for="yesNoRef">
-        <input id="yesNoRef" type="radio" name="preAppDiscussion" value="yes">
+      <div class="multiple-choice">
+      <input id="yesNoRef" type="radio" name="preAppDiscussion" value="">
+<label class="selection-button-radio" for="yesNoRef">
         Yes but I do not have a name or reference number
       </label>
+    </div>
       
 
-      <label class="block-label selection-button-radio" for="noPreApp"{% if permit.permitPreAppRequired=="Yes" %} data-target="preAppWarning"{% endif %}>
-        <input id="noPreApp" type="radio" name="preAppDiscussion" value="no">
+      <div class="multiple-choice">
+      <input id="noPreApp" type="radio" name="preAppDiscussion" value="no">
+      <label class="selection-button-radio" for="noPreApp"{% if permit.permitPreAppRequired=="Yes" %} data-target="preAppWarning"{% endif %}>
         No
       </label>
         {% if permit.permitPreAppRequired=="Yes" %}
@@ -52,6 +57,7 @@
             </p>
           </div>
         {% endif %}
+      </div>
 
     </fieldset>
     

@@ -30,8 +30,9 @@
         {% for c in categories %}
 
          
-  <label class="block-label selection-button-radio" for="{{c.category}}">
-     <input id="{{c.category}}" type="radio" name="chosenCategory" value="{{c.category}}">
+ <div class="multiple-choice">
+  <input id="{{c.category}}" type="radio" name="chosenCategory" value="">
+<label class="selection-button-radio" for="{{c.category}}">
             {{c.category}}
             {% if c.hint != "" %}
               <span class="form-hint">
@@ -39,6 +40,7 @@
               </span>
             {% endif %}
             </label>
+          </div>
 
                 {% else %}
           <p>No categories</p>
