@@ -551,6 +551,56 @@ router.post('/operator/company/check-company-details', function (req, res) {
 
 })
 
+
+/* limited company OFFICERS TEST ====================== */
+router.get('/operator/company/company-name-officers', function (req, res) {
+  res.render(folder + '/operator/company/company-name-officers',{
+      "formAction":"/"+ folder + "/operator/company/check-officers",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+router.get('/operator/company/check-officers', function (req, res) {
+  res.render(folder + '/operator/company/check-officers',{
+      "formAction":"/"+ folder + "/operator/company/check-officers",
+      "permit":req.session.permit // always send permit object to page
+  })
+})
+
+router.post('/operator/company/check-officers', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session
+
+    request({
+        url: 'https://api.companieshouse.gov.uk/company/'+req.body.companyRegNum+'/officers', //URL to hit
+        qs: { items_per_page:99 }, //Query string data
+        method: 'GET',
+        auth: {'username':'B6gG6zj0r_w1K6mOqBiW6GGvoe4ygQwQBoFTfxZo','password':''},
+    }, function(error, response, body){
+        if(error) {
+            console.log(error)
+        } else {
+            //console.log(response.statusCode)
+            //console.log("=============================")
+            //console.log(body)
+            //console.log("=============================")
+            var officersJSON = JSON.parse(body)
+            var officers = officersJSON.items
+            res.render(folder + '/operator/company/check-officers',{
+                "permit":req.session.permit, // always send permit object to page
+                "officers":officers,
+                "searchTerm":req.body.companyRegNum,
+                "numberResults":officersJSON.total_results,
+                "resigned_count":officersJSON.resigned_count,
+                "total_results":officersJSON.total_results,
+                "active_count":officersJSON.active_count
+            })
+        }
+    })
+
+})
+
+
+
 // route for link back from company api search results
 router.get('/operator/company/company-name', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
