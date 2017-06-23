@@ -1,11 +1,11 @@
 
 {% macro radio_button(label,name,id,value,labelClass='') %}
 
-  <div class="multiple-choice">
+<div class="multiple-choice">
   <input id="{{name}}_{{id}}" type="radio" name="{{name}}" value="{{ value }}">
   <label class="selection-button-radio{{labelClass}}">
     {{ label }}
   </label>
-</div>
+ </div>
 
 {% endmacro %}
