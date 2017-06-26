@@ -468,20 +468,28 @@ table.payment-confirm {
 }
 
 // Choose permit radio button list
+
+.permitSelector {
+  float: none;
+}
+
 fieldset.permitList {
 }
 label.permitItem {
-  display: flex;
-    width:100%;
+  display: inline-block;
+  width:100%;
     span.permitName {
-      width:75%;
+      width: 66.66667%;
+      float: left;
     }
     span.permitCode {
-        font-weight: bold;
-        width:25%;
-        text-align:right;
+      width: 33.33333%;
+      font-weight: bold;
+      text-align:right;
+      float: right;
     }
 }
+
 p.permitItem {
   display: flex;
     width:100%;
@@ -497,6 +505,8 @@ p.permitItem {
         text-align:right;
     }
 }
+
+
 
 
 
@@ -662,10 +672,6 @@ p.ov_action{
     background-color: #F8F8F8;
     padding: 15px;
     margin-top: 50px;
-}
-
-.change-permit{
-
 }
 
 /* Save for later panel on task-list page */
