@@ -25,21 +25,23 @@
 
       <legend class="visually-hidden">{{title}}</legend>
 
-<div class="multiple-choice">
+<div class="multiple-choice" data-target="bankruptcyInsolvency">
       <input id="yesBankruptcyInsolvency" type="radio" name="bankruptcyInsolvency" value="yes">
-<label class="selection-button-radio" data-target="bankruptcyInsolvency" for="yesBankruptcyInsolvency">
+<label class="selection-button-radio" for="yesBankruptcyInsolvency">
         Yes, there are bankruptcy or insolvency proceedings
       </label>
+      </div>
       <div class="panel panel-border-narrow js-hidden" id="bankruptcyInsolvency">
         <label class="form-label" for="bankruptcyInsolvencyDetails">Please give details, including dates, for the bankruptcy or insolvency proceedings</label>
         <textarea class="form-control" name="bankruptcyInsolvencyDetails" type="text" id="bankruptcyInsolvencyDetails"></textarea>
       </div>
 
-      <input id="noBankruptcyInsolvency" type="radio" name="bankruptcyInsolvency" value="">
+<div class="multiple-choice">
+      <input id="noBankruptcyInsolvency" type="radio" name="bankruptcyInsolvency" value="no">
 <label class="selection-button-radio" for="noBankruptcyInsolvency">
         No bankruptcy or insolvency 
       </label>
-</div>
+      </div>
 
     </fieldset>
   </div>

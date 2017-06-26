@@ -23,33 +23,34 @@
 
       <legend class="visually-hidden">{{title}}</legend>
 
-      <div class="multiple-choice">
+      <div class="multiple-choice" data-target="preAppDiscussion">
       <input id="yesRefName" type="radio" name="preAppDiscussion" value="yes">
-<label class="selection-button-radio" data-target="preAppDiscussion" for="yesRefName">
+      <label class="selection-button-radio" for="yesRefName">
         Yes and I have a reference number or name
       </label>
+      </div>
           <div class="panel panel-border-narrow js-hidden" id="preAppDiscussion">
             <label class="form-label" for="preAppDiscussionRefName">Reference number or name of person you spoke to
              <span class="form-hint">For example, SRP3423 or Julie Jones, Bristol Office</span>
              </label>
             <input class="form-control" name="preAppDiscussionRefName" type="text" id="preAppDiscussionRefName">
           </div>
-        </div>
+        
           
 
       <div class="multiple-choice">
-      <input id="yesNoRef" type="radio" name="preAppDiscussion" value="">
+      <input id="yesNoRef" type="radio" name="preAppDiscussion" value="yes">
 <label class="selection-button-radio" for="yesNoRef">
         Yes but I do not have a name or reference number
       </label>
     </div>
       
 
-      <div class="multiple-choice">
+      <div class="multiple-choice"{% if permit.permitPreAppRequired=="Yes" %} data-target="preAppWarning"{% endif %}>
       <input id="noPreApp" type="radio" name="preAppDiscussion" value="no">
-      <label class="selection-button-radio" for="noPreApp"{% if permit.permitPreAppRequired=="Yes" %} data-target="preAppWarning"{% endif %}>
+      <label class="selection-button-radio" for="noPreApp">
         No
-      </label>
+      </label></div>
         {% if permit.permitPreAppRequired=="Yes" %}
           <div class="panel panel-border-narrow js-hidden" id="preAppWarning">
             <p>
@@ -57,7 +58,7 @@
             </p>
           </div>
         {% endif %}
-      </div>
+      
 
     </fieldset>
     
