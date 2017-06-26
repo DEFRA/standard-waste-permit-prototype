@@ -23,8 +23,8 @@
 
       <legend class="visually-hidden">{{title}}</legend>
 
-      <label class="block-label selection-button-radio" data-target="preAppDiscussion" for="yesRefName">
-        <input id="yesRefName" type="radio" name="preAppDiscussion" value="yes">
+      <input id="yesRefName" type="radio" name="preAppDiscussion" value="yes">
+<label class="selection-button-radio" data-target="preAppDiscussion" for="yesRefName">
         Yes and I have a reference number or name
       </label>
           <div class="panel panel-border-narrow js-hidden" id="preAppDiscussion">
@@ -35,13 +35,13 @@
           </div>
           
 
-      <label class="block-label selection-button-radio" for="yesNoRef">
-        <input id="yesNoRef" type="radio" name="preAppDiscussion" value="yes">
+      <input id="yesNoRef" type="radio" name="preAppDiscussion" value="yes">
+<label class="selection-button-radio" for="yesNoRef">
         Yes but I do not have a name or reference number
       </label>
       
 
-      <label class="block-label selection-button-radio" for="noPreApp"{% if permit.permitPreAppRequired=="Yes" %} data-target="preAppWarning"{% endif %}>
+      <label class="selection-button-radio" for="noPreApp"{% if permit.permitPreAppRequired=="Yes" %} data-target="preAppWarning"{% endif %}>
         <input id="noPreApp" type="radio" name="preAppDiscussion" value="no">
         No
       </label>

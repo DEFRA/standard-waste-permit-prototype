@@ -1,7 +1,7 @@
 
 {% macro radio_button(label,name,id,value,labelClass='') %}
 
-  <label class="block-label selection-button-radio{{labelClass}}">
+  <label class="selection-button-radio{{labelClass}}">
     <input id="{{name}}_{{id}}" type="radio" name="{{name}}" value="{{ value }}">
     {{ label }}
   </label>

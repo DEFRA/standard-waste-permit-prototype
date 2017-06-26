@@ -24,10 +24,13 @@
   <div class="form-group">
     <fieldset>
 
-      <label class="block-label selection-button-radio" data-target="management-systems" for="management-systems-yes">
-        <input id="management-systems-yes" type="radio" name="radio-management-group" value="yes">
+<div class="multiple-choice">
+      <input id="management-systems-yes" type="radio" name="radio-management-group" value="yes">
+<label class="selection-button-radio" data-target="management-systems" for="management-systems-yes">
         Yes
       </label>
+</div>
+
       <div class="panel panel-border-narrow js-hidden" id="management-systems">
               <form>
                 <div class="form-group">
@@ -35,23 +38,31 @@
 
                 <p>What management system will you provide for your regulated facility?</p>
 
-                    <label class="block-label selection-button-radio" for="radio-1">
-                      <input id="radio-1" type="radio" name="radio-group" value="emas">
+                    
+                    <div class="multiple-choice">
+                    <input id="radio-1" type="radio" name="radio-group" value="emas">
+<label class="selection-button-radio" for="radio-1">
                       EC Eco-Management and Audit Scheme (EMAS)
                     </label>
-                    <label class="block-label selection-button-radio" for="radio-2">
-                      <input id="radio-2" type="radio" name="radio-group" value="emas-easy">
+                    </div>
+                    <div class="multiple-choice">
+                    <input id="radio-2" type="radio" name="radio-group" value="emas-easy">
+<label class="selection-button-radio" for="radio-2">
                       EMAS Easy
                     </label>
-                    <label class="block-label selection-button-radio" for="radio-3">
-                      <input id="radio-3" type="radio" name="radio-group" value="iso-14001">
+                    </div>
+                    <div class="multiple-choice">
+                    <input id="radio-3" type="radio" name="radio-group" value="iso-14001">
+<label class="selection-button-radio" for="radio-3">
                       ISO 14001 
                     </label>
-                    <label class="block-label selection-button-radio" for="radio-4">
-                      <input id="radio-4" type="radio" name="radio-group" value="bs-8555">
+                   </div>
+                   <div class="multiple-choice">
+                    <input id="radio-4" type="radio" name="radio-group" value="bs-8555">
+<label class="selection-button-radio" for="radio-4">
                       BS 8555 (Phases 1–5)
                     </label>
-
+</div>
                   </fieldset>
                 </div>
               </form>
@@ -69,15 +80,15 @@
   <div class="form-group">
     <fieldset>
 
-      <label class="block-label selection-button-checkbox" for="systems-acorn">
+      <label class="selection-button-checkbox" for="systems-acorn">
         <input id="systems-acorn" name="systems" type="checkbox" value="Acorn">
         Acorn 
       </label>
-      <label class="block-label selection-button-checkbox" for="systems-green-dragon">
+      <label class="selection-button-checkbox" for="systems-green-dragon">
         <input id="systems-green-dragon" name="systems" type="checkbox" value="Green Dragon">
         Green Dragon
       </label>
-      <label class="block-label selection-button-checkbox" for="systems-own">
+      <label class="selection-button-checkbox" for="systems-own">
         <input id="systems-own" name="systems" type="checkbox" value="Own management system">
         Own management system
       </label>
@@ -89,8 +100,8 @@
 
       </div>
 
-      <label class="block-label selection-button-radio" for="management-systems-no">
-        <input id="management-systems-no" type="radio" name="radio-management-group" value="no">
+      <input id="management-systems-no" type="radio" name="radio-management-group" value="no">
+<label class="selection-button-radio" for="management-systems-no">
         No
       </label>
 
