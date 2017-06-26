@@ -29,26 +29,27 @@
       
       <h2 class="heading-small">What evidence will you supply?</h2>
       
-
-      <label class="block-label selection-button-radio" for="radio-1" 
-      data-target="info1">
-        <input id="radio-1" type="radio" name="industryScheme" value="CIWM-WAMITAB">
+<div class="multiple-choice" data-target="info1">
+      <input id="radio-1" type="radio" name="industryScheme" value="CIWM-WAMITAB">
+      <label class="selection-button-radio" for="radio-1" 
+      >
         A <abbr title="Waste Management Industry Training and Advisory Board">WAMITAB</abbr> operator competence certificate
       </label>
-      
+       </div>
           <div class="panel panel-border-narrow js-hidden" id="info1">
             <p>Check that the certificate is less than 2 years old or has not expired.</p>
             <p>Relevant WAMITAB qualifications are:<br>
             {{permit.WAMITAB}}
             </p>
           </div>
+       
           
-      
-      <label class="block-label selection-button-radio" for="radio-2" data-target="info2">
-        <input id="radio-2" type="radio" name="industryScheme" value="ESA-EU">
+      <div class="multiple-choice" data-target="info2">
+      <input id="radio-2" type="radio" name="industryScheme" value="">
+<label class="selection-button-radio" for="radio-2" >
         A continuing competence certificate from WAMITAB
       </label>
-       
+        </div>
           <div class="panel panel-border-narrow js-hidden" id="info2">
             <p>Check that the continuing competence certificate is less than 2 years old or has not expired.</p>
             <p>We also need a copy of the operator competence certificate.</p>
@@ -58,46 +59,47 @@
               <li>passed an Environment Agency assessment</li>
               <li>were a nominated manager and passed the General Knowledge Assessment</li>
             </ul>
-          </div>
+        </div>
           
-      
-      <label class="block-label selection-button-radio" for="radio-3" 
-      data-target="info3">
-        <input id="radio-3" type="radio" name="industryScheme" value="getting-qualification">
+      <div class="multiple-choice" data-target="info3">
+    <input id="radio-3" type="radio" name="industryScheme" value="getting-qualification">
+      <label class="selection-button-radio" for="radio-3" 
+      >
         A certificate from the <abbr title="Environmental Services Association">ESA</abbr> / <abbr title="Energy and Utility Skills">EU Skills</abbr> scheme
       </label>
+      </div>
           <div class="panel panel-border-narrow js-hidden" id="info3">
             <p>Check that the certificate is less than 2 years old or has not expired.</p>
-          </div>
+        </div>
       
       <!--
       <div class="form-group">  
         <p>If you are getting the qualification then while you are getting it you can upload:</p>
       </div>
     -->
-          
-      <label class="block-label selection-button-radio" for="radio-4" 
-      data-target="info4">
+         <div class="multiple-choice" data-target="info4"> 
         <input id="radio-4" type="radio" name="industryScheme" value="getting-qualification">
+      <label class="selection-button-radio" for="radio-4" 
+      >
         An Environmental Permit Operators Certificate (EPOC)
       </label>
-      
+       </div> 
           <div class="panel panel-border-narrow js-hidden" id="info4">
-            <p>You must get a full qualification within 12 months of starting operation.</p>
-          </div>   
+            <p>You must get a full qualification within 12 months of starting operation.</p>  
+        </div>
              
-          
-      <label class="block-label selection-button-radio" for="radio-5" 
-      data-target="info5">
+        <div class="multiple-choice" data-target="info5">  
         <input id="radio-5" type="radio" name="industryScheme" value="getting-qualification">
+      <label class="selection-button-radio" for="radio-5" 
+      >
         A email or letter to show a registration for an EPOC course
       </label>
-      
+      </div>
           <div class="panel panel-border-narrow js-hidden" id="info5">
             <p>This must show that you have registered to get 4 units from an appropriate qualification.</p>
             <p>You should complete the EPOC course within 4 weeks of the start of operations.</p>
             <p>You must get a full qualification within 12 months of starting operation.</p>
-          </div> 
+        </div>
           
           
     </fieldset>

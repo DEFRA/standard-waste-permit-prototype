@@ -40,18 +40,24 @@
 
       <legend class="visually-hidden">{{title}}</legend>
 
-      <label class="block-label selection-button-radio" for="radio-1" data-target="uploadCertificate">
-        <input id="radio-1" type="radio" name="industryScheme" value="CIWM-WAMITAB">
+      <div class="multiple-choice" data-target="uploadCertificate">
+      <input id="radio-1" type="radio" name="industryScheme" value="CIWM-WAMITAB">
+<label class="selection-button-radio" for="radio-1">
         CIWM (Chartered Institute of Wastes Management) and WAMITAB (Waste Management Industry Training and Advisory Board) scheme
       </label>
-      <label class="block-label selection-button-radio" for="radio-2" data-target="uploadCertificate">
-        <input id="radio-2" type="radio" name="industryScheme" value="ESA-EU">
+      </div>
+      <div class="multiple-choice" data-target="uploadCertificate">
+      <input id="radio-2" type="radio" name="industryScheme" value="ESA-EU">
+<label class="selection-button-radio" for="radio-2" >
         Environmental Services Association (ESA) and Energy and Utility Skills (EU Skills) scheme
       </label>
-      <label class="block-label selection-button-radio" data-target="provideDetails" for="radio-3">
-        <input id="radio-3" type="radio" name="industryScheme" value="getting-qualification">
+    </div>
+      <div class="multiple-choice" data-target="provideDetails">
+      <input id="radio-3" type="radio" name="industryScheme" value="getting-qualification">
+<label class="selection-button-radio" for="radio-3">
         The operator is getting the qualification
       </label>
+    </div>
       <div class="panel panel-border-narrow js-hidden" id="provideDetails">
         <label class="form-label" for="industrySchemeDetails">What qualification will they have and what date will they get it?
           <span class="form-hint">They must have the qualification before you start operating</span>
