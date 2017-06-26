@@ -24,9 +24,9 @@
   <div class="form-group">
     <fieldset>
 
-<div class="multiple-choice">
+<div class="multiple-choice" data-target="management-systems">
       <input id="management-systems-yes" type="radio" name="radio-management-group" value="yes">
-<label class="selection-button-radio" data-target="management-systems" for="management-systems-yes">
+<label class="selection-button-radio" for="management-systems-yes">
         Yes
       </label>
 </div>
@@ -80,18 +80,24 @@
   <div class="form-group">
     <fieldset>
 
-      <label class="selection-button-checkbox" for="systems-acorn">
-        <input id="systems-acorn" name="systems" type="checkbox" value="Acorn">
+      <div class="multiple-choice">
+      <input id="systems-acorn" name="systems" type="checkbox" value="Acorn">
+<label class="selection-button-checkbox" for="systems-acorn">
         Acorn 
       </label>
-      <label class="selection-button-checkbox" for="systems-green-dragon">
-        <input id="systems-green-dragon" name="systems" type="checkbox" value="Green Dragon">
+      </div>
+      <div class="multiple-choice">
+      <input id="systems-green-dragon" name="systems" type="checkbox" value="Green Dragon">
+<label class="selection-button-checkbox" for="systems-green-dragon">
         Green Dragon
       </label>
-      <label class="selection-button-checkbox" for="systems-own">
-        <input id="systems-own" name="systems" type="checkbox" value="Own management system">
+      </div>
+      <div class="multiple-choice">
+      <input id="systems-own" name="systems" type="checkbox" value="Own management system">
+<label class="selection-button-checkbox" for="systems-own">
         Own management system
       </label>
+      </div>
 
     </fieldset>
   </div>
