@@ -35,19 +35,23 @@
 
       <legend class="visually-hidden">{{title}}</legend>
 
-      <label class="block-label selection-button-radio" data-target="confidentialReasonsGroup" for="yesConfClaim">
-        <input id="yesConfClaim" type="radio" name="confidential" value="yes">
+<div class="multiple-choice" data-target="confidentialReasonsGroup">
+      <input id="yesConfClaim" type="radio" name="confidential" value="yes">
+<label class="selection-button-radio" for="yesConfClaim">
         Yes, I wish to claim confidentiality for my application
       </label>
+      </div>
       <div class="panel panel-border-narrow js-hidden" id="confidentialReasonsGroup">
         <label class="form-label" for="confidentialReasons">Give your reasons. If we agree with your request, we will tell you and not include the information in the public register.</label>
         <textarea class="form-control" name="confidentialReasons" type="text" id="confidentialReasons"></textarea>
       </div>
 
-      <label class="block-label selection-button-radio" for="notConfClaim">
-        <input id="notConfClaim" type="radio" name="confidential" value="no">
+<div class="multiple-choice">
+      <input id="notConfClaim" type="radio" name="confidential" value="no">
+<label class="selection-button-radio" for="notConfClaim">
         No
       </label>
+      </div>
 
     </fieldset>
   </div>

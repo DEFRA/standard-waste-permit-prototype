@@ -58,10 +58,12 @@ things for us</li>
 
   <div class="panel panel-border-narrow">
 
+<div class="multiple-choice">
   <label class="form-checkbox" for="confidential-app">
   <input id="checkbox-confidential-app" name="confidential-app" type="checkbox" value="true">
   Please treat the information in my application as confidential
 </label>
+</div>
 
 <p>We will normally put all the information in your application on a public register of environmental information. However, we may
 not include certain information in the public register if this is in the interests of national security, or because the information is
@@ -112,24 +114,30 @@ may be refused or approval withdrawn if I give false or incomplete information.<
 <form>
   <fieldset>
 
-    <label class="block-label selection-button-checkbox" for="declaration-1">
-      <input id="declaration-1" name="declarations" type="checkbox" value="meet-rules">
+    <div class="multiple-choice">
+    <input id="declaration-1" name="declarations" type="checkbox" value="meet-rules">
+<label class="selection-button-checkbox" for="declaration-1">
      I confirm that my standard facility will fully meet the rules that
 I have applied for (this only applies if the application includes
 standard facilities) 
     </label>
-    <label class="block-label selection-button-checkbox" for="declaration-2">
-      <input id="declaration-2" name="declarations" type="checkbox" value="agree">
+    </div>
+    <div class="multiple-choice">
+    <input id="declaration-2" name="declarations" type="checkbox" value="agree">
+<label class="selection-button-checkbox" for="declaration-2">
       Tick this box to confirm that you understand and agree with
 the declaration above, then fill in the details below w	
 (you do not have to provide a signature as well)
     </label>
-    <label class="block-label selection-button-checkbox" for="declaration-3">
-      <input id="declaration-3" name="declarations" type="checkbox" value="eco-survey">
+    </div>
+    <div class="multiple-choice">
+    <input id="declaration-3" name="declarations" type="checkbox" value="eco-survey">
+<label class="selection-button-checkbox" for="declaration-3">
       Tick this box if you do not want us to use information from any
 ecological survey that you have supplied with your application
 (for further information please see the guidance notes on part F1)
     </label>
+    </div>
 
   </fieldset>
 </form>

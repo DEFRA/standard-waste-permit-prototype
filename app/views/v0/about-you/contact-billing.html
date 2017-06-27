@@ -20,23 +20,27 @@
     <fieldset>
 
       <legend class="visually-hidden">Who can we contact about your billing or invoice?</legend>
-
-      <label class="block-label selection-button-radio" for="example-contact-by-email">
-        <input id="example-contact-by-email" type="radio" name="radio-contact-group" value="Yes">
+<div class="multiple-choice">
+      <input id="example-contact-by-email" type="radio" name="radio-contact-group" value="Yes">
+<label class="selection-button-radio" for="example-contact-by-email">
         (As in question 7a)
       </label>
+</div>
 
-      <label class="block-label selection-button-radio" for="example-contact-by-phone">
-        <input id="example-contact-by-phone" type="radio" name="radio-contact-group" value="No">
+<div class="multiple-choice">
+      <input id="example-contact-by-phone" type="radio" name="radio-contact-group" value="No">
+<label class="selection-button-radio" for="example-contact-by-phone">
       (As in question 7b)
 
       </label>
+</div>
 
-      <label class="block-label selection-button-radio" data-target="billing-details" for="example-contact-by-text">
-        <input id="example-contact-by-text" type="radio" name="radio-contact-group" value="No">
+<div class="multiple-choice" data-target="billing-details">
+      <input id="example-contact-by-text" type="radio" name="radio-contact-group" value="No">
+<label class="selection-button-radio" for="example-contact-by-text">
         (Please give details below if different from question 7a or 7b)
       </label>
-
+</div>
 
 
       <div class="panel panel-border-narrow js-hidden" id="billing-details">

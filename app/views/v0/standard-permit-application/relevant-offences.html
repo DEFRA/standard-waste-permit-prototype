@@ -19,11 +19,12 @@
     <fieldset>
 
       <legend class="visually-hidden">Have you, or any other relevant person, been convicted of any relevant offence?</legend>
-
-      <label class="block-label selection-button-radio" data-target="relevant-person" for="relevant-offences-yes">
-        <input id="relevant-offences-yes" type="radio" name="radio-discussions-group" value="Yes">
+<div class="multiple-choice" data-target="relevant-person">
+      <input id="relevant-offences-yes" type="radio" name="radio-discussions-group" value="Yes">
+<label class="selection-button-radio" for="relevant-offences-yes">
         Yes
       </label>
+      </div>
       <div class="panel panel-border-narrow js-hidden" id="relevant-person">
         <p>Name of the relevant person</p>
 
@@ -76,11 +77,12 @@ have given the extra sheet. (add other relevant/environmental offences?)</p>
 
 
       </div>
-
-      <label class="block-label selection-button-radio" for="relevant-offences-no">
-        <input id="relevant-offences-no" type="radio" name="radio-discussions-group" value="No">
+<div class="multiple-choice">
+      <input id="relevant-offences-no" type="radio" name="radio-discussions-group" value="No">
+<label class="selection-button-radio" for="relevant-offences-no">
         No
       </label>
+      </div>
 
     </fieldset>
   </div>

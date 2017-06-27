@@ -102,16 +102,20 @@ Is your main UK business address different from above?
 
       <legend class="visually-hidden">Is your main UK business address different from above?</legend>
 
-      <label class="block-label selection-button-radio" data-target="contact-by-email" for="business-address-different">
-        <input id="business-address-different" type="radio" name="UKBusinessAddress" value="Yes">
+<div class="multiple-choice" data-target="contact-by-email">
+      <input id="business-address-different" type="radio" name="UKBusinessAddress" value="Yes">
+<label class="selection-button-radio" for="business-address-different">
         Yes 
       </label>
+      </div>
 
-      <label class="block-label selection-button-radio" data-target="contact-by-phone" for="business-address-same">
-        <input id="business-address-same" type="radio" name="UKBusinessAddress" value="No">
+      <div class="multiple-choice" data-target="contact-by-phone">
+
+      <input id="business-address-same" type="radio" name="UKBusinessAddress" value="No">
+<label class="selection-button-radio" for="business-address-same">
         No (my main UK business address is the same as above)
       </label>
-
+</div>
 
     </fieldset>
   </div>

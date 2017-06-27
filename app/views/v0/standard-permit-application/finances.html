@@ -21,20 +21,24 @@
 <form>
   <div class="form-group">
     <fieldset>
-
-      <label class="block-label selection-button-radio" data-target="bankruptcy-insolvency" for="finances-yes">
-        <input id="finances-yes" type="radio" name="radio-finances-group" value="finances-yes">
+<div class="multiple-choice" data-target="bankruptcy-insolvency">
+      <input id="finances-yes" type="radio" name="radio-finances-group" value="finances-yes">
+<label class="selection-button-radio" for="finances-yes">
         Yes
       </label>
+      </div>
             <div class="panel panel-border-narrow js-hidden" id="bankruptcy-insolvency">
             <p>Please give details below, including the required set-up costs (including infrastructure), maintenance and clean up costs for
             the proposed facility against which a credit check may be assessed.
             <p>(Text area here)</p>
             </div>
-      <label class="block-label selection-button-radio" for="finances-no">
-        <input id="finances-no" type="radio" name="radio-finances-group" value="finances-no">
+
+      <div class="multiple-choice">
+      <input id="finances-no" type="radio" name="radio-finances-group" value="finances-no">
+<label class="selection-button-radio" for="finances-no">
         No
       </label>
+      </div>
 
     </fieldset>
   </div>

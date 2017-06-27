@@ -89,16 +89,19 @@ Who can we contact about your operation?
 
       <legend class="visually-hidden">Who can we contact about your operation?</legend>
 
-      <label class="block-label selection-button-radio" data-target="contact-by-email" for="operation-contact-different">
-        <input id="operation-contact-different" type="radio" name="OperationContact" value="same">
+<div class="multiple-choice" data-target="contact-by-email">
+      <input id="operation-contact-different" type="radio" name="OperationContact" value="same">
+<label class="selection-button-radio" for="operation-contact-different">
         Use the contact details above
       </label>
+</div>
 
-      <label class="block-label selection-button-radio" data-target="contact-by-phone" for="operation-contact-same">
-        <input id="operation-contact-same" type="radio" name="OperationContact" value="different">
+<div class="multiple-choice" data-target="contact-by-phone">
+      <input id="operation-contact-same" type="radio" name="OperationContact" value="different">
+<label class="selection-button-radio" for="operation-contact-same">
         My operation contact details are different from above
       </label>
-
+</div>
 
     </fieldset>
   </div>
