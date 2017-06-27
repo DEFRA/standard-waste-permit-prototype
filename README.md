@@ -1,18 +1,13 @@
 # Standard waste permit prototype
 
-<<<<<<< HEAD
 ## About
 
 This is a protoype of the standard waste permit application process.
 
 Go to the [GOV.UK Prototype Kit site](https://govuk-prototype-kit.herokuapp.com/docs) to download the latest version and read the documentation.
 
-
 For design prototyping only, not production-ready code. 
 
-## Contributing to this project
-
-Please read the [contribution guidelines](/CONTRIBUTING.md) before submitting a pull request.
 
 ## License
 
