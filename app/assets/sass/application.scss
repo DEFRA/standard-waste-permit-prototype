@@ -32,7 +32,9 @@ $path: "/public/images/";
 
 // Protoype specific styles by MG and PM
 @import 'prototype';
-/* @import 'verify'; */
+
+// used for experimental guidance pages
+// @import 'verify'; 
 
 // Choose permit radio button list
 .permitSelector {
