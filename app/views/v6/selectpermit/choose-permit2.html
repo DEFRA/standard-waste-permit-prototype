@@ -17,7 +17,7 @@
 
       <h1 class="heading-large" id="radio_label">{{title}}</h1>
       
-      <div class="panel panel-border-wide" style="margin-bottom: 25px;">
+      <div class="panel panel-border-wide">
       <p>Showing permits for {{chosenCategory | lower }}. <br>
           <a href="/{{folder}}/selectpermit/permit-category2">
             Back to all permit groups
@@ -25,22 +25,14 @@
         </p>
       </div>
 
-
-
-
       {% import folder+"/custom_inc/macros.html" as macros %}
       {% from folder+"/custom_inc/permit-list-json.html" import permits %}
       
-        <style>
-        span.permitWeight{ color:#6f777b; }
-      </style>
 
       <form method="post" action="{{formAction}}">
         <div class="form-group">
           <fieldset class="permitList" aria-labelledby="radio_label">
             <legend="Permit">
-
-<!-- testing end -->
             
 {% for pNumber, pData in permits %}
 
