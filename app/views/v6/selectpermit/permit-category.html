@@ -22,7 +22,7 @@
       {% from folder+"/custom_inc/category-list-new-json.html" import categories %}
       
       
-      <form method="post" action="{{formAction}}" class="form">
+      <form method="post" action="{{formAction}}">
         <div class="form-group">
           <fieldset aria-labelledby="radio_label">
             <legend class="Permit type">
@@ -32,7 +32,7 @@
          
   <div class="multiple-choice">
     <input id="{{c.category}}" type="radio" name="chosenCategory" value="{{c.category}}">
-<label class="selection-button-radio" for="{{c.category}}">
+<label for="{{c.category}}">
             {{c.category}}
 
             {% set permitCount=0 %}
