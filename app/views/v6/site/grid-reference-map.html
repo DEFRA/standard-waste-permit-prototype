@@ -27,6 +27,8 @@
   		var maplink = "https://osmaps.ordnancesurvey.co.uk/osmaps/"+lat+","+long+","+"20";
   		document.getElementById('mapdivcontainer').style.display="block";
   		document.getElementById('mapdiv').data = maplink;
+      
+      document.getElementById('message').innerHTML = "/{{folder}}/check-england"+"?lat="+lat+"&lng="+lng
   	}
   	else
   	{
@@ -68,6 +70,10 @@
                       <object type="text/html" data="" id="mapdiv" width="400px" height="400px" style="overflow:auto;border:1px solid #DEDEDE;">
                       </object>
                   </div>
+                  
+                  <p>
+                    Message: <span id="message"></span>
+                  </p>
 
 
                 <!-- Find grid reference -->
