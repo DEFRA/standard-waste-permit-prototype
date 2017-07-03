@@ -45,6 +45,6 @@
     "standard": "^8.6.0",
     "supertest": "^2.0.0",
     "sync-request": "^3.0.1",
-    "which-country": "1.0.0"
+    "which-country-ea": "file:local_modules/which-country-ea"
   }
 }
