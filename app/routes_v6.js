@@ -31,7 +31,7 @@ router.get('/cls', function (req, res) {
 })
 
 
-var wc = require('which-country');
+var wc = require('which-country-ea');
 
 // England lat long check
 router.get('/site/grid-reference-eng', function (req, res) {
