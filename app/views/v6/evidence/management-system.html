@@ -15,60 +15,60 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
-<div class="panel panel-border-wide">
-  <p> 
-    You must have a written management system before you start operating. We will check it when we first inspect your site.
-  </p>
-</div>
-
+  <p id="manSysGuidance">You must have a written management system before you start operating. We will check it when we first inspect your site.<br><a target="_blank" href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits">Guidance about management systems on GOV.UK (opens new tab)</a></p>
 
 <form method="post" action="{{formAction}}">
   <div class="form-group">
     <fieldset>
       
-      <p>Select all that apply</p>
-
-      <legend class="visually-hidden">{{title}}</legend>
+      <legend class="visually-hidden" aria-describedby="manSysGuidance">{{title}}</legend>
 
       <div class="multiple-choice">
-        <input id="manSysECEco" name="manSys" type="checkbox" value="EC Eco management and audit scheme (EMAS)">
-<label for="manSysECEco">
-        EC Eco management and audit scheme (EMAS)
-      </label>
-    </div>
+        <input id="manSysECEco" name="manSys" type="radio" value="EC Eco management and audit scheme (EMAS)">
+        <label for="manSysECEco">
+        Eco-Management and Audit Scheme (EMAS)
+        </label>
+      </div>
       <div class="multiple-choice">
-        <input id="manSysISO14001" name="manSys" type="checkbox" value="ISO 14001">
-<label for="manSysISO14001">
-        ISO 14001
-      </label>
-    </div>
+        <input id="manSysEMASEasy" name="manSys" type="radio" value="EMAS Easy">
+        <label for="manSysEMASEasy">
+        EMAS Easy
+        </label>
+      </div>
       <div class="multiple-choice">
-        <input id="manSysBS8555" name="manSys" type="checkbox" value="BS 8555 (Phases 1-5)">
-<label for="manSysBS8555">
-        BS 8555 (Phases 1-5)
-      </label>
-    </div>
+        <input id="manSysISO14001" name="manSys" type="radio" value="ISO 14001:2015">
+        <label for="manSysISO14001">
+        ISO 14001:2015
+        </label>
+      </div>
       <div class="multiple-choice">
-        <input id="manSysGreenDragon" name="manSys" type="checkbox" value="Green Dragon">
-<label for="manSysGreenDragon">
+        <input id="manSysBS8555" name="manSys" type="radio" value="British Standard BS 8555 phases 1 to 5">
+        <label for="manSysBS8555">
+        British Standard BS 8555 phases 1 to 5
+        </label>
+      </div>
+      <div class="multiple-choice">
+        <input id="manSysAcorn" name="manSys" type="radio" value="Acorn">
+        <label for="manSysAcorn">
+        Acorn
+      </label>
+      </div>
+      <div class="multiple-choice">
+        <input id="manSysGreenDragon" name="manSys" type="radio" value="Green Dragon">
+        <label for="manSysGreenDragon">
         Green Dragon
       </label>
-    </div>
-
+      </div>
       <div class="multiple-choice">
-        <input id="manSysOwnMeets" name="manSys" type="checkbox" value="Your own management system">
-<label for="manSysOwnMeets">
+        <input id="manSysOwnMeets" name="manSys" type="radio" value="Your own management system">
+        <label for="manSysOwnMeets">
         Your own management system
-        <span class="form-hint">If you use your own system, it must meet our standards.<br>
-          <a href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits" target="_blank">Guidance about management systems on GOV.UK (opens new tab)</a></span>
-      </label>
-    </div>
+        <span class="form-hint">If you use your own system, it must meet the standards in our guidance</span>
+        </label>
+      </div>
     </fieldset>
   </div>
-  
-  
 
-  
   <div class="form-group">
       <input type="submit" class="button" value="Continue">
   </div>
