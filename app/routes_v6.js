@@ -30,6 +30,31 @@ router.get('/cls', function (req, res) {
   res.render('index')
 })
 
+
+var wc = require('which-country-ea');
+
+// England lat long check
+router.get('/site/grid-reference-eng', function (req, res) {
+  res.render(folder + '/site/grid-reference-eng',{
+     "formAction":"/"+ folder + "/site/grid-reference-eng"
+  })
+})
+router.post('/site/grid-reference-eng', function (req, res) {
+  var lat = req.body['lat']
+  var lng = req.body['lng']
+  var siteGridRef = req.body['siteGridRef']
+  var country="NOT SET"
+  country = wc([lng, lat])
+  if(country==null) country="NOT-ENG"
+  console.log('Country started')
+  console.log(country)
+  res.render(folder + '/site/grid-reference-eng',{
+     "formAction":"/"+ folder + "/site/grid-reference-eng",
+     "country": country,
+     "siteGridRef":siteGridRef
+  })
+})
+
 // Rules page from list ==============================================================
 
 router.get('/start/rules-page', function (req, res) {

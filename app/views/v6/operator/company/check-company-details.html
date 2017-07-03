@@ -32,7 +32,7 @@
 <!-- <p>{{numberResults}} result{{'s' if numberResults>1}} for <b>{{searchTerm}}</b></p> -->
 
 
-<form action="{{formAction}}" method="post" class="form">
+<form action="{{formAction}}" method="post">
 
     <p>Company number<br>
     <b>{{company.company_number}}</b> &nbsp; <a href="/{{folder}}/operator/company/company-name">change number</a>
@@ -102,13 +102,13 @@ N23 9JY</b></p>
       <legend class="visually-hidden">Is this your main UK business address?</legend>
       <div class="multiple-choice">
         <input id="radio-1" type="radio" name="companyAddressIsMain" value="This is our main UK business address">
-<label class="selection-button-radio" for="radio-1">
+<label for="radio-1">
         This is our main UK business address
       </label>
     </div>
       <div class="multiple-choice">
         <input id="radio-2" type="radio" name="companyAddressIsMain" value="We have a different main UK business address">
-<label class="selection-button-radio" for="radio-2">
+<label for="radio-2">
         We have a different main UK business address
       </label>
     </div>

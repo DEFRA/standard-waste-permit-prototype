@@ -17,7 +17,7 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
-<form action="{{formAction}}" method="post" class="form">
+<form action="{{formAction}}" method="post">
   <div class="form-group">
     <fieldset>
 
@@ -25,7 +25,7 @@
 
       <div class="multiple-choice" data-target="preAppDiscussion">
       <input id="yesRefName" type="radio" name="preAppDiscussion" value="yes">
-      <label class="selection-button-radio" for="yesRefName">
+      <label for="yesRefName">
         Yes and I have a reference number or name
       </label>
       </div>
@@ -40,7 +40,7 @@
 
       <div class="multiple-choice">
       <input id="yesNoRef" type="radio" name="preAppDiscussion" value="yes">
-<label class="selection-button-radio" for="yesNoRef">
+<label for="yesNoRef">
         Yes but I do not have a name or reference number
       </label>
     </div>
@@ -48,7 +48,7 @@
 
       <div class="multiple-choice"{% if permit.permitPreAppRequired=="Yes" %} data-target="preAppWarning"{% endif %}>
       <input id="noPreApp" type="radio" name="preAppDiscussion" value="no">
-      <label class="selection-button-radio" for="noPreApp">
+      <label for="noPreApp">
         No
       </label></div>
         {% if permit.permitPreAppRequired=="Yes" %}

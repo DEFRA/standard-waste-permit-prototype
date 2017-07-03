@@ -21,7 +21,7 @@
   <p>This will check if your site is too close to heritage and nature conservation sites, protected species or habitats.</p>
 </div>
 
-<form action="{{formAction}}" method="post" class="form">
+<form action="{{formAction}}" method="post">
   <div class="form-group">
     <fieldset>
 
@@ -29,7 +29,7 @@
 
       <div class="multiple-choice"  data-target="screeningYes">
         <input id="yes" type="radio" name="screening" value="yes">
-<label class="selection-button-radio" for="yes">
+<label for="yes">
         Yes and I have an application reference number
       </label>
       </div>
@@ -43,14 +43,14 @@
 
       <div class="multiple-choice">
         <input id="pending" type="radio" name="screening" value="pending">
-<label class="selection-button-radio" for="pending">
+<label for="pending">
         Yes, but I don't have a reference number or am waiting for a reply
       </label>
     </div>
 
       <div class="multiple-choice" data-target="screeningNo">
         <input id="no" type="radio" name="screening" value="no">
-<label class="selection-button-radio" for="no">
+<label for="no">
         No
       </label>
       </div>
