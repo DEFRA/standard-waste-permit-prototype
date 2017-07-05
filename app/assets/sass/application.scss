@@ -63,3 +63,10 @@ label.permitItem {
     }
 }
 
+// style phone number links on mobile only
+@include media(tablet) {
+  a[href^="tel:"] {
+    text-decoration: none;
+    color: $black;
+  }
+}
