@@ -31,7 +31,7 @@ $path: "/public/images/";
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
 // Protoype specific styles by MG and PM
-@import 'prototype';
+/* @import 'prototype'; */
 
 // used for experimental guidance pages
 // @import 'verify'; 
@@ -63,10 +63,23 @@ label.permitItem {
     }
 }
 
-// style phone number links on mobile only
+// style phone number links on mobile only. Not ea-footer. 
 @include media(tablet) {
-  a[href^="tel:"] {
+  main a[href^="tel:"] {
     text-decoration: none;
     color: $black;
   }
+}
+
+// EA footer links list
+@include media(mobile) {
+  .ea-footer, .ea-footer li  {
+    @include core-16;
+  }
+}
+.ea-footer li {
+    margin-right: 10px;
+}
+.ea-footer .inline {
+    display: inline;
 }
