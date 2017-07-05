@@ -31,7 +31,7 @@ $path: "/public/images/";
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
 // Protoype specific styles by MG and PM
-@import 'prototype';
+/* @import 'prototype'; */
 
 // used for experimental guidance pages
 // @import 'verify'; 
@@ -63,10 +63,58 @@ label.permitItem {
     }
 }
 
-// style phone number links on mobile only
+// 6. Form control widths
+// ==========================================================================
+
+// Form control widths
+
+// chars  width in ems
+// 60     28.5
+// 50     26
+// 35     18.5
+// 25     13.5
+// 15     8.5
+// 10     6
+// 5      3.5
+// 3      2.5
+
+.form-control-char-auto { // intended for select options that have pre-populated text
+  width: 100%;
+
+  @include media(tablet) {
+    width: auto;
+  }
+}
+
+.form-control-char-60 {
+  width: 100%;
+  @include media(tablet) {
+    width: 28.5em;
+  }
+}
+
+// end Form control widths
+
+
+
+
+// style phone number links on mobile only. Not ea-footer. 
 @include media(tablet) {
-  a[href^="tel:"] {
+  main a[href^="tel:"] {
     text-decoration: none;
     color: $black;
   }
+}
+
+// EA footer links
+@include media(mobile) {
+  .ea-footer, .ea-footer li  {
+    @include core-16;
+  }
+}
+.ea-footer li {
+    margin-right: 10px;
+}
+.ea-footer .inline {
+    display: inline;
 }

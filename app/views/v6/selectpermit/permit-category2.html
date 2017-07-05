@@ -25,7 +25,7 @@
       <form method="post" action="{{formAction}}">
         <div class="form-group">
           <fieldset aria-labelledby="radio_label">
-            <legend class="Permit type">
+            <legend class="Permit type visuallyhidden">{{title}}</legend>
 
         {% for c in categories %}
 
@@ -47,11 +47,13 @@
       {% endfor %}
 
 
- <details role="group" style="padding-top: 20px">
 
-          <summary role="button" aria-controls="permit-not-found" aria-expanded="true"><span class="summary">I can’t find the permit I need</span></summary>
 
-          <div class="panel panel-border-narrow" id="permit-not-found" aria-hidden="false">
+<details role="group" style="padding-top: 20px">
+
+<summary role="button" aria-controls="permit-not-found" aria-expanded="true"><span class="summary">I can’t find the permit I need</span></summary>
+
+<div class="panel panel-border-narrow" id="permit-not-found" aria-hidden="false">
 
 <p><a href="https://www.gov.uk/guidance/waste-environmental-permits">Read more about Waste environmental permits on GOV.UK</a> or contact the Environment Agency:</p>
 
@@ -77,10 +79,11 @@
 
         <p class="font-small">Monday to Friday, 8am to 6pm</p>
 
-           
-          </div>
+</div> 
+ 
+</details>
 
-          </details>
+
 
 
           </fieldset>
@@ -89,6 +92,7 @@
         <div class="form-group">
             <input type="submit" class="button" value="Continue">
         </div>
+
 
       </form>
 
