@@ -77,6 +77,11 @@ details {
   margin-bottom: 15px;
 }
 
+// Address-manual. Spacing bewteen postcode and change link. 
+span.postcode {
+  margin-right: 10px;
+}
+
 // Form control widths
 // ==========================================================================
 
@@ -85,6 +90,7 @@ details {
 // chars  width in ems
 // 60     28.5
 // 50     26
+// 40     20
 // 35     18.5
 // 25     13.5
 // 20     10.5
@@ -113,6 +119,14 @@ details {
 
   @include media(tablet) {
     width: 26em;
+  }
+}
+
+.form-control-char-40 {
+  width: 100%;
+
+  @include media(tablet) {
+    width: 20em;
   }
 }
 
