@@ -1,3 +1,4 @@
+// This prototype code not for production use
 
 .slides{
   p.font-xsmall{
@@ -63,7 +64,9 @@
       padding: 0 15px;
 	}
 	.head-section h1 {
-			@include bold-24();
+      font-size: 24px;
+      line-height: 1.25;
+      font-weight: 700;
 		}
 	.inner-block {
 	    padding: 0 30px;
@@ -71,7 +74,7 @@
 	.heading {
 		padding: 45px 0;
 		.type {
-			color:$grey-1;
+			color:#6F777B;
 			margin-bottom: 0.2em;
 		}
 	}
@@ -220,14 +223,20 @@
 			padding: 5px;
   	}
   	h2 {
-      @include bold-27();
-		margin-top:45px;
+      font-size: 24px;
+      line-height: 1.25;
+      font-weight: 700;
+		  margin-top:45px;
   	}
   	h3 {
-  	  @include bold-24();
+  	  font-size: 24px;
+      line-height: 1.25;
+      font-weight: 700;
   	}
   	h4, caption {
-  	  @include bold-19();
+  	  font-size: 19px;
+      line-height: 1.31579;
+      font-weight: 700;
 			margin-top:45px;
   	}
   	strong {
@@ -236,7 +245,9 @@
   	table {
   		margin-bottom:45px;
 			caption {
-				@include bold-16();
+        font-size: 16px;
+        line-height: 1.25;
+        font-weight: 700;
 				text-align:left;
 			}
   		th, td {
@@ -262,13 +273,16 @@
   		}
 	}
 	.csv {
-		border-bottom:1px solid $grey-3;
+		border-bottom:1px solid #DEE0E2;
 		h2 {
-	  	  @include bold-19();
-		  margin-top:$gutter-half;
+	    font-size: 19px;
+      line-height: 1.31579;
+      font-weight: 700;
+		  margin-top: 20px;
 		}
 		p {
-	  	  @include core-16();
+	  	font-size: 16px;
+      line-height: 1.25;
 		}
 	}
 }
@@ -347,8 +361,6 @@ img.inboxicon {
       padding-bottom: 30px;
     }
 }
-
-
 
 .payment-info {
     font-weight: 700;
@@ -429,85 +441,6 @@ img.card-image {
   }
 }
 
-// 6. Form control widths
-// ==========================================================================
-
-// TODO: Update these
-// Form control widths
-
-// chars	width in ems
-// 50	    26
-// 35	    18.5
-// 25	    13.5
-// 15	    8.5
-// 10	    6
-// 5	    3.5
-// 3	    2.5
-
-.form-control-char-auto { // intended for select options that have pre-populated text
-  width: 100%;
-
-  @include media(tablet) {
-    width: auto;
-  }
-}
-
-.form-control-char-50 {
-  width: 100%;
-
-  @include media(tablet) {
-    width: 26em;
-  }
-}
-
-.form-control-char-35 {
-  width: 100%;
-
-  @include media(tablet) {
-    width: 18.5em;
-  }
-}
-
-.form-control-char-25 {
-  width: 100%;
-
-  @include media(tablet) {
-    width: 13.5em;
-  }
-}
-
-.form-control-char-15 {
-  width: 100%;
-
-  @include media(tablet) {
-    width: 8.5em;
-  }
-}
-
-.form-control-char-10 {
-  width: 100%;
-
-  @include media(tablet) {
-    width: 6em;
-  }
-}
-
-.form-control-char-5 {
-  width: 100%;
-
-  @include media(tablet) {
-    width: 3.5em;
-  }
-}
-
-.form-control-char-3 {
-  width: 100%;
-
-  @include media(tablet) {
-    width: 2.5em;
-  }
-}
-// end Form control widths
 
 .button-secondary{
   background-color:#dee0e2;
