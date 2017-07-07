@@ -30,10 +30,10 @@ $path: "/public/images/";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
-// Protoype specific styles by MG and PM
-/* @import 'prototype'; */
+// Protoype specific styles by MG and PM. Do not import for production code.
+@import 'prototype'; 
 
-// used for experimental guidance pages
+// used for experimental guidance pages. 
 // @import 'verify'; 
 
 // Choose permit radio button list
@@ -63,16 +63,31 @@ label.permitItem {
     }
 }
 
-// 6. Form control widths
-// ==========================================================================
+// style phone number links on mobile only. Not ea-footer. 
+@include media(tablet) {
+  main a[href^="tel:"] {
+    text-decoration: none;
+    color: $black;
+  }
+}
+
+// Add spacing below details (progressive disclosure)
+// Check if this is always required. If not, introduce class. 
+details {
+  margin-bottom: 15px;
+}
 
 // Form control widths
+// ==========================================================================
+
+// Setting the widths of forms based on the minimum number of visible characters to display in the input
 
 // chars  width in ems
 // 60     28.5
 // 50     26
 // 35     18.5
 // 25     13.5
+// 20     10.5
 // 15     8.5
 // 10     6
 // 5      3.5
@@ -93,18 +108,72 @@ label.permitItem {
   }
 }
 
+.form-control-char-50 {
+  width: 100%;
+
+  @include media(tablet) {
+    width: 26em;
+  }
+}
+
+.form-control-char-35 {
+  width: 100%;
+
+  @include media(tablet) {
+    width: 18.5em;
+  }
+}
+
+.form-control-char-25 {
+  width: 100%;
+
+  @include media(tablet) {
+    width: 13.5em;
+  }
+}
+
+.form-control-char-20 {
+  width: 100%;
+
+  @include media(tablet) {
+    width: 10.5em;
+  }
+}
+
+.form-control-char-15 {
+  width: 100%;
+
+  @include media(tablet) {
+    width: 8.5em;
+  }
+}
+
+.form-control-char-10 {
+  width: 100%;
+
+  @include media(tablet) {
+    width: 6em;
+  }
+}
+
+.form-control-char-5 {
+  width: 100%;
+
+  @include media(tablet) {
+    width: 3.5em;
+  }
+}
+
+.form-control-char-3 {
+  width: 100%;
+
+  @include media(tablet) {
+    width: 2.5em;
+  }
+}
 // end Form control widths
 
 
-
-
-// style phone number links on mobile only. Not ea-footer. 
-@include media(tablet) {
-  main a[href^="tel:"] {
-    text-decoration: none;
-    color: $black;
-  }
-}
 
 // EA footer links
 @include media(mobile) {

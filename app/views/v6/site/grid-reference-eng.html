@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "What’s the grid reference for the site?" %}
+{% set title = "What’s the grid reference for the centre of the site?" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -44,21 +44,16 @@
 
           <form method="post" class="form" action="{{formAction}}">
 
-              <header class="text">
-            <h1 class="form-title heading-large">
-                  {{title}}
-                </h1>
-        </header>
-
+<h1 class="heading-large">{{title}}</h1>
 
                   <!-- Grid reference -->
                   <div class="form-group">
                     <label class="form-label" for="grid-reference">National Grid reference
-                      <span class="form-hint text">
+                      <span class="form-hint">
                         Enter 2 letters and 10 digits. For example, ST 58132 72695.
                       </span>
                     </label>
-                    <input type="text" class="form-control form-control-char-25" id="grid-reference" name="siteGridRef" aria-describedby="ngr_help" value="{{siteGridRef}}" />
+                    <input type="text" class="form-control form-control-char-20" id="grid-reference" name="siteGridRef" aria-describedby="ngr_help" value="{{siteGridRef}}" />
                   </div>
                   
                   <input type="hidden" id="lat" name="lat" value="" />
