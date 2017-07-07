@@ -15,17 +15,28 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
+  <div class="error-summary" role="group" aria-labelledby="postcode-not-recognised" tabindex="-1">
+
+    <h1 class="heading-medium error-summary-heading" id="postcode-not-recognised">We can't find any addresses for that postcode</h1>
+
+    <p>Please check the postcode or <a href="address-manual.html">enter the address manually</a></p>
+  </div>
+
+
 <form method="post" action="{{formAction}}">
   <fieldset>
     <legend class="visuallyhidden">Postcode</legend>
 
-    <div class="form-group">
+    <div class="form-group form-group-error">
       <label class="form-label" for="postcode">UK postcode
         <span class="form-hint">For example, BS1 5AH</span>
+        <span class="error-message">We can't find any addresses for that postcode</span>
       </label>
-      <input type="text" class="form-control form-control-char-10" id="postcode" name="sitePostCode" value="{{permit.sitePostCode}}" />
+      <input type="text" class="form-control form-control-char-10  form-control-error" id="postcode" name="sitePostCode" value="AB1 2CD" />
     </div>
   </fieldset>
+
+<p><a href="address-manual.html">Enter address manually</p>
 
   <div class="form-group">
       <input type="submit" class="button" value="Continue">
