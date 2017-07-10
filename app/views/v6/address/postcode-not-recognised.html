@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "What's the postcode for the site?" %}
+{% set title = "We can't find any addresses for that postcode" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -13,29 +13,21 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-<h1 class="heading-large">{{title}}</h1>
-
-  <div class="error-summary" role="group" aria-labelledby="postcode-not-recognised" tabindex="-1">
-
-    <h1 class="heading-medium error-summary-heading" id="postcode-not-recognised">We can't find any addresses for that postcode</h1>
-
-    <p>Please check the postcode or <a href="/{{folder}}/address/address-manual">enter the address manually</a></p>
-  </div>
+<h1 class="heading-large" role="alert">{{title}}</h1>
 
 <form method="post" action="{{formAction}}">
   <fieldset>
     <legend class="visuallyhidden">Postcode</legend>
 
-    <div class="form-group form-group-error">
-      <label class="form-label" for="postcode">UK postcode
+    <div class="form-group">
+      <label class="form-label" for="postcode">Enter the correct postcode
         <span class="form-hint">For example, BS1 5AH</span>
-        <span class="error-message">We can't find any addresses for that postcode</span>
       </label>
-      <input type="text" class="form-control form-control-char-10  form-control-error" id="postcode" name="sitePostCode" value="AB1 2CD" />
+      <input type="text" class="form-control form-control-char-10" id="postcode" name="sitePostCode" value="AB1 2CD" />
     </div>
   </fieldset>
 
-<p><a href="/{{folder}}/address/address-manual">Enter address manually</p>
+<p>Or <a href="/{{folder}}/address/address-manual">enter address manually</p>
 
   <div class="form-group">
       <input type="submit" class="button" value="Continue">
