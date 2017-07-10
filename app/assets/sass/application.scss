@@ -185,6 +185,15 @@ span.postcode {
     width: 2.5em;
   }
 }
+
+// For textarea 100% width, even on tablet
+.form-control-full {
+  @include media(tablet) {
+    width: 100%;
+  }
+}
+
+
 // end Form control widths
 
 
