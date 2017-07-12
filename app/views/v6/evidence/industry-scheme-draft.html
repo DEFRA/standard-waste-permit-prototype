@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Which qualification does the person managing the operation have?" %}
+{% set title = "Which qualification does the person providing technical management have?" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -37,9 +37,9 @@
       </label>
        </div>
           <div class="panel panel-border-narrow js-hidden" id="info1">
-            <p>Check that the certificate is less than 2 years old or has not expired.</p>
-            <p>Relevant WAMITAB qualifications are:<br>
-            {{permit.WAMITAB}}
+            <p>Check that the certificate hasn't expired and is less than 2 years old.</p>
+            <p>Relevant WAMITAB qualifications: <br>WAMITAB Level 4 Medium Risk Operator Competence for Physical Treatment (601/8531/4) (MROC2)
+            {{ permit.WAMITAB }}
             </p>
           </div>
        
@@ -65,7 +65,9 @@
     <input id="radio-3" type="radio" name="industryScheme" value="getting-qualification">
       <label for="radio-3" 
       >
-        Certificate from the <abbr title="Environmental Services Association">ESA</abbr> / <abbr title="Energy and Utility Skills">EU Skills</abbr> scheme
+        <abbr title="Energy and Utility Skills">EU Skills</abbr> and 
+        <abbr title="Environmental Services Association">ESA</abbr> 
+        Competence Management Scheme
       </label>
       </div>
           <div class="panel panel-border-narrow js-hidden" id="info3">
