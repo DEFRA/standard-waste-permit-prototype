@@ -34,20 +34,23 @@
 
 <form action="{{formAction}}" method="post">
 
-    <p>Company number<br>
-    <b>{{company.company_number}}</b> &nbsp; <a href="/{{folder}}/operator/company/company-name">change number</a>
+    <h2 class="heading-small">Company number<h2>
+    <p>{{company.company_number}}</b>
     </p>
     <input type="hidden" name="companyNumber" value="{{company.company_number}}">
 
-    <p>Company name<br>
-    <b>{{company.title | title}}</b>
+    <h2 class="heading-small">Company name</h2>
+    <p><b>{{company.title | title}}</b>
     </p>
     <input type="hidden" name="companyName" value="{{company.title | title}}">
 
-    <p>Registered office address<br>
-    <b>{{company.address_snippet}}</b></p>
+    <h2 class="heading-small">Registered office address</h2>
+    <p><b>{{company.address_snippet}}</b></p>
 
     <input type="hidden" name="companyAddress" value="{{company.address_snippet}}">
+
+
+    <p><a href="/{{folder}}/operator/company/company-name">These are not the correct company details</a></p>
 
 
 

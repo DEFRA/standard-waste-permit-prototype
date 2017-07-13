@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Which qualification does the person managing the operation have?" %}
+{% set title = "Which qualification does the person providing technical management have?" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -15,23 +15,20 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
-<div class="panel panel-border-wide">
-  <p> 
-    Your operation must be managed by a 'competent person'. To prove this, they must have a certificate of technical competence or an operator competence scheme certificate, for example from WAMITAB.
-  </p>
-  <p> 
-    Check that your certificate has not expired.
-  </p>
-</div>
+<details>
 
-<details style="margin-bottom:20px;">
-  <summary><span class="summary">Relevant WAMITAB qualifications</span></summary>
+  <summary><span class="summary">What is a 'competent person'
+</span></summary>
+
   <div class="panel panel-border-narrow">
-    {{permit.WAMITAB}}
+
+<p> 
+Your site must be managed by a 'competent person'. To prove this, they must have a certificate of technical competence or an operator competence scheme certificate, for example from WAMITAB.
+</p>
+
   </div>
+
 </details>
-
-
 
 
 <form method="post" action="{{formAction}}">
@@ -62,40 +59,11 @@
         <label class="form-label" for="industrySchemeDetails">What qualification will they have and what date will they get it?
           <span class="form-hint">They must have the qualification before you start operating</span>
         </label>
-        <textarea class="form-control" id="industrySchemeDetails"  name="industrySchemeDetails" cols="30" rows="2"></textarea>
+        <textarea class="form-control form-control-full" id="industrySchemeDetails"  name="industrySchemeDetails" cols="30" rows="5"></textarea>
       </div>
     </fieldset>
   </div>
   
-
-
-  <!-- UPLOAD FORM ========================================== -->
-    <div class="form-group form-upload js-hidden" id="uploadCertificate">
-        <h2 class="heading-medium">Upload a certificate for the qualification</h2>
-        
-        <p class="text form-hint">
-          PDF or JPG files, 10MB maximum file size.<br>
-          You can upload more than one file at a time.
-        </p>
-
-        <input id="upload" type="file" aria-labelelledby="upload-label">
-        <input id="filename" name="technicalCertificateFile" type="hidden">
-
-    </div>
-    
-    <script>
-      // captures uploaded filename and passes to hidden input
-      document.getElementById('upload').onchange = uploadOnChange;
-      function uploadOnChange() {
-          var filename = this.value;
-          var lastIndex = filename.lastIndexOf("\\");
-          if (lastIndex >= 0) {
-              filename = filename.substring(lastIndex + 1);
-          }
-          document.getElementById('filename').value = filename;
-      }
-    </script>
-    
 
   <div class="form-group">
       <input type="submit" class="button" value="Continue">

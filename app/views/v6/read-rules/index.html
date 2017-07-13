@@ -18,11 +18,22 @@
 
     <form method="post" action="{{formAction}}">
 
-      <p class="text">
+<!-- if <input type="hidden" name="readRules" value="yes">. -->
+      <!-- <p>You confirmed that your operation meets the rules</p> -->
+
+{% if permit.readRules %} 
+<div class="panel panel-border-wide">
+<p>You confirmed that your operation meets the rules</p>
+</div>
+{% endif %}
+
+      <p>
         Read the <a href="{{permit.guidanceURL}}" target="_blank">rules and risk assessment for permit {{permit.permitCode}} on GOV.UK (opens new tab)</a>.
       </p>
+
+      <p>If it doesn't meet these rules, you may need a different standard rules permit or a bespoke permit instead.</p>
       
-      <div class="form-group text">
+      <div class="form-group">
         <details>
           <summary><span class="summary">How to check the rules about site location</span></summary>
           <div class="panel panel-border-narrow">
@@ -47,15 +58,10 @@
         <input type="hidden" name="readRules" value="yes">
         
 
-        <div class="form-group" style="margin-top:1em;">
-          <input type="submit" class="button" value="The operation meets these rules">
-        </div>
-        
         <div class="form-group">
-          <p>
-            If it doesn't meet these rules, you may need a different standard rules permit or a bespoke permit instead.
-          </p>
+          <input type="submit" class="button" value="{% if permit.readRules %}Return to task list{% else %}The operation meets these rules{% endif %}">
         </div>
+
 
       </form>
 

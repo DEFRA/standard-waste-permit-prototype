@@ -25,7 +25,7 @@
   <span class="font-medium" style="color:#6f777b">Apply for a standard rules waste permit:</span><br>
   {{permit.permitName}}<br>
   <span class="heading-medium">{{permit.permitCode}} &nbsp; 
-    <a class="font-small" href="/{{folder}}/selectpermit/choose-expanding-sections">select a different permit</a>
+    <a class="font-small" href="/{{folder}}/selectpermit/permit-category2">select a different permit</a>
   </span>
   </h1>
   
@@ -73,34 +73,13 @@ Save this application to complete later</a></p>
              <input type="hidden" name="complete[]" value="Confirm that your operation meets the rules">
              {% endif %}
             </li>
-          </ul>
-          </li>
-          
-          
-          <!-- Prepare to apply ############################################################### -->
-          <li>
-            <h2 class="task-list-section">
-              <span class="task-list-section-number">2. </span> Prepare to apply
-            </h2>
-            <ul class="task-list-items">
-             <li class="task-list-item" id="what-you-need">
-              <a class="task-name" href="/{{folder}}/selectpermit/what-need-to-apply" aria-describedby="what-you-need-complete">
-                Find out what you need
-              </a>
-              {% if permit.needToApply %} 
-              <strong class="task-completed" id="what-you-need-complete">Completed</strong> 
-              {% else %}
-              <input type="hidden" name="complete[]" value="Find out what you need"> 
-              {% endif %}
-            </li>
-
             <li class="task-list-item" id="preapp">
               <a class="task-name" href="{% if permit.preAppDiscussion!=null %}
                 /{{folder}}/preapp/check-your-answers
               {% else %}
                 /{{folder}}/preapp/preapp-discussion
               {% endif %}" aria-describedby="preapp-completed">
-                Tell us about any discussions before your application
+                Tell us about any discussions with us
               </a>
               {% if permit.preAppDiscussion!=null %} <strong class="task-completed" id="preapp-completed">Completed</strong>  
               {% else %}
@@ -108,11 +87,14 @@ Save this application to complete later</a></p>
               {% endif %}
             </li>
           </ul>
-        </li>
+          </li>
+
+
+
         <!-- Complete application ############################################################### -->
         <li>
           <h2 class="task-list-section">
-            <span class="task-list-section-number">3. </span> Complete application
+            <span class="task-list-section-number">2. </span> Complete application
           </h2>
           <ul class="task-list-items">
             
@@ -122,14 +104,14 @@ Save this application to complete later</a></p>
               {% else %}
                 /{{folder}}/contact/contact-details
               {% endif %}" aria-describedby="contact-details-completed">
-                Your contact details 
+                Give contact details 
               </a>
               {% if permit.contactName!=null %} <strong class="task-completed" id="contact-details-completed">Completed</strong> 
               {% else %}
               <input type="hidden" name="complete[]" value="Your contact details">
               {% endif %}
             </li>
-      <li class="task-list-item" id="site-operator">
+          <li class="task-list-item" id="site-operator">
             <a class="task-name" href="{% if permit.operatorType!=null %}/{{folder}}/operator/check-your-answers
               {% else %}
                 /{{folder}}/operator/site-operator
@@ -141,8 +123,6 @@ Save this application to complete later</a></p>
               <input type="hidden" name="complete[]" value="Give operator details">
               {% endif %}
             </li>
-            
-
 
 <!-- DONT'T SHOW SITE FOR MOBILE PERMITS -->
             {% if 
@@ -163,7 +143,7 @@ Save this application to complete later</a></p>
                 {% else %}
                   /{{folder}}/site/site-name
                 {% endif %}" aria-describedby="site-name-completed">
-                  Site name and location
+                  Give site name and location
                 </a>
                 {% if permit.siteName!=null %} <strong class="task-completed" id="site-name-completed">Completed</strong> 
                 {% else %}
@@ -183,7 +163,7 @@ Save this application to complete later</a></p>
               {% else %}
                 /{{folder}}/evidence/upload-site-plan
               {% endif %}" aria-describedby="site-plan-completed">
-                Upload a site plan
+                Upload the site plan
               </a>
               {% if permit.sitePlanFilename!=null %} <strong class="task-completed" id="site-plan-completed">Completed</strong> 
               {% else %}
@@ -198,7 +178,7 @@ Save this application to complete later</a></p>
               {% else %}
                 /{{folder}}/evidence/industry-scheme
               {% endif %}" aria-describedby="industry-scheme-completed">
-                Upload qualifications for the manager
+                Upload technical management qualifications
               </a>
               {% if permit.industryScheme!=null %} <strong class="task-completed" id="industry-scheme-completed">Completed</strong> 
               {% else %}
@@ -256,7 +236,7 @@ Save this application to complete later</a></p>
               {% else %}
                 /{{folder}}/evidence/upload-fire-plan
               {% endif %}" aria-describedby="firepp-completed">
-                  Upload fire prevention plan
+                  Upload the fire prevention plan
                 </a>
                 {% if permit.firePlanFilename!==null %} <strong class="task-completed" id="firepp-completed">Completed</strong> 
                 {% else %}
@@ -338,12 +318,12 @@ Save this application to complete later</a></p>
         <!-- Apply   ############################################################### -->
         <li>
           <h2 class="task-list-section">
-            <span class="task-list-section-number">4. </span> Apply
+            <span class="task-list-section-number">3. </span> Apply
           </h2>
           <ul class="task-list-items">
              <li class="task-list-item" id="submit-pay">
               <a onclick="document.tasklist.submit(); return false;" class="task-name" href="#" aria-describedby="submit-and-pay">
-                Submit and pay
+                Send application and pay
               </a>
             </li>
           </ul>
