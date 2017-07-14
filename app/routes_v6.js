@@ -468,12 +468,12 @@ router.get('/evidence/upload-site-plan', function (req, res) {
 router.get('/evidence/industry-scheme', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/evidence/industry-scheme',{
-      "formAction":"/"+ folder + "//evidence/upload-scheme-certificate",
+      "formAction":"/"+ folder + "/evidence/upload-scheme-certificate",
       "permit":req.session.permit // always send permit object to page
   })
 })
 
-router.get('/evidence/upload-scheme-certificate', function (req, res) {
+router.post('/evidence/upload-scheme-certificate', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   res.render(folder + '/evidence/upload-scheme-certificate',{
       "formAction":"/"+ folder + "/check/task-list",
