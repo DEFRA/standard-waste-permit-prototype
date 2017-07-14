@@ -27,18 +27,26 @@ Your site must be managed by a 'competent person'. To prove this, they must have
 
       <legend class="visually-hidden">{{title}}</legend>
 
-      <div class="multiple-choice" data-target="uploadCertificate">
+      <div class="multiple-choice" data-target="showWAMITAB">
       <input id="radio-1" type="radio" name="industryScheme" value="CIWM-WAMITAB">
 <label for="radio-1">
         CIWM (Chartered Institute of Wastes Management) and WAMITAB (Waste Management Industry Training and Advisory Board) scheme
       </label>
       </div>
-      <div class="multiple-choice" data-target="uploadCertificate">
+        <div class="panel panel-border-narrow js-hidden" id="showWAMITAB">
+          <p>
+            The certificate you need for this permit should meet or exceed {{permit.WAMITAB}}.
+          </p>
+        </div>
+      
+      
+      <div class="multiple-choice">
       <input id="radio-2" type="radio" name="industryScheme" value="ESA-EU">
 <label for="radio-2" >
         Environmental Services Association (ESA) and Energy and Utility Skills (EU Skills) scheme
       </label>
-    </div>
+      </div>
+      
       <div class="multiple-choice" data-target="provideDetails">
       <input id="radio-3" type="radio" name="industryScheme" value="getting-qualification">
 <label for="radio-3">
