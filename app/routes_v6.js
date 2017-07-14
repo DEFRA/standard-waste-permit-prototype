@@ -838,7 +838,8 @@ router.post('/check/check-answers', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
   if(req.body['complete']=="" || req.body['complete']==null){ 
     res.render(folder + '/check/check-answers',{
-        "formAction":"/"+ folder + "/pay/payment-method",
+        // "formAction":"/"+ folder + "/pay/payment-method", THIS WAS FOR PAYMENT METHOD
+        "formAction":"/"+ folder + "/pay/enter-card-details",
         "permit":req.session.permit // always send permit object to page
     })
   } else {
@@ -964,6 +965,15 @@ router.post('/pay/how-to-pay', function (req, res) {
         "permit":req.session.permit // always send permit object to page
     })
   }
+})
+
+// ENTER CARD DETAILS
+router.post('/pay/enter-card-details', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/pay/enter-card-details',{
+      "formAction":"/"+ folder + "/pay/confirm-payment",
+      "permit":req.session.permit // always send permit object to page
+  })
 })
 
 router.post('/pay/confirm-payment', function (req, res) {
