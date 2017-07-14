@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Check your answers" %}
+{% set title = "Technical management qualification" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -20,9 +20,6 @@
     <thead>
       <tr>
         <th colspan="2">
-          <h2 class="heading-medium">
-            Site management qualifications
-          </h2>
         </th>
         <th>
         </th>
@@ -32,14 +29,26 @@
     <tbody>
       <tr>
         <td>
-          Site manager qualifications
+           Certificate
         </td>
+         <td>{{permit.technicalCertificateFile}}</td>
+        <td class="change-answer">
+          <a href="/{{folder}}/evidence/industry-scheme">
+            Change <span class="visuallyhidden">certificate</span>
+          </a>
+        </td>
+      </tr>
+      <tr>
         <td>
-          {{permit.industryScheme}} <br>
-          {{permit.technicalCertificateFile}} 
-
+          Scheme
         </td>
-</tr>
+         <td>{{permit.industryScheme}}</td>
+        <td class="change-answer">
+          <a href="/{{folder}}/evidence/upload-scheme-certificate">
+            Change <span class="visuallyhidden">scheme</span>
+          </a>
+        </td>
+      </tr>
     </tbody>
   </table>
 

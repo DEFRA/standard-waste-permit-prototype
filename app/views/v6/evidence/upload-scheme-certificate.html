@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Upload the fire prevention plan" %}
+{% set title = "Upload a certificate for the qualification" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -15,6 +15,11 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
+<div class="panel panel-border-wide">
+  <p>Check that your certificate has not expired.</p>
+</div>
+
+
 <p class="text form-hint">
   PDF or JPG files, 10MB maximum file size.<br>
   You can upload more than one file at a time.
@@ -24,7 +29,7 @@
 
     <div class="form-group form-upload">
         <input id="upload" type="file" aria-labelelledby="upload-label">
-        <input id="filename" name="firePlanFilename" type="hidden">
+        <input id="filename" name="technicalCertificateFile" type="hidden">
     </div>
     
     <script>
@@ -40,11 +45,6 @@
       }
     </script>
     
-
-  
-  <p><a target="_blank" href="https://www.gov.uk/government/publications/fire-prevention-plans-environmental-permits/fire-prevention-plans-environmental-permits">Fire prevention plan guidance on GOV.UK (opens new tab)</a></p>
-
-  </br>
 
     <div class="form-group">
       <input type="submit" class="button" value="Continue">

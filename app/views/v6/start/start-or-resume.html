@@ -19,35 +19,34 @@
 
  <form action="{{formAction}}" method="post">
 
-        <h1 class="heading-large">{{title}}</h1>
+<h1 class="heading-large">{{title}}</h1>
 
-        <fieldset>
-          <legend class="visuallyhidden">
-            {{title}}
-          </legend>
+<fieldset>
+<legend class="visuallyhidden">{{title}}</legend>
+
+<div class="panel panel-border-wide" style="margin-bottom: 30px">
+  <p>You'll need a debit or credit card to pay the application cost. This is between £720 and £1,690, depending on the permit.</p>
+</div>
+
+<div class="form-group">
+  <div class="multiple-choice">
+    <input id="start-application" type="radio" name="started-application" value="no">
+  <label for="start-application">
+    Start a new application
+    <span class="form-hint">We'll send you a link so you can save and return later</span>
+  </label>
+  </div>
+    <div class="multiple-choice">
+    <input id="open-application" type="radio" name="started-application" value="yes">
+  <label for="open-application">
+    Open a saved application
+  </labl>
+</div>
+</div>
+
+</fieldset>
 
 
-          <div class="form-group">
-
-              <div class="multiple-choice">
-              <input id="started-application_1" type="radio" name="started-application" value="no">
-            <label for="started-application_1">
-              Start a new application
-              <span class="form-hint">We'll send you a link so you can save and return later</span>
-            </label>
-          </div>
-
-              <div class="multiple-choice">
-              <input id="started-application_2" type="radio" name="started-application" value="yes">
-            <label for="started-application_2">
-              Open a saved application
-            </label>
-          </div>
-
-
-          </div>
-
-        </fieldset>
         
         <input type="hidden" name="seenSaveReturn" value="yes">
         

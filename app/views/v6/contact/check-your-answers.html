@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Check your answers" %}
+{% set title = "Contact for your application" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -21,7 +21,6 @@
       <tr>
         <th colspan="2">
           <h2 class="heading-medium">
-            Your contact details
           </h2>
         </th>
         <th>
@@ -32,7 +31,7 @@
  <tbody>
       <tr>
         <td>
-          Contact details:
+          Contact details
         </td>
          <td>{{permit.contactName}}<br>
              {% if permit.isContactAnAgent == "yes" %}
