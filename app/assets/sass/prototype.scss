@@ -1,4 +1,19 @@
 // This prototype code not for production use
+// Guide page meta block
+#meta{
+  font-size:16px;
+  margin-bottom:30px;
+}
+#meta p{
+  margin:0;
+  display:flex;
+}
+#meta p span.col1{
+  width: 150px;
+}
+#meta p span.col2{
+  width: 450px;
+}
 
 .slides{
   p.font-xsmall{
@@ -541,5 +556,3 @@ p.ov_action{
 .permitWeight { 
     color:#6f777b; 
 }
-
-
