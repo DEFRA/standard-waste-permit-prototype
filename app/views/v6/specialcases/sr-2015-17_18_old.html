@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% set title = "Declaration for vehicle storage, depollution and dismantling facilities" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<form method="post" action="{{formAction}}">
+  
+  <!-- Only shown for SR-2015-17 and SR-2015-18 ##################################### -->
+  
+  <div class="form-group">
+    <fieldset>
+      <legend class="visually-hidden">{{title}}</legend>
+      
+      <p>Please confirm</p>
+
+      <div class="multiple-choice">
+        <input id="drainageOK" name="drainageOK" type="checkbox" value="Yes">
+<label for="drainageOK">
+        I confirm that drainage from the impermeable surface where we keep vehicles before they are depolluted or dismantled is either discharged to sewer under a consent from the local water company or collected in a blind sump for disposal
+      </label>
+    </div>
+      
+      <div class="multiple-choice">
+        <input id="stack-height-7" name="stack-height-7" type="checkbox" value="The stack height is more than 7 metres">
+<label for="stack-height-7">
+        I confirm that the drainage system for this area is designed, constructed and maintained to ensure the discharge does not adversely impact the water quality of the receiving water body
+      </label>
+    </div>
+
+    </fieldset>
+  </div>
+
+<div class="panel panel-border-wide">
+  <p>
+    If you can't agree to these conditions then you cannot comply with the standard rules for this activity and you should contact us to discuss your options.
+  </p>
+</div>
+
+
+<input type="hidden" name="specialCasePageVisited" value="Yes">
+
+
+<div class="form-group">
+    <input type="submit" class="button" value="Continue">
+</div>
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

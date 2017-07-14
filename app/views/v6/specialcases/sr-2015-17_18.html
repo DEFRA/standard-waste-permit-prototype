@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Declaration for vehicle storage, depollution and dismantling facilities" %}
+{% set title = "Drainage system for the vehicle storage area" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -16,43 +16,81 @@
 <h1 class="heading-large">{{title}}</h1>
 
 <form method="post" action="{{formAction}}">
-  
-  <!-- Only shown for SR-2015-17 and SR-2015-18 ##################################### -->
-  
-  <div class="form-group">
-    <fieldset>
-      <legend class="visually-hidden">{{title}}</legend>
-      
-      <p>Please confirm</p>
 
-      <div class="multiple-choice">
-        <input id="drainageOK" name="drainageOK" type="checkbox" value="Yes">
-<label for="drainageOK">
-        I confirm that drainage from the impermeable surface where we keep vehicles before they are depolluted or dismantled is either discharged to sewer under a consent from the local water company or collected in a blind sump for disposal
-      </label>
-    </div>
-      
-      <div class="multiple-choice">
-        <input id="stack-height-7" name="stack-height-7" type="checkbox" value="The stack height is more than 7 metres">
-<label for="stack-height-7">
-        I confirm that the drainage system for this area is designed, constructed and maintained to ensure the discharge does not adversely impact the water quality of the receiving water body
-      </label>
-    </div>
+<!-- Only shown for SR-2015-17 and SR-2015-18 ##################################### -->
+  
+<fieldset>
 
-    </fieldset>
+<legend>
+  <p>
+    You must keep vehicles that have not been depolluted on an impermeable surface.
+  </p>
+  <p>
+    Where does the drainage from this surface go?
+  </p>
+</legend>
+
+  <div class="multiple-choice">
+    <input id="radio-1" type="radio" name="drainage" value="Sewer">
+    <label for="radio-1">
+      Discharged to a sewer under a consent from the local water company
+    </label>
+  </div>
+  
+  <div class="multiple-choice">
+    <input id="radio-2" type="radio" name="drainage" value="Blind sump">
+    <label for="radio-2">
+      Collected in a blind sump for disposal
+    </label>
+  </div>
+  
+  <div class="multiple-choice" data-target="waterBody">
+    <input id="radio-3" type="radio" name="drainage" value="Water body">
+    <label for="radio-3">
+      Discharged to a water body
+    </label>
   </div>
 
-<div class="panel panel-border-wide">
-  <p>
-    If you can't agree to these conditions then you cannot comply with the standard rules for this activity and you should contact us to discuss your options.
-  </p>
+</fieldset>
+
+
+<div class="js-hidden" id="waterBody" style="margin-top:20px;">
+  <fieldset>
+  
+  <legend>
+    <p>
+      Is the drainage system for this area designed, constructed and maintained to ensure the discharge does not adversely impact the water quality of the water body? For example, having an appropriately designed, operated and maintained interceptor.
+    </p>
+  </legend>
+
+    <div class="multiple-choice">
+      <input id="radio-4" type="radio" name="waterBodyDrainage" value="Water body with correct design">
+      <label for="radio-4">
+        Yes
+      </label>
+    </div>
+    
+    <div class="multiple-choice" data-target="warningMessage">
+      <input id="radio-5" type="radio" name="waterBodyDrainage" value="Water body with incorrect design">
+      <label for="radio-5">
+        No
+      </label>
+    </div>
+    
+  </fieldset>
+
 </div>
 
+<div class="panel panel-border-wide js-hidden" id="warningMessage" style="margin-top:20px;">
+  <p>
+    If you discharge to a water body but don’t have the correct protection for the water then you do not meet the standard rules and cannot get this permit. Please contact us to discuss your options.
+  </p>
+</div>
 
 <input type="hidden" name="specialCasePageVisited" value="Yes">
 
 
-<div class="form-group">
+<div class="form-group" style="margin-top:20px;">
     <input type="submit" class="button" value="Continue">
 </div>
 </form>
