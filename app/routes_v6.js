@@ -806,12 +806,14 @@ router.get('/check-special-cases', function (req, res) {
     })
   } else if (req.session.permit['permitID'] == "SR-2015-17") {
     res.render(folder + '/specialcases/sr-2015-17_18',{
-        "formAction":"/"+ folder + nextPage,
+        // send to a page for routes
+        "formAction":"/"+ folder + "/specialcases/check-sr-2015-17_18",
         "permit":req.session.permit // always send permit object to page
     })
   } else if (req.session.permit['permitID'] == "SR-2015-18") {
     res.render(folder + '/specialcases/sr-2015-17_18',{
-        "formAction":"/"+ folder + nextPage,
+        // send to a page for routes
+        "formAction":"/"+ folder + "/specialcases/check-sr-2015-17_18",
         "permit":req.session.permit // always send permit object to page
     })
   } else if (req.session.permit['permitID'] == "SR-2015-39") {
@@ -823,6 +825,43 @@ router.get('/check-special-cases', function (req, res) {
     res.redirect('/'+folder+'/check/overview')
   }
 })
+
+
+// Vehicle storage drainage =========================================================
+
+// This is not a real page, just a URL for the route
+router.post('/specialcases/check-sr-2015-17_18', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  if(req.body['drainage']=="Water body"){ // think you need square bracket for radios
+    // show Water body question
+      res.render(folder + '/specialcases/sr-2015-17_18-waterbody',{
+          "formAction":"/"+ folder + "/specialcases/check-waterbody",
+          "permit":req.session.permit // always send permit object to page
+      })
+  } else {
+   res.render(folder + '/check/task-list',{
+      "permit":req.session.permit // always send permit object to page
+    })
+  }
+})
+
+// This is not a real page, just a URL for the route
+router.post('/specialcases/check-waterbody', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  if(req.body['waterBodyDrainage']=="No"){ // think you need square bracket for radios
+    // show Contact us page
+      res.render(folder + '/specialcases/sr-2015-17_18-contact-us',{
+          "permit":req.session.permit // always send permit object to page
+      })
+  } else {
+   res.render(folder + '/check/task-list',{
+      "permit":req.session.permit // always send permit object to page
+    })
+  }
+})
+
+
+
 
 
 // Check answers ===================================================================

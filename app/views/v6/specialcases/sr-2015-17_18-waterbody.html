@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Where does the vehicle storage area drain to?" %}
+{% set title = "Have you installed a drainage system to prevent pollution?" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -15,6 +15,8 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
+<p>For example, you have installed an oil separator.</p>
+
 <form method="post" action="{{formAction}}">
   <div class="form-group">
 
@@ -25,31 +27,22 @@
   <legend class="visually-hidden">{{title}}</legend>
 
   <div class="multiple-choice">
-    <input id="sewer" type="radio" name="drainage" value="Sewer">
-    <label for="sewer">
-      A sewer, under a consent from the local water company
+    <input id="waterBodyYes" type="radio" name="waterBodyDrainage" value="Yes">
+    <label for="waterBodyYes">
+      Yes, our drainage system is designed to prevent pollution  
     </label>
   </div>
   
   <div class="multiple-choice">
-    <input id="blind-sump" type="radio" name="drainage" value="Blind sump">
-    <label for="blind-sump">
-      Collected in a blind sump for disposal
+    <input id="waterBodyNo" type="radio" name="waterBodyDrainage" value="No">
+    <label for="waterBodyNo">
+      No
     </label>
   </div>
   
-  <!-- if Water body then go to next page -->
-  <div class="multiple-choice" data-target="waterBody">
-    <input id="water-body" type="radio" name="drainage" value="Water body">
-    <label for="water-body">
-      Surface water drains, a watercourse, the ground or a water body
-    </label>
-  </div>
   
   </fieldset>
   </div>
-
-<input type="hidden" name="specialCasePageVisited" value="Yes">
 
 <div class="form-group">
     <input type="submit" class="button" value="Continue">
