@@ -31,7 +31,8 @@ $path: "/public/images/";
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
 // Protoype specific styles by MG and PM. Do not import for production code.
-@import 'prototype'; 
+// hide for QA testing
+// @import 'prototype'; 
 
 // used for experimental guidance pages. 
 // @import 'verify'; 
