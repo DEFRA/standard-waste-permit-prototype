@@ -63,6 +63,57 @@ Save this application to complete later</a></p>
               <input type="hidden" name="complete[]" value="Check permit cost and time">
               {% endif %}
             </li>
+
+          <!-- SPECIAL CASES ############################################ -->
+          {% if permit.permitID=="SR-2009-4" %}              
+            {% set linkText="Give the stack height" %}
+          {% endif %}
+
+          {% if permit.permitID=="SR-2009-8" %}
+            {% set linkText="Upload a waste management plan checklist" %}
+          {% endif %}
+
+          {% if permit.permitID=="SR-2010-2" or permit.permitID=="SR-2010-3" %}
+            {% set linkText="Tell us the date when you want the permit to start" %}
+          {% endif %}
+
+          {% if permit.permitID=="SR-2014-2" %}
+            {% set linkText="Specify the type of mining waste plan" %}
+          {% endif %}
+
+          {% if permit.permitID=="SR-2015-17" or permit.permitID=="SR-2015-18" %}
+            {% set linkText="Confirm the drainage system for the vehicle storage area" %}
+          {% endif %}
+
+          {% if permit.permitID=="SR-2015-39" %}
+            {% set linkText="Upload the waste recovery plan" %}
+          {% endif %}
+          
+          
+          {% if 
+            permit.permitID=="SR-2009-4" or 
+            permit.permitID=="SR-2009-8" or 
+            permit.permitID=="SR-2010-2" or 
+            permit.permitID=="SR-2010-3" or 
+            permit.permitID=="SR-2014-2" or 
+            permit.permitID=="SR-2015-17" or 
+            permit.permitID=="SR-2015-18" or 
+            permit.permitID=="SR-2015-39"
+           %}
+              <li class="task-list-item" id="special-case-task">
+                 <a class="task-name" href="/{{folder}}/check-special-cases">
+                   {{linkText}}
+                </a>
+                
+                {% if permit.specialCasePageVisited!==null %}
+                  <strong class="task-completed">Completed</strong> 
+                {% else %}
+                  <input type="hidden" name="complete[]" value="Extra permit information">
+                {% endif %}
+                
+              </li>
+          {% endif %}
+
             <li class="task-list-item" id="operation-rules">
              <a class="task-name" href="/{{folder}}/read-rules/index" aria-describedby="operation-rules-complete">
                Confirm that your operation meets the rules
@@ -245,56 +296,6 @@ Save this application to complete later</a></p>
               </li>
           {% endif %}
           
-
-          <!-- SPECIAL CASES ############################################ -->
-          {% if permit.permitID=="SR-2009-4" %}              
-            {% set linkText="Give the stack height" %}
-          {% endif %}
-
-          {% if permit.permitID=="SR-2009-8" %}
-            {% set linkText="Upload a waste management plan checklist" %}
-          {% endif %}
-
-          {% if permit.permitID=="SR-2010-2" or permit.permitID=="SR-2010-3" %}
-            {% set linkText="Tell us the date when you want the permit to start" %}
-          {% endif %}
-
-          {% if permit.permitID=="SR-2014-2" %}
-            {% set linkText="Specify the type of mining waste plan" %}
-          {% endif %}
-
-          {% if permit.permitID=="SR-2015-17" or permit.permitID=="SR-2015-18" %}
-            {% set linkText="Confirm the drainage system for the vehicle storage area" %}
-          {% endif %}
-
-          {% if permit.permitID=="SR-2015-39" %}
-            {% set linkText="Upload the waste recovery plan" %}
-          {% endif %}
-          
-          
-          {% if 
-            permit.permitID=="SR-2009-4" or 
-            permit.permitID=="SR-2009-8" or 
-            permit.permitID=="SR-2010-2" or 
-            permit.permitID=="SR-2010-3" or 
-            permit.permitID=="SR-2014-2" or 
-            permit.permitID=="SR-2015-17" or 
-            permit.permitID=="SR-2015-18" or 
-            permit.permitID=="SR-2015-39"
-           %}
-              <li class="task-list-item" id="special-case-task">
-                 <a class="task-name" href="/{{folder}}/check-special-cases">
-                   {{linkText}}
-                </a>
-                
-                {% if permit.specialCasePageVisited!==null %}
-                  <strong class="task-completed">Completed</strong> 
-                {% else %}
-                  <input type="hidden" name="complete[]" value="Extra permit information">
-                {% endif %}
-                
-              </li>
-          {% endif %}
 
           <!-- Make confidentiality conditional to permit and in context rather than on task list? -->
             
