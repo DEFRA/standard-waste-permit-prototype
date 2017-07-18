@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% set title = "Where does the vehicle storage area drain to?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<p>
+  This is the area for vehicles that haven't been depolluted. The surface must be impermeable.
+</p>
+
+<form method="post" action="{{formAction}}">
+  <div class="form-group">
+
+<!-- Only shown for SR-2015-17 and SR-2015-18 ##################################### -->
+  
+<fieldset>
+
+  <legend class="visually-hidden">{{title}}</legend>
+
+  <div class="multiple-choice">
+    <input id="sewer" type="radio" name="drainage" value="Sewer">
+    <label for="sewer">
+      A sewer, under a consent from the local water company
+    </label>
+  </div>
+  
+  <div class="multiple-choice">
+    <input id="blind-sump" type="radio" name="drainage" value="Blind sump">
+    <label for="blind-sump">
+      Collected in a blind sump for disposal
+    </label>
+  </div>
+  
+  <!-- if Water body then go to next page -->
+  <div class="multiple-choice" data-target="waterBody">
+    <input id="water-body" type="radio" name="drainage" value="Water body">
+    <label for="water-body">
+      Surface water drains, a watercourse, the ground or a water body
+    </label>
+  </div>
+  
+  </fieldset>
+  </div>
+
+<input type="hidden" name="specialCasePageVisited" value="Yes">
+
+<div class="form-group">
+    <input type="submit" class="button" value="Continue">
+</div>
+
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

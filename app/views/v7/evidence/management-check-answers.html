@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% set title = "Management system" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <h1 class="heading-large">
+    {{title}}
+  </h1>
+
+  <table class="check-your-answers">
+
+    <thead>
+      <tr>
+        <th colspan="2">
+          <h2 class="heading-medium visually-hidden">
+            Management system
+          </h2>
+        </th>
+        <th>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          Management system
+        </td>
+        <td>
+          {{permit.manSys}} 
+        </td>
+        <td class="change-answer">
+          <a href="/{{folder}}/evidence/management-system">
+            Change <span class="visuallyhidden">management systems</span>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+
+      <form method="post" action="{{formAction}}">
+
+      <div class="form-group">
+        <input type="submit" class="button" value="Return to task list">
+      </div>
+
+    </form>
+    
+
+</main>
+
+{% endblock %}

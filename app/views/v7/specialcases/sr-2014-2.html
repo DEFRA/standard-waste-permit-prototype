@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% set title = "Waste weight produced and management plan" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<form method="post" action="{{formAction}}">
+  
+  <!-- Only shown for SR-2014-2 ##################################### -->
+  
+
+  <div class="form-group">
+    <label class="form-label" for="extractiveWasteTonnes">
+      Estimated total weight of extractive waste you will produce
+    </label>
+    <input class="form-control form-control-char-10" id="extractiveWasteTonnes" name="extractiveWasteTonnes" type="text"> tonnes
+  </div>
+  
+  
+  <div class="form-group">
+    <fieldset>
+
+      <legend>Mining waste plan type</legend>
+
+      <div class="multiple-choice">
+      <input id="radio-1" type="radio" name="operatorType" value="water-based drilling mud mining waste plan">
+<label for="radio-1">
+        water-based drilling mud mining waste plan
+      </label>
+    </div>
+      <div class="multiple-choice">
+      <input id="radio-2" type="radio" name="operatorType" value="oil- and water-based drilling mud mining waste plan">
+<label for="radio-2">
+        oil- and water-based drilling mud mining waste plan
+      </label>
+    </div>
+      
+    </fieldset>
+  </div>
+  
+  
+  <input type="hidden" name="specialCasePageVisited" value="Yes">
+
+
+<div class="form-group">
+    <input type="submit" class="button" value="Continue">
+</div>
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% set title = "Select a permit" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_beta.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+      
+      <div class="panel panel-border-wide">
+      <p>Showing permits for {{chosenCategory | lower }}. <br>
+          <a href="/{{folder}}/selectpermit/permit-category2">
+            Back to all permit groups
+          </a>
+        </p>
+      </div>
+
+      {% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/custom_inc/permit-list-json.html" import permits %}
+      
+
+      <form method="post" action="{{formAction}}">
+        <div class="form-group">
+          <fieldset class="permitList" aria-labelledby="radio_label">
+            <legend="Permit">
+            
+{% for pNumber, pData in permits %}
+
+  {% if pData.friendlyCategory2==chosenCategory %}
+    {% if pData.canApplyOnPaper=="Yes" %}
+    
+      {% if pData.friendlyWeight!="" %}
+        {% set weight="<br>"+pData.friendlyWeight %}
+      {% else %}
+        {% set weight="" %}
+      {% endif %}
+
+      {% set label = [
+        '<span class="permitName">',
+        pData.nameGOVUK,
+        '<span class="permitWeight">',
+          weight,
+          '</span>',
+        '</span>',
+        '<span class="permitCode">',
+        pData.code,
+        '</span>'
+        ] %}
+    
+        {{ macros.radio_button(
+          label | join | safe,
+          "chosenPermitID",
+          loop.index,
+          pNumber,
+          " permitItem"
+        ) }}
+        
+    {% endif %}
+  {% endif %}
+  
+{% else %}
+  <p>No radios</p>
+{% endfor %}
+
+          </fieldset>
+        </div>
+
+
+        <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+        </div>
+
+
+
+      </form>
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

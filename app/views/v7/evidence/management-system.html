@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% set title = "Which management system will you use?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+  <p id="manSysGuidance">You must have a written management system before you start operating. We will check it when we first inspect your site.<br><a target="_blank" href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits">Guidance about management systems on GOV.UK (opens new tab)</a></p>
+
+<form method="post" action="{{formAction}}">
+  <div class="form-group">
+    <fieldset>
+      
+      <legend class="visually-hidden" aria-describedby="manSysGuidance">{{title}}</legend>
+
+      <div class="multiple-choice">
+        <input id="manSysECEco" name="manSys" type="radio" value="EC Eco management and audit scheme (EMAS)">
+        <label for="manSysECEco">
+        Eco-Management and Audit Scheme (EMAS)
+        </label>
+      </div>
+      <div class="multiple-choice">
+        <input id="manSysEMASEasy" name="manSys" type="radio" value="EMAS Easy">
+        <label for="manSysEMASEasy">
+        <abbr title="Eco-Management and Audit Scheme">EMAS</abbr> Easy
+        </label>
+      </div>
+      <div class="multiple-choice">
+        <input id="manSysISO14001" name="manSys" type="radio" value="ISO 14001:2015">
+        <label for="manSysISO14001">
+        <abbr title="International Organization for Standardization">ISO</abbr> 14001:2015
+        </label>
+      </div>
+      <div class="multiple-choice">
+        <input id="manSysBS8555" name="manSys" type="radio" value="British Standard BS 8555 phases 1 to 5">
+        <label for="manSysBS8555">
+        British Standard BS 8555 phases 1 to 5
+        </label>
+      </div>
+      <div class="multiple-choice">
+        <input id="manSysAcorn" name="manSys" type="radio" value="Acorn">
+        <label for="manSysAcorn">
+        Acorn
+      </label>
+      </div>
+      <div class="multiple-choice">
+        <input id="manSysGreenDragon" name="manSys" type="radio" value="Green Dragon">
+        <label for="manSysGreenDragon">
+        Green Dragon
+      </label>
+      </div>
+      <div class="multiple-choice">
+        <input id="manSysOwnMeets" name="manSys" type="radio" value="Your own management system">
+        <label for="manSysOwnMeets">
+        Your own management system
+        <span class="form-hint">If you use your own system, it must meet the standards in our guidance</span>
+        </label>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="form-group">
+      <input type="submit" class="button" value="Continue">
+  </div>
+</form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

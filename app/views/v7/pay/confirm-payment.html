@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% set title = "Confirm payment" %}
+
+{% set name = "Alan Smith" %}
+{% set email_address = "alansmith@gmail.com" %}
+{% set address = "2 Acacia Avenue, Redland, Bristol BS1 2FT" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <div class="grid-row">
+      <div class="column-two-thirds">
+  	  <h1 class="heading-large">Confirm your payment</h1>
+  	  <div class="check-details">
+  
+  	  	<table class="payment-confirm">
+  		    <tbody>
+  
+  		      <tr>
+  		        <td>Card number</td>
+  		        <td class="table-info">************6256</td>
+  		      </tr>
+  		      <tr>
+  		        <td>Name on card</td>
+  		        <td class="table-info">{{name}}</td>
+  		      </tr>
+  		      <tr>
+  		        <td>Billing address</td>
+  		        <td class="table-info">{{address}}</td>
+  		      </tr>
+  		       <tr>
+  		        <td>Email address</td>
+  		        <td class="table-info">{{email_address}}</td>
+  		      </tr>
+  		      <tr>
+  		        <td>Payment for</td>
+  		        <td class="table-info">{{ permit.permitName }} {{ permit.permitCode }}</td>
+  		      </tr>
+  		      <tr>
+  		        <td>Amount to pay</td>
+  		        <td class="table-info">{{ permit.permitCost }}</td>
+  		      </tr>
+  		    </tbody>
+    		</table>
+  		</div>
+  	</div>
+  </div>
+  
+  	<div class="grid-row">
+  		<div class="column-two-thirds">
+
+        <form method="post" action="{{formAction}}">
+          <br>
+          <div class="form-group">
+              <input type="submit" class="button" value="Continue">
+          </div>
+        </form>
+  		 		
+          <div class="back">
+  				<a href="#">Cancel payment</a>
+  			</div>
+        
+  		 </div>
+  	 </div>
+  
+
+
+</main>
+
+{% endblock %}

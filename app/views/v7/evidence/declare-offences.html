@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% set title = "Does anyone connected with your business have a conviction for a relevant offence?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+<div>
+
+    <p>You must tell us about:</p>
+    
+    <ul class="list list-bullet">
+      <li>the person, company or organisation who is applying</li>
+      <li>directors, officers or employees of a company</li>
+      <li>other companies that any directors or officers were connected to when convicted</li>
+    </ul>
+
+    <p>
+      Read the <a target="_blank" href="https://www.gov.uk/government/publications/relevant-conviction-guidance-for-permit-applications-for-waste-activities-and-installations-only">relevant conviction guidance on GOV.UK (opens new tab)</a> for a full list of people and offences.
+    </p>
+    
+  </div>
+
+<form method="post" action="{{formAction}}">
+
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visually-hidden">Have you or any relevant person been convicted of a relevant offence?</legend>
+
+<div class="multiple-choice">
+        <input id="yesOffences" type="radio" name="offences" value="yes">
+      <label for="yesOffences">
+        Yes, I need to declare convictions
+      </label>
+</div>
+
+<div class="multiple-choice">
+
+      <input id="noOffences" type="radio" name="offences" value="no">
+<label for="noOffences">
+        No
+      </label>
+    </div>
+
+    </fieldset>
+  </div>
+
+    <div class="form-group">
+    <input type="submit" class="button" value="Continue">
+  </div>
+
+
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

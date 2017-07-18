@@ -1,0 +1,149 @@
+{% extends "layout.html" %}
+
+{% set title = "Which qualification does the person providing technical management have?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<div class="panel panel-border-wide">
+  <p> 
+    Your operation must be managed by a 'competent person'. You need to upload evidence to prove this.
+  </p>
+</div>
+
+<form method="post" action="{{formAction}}">
+  <div class="form-group">
+    <fieldset>
+      <legend class="visually-hidden">What evidence will you supply?</legend>
+      
+      
+      <h2 class="heading-small">What evidence will you supply?</h2>
+      
+<div class="multiple-choice" data-target="info1">
+      <input id="radio-1" type="radio" name="industryScheme" value="CIWM-WAMITAB">
+      <label for="radio-1" 
+      >
+        <abbr title="Waste Management Industry Training and Advisory Board">WAMITAB</abbr> operator competence certificate
+      </label>
+       </div>
+          <div class="panel panel-border-narrow js-hidden" id="info1">
+            <p>Check that the certificate hasn't expired and is less than 2 years old.</p>
+            <p>Relevant WAMITAB qualifications: <br>WAMITAB Level 4 Medium Risk Operator Competence for Physical Treatment (601/8531/4) (MROC2)
+            {{ permit.WAMITAB }}
+            </p>
+          </div>
+       
+          
+      <div class="multiple-choice" data-target="info2">
+      <input id="radio-2" type="radio" name="industryScheme" value="">
+<label for="radio-2" >
+        Continuing competence certificate from WAMITAB
+      </label>
+        </div>
+          <div class="panel panel-border-narrow js-hidden" id="info2">
+            <p>Check that the certificate hasn't expired and is less than 2 years old.</p>
+            <p>We also need a copy of the original competence certificate.</p>
+            <p>Or you can also upload evidence to show that they:</p>
+            <ul class="list list-bullet">
+              <li>were 'deemed competent'</li>
+              <li>passed an Environment Agency assessment</li>
+              <li>were a nominated manager and passed the General Knowledge Assessment</li>
+            </ul>
+        </div>
+          
+      <div class="multiple-choice" data-target="info3">
+    <input id="radio-3" type="radio" name="industryScheme" value="getting-qualification">
+      <label for="radio-3" 
+      >
+        <abbr title="Energy and Utility Skills">EU Skills</abbr> and 
+        <abbr title="Environmental Services Association">ESA</abbr> 
+        Competence Management Scheme
+      </label>
+      </div>
+          <div class="panel panel-border-narrow js-hidden" id="info3">
+            <p>Check that the certificate hasn't expired and is less than 2 years old.</p>
+        </div>
+      
+      <!--
+      <div class="form-group">  
+        <p>If you are getting the qualification then while you are getting it you can upload:</p>
+      </div>
+    -->
+         <div class="multiple-choice" data-target="info4"> 
+        <input id="radio-4" type="radio" name="industryScheme" value="getting-qualification">
+      <label for="radio-4" 
+      >
+        Environmental Permit Operators Certificate (EPOC)
+      </label>
+       </div> 
+          <div class="panel panel-border-narrow js-hidden" id="info4">
+            <p>You must get a full qualification within 12 months of starting the operation.</p>  
+        </div>
+             
+        <div class="multiple-choice" data-target="info5">  
+        <input id="radio-5" type="radio" name="industryScheme" value="getting-qualification">
+      <label for="radio-5" 
+      >
+        EPOC course registration email or letter
+      </label>
+      </div>
+          <div class="panel panel-border-narrow js-hidden" id="info5">
+            <p>This must show that you have registered to get 4 units from an appropriate qualification.</p>
+            <p>You should complete the EPOC course within 4 weeks of starting the operation.</p>
+            <p>You must get a full qualification within 12 months of starting the operation.</p>
+        </div>
+          
+          
+    </fieldset>
+  </div>
+  
+
+
+  <!-- UPLOAD FORM ========================================== -->
+    <div class="form-group form-upload" id="uploadCertificate">
+        <h2 class="heading-small">Upload the certificates or documents</h2>
+        
+        <p class="text form-hint">
+          PDF or JPG files, 10MB maximum file size.<br>
+          You can upload more than one file at a time.
+        </p>
+
+        <input id="upload" type="file" aria-labelelledby="upload-label">
+        <input id="filename" name="technicalCertificateFile" type="hidden">
+
+    </div>
+    
+    <script>
+      // captures uploaded filename and passes to hidden input
+      document.getElementById('upload').onchange = uploadOnChange;
+      function uploadOnChange() {
+          var filename = this.value;
+          var lastIndex = filename.lastIndexOf("\\");
+          if (lastIndex >= 0) {
+              filename = filename.substring(lastIndex + 1);
+          }
+          document.getElementById('filename').value = filename;
+      }
+    </script>
+    
+
+  <div class="form-group">
+      <input type="submit" class="button" value="Continue">
+  </div>
+</form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

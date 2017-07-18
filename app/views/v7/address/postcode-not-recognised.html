@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% set title = "We can't find any addresses for that postcode" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+<h1 class="heading-large" role="alert">{{title}}</h1>
+
+<form method="post" action="{{formAction}}">
+  <fieldset>
+    <legend class="visuallyhidden">Postcode</legend>
+
+    <div class="form-group">
+      <label class="form-label" for="postcode">Enter the correct postcode
+        <span class="form-hint">For example, BS1 5AH</span>
+      </label>
+      <input type="text" class="form-control form-control-char-10" id="postcode" name="sitePostCode" value="AB1 2CD" />
+    </div>
+  </fieldset>
+
+<p>Or <a href="/{{folder}}/address/address-manual">enter address manually</p>
+
+  <div class="form-group">
+      <input type="submit" class="button" value="Continue">
+  </div>
+
+</form>
+    
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

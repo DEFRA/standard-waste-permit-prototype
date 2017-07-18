@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% set title = "Upload a waste management plan checklist" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+        <h1 class="heading-large" id="upload-label">{{title}}</h1>
+        
+        
+        <p class="text form-hint">
+          PDF or JPG files, 10MB maximum file size.<br>
+          You can upload more than one file at a time.
+        </p>
+
+        <form method="post" action="{{formAction}}">
+          
+          <!-- Only shown for SR-2009-8 ##################################### -->
+
+          <div class="form-group form-upload">
+              <input id="upload" type="file" aria-labelelledby="upload-label">
+              <input id="filename" name="wasteManagementPlanChecklistFilename" type="hidden">
+            <a href="#">remove file</a>
+          </div>
+          
+          <script>
+            // captures uploaded filename and passes to hidden input
+            document.getElementById('upload').onchange = uploadOnChange;
+            function uploadOnChange() {
+                var filename = this.value;
+                var lastIndex = filename.lastIndexOf("\\");
+                if (lastIndex >= 0) {
+                    filename = filename.substring(lastIndex + 1);
+                }
+                document.getElementById('filename').value = filename;
+            }
+          </script>
+
+        </br>
+        
+        
+        <input type="hidden" name="specialCasePageVisited" value="Yes">
+        
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+
+        </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

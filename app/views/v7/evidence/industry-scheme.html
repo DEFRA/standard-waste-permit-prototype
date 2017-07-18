@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% set title = "Which qualification does the person providing technical management have?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+
+<p>
+Your site must be managed by a 'competent person'. To prove this, they must have a certificate of technical competence or an operator competence scheme certificate, for example from WAMITAB.
+</p>
+
+
+<form method="post" action="{{formAction}}">
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visually-hidden">{{title}}</legend>
+
+      <div class="multiple-choice" data-target="showWAMITAB">
+      <input id="radio-1" type="radio" name="industryScheme" value="CIWM-WAMITAB">
+<label for="radio-1">
+        CIWM (Chartered Institute of Wastes Management) and WAMITAB (Waste Management Industry Training and Advisory Board) scheme
+      </label>
+      </div>
+        <div class="panel panel-border-narrow js-hidden" id="showWAMITAB">
+          <p>
+            The certificate you need for this permit should meet or exceed {{permit.WAMITAB}}.
+          </p>
+        </div>
+      
+      
+      <div class="multiple-choice">
+      <input id="radio-2" type="radio" name="industryScheme" value="ESA-EU">
+<label for="radio-2" >
+        Environmental Services Association (ESA) and Energy and Utility Skills (EU Skills) scheme
+      </label>
+      </div>
+      
+      <div class="multiple-choice" data-target="provideDetails">
+      <input id="radio-3" type="radio" name="industryScheme" value="getting-qualification">
+<label for="radio-3">
+        The operator is getting the qualification
+      </label>
+    </div>
+      <div class="panel panel-border-narrow js-hidden" id="provideDetails">
+        <label class="form-label" for="industrySchemeDetails">What qualification will they have and what date will they get it?
+          <span class="form-hint">They must have the qualification before you start operating</span>
+        </label>
+        <textarea class="form-control form-control-full" id="industrySchemeDetails"  name="industrySchemeDetails" cols="30" rows="5"></textarea>
+      </div>
+    </fieldset>
+  </div>
+  
+
+  <div class="form-group">
+      <input type="submit" class="button" value="Continue">
+  </div>
+</form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

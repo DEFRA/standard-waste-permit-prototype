@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% set title = "Select permit: dropdown" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_beta.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+      
+      {% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/custom_inc/permit-list-json.html" import permits %}
+      
+      
+      <form method="post" action="{{formAction}}">
+        <div class="form-group">
+
+              <select name="chosenPermit" class="address-select form-control form-control-char-auto" style="width:600px;">
+              <option value="">Select permit</option>
+            
+            {% for pNumber, pData in permits %}
+              {% if pData.digitalMVP=="Yes?" %}
+                
+                  {% if pData.friendlyWeight!="" %}
+                    {% set weight=" - "+pData.friendlyWeight %}
+                  {% else %}
+                    {% set weight="" %}
+                  {% endif %}
+                
+                  {% set label = [
+                    pData.friendlyName,
+                    " ",
+                    weight | lower,
+                    " ",
+                    pData.code
+                    ] %}
+                    
+                    {% set labelhtml = label | join | safe %}
+                    
+                    <option value="{{labelhtml}}">{{labelhtml}}</option>
+        
+              {% endif %}
+            {% else %}
+              <p>No radios</p>
+            {% endfor %}
+            
+          </select>
+
+
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

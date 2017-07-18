@@ -1,0 +1,144 @@
+{% extends "layout.html" %}
+
+{% set title = "Permit holder details" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <h1 class="heading-large">
+    {{title}}
+  </h1>
+
+  <table class="check-your-answers">
+
+    <thead>
+      <tr>
+        <th colspan="2">
+        </th>
+        <th>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          Permit holder type
+        </td>
+        <td>
+          {{permit.operatorType}} 
+        </td>
+        <td class="change-answer">
+          <a href="/{{folder}}/operator/site-operator">
+            Change <span class="visuallyhidden">permit holder type</span>
+          </a>
+        </td>
+      </tr>
+      {% if permit.operatorType=="Limited company" %}
+      <tr>
+        <td>
+          Company name
+        </td>
+        <td>
+          {{permit.companyName}} 
+        </td>
+        <td class="change-answer">
+          <a href="/{{folder}}/operator/company/company-name">
+            Change <span class="visuallyhidden">company registration number or name</span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Company address
+        </td>
+        <td>
+          {{permit.companyAddress}} 
+        </td>
+        <td class="change-answer">
+          <a href="/{{folder}}/operator/company/company-name">
+            Change <span class="visuallyhidden">company address</span>
+          </a>
+        </td>
+      </tr>
+        {% endif %}
+
+      {% if permit.operatorType=="Individual" %}
+      <tr>
+        <td>
+          Individual's name
+        </td>
+        <td>
+          {{permit.individualName}} 
+        </td>
+        <td class="change-answer">
+          <a href="/{{folder}}/operator/individual/individual-details">
+            Change <span class="visuallyhidden">individual's name</span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Individual's address
+        </td>
+        <td>
+          {{permit.individualAddress}} 
+        </td>
+        <td class="change-answer">
+          <a href="/{{folder}}/operator/individual/postcode">
+            Change <span class="visuallyhidden">individual's address</span>
+          </a>
+        </td>
+      </tr>
+      {% endif %}
+
+     <tr>
+        <td>
+          Relevant offences
+        </td>
+        <td>
+          {{permit.offences}}
+        </td>
+        <td class="change-answer">
+          <a href="/{{folder}}/evidence/declare-offences">
+            Change <span class="visuallyhidden">relevant offences</span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Bankruptcy or insolvency
+        </td>
+        <td>
+          {{permit.bankruptcyInsolvency}} 
+        </td>
+        <td class="change-answer">
+          <a href="/{{folder}}/evidence/bankruptcy-insolvency">
+            Change <span class="visuallyhidden">bankruptcy or insolvency</span>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+
+      <form method="post" action="{{formAction}}">
+
+      <div class="form-group">
+        <input type="submit" class="button" value="Return to task list">
+      </div>
+
+    </form>
+
+
+</main>
+
+{% endblock %}

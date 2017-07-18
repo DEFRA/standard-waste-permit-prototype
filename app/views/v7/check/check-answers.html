@@ -1,0 +1,284 @@
+{% extends "layout.html" %}
+
+{% set title = "Check your answers before sending your application" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+<h1 class="heading-large">{{title}}</h1>
+
+
+<style>
+.check-your-answers td {
+  width: 50%;
+}
+</style>
+
+<table class="check-your-answers">
+      <thead>
+      <tr>
+        <th colspan="2">
+          <h2 class="heading-medium">
+            Before you apply
+          </h2>
+        </th>
+        <th>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Read rules</td>
+      <td>{{permit.readRules}}</td>
+	    <td class="change-answer">
+	      <a href="/{{folder}}/read-rules/index">
+	        Change <span class="visuallyhidden">Read rules</span>
+	      </a>
+	    </td>
+	</tr>
+  </tbody>
+</table>
+
+
+<table class="check-your-answers">
+    <thead>
+      <tr>
+        <th colspan="2">
+          <h2 class="heading-medium">
+            Prepare to apply
+          </h2>
+        </th>
+        <th>
+        </th>
+      </tr>
+    </thead> 
+    <tbody>
+      <tr>
+      <td>Documents and information you need</td>
+      <td>{{permit.needToApply}}</td>
+      <td class="change-answer">
+        <a href="/{{folder}}/selectpermit/what-need-to-apply">
+          Change <span class="visuallyhidden">Documents and information you need</span>
+        </a>
+      </td>
+    </tr>
+      <tr>
+      <td>Pre-application discussion</td>
+      <td>{{permit.preAppDiscussion}} <!-- {{permit.preAppDiscussionRefName}} --> </td>
+      <td class="change-answer">
+        <a href="/{{folder}}/preapp/preapp-discussion">
+          Change <span class="visuallyhidden">Pre-application discussion</span>
+        </a>
+      </td>
+  </tr>
+ </tbody>
+</table>
+
+
+<table class="check-your-answers">
+      <thead>
+      <tr>
+        <th colspan="2">
+          <h2 class="heading-medium">
+            Complete application
+          </h2>
+        </th>
+        <th>
+        </th>
+      </tr>
+    </thead>  
+    <tbody>
+    <tr>
+      <td>Your contact details</td>
+      <td>{{permit.contactName}}<br>
+      {{permit.contactTelephone}}<br>
+      {{permit.contactEmail}}
+      </td>
+      <td class="change-answer">
+        <a href="/{{folder}}/contact/contact-details">
+          Change <span class="visuallyhidden">Your contact details</span>
+        </a>
+      </td>
+    </tr> 
+      <tr>
+      <td>Operator for the site</td>
+      <td>{{permit.operatorType}} 
+    </td>
+      <td class="change-answer">
+        <a href="/{{folder}}/operator/site-operator">
+          Change <span class="visuallyhidden">Operator type</span>
+        </a>
+      </td>
+  </tr>
+  <tr>
+      <td>Operator name</td>
+      <td>{{permit.companyName}} 
+    </td>
+      <td class="change-answer">
+        <a href="/{{folder}}/operator/company/checkoperator">
+          Change <span class="visuallyhidden">Operator name</span>
+        </a>
+      </td>
+  </tr>
+  <tr>
+      <td>Operator address</td>
+      <td>{{permit.companyAddress}} 
+    </td>
+      <td class="change-answer">
+        <a href="/{{folder}}/operator/company/check-company-details">
+          Change <span class="visuallyhidden">Operator address</span>
+        </a>
+      </td>
+  </tr>
+        <tr>
+      <td>Offences statement</td>
+      <td>{{permit.offences}}</td>
+      <td class="change-answer">
+        <a href="/{{folder}}/evidence/declare-offences">
+          Change <span class="visuallyhidden">Offences statement</span>
+        </a>
+      </td>
+  </tr>
+  <tr>
+      <td>Bankruptcy or insolvency statement</td>
+      <td>{{permit.bankruptcyInsolvency}}</td>
+      <td class="change-answer">
+        <a href="/{{folder}}/evidence/bankruptcy-insolvency">
+          Change <span class="visuallyhidden">Bankruptcy or insolvency statement</span>
+        </a>
+      </td>
+  </tr>
+  <tr>
+      <td>Site name</td>
+      <td>{{permit.siteName}}
+    </td>
+      <td class="change-answer">
+        <a href="/{{folder}}/site/site-name">
+          Change <span class="visuallyhidden">Site name</span>
+        </a>
+      </td>
+  </tr>
+	<tr>
+      <td>Grid reference for the site</td>
+      <td>{{permit.siteGridRef}}</td>
+	    <td class="change-answer">
+	      <a href="/{{folder}}/site/grid-reference">
+	        Change <span class="visuallyhidden">Grid reference for the site</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Site address</td>
+      <td>{{permit.siteAddress}}
+		</td>
+	    <td class="change-answer">
+	      <a href="/{{folder}}/address/address">
+	        Change <span class="visuallyhidden">Site address</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Site plan</td>
+      <td>{{permit.sitePlanFilename}}</td>
+	    <td class="change-answer">
+	      <a href="/{{folder}}/evidence/upload-site-plan">
+	        Change <span class="visuallyhidden">Site plan</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Site manager qualifications</td>
+      <td>{{permit.industryScheme}} <!-- {{permit.technicalCertificateFile}} --></td>
+	    <td class="change-answer">
+	      <a href="/{{folder}}/evidence/industry-scheme">
+	        Change <span class="visuallyhidden">Site manager qualifications</span>
+	      </a>
+	    </td>
+	</tr>
+	<tr>
+      <td>Management system</td>
+      <td>
+          {{ permit.manSys }}
+      </td>
+	    <td class="change-answer">
+	      <a href="/{{folder}}/evidence/management-system">
+	        Change <span class="visuallyhidden">Management system</span>
+	      </a>
+	    </td>
+	</tr>
+  <tr>
+      <td>Confidentiality request</td>
+      <td>{{permit.confidential}}</td>
+      <td class="change-answer">
+        <a href="/{{folder}}/check/claim-confidentiality">
+          Change <span class="visuallyhidden">Confidentiality request</span>
+        </a>
+      </td>
+  </tr>
+  {% if permit.firePlanNeeded=="Yes" %}
+  <tr>
+      <td>Fire prevention plan </td>
+      <td>{{permit.firePlanFilename}}</td>
+      <td class="change-answer">
+        <a href="/{{folder}}/evidence/upload-fire-plan">
+          Change <span class="visuallyhidden">Fire prevention plan</span>
+        </a>
+      </td>
+  </tr>
+  </tbody>
+</table>
+{% endif %}
+
+  </tbody>
+</table>
+
+
+
+<h2 class="heading-medium">
+  Declaration
+</h2>
+
+<div class="notice" style="margin-bottom: 30px">
+  <i class="icon icon-important">
+    <span class="visually-hidden">Warning</span>
+  </i>
+  <strong class="bold-small text">
+    You can be prosecuted and fined if you give false or misleading information.
+  </strong>
+</div>
+
+<p class="text">
+  I confirm that:
+</p>
+<ul class="list list-bullet">
+  <li>the information I have given is true</li>
+  <li>I am authorised to apply for this permit by the organisation or individual responsible</li>
+</ul>
+
+<div class="form-group">
+  <p>
+    <a target="_blank" href="/{{folder}}/pages/privacy">Privacy: how we use your personal information (opens new tab)</a>
+  </p>
+</div>
+
+
+    <form method="post" action="{{formAction}}">
+
+      <div class="form-group">
+        <input type="submit" class="button" value="Submit and continue to payment ({{permit.permitCost}})"> 
+        <span style="display:block;margin:10px 0 0 0;">on the GOV.UK Pay site</span>
+      </div>
+
+    </form>
+
+
+
+</main>
+
+{% endblock %}

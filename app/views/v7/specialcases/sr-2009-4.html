@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% set title = "Stack height and gas releases" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+
+
+<form method="post" action="{{formAction}}">
+  
+  <!-- Only shown for SR-2009-4 ##################################### -->
+  
+  <div class="form-group">
+    <fieldset>
+      <legend class="visually-hidden">{{title}}</legend>
+      
+      <p>Select all that apply</p>
+
+      <div class="multiple-choice">
+        <input id="stack-height-3" name="stack-height-3" type="checkbox" value="The effective stack height is more than 3 metres">
+<label for="stack-height-3">
+        The effective stack height is more than 3 metres
+      </label>
+    </div>
+      
+      <div class="multiple-choice">
+        <input id="stack-height-7" name="stack-height-7" type="checkbox" value="The stack height is more than 7 metres">
+<label for="stack-height-7">
+        The stack height is more than 7 metres
+      </label>
+    </div>
+      
+      <div class="multiple-choice">
+        <input id="stack-gas" name="stack-gas" type="checkbox" value="Engine stack gas releases do not not exceed 500 mg/m3 for oxides of nitrogen and 1400 mg/m3 for carbon monoxide">
+<label for="stack-gas">
+        Engine stack gas releases do not not exceed 500 mg/m3 for oxides of nitrogen and 1400 mg/m3 for carbon monoxide
+      </label>
+    </div>
+
+    </fieldset>
+  </div>
+
+<div class="panel panel-border-wide">
+  <p>
+    If the stack height is above the limits and gas releases below the limits then the distance to dwellings of 200 metres no longer applies. For further guidance see the relevant web page.
+  </p>
+</div>
+
+<input type="hidden" name="specialCasePageVisited" value="Yes">
+
+<div class="form-group">
+    <input type="submit" class="button" value="Continue">
+</div>
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,135 @@
+{% extends "layout_unbranded.html" %}
+
+{% set imgpath="/public/images/email/" %}
+
+{% block page_title %}
+  Gmail | Standard rules permit application
+{% endblock %}
+
+{% block proposition_header %}
+  <!-- blank to remove the proposition header -->
+{% endblock %}
+
+{% block header_class %}
+  <!-- blank to remove the proposition header -->
+{% endblock %}
+
+{% block content %}
+
+<div id="email">
+
+<div id="gmail_header">
+  <img src="{{ imgpath }}gmail_header.png" alt="" />
+</div>
+
+  <div class="grid-row">
+
+    <div class="column-one-quarter">
+      <img src="{{ imgpath }}gmail_menu_left.png" alt="" />
+    </div>
+
+
+    <div class="column-three-quarter">
+
+      <p class="subject">
+        Standard rules permit application submitted <img class="inboxicon" src="{{ imgpath }}gmail_icon_inbox.png" alt="" />
+      </p>
+
+      <p class="from">
+        <img src="{{ imgpath }}gmail_from_text.png" alt="" />
+      </p>
+
+      <div id="email_text">
+
+        <div id="banner" style="background-color:#000;"><img src="{{ imgpath }}gov_uk_email_header.png" alt="GOV.UK" /></div>
+
+        <div class="govuk-box-highlight">
+          <h1 class="bold-large">
+            Application submitted
+          </h1>
+        </div>
+
+        <p class="bold-medium">
+          Your reference is {{ permit.permitRefNumber }}
+        </p>
+        
+        <p>
+          Site name: {{ permit.siteName }}<br>
+          9a GRANGE ROAD<br>
+          DEMO ADDRESS, BRISTOL<br>
+          BS1 5AB
+        </p>
+        
+        {% if permit.paymentMethod=="Bank transfer" %}
+          <h2 class="heading-medium">You need to make your BACS payment</h2>
+          
+          <p>We won't start checking your application until we get your payment.</p>
+          
+          <p>Make a transfer of {{ permit.permitCost }} to:</p>
+          <p>
+            Account number: 1001 4411<br />
+            Sort code: 60 70 80<br />
+            Account name: EA RECEIPTS<br />
+            Payment reference: PSCAPP-{{ permit.permitRefNumber }}
+          </p>
+
+        {% elseif permit.paymentMethod=="Cheque" %}
+
+        <h2 class="heading-medium">You need send us your cheque</h2>
+        
+        <p>We won't start checking your application until we get your payment.</p>
+          
+          <p>Make your cheque for {{ permit.permitCost }} payable to ‘Environment Agency’<br />
+          Make sure the cheque has ‘A/C Payee’ written across it, if it is not already printed on it.<br />
+          Write the name of your company and application reference number on the back of your cheque.<br />
+          Application reference number: {{ permit.permitRefNumber }}</p>
+          <p>We won't accept cheques with a future date.</p>
+          <p><b>Send your cheque to:</b><br>
+          Permitting Support Centre<br>
+          Quadrant 2<br>
+          99 Parkway Avenue<br>
+          Parkway Business Park<br>
+          Sheffield S9 4WF
+          </p>
+
+        {% endif %}
+
+        <h2 class="heading-medium">What happens next</h2>
+        <p class="text">
+        
+          {% if permit.paymentMethod=="Bank transfer" or permit.paymentMethod=="Cheque" %}
+              Once we get your payment, we'll contact you within 5 working days to let you know whether your application is complete.
+          {% elseif permit.paymentMethod=="Debit or credit card" %}
+              We'll contact you within 5 working days to let you know whether your application is complete.
+          {% endif %}
+        
+        </p>
+
+        <div class="panel panel-border-wide">
+          <p class="text">
+            It takes up to 13 weeks in total to issue a permit. It may take longer if the information you give us does not meet our requirements.
+          </p>
+        </div>
+
+
+
+        <h2 class="heading-medium emailhead">Contact the Environment Agency</h2>
+        <p class="text">
+          <a href="mailto:enquiries@environment-agency.gov.uk">enquiries@environment-agency.gov.uk</a><br />
+          Telephone: 03708 506 506<br />
+          Minicom: 03702 422 549<br />
+          Monday to Friday, 8am to 6pm
+        </p>
+
+          <br />
+          <br />
+
+      </div><!-- // end #email_text -->
+
+    </div><!-- // end .column 3/4 -->
+
+  </div><!-- // end .grid_row -->
+
+</div><!-- // end #email -->
+
+{% endblock %}

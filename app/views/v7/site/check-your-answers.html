@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% set title = "Site name and location" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <h1 class="heading-large">
+    {{title}}
+  </h1>
+
+  <table class="check-your-answers">
+
+    <thead>
+      <tr>
+        <th colspan="2">
+        </th>
+        <th>
+        </th>
+      </tr>
+    </thead>
+
+
+ <tbody>
+      <tr>
+        <td>
+           Site name
+        </td>
+         <td>{{permit.siteName}}</td>
+        <td class="change-answer">
+          <a href="/{{folder}}/site/site-name">
+            Change <span class="visuallyhidden">site name</span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+           Grid reference for the site
+        </td>
+         <td>{{permit.siteGridRef}}</td>
+        <td class="change-answer">
+          <a href="/{{folder}}/site/grid-reference">
+            Change <span class="visuallyhidden">grid reference</span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+           Site address
+        </td>
+         <td>{{permit.siteAddress}}</td>
+        <td class="change-answer">
+          <a href="/{{folder}}/address/address">
+            Change <span class="visuallyhidden">site address</span>
+          </a>
+        </td>
+      </tr>
+
+      
+      
+
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+
+      <form method="post" action="{{formAction}}">
+
+      <div class="form-group">
+        <input type="submit" class="button" value="Return to task list">
+      </div>
+
+    </form>
+    
+</main>
+
+{% endblock %}

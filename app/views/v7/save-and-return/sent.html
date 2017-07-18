@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% if data.user_phone %}
+  {% set title = "Check your phone" %}
+{% else %}
+  {% set title = "Check your email" %}
+{% endif %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <form action="{{formAction}}" method="post">
+
+        {% if data.user_phone %}
+
+          <h1 class="heading-large">We sent you a return code</h1>
+
+          <p>We've sent a secure code to <span class="bold">{{ permit.saveReturnPhone }}</span> that allows you to return to your application at any time. You won't need a password.</p>
+
+        {% else %}
+
+          <h1 class="heading-large">We sent you a return link</h1>
+
+          <p>We've sent a secure link to <span class="bold">{{ permit.saveReturnEmail }}</span> that allows you to return to your application at any time. You won't need a password.</p>
+
+        {% endif %}
+        
+        <p>We'll automatically save all the information you enter so you don’t need to complete it in one go.</p>
+
+
+        <div class="form-group">
+          <input type="submit" class="button" value="Continue" />
+        </div>
+
+      </form>
+      
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>For testing:
+        <a href="/{{folder}}/save-and-return/email-save-link" target="_blank">link email</a>
+      </p>
+
+    </div>
+  </div>
+
+</main>
+{% endblock %}

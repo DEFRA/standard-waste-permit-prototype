@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% set title = "Apply for a standard rules waste permit" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+    <form action="{{formAction}}" method="post">
+
+      <h1 class="heading-large">{{title}}</h1>
+
+      <fieldset>
+        <legend class="visuallyhidden">{{title}}</legend>
+
+        <div class="panel panel-border-wide" style="margin-bottom: 30px">
+          <p>You'll need a debit or credit card to pay the application cost. This is between £720 and £1,690, depending on the permit.</p>
+        </div>
+
+        <div class="form-group">
+          <div class="multiple-choice">
+            <input id="start-application" type="radio" name="started-application" value="no">
+            <label for="start-application">
+            Start a new application
+            <span class="form-hint">We'll send you a link so you can save and return later</span>
+            </label>
+          </div>
+          <div class="multiple-choice">
+            <input id="open-application" type="radio" name="started-application" value="yes">
+            <label for="open-application">
+            Open a saved application
+            </label>
+          </div>
+        </div>
+
+      </fieldset>
+
+      <input type="hidden" name="seenSaveReturn" value="yes">
+
+      {% set num1 = [1,2,3,4,5,6,7,8,9] | random %}
+      {% set num2 = [1,2,3,4,5,6,7,8,9,0] | random %}
+      {% set num3 = [1,2,3,4,5,6,7,8,9,0] | random %}
+      {% set num4 = [1,2,3,4,5,6,7,8,9,0] | random %}
+      {% set num5 = [1,2,3,4,5,6,7,8,9,0] | random %}
+      {% set refnum = "SRP"+num1+num2+num3+num4+num5 %}
+      <input type="hidden" name="permitRefNumber" value="{{ refnum }}"> 
+
+      <div class="form-group">
+        <input type="submit" class="button" value="Continue" />
+      </div>
+
+    </form>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

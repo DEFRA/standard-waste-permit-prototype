@@ -1,0 +1,95 @@
+{% extends "layout_unbranded.html" %}
+
+{% set imgpath="/public/images/email/" %}
+
+{% block page_title %}
+  Gmail | Standard rules permit application
+{% endblock %}
+
+{% block proposition_header %}
+  <!-- blank to remove the proposition header -->
+{% endblock %}
+
+{% block header_class %}
+  <!-- blank to remove the proposition header -->
+{% endblock %}
+
+{% block content %}
+
+<div id="email">
+
+<div id="gmail_header">
+  <img src="{{ imgpath }}gmail_header.png" alt="" />
+</div>
+
+  <div class="grid-row">
+
+    <div class="column-one-quarter">
+      <img src="{{ imgpath }}gmail_menu_left.png" alt="" />
+    </div>
+
+
+    <div class="column-three-quarter">
+
+      <p class="subject">
+        Standard rules permit application sent <img class="inboxicon" src="{{ imgpath }}gmail_icon_inbox.png" alt="" />
+      </p>
+
+      <p class="from">
+        <img src="{{ imgpath }}gmail_from_text.png" alt="" />
+      </p>
+
+      <div id="email_text">
+
+        <div id="banner" style="background-color:#000;"><img src="{{ imgpath }}gov_uk_email_header.png" alt="GOV.UK" /></div>
+
+        <div class="govuk-box-highlight">
+          <h1 class="bold-large">
+            Application submitted
+          </h1>
+        </div>
+
+        <p class="bold-medium">
+          Your reference is {{ permit.permitRefNumber }}
+        </p>
+        
+        <p>
+          Site name: {{ permit.siteName }}<br>
+          9a GRANGE ROAD<br>
+          DEMO ADDRESS, BRISTOL<br>
+          BS1 5AB
+        </p>
+
+        <h2 class="heading-medium">What happens next</h2>
+        <p class="text">
+              We'll contact you within 5 working days to let you know whether your application is complete.
+        </p>
+
+        <div class="panel panel-border-wide">
+          <p class="text">
+            It takes up to 13 weeks in total to issue a permit. It may take longer if the information you give us does not meet our requirements.
+          </p>
+        </div>
+
+
+
+        <h2 class="heading-medium emailhead">Contact the Environment Agency</h2>
+        <p class="text">
+          <a href="mailto:enquiries@environment-agency.gov.uk">enquiries@environment-agency.gov.uk</a><br />
+          Telephone: 03708 506 506<br />
+          Minicom: 03702 422 549<br />
+          Monday to Friday, 8am to 6pm
+        </p>
+
+          <br />
+          <br />
+
+      </div><!-- // end #email_text -->
+
+    </div><!-- // end .column 3/4 -->
+
+  </div><!-- // end .grid_row -->
+
+</div><!-- // end #email -->
+
+{% endblock %}
