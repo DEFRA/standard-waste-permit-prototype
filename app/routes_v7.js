@@ -1062,6 +1062,19 @@ router.post('/search-permit/index', function (req, res) {
     })
 })
 
+router.get('/search-permit/sr-permits', function (req, res) {
+    res.render(folder + '/search-permit/sr-permits',{ 
+      "formAction":"/"+ folder + "/search-permit/sr-permits"
+    })
+})
+
+router.post('/search-permit/sr-permits', function (req, res) {
+    res.render(folder + '/search-permit/sr-permits',{ 
+      "formAction":"/"+ folder + "/search-permit/sr-permits",
+      "searchTerm":req.body.searchTerm 
+    })
+})
+
 // Send permit data in session to every page ==================================
 router.all('*', function (req, res, next) {
   // set a folder and store in locals

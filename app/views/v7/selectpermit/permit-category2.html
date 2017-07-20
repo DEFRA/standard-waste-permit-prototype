@@ -33,12 +33,8 @@
  <div class="multiple-choice">
   <input id="{{c.category}}" type="radio" name="chosenCategory" value="{{c.category}}">
 <label for="{{c.category}}">
-            {{c.category}}
-            {% if c.hint != "" %}
-              <span class="form-hint">
-                {{c.hint}}
-              </span>
-            {% endif %}
+            {{c.category}} {{c.hint}}
+
             </label>
           </div>
 
