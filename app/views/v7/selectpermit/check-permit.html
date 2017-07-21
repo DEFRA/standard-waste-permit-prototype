@@ -45,12 +45,17 @@
               <input type="hidden" name="permitPreAppRequired" value="{{ pData.preAppRequired }}">
               <input type="hidden" name="sitePlanNeeded" value="{{ pData.sitePlanNeeded }}">
               
+              {% set letters = ["B","C","D","F","G","H","J","K","M","P","Q","R","T","V","W","X","Y"] %}
+
+              {% set let1 = letters | random %}
+              {% set let2 = letters | random %}
+              {% set let3 = letters | random %}
+              {% set let4 = letters | random %}
               {% set num1 = [1,2,3,4,5,6,7,8,9] | random %}
               {% set num2 = [1,2,3,4,5,6,7,8,9,0] | random %}
               {% set num3 = [1,2,3,4,5,6,7,8,9,0] | random %}
               {% set num4 = [1,2,3,4,5,6,7,8,9,0] | random %}
-              {% set num5 = [1,2,3,4,5,6,7,8,9,0] | random %}
-              {% set refnum = "SRP"+num1+num2+num3+num4+num5 %}
+              {% set refnum = "EPR/"+let1+let2+num1+num2+num3+num4+let3+let4 %}
               
               <input type="hidden" name="permitRefNumber" value="{{ refnum }}"> 
 
