@@ -8,8 +8,14 @@
 
 {% block content %}
 
-<main id="content" role="main">
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all" /> 
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.min.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+
+<main id="content" role="main" class="linkalert">
     {% include "includes/phase_banner_beta.html" %}
+    
+
     
     <div class="grid-row">
         <div class="column-two-thirds">
@@ -20,11 +26,13 @@
       <form method="post" action="{{formAction}}">
         
         <div class="form-group">
-          <label class="form-label" for="contactName">
-            
+          <label class="form-label" for="searchTerm">
+            <span class="visually-hidden">
+              Search words
+            </span>
             <span class="form-hint">
-              Search for words related to the permit you want.<br>
-              For example, cars, biogas, soil or wood.
+              Search for words related to the permit or permit number<br>
+              For example, cars, biogas, soil, wood, 2015-18
             </span>
           </label>
           <input class="form-control" id="searchTerm" name="searchTerm" type="text" value="{{searchTerm}}" style="font-size:120%">
@@ -32,29 +40,42 @@
         </div>
 
       {# 
-      all-permit-types-json stored in:  https://docs.google.com/spreadsheets/d/1FFgU1GOmKsErBB9Vr2X3WuKvAkt4SQ9GHC1IIqgGV3k/edit#gid=0
+      sr-permit-search-json stored in:  https://docs.google.com/spreadsheets/d/1FFgU1GOmKsErBB9Vr2X3WuKvAkt4SQ9GHC1IIqgGV3k/edit#gid=0
       Converted here:
       http://www.convertcsv.com/csv-to-json.htm 
       #}
-      {% from folder+"/custom_inc/all-permit-types-json.html" import permits %}
+      {% from folder+"/custom_inc/sr-permit-search-json.html" import permits %}
 
 {% if searchTerm %}
 
 {% set searchFails = 0 %}
+{% set permitCount = 0 %}
+{% set regExp = r/(20[0-9][0-9])\s?\D+?-?\s?([0-9]{1,2})/g %}
+
+{% set result = regExp.exec(searchTerm) %}
+{% if result != null %}
+  {% set searchTerm =  result[1] + " No " +  result[2] %}
+{% endif %}
 
       <h2 class="heading-small">
-      Standard rules permits for '{{searchTerm}}'
+      Standard rules permits matching '{{searchTerm}}'
       </h2>
-      
+
       {% for pNumber, pData in permits %}
-        {% set searchText = pData.title + " " + pData.keywords %}
+      
+        {% set permitCount = permitCount+1 %}
+        
+        {% set searchText = pData.title + " " + pData.keywords + " " + pData.code %}
         
           {% if searchTerm | lower in searchText | lower %}
           
             {% if pData.type=="Standard rules permit" %}
               <p>
-              <a href="{{ pData.url }}">{{ pData.title }}</a>
-              <span class="font-small">{{ pData.code }}</span>
+              {{ pData.title }}
+              <span class="font-small">{{ pData.code }}</span> 
+              <a href="{{ pData.url }}" target="_blank">rules 
+                <span class="visually-hidden">for {{ pData.code }}</span> 
+              on GOV.UK (new tab) </a>
               </p>
             {% endif %}
             
@@ -66,7 +87,7 @@
         <p>No data</p>
       {% endfor %}
       
-      {% if searchFailed==true %}
+      {% if searchFails==permitCount %}
         <p>No permits found. Try searching for different words.</p>
       {% endif %}
       
