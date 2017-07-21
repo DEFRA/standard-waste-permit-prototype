@@ -208,17 +208,17 @@
         <ul class="list list-border">
           
           {% if pData.sitePlanNeeded=="Yes" %}
-            <li>a <a href="/{{folder}}/guidance/siteplan.html" target="_blank">site plan</a></li>
+            <li>a <a href="/{{folder}}/guidance/siteplan.html" target="_blank" rel="noopener noreferrer">site plan</a></li>
           {% endif %}
           
           <li>the grid reference and address of the site</li>
         
           {% if pData.firePlanNeeded=="Yes" %}
-            <li>a <a href="https://www.gov.uk/government/publications/fire-prevention-plans-environmental-permits/fire-prevention-plans-environmental-permits" target="_blank">fire prevention plan</a></li>
+            <li>a <a href="https://www.gov.uk/government/publications/fire-prevention-plans-environmental-permits/fire-prevention-plans-environmental-permits" target="_blank" rel="noopener noreferrer">fire prevention plan</a></li>
           {% endif %}
           
           {% if pData.baselineReportRequired=="Yes" %}
-            <li>a <a href="#" target="_blank">baseline report</a></li>
+            <li>a <a href="#" target="_blank" rel="noopener noreferrer">baseline report</a></li>
           {% endif %}
           
           {% if pData.technicalAbilityEvidence=="Yes" %}
@@ -236,7 +236,7 @@
             <li>a waste recovery plan</li>
           {% endif %}
 
-          <li>a written <a href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits" target="_blank">management system</a></li>
+          <li>a written <a href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits" target="_blank" rel="noopener noreferrer">management system</a></li>
           
           <li>to pay {{permit.permitCost}} by card, BACS or cheque</li>
         
