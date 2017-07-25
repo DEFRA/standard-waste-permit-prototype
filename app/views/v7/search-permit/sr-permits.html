@@ -8,10 +8,6 @@
 
 {% block content %}
 
-<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all" /> 
-<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.min.js" type="text/javascript"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
-
 <main id="content" role="main" class="linkalert">
     {% include "includes/phase_banner_beta.html" %}
     
@@ -75,7 +71,7 @@
               <span class="font-small">{{ pData.code }}</span> 
               <a href="{{ pData.url }}" target="_blank">rules 
                 <span class="visually-hidden">for {{ pData.code }}</span> 
-              on GOV.UK (new tab) </a>
+              on GOV.UK <span class="newtab"> - this link will open in a new tab. Your application will stay in this tab,</span></a>
               </p>
             {% endif %}
             

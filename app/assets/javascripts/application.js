@@ -28,23 +28,13 @@ $(document).ready(function () {
   
   $( "form#autoSubmit" ).submit();
 
-    
-
-  $(".linkalert a").on("click", function(e) {
-      var link = this;
-
+  // Hide new tab span
+  $("span.newtab").toggleClass('visually-hidden');
+  // Show new tab message on click
+  $("a[target='_blank']").one("click", function(e){
       e.preventDefault();
-
-      $("<div>Are you sure you want to continue?</div>").dialog({
-          buttons: {
-              "Ok": function() {
-                  window.location = link.href;
-              },
-              "Cancel": function() {
-                  $(this).dialog("close");
-              }
-          }
-      });
+      $(this).blur();
+      $(this).children( 'span.newtab' ).toggleClass('visually-hidden').addClass('bold-small');
   });
 
 
