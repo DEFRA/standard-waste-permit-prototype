@@ -21,6 +21,23 @@
       
       <form method="post" action="/{{folder}}/check/check-answers" name="tasklist">
 
+{% if taskListError %}
+    <div class="error-summary" role="alert" aria-labelledby="error-summary-heading" tabindex="-1">
+
+    <h2 class="heading-medium error-summary-heading" id="error-summary-heading">
+      You need to complete these tasks
+    </h2>
+
+    <ul class="error-summary-list">
+          <li><a href="#">{{permit.complete | join("</li><li>") | safe }}</a></li>
+      <!-- <li><a href="#example-personal-details">Descriptive link to the question with an error</a></li> -->
+    </ul>
+
+    </div>
+{% endif %}
+
+
+
 <h1 class="heading-large">
   <span class="font-medium" style="color:#6f777b">Apply for a standard rules waste permit:</span><br>
   {{permit.permitName}}<br>
@@ -53,7 +70,12 @@ Save this application to complete later</a></p>
             <span class="task-list-section-number">1. </span> Before you apply
           </h2>
           <ul class="task-list-items">
-             <li class="task-list-item" id="cost-and-time">
+             <li class="task-list-item {% if taskListError and permit.costTime==null %} form-group-error{% endif %}" id="cost-and-time">
+              {% if taskListError and permit.costTime==null %}
+                <span class="error-message">
+                  Complete this task
+                </span>
+              {% endif %}
               <a class="task-name" href="/{{folder}}/selectpermit/cost-and-time" aria-describedby="cost-and-time-completed">
                 Check permit cost and time
               </a>
@@ -100,7 +122,12 @@ Save this application to complete later</a></p>
             permit.permitID=="SR-2015-18" or 
             permit.permitID=="SR-2015-39"
            %}
-              <li class="task-list-item" id="special-case-task">
+              <li class="task-list-item {% if taskListError and permit.specialCasePageVisited==null %} form-group-error{% endif %}" id="special-case-task">
+                {% if taskListError and permit.specialCasePageVisited==null %}
+                <span class="error-message">
+                  Complete this task
+                </span>
+                {% endif %}
                  <a class="task-name" href="/{{folder}}/check-special-cases">
                    {{linkText}}
                 </a>
@@ -114,7 +141,12 @@ Save this application to complete later</a></p>
               </li>
           {% endif %}
 
-            <li class="task-list-item" id="operation-rules">
+            <li class="task-list-item {% if taskListError and permit.readRules==null %} form-group-error{% endif %}" id="operation-rules">
+            {% if taskListError and permit.readRules==null %}
+                <span class="error-message">
+                  Complete this task
+                    </span>
+            {% endif %}
              <a class="task-name" href="/{{folder}}/read-rules/index" aria-describedby="operation-rules-complete">
                Confirm that your operation meets the rules
              </a>
@@ -124,7 +156,12 @@ Save this application to complete later</a></p>
              <input type="hidden" name="complete[]" value="Confirm that your operation meets the rules">
              {% endif %}
             </li>
-            <li class="task-list-item" id="preapp">
+            <li class="task-list-item {% if taskListError and permit.preAppDiscussion==null %} form-group-error{% endif %}" id="preapp">
+            {% if taskListError and permit.preAppDiscussion==null %}
+                <span class="error-message">
+                  Complete this task
+                </span>
+            {% endif %}
               <a class="task-name" href="{% if permit.preAppDiscussion!=null %}
                 /{{folder}}/preapp/check-your-answers
               {% else %}
@@ -331,7 +368,8 @@ Save this application to complete later</a></p>
         </li>
 
       </ol>
-      
+
+
     </form>
 
     </div>
