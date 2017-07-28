@@ -186,7 +186,12 @@ Save this application to complete later</a></p>
           </h2>
           <ul class="task-list-items">
             
-            <li class="task-list-item" id="contact-details">
+            <li class="task-list-item {% if taskListError and permit.contactName==null %} form-group-error{% endif %}" id="contact-details">
+            {% if taskListError and permit.contactName==null %}
+                <span class="error-message">
+                  Complete this task
+                </span>
+            {% endif %}
               <a class="task-name" href="{% if permit.contactName!=null %}
                 /{{folder}}/contact/check-your-answers
               {% else %}
@@ -199,7 +204,12 @@ Save this application to complete later</a></p>
               <input type="hidden" name="complete[]" value="Your contact details">
               {% endif %}
             </li>
-          <li class="task-list-item" id="site-operator">
+          <li class="task-list-item {% if taskListError and permit.operatorType==null %} form-group-error{% endif %}" id="site-operator">
+              {% if taskListError and permit.operatorType==null %}
+                <span class="error-message">
+                  Complete this task
+                </span>
+             {% endif %}
             <a class="task-name" href="{% if permit.operatorType!=null %}/{{folder}}/operator/check-your-answers
               {% else %}
                 /{{folder}}/operator/site-operator
@@ -225,7 +235,12 @@ Save this application to complete later</a></p>
              
              {% else %}
              
-              <li class="task-list-item" id="site-name">
+              <li class="task-list-item {% if taskListError and permit.siteName==null %} form-group-error{% endif %}" id="site-name">
+              {% if taskListError and permit.siteName==null %}
+                <span class="error-message">
+                  Complete this task
+                </span>
+              {% endif %}
                 <a class="task-name" href="{% if permit.siteName!=null %}
                   /{{folder}}/site/check-your-answers
                 {% else %}
@@ -245,7 +260,12 @@ Save this application to complete later</a></p>
 
       <!-- Site plan conditional -->
       {% if permit.sitePlanNeeded=="Yes" %}
-        <li class="task-list-item" id="site-plan">
+        <li class="task-list-item {% if taskListError and permit.sitePlanFilename==null %} form-group-error{% endif %}" id="site-plan">
+              {% if taskListError and permit.sitePlanFilename==null %}
+                <span class="error-message">
+                  Complete this task
+                </span>
+              {% endif %}
               <a class="task-name" href="{% if permit.sitePlanFilename!=null %}
                 /{{folder}}/site/site-plan-check-your-answers
               {% else %}
@@ -260,7 +280,12 @@ Save this application to complete later</a></p>
             </li>
         {% endif %}
             
-      <li class="task-list-item" id="industry-scheme">
+      <li class="task-list-item {% if taskListError and permit.industryScheme==null %} form-group-error{% endif %}" id="industry-scheme">
+              {% if taskListError and permit.industryScheme==null %}
+                <span class="error-message">
+                  Complete this task
+                </span>
+              {% endif %}
               <a class="task-name" href="{% if permit.industryScheme!=null %}
                 /{{folder}}/evidence/industry-check-answers
               {% else %}
@@ -274,7 +299,12 @@ Save this application to complete later</a></p>
               {% endif %}
             </li>
             
-      <li class="task-list-item" id="management-system">
+      <li class="task-list-item {% if taskListError and permit.manSys==null %} form-group-error{% endif %}" id="management-system">
+              {% if taskListError and permit.manSys==null %}
+                <span class="error-message">
+                  Complete this task
+                </span>
+              {% endif %}
               <a class="task-name" href="{% if permit.manSys!=null %}
                 /{{folder}}/evidence/management-check-answers
               {% else %}
@@ -318,7 +348,12 @@ Save this application to complete later</a></p>
    
           <!-- FIRE PREVENTION PLAN ############################################ -->
           {% if permit.firePlanNeeded=="Yes" %}
-              <li class="task-list-item" id="firepp">
+              <li class="task-list-item {% if taskListError and permit.firePlanFilename==null %} form-group-error{% endif %}" id="firepp">
+              {% if taskListError and permit.firePlanFilename==null %}
+                <span class="error-message">
+                  Complete this task
+                </span>
+              {% endif %}
                  <a class="task-name" href="{% if permit.firePlanFilename!=null %}
                 /{{folder}}/evidence/fire-plan-check-answers
               {% else %}
@@ -336,7 +371,12 @@ Save this application to complete later</a></p>
 
           <!-- Make confidentiality conditional to permit and in context rather than on task list? -->
             
-      <li class="task-list-item" id="confidentiality">
+      <li class="task-list-item {% if taskListError and permit.confidential==null %} form-group-error{% endif %}" id="confidentiality">
+              {% if taskListError and permit.confidential==null %}
+                <span class="error-message">
+                  Complete this task
+                </span>
+              {% endif %}
               <a class="task-name" href="{% if permit.confidential!=null %}
                 /{{folder}}/check/confidentiality-check-answers
               {% else %}
