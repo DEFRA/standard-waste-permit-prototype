@@ -11,6 +11,25 @@
 {% import folder+"/custom_inc/macros.html" as macros %}
 {% from folder+"/custom_inc/permit-list-json.html" import permits %}
 
+{% set tCheckRules = "Check you meet the rules" %}
+{% set tCheckCost = "Check permit cost and time" %}
+{% set tStackHeight = "Give the stack height" %}
+{% set tWasteManPlan = "Upload a waste management plan checklist" %}
+{% set tStartDate = "Tell us the date when you want the permit to start" %}
+{% set tMiningWastePlan = "Specify the type of mining waste plan" %}
+{% set tDrainage = "Confirm the drainage system for the vehicle storage area" %}
+{% set tWasteRecoveryPlan = "Upload the waste recovery plan" %}
+{% set tCheckRules = "Confirm that your operation meets the rules" %}
+{% set tPreApp = "Tell us if you've discussed this application with us" %}
+{% set tContactDetails = "Give contact details" %}
+{% set tPermitHolder = "Give permit holder details" %}
+{% set tSiteDetails = "Give site name and location" %}
+{% set tSitePlan = "Upload the site plan" %}
+{% set tTechManagement = "Upload technical management qualifications" %}
+{% set tManSystem = "Tell us which management system you use" %}
+{% set tFirePlan = "Upload the fire prevention plan" %}
+{% set tConfidentiality = "Confirm confidentiality needs" %}
+
 
 <main id="content" role="main">
   {% include "includes/phase_banner_beta.html" %}
@@ -77,7 +96,7 @@ Save this application to complete later</a></p>
                 </span>
               {% endif %}
               <a class="task-name" href="/{{folder}}/selectpermit/cost-and-time" aria-describedby="cost-and-time-completed">
-                Check permit cost and time
+                {{ tCheckCost }}
               </a>
               {% if permit.costTime %} 
               <strong class="task-completed" id="cost-and-time-completed">Completed</strong> 
@@ -88,27 +107,27 @@ Save this application to complete later</a></p>
 
           <!-- SPECIAL CASES ############################################ -->
           {% if permit.permitID=="SR-2009-4" %}              
-            {% set linkText="Give the stack height" %}
+            {% set linkText=tStackHeight %}
           {% endif %}
 
           {% if permit.permitID=="SR-2009-8" %}
-            {% set linkText="Upload a waste management plan checklist" %}
+            {% set linkText=tWasteManPlan %}
           {% endif %}
 
           {% if permit.permitID=="SR-2010-2" or permit.permitID=="SR-2010-3" %}
-            {% set linkText="Tell us the date when you want the permit to start" %}
+            {% set linkText=tStartDate %}
           {% endif %}
 
           {% if permit.permitID=="SR-2014-2" %}
-            {% set linkText="Specify the type of mining waste plan" %}
+            {% set linkText=tMiningWastePlan %}
           {% endif %}
 
           {% if permit.permitID=="SR-2015-17" or permit.permitID=="SR-2015-18" %}
-            {% set linkText="Confirm the drainage system for the vehicle storage area" %}
+            {% set linkText=tDrainage %}
           {% endif %}
 
           {% if permit.permitID=="SR-2015-39" %}
-            {% set linkText="Upload the waste recovery plan" %}
+            {% set linkText=tWasteRecoveryPlan %}
           {% endif %}
           
           
@@ -148,7 +167,7 @@ Save this application to complete later</a></p>
                     </span>
             {% endif %}
              <a class="task-name" href="/{{folder}}/read-rules/index" aria-describedby="operation-rules-complete">
-               Confirm that your operation meets the rules
+               {{ tCheckRules }}
              </a>
              {% if permit.readRules %} 
              <strong class="task-completed" id="operation-rules-complete">Completed</strong>  
