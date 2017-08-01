@@ -868,7 +868,7 @@ router.post('/specialcases/check-waterbody', function (req, res) {
 
 router.get('/check/check-answers', function (req, res) {
   res.render(folder + '/check/check-answers',{
-      "formAction":"/"+ folder + "/pay/payment-method",
+      "formAction":"/"+ folder + "/pay/enter-card-details",
       "permit":req.session.permit // always send permit object to page
   })
 })
@@ -882,9 +882,12 @@ router.post('/check/check-answers', function (req, res) {
         "permit":req.session.permit // always send permit object to page
     })
   } else {
+    var taskListError = true
     // show error
-    res.render(folder + '/check/not-complete',{
-        "formAction":"/"+ folder + "/check/task-list",
+    // instead of /check/not-complete, render task list again
+    res.render(folder + '/check/task-list',{
+        'taskListError': taskListError,
+        // "formAction":"/"+ folder + "/check/task-list",
         "permit":req.session.permit // always send permit object to page
     })
   }
