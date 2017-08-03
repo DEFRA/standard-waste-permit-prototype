@@ -543,16 +543,6 @@ router.post('/operator/checkoperator', function (req, res) {
   }
 })
 
-/* limited company STATIC PAGE ====================== */
-
-router.post('/operator/company/check-company-detailsXXXXXXXXXX', function (req, res) {
-  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
-  res.render(folder + '/operator/company/check-company-details',{
-      "formAction":"/"+ folder + "/evidence/declare-offences",
-      "permit":req.session.permit // always send permit object to page
-  })
-})
-
 /* limited company API PAGE ====================== */
 router.post('/operator/company/check-company-details', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session
@@ -573,7 +563,7 @@ router.post('/operator/company/check-company-details', function (req, res) {
             var companyJSON = JSON.parse(body)
             var company = companyJSON.items[0]
             res.render(folder + '/operator/company/check-company-details',{
-                "formAction":"/"+ folder + "/evidence/declare-offences",
+                "formAction":"/"+ folder + "/operator/company/check-officers",
                 "permit":req.session.permit, // always send permit object to page
                 "company":company,
                 "searchTerm":req.body.companyRegNum,
@@ -584,27 +574,23 @@ router.post('/operator/company/check-company-details', function (req, res) {
 
 })
 
-
-/* limited company OFFICERS TEST ====================== */
-router.get('/operator/company/company-name-officers', function (req, res) {
-  res.render(folder + '/operator/company/company-name-officers',{
-      "formAction":"/"+ folder + "/operator/company/check-officers",
+// route for link back from company api search results
+router.get('/operator/company/company-name', function (req, res) {
+  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
+  res.render(folder + '/operator/company/company-name',{
+      "formAction":"/"+ folder + "/operator/company/check-company-details",
       "permit":req.session.permit // always send permit object to page
   })
 })
 
-router.get('/operator/company/check-officers', function (req, res) {
-  res.render(folder + '/operator/company/check-officers',{
-      "formAction":"/"+ folder + "/operator/company/check-officers",
-      "permit":req.session.permit // always send permit object to page
-  })
-})
+
+/* limited company OFFICERS ====================== */
 
 router.post('/operator/company/check-officers', function (req, res) {
   for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session
 
     request({
-        url: 'https://api.companieshouse.gov.uk/company/'+req.body.companyRegNum+'/officers', //URL to hit
+        url: 'https://api.companieshouse.gov.uk/company/'+req.session.permit['companyNumber']+'/officers', //URL to hit
         qs: { items_per_page:99 }, //Query string data
         method: 'GET',
         auth: {'username':'B6gG6zj0r_w1K6mOqBiW6GGvoe4ygQwQBoFTfxZo','password':''},
@@ -625,23 +611,22 @@ router.post('/operator/company/check-officers', function (req, res) {
                 "numberResults":officersJSON.total_results,
                 "resigned_count":officersJSON.resigned_count,
                 "total_results":officersJSON.total_results,
-                "active_count":officersJSON.active_count
+                "active_count":officersJSON.active_count,
+                "formAction":"/"+ folder + "/evidence/declare-offences"
             })
         }
     })
-
 })
 
 
-
-// route for link back from company api search results
-router.get('/operator/company/company-name', function (req, res) {
-  for(var input in req.body) req.session.permit[input] = req.body[input] // add form entries to session 
-  res.render(folder + '/operator/company/company-name',{
-      "formAction":"/"+ folder + "/operator/company/check-company-details",
+router.get('/operator/company/check-officers', function (req, res) {
+  res.render(folder + '/operator/company/check-officers',{
+      "formAction":"/"+ folder + "/operator/company/check-officers",
       "permit":req.session.permit // always send permit object to page
   })
 })
+
+
 
 
 /* individual */

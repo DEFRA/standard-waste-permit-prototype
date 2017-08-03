@@ -54,6 +54,7 @@
           </a>
         </td>
       </tr>
+      
       <tr>
         <td>
           Company address
@@ -64,6 +65,24 @@
         <td class="change-answer">
           <a href="/{{folder}}/operator/company/company-name">
             Change <span class="visuallyhidden">company address</span>
+          </a>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          Company directors' dates of birth
+        </td>
+        <td>
+          {% for d in permit.director %}
+            {{ d }}
+            {{ permit.directorDobDay[d]}}{{ permit.directorDobRest[d]}}
+            <br>
+          {% endfor %}
+        </td>
+        <td class="change-answer">
+          <a href="/{{folder}}/operator/company/company-name">
+            Change <span class="visuallyhidden">dates of birth</span>
           </a>
         </td>
       </tr>
