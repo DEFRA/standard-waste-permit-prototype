@@ -3,7 +3,7 @@
 {% set imgpath="/public/images/email/" %}
 
 {% block page_title %}
-  Gmail | Standard rules permit application
+  Gmail | Application received: standard rules waste permit
 {% endblock %}
 
 {% block proposition_header %}
@@ -32,7 +32,7 @@
     <div class="column-three-quarter">
 
       <p class="subject">
-        Standard rules permit application sent <img class="inboxicon" src="{{ imgpath }}gmail_icon_inbox.png" alt="" />
+         Application sent: standard rules waste permit <img class="inboxicon" src="{{ imgpath }}gmail_icon_inbox.png" alt="" />
       </p>
 
       <p class="from">
@@ -43,30 +43,38 @@
 
         <div id="banner" style="background-color:#000;"><img src="{{ imgpath }}gov_uk_email_header.png" alt="GOV.UK" /></div>
 
-        <div class="govuk-box-highlight">
-          <h1 class="bold-large">
-            Application sent
-          </h1>
-        </div>
+
+        <h1 class="bold-large" style="margin-bottom:1em;">
+        We sent your application to the Environment Agency
+        </h1>
+        
+        <p class="text font-medium">
+          Standard rules waste permit
+        <br>
+          <span class="bold-medium">{{permit.permitName}}</span>
+          {{permit.permitCode}}
+        </p>
+        
+        {#{permit | dump}#}
 
         <p class="bold-medium">
           Your reference is {{ permit.permitRefNumber }}
         </p>
         
-        <p>
-          Site name: {{ permit.siteName }}<br>
-          9a GRANGE ROAD<br>
-          DEMO ADDRESS, BRISTOL<br>
-          BS1 5AB
+        <p class="font-small">
+          Site: 
+          {{ permit.siteName }} 
+          {{ permit.siteAddress }} 
+          {{ permit.sitePostCode }}
         </p>
 
         <h2 class="heading-medium">What happens next</h2>
-        <p class="text">
+        <p class="text font-small">
               We'll contact you within 5 working days to let you know whether your application is complete.
         </p>
 
         <div class="panel panel-border-wide">
-          <p class="text">
+          <p class="text font-small">
             It takes up to 13 weeks in total to issue a permit. It may take longer if the information you give us does not meet our requirements.
           </p>
         </div>
@@ -74,7 +82,7 @@
 
 
         <h2 class="heading-medium emailhead">Contact the Environment Agency</h2>
-        <p class="text">
+        <p class="text font-small">
           <a href="mailto:enquiries@environment-agency.gov.uk">enquiries@environment-agency.gov.uk</a><br />
           Telephone: 03708 506 506<br />
           Minicom: 03702 422 549<br />
