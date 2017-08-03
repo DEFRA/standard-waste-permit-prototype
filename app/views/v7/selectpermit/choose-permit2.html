@@ -37,7 +37,7 @@
 {% for pNumber, pData in permits %}
 
   {% if pData.friendlyCategory2==chosenCategory %}
-    {% if pData.canApplyOnPaper=="Yes" %}
+    {% if pData.digitalMVP=="Yes" %}
     
       {% if pData.friendlyWeight!="" %}
         {% set weight="<br>"+pData.friendlyWeight %}
