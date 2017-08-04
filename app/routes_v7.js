@@ -7,11 +7,13 @@ var request = require('request')
 // How to use folder variable:
 // res.redirect( '/' + folder + '/exemptions/add_exemptions');
 var folder = "v7";
+var backlink = '<a href="javascript:history.back()" class="link-back">Back</a>'
 
 router.use(function (req, res, next) {
   // set a folder and store in locals
   // this can then be used in pages as {{folder}}
   res.locals.folder=folder
+  res.locals.backlink=backlink
   
   // check for an existing permit object stored in session
   // if it does not exist, create it
