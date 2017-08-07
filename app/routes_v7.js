@@ -7,6 +7,11 @@ var request = require('request')
 // How to use folder variable:
 // res.redirect( '/' + folder + '/exemptions/add_exemptions');
 var folder = "v7";
+
+var sample = require('./views/v7/custom_inc/sample-permit.js')
+//console.log(sample.permit)
+
+
 var backlink = '<a href="javascript:history.back()" class="link-back">Back</a>'
 
 router.use(function (req, res, next) {
@@ -232,9 +237,16 @@ router.post('/check/task-list', function (req, res) {
 
 // Check permit via GET route for links
 router.get('/check/task-list', function (req, res) {
-  if(typeof req.query['chosenPermitID']==='undefined'){  // simple error handling
+  if(typeof req.query['chosenPermitID']==='undefined' && typeof     req.query['testmode']==='undefined'){  // simple error handling
     res.render(folder + '/error/index',{ 
         "errorText":"Please select a permit"
+    })
+  } else if(req.query['testmode']=='y') { // use sample data for permit
+    req.session.permit = sample.permit
+    res.render(folder + '/check/task-list',{
+      "formAction":"/"+ folder + "/check/check-answers",
+      "chosenPermitID":sample.permit['chosenPermitID'],
+      "permit":sample.permit
     })
   } else {
     // save chosen Permit ID in session
@@ -243,7 +255,7 @@ router.get('/check/task-list', function (req, res) {
       "formAction":"/"+ folder + "/check/check-answers",
       "chosenPermitID":req.query['chosenPermitID']
     })
-}
+  }
 })
 
 
