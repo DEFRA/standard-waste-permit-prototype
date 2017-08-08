@@ -8,7 +8,7 @@ var request = require('request')
 // res.redirect( '/' + folder + '/exemptions/add_exemptions');
 var folder = "v7";
 
-var sample = require('./views/v7/custom_inc/sample-permit.js')
+var sample = require('./views/'+folder+'/custom_inc/sample-permit.js')
 //console.log(sample.permit)
 
 
