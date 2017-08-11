@@ -4,11 +4,6 @@
 
 This is a protoype of the standard waste permit application process.
 
-Go to the [GOV.UK Prototype Kit site](https://govuk-prototype-kit.herokuapp.com/docs) to download the latest version and read the documentation.
-
-For design prototyping only, not production-ready code. 
-
-
 ## License
 
 THIS INFORMATION IS LICENSED UNDER THE CONDITIONS OF THE OPEN GOVERNMENT LICENCE found at:

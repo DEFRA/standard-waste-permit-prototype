@@ -1,6 +1,6 @@
 ={% extends "layout.html" %}
 
-{% set title = " Discussions about this application" %}
+{% set title = "Discussions about this application" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -15,37 +15,21 @@
     {{title}}
   </h1>
 
-  <table class="check-your-answers">
-
-    <thead>
-      <tr>
-        <th colspan="2">
-        </th>
-        <th>
-        </th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr>
-        <td>
-          Discussions before your application
-        </td>
-        <td>
-        <!-- preapp data -->
-          {{permit.preAppDiscussion}} 
-        </td>
-        <td class="change-answer">
-          <a href="/{{folder}}/preapp/preapp-discussion">
-            Change <span class="visuallyhidden">Discussions before your application</span>
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <br>
-  <br>
+  <dl class="govuk-check-your-answers cya-questions-short">
+    <div>
+      <dt class="cya-question">
+      Discussions before your application
+      </dt>
+      <dd class="cya-answer">
+      {{ permit.preAppDiscussion }}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/preapp/preapp-discussion"> 
+        Change <span class="visuallyhidden">Discussions before your application</span>
+        </a>
+      </dd>
+    </div>
+  </dl>
 
       <form method="post" action="{{formAction}}">
 

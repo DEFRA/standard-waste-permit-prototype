@@ -13,39 +13,21 @@
 
   <h1 class="heading-large">{{title}}</h1>
 
-  <table class="check-your-answers">
-
-    <thead>
-      <tr>
-        <th colspan="2">
-          <h2 class="heading-medium visually-hidden">
-            Confidentiality
-          </h2>
-        </th>
-        <th>
-        </th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr>
-        <td>
-          Claim confidentiality
-        </td>
-        <td>
-          {{permit.confidential}} 
-        </td>
-        <td class="change-answer">
-          <a href="/{{folder}}/check/claim-confidentiality">
-            Change <span class="visuallyhidden">claim confidentiality</span>
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <br>
-  <br>
+  <dl class="govuk-check-your-answers cya-questions-short">
+    <div>
+      <dt class="cya-question">
+     Claim confidentiality
+      </dt>
+      <dd class="cya-answer">
+      {{permit.confidential}} 
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/check/claim-confidentiality"> 
+        Change <span class="visuallyhidden">claim confidentiality</span>
+        </a>
+      </dd>
+    </div>
+  </dl>
 
       <form method="post" action="{{formAction}}">
 

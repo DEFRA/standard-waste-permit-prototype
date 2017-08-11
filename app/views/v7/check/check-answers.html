@@ -13,230 +13,320 @@
   
 <h1 class="heading-large">{{title}}</h1>
 
-<style>
-.check-your-answers td {
-  width: 50%;
-}
-</style>
 
-<table class="check-your-answers">
-      <thead>
-      <tr>
-        <th colspan="2">
-          <h2 class="heading-medium">
-            Before you apply
-          </h2>
-        </th>
-        <th>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td>Read rules</td>
-      <td>{{permit.readRules}}</td>
-	    <td class="change-answer">
-	      <a href="/{{folder}}/read-rules/index">
-	        Change <span class="visuallyhidden">Read rules</span>
-	      </a>
-	    </td>
-	</tr>
-  </tbody>
-</table>
+  <h2 class="heading-medium">
+    Before you apply
+  </h2>
 
-
-<table class="check-your-answers">
-    <thead>
-      <tr>
-        <th colspan="2">
-          <h2 class="heading-medium">
-            Prepare to apply
-          </h2>
-        </th>
-        <th>
-        </th>
-      </tr>
-    </thead> 
-    <tbody>
-      <tr>
-      <td>Documents and information you need</td>
-      <td>{{permit.needToApply}}</td>
-      <td class="change-answer">
-        <a href="/{{folder}}/selectpermit/what-need-to-apply">
-          Change <span class="visuallyhidden">Documents and information you need</span>
+  <dl class="govuk-check-your-answers cya-questions-short">  
+    <div>
+      <dt class="cya-question">
+     Read rules
+      </dt>
+      <dd class="cya-answer">
+      {{permit.readRules}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/read-rules/index"> 
+        Change <span class="visuallyhidden">read rules</span>
         </a>
-      </td>
-    </tr>
-      <tr>
-      <td>Pre-application discussion</td>
-      <td>{{permit.preAppDiscussion}} <!-- {{permit.preAppDiscussionRefName}} --> </td>
-      <td class="change-answer">
-        <a href="/{{folder}}/preapp/preapp-discussion">
-          Change <span class="visuallyhidden">Pre-application discussion</span>
+      </dd>
+    </div> 
+
+    <div>
+      <dt class="cya-question">
+      Pre-application discussion
+      </dt>
+      <dd class="cya-answer">
+      {{permit.preAppDiscussion}} <!-- {{permit.preAppDiscussionRefName}} --> 
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/preapp/preapp-discussion"> 
+        Change <span class="visuallyhidden">pre-application discussion</span>
         </a>
-      </td>
-  </tr>
- </tbody>
-</table>
+      </dd>
+    </div>
+
+  </dl>
 
 
-<table class="check-your-answers">
-      <thead>
-      <tr>
-        <th colspan="2">
-          <h2 class="heading-medium">
-            Complete application
-          </h2>
-        </th>
-        <th>
-        </th>
-      </tr>
-    </thead>  
-    <tbody>
-    <tr>
-      <td>Your contact details</td>
-      <td>{{permit.contactName}}<br>
-      {{permit.contactTelephone}}<br>
-      {{permit.contactEmail}}
-      </td>
-      <td class="change-answer">
-        <a href="/{{folder}}/contact/contact-details">
-          Change <span class="visuallyhidden">Your contact details</span>
+  <h2 class="heading-medium">
+    Complete application
+  </h2> 
+
+<dl class="govuk-check-your-answers cya-questions-short">
+
+    <div>
+      <dt class="cya-question">
+      Contact details
+      </dt>
+      <dd class="cya-answer">
+      {{permit.contactName}}<br>
+             {% if permit.isContactAnAgent == "yes" %}
+              This person is an agent or consultant<br>
+             {% endif %}
+             Telephone {{permit.contactTelephone}}<br>
+             {{permit.contactEmail}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/preapp/preapp-discussion"> 
+        Change <span class="visuallyhidden">Contact details</span>
         </a>
-      </td>
-    </tr> 
-      <tr>
-      <td>Operator for the site</td>
-      <td>{{permit.operatorType}} 
-    </td>
-      <td class="change-answer">
-        <a href="/{{folder}}/operator/site-operator">
-          Change <span class="visuallyhidden">Operator type</span>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">
+      Permit holder type
+      </dt>
+      <dd class="cya-answer">
+      {{permit.operatorType}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/site-operator"> 
+        Change <span class="visuallyhidden">permit holder type</span>
         </a>
-      </td>
-  </tr>
-  <tr>
-      <td>Operator name</td>
-      <td>{{permit.companyName}} 
-    </td>
-      <td class="change-answer">
-        <a href="/{{folder}}/operator/company/checkoperator">
-          Change <span class="visuallyhidden">Operator name</span>
+      </dd>
+    </div>
+
+{% if permit.operatorType=="Limited company" %}
+    <div>
+      <dt class="cya-question">
+      Company name
+      </dt>
+      <dd class="cya-answer">
+      {{permit.companyName}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/company/company-name"> 
+        Change <span class="visuallyhidden">company name</span>
         </a>
-      </td>
-  </tr>
-  <tr>
-      <td>Operator address</td>
-      <td>{{permit.companyAddress}} 
-    </td>
-      <td class="change-answer">
-        <a href="/{{folder}}/operator/company/check-company-details">
-          Change <span class="visuallyhidden">Operator address</span>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">
+      Company address
+      </dt>
+      <dd class="cya-answer">
+      {{permit.companyAddress}} 
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/company/company-name"> 
+        Change <span class="visuallyhidden">company address</span>
         </a>
-      </td>
-  </tr>
-        <tr>
-      <td>Offences statement</td>
-      <td>{{permit.offences}}</td>
-      <td class="change-answer">
-        <a href="/{{folder}}/evidence/declare-offences">
-          Change <span class="visuallyhidden">Offences statement</span>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">
+      Company directors' dates of birth
+      </dt>
+      <dd class="cya-answer">
+            {% for d in permit.director %}
+            {{ d }}
+            {{ permit.directorDobDay[d]}}{{ permit.directorDobRest[d]}}
+            <br>
+          {% endfor %}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/company/company-name"> 
+        Change <span class="visuallyhidden"> dates of birth</span>
         </a>
-      </td>
-  </tr>
-  <tr>
-      <td>Bankruptcy or insolvency statement</td>
-      <td>{{permit.bankruptcyInsolvency}}</td>
-      <td class="change-answer">
-        <a href="/{{folder}}/evidence/bankruptcy-insolvency">
-          Change <span class="visuallyhidden">Bankruptcy or insolvency statement</span>
-        </a>
-      </td>
-  </tr>
-  <tr>
-      <td>Site name</td>
-      <td>{{permit.siteName}}
-    </td>
-      <td class="change-answer">
-        <a href="/{{folder}}/site/site-name">
-          Change <span class="visuallyhidden">Site name</span>
-        </a>
-      </td>
-  </tr>
-	<tr>
-      <td>Grid reference for the site</td>
-      <td>{{permit.siteGridRef}}</td>
-	    <td class="change-answer">
-	      <a href="/{{folder}}/site/grid-reference">
-	        Change <span class="visuallyhidden">Grid reference for the site</span>
-	      </a>
-	    </td>
-	</tr>
-	<tr>
-      <td>Site address</td>
-      <td>{{permit.siteAddress}}
-		</td>
-	    <td class="change-answer">
-	      <a href="/{{folder}}/address/address">
-	        Change <span class="visuallyhidden">Site address</span>
-	      </a>
-	    </td>
-	</tr>
-	<tr>
-      <td>Site plan</td>
-      <td>{{permit.sitePlanFilename}}</td>
-	    <td class="change-answer">
-	      <a href="/{{folder}}/evidence/upload-site-plan">
-	        Change <span class="visuallyhidden">Site plan</span>
-	      </a>
-	    </td>
-	</tr>
-	<tr>
-      <td>Site manager qualifications</td>
-      <td>{{permit.industryScheme}} <!-- {{permit.technicalCertificateFile}} --></td>
-	    <td class="change-answer">
-	      <a href="/{{folder}}/evidence/industry-scheme">
-	        Change <span class="visuallyhidden">Site manager qualifications</span>
-	      </a>
-	    </td>
-	</tr>
-	<tr>
-      <td>Management system</td>
-      <td>
-          {{ permit.manSys }}
-      </td>
-	    <td class="change-answer">
-	      <a href="/{{folder}}/evidence/management-system">
-	        Change <span class="visuallyhidden">Management system</span>
-	      </a>
-	    </td>
-	</tr>
-  <tr>
-      <td>Confidentiality request</td>
-      <td>{{permit.confidential}}</td>
-      <td class="change-answer">
-        <a href="/{{folder}}/check/claim-confidentiality">
-          Change <span class="visuallyhidden">Confidentiality request</span>
-        </a>
-      </td>
-  </tr>
-  {% if permit.firePlanNeeded=="Yes" %}
-  <tr>
-      <td>Fire prevention plan </td>
-      <td>{{permit.firePlanFilename}}</td>
-      <td class="change-answer">
-        <a href="/{{folder}}/evidence/upload-fire-plan">
-          Change <span class="visuallyhidden">Fire prevention plan</span>
-        </a>
-      </td>
-  </tr>
-  </tbody>
-</table>
+      </dd>
+    </div>
+
 {% endif %}
 
-  </tbody>
-</table>
+{% if permit.operatorType=="Individual" %}
 
+    <div>
+      <dt class="cya-question">
+      Individual's name
+      </dt>
+      <dd class="cya-answer">
+      {{permit.individualName}} 
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/individual/individual-details"> 
+        Change <span class="visuallyhidden"> individual's name</span>
+        </a>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">
+      Individual's address
+      </dt>
+      <dd class="cya-answer">
+      {{permit.individualAddress}} 
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/individual/postcode"> 
+        Change <span class="visuallyhidden"> Individual's address</span>
+        </a>
+      </dd>
+    </div>
+
+{% endif %}
+
+    <div>
+      <dt class="cya-question">
+      Relevant offences
+      </dt>
+      <dd class="cya-answer">
+      {{permit.offences}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/declare-offences"> 
+        Change <span class="visuallyhidden"> relevant offences</span>
+        </a>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">
+      Bankruptcy or insolvency
+      </dt>
+      <dd class="cya-answer">
+      {{permit.bankruptcyInsolvency}} 
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/bankruptcy-insolvency"> 
+        Change <span class="visuallyhidden"> bankruptcy or insolvency</span>
+        </a>
+      </dd>
+    </div>
+
+     <div>
+      <dt class="cya-question">
+      Site name
+      </dt>
+      <dd class="cya-answer">
+      {{permit.siteName}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/site/site-name"> 
+        Change <span class="visuallyhidden">site name</span>
+        </a>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">
+      Grid reference for the site
+      </dt>
+      <dd class="cya-answer">
+      {{permit.siteGridRef}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/site/grid-reference"> 
+        Change <span class="visuallyhidden">grid reference</span>
+        </a>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">
+      Site address
+      </dt>
+      <dd class="cya-answer">
+      {{permit.siteAddress}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/address/address"> 
+        Change <span class="visuallyhidden">site address</span>
+        </a>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">
+      Site plan
+      </dt>
+      <dd class="cya-answer">
+      {{permit.sitePlanFilename}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/upload-site-plan"> 
+        Change <span class="visuallyhidden">site plan</span>
+        </a>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">
+        Scheme
+      </dt>
+      <dd class="cya-answer">
+      {{permit.industryScheme}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/industry-scheme"> 
+        Change <span class="visuallyhidden">scheme</span>
+        </a>
+      </dd>
+    </div>
+
+        <div>
+      <dt class="cya-question">
+        Certificate
+      </dt>
+      <dd class="cya-answer">
+      {{permit.technicalCertificateFile}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/upload-scheme-certificate"> 
+        Change <span class="visuallyhidden">certificate</span>
+        </a>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">
+      Management system
+      </dt>
+      <dd class="cya-answer">
+      {{permit.manSys}} 
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/management-system"> 
+        Change <span class="visuallyhidden">management system</span>
+        </a>
+      </dd>
+    </div>
+
+    {% if permit.firePlanNeeded=="Yes" %}
+    <div>
+      <dt class="cya-question">
+      Fire prevention plan filename
+      </dt>
+      <dd class="cya-answer">
+      {{permit.firePlanFilename}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/upload-fire-plan"> 
+        Change <span class="visuallyhidden">name</span>
+        </a>
+      </dd>
+    </div>
+    {% endif %}
+
+    <div>
+      <dt class="cya-question">
+     Claim confidentiality
+      </dt>
+      <dd class="cya-answer">
+      {{permit.confidential}} 
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/check/claim-confidentiality"> 
+        Change <span class="visuallyhidden">claim confidentiality</span>
+        </a>
+      </dd>
+    </div>
+
+  </dl>
 
 
 <h2 class="heading-medium">
