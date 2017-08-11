@@ -15,42 +15,26 @@
     {{title}}
   </h1>
 
-  <table class="check-your-answers">
-
-    <thead>
-      <tr>
-        <th colspan="2">
-          <h2 class="heading-medium">
-          </h2>
-        </th>
-        <th>
-        </th>
-      </tr>
-    </thead>
-
- <tbody>
-      <tr>
-        <td>
-          Contact details
-        </td>
-         <td>{{permit.contactName}}<br>
+  <dl class="govuk-check-your-answers cya-questions-short">
+    <div>
+      <dt class="cya-question">
+      Contact details
+      </dt>
+      <dd class="cya-answer">
+      {{permit.contactName}}<br>
              {% if permit.isContactAnAgent == "yes" %}
               This person is an agent or consultant<br>
              {% endif %}
              Telephone {{permit.contactTelephone}}<br>
              {{permit.contactEmail}}
-         </td>
-        <td class="change-answer">
-          <a href="/{{folder}}/contact/contact-details">
-            Change <span class="visuallyhidden">Contact details</span>
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <br>
-  <br>
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/preapp/preapp-discussion"> 
+        Change <span class="visuallyhidden">Contact details</span>
+        </a>
+      </dd>
+    </div>
+  </dl>
 
       <form method="post" action="{{formAction}}">
 

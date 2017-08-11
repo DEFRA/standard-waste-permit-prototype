@@ -15,39 +15,21 @@
     {{title}}
   </h1>
 
-  <table class="check-your-answers">
-
-    <thead>
-      <tr>
-        <th colspan="2">
-          <h2 class="heading-medium visually-hidden">
-            Fire prevention plan
-          </h2>
-        </th>
-        <th>
-        </th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr>
-        <td>
-          Fire prevention plan filename
-        </td>
-        <td>
-          {{permit.firePlanFilename}} 
-        </td>
-        <td class="change-answer">
-          <a href="/{{folder}}/evidence/upload-fire-plan">
-            Change <span class="visuallyhidden">Name</span>
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <br>
-  <br>
+  <dl class="govuk-check-your-answers cya-questions-short">
+    <div>
+      <dt class="cya-question">
+      Fire prevention plan filename
+      </dt>
+      <dd class="cya-answer">
+      {{permit.firePlanFilename}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/upload-fire-plan"> 
+        Change <span class="visuallyhidden">name</span>
+        </a>
+      </dd>
+    </div>
+  </dl>
 
       <form method="post" action="{{formAction}}">
 

@@ -15,139 +15,131 @@
     {{title}}
   </h1>
 
-  <table class="check-your-answers">
+    <dl class="govuk-check-your-answers cya-questions-short">
+    <div>
+      <dt class="cya-question">
+      Permit holder type
+      </dt>
+      <dd class="cya-answer">
+      {{permit.operatorType}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/site-operator"> 
+        Change <span class="visuallyhidden">permit holder type</span>
+        </a>
+      </dd>
+    </div>
 
-    <thead>
-      <tr>
-        <th colspan="2">
-        </th>
-        <th>
-        </th>
-      </tr>
-    </thead>
+{% if permit.operatorType=="Limited company" %}
+    <div>
+      <dt class="cya-question">
+      Company name
+      </dt>
+      <dd class="cya-answer">
+      {{permit.companyName}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/company/company-name"> 
+        Change <span class="visuallyhidden">company name</span>
+        </a>
+      </dd>
+    </div>
 
-    <tbody>
-      <tr>
-        <td>
-          Permit holder type
-        </td>
-        <td>
-          {{permit.operatorType}} 
-        </td>
-        <td class="change-answer">
-          <a href="/{{folder}}/operator/site-operator">
-            Change <span class="visuallyhidden">permit holder type</span>
-          </a>
-        </td>
-      </tr>
-      {% if permit.operatorType=="Limited company" %}
-      <tr>
-        <td>
-          Company name
-        </td>
-        <td>
-          {{permit.companyName}} 
-        </td>
-        <td class="change-answer">
-          <a href="/{{folder}}/operator/company/company-name">
-            Change <span class="visuallyhidden">company registration number or name</span>
-          </a>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          Company address
-        </td>
-        <td>
-          {{permit.companyAddress}} 
-        </td>
-        <td class="change-answer">
-          <a href="/{{folder}}/operator/company/company-name">
-            Change <span class="visuallyhidden">company address</span>
-          </a>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          Company directors' dates of birth
-        </td>
-        <td>
-          {% for d in permit.director %}
+    <div>
+      <dt class="cya-question">
+      Company address
+      </dt>
+      <dd class="cya-answer">
+      {{permit.companyAddress}} 
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/company/company-name"> 
+        Change <span class="visuallyhidden">company address</span>
+        </a>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">
+      Company directors' dates of birth
+      </dt>
+      <dd class="cya-answer">
+            {% for d in permit.director %}
             {{ d }}
             {{ permit.directorDobDay[d]}}{{ permit.directorDobRest[d]}}
             <br>
           {% endfor %}
-        </td>
-        <td class="change-answer">
-          <a href="/{{folder}}/operator/company/company-name">
-            Change <span class="visuallyhidden">dates of birth</span>
-          </a>
-        </td>
-      </tr>
-        {% endif %}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/company/company-name"> 
+        Change <span class="visuallyhidden"> dates of birth</span>
+        </a>
+      </dd>
+    </div>
 
-      {% if permit.operatorType=="Individual" %}
-      <tr>
-        <td>
-          Individual's name
-        </td>
-        <td>
-          {{permit.individualName}} 
-        </td>
-        <td class="change-answer">
-          <a href="/{{folder}}/operator/individual/individual-details">
-            Change <span class="visuallyhidden">individual's name</span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Individual's address
-        </td>
-        <td>
-          {{permit.individualAddress}} 
-        </td>
-        <td class="change-answer">
-          <a href="/{{folder}}/operator/individual/postcode">
-            Change <span class="visuallyhidden">individual's address</span>
-          </a>
-        </td>
-      </tr>
-      {% endif %}
+{% endif %}
 
-     <tr>
-        <td>
-          Relevant offences
-        </td>
-        <td>
-          {{permit.offences}}
-        </td>
-        <td class="change-answer">
-          <a href="/{{folder}}/evidence/declare-offences">
-            Change <span class="visuallyhidden">relevant offences</span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Bankruptcy or insolvency
-        </td>
-        <td>
-          {{permit.bankruptcyInsolvency}} 
-        </td>
-        <td class="change-answer">
-          <a href="/{{folder}}/evidence/bankruptcy-insolvency">
-            Change <span class="visuallyhidden">bankruptcy or insolvency</span>
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+{% if permit.operatorType=="Individual" %}
 
-  <br>
-  <br>
+    <div>
+      <dt class="cya-question">
+      Individual's name
+      </dt>
+      <dd class="cya-answer">
+      {{permit.individualName}} 
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/individual/individual-details"> 
+        Change <span class="visuallyhidden"> individual's name</span>
+        </a>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">
+      Individual's address
+      </dt>
+      <dd class="cya-answer">
+      {{permit.individualAddress}} 
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/individual/postcode"> 
+        Change <span class="visuallyhidden"> Individual's address</span>
+        </a>
+      </dd>
+    </div>
+
+{% endif %}
+
+    <div>
+      <dt class="cya-question">
+      Relevant offences
+      </dt>
+      <dd class="cya-answer">
+      {{permit.offences}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/declare-offences"> 
+        Change <span class="visuallyhidden"> relevant offences</span>
+        </a>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">
+      Bankruptcy or insolvency
+      </dt>
+      <dd class="cya-answer">
+      {{permit.bankruptcyInsolvency}} 
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/bankruptcy-insolvency"> 
+        Change <span class="visuallyhidden"> bankruptcy or insolvency</span>
+        </a>
+      </dd>
+    </div>
+
+  </dl>
 
       <form method="post" action="{{formAction}}">
 

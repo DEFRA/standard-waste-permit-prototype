@@ -15,40 +15,22 @@
     {{title}}
   </h1>
 
-  <table class="check-your-answers">
+  <dl class="govuk-check-your-answers cya-questions-short">
+    <div>
+      <dt class="cya-question">
+      Site plan
+      </dt>
+      <dd class="cya-answer">
+      {{permit.sitePlanFilename}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/upload-site-plan"> 
+        Change <span class="visuallyhidden">site plan</span>
+        </a>
+      </dd>
+    </div>
+  </dl>
 
-    <thead>
-      <tr>
-        <th colspan="2">
-        </th>
-        <th>
-        </th>
-      </tr>
-    </thead>
-
-
- <tbody>
-
-      <tr>
-        <td>
-           Site plan
-        </td>
-         <td>{{permit.sitePlanFilename}}</td>
-        <td class="change-answer">
-          <a href="/{{folder}}/evidence/upload-site-plan">
-            Change <span class="visuallyhidden">site plan</span>
-          </a>
-        </td>
-      </tr>
-
-      
-      
-
-    </tbody>
-  </table>
-
-  <br>
-  <br>
 
       <form method="post" action="{{formAction}}">
 
