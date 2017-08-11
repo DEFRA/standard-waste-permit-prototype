@@ -25,6 +25,12 @@ router.use(function (req, res, next) {
   next()
 });
 
+// CLEAR SESSION ==============================================================
+router.get('/cls', function (req, res) {
+  req.session.destroy()
+  res.render('index')
+})
+
 
 var wc = require('which-country-ea');
 
