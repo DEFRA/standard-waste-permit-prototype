@@ -60,7 +60,7 @@
         
 
         <div class="form-group">
-          <input type="submit" class="button" value="{% if permit.readRules %}Return to task list{% else %}The operation meets these rules{% endif %}">
+<button type="submit" class="button" name="{% if permit.readRules %}Return to task list{% else %}The operation meets these rules{% endif %}">{% if permit.readRules %}Return to task list{% else %}The operation meets these rules{% endif %}</button>
         </div>
 
 
