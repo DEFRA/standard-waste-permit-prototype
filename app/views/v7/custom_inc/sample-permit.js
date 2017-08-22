@@ -37,7 +37,8 @@ exports.permit =
    "isContactAnAgent":[  
       "yes"
    ],
-   "contactName":"Regina Burnett",
+   "contactFirstName":"Regina",
+   "contactLastName":"Burnett",
    "agentCompany":"Deacon Mccall Ltd",
    "contactTelephone":"01179123456",
    "contactEmail":"cucaty@example.com",
