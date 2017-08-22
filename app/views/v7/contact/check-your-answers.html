@@ -24,12 +24,13 @@
       {{permit.contactFirstName}} {{permit.contactLastName}}<br>
              {% if permit.isContactAnAgent == "yes" %}
               This person is an agent or consultant<br>
+              {{permit.agentCompany}}<br>
              {% endif %}
              Telephone {{permit.contactTelephone}}<br>
              {{permit.contactEmail}}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/preapp/preapp-discussion"> 
+        <a href="/{{folder}}/contact/contact-details"> 
         Change <span class="visuallyhidden">Contact details</span>
         </a>
       </dd>

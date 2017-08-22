@@ -191,19 +191,19 @@
           <ul class="task-list-items">
             
             <li class="task-list-item {% if taskListError and permit.contactName==null %} form-group-error{% endif %}" id="{{ tContactDetails  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
-            {% if taskListError and permit.contactName==null %}
+            {% if taskListError and permit.contactFirstName==null %}
                 <span class="error-message">
                   Complete this task
                 </span>
             {% endif %}
-              <a class="task-name" href="{% if permit.contactName!=null %}
+              <a class="task-name" href="{% if permit.contactFirstName!=null %}
                 /{{folder}}/contact/check-your-answers
               {% else %}
                 /{{folder}}/contact/contact-details
               {% endif %}" aria-describedby="contact-details-completed">
                 {{ tContactDetails }} 
               </a>
-              {% if permit.contactName!=null %} <strong class="task-completed" id="contact-details-completed">Completed</strong> 
+              {% if permit.contactFirstName!=null %} <strong class="task-completed" id="contact-details-completed">Completed</strong> 
               {% else %}
               <input type="hidden" name="complete[]" value="{{ tContactDetails }}">
               {% endif %}
