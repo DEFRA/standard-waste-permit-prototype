@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Who will be the permit holder" %}
+{% set title = "Who will be the permit holder?" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -20,13 +20,17 @@
 <form method="post" action="{{formAction}}">
 
 <div class="form-group">
-  <label class="form-label" for="individualName">
-    Full name
-    <span class="form-hint">
-      For example, John Smith
-    </span>
+  <label class="form-label" for="individualFirstName">
+    First name
   </label>
-  <input class="form-control" id="individualName" name="individualName" type="text" value="{{permit.individualName}}">
+  <input class="form-control" id="individualFirstName" name="individualFirstName" type="text" value="{{permit.individualFirstName}}">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="individualLastName">
+    Last name
+  </label>
+  <input class="form-control" id="individualLastName" name="individualLastName" type="text" value="{{permit.individualLastName}}">
 </div>
 
 <div class="form-group">
