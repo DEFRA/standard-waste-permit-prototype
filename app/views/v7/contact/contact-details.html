@@ -20,13 +20,17 @@
 <form method="post" action="{{formAction}}">
 
 <div class="form-group">
-  <label class="form-label" for="contactName">
-    Full name
-    <span class="form-hint">
-      For example, John Smith
-    </span>
+  <label class="form-label" for="contactFirstName">
+    First name
   </label>
-  <input class="form-control" id="contactName" name="contactName" type="text" value="{{permit.contactName}}">
+  <input class="form-control" id="contactFirstName" name="contactFirstName" type="text" value="{{permit.contactFirstName}}">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="contactLastName">
+    Last name
+  </label>
+  <input class="form-control" id="contactLastName" name="contactLastName" type="text" value="{{permit.contactLastName}}">
 </div>
 
 <div class="form-group">
