@@ -565,7 +565,7 @@ router.post('/operator/company/check-company-details', function (req, res) {
         url: 'https://api.companieshouse.gov.uk/search/companies', //URL to hit
         qs: { q:req.body.companyRegNum, items_per_page:99 }, //Query string data
         method: 'GET',
-        auth: {'username':'B6gG6zj0r_w1K6mOqBiW6GGvoe4ygQwQBoFTfxZo','password':''},
+        auth: {'username':process.env.COMP_HOUSE_API_KEY,'password':''},
     }, function(error, response, body){
         if(error) {
             console.log(error)
@@ -607,7 +607,7 @@ router.post('/operator/company/check-officers', function (req, res) {
         url: 'https://api.companieshouse.gov.uk/company/'+req.session.permit['companyNumber']+'/officers', //URL to hit
         qs: { items_per_page:99 }, //Query string data
         method: 'GET',
-        auth: {'username':'B6gG6zj0r_w1K6mOqBiW6GGvoe4ygQwQBoFTfxZo','password':''},
+        auth: {'username':process.env.COMP_HOUSE_API_KEY,'password':''},
     }, function(error, response, body){
         if(error) {
             console.log(error)
