@@ -7,6 +7,7 @@
 var gulp = require('gulp')
 var mocha = require('gulp-mocha')
 var runSequence = require('run-sequence')
+var htmlhint = require('gulp-htmlhint')
 
 gulp.task('default', function (done) {
   runSequence('generate-assets',
@@ -49,4 +50,11 @@ gulp.task('mocha', function () {
         .once('end', () => {
           process.exit()
         })
+})
+
+// Run HTML Hint checks
+gulp.task('html-hint', () => {
+  return gulp.src('./app/views/v7/{*/,}*.html')
+    .pipe(htmlhint('.htmlhintrc'))
+    .pipe(htmlhint.failReporter())
 })
