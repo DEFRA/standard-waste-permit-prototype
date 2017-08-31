@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Application for a "+permit.permitName+" standard rules permit" %}
+{% set title = "Task list: apply for a standard rules waste permit" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -58,12 +58,14 @@
 {% endif %}
 
 
-  <h1 class="heading-large">
+<h1 class="heading-large">
+  <span class="visually-hidden">
+    Task list: 
+  </span>
   Apply for a standard rules waste permit
 </h1>
   
   <p class="text">{{permit.permitName}} <span class="heading-small">{{permit.permitCode}}</span><br><a class="font-small" href="/{{folder}}/selectpermit/permit-category2">Select a different permit</a></p>
-
 
       <ol class="task-list">
         
