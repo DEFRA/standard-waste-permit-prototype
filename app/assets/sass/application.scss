@@ -198,9 +198,7 @@ span.postcode {
   }
 }
 
-
 // end Form control widths
-
 
 
 // EA footer links
@@ -214,4 +212,24 @@ span.postcode {
 }
 .ea-footer .inline {
     display: inline;
+}
+
+
+// Directors' DOB table
+.directors-dob {
+  margin-bottom: 30px;
+}
+
+.directors-dob thead tr {
+  vertical-align: top;
+}
+
+span.pay-text {
+  display:block;
+  margin:10px 0 0;
+}
+// Application recieved email mock-up 
+
+.email-banner {
+  background: $black;
 }
