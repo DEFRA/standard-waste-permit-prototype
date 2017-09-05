@@ -7,6 +7,7 @@ var request = require('request')
 // How to use folder variable:
 // res.redirect( '/' + folder + '/exemptions/add_exemptions');
 var folder = "v7";
+var servicename = "Apply for a standard rules waste permit";
 
 var sample = require('./views/'+folder+'/custom_inc/sample-permit.js')
 //console.log(sample.permit)
