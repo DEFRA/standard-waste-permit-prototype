@@ -492,20 +492,25 @@ router.post('/operator/company/check-company-details', function (req, res) {
             var companyJSON = JSON.parse(body)
             var company = companyJSON.items[0]
             res.render(folder + '/operator/company/check-company-details',{
-                "formAction":"/"+ folder + "/operator/company/check-officers",
+                "formAction":"/"+ folder + "/operator/company/company-addresses",
                 "company":company,
                 "searchTerm":req.body.companyRegNum,
                 "numberResults":companyJSON.total_results
             })
         }
     })
-
 })
 
 // route for link back from company api search results
 router.get('/operator/company/company-name', function (req, res) {
   res.render(folder + '/operator/company/company-name',{
       "formAction":"/"+ folder + "/operator/company/check-company-details"
+  })
+})
+
+router.post('/operator/company/company-addresses', function (req, res) {
+  res.render(folder + '/operator/company/company-addresses',{
+      "formAction":"/"+ folder + "/operator/company/check-officers"
   })
 })
 
