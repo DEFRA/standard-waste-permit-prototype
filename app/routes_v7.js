@@ -479,6 +479,12 @@ router.post('/operator/checkoperator', function (req, res) {
   }
 })
 
+router.post('/operator/partnerships/postcode', function (req, res) {
+  res.render(folder + '/operator/partnerships/postcode',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
 /* limited company API PAGE ====================== */
 router.post('/operator/company/check-company-details', function (req, res) {
     request({
