@@ -111,6 +111,24 @@
 
 {% endif %}
 
+
+{% if permit.businessTradingName!="" %}
+  
+  <div>
+    <dt class="cya-question">
+    Business trading name
+    </dt>
+    <dd class="cya-answer">
+    {{permit.businessTradingName}} 
+    </dd>
+    <dd class="cya-change">
+      <a href="/{{folder}}/operator/individual/individual-details"> 
+      Change <span class="visuallyhidden"> trading name</span>
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
     <div>
       <dt class="cya-question">
       Relevant offences

@@ -19,24 +19,28 @@
 
 <form action="{{formAction}}" method="post">
 
-<h2 class="heading-small">Your name</h2>
-  
-<p>
-{{permit.individualFirstName}} {{permit.individualLastName}}
-</p>
+<h2 class="heading-small">Name</h2>
+  <p>
+  {{permit.individualFirstName}} {{permit.individualLastName}}
+  </p>
 
-<h2 class="heading-small">Your date of birth</h2>
-  
-<p>
-{{permit.individualDobDay}}/{{permit.individualDobMonth}}/
- {{permit.individualDobYear}}
-</p>
+<h2 class="heading-small">Date of birth</h2>
+  <p>
+  {{permit.individualDobDay}}/{{permit.individualDobMonth}}/
+   {{permit.individualDobYear}}
+  </p>
 
-<h2 class="heading-small">Your address</h2>
-  
-<p><b>3 Grange Road<br>
-Bristol<br>
-BS1 5AH</b></p>
+{% if permit.businessTradingName!="" %}
+<h2 class="heading-small">Business trading name</h2>
+  <p>
+  {{permit.businessTradingName}}
+  </p>
+{% endif %}
+
+<h2 class="heading-small">Address</h2>
+  <p><b>3 Grange Road<br>
+  Bristol<br>
+  BS1 5AH</b></p>
 
 <input type="hidden" name="companyAddress" value="{{ indAddressAll }}">
 
