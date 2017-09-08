@@ -20,8 +20,8 @@
 
       <form action="{{formAction}}" method="post">
         
-        {% set saveProgress = permit.saveProgress+"x" %}
-        <input type="hidden" name="saveProgress" value="{{saveProgress}}">
+        <!-- Change save progress so we don't show the save screens again -->
+        <input type="hidden" name="saveProgress" value="save-link-sent">
 
         {% if data.user_phone %}
 

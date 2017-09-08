@@ -31,13 +31,11 @@
 {% set tConfidentiality = "Confirm confidentiality needs" %}
 {% set tSend = "Send application and pay" %}
 
-<main id="content" role="main">
+<main id="content" role="main" class="task-list">
   {% include "includes/phase_banner_beta.html" %}
 
   <div class="grid-row">
     <div class="column-two-thirds column-minimum">
-      
-    <p>{{permit.saveProgress}}</p>
       
       <form method="post" action="/{{folder}}/check/check-answers" name="tasklist">
 
@@ -373,7 +371,34 @@
 
       </form>
     </div>
+    
+    <div class="column-one-third">
+      {% if permit.saveProgress=='save-link-sent' %}
+      <p>Saved</p>
+      {% endif %}
+      
+    </div>
+    
   </div>
 </main>
 
+{% endblock %}
+
+
+{% block page_scripts %}
+<script>
+  $(document).ready(function () {
+    
+    $.ajax({
+          url: '/{{folder}}/task-list-visit',
+          success: function(){
+             //alert('reply')
+          },     
+          error: function(){
+              //alert('timeout/error')
+          }
+       })
+       
+  })
+</script>
 {% endblock %}

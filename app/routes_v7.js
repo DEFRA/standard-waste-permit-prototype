@@ -77,13 +77,13 @@ router.get('/check/process-link', function (req, res) {
 
 router.get('/start/start-or-resume', function (req, res) {
   res.render(folder + '/start/start-or-resume',{
-      "formAction":"/"+ folder + "/save-and-return/save-choice"
+      "formAction":"/"+ folder + "/selectpermit/permit-category2"
   })
 })
 
 router.post('/start/start-or-resume', function (req, res) {
   res.render(folder + '/start/start-or-resume',{
-      "formAction":"/"+ folder + "/save-and-return/save-choice"
+      "formAction":"/"+ folder + "/selectpermit/permit-category2"
   })
 })
 
@@ -184,18 +184,26 @@ router.post('/check/save-permit-details', function (req, res) {
 
 
 router.post('/check/task-list', function (req, res) {
-  if( res.locals.data.saveProgress=='xx' ) {
-    // Show non-digital route
+  if( res.locals.data.saveProgress=='task-list-visited' ) {
+    // Show save screen
     res.render(folder + '/save-and-return/email-or-phone',{
         "formAction":"/"+ folder + "/save-and-return/confirm"
     })
   } else {
-      res.locals.data.saveProgress=res.locals.data.saveProgress+'x'
     // Show task list
     res.render(folder + '/check/task-list',{ 
        "chosenPermitID":req.body['chosenPermitID']
     })
   }
+})
+
+// Called by task list page via AJAX to log the first visit
+router.get('/task-list-visit', function (req, res) {
+  // if this is the first visit, 'saveProgress' will be set to started-application
+  if(req.session.data.saveProgress='started-application'){
+    req.session.data.saveProgress='task-list-visited'
+  }
+  res.sendStatus(200)
 })
 
 
@@ -221,6 +229,7 @@ router.get('/check/task-list', function (req, res) {
     })
   }
 })
+
 
 
 // Category method
