@@ -184,12 +184,13 @@ router.post('/check/save-permit-details', function (req, res) {
 
 
 router.post('/check/task-list', function (req, res) {
-  if( req.body['digitalMVP']=='No' ) {
+  if( res.locals.data.saveProgress=='xx' ) {
     // Show non-digital route
-    res.render(folder + '/selectpermit/permit-not-in-service',{
-      "chosenPermitID":req.body['chosenPermitID']
+    res.render(folder + '/save-and-return/email-or-phone',{
+        "formAction":"/"+ folder + "/save-and-return/confirm"
     })
   } else {
+      res.locals.data.saveProgress=res.locals.data.saveProgress+'x'
     // Show task list
     res.render(folder + '/check/task-list',{ 
        "chosenPermitID":req.body['chosenPermitID']
@@ -920,8 +921,6 @@ router.post('/search-permit/sr-permits', function (req, res) {
 
 // Send permit data in session to every page ==================================
 router.all('*', function (req, res, next) {
-  // set a folder and store in locals
-  // this can then be used in pages as {{folder}}
   res.locals.permit=res.locals.data
   next()
 });
