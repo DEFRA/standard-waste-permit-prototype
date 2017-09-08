@@ -466,12 +466,23 @@ router.post('/operator/checkoperator', function (req, res) {
       res.render(folder + '/operator/individual/individual-details',{
           "formAction":"/"+ folder + "/operator/individual/postcode"
       })
+  } else if (req.body['operatorType']=="Partnership") {
+    // show partnership page
+      res.render(folder + '/operator/partnerships/partner1',{
+          "formAction":"/"+ folder + "/operator/partnerships/postcode"
+      })
   } else {
     // go on to error
     res.render(folder + '/error/index',{ 
         "errorText":"We only cover limited companies and individuals in this prototype"
     })
   }
+})
+
+router.post('/operator/partnerships/postcode', function (req, res) {
+  res.render(folder + '/operator/partnerships/postcode',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
 })
 
 /* limited company API PAGE ====================== */
