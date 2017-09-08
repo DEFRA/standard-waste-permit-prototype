@@ -108,6 +108,39 @@
         </a>
       </dd>
     </div>
+    
+    <div>
+      <dt class="cya-question">
+      Date of birth
+      </dt>
+      <dd class="cya-answer">
+        {{permit.individualDobDay}}/{{permit.individualDobMonth}}/
+         {{permit.individualDobYear}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/individual/individual-details"> 
+        Change <span class="visuallyhidden"> date of birth</span>
+        </a>
+      </dd>
+    </div>
+    
+    {% if permit.businessTradingName!="" %}
+      
+      <div>
+        <dt class="cya-question">
+        Business trading name
+        </dt>
+        <dd class="cya-answer">
+        {{permit.businessTradingName}} 
+        </dd>
+        <dd class="cya-change">
+          <a href="/{{folder}}/operator/individual/individual-details"> 
+          Change <span class="visuallyhidden"> trading name</span>
+          </a>
+        </dd>
+      </div>
+      
+    {% endif %}
 
     <div>
       <dt class="cya-question">
@@ -124,6 +157,9 @@
     </div>
 
 {% endif %}
+
+
+
 
     <div>
       <dt class="cya-question">
