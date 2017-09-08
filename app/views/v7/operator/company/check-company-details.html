@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Check company details" %}
+{% set title = "Is this the right company?" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -30,27 +30,16 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
-
-<!-- <p>{{numberResults}} result{{'s' if numberResults>1}} for <b>{{searchTerm}}</b></p> -->
-
-
 <form action="{{formAction}}" method="post">
 
-    <h2>
-      Company number
-      <span class="bold">{{company.company_number}}</span>
-    <h2>
-    <p>
-      <a href="/{{folder}}/operator/company/company-name">Enter a different company number</a>
-    </p>
+    <div class="panel panel-border-wide form-group">
+    <p>Company number {{company.company_number}} &nbsp;<a href="/{{folder}}/operator/company/company-name">enter a different company number</a></p>
+    </div>
+
+    <h2 class="heading-medium">{{company.title | title}}</h2>
+
     <input type="hidden" name="companyNumber" value="{{company.company_number}}">
 
-    <div class="panel panel-border-wide form-group">
-      <h2>Company name</h2>
-      <p class="bold">
-        {{company.title | title}}
-      </p>
-    </div>
     <input type="hidden" name="companyName" value="{{company.title | title}}">
 
 <!-- store address here for use on next page -->
