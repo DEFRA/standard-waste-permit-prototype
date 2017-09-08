@@ -372,12 +372,17 @@
       </form>
     </div>
     
-    <div class="column-one-third">
-      {% if permit.saveProgress=='save-link-sent' %}
-      <p>Saved</p>
-      {% endif %}
-      
-    </div>
+    <!-- Only show if 'Tasklist Save' route -->
+    {% if permit.saveProgress=='save-link-sent'  %}
+
+      <div class="column-one-third">
+      <aside class="govuk-related-items">
+        <h2 class="heading-medium">Permit application saved</h2>
+        <p>We've sent a secure link to <span class="bold">{{ permit.saveReturnEmail or permit.saveReturnPhone }}</span> that allows you to return to your application at any time. You won't need a password.</p>
+      </aside>
+      </div>
+
+    {% endif %}
     
   </div>
 </main>
