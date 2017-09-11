@@ -54,6 +54,48 @@ Make user lab feedback more realistic - request from researcher.
 </p></td></tr>
 
 <tr><td><p>
+Remove 'EPR/'' from reference number so it reads 'AB1234CD'.
+</p></td><td><p>
+We are using this on save and return screens so we want to make it as short as possible. We are confident that even though there is a possibility of overlap with, for example, water permits, that our staff will be able to identify this from any enquiry as being a waste permit.
+</p></td></tr>
+
+<tr><td><p>
+Allow user to give a trading name for company, partnership or sole trader.
+</p></td><td><p>
+Users who trade as 'Jane's Motors' may have a company called 123 Autos Ltd but hardly ever use that name. Collecting the trading name means that we can refer to their business using the term they most often use.
+</p></td></tr>
+
+<tr><td><p>
+Collect the day date of birth for all company directors. We retrieve the list of active directors and their month of birth from Companies House. Users will have to supply the day date for each director in the list.
+</p></td><td><p>
+EA have new fraud detection checks in place. We need a date of birth to reliably match records when we do checks on directors.
+</p></td></tr>
+
+<tr><td><p>
+Add help text for overseas companies to explain that they should register as an overseas company with Companies House before they apply for a permit.
+</p></td><td><p>
+This helps users representing overseas companies to understand the requirements for overseas businesses operating in the UK. The prior registration does add some extra work for the company, but it then simplifies the information they have to give us and allows us to make the checks we normally do.
+</p></td></tr>
+
+<tr><td><p>
+Alter save and return journey to be triggered after the user starts a task in the application.
+</p></td><td><p>
+In the previous journey, users started on save and return. However, during testing we found that they had little recall of having done that so we want to test with a similar proceds, but at a different point in the user journey.
+</p></td></tr>
+
+<tr><td><p>
+Add a 'page not found' page to show when users try to access a page that does not exist.
+</p></td><td><p>
+Helps users to work out what to do if they try to visit a URL that does not exist.
+</p></td></tr>
+
+<tr><td><p>
+Add a 'timeout page' to help lab session where we want to test a timeout scenario with users.
+</p></td><td><p>
+Helps users to know what to do if their session times out.
+</p></td></tr>
+
+<tr><td><p>
 In HTML, add a 'rel="noopener noreferrer"' attribute to any links that use 'target="_blank"'. 
 </p></td><td><p>
 GDS recommendation: this protects users against security vulnerabilities associated with the 'target="_blank"' attribute.
