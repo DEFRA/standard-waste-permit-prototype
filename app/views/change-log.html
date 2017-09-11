@@ -29,16 +29,402 @@ REGEXP replacements for google HTML
 	  </h1>
     
 
-      <p>This summarises the main changes we&rsquo;ve made in response to feedback.</p>
-    	<h2 class="heading-large" id="h.py5adz5bbmp0">Version 0 to 1</h2>
-    	<p><a href="index-v0">Version 0</a> was a baseline version based closely on the paper forms.</p>
-    	<p><a href="index-v1">Version 1</a> was our first main iteration for testing</p>
+      <p>This summarises the main changes we've made in response to feedback.</p>
+      
+
+
+
+    <h2 class="heading-large">Version 6 to 7</h2>
+    <p><a href="index-v7">Version 7</a></p>
+
+<table>
+<tr>
+<th>
+  <p>Summary of change in v7</p>
+</th>
+<th>
+  <p>Reason/source</p>
+</th>
+</tr>
+
+<tr><td><p>
+Set reference number to EA permit standard EPR/AB1234CD.
+</p></td><td><p>
+Make user lab feedback more realistic - request from researcher.
+</p></td></tr>
+
+<tr><td><p>
+In HTML, add a 'rel="noopener noreferrer"' attribute to any links that use 'target="_blank"'. 
+</p></td><td><p>
+GDS recommendation: this protects users against security vulnerabilities associated with the 'target="_blank"' attribute.
+</p></td></tr>
+
+<tr><td><p>
+In task list, change 'Apply' text to 'Send and pay'.
+</p></td><td><p>
+Text was misleading to users - entire process is 'apply', this step in the task list is to send the application and pay.
+</p></td></tr>
+
+<tr><td><p>
+Add inline validation to the task list.
+</p></td><td><p>
+Some users could not find the task that was not sone when they used the version where the validation message appeared on a separate page. In addition, inline validation is a better match to GDS patterns.
+</p></td></tr>
+
+<tr><td><p>
+Add input to capture trading, business or company name for agents.
+</p></td><td><p>
+Business need to identify agents - some agents are known by their name, others by a company or business name.
+</p></td></tr>
+
+<tr><td><p>
+Update permit categories to add 'deposit for recovery' and tweak labels slightly - converting 'recycling' to treatment and storage'.
+</p></td><td><p>
+Some users found the deposit for recovery tricky to find and it's a popular permit type so we think it justifies a category of its own. This is to be tested in August 2017 and reviewed after that.
+</p></td></tr>
+
+<tr><td><p>
+Add a page to collect dates of birth for company directors.
+</p></td><td><p>
+Business requirement. We use this to check conviction and other records. To help users, we propose to get a list of the 'active' company directors from Companies House together with month and year. Users then will be asked to supply the day date for each director. 
+</p></td></tr>
+
+<tr><td><p>
+Add back links to most question pages.
+</p></td><td><p>
+User need is to get back to a previous page when they don't trust the back function in the browser. It's also a GDS standard introduced in July 2017: question pages should have a back link. We're working on adapting this to the task list pattern, but added it to the prototype to test later with users.
+</p></td></tr>
+
+<tr><td><p>
+Add screen to allow users to download a copy of their application.
+</p></td><td><p>
+In the July user testing, several users said they'd like a copy of their application. In this version to be tested, we show it as a download after payment. Although some users suggested that it would be good to get by email, we're going to test without that becasue data protextion tell us that sending personal data by email may not be desirable.
+</p></td></tr>
+
+<tr><td><p>
+Add permit details to confirmation email.
+</p></td><td><p>
+Users said they'd like the email to state the permit name.
+</p></td></tr>
+
+<tr><td><p>
+Provide copyright information on postcode lookup pages.
+</p></td><td><p>
+We can't use the OS Places postcode lookup without adding this statement and a link to a page about terms of use. This is to make clear that the Open Gov licence does not also cover the OS Places data.
+</p></td></tr>
+
+
+
+</table>
+
+
+
+       
+    <h2 class="heading-large">Version 5 to 6</h2>
+    <p><a href="index-v6">Version 6</a></p>
+
+<table>
+  <tr>
+    <th>
+      <p>Summary of change in v6</p>
+    </th>
+    <th>
+      <p>Reason/source</p>
+    </th>
+  </tr>
+
+<tr><td><p>
+Added validation check that all tasks are complete. If not all complete, show a page listing the tasks to complete with a main action to return to the task list.
+</p></td><td><p>
+Some users feel that some tasks are optional. This page reminds them that all tasks need to be completed and lists the tasks to complete.
+</p></td></tr>
+
+<tr><td><p>
+Change rules task title to 'Confirm that your operation meets the rules'
+</p></td><td><p>
+User testing of v5 showed that a couple of users regarded some tasks as optional. We want to test if the wording can change this perception.
+</p></td></tr>
+
+<tr><td><p>
+Add text on done page to tell users that we'll contact them within 5 working days
+</p></td><td><p>
+Gives the user more clarity - we were able to add this after we received additional information from the business
+</p></td></tr>
+
+<tr><td><p>
+Change 'save or resume' page text to 'Start a new application' / 'Open a saved application' from 'Have you already started an application?' Yes/No
+</p></td><td><p>
+Users were pausing to read this page carefully. New applicants were having to choose 'no' which was making them pause to think.
+</p></td></tr>
+
+<tr><td><p>
+Swapped permit selection to a two-stage, category-first method. We combined 2 categories because they had few permits.
+</p></td><td><p>
+We tested the old categories against the new with 4 users. All users were able to find the correct permit with the new categories so we feel they are OK to take to further testing.
+</p></td></tr>
+
+<tr><td><p>
+Removed BACS and cheque payment options so that debit/credit card payments are required for the cost of application
+</p></td><td><p>
+Business decision to remove other payment options in order to increase uptake of debit/credit card transactions.
+</p></td></tr>
+
+<tr><td><p>
+Update drainage questions for SR2015-17/18 to a first draft for inital testing. The previous version was a copy of the paper form and was not complete.
+</p></td><td><p>
+This is a first draft for user lab testing based on a smart answer format.
+</p></td></tr>
+
+</table>   
+
+
+
+
+      
+      <h2 class="heading-large">Version 4 to 5</h2>
+  <p><a href="index-v5">Version 5</a> incorporates feedback from user testing and a GDS review of how we were using the task list pattern. </p>
+
+  <table>
+      
+          <tr>
+              <th>
+                  <p>Summary of change in v5</p>
+              </th>
+              <th>
+                  <p>Reason/source</p>
+              </th>
+          </tr>
+          <tr>
+              <td>
+                  <p>Moved permit costs, time to wait after applying and 'what you need to apply' into task list. </p>
+              </td>
+              <td>
+                  <p>Users can now check costs, time and the docs and info they need at any stage in the application process.</p>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <p>Replace 'Start a new application' launch page with 'Have you already started an application?' </p>
+              </td>
+              <td>
+                  <p>No user need for the launch page as 'Apply for a standard waste permit' already selected on the previous page.</p>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <p>Change to Save and return pattern.</p>
+              </td>
+              <td>
+                  <p>No longer optional. We will provide the means to return to an application later whether they use this feature or not. Moved to the start of the application process.</p>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <p>Upload certificate only displayed if you select a technical scheme.</p>
+              </td>
+              <td>
+                  <p>Upload option brought into single screen.</p>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <p>Added text to links to external sites (opens new tab).</p>
+              </td>
+              <td>
+                  <p>In user testing, opening new tabs was not clear for users unfamiliar with browser.</p>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <p>Move pre-app warning message to show if 'no' is selected and move to be near this option and only show if 'no' is selected.</p>
+              </td>
+              <td>
+                  <p>Warning was too not needed at top for users who had had a pre-app discussion and wording was unclear to users.</p>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <p>Remove the 'Have you ordered a site location check?' page. Replace with link to order a site loation check on the 'read rules' page.</p>
+              </td>
+              <td>
+                  <p>We discovered that every application has a new location screen done by P&amp;SC - they don't look for or rely on any existing screens. To simplfy things for users, we don't ask for that information. Howeevr, we've added information to the read rules page to allow users to order a check, if they need it.</p>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <p>Replace details about location on the 'read rules page' with a link to allow user to order a location check.</p>
+              </td>
+              <td>
+                  <p>Users do not understand how to make these location checks - eg "how do I know where boreholes are".</p>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <p>Simplify read rules page to remove extra weight limit and provide info about what to do if you don't comply.</p>
+              </td>
+              <td>
+                  <p>Weight limit is only part of the rules. 'Comply with' not Plain English.</p>
+              </td>
+          </tr>
+          
+
+<tr><td><p>
+Change legal warning styling to panel
+</p></td><td><p>
+GDS standard is to use warning for legal warning. Our use was not correct.
+</p></td></tr>
+
+<tr><td><p>
+Add WAMITAB qualifications to the upload screen
+</p></td><td><p>
+Allows users to find WAMITAB guidance on both 'What you need' and upload screens
+</p></td></tr>
+
+<tr><td><p>
+Link directly to FPP guidance and remove short form of guidance
+</p></td><td><p>
+Short guidance did not test well with users as it was too short and longer detailed guidance has recently been updated so seem best to link to that. We need to test fire prevention plan guidance in beta.
+</p></td></tr>
+
+<tr><td><p>
+Remove option to search on company name
+</p></td><td><p>
+Evidence from the flood risk project suggests that most users know how to find the company number. A number search will produce simpler results compared with a free text search (as few users will get the company name correct) so it will be easier to use in the end.
+</p></td></tr>
+
+<tr><td><p>
+Add checkbox to allow user to say if they are an agent
+</p></td><td><p>
+Business need: I want to know if the contact for the application is an agent or consultant
+so that I can report on applications by agents
+and analyse use of the form by agents
+</p></td></tr>
+
+<tr><td><p>
+Add individual journey
+</p></td><td><p>
+Allows us to test with individuals and sole traders
+</p></td></tr>
+
+<tr><td><p>
+Add contact details to footer
+</p></td><td><p>
+Allows users to find a contact method on every if they are unable to complete the online process (AD).
+</p></td></tr>
+
+
+          
+      
+  </table>        
+      
+      
+
+
+      <h2 class="heading-large" id="h.oqh6m4r1qqq1">Version 3 to 4</h2>
+  <p><a href="index-v4">Version 4</a> incorporates feedback from the third round of user testing. </p>
+
+  <table>
+      
+          <tr>
+              <th>
+                  <p>Summary of change in v4</p>
+              </th>
+              <th>
+                  <p>Reason/source</p>
+              </th>
+          </tr>
+          <tr>
+              <td>
+                  <p>Change permit selection to an expanding list on one page and add feature to apply from the full list of standard rules permits.</p>
+              </td>
+              <td>
+                  <p>Reduce the number of screens needed to choose a permit and demonstrate how permits could be applied for directly from the collection page list.</p>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <p>Save and return option added to the Task List page.</p>
+              </td>
+              <td>
+                  <p>Feedback from user testing. Allow users to save and return, even if they choose not to when first asked.</p>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <p>Add 'What you need before you start' page.</p>
+              </td>
+              <td>
+                  <p>Feedback from user testing. User would like to see in one place what they need in order to apply.</p>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <p>Removed installations and water categories</p>
+              </td>
+              <td>
+                  <p>Currently not in scope.</p>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <p>Text changed to 'Complete offences statement' and 'Complete bankruptcy or insolvency statement'</p>
+              </td>
+              <td>
+                  <p>Convictions and bankruptcy: users not filling in because they don't think it is applicable to them.</p>
+              </td>
+          </tr>
+      
+  </table>
+  
+  
+
+
+<h2 class="heading-large" id="h.oqh6m4r1qqq1">Version 2a to 3</h2>
+<p><a href="index-v3">Version 3</a> uses the newly-published GDS pattern for the task list.</p>
+
+<table>
+  
+    <tr>
+      <th>
+        <p>Summary of change in v3</p>
+      </th>
+      <th>
+        <p>Reason/source</p>
+      </th>
+    </tr>
+    <tr>
+      <td>
+        <p>Replace the save and return code with version based on GDS examples. Note: &#39;Save and return&#39; is not an official GDS pattern yet.</p>
+        <p></p>
+        <p>We plan that the save and return will use GOV.UK Notify.</p>
+      </td>
+      <td>
+        <p>Feedback from the data protection team - we can&rsquo;t rely on all the data being made public so we need a higher standard of save and return authentication than the single code.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Replace the PAFS task pattern with the beta GDS <a href="https://www.gov.uk/service-manual/design/task-list-pages-beta">&lsquo;task list pages&rsquo; pattern</a></p>
+      </td>
+      <td>
+        <p>GDS service standard - use the GOV.UK design patterns</p>
+      </td>
+    </tr>
+  
+</table>
+<p></p>
+
+
+
+      
+    	<h2 class="heading-large" id="h.ydye94crluma">Version 2 to 2a</h2>
+    	<p><a href="index-v2a">Version 2a</a> adds a save and return code and a task list based on the PAFS code</p>
       
     	<table>
     		
     			<tr>
     				<th>
-    					<p>Summary of change in v1</p>
+    					<p>Summary of change in v2a</p>
     				</th>
     				<th>
     					<p>Reason/source</p>
@@ -46,54 +432,24 @@ REGEXP replacements for google HTML
     			</tr>
     			<tr>
     				<td>
-    					<p>Moved permit selection to start and give custom data about permit and customised flow for permit</p>
+    					<p>Add a save and return code based on DIT export licences</p>
     				</td>
     				<td>
-    					<p>Based on GDS <a href="https://www.google.com/url?q=https://check-before-you-start.herokuapp.com/&amp;sa=D&amp;ust=1493385821202000&amp;usg=AFQjCNHay38Jbgid73PKjhiy68CAgOQ0-g">&lsquo;check before you start&rsquo; pattern</a>. Allows users to find out correct rules and cost and also to customise the form based on the things the user needs to do.</p>
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Add payment options based on GOV.UK pay screens</p>
-    				</td>
-    				<td>
-    					<p>Use of GOV.UK Pay platform instead of credit card form allows users to pay online</p>
+    					<p>V1 research - users don&rsquo;t think they can complete in one go</p>
     				</td>
     			</tr>
     			<tr>
     				<td>
-    					<p>Remove &lsquo;confirmations&rsquo; where these are implicit (eg for uploads)</p>
+    					<p>Add a task list of sections to complete based on PAFS pattern</p>
     				</td>
     				<td>
-    					<p>Simplify for users</p>
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Remove multiple declarations and contact details for those declarations</p>
-    				</td>
-    				<td>
-    					<p>Simplify for users - based on us seeking legal agreement to allow agent to declare on behalf of the operator.</p>
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Add done page and email confirmation</p>
-    				</td>
-    				<td>
-    					<p>Standard patterns</p>
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Add mockup of GOV.UK guidance page</p>
-    				</td>
-    				<td>
-    					<p>Shows likely journey as we won&rsquo;t be allowed a start page due to volume of transactions</p>
+    					<p>V1 research - users don&rsquo;t think they can complete in one go</p>
     				</td>
     			</tr>
     		
     	</table>
+      
+      
 
       
     	<h2 class="heading-large" id="h.z0gvv6cfwels">Version 1 to 2</h2>
@@ -232,415 +588,72 @@ REGEXP replacements for google HTML
     	</table>
       
       
-      
-    	<h2 class="heading-large" id="h.ydye94crluma">Version 2 to 2a</h2>
-    	<p><a href="index-v2a">Version 2a</a> adds a save and return code and a task list based on the PAFS code</p>
-      
-    	<table>
-    		
-    			<tr>
-    				<th>
-    					<p>Summary of change in v2a</p>
-    				</th>
-    				<th>
-    					<p>Reason/source</p>
-    				</th>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Add a save and return code based on DIT export licences</p>
-    				</td>
-    				<td>
-    					<p>V1 research - users don&rsquo;t think they can complete in one go</p>
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Add a task list of sections to complete based on PAFS pattern</p>
-    				</td>
-    				<td>
-    					<p>V1 research - users don&rsquo;t think they can complete in one go</p>
-    				</td>
-    			</tr>
-    		
-    	</table>
-      
-      
-    	<h2 class="heading-large" id="h.oqh6m4r1qqq1">Version 2a to 3</h2>
-    	<p><a href="index-v3">Version 3</a> uses the newly-published GDS pattern for the task list.</p>
-      
-    	<table>
-    		
-    			<tr>
-    				<th>
-    					<p>Summary of change in v3</p>
-    				</th>
-    				<th>
-    					<p>Reason/source</p>
-    				</th>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Replace the save and return code with version based on GDS examples. Note: &#39;Save and return&#39; is not an official GDS pattern yet.</p>
-    					<p></p>
-    					<p>We plan that the save and return will use GOV.UK Notify.</p>
-    				</td>
-    				<td>
-    					<p>Feedback from the data protection team - we can&rsquo;t rely on all the data being made public so we need a higher standard of save and return authentication than the single code.</p>
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Replace the PAFS task pattern with the beta GDS <a href="https://www.gov.uk/service-manual/design/task-list-pages-beta">&lsquo;task list pages&rsquo; pattern</a></p>
-    				</td>
-    				<td>
-    					<p>GDS service standard - use the GOV.UK design patterns</p>
-    				</td>
-    			</tr>
-    		
-    	</table>
-    	<p></p>
-      
-      
-      
-      
-            <h2 class="heading-large" id="h.oqh6m4r1qqq1">Version 3 to 4</h2>
-        <p><a href="index-v4">Version 4</a> incorporates feedback from the third round of user testing. </p>
-      
-        <table>
-            
-                <tr>
-                    <th>
-                        <p>Summary of change in v4</p>
-                    </th>
-                    <th>
-                        <p>Reason/source</p>
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        <p>Change permit selection to an expanding list on one page and add feature to apply from the full list of standard rules permits.</p>
-                    </td>
-                    <td>
-                        <p>Reduce the number of screens needed to choose a permit and demonstrate how permits could be applied for directly from the collection page list.</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>Save and return option added to the Task List page.</p>
-                    </td>
-                    <td>
-                        <p>Feedback from user testing. Allow users to save and return, even if they choose not to when first asked.</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>Add 'What you need before you start' page.</p>
-                    </td>
-                    <td>
-                        <p>Feedback from user testing. User would like to see in one place what they need in order to apply.</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>Removed installations and water categories</p>
-                    </td>
-                    <td>
-                        <p>Currently not in scope.</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>Text changed to 'Complete offences statement' and 'Complete bankruptcy or insolvency statement'</p>
-                    </td>
-                    <td>
-                        <p>Convictions and bankruptcy: users not filling in because they don't think it is applicable to them.</p>
-                    </td>
-                </tr>
-            
-        </table>
-        
-        
-        
-        <h2 class="heading-large">Version 4 to 5</h2>
-    <p><a href="index-v5">Version 5</a> incorporates feedback from user testing and a GDS review of how we were using the task list pattern. </p>
-  
-    <table>
-        
-            <tr>
-                <th>
-                    <p>Summary of change in v5</p>
-                </th>
-                <th>
-                    <p>Reason/source</p>
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    <p>Moved permit costs, time to wait after applying and 'what you need to apply' into task list. </p>
-                </td>
-                <td>
-                    <p>Users can now check costs, time and the docs and info they need at any stage in the application process.</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>Replace 'Start a new application' launch page with 'Have you already started an application?' </p>
-                </td>
-                <td>
-                    <p>No user need for the launch page as 'Apply for a standard waste permit' already selected on the previous page.</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>Change to Save and return pattern.</p>
-                </td>
-                <td>
-                    <p>No longer optional. We will provide the means to return to an application later whether they use this feature or not. Moved to the start of the application process.</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>Upload certificate only displayed if you select a technical scheme.</p>
-                </td>
-                <td>
-                    <p>Upload option brought into single screen.</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>Added text to links to external sites (opens new tab).</p>
-                </td>
-                <td>
-                    <p>In user testing, opening new tabs was not clear for users unfamiliar with browser.</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>Move pre-app warning message to show if 'no' is selected and move to be near this option and only show if 'no' is selected.</p>
-                </td>
-                <td>
-                    <p>Warning was too not needed at top for users who had had a pre-app discussion and wording was unclear to users.</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>Remove the 'Have you ordered a site location check?' page. Replace with link to order a site loation check on the 'read rules' page.</p>
-                </td>
-                <td>
-                    <p>We discovered that every application has a new location screen done by P&amp;SC - they don't look for or rely on any existing screens. To simplfy things for users, we don't ask for that information. Howeevr, we've added information to the read rules page to allow users to order a check, if they need it.</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>Replace details about location on the 'read rules page' with a link to allow user to order a location check.</p>
-                </td>
-                <td>
-                    <p>Users do not understand how to make these location checks - eg "how do I know where boreholes are".</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>Simplify read rules page to remove extra weight limit and provide info about what to do if you don't comply.</p>
-                </td>
-                <td>
-                    <p>Weight limit is only part of the rules. 'Comply with' not Plain English.</p>
-                </td>
-            </tr>
-            
 
-<tr><td><p>
-  Change legal warning styling to panel
-</p></td><td><p>
-  GDS standard is to use warning for legal warning. Our use was not correct.
-</p></td></tr>
 
-<tr><td><p>
-  Add WAMITAB qualifications to the upload screen
-</p></td><td><p>
-  Allows users to find WAMITAB guidance on both 'What you need' and upload screens
-</p></td></tr>
-
-<tr><td><p>
-  Link directly to FPP guidance and remove short form of guidance
-</p></td><td><p>
-  Short guidance did not test well with users as it was too short and longer detailed guidance has recently been updated so seem best to link to that. We need to test fire prevention plan guidance in beta.
-</p></td></tr>
-
-<tr><td><p>
-  Remove option to search on company name
-</p></td><td><p>
-  Evidence from the flood risk project suggests that most users know how to find the company number. A number search will produce simpler results compared with a free text search (as few users will get the company name correct) so it will be easier to use in the end.
-</p></td></tr>
-
-<tr><td><p>
-  Add checkbox to allow user to say if they are an agent
-</p></td><td><p>
-  Business need: I want to know if the contact for the application is an agent or consultant
- so that I can report on applications by agents
- and analyse use of the form by agents
-</p></td></tr>
-
-<tr><td><p>
-  Add individual journey
-</p></td><td><p>
-  Allows us to test with individuals and sole traders
-</p></td></tr>
-
-<tr><td><p>
-  Add contact details to footer
-</p></td><td><p>
-  Allows users to find a contact method on every if they are unable to complete the online process (AD).
-</p></td></tr>
-
-  
-            
-        
-    </table>        
-        
-        
-       
-    <h2 class="heading-large">Version 5 to 6</h2>
-    <p><a href="index-v6">Version 6</a></p>
+<h2 class="heading-large" id="h.py5adz5bbmp0">Version 0 to 1</h2>
+<p><a href="index-v0">Version 0</a> was a baseline version based closely on the paper forms.</p>
+<p><a href="index-v1">Version 1</a> was our first main iteration for testing</p>
 
 <table>
-  <tr>
-    <th>
-      <p>Summary of change in v6</p>
-    </th>
-    <th>
-      <p>Reason/source</p>
-    </th>
-  </tr>
-
-<tr><td><p>
-Added validation check that all tasks are complete. If not all complete, show a page listing the tasks to complete with a main action to return to the task list.
-</p></td><td><p>
-Some users feel that some tasks are optional. This page reminds them that all tasks need to be completed and lists the tasks to complete.
-</p></td></tr>
-
-<tr><td><p>
-Change rules task title to 'Confirm that your operation meets the rules'
-</p></td><td><p>
-User testing of v5 showed that a couple of users regarded some tasks as optional. We want to test if the wording can change this perception.
-</p></td></tr>
-
-<tr><td><p>
-Add text on done page to tell users that we'll contact them within 5 working days
-</p></td><td><p>
-Gives the user more clarity - we were able to add this after we received additional information from the business
-</p></td></tr>
-
-<tr><td><p>
-Change 'save or resume' page text to 'Start a new application' / 'Open a saved application' from 'Have you already started an application?' Yes/No
-</p></td><td><p>
-Users were pausing to read this page carefully. New applicants were having to choose 'no' which was making them pause to think.
-</p></td></tr>
-
-<tr><td><p>
-Swapped permit selection to a two-stage, category-first method. We combined 2 categories because they had few permits.
-</p></td><td><p>
-We tested the old categories against the new with 4 users. All users were able to find the correct permit with the new categories so we feel they are OK to take to further testing.
-</p></td></tr>
-
-<tr><td><p>
-Removed BACS and cheque payment options so that debit/credit card payments are required for the cost of application
-</p></td><td><p>
-Business decision to remove other payment options in order to increase uptake of debit/credit card transactions.
-</p></td></tr>
-
-<tr><td><p>
-Update drainage questions for SR2015-17/18 to a first draft for inital testing. The previous version was a copy of the paper form and was not complete.
-</p></td><td><p>
-This is a first draft for user lab testing based on a smart answer format.
-</p></td></tr>
-
-</table>   
-
-
-
-    <h2 class="heading-large">Version 6 to 7</h2>
-    <p><a href="index-v7">Version 7</a></p>
-
-<table>
-<tr>
-<th>
-  <p>Summary of change in v7</p>
-</th>
-<th>
-  <p>Reason/source</p>
-</th>
-</tr>
-
-<tr><td><p>
-Set reference number to EA permit standard EPR/AB1234CD.
-</p></td><td><p>
-Make user lab feedback more realistic - request from researcher.
-</p></td></tr>
-
-<tr><td><p>
-In HTML, add a 'rel="noopener noreferrer"' attribute to any links that use 'target="_blank"'. 
-</p></td><td><p>
-GDS recommendation: this protects users against security vulnerabilities associated with the 'target="_blank"' attribute.
-</p></td></tr>
-
-<tr><td><p>
-In task list, change 'Apply' text to 'Send and pay'.
-</p></td><td><p>
-Text was misleading to users - entire process is 'apply', this step in the task list is to send the application and pay.
-</p></td></tr>
-
-<tr><td><p>
-Add inline validation to the task list.
-</p></td><td><p>
-Some users could not find the task that was not sone when they used the version where the validation message appeared on a separate page. In addition, inline validation is a better match to GDS patterns.
-</p></td></tr>
-
-<tr><td><p>
-Add input to capture trading, business or company name for agents.
-</p></td><td><p>
-Business need to identify agents - some agents are known by their name, others by a company or business name.
-</p></td></tr>
-
-<tr><td><p>
-Update permit categories to add 'deposit for recovery' and tweak labels slightly - converting 'recycling' to treatment and storage'.
-</p></td><td><p>
-Some users found the deposit for recovery tricky to find and it's a popular permit type so we think it justifies a category of its own. This is to be tested in August 2017 and reviewed after that.
-</p></td></tr>
-
-<tr><td><p>
-Add a page to collect dates of birth for company directors.
-</p></td><td><p>
-Business requirement. We use this to check conviction and other records. To help users, we propose to get a list of the 'active' company directors from Companies House together with month and year. Users then will be asked to supply the day date for each director. 
-</p></td></tr>
-
-<tr><td><p>
-Add back links to most question pages.
-</p></td><td><p>
-User need is to get back to a previous page when they don't trust the back function in the browser. It's also a GDS standard introduced in July 2017: question pages should have a back link. We're working on adapting this to the task list pattern, but added it to the prototype to test later with users.
-</p></td></tr>
-
-<tr><td><p>
-Add screen to allow users to download a copy of their application.
-</p></td><td><p>
-In the July user testing, several users said they'd like a copy of their application. In this version to be tested, we show it as a download after payment. Although some users suggested that it would be good to get by email, we're going to test without that becasue data protextion tell us that sending personal data by email may not be desirable.
-</p></td></tr>
-
-<tr><td><p>
-Add permit details to confirmation email.
-</p></td><td><p>
-Users said they'd like the email to state the permit name.
-</p></td></tr>
-
-<tr><td><p>
-Provide copyright information on postcode lookup pages.
-</p></td><td><p>
-We can't use the OS Places postcode lookup without adding this statement and a link to a page about terms of use. This is to make clear that the Open Gov licence does not also cover the OS Places data.
-</p></td></tr>
-
-
-
-</table>        
+  
+    <tr>
+      <th>
+        <p>Summary of change in v1</p>
+      </th>
+      <th>
+        <p>Reason/source</p>
+      </th>
+    </tr>
+    <tr>
+      <td>
+        <p>Moved permit selection to start and give custom data about permit and customised flow for permit</p>
+      </td>
+      <td>
+        <p>Based on GDS <a href="https://www.google.com/url?q=https://check-before-you-start.herokuapp.com/&amp;sa=D&amp;ust=1493385821202000&amp;usg=AFQjCNHay38Jbgid73PKjhiy68CAgOQ0-g">&lsquo;check before you start&rsquo; pattern</a>. Allows users to find out correct rules and cost and also to customise the form based on the things the user needs to do.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Add payment options based on GOV.UK pay screens</p>
+      </td>
+      <td>
+        <p>Use of GOV.UK Pay platform instead of credit card form allows users to pay online</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Remove &lsquo;confirmations&rsquo; where these are implicit (eg for uploads)</p>
+      </td>
+      <td>
+        <p>Simplify for users</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Remove multiple declarations and contact details for those declarations</p>
+      </td>
+      <td>
+        <p>Simplify for users - based on us seeking legal agreement to allow agent to declare on behalf of the operator.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Add done page and email confirmation</p>
+      </td>
+      <td>
+        <p>Standard patterns</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Add mockup of GOV.UK guidance page</p>
+      </td>
+      <td>
+        <p>Shows likely journey as we won&rsquo;t be allowed a start page due to volume of transactions</p>
+      </td>
+    </tr>
+  
+</table>     
         
         
 <p>&nbsp;</p>
