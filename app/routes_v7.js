@@ -108,7 +108,7 @@ router.post('/save-and-return/confirm', function (req, res) {
 
 router.post('/save-and-return/sent', function (req, res) {
   res.render(folder + '/save-and-return/sent',{
-    "formAction":"/"+ folder + "/selectpermit/permit-category2"
+    "formAction":"/"+ folder + "/check/task-list"
   })
 })
 
@@ -200,7 +200,7 @@ router.post('/check/task-list', function (req, res) {
 // Called by task list page via AJAX to log the first visit
 router.get('/task-list-visit', function (req, res) {
   // if this is the first visit, 'saveProgress' will be set to started-application
-  if(req.session.data.saveProgress='started-application'){
+  if(req.session.data.saveProgress=='started-application'){
     req.session.data.saveProgress='task-list-visited'
   }
   res.sendStatus(200)
