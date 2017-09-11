@@ -31,11 +31,12 @@
 {% set tConfidentiality = "Confirm confidentiality needs" %}
 {% set tSend = "Send application and pay" %}
 
-<main id="content" role="main">
+<main id="content" role="main" class="task-list">
   {% include "includes/phase_banner_beta.html" %}
 
   <div class="grid-row">
     <div class="column-two-thirds column-minimum">
+    
       
       <form method="post" action="/{{folder}}/check/check-answers" name="tasklist">
 
@@ -58,7 +59,7 @@
   Apply for a standard rules waste permit
 </h1>
   
-<p class="text">{{permit.permitName}} <span class="heading-small">{{permit.permitCode}}</span><br><a class="font-small" href="/{{folder}}/selectpermit/permit-category2">Select a different permit</a></p>
+<p class="text">{{permit.permitName}} - {{permit.permitCode}}<br><a class="font-small" href="/{{folder}}/selectpermit/permit-category2">Select a different permit</a></p>
 
 <ol class="task-list"> 
   <!-- 1. BEFORE YOU APPLY ############################################################### -->
@@ -371,7 +372,44 @@
 
       </form>
     </div>
+    
+    <!-- Only show if 'Tasklist Save' route -->
+    {% if permit.saveProgress=='save-link-sent'  %}
+
+      <div class="column-one-third application-saved">
+      <aside class="govuk-related-items">
+        <h2 class="heading-medium">Application saved</h2>
+        <p>
+          We sent a secure return link to {{ permit.saveReturnEmail or permit.saveReturnPhone }}.
+        </p>
+        <p>
+          Your reference is {{ permit.permitRefNumber }}.
+        </p>
+      </aside>
+      </div>
+
+    {% endif %}
+    
   </div>
 </main>
 
+{% endblock %}
+
+
+{% block page_scripts %}
+<script>
+  $(document).ready(function () {
+    
+    $.ajax({
+          url: '/{{folder}}/task-list-visit',
+          success: function(){
+             //alert('reply')
+          },     
+          error: function(){
+              //alert('timeout/error')
+          }
+       })
+       
+  })
+</script>
 {% endblock %}

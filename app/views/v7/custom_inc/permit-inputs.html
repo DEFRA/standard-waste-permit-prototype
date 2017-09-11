@@ -39,7 +39,7 @@
 {% set num2 = [1,2,3,4,5,6,7,8,9,0] | random %}
 {% set num3 = [1,2,3,4,5,6,7,8,9,0] | random %}
 {% set num4 = [1,2,3,4,5,6,7,8,9,0] | random %}
-{% set refnum = "EPR/"+let1+let2+num1+num2+num3+num4+let3+let4 %}
+{% set refnum = let1+let2+num1+num2+num3+num4+let3+let4 %}
               
               
 <input type="hidden" name="permitRefNumber" value="{{ refnum }}"> 
