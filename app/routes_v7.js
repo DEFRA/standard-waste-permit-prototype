@@ -77,21 +77,21 @@ router.get('/check/process-link', function (req, res) {
 
 router.get('/start/start-or-resume', function (req, res) {
   res.render(folder + '/start/start-or-resume',{
-      "formAction":"/"+ folder + "/selectpermit/permit-category2"
+      "formAction":"/"+ folder + "/save-and-return/save-choice"
   })
 })
 
 router.post('/start/start-or-resume', function (req, res) {
   res.render(folder + '/start/start-or-resume',{
-      "formAction":"/"+ folder + "/selectpermit/permit-category2"
+      "formAction":"/"+ folder + "/save-and-return/save-choice"
   })
 })
 
 // This is not a real page, just a URL for the route
 router.post('/save-and-return/save-choice', function (req, res) {
   if(req.body['started-application']=="no"){ // think you need square bracket for radios
-      res.render(folder + '/save-and-return/email-or-phone',{
-          "formAction":"/"+ folder + "/save-and-return/confirm"
+      res.render(folder + '/selectpermit/permit-category2',{
+          "formAction":"/"+ folder + "/selectpermit/choose-permit2"
       })
   } else {
       res.render(folder + '/save-and-return/already-started',{
