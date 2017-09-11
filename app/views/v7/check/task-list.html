@@ -59,7 +59,7 @@
   Apply for a standard rules waste permit
 </h1>
   
-<p class="text">{{permit.permitName}} <span class="heading-small">{{permit.permitCode}}</span><br><a class="font-small" href="/{{folder}}/selectpermit/permit-category2">Select a different permit</a></p>
+<p class="text">{{permit.permitName}} - {{permit.permitCode}}<br><a class="font-small" href="/{{folder}}/selectpermit/permit-category2">Select a different permit</a></p>
 
 <ol class="task-list"> 
   <!-- 1. BEFORE YOU APPLY ############################################################### -->
@@ -378,8 +378,13 @@
 
       <div class="column-one-third">
       <aside class="govuk-related-items">
-        <h2 class="heading-medium">Permit application saved</h2>
-        <p>We've sent a secure link to <span class="bold">{{ permit.saveReturnEmail or permit.saveReturnPhone }}</span> that allows you to return to your application at any time. You won't need a password.</p>
+        <h2 class="heading-medium">Application saved</h2>
+        <p>
+          We sent a secure return link to {{ permit.saveReturnEmail or permit.saveReturnPhone }}.
+        </p>
+        <p>
+          Your reference is {{ permit.permitRefNumber }}.
+        </p>
       </aside>
       </div>
 

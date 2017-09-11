@@ -209,7 +209,7 @@ router.get('/task-list-visit', function (req, res) {
 
 // Check permit via GET route for links
 router.get('/check/task-list', function (req, res) {
-  if(typeof req.query['chosenPermitID']==='undefined' && typeof     req.query['testmode']==='undefined'){  // simple error handling
+  if(typeof req.query['chosenPermitID']==='undefined' && typeof     req.query['testmode']==='undefined'  && typeof     req.query['return']==='undefined'){  // simple error handling
     res.render(folder + '/error/index',{ 
         "errorText":"Please select a permit"
     })
@@ -219,6 +219,10 @@ router.get('/check/task-list', function (req, res) {
       "formAction":"/"+ folder + "/check/check-answers",
       "chosenPermitID":sample.permit['chosenPermitID'],
       "permit":sample.permit
+    })
+  } else if(req.query['return']=='y') { // from return email
+    res.render(folder + '/check/task-list',{
+      "formAction":"/"+ folder + "/check/check-answers"
     })
   } else {
     // save chosen Permit ID in session
