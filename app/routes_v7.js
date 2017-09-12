@@ -90,8 +90,8 @@ router.post('/start/start-or-resume', function (req, res) {
 // This is not a real page, just a URL for the route
 router.post('/save-and-return/save-choice', function (req, res) {
   if(req.body['started-application']=="no"){ // think you need square bracket for radios
-      res.render(folder + '/save-and-return/email-or-phone',{
-          "formAction":"/"+ folder + "/save-and-return/confirm"
+      res.render(folder + '/selectpermit/permit-category2',{
+          "formAction":"/"+ folder + "/selectpermit/choose-permit2"
       })
   } else {
       res.render(folder + '/save-and-return/already-started',{
@@ -108,7 +108,7 @@ router.post('/save-and-return/confirm', function (req, res) {
 
 router.post('/save-and-return/sent', function (req, res) {
   res.render(folder + '/save-and-return/sent',{
-    "formAction":"/"+ folder + "/selectpermit/permit-category2"
+    "formAction":"/"+ folder + "/check/task-list"
   })
 })
 
@@ -184,10 +184,10 @@ router.post('/check/save-permit-details', function (req, res) {
 
 
 router.post('/check/task-list', function (req, res) {
-  if( req.body['digitalMVP']=='No' ) {
-    // Show non-digital route
-    res.render(folder + '/selectpermit/permit-not-in-service',{
-      "chosenPermitID":req.body['chosenPermitID']
+  if( res.locals.data.saveProgress=='task-list-visited' ) {
+    // Show save screen
+    res.render(folder + '/save-and-return/email-or-phone',{
+        "formAction":"/"+ folder + "/save-and-return/confirm"
     })
   } else {
     // Show task list
@@ -197,10 +197,19 @@ router.post('/check/task-list', function (req, res) {
   }
 })
 
+// Called by task list page via AJAX to log the first visit
+router.get('/task-list-visit', function (req, res) {
+  // if this is the first visit, 'saveProgress' will be set to started-application
+  if(req.session.data.saveProgress=='started-application'){
+    req.session.data.saveProgress='task-list-visited'
+  }
+  res.sendStatus(200)
+})
+
 
 // Check permit via GET route for links
 router.get('/check/task-list', function (req, res) {
-  if(typeof req.query['chosenPermitID']==='undefined' && typeof     req.query['testmode']==='undefined'){  // simple error handling
+  if(typeof req.query['chosenPermitID']==='undefined' && typeof     req.query['testmode']==='undefined'  && typeof     req.query['return']==='undefined'){  // simple error handling
     res.render(folder + '/error/index',{ 
         "errorText":"Please select a permit"
     })
@@ -211,6 +220,10 @@ router.get('/check/task-list', function (req, res) {
       "chosenPermitID":sample.permit['chosenPermitID'],
       "permit":sample.permit
     })
+  } else if(req.query['return']=='y') { // from return email
+    res.render(folder + '/check/task-list',{
+      "formAction":"/"+ folder + "/check/check-answers"
+    })
   } else {
     // save chosen Permit ID in session
     // no form entries to add to session 
@@ -220,6 +233,7 @@ router.get('/check/task-list', function (req, res) {
     })
   }
 })
+
 
 
 // Category method
@@ -936,8 +950,6 @@ router.post('/search-permit/sr-permits', function (req, res) {
 
 // Send permit data in session to every page ==================================
 router.all('*', function (req, res, next) {
-  // set a folder and store in locals
-  // this can then be used in pages as {{folder}}
   res.locals.permit=res.locals.data
   next()
 });
