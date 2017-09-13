@@ -533,11 +533,47 @@ router.get('/operator/company/company-name', function (req, res) {
   })
 })
 
+
+/* Old route for addresses */
+// router.post('/operator/company/company-addresses', function (req, res) {
+//  res.render(folder + '/operator/company/company-addresses',{
+//      "formAction":"/"+ folder + "/operator/company/check-officers"
+//  })
+// })
+
+/* New route */
+
 router.post('/operator/company/company-addresses', function (req, res) {
   res.render(folder + '/operator/company/company-addresses',{
-      "formAction":"/"+ folder + "/operator/company/check-officers"
+      "formAction":"/"+ folder + "/operator/company/addresscheck"
   })
 })
+
+router.get('/operator/company/company-addresses', function (req, res) {
+  res.render(folder + '/operator/company/company-addresses',{
+      "formAction":"/"+ folder + "/operator/company/addresscheck"
+  })
+})
+
+// This is not a real page, just a URL for the route
+router.post('/operator/company/addresscheck', function (req, res) {
+  if(req.body['differentMainBusinessAddress']=="Yes"){ 
+    // show main business postcode
+      res.render(folder + '/operator/company/main-business-postcode',{
+          "formAction":"/"+ folder + "/operator/company/main-business-address"
+      })
+  } else if (req.body['differentBillingAddress']=="Yes") {
+    // show billing address postcode
+      res.render(folder + '/operator/company/billing-postcode',{
+          "formAction":"/"+ folder + "/operator/company/billing-address"
+      })
+  } else {
+  res.render(folder + '/operator/company/check-officers',{
+      "formAction":"/"+ folder + "/operator/company/check-officers"
+   })  
+  }
+})
+
 
 
 /* limited company OFFICERS ====================== */
