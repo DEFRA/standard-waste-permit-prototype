@@ -692,10 +692,6 @@ router.get('/check-special-cases', function (req, res) {
     res.render(folder + '/specialcases/sr-2009-4',{
         "formAction":"/"+ folder + nextPage
     })
-  } else if (req.session.data['permitID'] == "SR-2009-8") {
-    res.render(folder + '/specialcases/sr-2009-8',{
-        "formAction":"/"+ folder + nextPage
-    })
   } else if (req.session.data['permitID'] == "SR-2010-2") {
     res.render(folder + '/specialcases/sr-2010-2_3',{
         "formAction":"/"+ folder + nextPage
@@ -725,6 +721,14 @@ router.get('/check-special-cases', function (req, res) {
   } else { // NO SPECIAL CASES
     res.redirect('/'+folder+'/check/overview')
   }
+})
+
+// Mining waste plan for 2009-8 =========================================================
+
+router.get('/specialcases/2009-8/sr-2009-8', function (req, res) {
+  res.render(folder + '/specialcases/2009-8/sr-2009-8',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
 })
 
 

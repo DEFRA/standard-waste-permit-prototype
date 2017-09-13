@@ -14,7 +14,7 @@
 {% set tCheckRules = "Check you meet the rules" %}
 {% set tCheckCost = "Check permit cost and time" %}
 {% set tStackHeight = "Give the stack height" %}
-{% set tWasteManPlan = "Upload a waste management plan checklist" %}
+{% set tMiningWasteManPlan = "Confirm you have a mining waste management plan" %}
 {% set tStartDate = "Tell us the date when you want the permit to start" %}
 {% set tMiningWastePlan = "Specify the type of mining waste plan" %}
 {% set tDrainage = "Confirm the drainage system for the vehicle storage area" %}
@@ -36,7 +36,6 @@
 
   <div class="grid-row">
     <div class="column-two-thirds column-minimum">
-    
       
       <form method="post" action="/{{folder}}/check/check-answers" name="tasklist">
 
@@ -89,10 +88,6 @@
       {% set linkText=tStackHeight %}
     {% endif %}
 
-    {% if permit.permitID=="SR-2009-8" %}
-      {% set linkText=tWasteManPlan %}
-    {% endif %}
-
     {% if permit.permitID=="SR-2010-2" or permit.permitID=="SR-2010-3" %}
       {% set linkText=tStartDate %}
     {% endif %}
@@ -112,7 +107,6 @@
     
     {% if 
       permit.permitID=="SR-2009-4" or 
-      permit.permitID=="SR-2009-8" or 
       permit.permitID=="SR-2010-2" or 
       permit.permitID=="SR-2010-3" or 
       permit.permitID=="SR-2014-2" or 
@@ -272,6 +266,28 @@
       {% endif %}
     </li>
   {% endif %}
+  
+  <!-- Mining waste management plan 2009-8 ############################################################### -->
+  {% if permit.miningWasteManagementPlanRequired=="Yes" %}
+    <li class="task-list-item {% if taskListError and permit.miningWasteManagementPlanConfirmed==null %} form-group-error{% endif %}" id="{{ tMiningWasteManPlan  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+      {% if taskListError and permit.miningWasteManagementPlanConfirmed==null %}
+        <span class="error-message">
+          Complete this task
+        </span>
+      {% endif %}
+         <a class="task-name" href="{% if permit.miningWasteManagementPlanConfirmed!=null %}
+        /{{folder}}/specialcases/2009-8/sr-2009-8
+      {% else %}
+        /{{folder}}/specialcases/2009-8/sr-2009-8
+      {% endif %}" aria-describedby="mwp-completed">
+          {{ tMiningWasteManPlan }}
+        </a>
+        {% if permit.miningWasteManagementPlanConfirmed!==null %} <strong class="task-completed" id="mwp-completed">Completed</strong> 
+        {% else %}
+        <input type="hidden" name="complete[]" value="{{ tMiningWasteManPlan }}">
+      {% endif %}
+    </li>
+  {% endif %}
       
     <li class="task-list-item {% if taskListError and permit.industryScheme==null %} form-group-error{% endif %}" id="{{ tTechManagement  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
       {% if taskListError and permit.industryScheme==null %}
@@ -310,6 +326,8 @@
       <input type="hidden" name="complete[]" value="{{ tManSystem }}">
       {% endif %}
     </li>
+    
+
       
   <!-- Fire prevention plan ############################################################### -->
   {% if permit.firePlanNeeded=="Yes" %}
