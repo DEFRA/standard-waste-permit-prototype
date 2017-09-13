@@ -243,3 +243,9 @@ span.pay-text {
 .email-banner {
   background: $black;
 }
+
+table.change-log td{vertical-align:top;}
+table.change-log td, table.change-log th{padding:0.5em;width:50%;}
+table.change-log th,
+table.change-log th p{font-weight:bold;background-color:#EDEDED;}
+table.change-log th p, table.change-log td p{margin:0.2em 0;}

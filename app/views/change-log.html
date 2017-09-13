@@ -14,30 +14,19 @@ REGEXP replacements for google HTML
 
 {% block content %}
 
-<style>
-  td{vertical-align:top;}
-  table td, table th{padding:0.5em;width:50%;}
-  th,th p{font-weight:bold;background-color:#EDEDED;}
-  th p, td p{margin:0.2em 0;}
-</style>
-
 <main id="content" role="main">
 
+  <h1 class="heading-xlarge">
+  Prototype change log
+  </h1>
 
-      <h1 class="heading-xlarge">
-		Prototype change log
-	  </h1>
-    
-
-      <p>This summarises the main changes we've made in response to feedback.</p>
-      
+  <p>This summarises the main changes we've made in response to feedback.</p>
 
 
+  <h2 class="heading-large">Version 6 to 7</h2>
+  <p><a href="index-v7">Version 7</a></p>
 
-    <h2 class="heading-large">Version 6 to 7</h2>
-    <p><a href="index-v7">Version 7</a></p>
-
-<table>
+<table class="change-log">
 <tr>
 <th>
   <p>Summary of change in v7</p>
@@ -46,6 +35,12 @@ REGEXP replacements for google HTML
   <p>Reason/source</p>
 </th>
 </tr>
+
+<tr><td><p>
+Update mining waste plan content for SR 2009-8. Remove other questions for this permit.
+</p></td><td><p>
+Agreed with business to simplify requirements so that a mining waste plan check list is not needed.
+</p></td></tr>
 
 <tr><td><p>
 Add inert waste transfer station rule sets, SR-2008-10 and SR-2008-11, to permit list.
@@ -171,7 +166,7 @@ We can't use the OS Places postcode lookup without adding this statement and a l
     <h2 class="heading-large">Version 5 to 6</h2>
     <p><a href="index-v6">Version 6</a></p>
 
-<table>
+<table class="change-log">
   <tr>
     <th>
       <p>Summary of change in v6</p>
@@ -232,7 +227,7 @@ This is a first draft for user lab testing based on a smart answer format.
       <h2 class="heading-large">Version 4 to 5</h2>
   <p><a href="index-v5">Version 5</a> incorporates feedback from user testing and a GDS review of how we were using the task list pattern. </p>
 
-  <table>
+  <table class="change-log">
       
           <tr>
               <th>
@@ -368,10 +363,10 @@ Allows users to find a contact method on every if they are unable to complete th
       
 
 
-      <h2 class="heading-large" id="h.oqh6m4r1qqq1">Version 3 to 4</h2>
+      <h2 class="heading-large">Version 3 to 4</h2>
   <p><a href="index-v4">Version 4</a> incorporates feedback from the third round of user testing. </p>
 
-  <table>
+  <table class="change-log">
       
           <tr>
               <th>
@@ -427,10 +422,10 @@ Allows users to find a contact method on every if they are unable to complete th
   
 
 
-<h2 class="heading-large" id="h.oqh6m4r1qqq1">Version 2a to 3</h2>
+<h2 class="heading-large">Version 2a to 3</h2>
 <p><a href="index-v3">Version 3</a> uses the newly-published GDS pattern for the task list.</p>
 
-<table>
+<table class="change-log">
   
     <tr>
       <th>
@@ -465,184 +460,184 @@ Allows users to find a contact method on every if they are unable to complete th
 
 
       
-    	<h2 class="heading-large" id="h.ydye94crluma">Version 2 to 2a</h2>
-    	<p><a href="index-v2a">Version 2a</a> adds a save and return code and a task list based on the PAFS code</p>
+     <h2 class="heading-large">Version 2 to 2a</h2>
+     <p><a href="index-v2a">Version 2a</a> adds a save and return code and a task list based on the PAFS code</p>
       
-    	<table>
-    		
-    			<tr>
-    				<th>
-    					<p>Summary of change in v2a</p>
-    				</th>
-    				<th>
-    					<p>Reason/source</p>
-    				</th>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Add a save and return code based on DIT export licences</p>
-    				</td>
-    				<td>
-    					<p>V1 research - users don&rsquo;t think they can complete in one go</p>
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Add a task list of sections to complete based on PAFS pattern</p>
-    				</td>
-    				<td>
-    					<p>V1 research - users don&rsquo;t think they can complete in one go</p>
-    				</td>
-    			</tr>
-    		
-    	</table>
+     <table class="change-log">
       
+       <tr>
+        <th>
+         <p>Summary of change in v2a</p>
+        </th>
+        <th>
+         <p>Reason/source</p>
+        </th>
+       </tr>
+       <tr>
+        <td>
+         <p>Add a save and return code based on DIT export licences</p>
+        </td>
+        <td>
+         <p>V1 research - users don&rsquo;t think they can complete in one go</p>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <p>Add a task list of sections to complete based on PAFS pattern</p>
+        </td>
+        <td>
+         <p>V1 research - users don&rsquo;t think they can complete in one go</p>
+        </td>
+       </tr>
       
-
-      
-    	<h2 class="heading-large" id="h.z0gvv6cfwels">Version 1 to 2</h2>
-    	<p><a href="index-v2">Version 2</a> incorporates feedback from the first round of user testing.</p>
-    	<table>
-    		
-    			<tr>
-    				<th>
-    					<p>Summary of change in v2</p>
-    				</th>
-    				<th>
-    					<p>Reason/source</p>
-    				</th>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Move &lsquo;harder to complete&rsquo; sections to start before easier to complete sections, such as about the operator.</p>
-    				</td>
-    				<td>
-    					<p>V1 research - users don&rsquo;t think they can complete in one go</p>
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>For cheque and BACS we need to provide payment reminder on or after the &#39;done&#39; page. - Cheque and BACS details added to done screen and email</p>
-    				</td>
-    				<td>
-    					<p>User research and UX best practice - users may forget</p>
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Added permits that may not be available for online application - eg landspreading</p>
-    				</td>
-    				<td>
-    					<p>User feedback - users were not sure why permits were not displayed.</p>
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Add &#39;special case&#39; extra questions for 7 permits</p>
-    				</td>
-    				<td>
-    					<p>Did not have time to add in v1</p>
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Link to full guidance for Fire Prevention Plan, not summary.</p>
-    				</td>
-    				<td>
-    					<p>User feedback, and need to test reaction to full guidance</p>
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Technical competence: correct the guidance to explain there are other ways to meet the competence check.</p>
-    				</td>
-    				<td>
-    					<p></p>
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Add indicative declaration text</p>
-    				</td>
-    				<td>
-    					<p>Missing in v1</p>
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Add indicative data protection text</p>
-    				</td>
-    				<td>
-    					<p>Missing in v1</p>
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Make site plan conditional for permits that don&rsquo;t need them</p>
-    				</td>
-    				<td>
-    					<p>User feedback</p>
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Change risk assessment text &lsquo;Download and complete&rsquo; to &lsquo;Check that you can comply with the&hellip;&rsquo;</p>
-    				</td>
-    				<td>
-    					<p>User feedback</p>
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Inconsistency between 5mb and 10mb upload limit - switch to 10MB</p>
-    				</td>
-    				<td>
-    					<p>We have feedback on 5MB &lsquo;straw man&rsquo; so switch to higher limit.</p>
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Use Data Returns multiple upload pattern for file uploads</p>
-    				</td>
-    				<td>
-    					<p>User feedback - did not know they could upload more than one</p>
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Management system - wording around &lsquo;Our management system does not meet your guidance&rsquo; - improve wording.</p>
-    				</td>
-    				<td>
-    					<p>User and business feedback - this was a poor conversion from the paper form - still &nbsp;needs further discussion.</p>
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Add &lsquo;BACS&rsquo; text to bank transfer page</p>
-    				</td>
-    				<td>
-    					<p>Users are familiar with &lsquo;BACS&rsquo;</p>
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<p>Could you have the name and address of the site in the email - added to email</p>
-    				</td>
-    				<td>
-    					<p>User feedback.</p>
-    				</td>
-    			</tr>
-    		
-    	</table>
+     </table>
       
       
 
+      
+     <h2 class="heading-large">Version 1 to 2</h2>
+     <p><a href="index-v2">Version 2</a> incorporates feedback from the first round of user testing.</p>
+     <table class="change-log">
+      
+       <tr>
+        <th>
+         <p>Summary of change in v2</p>
+        </th>
+        <th>
+         <p>Reason/source</p>
+        </th>
+       </tr>
+       <tr>
+        <td>
+         <p>Move &lsquo;harder to complete&rsquo; sections to start before easier to complete sections, such as about the operator.</p>
+        </td>
+        <td>
+         <p>V1 research - users don&rsquo;t think they can complete in one go</p>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <p>For cheque and BACS we need to provide payment reminder on or after the &#39;done&#39; page. - Cheque and BACS details added to done screen and email</p>
+        </td>
+        <td>
+         <p>User research and UX best practice - users may forget</p>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <p>Added permits that may not be available for online application - eg landspreading</p>
+        </td>
+        <td>
+         <p>User feedback - users were not sure why permits were not displayed.</p>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <p>Add &#39;special case&#39; extra questions for 7 permits</p>
+        </td>
+        <td>
+         <p>Did not have time to add in v1</p>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <p>Link to full guidance for Fire Prevention Plan, not summary.</p>
+        </td>
+        <td>
+         <p>User feedback, and need to test reaction to full guidance</p>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <p>Technical competence: correct the guidance to explain there are other ways to meet the competence check.</p>
+        </td>
+        <td>
+         <p></p>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <p>Add indicative declaration text</p>
+        </td>
+        <td>
+         <p>Missing in v1</p>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <p>Add indicative data protection text</p>
+        </td>
+        <td>
+         <p>Missing in v1</p>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <p>Make site plan conditional for permits that don&rsquo;t need them</p>
+        </td>
+        <td>
+         <p>User feedback</p>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <p>Change risk assessment text &lsquo;Download and complete&rsquo; to &lsquo;Check that you can comply with the&hellip;&rsquo;</p>
+        </td>
+        <td>
+         <p>User feedback</p>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <p>Inconsistency between 5mb and 10mb upload limit - switch to 10MB</p>
+        </td>
+        <td>
+         <p>We have feedback on 5MB &lsquo;straw man&rsquo; so switch to higher limit.</p>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <p>Use Data Returns multiple upload pattern for file uploads</p>
+        </td>
+        <td>
+         <p>User feedback - did not know they could upload more than one</p>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <p>Management system - wording around &lsquo;Our management system does not meet your guidance&rsquo; - improve wording.</p>
+        </td>
+        <td>
+         <p>User and business feedback - this was a poor conversion from the paper form - still &nbsp;needs further discussion.</p>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <p>Add &lsquo;BACS&rsquo; text to bank transfer page</p>
+        </td>
+        <td>
+         <p>Users are familiar with &lsquo;BACS&rsquo;</p>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <p>Could you have the name and address of the site in the email - added to email</p>
+        </td>
+        <td>
+         <p>User feedback.</p>
+        </td>
+       </tr>
+      
+     </table>
+      
+      
 
-<h2 class="heading-large" id="h.py5adz5bbmp0">Version 0 to 1</h2>
+
+<h2 class="heading-large">Version 0 to 1</h2>
 <p><a href="index-v0">Version 0</a> was a baseline version based closely on the paper forms.</p>
 <p><a href="index-v1">Version 1</a> was our first main iteration for testing</p>
 
-<table>
+<table class="change-log">
   
     <tr>
       <th>
