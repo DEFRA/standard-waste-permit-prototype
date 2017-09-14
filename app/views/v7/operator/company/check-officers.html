@@ -51,6 +51,8 @@
     "12" : "December"
   }
 -%}
+
+{% set loopnum=1 %}
       
 {% for o in officers %}
   {% if o.resigned_on==null %}
@@ -63,8 +65,8 @@
           
           <td>
             <div class="form-group-day">
-              <label class="form-label visually-hidden" for="dob-day">Birth day date for {{ dirName }}</label>
-              <input class="form-control" id="dob-day" name="directorDobDay[{{ dirName }}]" type="number" pattern="[0-9]*" min="0" max="31">
+              <label class="form-label visually-hidden" for="dob-day-{{loopnum}}">Birth day date for {{ dirName }}</label>
+              <input class="form-control" id="dob-day-{{loopnum}}" name="directorDobDay[{{ dirName }}]" type="number" pattern="[0-9]*" min="0" max="31">
             </div>
           </td>
           
@@ -72,6 +74,8 @@
           <td>{{ o.date_of_birth.year }}</td>
           <input name="directorDobRest[{{ dirName }}]" type="hidden" value="/{{ o.date_of_birth.month }}/{{ o.date_of_birth.year }}">
         </tr>
+        
+        {% set loopnum=loopnum+1 %}
     {% endif %}
   {% endif %}
 
