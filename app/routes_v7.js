@@ -561,7 +561,7 @@ router.post('/operator/company/addresscheck', function (req, res) {
           "formAction":"/"+ folder + "/operator/company/billing-address"
       })
   } else {
-  res.render(folder + '/operator/company/check-officers',{
+  res.render(folder + '/operator/company/go-to-check-officers',{
       "formAction":"/"+ folder + "/operator/company/check-officers"
    })  
   }
@@ -599,13 +599,21 @@ router.post('/operator/company/billingcheck', function (req, res) {
 
 router.post('/operator/company/billing-address', function (req, res) {
   res.render(folder + '/operator/company/billing-address',{
-      "formAction":"/"+ folder + "/operator/company/check-officers"
+      "formAction":"/"+ folder + "/operator/company/go-to-check-officers"
   })
 })
 
 // Can find address in the list, manual input
 router.get('/operator/company/billing-address-manual', function (req, res) {
   res.render(folder + '/operator/company/billing-address-manual',{
+      "formAction":"/"+ folder + "/operator/company/go-to-check-officers"
+  })
+})
+
+// auto-submitting pass-through page to ensure check offiers page is posted
+// deals with billing/main address routes
+router.post('/operator/company/go-to-check-officers', function (req, res) {
+  res.render(folder + '/operator/company/go-to-check-officers',{
       "formAction":"/"+ folder + "/operator/company/check-officers"
   })
 })
