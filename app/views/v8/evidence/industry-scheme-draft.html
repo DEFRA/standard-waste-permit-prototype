@@ -1,0 +1,124 @@
+{% extends "layout.html" %}
+
+{% set title = "Which qualification does the person providing technical management have?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+
+
+<form method="post" action="{{formAction}}">
+  <div class="form-group">
+    <fieldset>
+      <legend class="visually-hidden">{{title}}</legend>
+
+      
+<div class="multiple-choice" data-target="info1">
+      <input id="radio-1" type="radio" name="industryScheme" value="CIWM-WAMITAB">
+      <label for="radio-1" 
+      >
+        <abbr title="Waste Management Industry Training and Advisory Board">WAMITAB</abbr> operator competence certificate
+      </label>
+       </div>
+          <div class="panel panel-border-narrow js-hidden" id="info1">
+            <p>Relevant qualifications: 
+            {% if (permit.WAMITAB) %}
+              {{ permit.WAMITAB }}
+            {% else %}
+              WAMITAB Level 4 Medium Risk Operator Competence for Physical Treatment (601/8531/4) (MROC2)
+            {% endif %}
+            <p>Check that the certificate hasn't expired and is less than 2 years old.</p>
+            </p>
+          </div>
+       
+          
+      <div class="multiple-choice" data-target="info2">
+      <input id="radio-2" type="radio" name="industryScheme" value="">
+<label for="radio-2" >
+        Continuing competence certificate from WAMITAB
+      </label>
+        </div>
+          <div class="panel panel-border-narrow js-hidden" id="info2">
+            <p>Check that the certificate hasn't expired and is less than 2 years old.</p>
+            <p>We also need a copy of the original competence certificate.</p>
+            <p>Or you can also upload evidence to show that they:</p>
+            <ul class="list list-bullet">
+              <li>were 'deemed competent'</li>
+              <li>passed an Environment Agency assessment</li>
+              <li>were a nominated manager and passed the General Knowledge Assessment</li>
+            </ul>
+        </div>
+          
+      <div class="multiple-choice" data-target="info3">
+    <input id="radio-3" type="radio" name="industryScheme" value="getting-qualification">
+      <label for="radio-3" 
+      >
+        <abbr title="Energy and Utility Skills">EU Skills</abbr> and 
+        <abbr title="Environmental Services Association">ESA</abbr> 
+        Competence Management Scheme
+      </label>
+      </div>
+          <div class="panel panel-border-narrow js-hidden" id="info3">
+            <p>Check that the certificate hasn't expired.</p>
+        </div>
+      
+      <!--
+      <div class="form-group">  
+        <p>If you are getting the qualification then while you are getting it you can upload:</p>
+      </div>
+    -->
+         <div class="multiple-choice" data-target="info4"> 
+        <input id="radio-4" type="radio" name="industryScheme" value="getting-qualification">
+      <label for="radio-4" 
+      >
+        Environmental Permit Operators Certificate (EPOC)
+      </label>
+       </div> 
+          <div class="panel panel-border-narrow js-hidden" id="info4">
+            <p>You must get a full qualification within 12 months of starting the operation.</p>  
+        </div>
+             
+        <div class="multiple-choice" data-target="info5">  
+        <input id="radio-5" type="radio" name="industryScheme" value="getting-qualification">
+      <label for="radio-5" 
+      >
+        EPOC course registration email or letter
+      </label>
+      </div>
+          <div class="panel panel-border-narrow js-hidden" id="info5">
+            <p>This must show that you have registered to get 4 units from an appropriate qualification.</p>
+            <p>You should complete the EPOC course within 4 weeks of starting the operation.</p>
+            <p>You must get a full qualification within 12 months of starting the operation.</p>
+        </div>
+          
+          
+    </fieldset>
+  </div>
+  
+
+
+
+    
+
+  <div class="form-group">
+      <button type="submit" class="button" name="Continue">Continue</button>
+  </div>
+</form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

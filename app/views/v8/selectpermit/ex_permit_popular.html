@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+
+{% set title = "Select permit: popular" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_beta.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+      
+      {% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/custom_inc/permit-list-json.html" import permits %}
+      
+      {% set minPermitsPerYear = 20 %}
+      
+      <h2 class="heading-small">Common permits (&gt;{{minPermitsPerYear}} a year)</h2>
+      
+      <form method="post" action="{{formAction}}">
+        <div class="form-group">
+          <fieldset class="permitList" aria-labelledby="radio_label">
+            <legend="Permit">
+            
+            {% for pNumber, pData in permits %}
+              {% if pData.digitalMVP=="Yes?" %}
+              
+                {% if pData.predictedForMVP > minPermitsPerYear %}
+                
+                  {% if pData.friendlyWeight!="" %}
+                    {% set weight=" - "+pData.friendlyWeight %}
+                  {% else %}
+                    {% set weight="" %}
+                  {% endif %}
+                
+                  {% set label = [
+                    '<span class="permitName">',
+                    pData.friendlyName,
+                    weight | lower,
+                    '</span>',
+                    '<span class="permitCode">',
+                    pData.code,
+                    '</span>'
+                    ] %}
+                  {{ macros.radio_button(
+                    label | join | safe,
+                    "chosenPermitID",
+                    loop.index,
+                    pNumber,
+                    " permitItem"
+                    ) }}
+                    
+                  {% endif %}
+                    
+              {% endif %}
+            {% else %}
+              <p>No radios</p>
+            {% endfor %}
+
+        
+        
+        <details style="margin-bottom:2em;">
+          <summary><span class="summary">Other permits</span></summary>
+          <div class="panel panel-border-narrow">
+                
+                {% for pNumber, pData in permits %}
+                  {% if pData.digitalMVP=="Yes?" %}
+                  
+                    {% if pData.predictedForMVP <= minPermitsPerYear %}
+                    
+                      {% if pData.friendlyWeight!="" %}
+                        {% set weight=" - "+pData.friendlyWeight %}
+                      {% else %}
+                        {% set weight="" %}
+                      {% endif %}
+                    
+                      {% set label = [
+                        '<span class="permitName">',
+                        pData.friendlyName,
+                        weight | lower,
+                        '</span>',
+                        '<span class="permitCode">',
+                        pData.code,
+                        '</span>'
+                        ] %}
+                      {{ macros.radio_button(
+                        label | join | safe,
+                        "chosenPermitID",
+                        loop.index,
+                        pNumber,
+                        " permitItem"
+                        ) }}
+                        
+                      {% endif %}
+                        
+                  {% endif %}
+                {% else %}
+                  <p>No radios</p>
+                {% endfor %}
+
+              </fieldset>
+            </div>
+            
+            
+            
+          </div>
+        </details>
+        
+
+        <div class="form-group">
+            <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

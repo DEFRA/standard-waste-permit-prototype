@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% set title = "Confirm that your operation meets the rules" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+     <h1 class="heading-large">{{title}}</h1>
+
+    <form method="post" action="{{formAction}}">
+
+<!-- if <input type="hidden" name="readRules" value="yes">. -->
+      <!-- <p>You confirmed that your operation meets the rules</p> -->
+
+{% if permit.readRules %} 
+<div class="panel panel-border-wide">
+<p>You confirmed that your operation meets the rules.</p>
+</div>
+{% endif %}
+
+      <p>
+        Read the <a href="{{permit.guidanceURL}}" target="_blank" rel="noopener noreferrer">rules and risk assessment for permit {{permit.permitCode}} on GOV.UK (opens new tab)</a>.
+      </p>
+
+      <p>If it doesn't meet these rules, you may need a different standard rules permit or a bespoke permit instead.</p>
+      
+        <details>
+          <summary><span class="summary">How to check the rules about site location</span></summary>
+          <div class="panel panel-border-narrow">
+            <p>
+              When you apply for a permit we'll check if your site location meets the rules. For example, if it is too close to heritage and nature conservation sites.
+            </p>
+            <p>
+              If you want us to check this before you complete the rest of your application, you can order a site location check.
+            </p>
+            <p>
+              <a href="http://www.smartsurvey.co.uk/s/HeritageForm/" target="_blank" rel="noopener noreferrer">Order a site location check (opens new tab)</a>
+            </p>
+            <p>
+              We’ll reply within 5 working days.
+            </p>
+          </div>
+        </details>
+
+
+
+         <!-- set readRules to yes -->       
+        <input type="hidden" name="readRules" value="yes">
+        
+
+        <div class="form-group">
+<button type="submit" class="button" name="{% if permit.readRules %}Return to task list{% else %}The operation meets these rules{% endif %}">{% if permit.readRules %}Return to task list{% else %}The operation meets these rules{% endif %}</button>
+        </div>
+
+
+      </form>
+
+    </div>
+  </div>
+
+</main>
+{% endblock %}

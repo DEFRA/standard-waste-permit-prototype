@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+{% set title = "Checks about the use of waste in a deposit for recovery operation" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<div class="panel panel-border-wide">
+  <p>
+    Before applying for a permit to deposit waste on land you should refer to the guidance to decide whether the proposed activity is likely to be viewed by us as recovery or disposal.
+  </p>
+  <p>
+  Prepare your case and present it to us in a waste recovery plan before you submit your permit application. We will try to advise you whether we think your proposal is recovery or disposal within 14 days from receiving the information.
+  </p>
+</div>
+
+
+<form method="post" action="{{formAction}}">
+  
+  <!-- Only shown for SR-2015-39 ##################################### -->
+  
+  <div class="form-group">
+    <fieldset>
+      <legend class="visually-hidden">{{title}}</legend>
+      
+      <p>Select all that apply</p>
+
+      <div class="multiple-choice">
+        <input id="isWasteRecovery" name="isWasteRecovery" type="checkbox" value="It is a waste recovery operation">
+<label for="isWasteRecovery">
+        I am applying for a waste recovery activity involving the permanent deposit of waste on land for construction or land reclamation
+      </label>
+    </div>
+      
+      <div class="multiple-choice">
+        <input id="preAppConfirmsWasteRec" name="preAppConfirmsWasteRec" type="checkbox" value="EA confirms it is waste recovery">
+<label for="preAppConfirmsWasteRec">
+        The Environment Agency have confirmed during pre-application discussions that the activity is waste recovery
+      </label>
+    </div>
+      
+      <div class="multiple-choice">
+        <input id="noChangesWasteRec" name="noChangesWasteRec" type="checkbox" value="No changes to proposal">
+<label for="noChangesWasteRec">
+          There have been no changes our proposal since the pre-application discussion
+      </label>
+    </div>
+
+    </fieldset>
+  </div>
+  
+  <hr />
+  
+  <h2 class="heading-small">Upload a copy of your waste recovery plan</h2>
+  <div class="panel panel-border-wide">
+    <p>
+    Your plan should comply with <a href="https://www.gov.uk/guidance/waste-recovery-plans-and-permits" target="_blank" rel="noopener noreferrer">Regulatory Guidance Note 13</a>. 
+  Highlight in the plan any changes you have made since the pre-application discussions.
+</p>
+</div>
+  
+  
+  <div class="form-group form-upload">
+      <input id="upload" type="file" aria-labelelledby="upload-label">
+      <input id="filename" name="wasteRecoveryPlanFilename" type="hidden">
+    <a href="#">remove file</a>
+  </div>
+  
+  <script>
+    // captures uploaded filename and passes to hidden input
+    document.getElementById('upload').onchange = uploadOnChange;
+    function uploadOnChange() {
+        var filename = this.value;
+        var lastIndex = filename.lastIndexOf("\\");
+        if (lastIndex >= 0) {
+            filename = filename.substring(lastIndex + 1);
+        }
+        document.getElementById('filename').value = filename;
+    }
+  </script>
+
+  
+  <input type="hidden" name="specialCasePageVisited" value="Yes">
+
+<div class="form-group">
+    <button type="submit" class="button" name="Continue">Continue</button>
+</div>
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

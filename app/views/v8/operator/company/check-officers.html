@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+
+{% set title = "Company directors' dates of birth" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+<form action="{{formAction}}" method="post">
+  
+  <p>You must give the date of birth for every director of the company. We use this to check conviction and other records. We won't include this in the public permit register.</p> 
+  
+  <p>We get the list of current directors and their month and year of birth from Companies House.</p>
+
+
+<table class="directors-dob">
+      <thead>
+       <tr>
+          <th scope="col">Director</th>
+          <th scope="col">Date in the month<br><span class="form-hint">For example, 23</span></th>
+          <th scope="col">Month</th>
+          <th scope="col">Year</th>
+        </tr>
+      </thead>
+<tbody>
+{% set months = 
+  {
+    "1" : "January",
+    "2" : "February",
+    "3" : "March",
+    "4" : "April",
+    "5" : "May",
+    "6" : "June",
+    "7" : "July",
+    "8" : "August",
+    "9" : "September",
+    "10" : "October",
+    "11" : "November",
+    "12" : "December"
+  }
+-%}
+
+{% set loopnum=1 %}
+      
+{% for o in officers %}
+  {% if o.resigned_on==null %}
+    {% if o.officer_role=="director" %}
+      {% set dirName = o.name | reverseName | title %}
+        <tr>
+          <td>{{ dirName }}
+          <input name="director[]" type="hidden" value="{{ dirName }}">
+          </td>
+          
+          <td>
+            <div class="form-group-day">
+              <label class="form-label visually-hidden" for="dob-day-{{loopnum}}">Birth day date for {{ dirName }}</label>
+              <input class="form-control" id="dob-day-{{loopnum}}" name="directorDobDay[{{ dirName }}]" type="number" pattern="[0-9]*" min="0" max="31">
+            </div>
+          </td>
+          
+          <td>{{ months[o.date_of_birth.month] }}</td>
+          <td>{{ o.date_of_birth.year }}</td>
+          <input name="directorDobRest[{{ dirName }}]" type="hidden" value="/{{ o.date_of_birth.month }}/{{ o.date_of_birth.year }}">
+        </tr>
+        
+        {% set loopnum=loopnum+1 %}
+    {% endif %}
+  {% endif %}
+
+{% else %}
+  <tr><td>No data</td></tr>
+{% endfor %}
+</tbody>
+</table>
+
+
+<div class="form-group">
+  <button type="submit" class="button" name="Continue">Continue</button>
+</div>
+
+</form>
+
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

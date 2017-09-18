@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% set title = "Technical management qualification" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <h1 class="heading-large">
+    {{title}}
+  </h1>
+
+  <dl class="govuk-check-your-answers cya-questions-short">
+    <div>
+      <dt class="cya-question">
+        Scheme
+      </dt>
+      <dd class="cya-answer">
+      {{permit.industryScheme}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/industry-scheme"> 
+        Change <span class="visuallyhidden">scheme</span>
+        </a>
+      </dd>
+    </div>
+
+        <div>
+      <dt class="cya-question">
+        Certificate
+      </dt>
+      <dd class="cya-answer">
+      {{permit.technicalCertificateFile}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/upload-scheme-certificate"> 
+        Change <span class="visuallyhidden">certificate</span>
+        </a>
+      </dd>
+    </div>
+  </dl>
+
+
+      <form method="post" action="{{formAction}}">
+
+      <div class="form-group">
+        <button type="submit" class="button" name="Return to task list">Return to task list</button>
+      </div>
+
+    </form>
+
+</main>
+
+{% endblock %}

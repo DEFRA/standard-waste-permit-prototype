@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard rules waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+
+<h1 class="heading-large">What you need for your application
+</h1>
+
+<p>The permit you are applying for: Household, commercial and industrial waste transfer station 75 kte SR2015 No.4</p>
+
+
+<h3 class="heading-medium">Which of these do you have ready now?</h3>
+
+
+<!-- need a rule to say if not checked then go to 'You're not ready to apply' -->
+
+<form action="{{formAction}}" method="post">
+  <div class="form-group">
+   <fieldset>
+
+    <legend class="visually-hidden">Which of these do you have ready now?</legend>
+
+    <div class="multiple-choice">
+      <input id="guidance-1" name="guidances" type="checkbox" value="site-plan-check">
+<label for="guidance-1">
+      site plan prepared to <a href="#">site plan standards</a>
+    </label>
+  </div>
+    <div class="multiple-choice">
+      <input id="guidance-2" name="guidances" type="checkbox" value="fire-plan-check">
+<label for="guidance-2">
+      fire prevention plan that complies with the <a href="#">fire plan guidance</a>
+    </label>
+  </div>
+    <div class="multiple-choice">
+      <input id="guidance-3" name="guidances" type="checkbox" value="technical-ability-check">
+<label for="guidance-3">
+      to prove technical ability with <a href="#">certificate or assessment</a>
+    </label>
+  </div>
+    <div class="multiple-choice">
+      <input id="guidance-4" name="guidances" type="checkbox" value="management-system-check">
+<label for="guidance-4">
+      written <a href="#">management system</a>
+    </label>
+  </div>
+    <div class="multiple-choice">
+      <input id="guidance-5" name="guidances" type="checkbox" value="payment-check">
+<label for="guidance-5">
+      credit card or bank details to pay for the permit</a>
+    </label>
+  </div>
+    </fieldset>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="button" name="Continue">Continue</button>
+  </div>
+
+</form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+
