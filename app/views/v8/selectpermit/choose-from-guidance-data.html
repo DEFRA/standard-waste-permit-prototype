@@ -44,7 +44,7 @@
 </header>
 
 
-{% from folder+"/custom_inc/category-list-json.html" import categories %}
+{% from folder+"/custom_inc/category-list-new-json2.html" import categories %}
 {% from folder+"/custom_inc/permit-list-json.html" import permits %}
 
 
@@ -88,8 +88,8 @@
 
 							{% for pNumber, pData in permits %}
 
-							  {% if pData.categoryGOVUK==c.category %}
-							    {% if pData.canApplyOnPaper=="Yes" %}
+							  {% if pData.friendlyCategory2==c.category %}
+							    {% if pData.digitalMVP=="Yes" %}
 							    
 							      {% if pData.friendlyWeight!="" %}
 							        {% set weight=" - "+pData.friendlyWeight %}
