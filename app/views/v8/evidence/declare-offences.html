@@ -20,17 +20,35 @@
 <h1 class="heading-large">{{title}}</h1>
 
 <div>
-
+  
+{% if permit.operatorType=="Limited company" %}
     <p>You must tell us about:</p>
-    
     <ul class="list list-bullet">
-      <li>the person, company or organisation who is applying</li>
-      <li>directors, officers or employees of a company</li>
-      <li>other companies that any directors or officers were connected to when convicted</li>
+      <li>the company itself</li>
+      <li>its directors, managers or company secretaries</li>
+      <li>other companies, if the officers of the company were officers of that other company when they were convicted</li>
     </ul>
+    
+{% elseif permit.operatorType=="Individual" %}
+    <p>You must tell us about:</p>
+    <ul class="list list-bullet">
+      <li>the individual</li>
+      <li>companies for which the individual is a director, manager or company secretary</li>
+    </ul>
+    
+{% elseif permit.operatorType=="Partnership" %}
+    <p>You must tell us about:</p>
+    <ul class="list list-bullet">
+      <li>the individual partners</li>
+      <li>business partners, where the offence was committed in the course of their business</li>
+    </ul>
+    
+{% else %}
+    
+{% endif %}
 
     <p>
-      Read the <a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/government/publications/relevant-conviction-guidance-for-permit-applications-for-waste-activities-and-installations-only">relevant conviction guidance on GOV.UK (opens new tab)</a> for a full list of people and offences.
+      The <a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/government/publications/relevant-conviction-guidance-for-permit-applications-for-waste-activities-and-installations-only">relevant conviction guidance on GOV.UK (opens new tab)</a> gives a full list of people and offences.
     </p>
     
   </div>
