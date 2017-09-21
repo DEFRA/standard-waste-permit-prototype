@@ -68,7 +68,7 @@ router.get('/start/rules-page', function (req, res) {
 // This page should not show for long - it just saves permit data
 router.get('/check/process-link', function (req, res) {
     res.render(folder + '/check/process-link',{ // show save and return pages
-       "formAction":"/"+ folder + "/start/start-or-resume",
+       "formAction":"/"+ folder + "/selectpermit/permit-category2",
        "chosenPermitID":req.query['chosenPermitID']
     })
 })

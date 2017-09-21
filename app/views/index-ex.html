@@ -4,7 +4,7 @@
   Apply for a standard waste permit: experimental
 {% endblock %}
 
-{% set version = "v7" %}
+{% set version = "v8" %}
 
 {% block content %}
 
@@ -49,13 +49,16 @@
   
       <h2 class="heading-medium">Select a permit</h2>
       <ul class="list list-bullet">
+        
+        
+        <li><a href="/{{version}}/search-permit/sr-permits">Select permit: search</a></li>
         <li><a href="/{{version}}/selectpermit/choose-expanding-sections">Select permit: expanding sections</a></li>
         <li><a href="/{{version}}/selectpermit/choose-from-guidance-data">Select permit: directly from guidance via link - list from data</a></li>
         <li><a href="/{{version}}/selectpermit/ex_permit_dropdown">Select permit: dropdown</a></li>
         <li><a href="/{{version}}/selectpermit/ex_permit_radios_all">Select permit: radio buttons, full list</a></li>
         <li><a href="/{{version}}/selectpermit/ex_permit_autocomplete">Select permit: basic autocomplete</a></li>
         <li><a href="/{{version}}/selectpermit/ex_permit_popular">Select permit: popular</a></li>
-        <li><a href="/{{version}}/selectpermit/permit-category">Select permit: category first</a></li>
+        <li><a href="/{{version}}/selectpermit/permit-category2">Select permit: category first</a></li>
       </ul>
       
       <h2 class="heading-medium">Grid reference and maps</h2>

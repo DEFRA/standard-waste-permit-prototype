@@ -25,13 +25,13 @@ $(document).ready(function () {
   $( "form#autoSubmit" ).submit();
 
   // Hide new tab span
-  //$("span.newtab").toggleClass('visually-hidden');
+  $("span.newtab").toggleClass('visually-hidden');
   // Show new tab message on click
-  //$("a[target='_blank']").one("click", function(e){
-      //e.preventDefault();
-      //$(this).blur();
-      //$(this).children( 'span.newtab' ).toggleClass('visually-hidden').addClass('bold-small');
-  //});
+  $("a[target='_blank']").one("click", function(e){
+      e.preventDefault();
+      $(this).blur();
+      $(this).children( 'span.newtab' ).toggleClass('visually-hidden').addClass('bold-small');
+  });
 
 
 })

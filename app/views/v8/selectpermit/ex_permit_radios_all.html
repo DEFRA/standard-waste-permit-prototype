@@ -27,7 +27,7 @@
             <legend="Permit">
             
             {% for pNumber, pData in permits %}
-              {% if pData.digitalMVP=="Yes?" %}
+              {% if pData.digitalMVP=="Yes" %}
                 
                   {% if pData.friendlyWeight!="" %}
                     {% set weight=" - "+pData.friendlyWeight %}
@@ -37,7 +37,7 @@
                 
                   {% set label = [
                     '<span class="permitName">',
-                    pData.friendlyName,
+                    pData.nameGOVUK,
                     weight | lower,
                     '</span>',
                     '<span class="permitCode">',

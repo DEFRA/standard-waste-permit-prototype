@@ -28,7 +28,7 @@
               <option value="">Select permit</option>
             
             {% for pNumber, pData in permits %}
-              {% if pData.digitalMVP=="Yes?" %}
+              {% if pData.digitalMVP=="Yes" %}
                 
                   {% if pData.friendlyWeight!="" %}
                     {% set weight=" - "+pData.friendlyWeight %}
@@ -37,9 +37,7 @@
                   {% endif %}
                 
                   {% set label = [
-                    pData.friendlyName,
-                    " ",
-                    weight | lower,
+                    pData.nameGOVUK,
                     " ",
                     pData.code
                     ] %}
@@ -50,7 +48,7 @@
         
               {% endif %}
             {% else %}
-              <p>No radios</p>
+              <p>No data</p>
             {% endfor %}
             
           </select>
