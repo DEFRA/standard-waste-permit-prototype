@@ -36,9 +36,14 @@ Your site must be managed by a 'competent person'. To prove this, they must have
       </label>
       </div>
         <div class="panel panel-border-narrow js-hidden" id="showWAMITAB">
+          
           <p>
-            The certificate you need for this permit should meet or exceed {{permit.WAMITAB}}.
+            You'll need one of these certificates:
           </p>
+          <ul class="list list-bullet">
+              <li>{{ permit.WAMITAB | replace("|", "</li><li>") | safe }}</li>
+          </ul>
+
         </div>
       
       
