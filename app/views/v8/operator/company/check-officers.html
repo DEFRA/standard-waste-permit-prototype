@@ -1,6 +1,21 @@
 {% extends "layout.html" %}
 
-{% set title = "What are the directors' dates of birth?" %}
+{% set directorCount=0 %}
+{% for o in officers %}
+  {% if o.resigned_on==null %}
+    {% if o.officer_role=="director" %}
+        {% set directorCount=directorCount+1 %}
+    {% endif %}
+  {% endif %}
+{% else %}
+{% endfor %}
+
+{% if directorCount>1 %}
+    {% set title = "What are the directors' dates of birth?" %}
+{% else %}    
+    {% set title = "What is the director’s date of birth?" %}
+{% endif %}
+
 
 {% block page_title %}
     {{title}} - GOV.UK
