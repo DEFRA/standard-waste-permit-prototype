@@ -228,10 +228,30 @@ span.postcode {
 // Directors' DOB table
 .directors-dob {
   margin-bottom: 30px;
+  width:auto;
 }
 
 .directors-dob thead tr {
   vertical-align: top;
+}
+
+table.directors-dob th {
+  font-weight:normal;
+}
+
+.sr-company-dob{
+  @include media(tablet) {
+    width: 2.0em;
+  }
+  display:inline;
+}
+
+.sr-dob-month-year{
+  margin-left:0.3em;
+}
+
+.sr-dob-col{
+  padding-left:2em;
 }
 
 span.pay-text {
