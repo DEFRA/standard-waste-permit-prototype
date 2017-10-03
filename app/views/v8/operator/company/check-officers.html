@@ -57,12 +57,12 @@
   }
 -%}
 
-  <dl class="govuk-check-your-answers cya-questions-long">
+  <dl class="dates-of-birth">
     <div>
-      <dt class="cya-question">
+      <dt class="director-name">
         Director
       </dt>
-      <dd class="cya-answer">
+      <dd class="director-dob">
         Date of birth
       </dd>
     </div>
@@ -75,11 +75,11 @@
       {% set dirName = o.name | reverseName | title %}
 
       <div>
-        <dt class="cya-question">
+        <dt class="director-name">
           {{ dirName }}
           <input name="director[]" type="hidden" value="{{ dirName }}">
         </dt>
-        <dd class="cya-answer">
+        <dd class="director-dob">
           <div class="form-group-day">
             <label class="form-label visually-hidden" for="dob-day-{{loopnum}}">Birth day date for {{ dirName }}</label>
             <input class="form-control sr-company-dob" id="dob-day-{{loopnum}}" name="directorDobDay[{{ dirName }}]" type="number" pattern="[0-9]*" min="0" max="31">
