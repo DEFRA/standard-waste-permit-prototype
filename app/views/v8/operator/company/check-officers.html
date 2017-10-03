@@ -39,14 +39,7 @@
     We use the date of birth to do security checks. We won't include it in the public permit register.
   </p>
 
-<table class="directors-dob">
-      <thead>
-       <tr>
-          <th scope="col">Director</th>
-          <th scope="col" class="sr-dob-col">Date of birth</th>
-        </tr>
-      </thead>
-<tbody>
+
 {% set months = 
   {
     "1" : "January",
@@ -64,49 +57,57 @@
   }
 -%}
 
+  <dl class="govuk-check-your-answers cya-questions-long">
+    <div>
+      <dt class="cya-question">
+        Director
+      </dt>
+      <dd class="cya-answer">
+        Date of birth
+      </dd>
+    </div>
+
 {% set loopnum=1 %}
       
 {% for o in officers %}
   {% if o.resigned_on==null %}
     {% if o.officer_role=="director" %}
       {% set dirName = o.name | reverseName | title %}
-        <tr>
-          <td>{{ dirName }}
-          <input name="director[]" type="hidden" value="{{ dirName }}">
-          </td>
-          
-          <td class="sr-dob-col">
-            <div class="form-group-day">
-              <label class="form-label visually-hidden" for="dob-day-{{loopnum}}">Birth day date for {{ dirName }}</label>
-              <input class="form-control sr-company-dob" id="dob-day-{{loopnum}}" name="directorDobDay[{{ dirName }}]" type="number" pattern="[0-9]*" min="0" max="31">
-             <span class="sr-dob-month-year">
-               {{ months[o.date_of_birth.month] }}
-               {{ o.date_of_birth.year }}
-             </span>
-            </div>
-          </td>
 
-          <input name="directorDobRest[{{ dirName }}]" type="hidden" value="/{{ o.date_of_birth.month }}/{{ o.date_of_birth.year }}">
-        </tr>
-        
-        {% set loopnum=loopnum+1 %}
+      <div>
+        <dt class="cya-question">
+          {{ dirName }}
+          <input name="director[]" type="hidden" value="{{ dirName }}">
+        </dt>
+        <dd class="cya-answer">
+          <div class="form-group-day">
+            <label class="form-label visually-hidden" for="dob-day-{{loopnum}}">Birth day date for {{ dirName }}</label>
+            <input class="form-control sr-company-dob" id="dob-day-{{loopnum}}" name="directorDobDay[{{ dirName }}]" type="number" pattern="[0-9]*" min="0" max="31">
+           <span class="sr-dob-month-year">
+             {{ months[o.date_of_birth.month] }}
+             {{ o.date_of_birth.year }}
+           </span>
+            <input name="directorDobRest[{{ dirName }}]" type="hidden" value="/{{ o.date_of_birth.month }}/{{ o.date_of_birth.year }}">
+          </div>
+        </dd>
+      </div>
+      
+ 
+      {% set loopnum=loopnum+1 %}
     {% endif %}
   {% endif %}
 
 {% else %}
-  <tr><td>No data</td></tr>
+  <p>No data</p>
 {% endfor %}
-</tbody>
-</table>
 
+  </dl>
 
 <div class="form-group">
   <button type="submit" class="button" name="Continue" id="submit">Continue</button>
 </div>
 
 </form>
-
-
 
     </div>
   </div>
