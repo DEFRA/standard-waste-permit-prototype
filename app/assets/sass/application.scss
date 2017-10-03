@@ -223,8 +223,7 @@ span.postcode {
     display: inline;
 }
 
-// Directors DOB definition lists
-// Based on the check your answers CSS
+// Directors DOB definition lists - based on the check your answers CSS
 .dates-of-birth {
 
   margin-bottom: 30px; 
@@ -255,7 +254,7 @@ span.postcode {
 
     @include media(desktop) {
       &:first-child > * {
-        padding-top: 0;
+        border-top: 1px solid $border-colour;
       }
     }
   }
@@ -283,33 +282,16 @@ span.postcode {
   width: 2em;
 }
 
-
-// Directors' DOB table OLD
-
-.sr-company-dob{
-  @include media(tablet) {
-    width: 2.0em;
-  }
-  display:inline;
-}
-
 .sr-dob-month-year{
-  margin-left:0.3em;
+  margin-left:.25em;
 }
-
-.sr-dob-col{
-  padding-left:2em;
-}
-
-
-
-
-
 
 span.pay-text {
   display:block;
   margin:10px 0 0;
 }
+
+
 // Application recieved email mock-up 
 
 .email-banner {
