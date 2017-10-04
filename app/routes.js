@@ -1,6 +1,13 @@
 var express = require('express')
 var router = express.Router()
 
+var os = require('os')
+var hostname = os.hostname()
+router.use(function (req, res, next) {
+  res.locals.hostname=hostname
+  next()
+});
+
 // anything beginning with "/vn" will go into this
 router.use('/v1', require('./routes_v1'));
 router.use('/v2', require('./routes_v2'));
