@@ -1,10 +1,8 @@
 var express = require('express')
 var router = express.Router()
 
-var os = require('os')
-var hostname = os.hostname()
 router.use(function (req, res, next) {
-  res.locals.hostname=hostname
+  res.locals.hostname=process.env.THISHOST
   next()
 });
 
