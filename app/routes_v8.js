@@ -583,16 +583,21 @@ router.get('/operator/company/main-business-address-manual', function (req, res)
 })
 
 
+/* Different business address ====================== */
+
 // This is not a real page, just a URL for the route
 router.post('/operator/company/billingcheck', function (req, res) {
-  if(req.body['mainAsBillingAddress']=="Yes"){ // Use main business address for billing
-    res.render(folder + '/operator/company/check-officers',{
+  if (req.body['mainAsBillingAddress']=="Yes") {
+    res.render(folder + '/operator/company/go-to-check-officers',{
       "formAction":"/"+ folder + "/operator/company/check-officers"
     })
-  } else {
-    // Enter postcode for billing address
+  } else if (req.session.data['differentBillingAddress'] == "Yes") {
     res.render(folder + '/operator/company/billing-postcode',{
         "formAction":"/"+ folder + "/operator/company/billing-address"
+    })
+  } else {
+    res.render(folder + '/operator/company/go-to-check-officers',{
+      "formAction":"/"+ folder + "/operator/company/check-officers"
    })  
   }
 })
@@ -610,14 +615,13 @@ router.get('/operator/company/billing-address-manual', function (req, res) {
   })
 })
 
-// auto-submitting pass-through page to ensure check offiers page is posted
+// auto-submitting pass-through page to ensure check officers page is posted
 // deals with billing/main address routes
 router.post('/operator/company/go-to-check-officers', function (req, res) {
   res.render(folder + '/operator/company/go-to-check-officers',{
       "formAction":"/"+ folder + "/operator/company/check-officers"
   })
 })
-
 
 
 /* limited company OFFICERS ====================== */

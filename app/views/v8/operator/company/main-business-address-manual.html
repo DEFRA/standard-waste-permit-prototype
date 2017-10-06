@@ -55,13 +55,15 @@
 
 </fieldset>
 
-  <div class="form-group">
-   <div class="multiple-choice">
-      <input id="mainAsBillingAddress" name="mainAsBillingAddress" type="checkbox" value="Yes">
-      <label for="mainAsBillingAddress">Use this as our billing address</label>
+  <!-- if user selected different billing address checkbos, show option of using main business address for billing -->
+    {% if permit.differentBillingAddress=="Yes" %} 
+    <div class="form-group">
+     <div class="multiple-choice">
+        <input id="mainAsBillingAddress" name="mainAsBillingAddress" type="checkbox" value="Yes">
+        <label for="mainAsBillingAddress">Use this as our billing address</label>
+      </div>
     </div>
-  </div>
-
+    {% endif %}
 
   <div class="form-group">
       <button type="submit" class="button" name="Continue">Continue</button>
