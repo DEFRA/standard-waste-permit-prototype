@@ -60,12 +60,15 @@
       I can’t find the address in the list</a>
     </p>
   
-  <div class="form-group">
-   <div class="multiple-choice">
-      <input id="mainAsBillingAddress" name="mainAsBillingAddress" type="checkbox" value="Yes">
-      <label for="mainAsBillingAddress">Use this as our billing address</label>
+  <!-- if user selected different billing address checkbos, show option of using main business address for billing -->
+    {% if permit.differentBillingAddress=="Yes" %} 
+    <div class="form-group">
+     <div class="multiple-choice">
+        <input id="mainAsBillingAddress" name="mainAsBillingAddress" type="checkbox" value="Yes">
+        <label for="mainAsBillingAddress">Use this as our billing address</label>
+      </div>
     </div>
-  </div>
+    {% endif %}
 
   </fieldset>
 
