@@ -533,92 +533,11 @@ router.get('/operator/company/company-name', function (req, res) {
   })
 })
 
-
-/* Business and billing addresses ====================== */
-
 router.post('/operator/company/company-addresses', function (req, res) {
   res.render(folder + '/operator/company/company-addresses',{
-      "formAction":"/"+ folder + "/operator/company/addresscheck"
-  })
-})
-
-router.get('/operator/company/company-addresses', function (req, res) {
-  res.render(folder + '/operator/company/company-addresses',{
-      "formAction":"/"+ folder + "/operator/company/addresscheck"
-  })
-})
-
-// This is not a real page, just a URL for the route
-router.post('/operator/company/addresscheck', function (req, res) {
-  if(req.body['differentMainBusinessAddress']=="Yes"){ // Main business address is different
-       // Enter postcode for main billing
-      res.render(folder + '/operator/company/main-business-postcode',{
-          "formAction":"/"+ folder + "/operator/company/main-business-address"
-      })
-  } else if (req.body['differentBillingAddress']=="Yes") { // Billing address is different
-    // Enter postcode for billing address
-      res.render(folder + '/operator/company/billing-postcode',{
-          "formAction":"/"+ folder + "/operator/company/billing-address"
-      })
-  } else {
-  res.render(folder + '/operator/company/go-to-check-officers',{
-      "formAction":"/"+ folder + "/operator/company/check-officers"
-   })  
-  }
-})
-
-/* Main business address ====================== */
-
-router.post('/operator/company/main-business-address', function (req, res) {
-  res.render(folder + '/operator/company/main-business-address',{
-      "formAction":"/"+ folder + "/operator/company/billingcheck"
-  })
-})
-
-// Can find address in the list, manual input
-router.get('/operator/company/main-business-address-manual', function (req, res) {
-  res.render(folder + '/operator/company/main-business-address-manual',{
-      "formAction":"/"+ folder + "/operator/company/billingcheck"
-  })
-})
-
-
-// This is not a real page, just a URL for the route
-router.post('/operator/company/billingcheck', function (req, res) {
-  if(req.body['mainAsBillingAddress']=="Yes"){ // Use main business address for billing
-    res.render(folder + '/operator/company/check-officers',{
-      "formAction":"/"+ folder + "/operator/company/check-officers"
-    })
-  } else {
-    // Enter postcode for billing address
-    res.render(folder + '/operator/company/billing-postcode',{
-        "formAction":"/"+ folder + "/operator/company/billing-address"
-   })  
-  }
-})
-
-router.post('/operator/company/billing-address', function (req, res) {
-  res.render(folder + '/operator/company/billing-address',{
-      "formAction":"/"+ folder + "/operator/company/go-to-check-officers"
-  })
-})
-
-// Can find address in the list, manual input
-router.get('/operator/company/billing-address-manual', function (req, res) {
-  res.render(folder + '/operator/company/billing-address-manual',{
-      "formAction":"/"+ folder + "/operator/company/go-to-check-officers"
-  })
-})
-
-// auto-submitting pass-through page to ensure check offiers page is posted
-// deals with billing/main address routes
-router.post('/operator/company/go-to-check-officers', function (req, res) {
-  res.render(folder + '/operator/company/go-to-check-officers',{
       "formAction":"/"+ folder + "/operator/company/check-officers"
   })
 })
-
-
 
 /* limited company OFFICERS ====================== */
 
