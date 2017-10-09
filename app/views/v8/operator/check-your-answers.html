@@ -73,6 +73,46 @@
       </dd>
     </div>
 
+
+<!-- these are still showing even if the tickboxes are not selected -->
+
+{% if permit.differentMainBusinessAddress=="Yes" %}
+    <div>
+      <dt class="cya-question">
+      Main business address
+      </dt>
+      <dd class="cya-answer">
+      {{permit.mainBusinessAddress}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/company/main-business-postcode"> 
+        Change <span class="visuallyhidden">main business address</span>
+        </a>
+      </dd>
+    </div>
+{% endif %}
+
+{% if permit.differentBillingAddress=="Yes" or permit.mainAsBillingAddress =="Yes" %}
+    <div>
+      <dt class="cya-question">
+      Billing address
+      </dt>
+      <dd class="cya-answer">
+      {% if permit.mainAsBillingAddress =="Yes" %}
+      {{permit.mainBusinessAddress}}
+      {% else %}
+      {{permit.billingAddress}}
+      {% endif %}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/company/billing-postcode"> 
+        Change <span class="visuallyhidden">billing address</span>
+        </a>
+      </dd>
+    </div>
+{% endif %}
+
+
     <div>
       <dt class="cya-question">
       Company directors' dates of birth
