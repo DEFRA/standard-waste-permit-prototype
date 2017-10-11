@@ -74,7 +74,7 @@
             Complete this task
           </span>
         {% endif %}
-        <a class="task-name" href="/{{folder}}/selectpermit/cost-and-time" aria-describedby="cost-and-time-completed">
+        <a class="task-name" href="/{{folder}}/selectpermit/cost-and-time" {% if permit.costTime %} aria-describedby="cost-and-time-completed"{% endif %}>
           {{ tCheckCost }}
         </a>
         {% if permit.costTime %} 
@@ -121,12 +121,12 @@
             Complete this task
           </span>
           {% endif %}
-           <a class="task-name" href="/{{folder}}/check-special-cases">
+           <a class="task-name" href="/{{folder}}/check-special-cases" {% if permit.specialCasePageVisited!==null %} aria-describedby="special-case-complete"{% endif %}>
              {{linkText}}
           </a>
           
           {% if permit.specialCasePageVisited!==null %}
-            <strong class="task-completed">Completed</strong> 
+            <strong class="task-completed" id="special-case-complete">Completed</strong> 
           {% else %}
             <input type="hidden" name="complete[]" value="{{linkText}}">
           {% endif %}
@@ -140,7 +140,7 @@
             Complete this task
           </span>
       {% endif %}
-       <a class="task-name" href="/{{folder}}/read-rules/index" aria-describedby="operation-rules-complete">
+       <a class="task-name" href="/{{folder}}/read-rules/index" {% if permit.readRules %} aria-describedby="operation-rules-complete"{% endif %}>
          {{ tCheckRules }}
        </a>
        {% if permit.readRules %} 
@@ -160,7 +160,7 @@
           /{{folder}}/preapp/check-your-answers
         {% else %}
           /{{folder}}/preapp/preapp-discussion
-        {% endif %}" aria-describedby="preapp-completed">
+        {% endif %}" {% if permit.preAppDiscussion!=null %} aria-describedby="preapp-completed"{% endif %}>
           {{ tPreApp }}
         </a>
         {% if permit.preAppDiscussion!=null %} <strong class="task-completed" id="preapp-completed">Completed</strong>  
@@ -177,7 +177,7 @@
       <span class="task-list-section-number">2. </span> Complete application
     </h2>
     <ul class="task-list-items">
-      <li class="task-list-item {% if taskListError and permit.contactName==null %} form-group-error{% endif %}" id="{{ tContactDetails  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+      <li class="task-list-item {% if taskListError and permit.contactFirstName==null %} form-group-error{% endif %}" id="{{ tContactDetails  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
       {% if taskListError and permit.contactFirstName==null %}
         <span class="error-message">
           Complete this task
@@ -187,7 +187,7 @@
           /{{folder}}/contact/check-your-answers
         {% else %}
           /{{folder}}/contact/contact-details
-        {% endif %}" aria-describedby="contact-details-completed">
+        {% endif %}" {% if permit.contactFirstName!=null %} aria-describedby="contact-details-completed"{% endif %}>
           {{ tContactDetails }} 
         </a>
         {% if permit.contactFirstName!=null %} <strong class="task-completed" id="contact-details-completed">Completed</strong> 
@@ -204,7 +204,7 @@
         <a class="task-name" href="{% if permit.operatorType!=null %}/{{folder}}/operator/check-your-answers
         {% else %}
           /{{folder}}/operator/site-operator
-        {% endif %}" aria-describedby="site-operator-completed">
+        {% endif %}" {% if permit.operatorType!=null %} aria-describedby="site-operator-completed"{% endif %}>
           {{ tPermitHolder }}
         </a>
         {% if permit.operatorType!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong> 
@@ -235,7 +235,7 @@
             /{{folder}}/site/check-your-answers
           {% else %}
             /{{folder}}/site/site-name
-          {% endif %}" aria-describedby="site-name-completed">
+          {% endif %}" {% if permit.siteName!=null %} aria-describedby="site-name-completed"{% endif %}>
             {{ tSiteDetails }}
           </a>
           {% if permit.siteName!=null %} <strong class="task-completed" id="site-name-completed">Completed</strong> 
@@ -258,7 +258,7 @@
         /{{folder}}/site/site-plan-check-your-answers
       {% else %}
         /{{folder}}/evidence/upload-site-plan
-      {% endif %}" aria-describedby="site-plan-completed">
+      {% endif %}" {% if permit.csitePlanFilename!=null %} aria-describedby="site-plan-completed"{% endif %}>
         {{ tSitePlan }}
       </a>
       {% if permit.sitePlanFilename!=null %} <strong class="task-completed" id="site-plan-completed">Completed</strong> 
@@ -280,7 +280,7 @@
         /{{folder}}/specialcases/2009-8/sr-2009-8
       {% else %}
         /{{folder}}/specialcases/2009-8/sr-2009-8
-      {% endif %}" aria-describedby="mwp-completed">
+      {% endif %}" {% if permit.miningWasteManagementPlanConfirmed!==null %} aria-describedby="mwp-completed"{% endif %}>
           {{ tMiningWasteManPlan }}
         </a>
         {% if permit.miningWasteManagementPlanConfirmed!==null %} <strong class="task-completed" id="mwp-completed">Completed</strong> 
@@ -300,7 +300,7 @@
         /{{folder}}/evidence/industry-check-answers
       {% else %}
         /{{folder}}/evidence/industry-scheme
-      {% endif %}" aria-describedby="industry-scheme-completed">
+      {% endif %}" {% if permit.industryScheme!=null %} aria-describedby="industry-scheme-completed"{% endif %}>
         {{ tTechManagement }}
       </a>
       {% if permit.industryScheme!=null %} <strong class="task-completed" id="industry-scheme-completed">Completed</strong> 
@@ -319,7 +319,7 @@
         /{{folder}}/evidence/management-check-answers
       {% else %}
         /{{folder}}/evidence/management-system
-      {% endif %}" aria-describedby="management-system-completed">
+      {% endif %}" {% if permit.manSys!=null  %} aria-describedby="management-system-completed"{% endif %}>
         {{ tManSystem }}
       </a>
       {% if permit.manSys!=null %} <strong class="task-completed" id="management-system-completed">Completed</strong> 
@@ -342,7 +342,7 @@
         /{{folder}}/evidence/fire-plan-check-answers
       {% else %}
         /{{folder}}/evidence/upload-fire-plan
-      {% endif %}" aria-describedby="firepp-completed">
+      {% endif %}" {% if permit.firePlanFilename!==null %} aria-describedby="firepp-completed"{% endif %}>
           {{ tFirePlan }}
         </a>
         {% if permit.firePlanFilename!==null %} <strong class="task-completed" id="firepp-completed">Completed</strong> 
@@ -363,7 +363,7 @@
             /{{folder}}/check/confidentiality-check-answers
           {% else %}
             /{{folder}}/check/claim-confidentiality
-          {% endif %}" aria-describedby="confidentiality-completed">
+          {% endif %}" {% if permit.confidential!=null %} aria-describedby="confidentiality-completed"{% endif %}>
             {{ tConfidentiality }}
           </a>
           {% if permit.confidential!=null %} <strong class="task-completed" id="confidentiality-completed">Completed</strong> 
@@ -381,7 +381,7 @@
     </h2>
     <ul class="task-list-items">
       <li class="task-list-item" id="submit-pay">
-        <a onclick="document.tasklist.submit(); return false;" class="task-name" href="#" aria-describedby="submit-and-pay">
+        <a onclick="document.tasklist.submit(); return false;" class="task-name" href="#">
           {{ tSend }}
         </a>
       </li>

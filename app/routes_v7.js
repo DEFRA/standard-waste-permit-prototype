@@ -539,7 +539,6 @@ router.post('/operator/company/company-addresses', function (req, res) {
   })
 })
 
-
 /* limited company OFFICERS ====================== */
 
 router.post('/operator/company/check-officers', function (req, res) {

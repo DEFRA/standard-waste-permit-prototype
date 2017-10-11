@@ -210,7 +210,6 @@ span.postcode {
 
 // end Form control widths
 
-
 // EA footer links
 @include media(mobile) {
   .ea-footer, .ea-footer li  {
@@ -224,40 +223,80 @@ span.postcode {
     display: inline;
 }
 
+// Directors DOB definition lists - based on the check your answers CSS
+.dates-of-birth {
 
-// Directors' DOB table
-.directors-dob {
-  margin-bottom: 30px;
-  width:auto;
-}
+  margin-bottom: 30px; 
 
-.directors-dob thead tr {
-  vertical-align: top;
-}
-
-table.directors-dob th {
-  font-weight:normal;
-}
-
-.sr-company-dob{
-  @include media(tablet) {
-    width: 2.0em;
+  @include media(desktop) {
+    display: table;
   }
-  display:inline;
+
+  > * {
+    position: relative;
+    border-bottom: 1px solid $border-colour;
+
+    @include media(desktop) {
+      display: table-row;
+      border-bottom-width: 0;
+    }
+
+    > * {
+      display: block;
+
+      @include media(desktop) {
+        display: table-cell;
+        border-bottom: 1px solid $border-colour;
+        padding: em(12, 19) em(20, 19) em(9, 19) 0; // copied from Elements' td padding
+        margin: 0;
+      }
+    }
+
+    @include media(desktop) {
+      &:first-child > * {
+        border-top: 1px solid $border-colour;
+      }
+    }
+  }
+
+  .director-name {
+    margin: em(12, 19) 4em em(4,19) 0;
+  }
+
+  > *:first-child .director-dob {
+    margin-top: 0;
+  }
+
+  @include media(desktop) {
+    .director-name {
+      width: 55%;
+    }
+  }
+
+.director-dob {
+    padding-bottom: em(9, 19);
+  }
+}
+
+.sr-company-dob {
+  width: 3em;
 }
 
 .sr-dob-month-year{
-  margin-left:0.3em;
-}
-
-.sr-dob-col{
-  padding-left:2em;
+  margin-left:.25em;
 }
 
 span.pay-text {
   display:block;
   margin:10px 0 0;
 }
+
+// Registered office address
+.registered-office-address {
+  p { margin-bottom: 5px; }
+  h2 { margin-top: 0; }
+}
+
 // Application recieved email mock-up 
 
 .email-banner {
