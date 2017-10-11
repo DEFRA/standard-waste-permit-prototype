@@ -177,7 +177,7 @@
       <span class="task-list-section-number">2. </span> Complete application
     </h2>
     <ul class="task-list-items">
-      <li class="task-list-item {% if taskListError and permit.contactName==null %} form-group-error{% endif %}" id="{{ tContactDetails  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+      <li class="task-list-item {% if taskListError and permit.contactFirstName==null %} form-group-error{% endif %}" id="{{ tContactDetails  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
       {% if taskListError and permit.contactFirstName==null %}
         <span class="error-message">
           Complete this task
