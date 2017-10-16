@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Cost and time for this permit" %}
+{% set title = "Costs and processing time" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -31,12 +31,12 @@
           <tbody>
             <tr>
               <td><span class="bold-small">Cost to apply</span><br>
-              Paid with your application</td>
+              You'll pay this when you send your application.</td>
               <td class="numeric"><span class="bold-medium">{{permit.permitCost}}</span></td>
             </tr>
         {% if permit.subsistenceFee!="mobile" %}
             <tr>
-              <td><span class="bold-small">Annual cost ('subsistence charge')</span><br>
+              <td><span class="bold-small">Annual cost (it's called the subsistence charge)</span><br>
               We’ll invoice you if your application is successful.</td>
               <td class="numeric"><span class="bold-medium">{{permit.subsistenceFee}}</span></td>
             </tr>
@@ -59,7 +59,7 @@
           </tbody>
         </table>
 
-        <p class="vat-statement">You don’t pay <abbr title="Value Added Tax">VAT</abbr> on these costs.
+        <p class="vat-statement">You don't pay <abbr title="Value Added Tax">VAT</abbr> on these costs.
         </p>
 
          <!-- set costTime to yes -->       
