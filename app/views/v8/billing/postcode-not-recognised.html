@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% set title = "We can't find any addresses for that postcode" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+<h1 class="heading-large" role="alert">{{title}}</h1>
+
+<form method="post" action="{{formAction}}">
+  <fieldset>
+    <legend class="visuallyhidden">Postcode</legend>
+
+    <div class="form-group">
+      <label class="form-label" for="postcode">Enter the correct postcode
+        <span class="form-hint">For example, BS1 5AH</span>
+      </label>
+      <input type="text" class="form-control form-control-char-10" id="postcode" name="sitePostCode" value="AB1 2CD" />
+    </div>
+  </fieldset>
+
+<p>Or <a href="/{{folder}}/address/address-manual">enter address manually</a></p>
+
+  <div class="form-group">
+      <button type="submit" class="button" name="Continue">Continue</button>
+  </div>
+
+  <div class="form-group">
+    <hr>
+    <p class="text font-xsmall" id="os-notice">
+    &copy; Crown copyright and database rights 2017 Ordnance Survey 100024198. Use of this addressing data is subject to the <a target="_blank" rel="noopener noreferrer" href="/{{folder}}/address/os_place_terms">terms and conditions (opens new window)</a>.
+    </p>
+  </div>
+
+</form>
+    
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

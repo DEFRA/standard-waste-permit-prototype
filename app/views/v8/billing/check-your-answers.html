@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Contact for your application" %}
+{% set title = "Invoicing details" %}
 
 {% block page_title %}
 {{title}} - GOV.UK
@@ -15,27 +15,41 @@
     {{title}}
   </h1>
 
+
   <dl class="govuk-check-your-answers cya-questions-short">
+
     <div>
       <dt class="cya-question">
-        Contact details
+        Invoice address
       </dt>
       <dd class="cya-answer">
-        {{permit.contactFirstName}} {{permit.contactLastName}}<br>
-        {% if permit.isContactAnAgent == "yes" %}
-        This person is an agent or consultant<br>
-        {{permit.agentCompany}}<br>
-        {% endif %}
-        Telephone {{permit.contactTelephone}}<br>
-        {{permit.contactEmail}}
+        {{permit.invoiceAddress}}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/contact/contact-details"> 
-          Change <span class="visuallyhidden">Contact details</span>
+        <a href="/{{folder}}/billing/invoice-address"> 
+          Change <span class="visuallyhidden">invoice address</span>
         </a>
       </dd>
     </div>
+
+    <div>
+      <dt class="cya-question">
+        Invoice contact details
+      </dt>
+      <dd class="cya-answer">
+        {{permit.invoiceName}}<br>
+        Telephone {{permit.invoiceTelephone}}<br>
+        {{permit.invoiceEmail}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/site/site-contact"> 
+          Change <span class="visuallyhidden">invoice contact details</span>
+        </a>
+      </dd>
+    </div>
+
   </dl>
+
 
   <form method="post" action="{{formAction}}">
 
@@ -44,7 +58,7 @@
     </div>
 
   </form>
-  
+
 </main>
 
 {% endblock %}
