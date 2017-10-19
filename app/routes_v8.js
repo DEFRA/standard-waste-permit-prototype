@@ -688,11 +688,19 @@ router.get('/check/claim-confidentiality', function (req, res) {
 
 // Billing ========================================================
 
-router.get('/billing/invoice-address-options', function (req, res) {
-  res.render(folder + '/billing/invoice-address-options',{
+// This is not a real page, just a URL for the route
+router.get('/billing/invoice-options-check', function (req, res) {
+  if( req.session.data['siteAddress']==null ) {
+        res.render(folder + '/billing/invoice-postcode',{
+        "formAction":"/"+ folder + "/billing/invoice-address"
+      })
+  } else {
+    res.render(folder + '/billing/invoice-address-options',{
       "formAction":"/"+ folder + "/billing/invoice-postcode"
-  })
+   })  
+  }
 })
+
 
 router.post('/billing/invoice-postcode', function (req, res) {
   res.render(folder + '/billing/invoice-postcode',{
