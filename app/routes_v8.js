@@ -688,15 +688,20 @@ router.get('/check/claim-confidentiality', function (req, res) {
 
 // Billing ========================================================
 
+// Routing not working: because a get from the task list? 
+// Do input values need to be set as empty? See permit-category2
+      // <input type="hidden" name="companyAddress" value="">
+      // <input type="hidden" name="siteAddress" value="">
+
 // This is not a real page, just a URL for the route
 router.get('/billing/invoice-options-check', function (req, res) {
-  if( req.session.data['siteAddress']==null ) {
-        res.render(folder + '/billing/invoice-postcode',{
-        "formAction":"/"+ folder + "/billing/invoice-address"
+  if( req.session.data['companyAddress']!=="" ) {
+      res.render(folder + '/billing/invoice-address-options',{
+      "formAction":"/"+ folder + "/billing/invoice-postcode"
       })
   } else {
-    res.render(folder + '/billing/invoice-address-options',{
-      "formAction":"/"+ folder + "/billing/invoice-postcode"
+      res.render(folder + '/billing/invoice-postcode',{
+      "formAction":"/"+ folder + "/billing/invoice-address"
    })  
   }
 })
