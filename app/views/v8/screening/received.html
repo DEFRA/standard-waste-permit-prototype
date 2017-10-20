@@ -35,15 +35,12 @@
         If the check does not report any problems we'll send you a link so you can use the information you've given already to continue the application for this permit.
       </p>
 
-      The check you requested is:
+      <p class="text">The check you requested is:</p>
 
       <ul class="list list-bullet">
-
         <li>at grid reference {{permit.siteGridRef}}</li>
         <li>for {{permit.permitName | lower }} {{permit.permitCode}}</li>
-
       </ul>
-
 
       <p class="text"><a href="#" class="link">What do you think of this service?</a> (takes 30 seconds)</p>
 
@@ -52,6 +49,9 @@
       <p>For testing:</p>
       <ul class="list list-bullet">
         <li><a href="/{{folder}}/screening/confirmation-email">Confirmation email</a></li>
+        <li><a href="/{{folder}}/screening/email-eligible">Eligible email</a></li>
+        <li><a href="/{{folder}}/screening/email-ineligible">Ineligible email</a></li>
+
       </ul>
 
 
