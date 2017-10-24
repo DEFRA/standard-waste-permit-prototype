@@ -18,30 +18,33 @@
 
       <h1 class="heading-large">{{title}}</h1>
 
+      <div class="panel panel-border-wide">
+        <p>This should be where we can send invoices for your ongoing annual costs (the subsistence charge) after the permit has been issued.</p>
+      </div>
+
+
       <form method="post" action="{{formAction}}">
 
         <div class="form-group">
           <fieldset>
 
-            {% if permit.companyAddress!=="" %}
+            {% if permit.companyAddress!==null %}
             <div class="multiple-choice">
-              <input id="radio-1" type="radio" name="radio-group" value="Northern Ireland">
-              <label for="radio-1">Registered office: {{permit.companyAddress}}</label>
+              <input id="invRegOffice" type="radio" name="invoiceAddress" value="{{permit.companyAddress}}">
+              <label for="invRegOffice">Registered office: {{permit.companyAddress}}</label>
             </div>
-
             {% endif %}
 
-            {% if permit.siteAddress!=="" %}
+            {% if permit.siteAddress!==null %}
             <div class="multiple-choice">
-              <input id="radio-2" type="radio" name="radio-group" value="Isle of Man or the Channel Islands">
-              <label for="radio-2">Site address: {{permit.siteAddress}}</label>
+              <input id="invSiteAddress" type="radio" name="invoiceAddress" value="{{permit.siteAddress}}">
+              <label for="invSiteAddress">Site address: {{permit.siteAddress}}</label>
             </div>
-
             {% endif %}
 
             <div class="multiple-choice">
-              <input id="radio-3" type="radio" name="radio-group" value="I am a British citizen living abroad">
-              <label for="radio-3">I want to give a different address for invoices</label>
+              <input id="invDiffAddress" type="radio" name="invoiceAddress" value="Different address">
+              <label for="invDiffAddress">I want to give a different address for invoices</label>
             </div>
 
           </fieldset>

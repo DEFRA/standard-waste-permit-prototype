@@ -688,24 +688,32 @@ router.get('/check/claim-confidentiality', function (req, res) {
 
 // Billing ========================================================
 
-// Routing not working: because a get from the task list? 
-// Do input values need to be set as empty? See permit-category2
-      // <input type="hidden" name="companyAddress" value="">
-      // <input type="hidden" name="siteAddress" value="">
-
 // This is not a real page, just a URL for the route
 router.get('/billing/invoice-options-check', function (req, res) {
-  if( req.session.data['companyAddress']!=="" ) {
-      res.render(folder + '/billing/invoice-address-options',{
-      "formAction":"/"+ folder + "/billing/invoice-postcode"
-      })
-  } else {
-      res.render(folder + '/billing/invoice-postcode',{
-      "formAction":"/"+ folder + "/billing/invoice-address"
-   })  
-  }
-})
+   if( req.session.data['siteAddress']==null && req.session.data['companyAddress']==null ) { 
+       res.render(folder + '/billing/invoice-postcode',{
+       "formAction":"/"+ folder + "/billing/invoice-address"
+       })
+   } else {
+       res.render(folder + '/billing/invoice-address-options',{
+       "formAction":"/"+ folder + "/billing/invoice-option"
+    })  
+   }
+ })
 
+// This is not a real page, just a URL for the route
+// Give a different invoice address or select registered office / site address
+router.post('/billing/invoice-option', function (req, res) {
+   if( req.session.data['invoiceAddress'] == "Different address" ) { 
+       res.render(folder + '/billing/invoice-postcode',{
+       "formAction":"/"+ folder + "/billing/invoice-address"
+       })
+   } else {
+       res.render(folder + '/billing/invoice-contact',{
+       "formAction":"/"+ folder + "/check/task-list"
+    })  
+   }
+ })
 
 router.post('/billing/invoice-postcode', function (req, res) {
   res.render(folder + '/billing/invoice-postcode',{
@@ -899,6 +907,12 @@ router.get('/evidence/fire-plan-check-answers', function (req, res) {
 
 router.get('/check/confidentiality-check-answers', function (req, res) {
   res.render(folder + '/check/confidentiality-check-answers',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+router.get('/billing/check-your-answers', function (req, res) {
+  res.render(folder + '/billing/check-your-answers',{
       "formAction":"/"+ folder + "/check/task-list"
   })
 })
