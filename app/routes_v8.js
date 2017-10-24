@@ -177,11 +177,35 @@ router.get('/selectpermit/choose-expanding-sections-new-cats', function (req, re
 // This page should not show for long - it just saves permit data
 router.post('/check/save-permit-details', function (req, res) {
       res.render(folder + '/check/save-permit-details',{
-        "formAction":"/"+ folder + "/check/task-list",
+        "formAction":"/"+ folder + "/screening/location-check", // Screening question
         "chosenPermitID":req.body['chosenPermitID']
       })
 })
 
+// Screening / site location check ===========================================================
+
+router.post('/screening/location-check', function (req, res) {
+      res.render(folder + '/screening/location-check',{
+        "formAction":"/"+ folder + "/screening/location-options" // Screening question
+      })
+})
+
+// This is not a real page, just a URL for the route
+router.post('/screening/location-options', function (req, res) {
+  if(req.body['locationCheck']=="No"){ // think you need square bracket for radios
+      res.render(folder + '/check/task-list',{
+          "formAction":"/"+ folder + "/check/task-list"
+      })
+  } else if (req.body['locationCheck']=="No, I've already had it checked") {
+      res.render(folder + '/check/task-list',{
+          "formAction":"/"+ folder + "/check/task-list"
+      })
+  } else {
+      res.render(folder + '/site/site-name',{
+          "formAction":"/"+ folder + "/site/grid-reference"
+      })
+  }
+})
 
 router.post('/check/task-list', function (req, res) {
   if( res.locals.data.saveProgress=='task-list-visited' ) {
@@ -351,6 +375,12 @@ router.get('/screening/conservation-screening', function (req, res) {
   })
 })
 
+router.post('/screening/check-your-answers', function (req, res) {
+  res.render(folder + '/screening/check-your-answers',{
+      "formAction":"/"+ folder + "/screening/received"
+  })
+})
+
 
 // Contact ===================================================================
 
@@ -358,6 +388,20 @@ router.get('/contact/contact-details', function (req, res) {
   res.render(folder + '/contact/contact-details',{
       "formAction":"/"+ folder + "/check/task-list"
   })
+})
+
+
+// Location check
+router.post('/contact/contact-details', function (req, res) {
+  if(req.session.data['locationCheck']=="Yes"){ 
+      res.render(folder + '/contact/contact-details',{
+          "formAction":"/"+ folder + "/screening/check-your-answers"
+      })
+  } else {
+  res.render(folder + '/contact/contact-details',{
+      "formAction":"/"+ folder + "/check/task-list"
+   })  
+  }
 })
 
 
@@ -375,6 +419,7 @@ router.get('/contact/contact-details', function (req, res) {
 //})
 
 // first site name visit is a get
+
 router.get('/site/site-name', function (req, res) {
   res.render(folder + '/site/site-name',{
       "formAction":"/"+ folder + "/site/grid-reference"
@@ -388,10 +433,37 @@ router.post('/site/site-name', function (req, res) {
 })
 
 router.post('/site/grid-reference', function (req, res) {
+  if(req.session.data['locationCheck']=="Yes"){ 
+      res.render(folder + '/site/grid-reference',{
+          "formAction":"/"+ folder + "/screening/screening-site-plan"
+      })
+  } else {
   res.render(folder + '/site/grid-reference',{
       "formAction":"/"+ folder + "/address/postcode"
-  })
+   })  
+  }
 })
+
+// Location check
+router.post('/screening/screening-site-plan', function (req, res) {
+  res.render(folder + '/screening/screening-site-plan',{
+      "formAction":"/"+ folder + "/screening/site-plan-check"
+ })
+})
+
+// This is not a real page, just a URL for the route
+router.post('/screening/site-plan-check', function (req, res) {
+  if(req.body['screeningSitePlan']=="Yes"){ 
+      res.render(folder + '/evidence/upload-site-plan',{
+          "formAction":"/"+ folder + "/address/postcode"
+      })
+  } else {
+    res.render(folder + '/screening/distance-to-boundary',{
+      "formAction":"/"+ folder + "/address/postcode"
+   })  
+  }
+})
+
 
 router.post('/address/postcode', function (req, res) {
   res.render(folder + '/address/postcode',{
@@ -399,11 +471,19 @@ router.post('/address/postcode', function (req, res) {
   })
 })
 
+// Location check
 router.post('/address/address', function (req, res) {
+  if(req.session.data['locationCheck']=="Yes"){ 
+      res.render(folder + '/address/address',{
+          "formAction":"/"+ folder + "/contact/contact-details"
+      })
+  } else {
   res.render(folder + '/address/address',{
       "formAction":"/"+ folder + "/check/task-list"
-  })
+   })  
+  }
 })
+
 
 // Manual address is a link - so a GET
 router.get('/address/address-manual', function (req, res) {
