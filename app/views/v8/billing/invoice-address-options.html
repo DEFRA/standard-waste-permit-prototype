@@ -28,14 +28,24 @@
         <div class="form-group">
           <fieldset>
 
-            {% if permit.companyAddress!==null %}
+            {% if permit.companyAddress==null or permit.companyAddress=="" %}
+            {% else %}
             <div class="multiple-choice">
               <input id="invRegOffice" type="radio" name="invoiceAddress" value="{{permit.companyAddress}}">
               <label for="invRegOffice">Registered office: {{permit.companyAddress}}</label>
             </div>
             {% endif %}
+            
+            {% if permit.individualAddress==null or permit.individualAddress=="" %}
+            {% else %}
+            <div class="multiple-choice">
+              <input id="invRegOffice" type="radio" name="invoiceAddress" value="{{permit.individualAddress}}">
+              <label for="invRegOffice">Permit holder's address: {{permit.individualAddress}}</label>
+            </div>
+            {% endif %}
 
-            {% if permit.siteAddress!==null %}
+            {% if permit.siteAddress==null or permit.siteAddress=="" %}
+            {% else %}
             <div class="multiple-choice">
               <input id="invSiteAddress" type="radio" name="invoiceAddress" value="{{permit.siteAddress}}">
               <label for="invSiteAddress">Site address: {{permit.siteAddress}}</label>
