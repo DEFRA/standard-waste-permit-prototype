@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% set title = "Who should we contact about invoicing or payments?" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">{{title}}</h1>
+
+      <form method="post" action="{{formAction}}">
+
+        <div class="form-group">
+          <label class="form-label" for="invoiceName">
+            Name, department or organisation
+          </label>
+          <span class="form-hint">
+            For example, Jane Smith,  Finance Team or MyCompany Ltd
+          </span>
+          <input class="form-control" id="invoiceName" name="invoiceName" type="text" value="{{permit.invoiceName}}">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="invoiceEmail">
+            Email address (optional)
+          </label>
+          <input class="form-control" id="invoiceEmail" name="invoiceEmail" type="email" value="{{permit.invoiceEmail}}">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="invoiceTelephone">
+            Telephone number (optional)
+            <span class="form-hint">
+              This can be a landline or mobile
+            </span>
+          </label>
+          <input class="form-control form-control-char-25" id="invoiceTelephone" name="invoiceTelephone" type="number" value="{{permit.invoiceTelephone}}">
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

@@ -28,6 +28,7 @@
 {% set tManSystem = "Tell us which management system you use" %}
 {% set tFirePlan = "Upload fire prevention plan" %}
 {% set tConfidentiality = "Confirm confidentiality needs" %}
+{% set tBilling = "Give invoicing details" %}
 {% set tSend = "Send application and pay" %}
 
 <main id="content" role="main" class="task-list">
@@ -233,7 +234,7 @@
           <a class="task-name" href="{% if permit.siteName!=null %}
             /{{folder}}/site/check-your-answers
           {% else %}
-            /{{folder}}/site/site-name
+            /{{folder}}/site/site-contact
           {% endif %}" {% if permit.siteName!=null %} aria-describedby="site-name-completed"{% endif %}>
             {{ tSiteDetails }}
           </a>
@@ -369,7 +370,29 @@
           {% else %}
           <input type="hidden" name="complete[]" value="{{ tConfidentiality }}">
           {% endif %}
-      </li>     
+      </li> 
+
+
+       <!-- Billing ############################################################### -->
+    <li class="task-list-item {% if taskListError and permit.invoiceAddress==null %} form-group-error{% endif %}" id="{{ tBilling  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+          {% if taskListError and permit.invoiceAddress==null %}
+            <span class="error-message">
+              Complete this task
+            </span>
+          {% endif %}
+          <a class="task-name" href="{% if permit.invoiceAddress!=null %}
+            /{{folder}}/billing/check-your-answers
+          {% else %}
+            /{{folder}}/billing/invoice-options-check
+          {% endif %}" {% if permit.invoiceAddress!=null %} aria-describedby="billing-completed"{% endif %}>
+            {{ tBilling }}
+          </a>
+          {% if permit.invoiceAddress!=null %} <strong class="task-completed" id="billing-completed">Completed</strong> 
+          {% else %}
+          <input type="hidden" name="complete[]" value="{{ tBilling }}">
+          {% endif %}
+      </li>  
+
     </ul>
   </li>
   
