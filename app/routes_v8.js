@@ -423,14 +423,14 @@ router.get('/evidence/upload-site-plan', function (req, res) {
 
 // Technical ability ==========================================================
 
-router.get('/evidence/industry-scheme', function (req, res) {
-  res.render(folder + '/evidence/industry-scheme',{
-      "formAction":"/"+ folder + "/evidence/upload-scheme-certificate"
+router.get('/evidence/techcomp/industry-scheme', function (req, res) {
+  res.render(folder + '/evidence/techcomp/industry-scheme',{
+      "formAction":"/"+ folder + "/evidence/techcomp/upload-scheme-certificate"
   })
 })
 
-router.post('/evidence/upload-scheme-certificate', function (req, res) {
-  res.render(folder + '/evidence/upload-scheme-certificate',{
+router.post('/evidence/techcomp/upload-scheme-certificate', function (req, res) {
+  res.render(folder + '/evidence/techcomp/upload-scheme-certificate',{
       "formAction":"/"+ folder + "/check/task-list"
   })
 })
