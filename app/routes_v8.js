@@ -374,14 +374,7 @@ router.get('/contact/contact-details', function (req, res) {
 //  })
 //})
 
-
-router.get('/site/site-contact', function (req, res) {
-  res.render(folder + '/site/site-contact',{
-      "formAction":"/"+ folder + "/site/site-name"
-  })
-})
-
-router.post('/site/site-name', function (req, res) {
+router.get('/site/site-name', function (req, res) {
   res.render(folder + '/site/site-name',{
       "formAction":"/"+ folder + "/site/grid-reference"
   })
@@ -401,6 +394,12 @@ router.post('/address/postcode', function (req, res) {
 
 router.post('/address/address', function (req, res) {
   res.render(folder + '/address/address',{
+      "formAction":"/"+ folder + "/site/site-contact"
+  })
+})
+
+router.post('/site/site-contact', function (req, res) {
+  res.render(folder + '/site/site-contact',{
       "formAction":"/"+ folder + "/check/task-list"
   })
 })
