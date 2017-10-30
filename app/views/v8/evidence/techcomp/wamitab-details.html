@@ -19,7 +19,9 @@
 
 <p>
   The minimum WAMITAB qualification they need for these standard rules is:<br>
-  <span class="font-bold">{{ permit.pData.WAMITABLevel }}</span><br>
+  <strong class="bold-small">{{ permit.WAMITAB }}</strong>
+</p>
+<p>
   If the qualification is over 2 years old they also need a continuing competence certificate.
 </p>
 
@@ -32,49 +34,11 @@
 <form method="post" action="{{formAction}}">
 
 <div class="form-group">
-  <label class="form-label" for="wamitabName">
-    Full name as on the certificate
-  </label>
-  <input class="form-control form-control-char-25" id="wamitabName" name="wamitabName" type="text" value="{{ permit.wamitabName }}">
-</div>
-
-<div class="form-group">
-  <fieldset>
-    <legend>
-      <span class="form-label">Date of birth</span>
-      <span class="form-hint" id="dob-hint">For example, 26 5 1971</span>
-    </legend>
-    <div class="form-date">
-      <div class="form-group form-group-day">
-        <label class="form-label" for="dob-day">Day</label>
-        <input class="form-control" id="dob-day" name="wamitabDobDay" type="number" pattern="[0-9]*" min="0" max="31" aria-describedby="dob-hint">
-      </div>
-      <div class="form-group form-group-month">
-        <label class="form-label" for="dob-month">Month</label>
-        <input class="form-control" id="dob-month" name="wamitabDobMonth" type="number" pattern="[0-9]*" min="0" max="12">
-      </div>
-      <div class="form-group form-group-year">
-        <label class="form-label" for="dob-year">Year</label>
-        <input class="form-control" id="dob-year" name="wamitabDobYear" type="number" pattern="[0-9]*" min="0" max="2016">
-      </div>
-    </div>
-  </fieldset>
-</div>
-
-<div class="form-group">
   <label class="form-label" for="wamitabCertNum">
     WAMITAB certificate number
     <span class="form-hint">For example, OCC1234</span>
   </label>
-  <input class="form-control form-control-char-10" id="wamitabCertNum" name="wamitabCertNum" type="text" value="{{ permit.wamitabCertNum }}">
-</div>
-
-<div class="form-group">
-  <label class="form-label" for="wamitabNumSites">
-    How many sites do they provide technical management for?
-    <span class="form-hint">Our policy is that one person shouldn't supervise more than 5 sites at a time</span>
-  </label>
-  <input class="form-control form-control-char-23" id="wamitabNumSites" name="wamitabNumSites" type="text" value="{{ permit.wamitabNumSites }}">
+  <input class="form-control form-control-char-15" id="wamitabCertNum" name="wamitabCertNum" type="text" value="{{ permit.wamitabCertNum }}">
 </div>
 
 

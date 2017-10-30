@@ -423,7 +423,13 @@ router.get('/evidence/upload-site-plan', function (req, res) {
 
 // Technical ability ==========================================================
 
-router.get('/evidence/techcomp/industry-scheme', function (req, res) {
+router.get('/evidence/techcomp/manager-details', function (req, res) {
+  res.render(folder + '/evidence/techcomp/manager-details',{
+      "formAction":"/"+ folder + "/evidence/techcomp/industry-scheme"
+  })
+})
+
+router.post('/evidence/techcomp/industry-scheme', function (req, res) {
   res.render(folder + '/evidence/techcomp/industry-scheme',{
       "formAction":"/"+ folder + "/evidence/techcomp/get-evidence"
   })
