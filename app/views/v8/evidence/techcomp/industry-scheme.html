@@ -19,7 +19,7 @@
 
 
 <p>
-Your site must be managed by a 'competent person'. To prove this, they must have a certificate of technical competence or an operator competence scheme certificate, for example from WAMITAB.
+  Your site must be managed by a 'competent person'. To prove this, they must have a technical competence qualification, for example from WAMITAB.
 </p>
 
 
@@ -30,42 +30,34 @@ Your site must be managed by a 'competent person'. To prove this, they must have
       <legend class="visually-hidden">{{title}}</legend>
 
       <div class="multiple-choice" data-target="showWAMITAB">
-      <input id="radio-1" type="radio" name="industryScheme" value="WAMITAB-CIWM">
-<label for="radio-1">
-        WAMITAB (Waste Management Industry Training and Advisory Board) and CIWM (Chartered Institute of Wastes Management) scheme
-      </label>
+        <input id="radio-1" type="radio" name="industryScheme" value="WAMITAB">
+        <label for="radio-1">
+          WAMITAB scheme qualification
+        </label>
       </div>
-        <div class="panel panel-border-narrow js-hidden" id="showWAMITAB">
-          
-          <p>
-            You'll need one of these certificates:
-          </p>
-          <ul class="list list-bullet">
-              <li>{{ permit.WAMITAB | replace("|", "</li><li>") | safe }}</li>
-          </ul>
-
-        </div>
       
       
       <div class="multiple-choice">
-      <input id="radio-2" type="radio" name="industryScheme" value="ESA-EU">
-<label for="radio-2" >
-        Environmental Services Association (ESA) and Energy and Utility Skills (EU Skills) scheme
-      </label>
+        <input id="radio-2" type="radio" name="industryScheme" value="ESA-EU">
+  <label for="radio-2" >
+          ESA EU Skills scheme qualification
+        </label>
       </div>
       
       <div class="multiple-choice" data-target="provideDetails">
-      <input id="radio-3" type="radio" name="industryScheme" value="getting-qualification">
-<label for="radio-3">
-        The operator is getting the qualification
-      </label>
-    </div>
-      <div class="panel panel-border-narrow js-hidden" id="provideDetails">
-        <label class="form-label" for="industrySchemeDetails">What qualification will they have and what date will they get it?
-          <span class="form-hint">They must have the qualification before you start operating</span>
+        <input id="radio-3" type="radio" name="industryScheme" value="deemed">
+        <label for="radio-3">
+          Deemed competence or an assessment with continuing competence certification
         </label>
-        <textarea class="form-control form-control-full" id="industrySchemeDetails"  name="industrySchemeDetails" cols="30" rows="5"></textarea>
       </div>
+      
+      <div class="multiple-choice" data-target="provideDetails">
+        <input id="radio-4" type="radio" name="industryScheme" value="getting-qualification">
+        <label for="radio-4">
+          They are getting the qualification
+        </label>
+      </div>
+
     </fieldset>
   </div>
   
