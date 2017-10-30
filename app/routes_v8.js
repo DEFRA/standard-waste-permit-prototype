@@ -425,12 +425,65 @@ router.get('/evidence/upload-site-plan', function (req, res) {
 
 router.get('/evidence/techcomp/industry-scheme', function (req, res) {
   res.render(folder + '/evidence/techcomp/industry-scheme',{
-      "formAction":"/"+ folder + "/evidence/techcomp/upload-scheme-certificate"
+      "formAction":"/"+ folder + "/evidence/techcomp/get-evidence"
   })
 })
 
-router.post('/evidence/techcomp/upload-scheme-certificate', function (req, res) {
-  res.render(folder + '/evidence/techcomp/upload-scheme-certificate',{
+// Not a page - juts a route to process the form
+router.post('/evidence/techcomp/get-evidence', function (req, res) {
+  if( req.body.industryScheme=='WAMITAB' ) {
+    // /evidence/techcomp/wamitab-details
+    res.render(folder + '/evidence/techcomp/wamitab-details',{
+        "formAction":"/"+ folder + "/check/task-list"
+    })
+  } else if( req.body.industryScheme=='ESA-EU' ) {
+    // /evidence/techcomp/esa-eu-details
+    res.render(folder + '/evidence/techcomp/esa-eu-details',{
+        "formAction":"/"+ folder + "/check/task-list"
+    })
+  } else if( req.body.industryScheme=='deemed' ) {
+    // /evidence/techcomp/deemed
+    res.render(folder + '/evidence/techcomp/deemed',{
+        "formAction":"/"+ folder + "/check/task-list"
+    })
+  } else if( req.body.industryScheme=='getting-qualification' ) {
+    // /evidence/techcomp/getting-it
+    res.render(folder + '/evidence/techcomp/getting-it',{
+        "formAction":"/"+ folder + "/check/task-list"
+    })
+  }
+})
+
+// The 4 options with GET then go back to task list
+
+router.get('/evidence/techcomp/wamitab-details', function (req, res) {
+  res.render(folder + '/evidence/techcomp/wamitab-details',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+router.get('/evidence/techcomp/esa-eu-details', function (req, res) {
+  res.render(folder + '/evidence/techcomp/esa-eu-details',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+router.get('/evidence/techcomp/deemed', function (req, res) {
+  res.render(folder + '/evidence/techcomp/deemed',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+router.get('/evidence/techcomp/getting-it', function (req, res) {
+  res.render(folder + '/evidence/techcomp/getting-it',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+
+// Check answers GET
+router.get('/evidence/techcomp/industry-check-answer', function (req, res) {
+  res.render(folder + '/evidence/techcomp/industry-check-answer',{
       "formAction":"/"+ folder + "/check/task-list"
   })
 })

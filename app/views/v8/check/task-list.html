@@ -297,9 +297,9 @@
         </span>
       {% endif %}
       <a class="task-name" href="{% if permit.industryScheme!=null %}
-        /{{folder}}/evidence/industry-check-answers
+        /{{folder}}/evidence/techcomp/industry-check-answers
       {% else %}
-        /{{folder}}/evidence/industry-scheme
+        /{{folder}}/evidence/techcomp/industry-scheme
       {% endif %}" {% if permit.industryScheme!=null %} aria-describedby="industry-scheme-completed"{% endif %}>
         {{ tTechManagement }}
       </a>
