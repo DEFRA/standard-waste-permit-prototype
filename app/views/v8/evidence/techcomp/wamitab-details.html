@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% set title = "Who holds the WAMITAB qualification?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<p>
+  The minimum WAMITAB qualification they need for these standard rules is:<br>
+  <span class="font-bold">{{ permit.pData.WAMITABLevel }}</span><br>
+  If the qualification is over 2 years old they also need a continuing competence certificate.
+</p>
+
+<div class="panel panel-border-wide">
+  <p>
+    We’ll check their qualification on the WAMITAB database.
+  </p>
+</div>
+
+<form method="post" action="{{formAction}}">
+
+<div class="form-group">
+  <label class="form-label" for="wamitabName">
+    Full name as on the certificate
+  </label>
+  <input class="form-control form-control-char-25" id="wamitabName" name="wamitabName" type="text" value="{{ permit.wamitabName }}">
+</div>
+
+<div class="form-group">
+  <fieldset>
+    <legend>
+      <span class="form-label">Date of birth</span>
+      <span class="form-hint" id="dob-hint">For example, 26 5 1971</span>
+    </legend>
+    <div class="form-date">
+      <div class="form-group form-group-day">
+        <label class="form-label" for="dob-day">Day</label>
+        <input class="form-control" id="dob-day" name="individualDobDay" type="number" pattern="[0-9]*" min="0" max="31" aria-describedby="dob-hint">
+      </div>
+      <div class="form-group form-group-month">
+        <label class="form-label" for="dob-month">Month</label>
+        <input class="form-control" id="dob-month" name="individualDobMonth" type="number" pattern="[0-9]*" min="0" max="12">
+      </div>
+      <div class="form-group form-group-year">
+        <label class="form-label" for="dob-year">Year</label>
+        <input class="form-control" id="dob-year" name="individualDobYear" type="number" pattern="[0-9]*" min="0" max="2016">
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="wamitabCertNum">
+    WAMITAB certificate number
+    <span class="form-hint">For example, OCC1234</span>
+  </label>
+  <input class="form-control form-control-char-10" id="wamitabCertNum" name="wamitabCertNum" type="text" value="{{ permit.wamitabCertNum }}">
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="wamitabNumSites">
+    How many sites do they provide technical management for?
+    <span class="form-hint">Our policy is that one person shouldn't supervise more than 5 sites at a time</span>
+  </label>
+  <input class="form-control form-control-char-23" id="wamitabNumSites" name="wamitabNumSites" type="text" value="{{ permit.wamitabNumSites }}">
+</div>
+
+
+<div class="form-group">
+    <button type="submit" class="button" name="Continue">Continue</button>
+</div>
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

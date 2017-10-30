@@ -16,6 +16,7 @@
   </h1>
 
   <dl class="govuk-check-your-answers cya-questions-short">
+    
     <div>
       <dt class="cya-question">
         Scheme
@@ -24,13 +25,13 @@
       {{permit.industryScheme}}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/evidence/industry-scheme"> 
+        <a href="/{{folder}}/evidence/techcomp/industry-scheme"> 
         Change <span class="visuallyhidden">scheme</span>
         </a>
       </dd>
     </div>
 
-        <div>
+    <div>
       <dt class="cya-question">
         Certificate
       </dt>
@@ -38,12 +39,14 @@
       {{permit.technicalCertificateFile}}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/evidence/upload-scheme-certificate"> 
+        <a href="/{{folder}}/evidence/techcomp/upload-scheme-certificate"> 
         Change <span class="visuallyhidden">certificate</span>
         </a>
       </dd>
     </div>
-  </dl>
+  
+  
+  </dl><!-- END CHECK ANSWERS ############################# -->
 
 
       <form method="post" action="{{formAction}}">
