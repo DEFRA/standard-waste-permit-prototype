@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% set title = "Enter the site address" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+<h1 class="heading-large" id="radio_label">{{title}}</h1>
+
+  <div class="error-summary" role="group" aria-labelledby="postcode-not-recognised" tabindex="-1">
+
+    <h1 class="heading-medium error-summary-heading" id="postcode-not-recognised">Our address finder isn't working</h1>
+
+    <ul class="error-summary-list">
+    <li><a href="#manual-address">Please enter the address below</a></li>
+    </ul>
+
+  </div>
+
+<form method="post" action="{{formAction}}">
+  
+<p>
+  <span class="postcode-prefix">Postcode:</span>
+  <span class="postcode">BS1 5AH</span>
+  <a href="/{{folder}}/address/postcode">
+      Change<span class="visuallyhidden"> postcode</span>
+  </a>
+</p>
+
+<fieldset>
+  <legend id="manual-address" class="visuallyhidden">Site address</legend>
+
+  <div class="form-group">
+    <label class="form-label" for="premises">Building name or number
+      <span class="form-hint">For example, a business premises name or house number</span>
+    </label>
+    <input type="text" class="form-control form-control-char-40" id="premises" />
+  </div>
+
+  <div class="form-group">
+    <label class="form-label" for="street_address">Address line 1</label>
+    <input type="text" class="form-control form-control-char-40" id="street_address" />
+  </div>
+
+  <div class="form-group">
+    <label class="form-label" for="locality">Address line 2 (optional)</label>
+    <input type="text" class="form-control form-control-char-40" id="locality" />
+  </div>
+
+  <div class="form-group">
+    <label class="form-label" for="town">Town or city</label>
+    <input type="text" class="form-control form-control-char-40" id="town" />
+  </div>
+
+</fieldset>
+
+  <div class="form-group">
+      <button type="submit" class="button" name="Continue">Continue</button>
+  </div>
+
+</form>
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

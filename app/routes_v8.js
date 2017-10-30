@@ -374,10 +374,10 @@ router.get('/contact/contact-details', function (req, res) {
 //  })
 //})
 
-// first site name visit is a get
-router.get('/site/site-name', function (req, res) {
-  res.render(folder + '/site/site-name',{
-      "formAction":"/"+ folder + "/site/grid-reference"
+
+router.get('/site/site-contact', function (req, res) {
+  res.render(folder + '/site/site-contact',{
+      "formAction":"/"+ folder + "/site/site-name"
   })
 })
 
@@ -423,14 +423,73 @@ router.get('/evidence/upload-site-plan', function (req, res) {
 
 // Technical ability ==========================================================
 
-router.get('/evidence/industry-scheme', function (req, res) {
-  res.render(folder + '/evidence/industry-scheme',{
-      "formAction":"/"+ folder + "/evidence/upload-scheme-certificate"
+router.get('/evidence/techcomp/manager-details', function (req, res) {
+  res.render(folder + '/evidence/techcomp/manager-details',{
+      "formAction":"/"+ folder + "/evidence/techcomp/industry-scheme"
   })
 })
 
-router.post('/evidence/upload-scheme-certificate', function (req, res) {
-  res.render(folder + '/evidence/upload-scheme-certificate',{
+router.post('/evidence/techcomp/industry-scheme', function (req, res) {
+  res.render(folder + '/evidence/techcomp/industry-scheme',{
+      "formAction":"/"+ folder + "/evidence/techcomp/get-evidence"
+  })
+})
+
+// Not a page - juts a route to process the form
+router.post('/evidence/techcomp/get-evidence', function (req, res) {
+  if( req.body.industryScheme=='WAMITAB' ) {
+    // /evidence/techcomp/wamitab-details
+    res.render(folder + '/evidence/techcomp/wamitab-details',{
+        "formAction":"/"+ folder + "/check/task-list"
+    })
+  } else if( req.body.industryScheme=='ESA-EU' ) {
+    // /evidence/techcomp/esa-eu-details
+    res.render(folder + '/evidence/techcomp/esa-eu-details',{
+        "formAction":"/"+ folder + "/check/task-list"
+    })
+  } else if( req.body.industryScheme=='deemed' ) {
+    // /evidence/techcomp/deemed
+    res.render(folder + '/evidence/techcomp/deemed',{
+        "formAction":"/"+ folder + "/check/task-list"
+    })
+  } else if( req.body.industryScheme=='getting-qualification' ) {
+    // /evidence/techcomp/getting-it
+    res.render(folder + '/evidence/techcomp/getting-it',{
+        "formAction":"/"+ folder + "/check/task-list"
+    })
+  }
+})
+
+// The 4 options with GET then go back to task list
+
+router.get('/evidence/techcomp/wamitab-details', function (req, res) {
+  res.render(folder + '/evidence/techcomp/wamitab-details',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+router.get('/evidence/techcomp/esa-eu-details', function (req, res) {
+  res.render(folder + '/evidence/techcomp/esa-eu-details',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+router.get('/evidence/techcomp/deemed', function (req, res) {
+  res.render(folder + '/evidence/techcomp/deemed',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+router.get('/evidence/techcomp/getting-it', function (req, res) {
+  res.render(folder + '/evidence/techcomp/getting-it',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+
+// Check answers GET
+router.get('/evidence/techcomp/industry-check-answer', function (req, res) {
+  res.render(folder + '/evidence/techcomp/industry-check-answer',{
       "formAction":"/"+ folder + "/check/task-list"
   })
 })
@@ -534,89 +593,23 @@ router.get('/operator/company/company-name', function (req, res) {
 })
 
 
-/* Business and billing addresses ====================== */
+/* Company secretary's email address ====================== */
 
 router.post('/operator/company/company-addresses', function (req, res) {
   res.render(folder + '/operator/company/company-addresses',{
-      "formAction":"/"+ folder + "/operator/company/addresscheck"
+      "formAction":"/"+ folder + "/operator/company/company-secretary"
   })
 })
 
-router.get('/operator/company/company-addresses', function (req, res) {
-  res.render(folder + '/operator/company/company-addresses',{
-      "formAction":"/"+ folder + "/operator/company/addresscheck"
-  })
-})
+/* go-to-check-officers is not a page ====================== */
 
-// This is not a real page, just a URL for the route
-router.post('/operator/company/addresscheck', function (req, res) {
-  if(req.body['differentMainBusinessAddress']=="Yes"){ // Main business address is different
-       // Enter postcode for main billing
-      res.render(folder + '/operator/company/main-business-postcode',{
-          "formAction":"/"+ folder + "/operator/company/main-business-address"
-      })
-  } else if (req.body['differentBillingAddress']=="Yes") { // Billing address is different
-    // Enter postcode for billing address
-      res.render(folder + '/operator/company/billing-postcode',{
-          "formAction":"/"+ folder + "/operator/company/billing-address"
-      })
-  } else {
-  res.render(folder + '/operator/company/go-to-check-officers',{
-      "formAction":"/"+ folder + "/operator/company/check-officers"
-   })  
-  }
-})
-
-/* Main business address ====================== */
-
-router.post('/operator/company/main-business-address', function (req, res) {
-  res.render(folder + '/operator/company/main-business-address',{
-      "formAction":"/"+ folder + "/operator/company/billingcheck"
-  })
-})
-
-// Can find address in the list, manual input
-router.get('/operator/company/main-business-address-manual', function (req, res) {
-  res.render(folder + '/operator/company/main-business-address-manual',{
-      "formAction":"/"+ folder + "/operator/company/billingcheck"
-  })
-})
-
-
-/* Different business address ====================== */
-
-// This is not a real page, just a URL for the route
-router.post('/operator/company/billingcheck', function (req, res) {
-  if (req.body['mainAsBillingAddress']=="Yes") {
-    res.render(folder + '/operator/company/go-to-check-officers',{
-      "formAction":"/"+ folder + "/operator/company/check-officers"
-    })
-  } else if (req.session.data['differentBillingAddress'] == "Yes") {
-    res.render(folder + '/operator/company/billing-postcode',{
-        "formAction":"/"+ folder + "/operator/company/billing-address"
-    })
-  } else {
-    res.render(folder + '/operator/company/go-to-check-officers',{
-      "formAction":"/"+ folder + "/operator/company/check-officers"
-   })  
-  }
-})
-
-router.post('/operator/company/billing-address', function (req, res) {
-  res.render(folder + '/operator/company/billing-address',{
-      "formAction":"/"+ folder + "/operator/company/go-to-check-officers"
-  })
-})
-
-// Can find address in the list, manual input
-router.get('/operator/company/billing-address-manual', function (req, res) {
-  res.render(folder + '/operator/company/billing-address-manual',{
+router.post('/operator/company/company-secretary', function (req, res) {
+  res.render(folder + '/operator/company/company-secretary',{
       "formAction":"/"+ folder + "/operator/company/go-to-check-officers"
   })
 })
 
 // auto-submitting pass-through page to ensure check officers page is posted
-// deals with billing/main address routes
 router.post('/operator/company/go-to-check-officers', function (req, res) {
   res.render(folder + '/operator/company/go-to-check-officers',{
       "formAction":"/"+ folder + "/operator/company/check-officers"
@@ -743,6 +736,61 @@ router.get('/evidence/upload-fire-plan', function (req, res) {
     })
 })
 
+// Claim confidentiality ========================================================
+
+router.get('/check/claim-confidentiality', function (req, res) {
+  res.render(folder + '/check/claim-confidentiality',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+
+// Billing ========================================================
+
+// This is not a real page, just a URL for the route
+router.get('/billing/invoice-options-check', function (req, res) {
+   if( req.session.data['siteAddress']==null && req.session.data['companyAddress']==null ) { 
+       res.render(folder + '/billing/invoice-postcode',{
+       "formAction":"/"+ folder + "/billing/invoice-address"
+       })
+   } else {
+       res.render(folder + '/billing/invoice-address-options',{
+       "formAction":"/"+ folder + "/billing/invoice-option"
+    })  
+   }
+ })
+
+// This is not a real page, just a URL for the route
+// Give a different invoice address or select registered office / site address
+router.post('/billing/invoice-option', function (req, res) {
+   if( req.session.data['invoiceAddress'] == "Different address" ) { 
+       res.render(folder + '/billing/invoice-postcode',{
+       "formAction":"/"+ folder + "/billing/invoice-address"
+       })
+   } else {
+       res.render(folder + '/billing/invoice-contact',{
+       "formAction":"/"+ folder + "/check/task-list"
+    })  
+   }
+ })
+
+router.post('/billing/invoice-postcode', function (req, res) {
+  res.render(folder + '/billing/invoice-postcode',{
+      "formAction":"/"+ folder + "/billing/invoice-address"
+  })
+})
+
+router.post('/billing/invoice-address', function (req, res) {
+  res.render(folder + '/billing/invoice-address',{
+      "formAction":"/"+ folder + "/billing/invoice-contact"
+  })
+})
+
+router.post('/billing/invoice-contact', function (req, res) {
+  res.render(folder + '/billing/invoice-contact',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
 
 // Submit and pay ======================================================
 router.get('/check/declaration', function (req, res) {
@@ -754,15 +802,6 @@ router.get('/check/declaration', function (req, res) {
 router.post('/check/declaration', function (req, res) {
   res.render(folder + '/check/declaration',{
       "formAction":"/"+ folder + "/pay/payment-method"
-  })
-})
-
-
-// Claim confidentiality ========================================================
-
-router.get('/check/claim-confidentiality', function (req, res) {
-  res.render(folder + '/check/claim-confidentiality',{
-      "formAction":"/"+ folder + "/check/task-list"
   })
 })
 
@@ -927,6 +966,12 @@ router.get('/evidence/fire-plan-check-answers', function (req, res) {
 
 router.get('/check/confidentiality-check-answers', function (req, res) {
   res.render(folder + '/check/confidentiality-check-answers',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+router.get('/billing/check-your-answers', function (req, res) {
+  res.render(folder + '/billing/check-your-answers',{
       "formAction":"/"+ folder + "/check/task-list"
   })
 })

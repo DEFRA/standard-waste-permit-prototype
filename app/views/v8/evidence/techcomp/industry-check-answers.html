@@ -1,0 +1,160 @@
+{% extends "layout.html" %}
+
+{% set title = "Technical management qualification" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <h1 class="heading-large">
+    {{title}}
+  </h1>
+
+  <dl class="govuk-check-your-answers cya-questions-short">
+    
+    <div>
+      <dt class="cya-question">
+        Scheme
+      </dt>
+      <dd class="cya-answer">
+      {{permit.industryScheme}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/techcomp/industry-scheme"> 
+        Change <span class="visuallyhidden">scheme</span>
+        </a>
+      </dd>
+    </div>
+    
+    <div>
+      <dt class="cya-question">
+        Name
+      </dt>
+      <dd class="cya-answer">
+      {{ permit.tcmName }}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/techcomp/industry-scheme"> 
+        Change <span class="visuallyhidden">name</span>
+        </a>
+      </dd>
+    </div>
+    
+    <div>
+      <dt class="cya-question">
+        Date of birth
+      </dt>
+      <dd class="cya-answer">
+      {{ permit.tcmDobDay }}/{{ permit.tcmDobMonth }}/{{ permit.tcmDobYear }}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/techcomp/industry-scheme"> 
+        Change <span class="visuallyhidden">date of birth</span>
+        </a>
+      </dd>
+    </div>
+    
+    <div>
+      <dt class="cya-question">
+        Number of sites
+      </dt>
+      <dd class="cya-answer">
+      {{ permit.tcmNumSites }}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/techcomp/industry-scheme"> 
+        Change <span class="visuallyhidden">number of sites</span>
+        </a>
+      </dd>
+    </div>
+
+
+{% if permit.industryScheme=="WAMITAB" %}
+    <div>
+      <dt class="cya-question">
+        WAMITAB certificate number
+      </dt>
+      <dd class="cya-answer">
+        {{ permit.wamitabCertNum }}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/techcomp/wamitab-details"> 
+        Change <span class="visuallyhidden">number</span>
+        </a>
+      </dd>
+    </div>
+
+{% endif %}
+
+
+{% if permit.industryScheme=="ESA-EU" %}
+    <div>
+      <dt class="cya-question">
+        Certificate
+      </dt>
+      <dd class="cya-answer">
+      {{permit.technicalCertificateFile}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/techcomp/esa-eu-details"> 
+        Change <span class="visuallyhidden">certificate</span>
+        </a>
+      </dd>
+    </div>
+{% endif %}
+
+
+{% if permit.industryScheme=="deemed" %}
+    <div>
+      <dt class="cya-question">
+        Uploads
+      </dt>
+      <dd class="cya-answer">
+      {{permit.deemedCertificateFile1}}<br>
+      {{permit.deemedCertificateFile2}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/techcomp/deemed"> 
+        Change <span class="visuallyhidden">certificate</span>
+        </a>
+      </dd>
+    </div>
+{% endif %}
+
+
+{% if permit.industryScheme=="getting-qualification" %}
+    <div>
+      <dt class="cya-question">
+        Certificate
+      </dt>
+      <dd class="cya-answer">
+      {{permit.deemedCertificateFile1}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/techcomp/getting-it"> 
+        Change <span class="visuallyhidden">certificate</span>
+        </a>
+      </dd>
+    </div>
+{% endif %}
+  
+  
+  </dl><!-- END CHECK ANSWERS ############################# -->
+
+
+      <form method="post" action="{{formAction}}">
+
+      <div class="form-group">
+        <button type="submit" class="button" name="Return to task list">Return to task list</button>
+      </div>
+
+    </form>
+
+</main>
+
+{% endblock %}

@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "What’s the postcode for your main business address?" %}
+{% set title = "We can't find any addresses for that postcode" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -10,24 +10,24 @@
 <main id="content" role="main">
   {% include "includes/phase_banner_beta.html" %}
   
-  {{backlink|safe}}
-  
   <div class="grid-row">
     <div class="column-two-thirds">
 
-<h1 class="heading-large">{{title}}</h1>
+<h1 class="heading-large" role="alert">{{title}}</h1>
 
 <form method="post" action="{{formAction}}">
   <fieldset>
-    <legend class="visuallyhidden">Postcode for main business address</legend>
+    <legend class="visuallyhidden">Postcode</legend>
 
     <div class="form-group">
-      <label class="form-label" for="mainBusinessPostCode">UK postcode
+      <label class="form-label" for="postcode">Enter the correct postcode
         <span class="form-hint">For example, BS1 5AH</span>
       </label>
-      <input type="text" class="form-control form-control-char-10" id="mainBusinessPostCode" name="mainBusinessPostCode" value="{{permit.mainBusinessPostCode}}" />
+      <input type="text" class="form-control form-control-char-10" id="postcode" name="sitePostCode" value="AB1 2CD" />
     </div>
   </fieldset>
+
+<p>Or <a href="/{{folder}}/address/address-manual">enter address manually</a></p>
 
   <div class="form-group">
       <button type="submit" class="button" name="Continue">Continue</button>
@@ -41,7 +41,7 @@
   </div>
 
 </form>
-
+    
     </div>
   </div>
 
