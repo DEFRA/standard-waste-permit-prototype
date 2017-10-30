@@ -30,35 +30,52 @@
         </a>
       </dd>
     </div>
-
-
-{% if permit.industryScheme=="WAMITAB" %}
+    
     <div>
-      
       <dt class="cya-question">
-        Name 
+        Name
       </dt>
       <dd class="cya-answer">
-      {{ permit.wamitabName }}
+      {{ permit.tcmName }}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/evidence/techcomp/wamitab-details"> 
+        <a href="/{{folder}}/evidence/techcomp/industry-scheme"> 
         Change <span class="visuallyhidden">name</span>
         </a>
       </dd>
-      
+    </div>
+    
+    <div>
       <dt class="cya-question">
         Date of birth
       </dt>
       <dd class="cya-answer">
-       {{ wamitabDobDay }}/{{ wamitabDobMonth }}/{{ wamitabDobYear }}
+      {{ permit.tcmDobDay }}/{{ permit.tcmDobMonth }}/{{ permit.tcmDobYear }}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/evidence/techcomp/wamitab-details"> 
+        <a href="/{{folder}}/evidence/techcomp/industry-scheme"> 
         Change <span class="visuallyhidden">date of birth</span>
         </a>
       </dd>
-      
+    </div>
+    
+    <div>
+      <dt class="cya-question">
+        Number of sites
+      </dt>
+      <dd class="cya-answer">
+      {{ permit.tcmNumSites }}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/techcomp/industry-scheme"> 
+        Change <span class="visuallyhidden">number of sites</span>
+        </a>
+      </dd>
+    </div>
+
+
+{% if permit.industryScheme=="WAMITAB" %}
+    <div>
       <dt class="cya-question">
         WAMITAB certificate number
       </dt>
@@ -70,20 +87,8 @@
         Change <span class="visuallyhidden">number</span>
         </a>
       </dd>
-      
-      <dt class="cya-question">
-          Number of sites
-      </dt>
-      <dd class="cya-answer">
-      {{ permit.wamitabNumSites }}
-      </dd>
-      <dd class="cya-change">
-        <a href="/{{folder}}/evidence/techcomp/wamitab-details"> 
-        Change <span class="visuallyhidden">number of sites</span>
-        </a>
-      </dd>
-
     </div>
+
 {% endif %}
 
 
