@@ -15,6 +15,7 @@
 {% set tCheckRules = "Confirm that your operation meets the rules" %}
 {% set tStackHeight = "Give the stack height" %}
 {% set tMiningWasteManPlan = "Confirm you have a mining waste management plan" %}
+{% set tSaveReturn = "Get a link to save your application" %}
 {% set tStartDate = "Tell us the date when you want the permit to start" %}
 {% set tMiningWastePlan = "Specify the type of mining waste plan" %}
 {% set tDrainage = "Confirm the drainage system for your site" %}
@@ -168,6 +169,29 @@
         <input type="hidden" name="complete[]" value="{{ tPreApp }}">
         {% endif %}
       </li>
+      
+      
+      <li class="task-list-item {% if taskListError and permit.saveReturnEmail==null %} form-group-error{% endif %}" id="{{ tSaveReturn | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+      {% if taskListError and permit.saveReturnEmail==null %}
+        <span class="error-message">
+          Complete this task
+        </span>
+      {% endif %}
+        <a class="task-name" href="{% if permit.saveReturnEmail!=null %}
+          /{{folder}}/save-and-return/email-or-phone
+        {% else %}
+          /{{folder}}/save-and-return/email-or-phone
+        {% endif %}" {% if permit.saveReturnEmail!=null %} aria-describedby="save-completed"{% endif %}>
+          {{ tSaveReturn }}
+        </a>
+        {% if permit.saveReturnEmail!=null %} <strong class="task-completed" id="save-completed">Completed</strong>  
+        {% else %}
+        <input type="hidden" name="complete[]" value="{{ tSaveReturn }}">
+        {% endif %}
+      </li>
+      
+      
+      
     </ul>
   </li>
 

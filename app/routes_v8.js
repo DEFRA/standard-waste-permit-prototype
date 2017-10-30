@@ -182,19 +182,27 @@ router.post('/check/save-permit-details', function (req, res) {
       })
 })
 
+// SAVE AND RETURN AS A TASK
+router.get('/save-and-return/email-or-phone', function (req, res) {
+      res.render(folder + '/save-and-return/email-or-phone',{
+        "formAction":"/"+ folder + "/save-and-return/confirm"
+      })
+})
+
 
 router.post('/check/task-list', function (req, res) {
-  if( res.locals.data.saveProgress=='task-list-visited' ) {
-    // Show save screen
-    res.render(folder + '/save-and-return/email-or-phone',{
-        "formAction":"/"+ folder + "/save-and-return/confirm"
-    })
-  } else {
+  // REMOVE AUTMATIC SAVE AND RETURN
+  // if( res.locals.data.saveProgress=='task-list-visited' ) {
+  //   // Show save screen
+  //   res.render(folder + '/save-and-return/email-or-phone',{
+  //       "formAction":"/"+ folder + "/save-and-return/confirm"
+  //   })
+  // } else {
     // Show task list
     res.render(folder + '/check/task-list',{ 
        "chosenPermitID":req.body['chosenPermitID']
     })
-  }
+  // }
 })
 
 // Called by task list page via AJAX to log the first visit
