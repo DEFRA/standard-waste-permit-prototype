@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% set title = "Make a site plan" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large" id="upload-label">{{title}}</h1>
+
+      <p>As part of your location check, we made a map based on the grid reference you gave us. You can use this to make a site map. (Or upload your own).</p>
+
+
+      <form method="post" action="{{formAction}}">
+
+
+        <div class="form-group">
+
+         <div class="multiple-choice" data-target="location-map">
+          <input id="example-contact-by-email" type="radio" name="radio-contact-group" value="Yes">
+          <label for="example-contact-by-email">Use the map made for my location check</label>
+        </div>
+        <div class="panel panel-border-narrow js-hidden" id="location-map">
+          <p>Location check map 
+            PDF, 123KB
+
+            This file may not be suitable for users of assistive technology. Request a different format.</p>
+            <p>Download this map and print it out. Draw an outline of the area you want the permit to cover, clearly marked in green. Scan it.</p> 
+          </div>
+
+          <div class="multiple-choice" data-target="contact-by-phone">
+            <input id="example-contact-by-phone" type="radio" name="radio-contact-group" value="No">
+            <label for="example-contact-by-phone">Use my own site plan
+            </label>
+          </div>
+          <div class="panel panel-border-narrow js-hidden" id="contact-by-phone">
+            {% include folder+"/guidance/siteplan.html" %}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
