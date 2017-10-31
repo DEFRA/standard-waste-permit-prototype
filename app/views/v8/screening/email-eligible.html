@@ -43,7 +43,7 @@ Gmail | Standard rules permit - location check results
 
       <div id="banner" class="email-banner"><img src="{{ imgpath }}gov_uk_email_header.png" alt="GOV.UK" /></div>
 
-      {#{permit | dump}#}
+      {{permit | dump}}
 
       <p class="text font-small">
         Dear {{ permit.contactFirstName }} {{ permit.contactLastName }}
@@ -55,9 +55,8 @@ Gmail | Standard rules permit - location check results
       <br>
 
       <p class="bold-medium">
-        <a href="#">Sign in/return to complete your application online</a>
+        <a href="/{{folder}}/check/task-list?return=y">Sign in/return to complete your application online</a>
       </p>
-
 
       <p class="text font-small">
         The site location passed our checks for nearby nature and conservation sites.

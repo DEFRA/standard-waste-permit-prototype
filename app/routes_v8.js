@@ -177,7 +177,7 @@ router.get('/selectpermit/choose-expanding-sections-new-cats', function (req, re
 // This page should not show for long - it just saves permit data
 router.post('/check/save-permit-details', function (req, res) {
       res.render(folder + '/check/save-permit-details',{
-        "formAction":"/"+ folder + "/screening/location-check", // Screening question
+        "formAction":"/"+ folder + "/screening/mobile-check", // Mobile question
         "chosenPermitID":req.body['chosenPermitID']
       })
 })
@@ -185,14 +185,15 @@ router.post('/check/save-permit-details', function (req, res) {
 
 // Screening / site location check ===========================================================
 
-// This page should not show for long - it just saves permit data
-router.post('/screening/location-check', function (req, res) {
+// This is not a real page, just a URL for the route
+router.post('/screening/mobile-check', function (req, res) {
   // check if this is a mobile plant permit
   if(req.session.data['sitePlanNeeded']=="No"){
     res.render(folder + '/check/task-list')
   } else { // not mobile plant permit
     res.render(folder + '/screening/location-check',{
         "formAction":"/"+ folder + "/screening/location-options", // Screening question
+        "chosenPermitID":req.body['chosenPermitID']
       })
     }
   })
@@ -214,6 +215,34 @@ router.post('/screening/location-options', function (req, res) {
       })
   }
 })
+
+router.get('/screening/conservation-screening', function (req, res) {
+  res.render(folder + '/screening/conservation-screening',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+router.post('/screening/check-your-answers', function (req, res) {
+  res.render(folder + '/screening/check-your-answers',{
+      "formAction":"/"+ folder + "/screening/received"
+  })
+})
+
+
+router.get('/screening/received', function (req, res) {
+  res.render(folder + '/screening/received',{
+      "formAction":"/"+ folder + "/screening/email-eligible"
+  })
+})
+
+router.get('/screening/email-eligible', function (req, res) {
+  res.render(folder + '/screening/email-eligible',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+
+// Task List 
 
 router.post('/check/task-list', function (req, res) {
   if( res.locals.data.saveProgress=='task-list-visited' ) {
@@ -252,7 +281,7 @@ router.get('/check/task-list', function (req, res) {
       "chosenPermitID":sample.permit['chosenPermitID'],
       "permit":sample.permit
     })
-  } else if(req.query['return']=='y') { // from return email
+  } else if(req.query['return']=='y') { // from return or screening email
     res.render(folder + '/check/task-list',{
       "formAction":"/"+ folder + "/check/check-answers"
     })
@@ -375,19 +404,6 @@ router.get('/preapp/preapp-discussion', function (req, res) {
 })
 
 
-// Screening =================================================================
-
-router.get('/screening/conservation-screening', function (req, res) {
-  res.render(folder + '/screening/conservation-screening',{
-      "formAction":"/"+ folder + "/check/task-list"
-  })
-})
-
-router.post('/screening/check-your-answers', function (req, res) {
-  res.render(folder + '/screening/check-your-answers',{
-      "formAction":"/"+ folder + "/screening/received"
-  })
-})
 
 
 // Contact ===================================================================
