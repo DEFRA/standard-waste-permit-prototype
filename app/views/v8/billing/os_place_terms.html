@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% set title = "Ordnance Survey terms and conditions" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+    
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<p class="text">Addressing information and mapping data from Ordnance Survey (OS) is &copy; Crown copyright and database rights 2017 OS 100024198.</p>
+
+<p class="text">Use of this data is subject to the following conditions by way of exception to the standard Open Government Licence (OGL) referred to at the foot of this page.</p>
+
+<h2 class="heading-medium">Terms and conditions</h2>
+
+<ol class="list list-number">
+      <li>You are granted a non-exclusive, royalty free revocable licence solely to view the licensed mapping and addressing data for
+non-commercial purposes for the period during which we make it available.</li>
+      <li>You are not permitted to copy, sub-license, distribute, sell or otherwise make available such data to third parties in any form.</li>
+      <li>Third party rights to enforce the terms of this licence shall be reserved to OS.</li>
+    </ol>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

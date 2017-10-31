@@ -18,6 +18,22 @@
 
   <dl class="govuk-check-your-answers cya-questions-short">
   
+    <div>
+      <dt class="cya-question">
+        Site contact details
+      </dt>
+      <dd class="cya-answer">
+        {{permit.siteContactFirstName}} {{permit.siteContactLastName}}<br>
+        Telephone {{permit.siteContactTelephone}}<br>
+        {{permit.siteContactEmail}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/site/site-contact"> 
+          Change <span class="visuallyhidden">Site contact details</span>
+        </a>
+      </dd>
+    </div>
+
    <div>
       <dt class="cya-question">
       Site name
