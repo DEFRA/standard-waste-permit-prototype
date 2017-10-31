@@ -498,20 +498,20 @@ router.post('/address/postcode', function (req, res) {
 // Location check
 router.post('/address/address', function (req, res) {
   if(req.session.data['locationCheck']=="Yes"){ 
-      res.render(folder + '/address/address',{
-          "formAction":"/"+ folder + "/contact/contact-details"
-      })
+    res.render(folder + '/address/address',{
+        "formAction":"/"+ folder + "/contact/contact-details"
+    })
   } else {
-  res.render(folder + '/address/address',{
-      "formAction":"/"+ folder + "/site/site-contact"
-  })
+    res.render(folder + '/address/address',{
+        "formAction":"/"+ folder + "/site/site-contact"
+    })
+  }
 })
 
 router.post('/site/site-contact', function (req, res) {
   res.render(folder + '/site/site-contact',{
       "formAction":"/"+ folder + "/check/task-list"
-   })  
-  }
+  })
 })
 
 
