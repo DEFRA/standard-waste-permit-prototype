@@ -15,6 +15,7 @@
 {% set tCheckRules = "Confirm that your operation meets the rules" %}
 {% set tStackHeight = "Give the stack height" %}
 {% set tMiningWasteManPlan = "Confirm you have a mining waste management plan" %}
+{% set tSaveReturn = "Get a link to save your application" %}
 {% set tStartDate = "Tell us the date when you want the permit to start" %}
 {% set tMiningWastePlan = "Specify the type of mining waste plan" %}
 {% set tDrainage = "Confirm the drainage system for your site" %}
@@ -24,10 +25,11 @@
 {% set tPermitHolder = "Give permit holder details" %}
 {% set tSiteDetails = "Give site name and location" %}
 {% set tSitePlan = "Upload the site plan" %}
-{% set tTechManagement = "Upload technical management qualifications" %}
+{% set tTechManagement = "Give technical management details" %}
 {% set tManSystem = "Tell us which management system you use" %}
 {% set tFirePlan = "Upload fire prevention plan" %}
 {% set tConfidentiality = "Confirm confidentiality needs" %}
+{% set tBilling = "Give invoicing details" %}
 {% set tSend = "Send application and pay" %}
 
 <main id="content" role="main" class="task-list">
@@ -167,6 +169,29 @@
         <input type="hidden" name="complete[]" value="{{ tPreApp }}">
         {% endif %}
       </li>
+      
+      
+      <li class="task-list-item {% if taskListError and permit.saveReturnEmail==null %} form-group-error{% endif %}" id="{{ tSaveReturn | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+      {% if taskListError and permit.saveReturnEmail==null %}
+        <span class="error-message">
+          Complete this task
+        </span>
+      {% endif %}
+        <a class="task-name" href="{% if permit.saveReturnEmail!=null %}
+          /{{folder}}/save-and-return/email-or-phone
+        {% else %}
+          /{{folder}}/save-and-return/email-or-phone
+        {% endif %}" {% if permit.saveReturnEmail!=null %} aria-describedby="save-completed"{% endif %}>
+          {{ tSaveReturn }}
+        </a>
+        {% if permit.saveReturnEmail!=null %} <strong class="task-completed" id="save-completed">Completed</strong>  
+        {% else %}
+        <input type="hidden" name="complete[]" value="{{ tSaveReturn }}">
+        {% endif %}
+      </li>
+      
+      
+      
     </ul>
   </li>
 
@@ -296,9 +321,9 @@
         </span>
       {% endif %}
       <a class="task-name" href="{% if permit.industryScheme!=null %}
-        /{{folder}}/evidence/industry-check-answers
+        /{{folder}}/evidence/techcomp/industry-check-answers
       {% else %}
-        /{{folder}}/evidence/industry-scheme
+        /{{folder}}/evidence/techcomp/manager-details
       {% endif %}" {% if permit.industryScheme!=null %} aria-describedby="industry-scheme-completed"{% endif %}>
         {{ tTechManagement }}
       </a>
@@ -369,7 +394,29 @@
           {% else %}
           <input type="hidden" name="complete[]" value="{{ tConfidentiality }}">
           {% endif %}
-      </li>     
+      </li> 
+
+
+       <!-- Billing ############################################################### -->
+    <li class="task-list-item {% if taskListError and permit.invoiceAddress==null %} form-group-error{% endif %}" id="{{ tBilling  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+          {% if taskListError and permit.invoiceAddress==null %}
+            <span class="error-message">
+              Complete this task
+            </span>
+          {% endif %}
+          <a class="task-name" href="{% if permit.invoiceAddress!=null %}
+            /{{folder}}/billing/check-your-answers
+          {% else %}
+            /{{folder}}/billing/invoice-options-check
+          {% endif %}" {% if permit.invoiceAddress!=null %} aria-describedby="billing-completed"{% endif %}>
+            {{ tBilling }}
+          </a>
+          {% if permit.invoiceAddress!=null %} <strong class="task-completed" id="billing-completed">Completed</strong> 
+          {% else %}
+          <input type="hidden" name="complete[]" value="{{ tBilling }}">
+          {% endif %}
+      </li>  
+
     </ul>
   </li>
   

@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% set title = "What's their WAMITAB certificate number?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<p>
+  The minimum WAMITAB qualification they need for these standard rules is:<br>
+  <strong class="bold-small">{{ permit.WAMITAB }}</strong>
+</p>
+<p>
+  If the qualification is over 2 years old they also need a continuing competence certificate.
+</p>
+
+<div class="panel panel-border-wide">
+  <p>
+    We’ll check their qualification on the WAMITAB database.
+  </p>
+</div>
+
+<form method="post" action="{{formAction}}">
+
+<div class="form-group">
+  <label class="form-label" for="wamitabCertNum">
+    WAMITAB certificate number
+    <span class="form-hint">For example, OCC1234</span>
+  </label>
+  <input class="form-control form-control-char-15" id="wamitabCertNum" name="wamitabCertNum" type="text" value="{{ permit.wamitabCertNum }}">
+</div>
+
+
+<div class="form-group">
+    <button type="submit" class="button" name="Continue">Continue</button>
+</div>
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
