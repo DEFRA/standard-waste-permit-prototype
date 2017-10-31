@@ -524,10 +524,6 @@ router.get('/evidence/upload-site-plan', function (req, res) {
   })
 })
 
-// Task list goes to site-plan-check
-// if No then go to upload-site-plan
-// if Yes then go to make-site-plan
-
 // This is not a real page, just a URL for the route
 router.get('/evidence/site-plan-check', function (req, res) {
   if(req.session.data['locationCheck']=="Yes"){ 

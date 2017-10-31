@@ -26,35 +26,53 @@
         <div class="form-group">
 
          <div class="multiple-choice" data-target="location-map">
-          <input id="example-contact-by-email" type="radio" name="radio-contact-group" value="Yes">
-          <label for="example-contact-by-email">Use the map made for my location check</label>
+          <input id="use-location-check-map" type="radio" name="make-site-plan" value="Yes">
+          <label for="use-location-check-map">Use the map made for my location check</label>
         </div>
         <div class="panel panel-border-narrow js-hidden" id="location-map">
-          <p>Location check map 
-            PDF, 123KB
 
-            This file may not be suitable for users of assistive technology. Request a different format.</p>
-            <p>Download this map and print it out. Draw an outline of the area you want the permit to cover, clearly marked in green. Scan it.</p> 
+          <div class="grid-row">
+            <div class="column-one-third">
+
+              <div class="attachment-thumb">
+                <a class="thumbnail" href="public/images/map/screening-report-map.png" target="_blank"><img width="100%" height="auto" alt="Location check map" src="/public/images/map/screening-report-map.png"></a>
+              </div>
+            </div>
+
+            <div class="column-two-thirds">
+
+              <h2 class="font-medium"><a href="/public/images/map/screening-report-map.png" target="_blank">Location check map</a></h2>
+
+              <p class="font-xsmall">
+                <span class="type"><abbr title="Portable Document Format">PDF</abbr></span>, <span class="file-size">123KB</span>
+              </p>
+
+              <p class="font-xsmall">This file may not be suitable for users of assistive technology. <a href="#">Request an accessible format.</a></p>
+            </div>
           </div>
 
-          <div class="multiple-choice" data-target="contact-by-phone">
-            <input id="example-contact-by-phone" type="radio" name="radio-contact-group" value="No">
-            <label for="example-contact-by-phone">Use my own site plan
-            </label>
-          </div>
-          <div class="panel panel-border-narrow js-hidden" id="contact-by-phone">
-            {% include folder+"/guidance/siteplan.html" %}
-          </div>
+          <br>
+          <p>Download this map and print it out. Draw an outline of the area you want the permit to cover, clearly marked in green. Scan it.</p> 
         </div>
 
-        <div class="form-group">
-          <button type="submit" class="button" name="Continue">Continue</button>
+        <div class="multiple-choice" data-target="site-plan-guidance">
+          <input id="use-own-site-plan" type="radio" name="make-site-plan" value="No">
+          <label for="use-own-site-plan">Use my own site plan
+          </label>
         </div>
+        <div class="panel panel-border-narrow js-hidden" id="site-plan-guidance">
+          {% include folder+"/guidance/siteplan.html" %}
+        </div>
+      </div>
 
-      </form>
+      <div class="form-group">
+        <button type="submit" class="button" name="Continue">Continue</button>
+      </div>
 
-    </div>
+    </form>
+
   </div>
+</div>
 </main>
 
 {% endblock %}
