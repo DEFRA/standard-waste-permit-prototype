@@ -182,13 +182,21 @@ router.post('/check/save-permit-details', function (req, res) {
       })
 })
 
+
 // Screening / site location check ===========================================================
 
+// This page should not show for long - it just saves permit data
 router.post('/screening/location-check', function (req, res) {
-      res.render(folder + '/screening/location-check',{
-        "formAction":"/"+ folder + "/screening/location-options" // Screening question
+  // check if this is a mobile plant permit
+  if(req.session.data['sitePlanNeeded']=="No"){
+    res.render(folder + '/check/task-list')
+  } else { // not mobile plant permit
+    res.render(folder + '/screening/location-check',{
+        "formAction":"/"+ folder + "/screening/location-options", // Screening question
       })
-})
+    }
+  })
+
 
 // This is not a real page, just a URL for the route
 router.post('/screening/location-options', function (req, res) {
