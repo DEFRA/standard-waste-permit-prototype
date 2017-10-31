@@ -35,6 +35,66 @@ REGEXP replacements for google HTML
 </th>
 </tr>
 
+<tr><td><p>
+Allow users to choose to order a location screening check before they carry on with the application. 
+</p></td><td><p>
+This has been added an an experiment to test in the next round of remote testing. It's been added because we know that users (about 250 a year) have a need to check their location before a full application (25% fail at this stage) and we know that some applications (5%) fail the location check after a full application.
+</p></td></tr>
+
+<tr><td><p>
+Move save and return to be a separate task. It was triggered after the first task done.
+</p></td><td><p>
+Although testing showed that the save and return after a task worked OK, we noted that users were 'slightly surprised' or it was 'jarring'. This change is to test if a separate task will prevent this.
+</p></td></tr>
+
+<tr><td><p>
+Remove 'main business address' and replace with a site contact.
+</p></td><td><p>
+The existing business systems don't store this address. We have a need to have a contact for the application, one for the site and one for invoicing, so that's what we've done.
+</p></td></tr>
+
+<tr><td><p>
+Added a separate task to collect the invoice address. And added guidance to make clear what we need the address for. We're also allowing the user to select a previously entered address.
+</p></td><td><p>
+Invoice address is required for all permit holder types and the permit holder flow is already quite long so our hypothesis (to be tested), is that this will be clearer. We have  evidence from P&amp;SC that users are currently providing the wrong address because they think the address is needed for the application fee instead of the subsistence fee. Allowing the user to select an existing address makes it easier for them.
+</p></td></tr>
+
+<tr><td><p>
+Added a screen to gather name and date of birth for the technically qualified manager.
+</p></td><td><p>
+There is a buisness need to perform enhanced conviction checks on this person, so we need to know who they are and their date of birth to ensure we are checking the right person.
+</p></td></tr>
+
+<tr><td><p>
+Changed the WAMITAB evidence from a certificate upload to details about the qualified person.
+</p></td><td><p>
+The user does not have to scan their original certificate and continuing competence. EA now looks this up on the WAMITAB database.
+</p></td></tr>
+
+<tr><td><p>
+Added a choice screen for the technically qualified manager to state what type of qualification the manager has. 
+</p></td><td><p>
+The user only has to read the guidance appropriate to their qualifiation.
+</p></td></tr>
+
+<tr><td><p>
+Added a new screen for the applicant to give an email address for company secretary or a director.
+</p></td><td><p>
+This means that applicants can get official notifications by email and not by post. This also help to save postage costs.
+</p></td></tr>
+
+<tr><td><p>
+We've made a few updates to the wording following a review by another content designer.
+</p></td><td><p>
+This helps ensure we're meeting GDS standards.
+</p></td></tr>
+
+<tr><td><p>
+Make the input box for director's date of birth slightly wider so it looks like a rectangle not a square.
+</p></td><td><p>
+On user assumed that the square box was a checkbox. Although this was only one user, it seems sensible to avoid replicating the appearance of a checkbox. 
+</p></td></tr>
+
 
 <tr><td><p>
 Added option to give different main UK business and billing addresses for limited companies.

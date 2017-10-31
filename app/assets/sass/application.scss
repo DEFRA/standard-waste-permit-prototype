@@ -97,6 +97,12 @@ span.postcode {
   word-wrap: break-word;
 }
 
+// Add spacing below wide border panel
+.panel-border-wide {
+  margin-bottom: 30px;
+}
+
+
 // Form control widths
 // ==========================================================================
 
@@ -293,7 +299,6 @@ span.pay-text {
 
 // Registered office address
 .registered-office-address {
-  p { margin-bottom: 5px; }
   h2 { margin-top: 0; }
 }
 
