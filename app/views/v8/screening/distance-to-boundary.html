@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% set title = "What's the distance from the grid reference point to the site boundary?
+" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">{{title}}</h1>
+
+      <form method="post" action="{{formAction}}">
+        <fieldset>
+          <legend class="visuallyhidden">Distance in metres</legend>
+
+          <div class="form-group">
+            <label class="form-label" for="postcode">Distance in metres
+              <span class="form-hint">Give the distance to the furthest boundary</span>
+            </label>
+            <input type="number" class="form-control form-control-char-20" id="distance" name="distanceToBoundary" value="{{permit.distanceToBoundary}}" />
+          </div>
+        </fieldset>
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
