@@ -9,11 +9,11 @@
 <div id="worldpay-success">
 
     <div id="worldpay-description">
-    Standard rules permit SR12345 Title of permit goes here
+    {{ permit.permitName | truncate(45) }} {{ permit.permitCode }}
     </div>
 
     <div id="worldpay-amount">
-    £720.00
+    {{ permit.permitCost }}
     </div>
     
     <div id="worldpay-continue-button">
