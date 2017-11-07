@@ -6,8 +6,9 @@ var request = require('request')
 // this file deals with all paths starting /version_x
 // How to use folder variable:
 // res.redirect( '/' + folder + '/exemptions/add_exemptions');
-var folder = "v8";
-var servicename = "Apply for a standard rules waste permit";
+var folder = "v8"
+var servicename = "Apply for a standard rules waste permit"
+var paymentMethod = "worldpay"  // or "govpay"
 
 var sample = require('./views/'+folder+'/custom_inc/sample-permit.js')
 //console.log(sample.permit)
@@ -20,6 +21,7 @@ router.use(function (req, res, next) {
   // this can then be used in pages as {{folder}}
   res.locals.folder=folder
   res.locals.backlink=backlink
+  res.locals.paymentMethod=paymentMethod
   // permit and autostore data set in all statement at bottom
   res.locals.permit=res.locals.data
   
@@ -1017,10 +1019,18 @@ router.get('/check/check-answers', function (req, res) {
 })
 
 router.post('/check/check-answers', function (req, res) {
+  var payPath = ""
+  if(paymentMethod=="govpay"){  // yes I know this is ugly
+    payPath = "/pay/enter-card-details"
+  }
+  if(paymentMethod=="worldpay"){
+    payPath = "/pay/worldpay/worldpay-card-details"
+  }
+  
   if(req.body['complete']=="" || req.body['complete']==null){ 
     res.render(folder + '/check/check-answers',{
         // "formAction":"/"+ folder + "/pay/payment-method", THIS WAS FOR PAYMENT METHOD
-        "formAction":"/"+ folder + "/pay/enter-card-details"
+        "formAction":"/"+ folder + payPath
     })
   } else {
     var taskListError = true
@@ -1142,6 +1152,24 @@ router.post('/pay/confirm-payment', function (req, res) {
       "formAction":"/"+ folder + "/printcopy/index"
   })
 })
+
+
+// for worldpay instead of gov pay
+router.get('/pay/worldpay/worldpay-card-details', function (req, res) {
+  res.render(folder + '/pay/worldpay/worldpay-card-details',{
+      "formAction":"/"+ folder + "/pay/worldpay/worldpay-success"
+  })
+})
+
+router.get('/pay/worldpay/worldpay-success', function (req, res) {
+  res.render(folder + '/pay/worldpay/worldpay-success',{
+      "formAction":"/"+ folder + "/printcopy/index"
+  })
+})
+
+
+
+// Get copy of application
 
 router.post('/printcopy/index', function (req, res) {
   res.render(folder + '/printcopy/index',{

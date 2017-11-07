@@ -413,8 +413,15 @@
     <!-- ({{permit.permitCost}}) -->
 
       <div class="form-group">
-        <button type="submit" class="button" name="Submit and continue to payment ({{permit.permitCost}})">Submit and pay on GOV.UK Pay
-        </button> 
+        <button type="submit" class="button" name="Submit and continue to payment ({{permit.permitCost}})">Submit and pay {{permit.permitCost}}
+        </button> <br>
+        <span class="form-hint button-hint">
+          {% if paymentMethod=="govpay" %}
+            on GOV.UK Pay
+          {% elif paymentMethod=="worldpay" %}
+            on the Worldpay secure payment site
+          {% endif %}
+        </span>
       </div>
 
     </form>
