@@ -313,3 +313,56 @@ table.change-log td, table.change-log th{padding:0.5em;width:50%;}
 table.change-log th,
 table.change-log th p{font-weight:bold;background-color:#EDEDED;}
 table.change-log th p, table.change-log td p{margin:0.2em 0;}
+
+
+
+#worldpay-card-details{
+	background-image:url('/public/images/worldpay/worldpay-card-details-bg.gif');
+	height:1100px;
+	width:764px;
+	margin:0 auto 40px auto;
+	position: relative;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: medium;
+	color: #000;
+	}
+
+#worldpay-description{
+	position:absolute;
+	top:163px;
+	left:277px;
+	margin:0;
+	padding:0;
+	}
+
+#worldpay-amount{
+	position:absolute;
+	top:193px;
+	left:277px;
+	margin:0;
+	padding:0;
+	}
+
+#worldpay-pay-button{
+	position:absolute;
+	top:905px;
+	left:655px;
+	margin:0;
+	padding:0;
+	}
+  
+#worldpay-success{
+	background-image:url('/public/images/worldpay/worldpay-success-bg.gif');
+	height:390px;
+	width:764px;
+	margin:0 auto 40px auto;
+	position: relative;
+	}
+	
+#worldpay-continue-button{
+	position:absolute;
+	top:270px;
+	left:590px;
+	margin:0;
+	padding:0;
+	}
