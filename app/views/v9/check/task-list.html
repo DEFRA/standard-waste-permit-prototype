@@ -60,7 +60,7 @@
           Apply for a standard rules waste permit
         </h1>
 
-        <p class="text">{{permit.permitName}} - {{permit.permitCode}}<br><a class="font-small" href="/{{folder}}/selectpermit/permit-category2">Select a different permit</a></p>
+        <p class="font-medium text">{{permit.permitName}} - {{permit.permitCode}}<br><a class="font-small" href="/{{folder}}/selectpermit/permit-category2">Select a different permit</a></p>
 
         <ol class="task-list"> 
           <!-- 1. COMPLETE APPLICATION ############################################################### -->
@@ -83,16 +83,16 @@
                 <input type="hidden" name="complete[]" value="{{ tContactDetails }}">
                 {% endif %}
               </li>
-              <li class="task-list-item {% if taskListError and permit.operatorType==null %} form-group-error{% endif %}" id="{{ tPermitHolder  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
-                {% if taskListError and permit.operatorType==null %}
+              <li class="task-list-item {% if taskListError and permit.companyName==null %} form-group-error{% endif %}" id="{{ tPermitHolder  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+                {% if taskListError and permit.companyName==null %}
                 <span class="error-message">
                   Complete this task
                 </span>
                 {% endif %}
-                <a class="task-name" href="/{{folder}}/operator/site-operator" {% if permit.operatorType!=null %} aria-describedby="site-operator-completed"{% endif %}>
+                <a class="task-name" href="/{{folder}}/operator/company/company-name" {% if permit.companyName!=null %} aria-describedby="site-operator-completed"{% endif %}>
                   {{ tPermitHolder }}
                 </a>
-                {% if permit.operatorType!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong> 
+                {% if permit.companyName!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong> 
                 {% else %}
                 <input type="hidden" name="complete[]" value="{{ tPermitHolder }}">
                 {% endif %}
