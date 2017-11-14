@@ -35,11 +35,11 @@
     <p>Company number {{company.company_number}}. <a href="/{{folder}}/operator/company/company-name">Enter a different number</a></p>
     </div>
 
-    <h2 class="heading-medium">{{company.title | title}}</h2>
+    <h2 class="heading-medium">{{company.title}}</h2>
 
     <input type="hidden" name="companyNumber" value="{{company.company_number}}">
 
-    <input type="hidden" name="companyName" value="{{company.title | title}}">
+    <input type="hidden" name="companyName" value="{{company.title}}">
 
 <!-- store address here for use on next page -->
     <input type="hidden" name="companyAddress" value="{{company.address_snippet}}">
