@@ -176,13 +176,20 @@ router.get('/selectpermit/choose-expanding-sections-new-cats', function (req, re
 })
 
 
-// This page should not show for long - it just saves permit data
 router.post('/check/save-permit-details', function (req, res) {
+    if( req.session.data['saveReturnEmail']==null ) {
       res.render(folder + '/check/save-permit-details',{
-        "formAction":"/"+ folder + "/check/task-list", // Mobile question
+        "formAction":"/"+ folder + "/save-and-return/email-or-phone",
         "chosenPermitID":req.body['chosenPermitID']
       })
+    } else {
+      res.render(folder + '/check/task-list',{ 
+         "formAction":"/"+ folder + "/check/check-answers",
+         "chosenPermitID":req.body['chosenPermitID']
+      })
+    }
 })
+
 
 // SAVE AND RETURN AS A TASK
 router.get('/save-and-return/email-or-phone', function (req, res) {
@@ -348,7 +355,7 @@ router.post('/selectpermit/choose-permit2', function (req, res) {
     })
   } else {
     res.render(folder + '/selectpermit/choose-permit2',{
-      "formAction":"/"+ folder + "/check/save-permit-details",
+      "formAction":"/"+ folder + "/check/save-permit-details",  
       "chosenCategory":req.body['chosenCategory']
     })    
   }
@@ -1175,7 +1182,7 @@ router.get('/pay/worldpay/worldpay-card-details', function (req, res) {
 
 router.get('/pay/worldpay/worldpay-success', function (req, res) {
   res.render(folder + '/pay/worldpay/worldpay-success',{
-      "formAction":"/"+ folder + "/printcopy/index"
+      "formAction":"/"+ folder + "/done/index" // previously /printcopy/index
   })
 })
 

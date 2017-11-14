@@ -277,7 +277,7 @@
 </div>
 
 <!-- Only show if 'Tasklist Save' route -->
-{% if permit.saveProgress=='save-link-sent'  %}
+{% if permit.saveReturnEmail!==null  %}
 
 <div class="column-one-third application-saved">
   <aside class="govuk-related-items">
