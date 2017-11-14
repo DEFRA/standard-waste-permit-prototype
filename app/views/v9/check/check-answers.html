@@ -10,44 +10,8 @@
 
 <main id="content" role="main">
   {% include "includes/phase_banner_beta.html" %}
-  
+
 <h1 class="heading-large">{{title}}</h1>
-
-
-  <h2 class="heading-medium">
-    Before you apply
-  </h2>
-
-  <dl class="govuk-check-your-answers cya-questions-short">  
-    <div>
-      <dt class="cya-question">
-     Read rules
-      </dt>
-      <dd class="cya-answer">
-      {{permit.readRules}}
-      </dd>
-      <dd class="cya-change">
-        <a href="/{{folder}}/read-rules/index"> 
-        Change <span class="visuallyhidden">read rules</span>
-        </a>
-      </dd>
-    </div> 
-
-    <div>
-      <dt class="cya-question">
-      Pre-application discussion
-      </dt>
-      <dd class="cya-answer">
-      {{permit.preAppDiscussion}} <!-- {{permit.preAppDiscussionRefName}} --> 
-      </dd>
-      <dd class="cya-change">
-        <a href="/{{folder}}/preapp/preapp-discussion"> 
-        Change <span class="visuallyhidden">pre-application discussion</span>
-        </a>
-      </dd>
-    </div>
-
-  </dl>
 
 
   <h2 class="heading-medium">
@@ -104,6 +68,8 @@
       </dd>
     </div>
 
+
+{% if permit.useBusinessTradingName=="Yes" %}
      <div>
       <dt class="cya-question">
       Business trading name
@@ -117,6 +83,8 @@
         </a>
       </dd>
     </div>
+{% endif %}
+
 
     <div>
       <dt class="cya-question">
@@ -333,7 +301,7 @@
       </dd>
     </div>
 
-    <div>
+   <!--  <div>
       <dt class="cya-question">
       Management system
       </dt>
@@ -346,6 +314,7 @@
         </a>
       </dd>
     </div>
+    -->
 
     {% if permit.firePlanNeeded=="Yes" %}
     <div>
@@ -377,6 +346,40 @@
       </dd>
     </div>
 
+        <div>
+      <dt class="cya-question">
+        Invoice address
+      </dt>
+      <dd class="cya-answer">
+      {{permit.invoiceAddress}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/billing/invoice-postcode"> 
+        Change <span class="visuallyhidden">invoice address</span>
+        </a>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">
+      Invoice contact details
+      </dt>
+      <dd class="cya-answer">
+      {{permit.invoiceName}}<br>
+             {% if permit.invoiceEmail!=="" %}
+              {{permit.invoiceEmail}}<br>
+             {% endif %}
+             {% if permit.invoiceTelephone!=="" %}
+             Telephone {{permit.invoiceTelephone}}<br>
+             {% endif %}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/billing/invoice-contact"> 
+        Change <span class="visuallyhidden">Contact details</span>
+        </a>
+      </dd>
+    </div>
+
   </dl>
 
 
@@ -388,7 +391,7 @@
   <i class="icon icon-important">
     <span class="visually-hidden">Warning</span>
   </i>
-  <strong class="bold-small text">
+  <strong class="bold-small">
     You can be prosecuted and fined if you give false or misleading information.
   </strong>
 </div>
@@ -397,6 +400,8 @@
   I confirm that:
 </p>
 <ul class="list list-bullet">
+  <li>our operation meets the <a href="{{permit.guidanceURL}}" target="_blank" rel="noopener noreferrer">rules and risk assessment for permit {{permit.permitCode}} on GOV.UK (opens new tab)</a></li>
+  <li>we'll have a written <a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits">management system (opens new tab)</a> in place before we start operating</li>
   <li>the information I have given is true</li>
   <li>I am authorised to apply for this permit by the organisation or individual responsible</li>
 </ul>

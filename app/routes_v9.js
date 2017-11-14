@@ -809,7 +809,7 @@ router.post('/operator/individual/check-individual-details', function (req, res)
 
 router.post('/evidence/declare-offences', function (req, res) {
   res.render(folder + '/evidence/declare-offences',{
-      "formAction":"/"+ folder + "/evidence/offencescheck"
+      "formAction":"/"+ folder + "/evidence/bankruptcy-insolvency" // previously /evidence/offencescheck
   })
 })
 
@@ -817,7 +817,7 @@ router.post('/evidence/declare-offences', function (req, res) {
 
 router.get('/evidence/declare-offences', function (req, res) {
   res.render(folder + '/evidence/declare-offences',{
-      "formAction":"/"+ folder + "/evidence/offencescheck"
+      "formAction":"/"+ folder + "/evidence/bankruptcy-insolvency" // previously /evidence/offencescheck
   })
 })
 
