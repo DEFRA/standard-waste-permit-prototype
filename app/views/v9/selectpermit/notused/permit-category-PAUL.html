@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply for a standard rules waste permit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+
+<h1 class="heading-large">What do you want the permit for?
+</h1>
+
+
+<form action="{{formAction}}" method="post">
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visuallyhidden">What do you want the permit for?</legend>
+
+      <input id="radio-1" type="radio" name="permitCategory" value="Biological treatment of waste">
+<label for="radio-1">
+        Biological treatment of waste
+      </label>
+      <input id="radio-2" type="radio" name="permitCategory" value="Keeping/transfer of waste">
+<label for="radio-2">
+          Keeping/transfer of waste
+      </label>
+      <input id="radio-3" type="radio" name="permitCategory" value="Metal recovery/scrap metal">
+<label for="radio-3">
+        Metal recovery/scrap metal
+      </label>
+      <input id="radio-4" type="radio" name="permitCategory" value="Materials recovery and recycling">
+<label for="radio-4">
+        Materials recovery and recycling
+      </label>
+      <input id="radio-5" type="radio" name="permitCategory" value="Onshore oil and gas exploration, and mining operation">
+<label for="radio-5">
+        Onshore oil and gas exploration, and mining operation
+      </label>
+      <input id="radio-6" type="radio" name="permitCategory" value="Radioactive substances for non-nuclear sites">
+<label for="radio-6">
+        Radioactive substances for non-nuclear sites
+      </label>
+      <input id="radio-7" type="radio" name="permitCategory" value="Recovery or use of waste on land">
+<label for="radio-7">
+        Recovery or use of waste on land
+      </label>
+      <input id="radio-8" type="radio" name="permitCategory" value="Treatment to produce aggregate or construction materials">
+<label for="radio-8">
+        Treatment to produce aggregate or construction materials
+      </label>
+      
+     <p class="form-block">or</p>
+
+      <input id="radio-9" type="radio" name="permitCategory" value="None of the above">
+<label for="radio-9">
+        None of the above
+      </label>
+
+    </fieldset>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="button" name="Continue">Continue</button>
+  </div>
+
+</form>
+
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

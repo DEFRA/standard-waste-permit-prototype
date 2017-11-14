@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% set title = "Have you installed a drainage system to prevent pollution?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<p>For example, you installed an oil separator.</p>
+
+<form method="post" action="{{formAction}}">
+  <div class="form-group">
+
+<!-- Only shown for SR-2015-17 and SR-2015-18 ##################################### -->
+  
+<fieldset>
+
+  <legend class="visually-hidden">{{title}}</legend>
+
+  <div class="multiple-choice">
+    <input id="waterBodyYes" type="radio" name="waterBodyDrainage" value="Yes">
+    <label for="waterBodyYes">
+      Yes, our drainage system is designed to prevent pollution  
+    </label>
+  </div>
+  
+  <div class="multiple-choice">
+    <input id="waterBodyNo" type="radio" name="waterBodyDrainage" value="No">
+    <label for="waterBodyNo">
+      No
+    </label>
+  </div>
+  
+  
+  </fieldset>
+  </div>
+
+<div class="form-group">
+    <button type="submit" class="button" name="Continue">Continue</button>
+</div>
+
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

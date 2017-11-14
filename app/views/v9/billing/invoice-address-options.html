@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% set title = "What address should we use to send invoices?" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">{{title}}</h1>
+
+      <div class="panel panel-border-wide">
+        <p>This should be where we can send invoices for your ongoing annual costs (the subsistence charge) after the permit has been issued.</p>
+      </div>
+
+
+      <form method="post" action="{{formAction}}">
+
+        <div class="form-group">
+          <fieldset>
+
+            {% if permit.companyAddress==null or permit.companyAddress=="" %}
+            {% else %}
+            <div class="multiple-choice">
+              <input id="invRegOffice" type="radio" name="invoiceAddress" value="{{permit.companyAddress}}">
+              <label for="invRegOffice">Registered office: {{permit.companyAddress}}</label>
+            </div>
+            {% endif %}
+            
+            {% if permit.individualAddress==null or permit.individualAddress=="" %}
+            {% else %}
+            <div class="multiple-choice">
+              <input id="invRegOffice" type="radio" name="invoiceAddress" value="{{permit.individualAddress}}">
+              <label for="invRegOffice">Permit holder's address: {{permit.individualAddress}}</label>
+            </div>
+            {% endif %}
+
+            {% if permit.siteAddress==null or permit.siteAddress=="" %}
+            {% else %}
+            <div class="multiple-choice">
+              <input id="invSiteAddress" type="radio" name="invoiceAddress" value="{{permit.siteAddress}}">
+              <label for="invSiteAddress">Site address: {{permit.siteAddress}}</label>
+            </div>
+            {% endif %}
+
+            <div class="multiple-choice">
+              <input id="invDiffAddress" type="radio" name="invoiceAddress" value="Different address">
+              <label for="invDiffAddress">I want to give a different address for invoices</label>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

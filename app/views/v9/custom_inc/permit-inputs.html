@@ -1,0 +1,59 @@
+
+
+<input type="hidden" name="baselineReportRequired" value="{{ pData.baselineReportRequired }}">
+<input type="hidden" name="chosenPermitID" value="{{chosenPermitID}}">
+<input type="hidden" name="confirmConfidentility" value="{{ pData.confirmConfidentility }}">
+<input type="hidden" name="confirmRules" value="{{ pData.confirmRules }}">
+<input type="hidden" name="contactDetails" value="{{ pData.contactDetails }}">
+<input type="hidden" name="costAndTime" value="{{ pData.costAndTime }}">
+<input type="hidden" name="digitalMVP" value="{{ pData.digitalMVP }}">
+<input type="hidden" name="extractiveWasteWeight" value="{{ pData.extractiveWasteWeight }}">
+<input type="hidden" name="firePlanNeeded" value="{{ pData.firePlanNeeded }}">
+<input type="hidden" name="friendlyWeight" value="{{ pData.friendlyWeight }}">
+<input type="hidden" name="guidanceURL" value="{{ pData.guidanceURL }}">
+<input type="hidden" name="locationRules" value="{{ pData.locationRules }}">
+<input type="hidden" name="managementSystem" value="{{ pData.managementSystem }}">
+<input type="hidden" name="miningWasteManagementPlanRequired" value="{{ pData.miningWasteManagementPlanRequired }}">
+<input type="hidden" name="natureHeritageSurvey" value="{{ pData.natureHeritageSurvey }}">
+<input type="hidden" name="permitBaselineReportRequired" value="{{ pData.BaselineReportRequired }}">
+<input type="hidden" name="permitCode" value="{{ pData.code }}">
+<input type="hidden" name="permitCost" value="{{ pData.charge }}">
+<input type="hidden" name="permitFirePlanNeeded" value="{{ pData.firePlanNeeded }}">
+<input type="hidden" name="permitHolderDetails" value="{{ pData.permitHolderDetails }}">
+<input type="hidden" name="permitID" value="{{ pNumber }}">
+<input type="hidden" name="permitName" value="{{ pData.nameGOVUK }}">
+<input type="hidden" name="permitNatureHeritageSurvey" value="{{ pData.natureHeritageSurvey }}">
+<input type="hidden" name="permitPreAppRequired" value="{{ pData.preAppRequired }}">
+<input type="hidden" name="permitSpecialCase" value="{{ pData.specialCase }}">
+<input type="hidden" name="permitStartDate" value="{{ pData.permitStartDate }}">
+<input type="hidden" name="permitTechnicalAbilityEvidence" value="{{ pData.technicalAbilityEvidence }}">
+<input type="hidden" name="permitWasteRecoveryPlan" value="{{ pData.wasteRecoveryPlan }}">
+<input type="hidden" name="permitWeight" value="{{ pData.friendlyWeight }}">
+<input type="hidden" name="preAppRequired" value="{{ pData.preAppRequired }}">
+<input type="hidden" name="siteNameLocation" value="{{ pData.siteNameLocation }}">
+<input type="hidden" name="sitePlanNeeded" value="{{ pData.sitePlanNeeded }}">
+<input type="hidden" name="specialCase" value="{{ pData.specialCase }}">
+<input type="hidden" name="specialCaseText" value="{{ pData.specialCaseText }}">
+<input type="hidden" name="stackHeight" value="{{ pData.stackHeight }}">
+<input type="hidden" name="subsistenceFee" value="{{ pData.subsistenceFee }}">
+<input type="hidden" name="surfaceDrainage" value="{{ pData.surfaceDrainage }}">
+<input type="hidden" name="technicalAbilityEvidence" value="{{ pData.technicalAbilityEvidence }}">
+<input type="hidden" name="WAMITAB" value="{{ pData.WAMITAB }}">
+<input type="hidden" name="WAMITABLevel" value="{{ pData.WAMITABLevel }}">
+<input type="hidden" name="wasteRecoveryPlan" value="{{ pData.wasteRecoveryPlan }}">
+
+
+{% set letters = ["B","C","D","F","G","H","J","K","M","P","Q","R","T","V","W","X","Y"] %}
+
+{% set let1 = letters | random %}
+{% set let2 = letters | random %}
+{% set let3 = letters | random %}
+{% set let4 = letters | random %}
+{% set num1 = [1,2,3,4,5,6,7,8,9] | random %}
+{% set num2 = [1,2,3,4,5,6,7,8,9,0] | random %}
+{% set num3 = [1,2,3,4,5,6,7,8,9,0] | random %}
+{% set num4 = [1,2,3,4,5,6,7,8,9,0] | random %}
+{% set refnum = let1+let2+num1+num2+num3+num4+let3+let4 %}
+              
+              
+<input type="hidden" name="permitRefNumber" value="{{ refnum }}"> 

@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% set title = "Check the registered address" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">{{title}}</h1>
+
+      <div class="registered-office-address">
+       <h2 class="heading-medium">
+        {{permit.companyAddress}}
+      </h2>
+      <p>
+        This is the address that’s registered with Companies House. 
+      </p>
+    </div>
+
+    <details>
+      <summary><span class="summary">That's not our registered office address</span></summary>
+      <div class="panel panel-border-narrow">
+
+        <p>
+          We can only accept applications using the address that’s registered with Companies House. If your address has changed then you should <a href="https://www.gov.uk/file-changes-to-a-company-with-companies-house" target="_blank" rel="noopener noreferrer">tell Companies House about the change (opens new tab)</a> before you complete this application.
+        </p>
+
+      </div>
+    </details>
+
+    <form action="{{formAction}}" method="post">
+
+      <div class="form-group">
+        <button type="submit" class="button" name="Continue">Continue</button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+</main>
+
+{% endblock %}

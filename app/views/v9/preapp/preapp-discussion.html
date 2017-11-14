@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% set title = "Have you discussed your application with us?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+<form action="{{formAction}}" method="post">
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visually-hidden">{{title}}</legend>
+
+      <div class="multiple-choice" data-target="preAppDiscussion">
+      <input id="yesRefName" type="radio" name="preAppDiscussion" value="yes">
+      <label for="yesRefName">
+        Yes and I have a reference number or name
+      </label>
+      </div>
+          <div class="panel panel-border-narrow js-hidden" id="preAppDiscussion">
+            <label class="form-label" for="preAppDiscussionRefName">Reference number or name of person you spoke to
+             <span class="form-hint">For example, SRP3423 or Julie Jones, Bristol Office</span>
+             </label>
+            <input class="form-control" name="preAppDiscussionRefName" type="text" id="preAppDiscussionRefName">
+          </div>
+        
+          
+
+      <div class="multiple-choice">
+      <input id="yesNoRef" type="radio" name="preAppDiscussion" value="yes">
+<label for="yesNoRef">
+        Yes but I don’t have a name or reference number
+      </label>
+    </div>
+      
+
+      <div class="multiple-choice"{% if permit.permitPreAppRequired=="Yes" %} data-target="preAppWarning"{% endif %}>
+      <input id="noPreApp" type="radio" name="preAppDiscussion" value="no">
+      <label for="noPreApp">
+        No
+      </label></div>
+        {% if permit.permitPreAppRequired=="Yes" %}
+          <div class="panel panel-border-narrow js-hidden" id="preAppWarning">
+            <p>
+              We recommend that you contact us for a discussion before your application about permit {{ permit.permitCode }} - {{ permit.permitName | lower }}.
+            </p>
+          </div>
+        {% endif %}
+      
+
+    </fieldset>
+    
+    
+  </div>
+  
+  
+  
+
+    <div class="form-group">
+    <button type="submit" class="button" name="Continue">Continue</button>
+  </div>
+
+
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

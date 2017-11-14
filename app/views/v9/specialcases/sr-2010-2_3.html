@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% set title = "Watercourse name and permit start date" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<form method="post" action="{{formAction}}">
+  
+  <!-- Only shown for SR-2010-2 and SR-2010-3 ##################################### -->
+  
+  
+  <div class="form-group">
+    <label class="form-label" for="watercourseName">
+      Watercourse name
+      <span class="form-hint">
+        For example, Weatherhill Stream
+      </span>
+    </label>
+    <input class="form-control form-control-char-50" id="watercourseName" name="watercourseName" type="text">
+  </div>
+  
+  
+  <div class="form-group">
+    <fieldset>
+      <legend>
+        <span class="form-label">Date you want the permit to start</span>
+        <span class="form-hint" id="start-date-hint">For example, 26 9 2017</span>
+      </legend>
+      <div class="form-date">
+        <div class="form-group form-group-day">
+          <label class="form-label" for="start-date-day">Day</label>
+          <input class="form-control" id="start-date-day" name="startDateDay" type="number" pattern="[0-9]*" min="0" max="31" aria-describedby="start-date-hint">
+        </div>
+        <div class="form-group form-group-month">
+          <label class="form-label" for="start-date-month">Month</label>
+          <input class="form-control" id="start-date-month" name="startDateMonth" type="number" pattern="[0-9]*" min="0" max="12">
+        </div>
+        <div class="form-group form-group-year">
+          <label class="form-label" for="start-date-year">Year</label>
+          <input class="form-control" id="start-date-year" name="startDateYear" type="number" pattern="[0-9]*" min="0" max="2018">
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  
+
+
+<div class="panel panel-border-wide">
+  <p>
+    Charges will start on this date, even if you have not started to discharge. We recommend that you do not apply more than 12 weeks ahead of when the permit is needed unless you accept payment of these charges before the discharge date.
+  </p>
+</div>
+
+
+<input type="hidden" name="specialCasePageVisited" value="Yes">
+
+<div class="form-group">
+    <button type="submit" class="button" name="Continue">Continue</button>
+</div>
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

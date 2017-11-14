@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% set title = "Is this the right company?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+
+{% if numberResults==0 %}
+
+<h1 class="heading-large">We couldn't find that company</h1>
+
+    <p>We couldn't find a company with the number <b>{{searchTerm}}</b> at Companies House</p>
+    
+    <p><a href="/{{folder}}/operator/company/company-name">Enter a different number</a></p>
+
+{% else %}
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+<form action="{{formAction}}" method="post">
+
+    <div class="panel panel-border-wide form-group">
+    <p>Company number {{company.company_number}}. <a href="/{{folder}}/operator/company/company-name">Enter a different number</a></p>
+    </div>
+
+    <h2 class="heading-medium">{{company.title | title}}</h2>
+
+    <input type="hidden" name="companyNumber" value="{{company.company_number}}">
+
+    <input type="hidden" name="companyName" value="{{company.title | title}}">
+
+<!-- store address here for use on next page -->
+    <input type="hidden" name="companyAddress" value="{{company.address_snippet}}">
+
+    <div class="form-group">
+        <fieldset>
+
+          <legend class="visually-hidden">
+            Trading name
+          </legend>
+
+          <div class="multiple-choice" data-target="give-business-trading-name">
+            <input id="useBusinessTradingName" name="useBusinessTradingName" type="checkbox" value="Yes">
+            <label for="useBusinessTradingName">We use a different trading name</label>
+          </div>
+          <div class="panel panel-border-narrow js-hidden" id="give-business-trading-name">
+            <label class="form-label" for="businessTradingName">Business trading name</label>
+            <input class="form-control form-control-char-40" type="text" id="businessTradingName" name="businessTradingName" value={{permit.businessTradingName}}>
+          </div>
+
+        </fieldset>
+      </div>
+
+<div class="form-group">
+<button type="submit" class="button" name="Continue">Continue</button>
+</div>
+
+
+</form>
+
+{% endif %}
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

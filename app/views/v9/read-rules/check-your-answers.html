@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% set title = "Check your answers" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <h1 class="heading-large">
+    {{title}}
+  </h1>
+
+  <table class="check-your-answers">
+
+    <thead>
+      <tr>
+        <th colspan="2">
+          <h2 class="heading-medium">
+            Check that your operation meets the rules
+          </h2>
+        </th>
+        <th>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          Read the rules. The operation meets these rules.
+        </td>
+        <td>
+          {{ data.understood_rules }}
+        </td>
+        <td class="change-answer">
+          <a href="#">
+            Change <span class="visuallyhidden">Name</span>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+
+  <a href="/{{folder}}/check/task-list{{formQuery}}">Return to task list</a>
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% set title = "Have you ordered a site location check?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+<div class="panel panel-border-wide">
+  <p>This will check if your site is too close to heritage and nature conservation sites, protected species or habitats.</p>
+</div>
+
+<form action="{{formAction}}" method="post">
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visually-hidden">{{title}}</legend>
+
+      <div class="multiple-choice"  data-target="screeningYes">
+        <input id="yes" type="radio" name="screening" value="yes">
+<label for="yes">
+        Yes and I have an application reference number
+      </label>
+      </div>
+      <div class="panel panel-border-narrow js-hidden" id="screeningYes">
+        <label class="form-label" for="yes">Application reference number
+         <span class="form-hint">For example, EPR/EB1234AB/A001</span>
+         </label>
+         <input class="form-control" name="screeningRef" type="text" id="screeningRef">
+      </div>
+    
+
+      <div class="multiple-choice">
+        <input id="pending" type="radio" name="screening" value="pending">
+<label for="pending">
+        Yes, but I don't have a reference number or am waiting for a reply
+      </label>
+    </div>
+
+      <div class="multiple-choice" data-target="screeningNo">
+        <input id="no" type="radio" name="screening" value="no">
+<label for="no">
+        No
+      </label>
+      </div>
+        <div class="panel panel-border-narrow js-hidden" id="screeningNo">
+          <p><a href="http://www.smartsurvey.co.uk/s/HeritageForm/" target="_blank" rel="noopener noreferrer">Order a nature and heritage conservation check on the SmartSurvey site</a></p>
+      </div>
+    
+
+    </fieldset>
+  </div>
+  
+  
+  
+
+    <div class="form-group">
+    <button type="submit" class="button" name="Continue">Continue</button>
+  </div>
+
+
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
