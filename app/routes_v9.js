@@ -13,8 +13,10 @@ var paymentMethod = "worldpay"  // or "govpay"
 var sample = require('./views/'+folder+'/custom_inc/sample-permit.js')
 //console.log(sample.permit)
 
-
+// HTML for standard buttons
 var backlink = '<a href="javascript:history.back()" class="link-back">Back</a>'
+var submitButton = '<button type="submit" class="button" name="Continue">Save and continue</button>'
+var completeLink = '<span id="completeLink"><a href="#" id="completeLater">Complete later</a></span>'
 
 router.use(function (req, res, next) {
   // set a folder and store in locals

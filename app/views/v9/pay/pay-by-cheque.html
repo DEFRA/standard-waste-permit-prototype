@@ -46,7 +46,7 @@ Sheffield S9 4WF
 
 <form method="post" action="{{formAction}}">
   <div class="form-group">
-    <button type="submit" class="button" name="Continue">Save and continue</button>
+    {{submitButton|safe}}{{completeLink|safe}}
   </div>
 </form>
 
