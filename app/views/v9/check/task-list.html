@@ -246,7 +246,7 @@
         Complete this task
       </span>
       {% endif %}
-      <a class="task-name" href="/{{folder}}/billing/invoice-options-check" {% if permit.invoiceAddress!=null %} aria-describedby="billing-completed"{% endif %}>
+      <a class="task-name" href="/{{folder}}/billing/invoice-postcode" {% if permit.invoiceAddress!=null %} aria-describedby="billing-completed"{% endif %}>
         {{ tBilling }}
       </a>
       {% if permit.invoiceAddress!=null %} <strong class="task-completed" id="billing-completed">Completed</strong> 

@@ -643,7 +643,6 @@ router.get('/operator/company/company-name', function (req, res) {
 })
 
 
-
 // router.get('/operator/site-operator', function (req, res) {
 //   res.render(folder + '/operator/site-operator',{
 //       "formAction":"/"+ folder + "/operator/checkoperator"
@@ -876,7 +875,9 @@ router.get('/check/claim-confidentiality', function (req, res) {
 })
 
 
-// Billing ========================================================
+// Invoicing / billing ========================================================
+
+
 
 // This is not a real page, just a URL for the route
 router.get('/billing/invoice-options-check', function (req, res) {
@@ -904,6 +905,13 @@ router.post('/billing/invoice-option', function (req, res) {
     })  
    }
  })
+
+router.get('/billing/invoice-postcode', function (req, res) {
+  res.render(folder + '/billing/invoice-postcode',{
+      "formAction":"/"+ folder + "/billing/invoice-address"
+  })
+})
+
 
 router.post('/billing/invoice-postcode', function (req, res) {
   res.render(folder + '/billing/invoice-postcode',{
