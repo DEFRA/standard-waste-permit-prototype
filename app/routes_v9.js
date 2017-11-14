@@ -23,6 +23,8 @@ router.use(function (req, res, next) {
   // this can then be used in pages as {{folder}}
   res.locals.folder=folder
   res.locals.backlink=backlink
+  res.locals.submitButton=submitButton
+  res.locals.completeLink=completeLink
   res.locals.paymentMethod=paymentMethod
   // permit and autostore data set in all statement at bottom
   res.locals.permit=res.locals.data
