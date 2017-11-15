@@ -1,0 +1,133 @@
+{% extends "layout_unbranded.html" %}
+
+{% block page_title %}
+	Apply for a standard rules waste permit
+{% endblock %}
+
+{% block content %}
+
+{% include folder+"/selectpermit/styles/guide-styles.txt" %}
+
+<header class="page-header">
+</header>
+<header role="banner" id="global-header" class=" with-proposition">
+    <div class="header-wrapper">
+        <div class="header-global">
+            <div class="header-logo">
+                <a href="https://www.gov.uk" title="Go to the GOV.UK homepage" id="logo" class="content"> <img src="https://assets.publishing.service.gov.uk/static/gov.uk_logotype_crown_invert_trans-203e1db49d3eff430d7dc450ce723c1002542fe1d2bce661b6d8571f14c1043c.png" width="36" height="32" alt=""> GOV.UK </a>
+            </div> 
+						<a href="#search" class="search-toggle js-header-toggle">Search</a>
+            <form id="search" class="site-search" action="/search" method="post" role="search">
+                <div class="content"> <label for="site-search-text">Search</label> <input type="search" name="q" id="site-search-text" title="Search" class="js-search-focus"> <input class="submit" type="submit" value="Search"> </div>
+            </form>
+        </div>
+        <div class="header-proposition">
+            <div class="content"> <a href="#proposition-links" class="js-header-toggle menu">Menu</a>
+                <nav id="proposition-menu" class="no-proposition-name">
+                    <ul id="proposition-links">
+                        <li> <a class="" href="/government/organisations">Departments</a> </li>
+                        <li> <a class="" href="/government/world">Worldwide</a> </li>
+                        <li> <a class="" href="/government/how-government-works">How government works</a> </li>
+                        <li> <a class="" href="/government/get-involved">Get involved</a> </li>
+                        <li class="clear-child"> <a class="" href="/government/policies">Policies</a> </li>
+                        <li> <a class="" href="/government/publications">Publications</a> </li>
+                        <li> <a class="" href="/government/publications?publication_filter_option=consultations">Consultations</a> </li>
+                        <li> <a class="" href="/government/statistics">Statistics</a> </li>
+                        <li> <a class="" href="/government/announcements">Announcements</a> </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<main id="content" role="main" class="data-exchange-protocol">
+	<div class="heading">
+		<p class="type font-medium">Environmental management – guidance</p>
+		<h1 class="bold-large">Apply for a standard rules waste permit</h1>
+	</div>
+	
+	<div id="meta">
+		<p>
+			<span class="col1">From:</span>
+			<span class="col2">Environment Agency and Department for Environment, Food &amp; Rural Affairs</span>
+		</p>
+		<p> 
+			<span class="col1">First published:</span>
+			<span class="col2">6 April 2016</span>
+		</p>
+		<p>
+			<span class="col1">Part of:</span>
+			<span class="col2">Flooding and coastal change, Environmental permits and Flooding and coastal change</span> 
+		</p>
+		<p>
+			<span class="col1">Applies to:</span>
+			<span class="col2">England</span>
+		</p>
+	</div>
+	
+	<p class="lede">Find out if your activity could be covered by a standard rules waste permit, and how to apply.</p>
+	<div class="grid-row">
+		<div class="column-third">
+			<nav class="contextual-info" id="page-navigation">
+				<h1>Contents</h1>
+				<ol class="dash-list">
+					<li><a href="#howapply1">How to apply</a></li>
+				</ol>
+			</nav>
+		</div>
+		<div class="column-two-thirds">
+
+<section id="howapply1">
+		<article>
+			<h2 class="heading-medium" style="margin-top:0;">How to apply</h2>
+			
+			<p>Read the rules in the <a href="/{{folder}}/selectpermit/choose-from-guidance-data">standard rules waste permits</a> to find out whether your activity is covered by standard rules.</p>
+			
+			<p>If you can't meet the conditions for standard rules you will need to apply for a <a href="https://www.gov.uk/guidance/a1-installations-environmental-permits#apply-for-a-bespoke-permit">bespoke permit</a>.</p>
+
+			<p>When you select a permit during the application, we'll tell you what documents you need and what you need to do to apply.</p>
+
+			<p class="call-to-action">
+				<a href="/{{folder}}/start/start-or-resume">Apply for a standard rules waste permit online</a>
+			</p>
+
+			<h3 class="heading-small">Other ways to apply</h3>
+        <p>Contact our National Customer Contact Centre</br>
+          <a href="mailto:enquiries@environment-agency.gov.uk">enquiries@environment-agency.gov.uk</a></br>
+          Telephone 03708 506 506</br>
+          Monday to Friday, 8am to 6pm
+        </p>
+  
+  </article>
+<section>
+
+
+		</div>
+	</div>
+</main>
+
+<footer class="group js-footer" id="footer" role="contentinfo">
+
+      <div class="footer-wrapper">
+
+
+        <div class="footer-meta">
+          <div class="footer-meta-inner">
+
+
+            <div class="open-government-licence">
+              <p class="logo"><a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence</a></p>
+
+                <p>All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated</p>
+
+            </div>
+          </div>
+
+          <div class="copyright">
+            <a href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">&copy; Crown copyright</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+{% endblock %}

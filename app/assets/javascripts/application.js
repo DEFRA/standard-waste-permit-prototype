@@ -23,6 +23,12 @@ $(document).ready(function () {
   })
   
   $( "form#autoSubmit" ).submit();
+  
+  // Set complete later link to submit form
+  $( "#completeLater" ).click(function() {
+    $( "form" ).submit()
+    // event.preventDefault()
+  });
 
   // Hide new tab span
   //$("span.newtab").toggleClass('visually-hidden');

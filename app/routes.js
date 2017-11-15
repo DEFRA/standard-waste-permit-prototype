@@ -16,6 +16,7 @@ router.use('/v5', require('./routes_v5'));
 router.use('/v6', require('./routes_v6'));
 router.use('/v7', require('./routes_v7'));
 router.use('/v8', require('./routes_v8'));
+router.use('/v9', require('./routes_v9'));
 
 
 // Route index page
