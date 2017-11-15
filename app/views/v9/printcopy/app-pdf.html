@@ -1,0 +1,127 @@
+{% extends "layout_unbranded.html" %}
+
+{% set title = "Application for a standard rules permit" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="phase-banner">
+  </div>
+  
+<h1 class="heading-large">{{title}}</h1>
+
+<h2 class="heading-medium">
+  {{permit.permitName}} 
+  {{permit.permitCode}}
+</h2>
+
+<h2 class="heading-medium">
+  Reference number: {{ permit.permitRefNumber }}
+</h2>
+
+<p>
+  You paid {{permit.permitCost}} by credit card on 
+  <script>
+    var d = new Date()
+    var strDate = d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear()
+    document.write(strDate+".")
+  </script>
+</p>
+
+
+<table class="check-your-answers">
+  <tbody>
+    <tr>
+      <td>Read rules</td>
+      <td>{{permit.readRules}}</td>
+	   </tr>
+
+
+      <tr>
+      <td>Pre-application discussion</td>
+      <td>{{permit.preAppDiscussion}} <!-- {{permit.preAppDiscussionRefName}} --> </td>
+  </tr>
+
+    <tr>
+      <td>Your contact details</td>
+      <td>{{permit.contactName}}<br>
+      {{permit.contactTelephone}}<br>
+      {{permit.contactEmail}}
+      </td>
+    </tr> 
+      <tr>
+      <td>Operator for the site</td>
+      <td>{{permit.operatorType}} 
+    </td>
+  </tr>
+  <tr>
+      <td>Operator name</td>
+      <td>{{permit.companyName}} 
+    </td>
+  </tr>
+  <tr>
+      <td>Operator address</td>
+      <td>{{permit.companyAddress}} 
+    </td>
+  </tr>
+        <tr>
+      <td>Offences statement</td>
+      <td>{{permit.offences}}</td>
+  </tr>
+  <tr>
+      <td>Bankruptcy or insolvency statement</td>
+      <td>{{permit.bankruptcyInsolvency}}</td>
+  </tr>
+  <tr>
+      <td>Site name</td>
+      <td>{{permit.siteName}}
+    </td>
+  </tr>
+	<tr>
+      <td>Grid reference for the site</td>
+      <td>{{permit.siteGridRef}}</td>
+	</tr>
+	<tr>
+      <td>Site address</td>
+      <td>{{permit.siteAddress}}
+		</td>
+	</tr>
+	<tr>
+      <td>Site plan</td>
+      <td>{{permit.sitePlanFilename}}</td>
+	</tr>
+	<tr>
+      <td>Site manager qualifications</td>
+      <td>{{permit.industryScheme}} <!-- {{permit.technicalCertificateFile}} --></td>
+	</tr>
+	<tr>
+      <td>Management system</td>
+      <td>
+          {{ permit.manSys }}
+      </td>
+	</tr>
+  <tr>
+      <td>Confidentiality request</td>
+      <td>{{permit.confidential}}</td>
+  </tr>
+  
+  {% if permit.firePlanNeeded=="Yes" %}
+    <tr>
+        <td>Fire prevention plan </td>
+        <td>{{permit.firePlanFilename}}</td>
+    </tr>
+  {% endif %}
+
+  </tbody>
+</table>
+
+
+
+
+</main>
+
+{% endblock %}

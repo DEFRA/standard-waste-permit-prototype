@@ -1,0 +1,74 @@
+{% extends "layout_unbranded.html" %}
+
+{% set imgpath="/public/images/email/" %}
+
+{% block page_title %}
+  Gmail | Save and return code
+{% endblock %}
+
+{% block proposition_header %}
+  <!-- blank to remove the proposition header -->
+{% endblock %}
+
+{% block header_class %}
+  <!-- blank to remove the proposition header -->
+{% endblock %}
+
+{% block content %}
+
+<div id="email">
+
+<div id="gmail_header">
+  <img src="{{ imgpath }}gmail_header.png" alt="" />
+</div>
+
+  <div class="grid-row">
+
+    <div class="column-one-quarter">
+      <img src="{{ imgpath }}gmail_menu_left.png" alt="" />
+    </div>
+
+
+    <div class="column-three-quarter">
+
+      <p class="subject">
+        {{rtnCode}} is your save and return code <img class="inboxicon" src="{{ imgpath }}gmail_icon_inbox.png" alt="" />
+      </p>
+
+      <p class="from">
+        <img src="{{ imgpath }}gmail_from_text.png" alt="" />
+      </p>
+
+      <div id="email_text">
+
+        <div id="banner" class="email-banner"><img src="{{ imgpath }}gov_uk_email_header.png" alt="GOV.UK" /></div>
+
+        <p class="bold-medium">
+          Standard rules permit application
+        </p>
+        
+        <p>
+          Your save and return code is<br>
+          <span class="bold-xlarge">{{rtnCode}}</span>
+        </p>
+        
+        <p>
+          <a href="/{{folder}}/returncode/continue-application">Carry on with this application</a>.
+        </p>
+        
+        <p>
+          You can use this code to carry on with a saved application.
+        </p>
+        
+          <br />
+          <br />
+
+      </div><!-- // end #email_text -->
+
+    </div><!-- // end .column 3/4 -->
+
+  </div><!-- // end .grid_row -->
+
+</div><!-- // end #email -->
+
+{% endblock %}

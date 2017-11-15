@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% set title = "Upload the waste recovery plan" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<form method="post" action="{{formAction}}">
+  
+
+  {% include folder+"/snippets/file-upload-hint.html" %}
+  
+  
+  <div class="form-group form-upload">
+      <input id="upload" type="file" aria-labelelledby="upload-label">
+      <input id="filename" name="wasteRecoveryPlanFilename" type="hidden">
+    <a href="#">remove file</a>
+  </div>
+
+<div class="form-group">
+  <div class="multiple-choice">
+    <input id="recoveryPlanChanged" name="recoveryPlanChanged" type="checkbox" value="yes">
+    <label for="recoveryPlanChanged">
+    I sent the plan to be checked but it's changed since then<br>
+    <span class="form-hint">Highlight the changes in the plan documents</span>
+  </label>
+  </div>
+</div>
+
+
+<p><a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/guidance/waste-recovery-plans-and-permits">Guidance about waste recovery plans (opens new tab)</p>
+
+  
+  <script>
+    // captures uploaded filename and passes to hidden input
+    document.getElementById('upload').onchange = uploadOnChange;
+    function uploadOnChange() {
+        var filename = this.value;
+        var lastIndex = filename.lastIndexOf("\\");
+        if (lastIndex >= 0) {
+            filename = filename.substring(lastIndex + 1);
+        }
+        document.getElementById('filename').value = filename;
+    }
+  </script>
+
+  
+  <input type="hidden" name="specialCasePageVisited" value="Yes">
+
+<div class="form-group">
+    {{submitButton|safe}}{{completeLink|safe}}
+</div>
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
