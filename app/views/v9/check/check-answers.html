@@ -33,7 +33,7 @@
         {{permit.contactEmail}}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/preapp/preapp-discussion"> 
+        <a href="/{{folder}}/contact/contact-details"> 
           Change <span class="visuallyhidden">Contact details</span>
         </a>
       </dd>
@@ -79,9 +79,9 @@
         {{permit.companyAddress}} 
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/operator/company/company-name"> 
+       <!-- <a href="/{{folder}}/operator/company/company-name"> 
           Change <span class="visuallyhidden">company address</span>
-        </a>
+        </a> -->
       </dd>
     </div>
 
@@ -121,6 +121,25 @@
     </div>
     {% endif %}
 
+      <div>
+      <dt class="cya-question">
+        Company directors' dates of birth
+      </dt>
+      <dd class="cya-answer">
+        {% for d in permit.director %}
+        {{ d }}
+        {{ permit.directorDobDay[d]}}{{ permit.directorDobRest[d]}}
+        <br>
+        {% endfor %}
+      </dd>
+      <dd class="cya-change">
+        <!-- <a href="/{{folder}}/operator/company/company-name"> 
+          Change <span class="visuallyhidden"> dates of birth</span>
+        </a> -->
+      </dd>
+    </div>
+
+
     {% if permit.companySecretaryEmail!=="" %}
     <div>
       <dt class="cya-question">
@@ -138,24 +157,7 @@
     {% endif %}
 
 
-    <div>
-      <dt class="cya-question">
-        Company directors' dates of birth
-      </dt>
-      <dd class="cya-answer">
-        {% for d in permit.director %}
-        {{ d }}
-        {{ permit.directorDobDay[d]}}{{ permit.directorDobRest[d]}}
-        <br>
-        {% endfor %}
-      </dd>
-      <dd class="cya-change">
-        <a href="/{{folder}}/operator/company/company-name"> 
-          Change <span class="visuallyhidden"> dates of birth</span>
-        </a>
-      </dd>
-    </div>
-
+  
     <div>
       <dt class="cya-question">
         Relevant offences
@@ -183,6 +185,18 @@
         </a>
       </dd>
     </div>
+
+    <!-- DONT'T SHOW SITE FOR MOBILE PERMITS -->
+    {% if 
+    permit.permitID=="SR-2010-4" or 
+    permit.permitID=="SR-2010-5" or 
+    permit.permitID=="SR-2010-6" or 
+    permit.permitID=="SR-2010-11" or 
+    permit.permitID=="SR-2008-27"
+    %}
+
+    <!-- DO NOT SHOW -->
+    {% else %}
 
     <div>
       <dt class="cya-question">
@@ -236,7 +250,7 @@
         {{permit.siteContactEmail}}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/preapp/preapp-discussion"> 
+        <a href="/{{folder}}/site/site-contact"> 
           Change <span class="visuallyhidden">site contact details</span>
         </a>
       </dd>
@@ -257,6 +271,8 @@
       </dd>
     </div>
 
+    {% endif %}
+
     <div>
       <dt class="cya-question">
         Technical manager
@@ -275,14 +291,14 @@
 
     <div>
       <dt class="cya-question">
-        Scheme
+        Qualification
       </dt>
       <dd class="cya-answer">
         {{permit.industryScheme}}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/evidence/industry-scheme"> 
-          Change <span class="visuallyhidden">scheme</span>
+        <a href="/{{folder}}/evidence/techcomp/industry-scheme"> 
+          Change <span class="visuallyhidden">qualification</span>
         </a>
       </dd>
     </div>
@@ -320,35 +336,37 @@
     </div>
     {% endif %}
 
-
-    <div>
+        {% if permit.industryScheme=="deemed" %}
+        <div>
       <dt class="cya-question">
-        Certificate
+        Qualification evidence
       </dt>
       <dd class="cya-answer">
-        {{permit.technicalCertificateFile}}
+        {{ permit.deemedCertificateFile1 }} {{ permit.deemedCertificateFile2 }}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/evidence/upload-scheme-certificate"> 
-          Change <span class="visuallyhidden">certificate</span>
+        <a href="/{{folder}}/evidence/techcomp/deemed"> 
+          Change <span class="visuallyhidden">qualification evidence</span>
         </a>
       </dd>
     </div>
+    {% endif %}
 
-   <!--  <div>
+      {% if permit.industryScheme=="getting-qualification" %}
+        <div>
       <dt class="cya-question">
-      Management system
+        Course registration email or letter
       </dt>
       <dd class="cya-answer">
-      {{permit.manSys}} 
+        {{ permit.deemedCertificateFile1 }}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/evidence/management-system"> 
-        Change <span class="visuallyhidden">management system</span>
+        <a href="/{{folder}}/evidence/techcomp/getting-it"> 
+          Change <span class="visuallyhidden">course registration email or letter</span>
         </a>
       </dd>
     </div>
-  -->
+    {% endif %}
 
   {% if permit.firePlanNeeded=="Yes" %}
   <div>
