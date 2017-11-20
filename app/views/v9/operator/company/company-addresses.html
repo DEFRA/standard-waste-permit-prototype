@@ -26,11 +26,11 @@
     <form action="{{formAction}}" method="post">
 
      <div class="form-group">
-        <div class="multiple-choice" data-target="reg-address-changed">
+        <div class="multiple-choice" data-target="reg-address-change">
           <input id="reg-address-details" name="reg-address-details" type="checkbox" value="Yes">
-          <label for="reg-address-details">I want to change the registered address</label>
+          <label for="reg-address-details" aria-describedby="reg-address-change">I want to change the registered address</label>
         </div>
-        <div class="panel panel-border-narrow js-hidden" id="reg-address-changed">
+        <div class="panel panel-border-narrow js-hidden" id="reg-address-change">
           <p>
             We can only issue a permit using the address registered with Companies House. To change the registered address, follow these steps.
           </p>
