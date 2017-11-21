@@ -63,6 +63,61 @@ router.post('/site/grid-reference-eng', function (req, res) {
   })
 })
 
+
+// Screening test
+
+// Function to assemble query string
+function getGISQuery(type,lat,long,distance){
+  var s1 = "https://services.arcgis.com/JJzESW51TqeY9uat/arcgis/rest/services/"
+  var s2 = "/FeatureServer/0/query?where=1%3D1&outFields=*&geometry="
+  var s3 = "%2C"
+  var s4 = "&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance="
+  var s5 = "&units=esriSRUnit_Meter&returnGeometry=false&returnCountOnly=true&outSR=4326&f=json"
+  var URLString = s1+type+s2+lat+s3+long+s4+distance+s5
+  return URLString
+}
+
+router.get('/testscreen', function (req, res) {
+  res.render(folder + '/testscreen/index',{
+     "formAction":"/"+ folder + "/testscreen"
+  })
+})
+router.post('/testscreen', function (req, res) {
+  var screening = req.body['screening']
+  var lat = req.body['lat']
+  var long = req.body['long']
+  var gridref = req.body['gridref']
+  var distance = req.body['distance']
+  var type = "Special_Areas_of_Conservation_England"
+  var gisURL = getGISQuery(type,lat,long,distance)
+  
+  request({
+      url: gisURL, //URL to hit
+      method: 'GET',
+  }, function(error, response, body){
+      if(error) {
+          console.log(error)
+      } else {
+          //console.log(response.statusCode)
+          //console.log("=============================")
+          //console.log(body)
+          //console.log("=============================")
+          var responseJSON = JSON.parse(body)
+          var count = responseJSON.count
+          res.render(folder + '/testscreen/index',{
+            "screening": screening,
+            "lat": lat,
+            "long": long,
+            "gridref": gridref,
+            "distance": distance,
+            "formAction":"/"+ folder + "/testscreen",
+            "message": "We found "+count+" sites. "+gisURL
+          })
+      }
+  })
+})
+
+
 // Rules page from list ==============================================================
 
 router.get('/start/rules-page', function (req, res) {
