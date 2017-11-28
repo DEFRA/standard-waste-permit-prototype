@@ -60,17 +60,26 @@
       <div class="form-group">
         <fieldset>
 
-          <legend class="visually-hidden">Have you or any relevant person been convicted of a relevant offence?</legend>
+          <legend class="visually-hidden">Does anyone connected with your business have a conviction for a relevant offence?
+          </legend>
 
           <div class="multiple-choice" data-target="relevantOffencesD">
             <input id="yesOffences" type="radio" name="offences" value="yes">
             <label for="yesOffences">
-              Yes, I need to declare convictions
+              Yes, there are convictions to declare
             </label>
           </div>
           <div class="panel panel-border-narrow js-hidden" id="relevantOffencesD">
-            <label class="form-label" for="relevantOffencesDetails">Please give details, including the names of the persons or companies with the convictions, and the offences or penalties given</label>
+            <label class="form-label" for="relevantOffencesDetails">
+              Give details of the convictions
+              <span class="form-hint">
+                Include the names of the people or companies, the offences and penalties given
+              </span>
+            </label>
             <textarea class="form-control form-control-full" name="relevantOffencesDetails" rows="10" type="text" id="relevantOffencesDetails"></textarea>
+            <p class="form-hint" style="margin-top:4px;">
+              No more than 2,000 characters
+            </p>
           </div>
 
           <div class="multiple-choice">
