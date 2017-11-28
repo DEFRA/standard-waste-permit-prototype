@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% set title = "Do you have a site plan that shows the site boundary?" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+      <h1 class="heading-large">{{title}}</h1>
+
+      <p>
+        Our checks are more accurate if we have a site plan. But if you don’t have one ready, we’ll use the grid reference and ask you for a distance from that to the site boundary. 
+        <p>
+
+          <form action="{{formAction}}" method="post">
+            <div class="form-group">
+              <fieldset>
+
+                <legend class="visually-hidden">{{title}}</legend>
+
+                <div class="multiple-choice">
+                  <input id="yesSitePlan" type="radio" name="screeningSitePlan" value="Yes">
+                  <label for="yesSitePlan">
+                    Yes, I have a site plan
+                  </label>
+                </div>
+
+                <div class="multiple-choice">
+                  <input id="noSitePlan" type="radio" name="screeningSitePlan" value="No">
+                  <label for="noSitePlan">
+                    No, I’ll give you a distance instead
+                  </label>
+                </div>
+
+              </fieldset>
+
+            </div>
+
+
+            <div class="form-group">
+              {{submitButton|safe}}{{completeLink|safe}}
+            </div>
+
+
+          </form>
+
+
+        </div>
+      </div>
+    </main>
+
+    {% endblock %}

@@ -1,0 +1,103 @@
+{% extends "layout_unbranded.html" %}
+
+{% set imgpath="/public/images/email/" %}
+
+{% block page_title %}
+Gmail | Standard rules permit - location check results
+{% endblock %}
+
+{% block proposition_header %}
+<!-- blank to remove the proposition header -->
+{% endblock %}
+
+{% block header_class %}
+<!-- blank to remove the proposition header -->
+{% endblock %}
+
+{% block content %}
+
+<div id="email">
+
+  <div id="gmail_header">
+    <img src="{{ imgpath }}gmail_header.png" alt="" />
+  </div>
+
+  <div class="grid-row">
+
+    <div class="column-one-quarter">
+      <img src="{{ imgpath }}gmail_menu_left.png" alt="" />
+    </div>
+
+
+    <div class="column-three-quarter">
+
+      <p class="subject">
+       Standard rules permit - location check results <img class="inboxicon" src="{{ imgpath }}gmail_icon_inbox.png" alt="" />
+     </p>
+
+     <p class="from">
+      <img src="{{ imgpath }}gmail_from_text.png" alt="" />
+    </p>
+
+    <div id="email_text">
+
+      <div id="banner" class="email-banner"><img src="{{ imgpath }}gov_uk_email_header.png" alt="GOV.UK" /></div>
+
+      {#{permit | dump}#}
+
+      <p class="text font-small">
+        Dear {{ permit.contactFirstName }} {{ permit.contactLastName }}
+      </p>
+
+      <h1 class="bold-large">
+        The site at {{permit.siteName}} failed the location check
+      </h1>
+      <br>
+
+      <p class="text font-small">
+          You can’t apply for that standard rules permit at that location.
+      </p>
+
+      <h2 class="bold-medium">What you can do</h2>
+
+      <p class="text font-small">Read the attached site location report to find out how close you are to nearby nature and conservation sites. </p>
+
+      <p class="text font-small">If you can select a different site, you can ask us to check the new location before you apply.</p>
+
+      <p class="text font-small">If you can’t move the site you should contact us to discuss your options. It may be possible to apply for a bespoke permit for that location.</p>
+
+
+      <p class="text font-small">The site we checked was:</p>
+
+      <ul class="list list-bullet font-small">
+        <li>at grid reference {{permit.siteGridRef}}</li>
+        <li>for {{permit.permitName | lower }} {{permit.permitCode}}</li>
+        <li>done on 23 July 2018</li> 
+      </ul>
+
+      <p class="text font-small">Your reference is {{ permit.permitRefNumber }}.</p>
+
+      <p class="text font-small">This screening check only covers the requirements of these standard rules, based on the information we have. There may be other environmental or planning requirements that you must meet. It’s your responsibility to check those.</p>
+
+      <h2 class="heading-medium emailhead">Contact the Environment Agency</h2>
+      <p class="text font-small">
+        <a href="mailto:enquiries@environment-agency.gov.uk">enquiries@environment-agency.gov.uk</a><br />
+        Telephone: 03708 506 506<br />
+        Minicom: 03702 422 549<br />
+        Monday to Friday, 8am to 6pm
+      </p>
+
+      <img src="{{ imgpath }}report-attachment.png" alt="" />
+
+      <br />
+      <br />
+
+    </div><!-- // end #email_text -->
+
+  </div><!-- // end .column 3/4 -->
+
+</div><!-- // end .grid_row -->
+
+</div><!-- // end #email -->
+
+{% endblock %}

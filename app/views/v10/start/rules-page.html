@@ -1,0 +1,213 @@
+{% extends "layout_unbranded.html" %}
+
+{% block page_title %}
+	Standard rules waste permit - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+{% include folder+"/selectpermit/styles/guide-styles.txt" %}
+
+
+{% import folder+"/custom_inc/macros.html" as macros %}
+{% from folder+"/custom_inc/permit-list-json.html" import permits %}
+
+
+{% for pNumber, pData in permits %}
+	{% if pNumber==chosenPermitID %}
+
+
+
+<header class="page-header">
+</header>
+<header role="banner" id="global-header" class=" with-proposition">
+    <div class="header-wrapper">
+        <div class="header-global">
+            <div class="header-logo">
+                <a href="https://www.gov.uk" title="Go to the GOV.UK homepage" id="logo" class="content"> <img src="https://assets.publishing.service.gov.uk/static/gov.uk_logotype_crown_invert_trans-203e1db49d3eff430d7dc450ce723c1002542fe1d2bce661b6d8571f14c1043c.png" width="36" height="32" alt=""> GOV.UK </a>
+            </div> 
+            <a href="#search" class="search-toggle js-header-toggle">Search</a>
+            <form id="search" class="site-search" action="/search" method="post" role="search">
+                <div class="content"> <label for="site-search-text">Search</label> <input type="search" name="q" id="site-search-text" title="Search" class="js-search-focus"> <input class="submit" type="submit" value="Search"> </div>
+            </form>
+        </div>
+        <div class="header-proposition">
+            <div class="content"> <a href="#proposition-links" class="js-header-toggle menu">Menu</a>
+                <nav id="proposition-menu" class="no-proposition-name">
+                    <ul id="proposition-links">
+                        <li> <a class="" href="/government/organisations">Departments</a> </li>
+                        <li> <a class="" href="/government/world">Worldwide</a> </li>
+                        <li> <a class="" href="/government/how-government-works">How government works</a> </li>
+                        <li> <a class="" href="/government/get-involved">Get involved</a> </li>
+                        <li class="clear-child"> <a class="" href="/government/policies">Policies</a> </li>
+                        <li> <a class="" href="/government/publications">Publications</a> </li>
+                        <li> <a class="" href="/government/publications?publication_filter_option=consultations">Consultations</a> </li>
+                        <li> <a class="" href="/government/statistics">Statistics</a> </li>
+                        <li> <a class="" href="/government/announcements">Announcements</a> </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<main id="content" role="main" class="data-exchange-protocol govuk-govspeak">
+	
+	<div class="grid-row">
+		<div class="column-two-thirds">
+			
+			<div class="heading">
+				<p class="type font-medium">Statutory guidance</p>
+				<h1 class="bold-large">{{ pData.code }}: {{ pData.nameGOVUK }}</h1>
+			</div>
+	
+	</div>
+</div>
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <div class="govuk-metadata direction-ltr">
+  <dl>
+      <dt>From:</dt>
+      <dd><a href="/government/organisations/environment-agency">Environment Agency</a></dd>
+      <dt>Part of:</dt>
+      <dd>
+<a href="/government/collections/standard-rules-environmental-permitting">Standard rules: environmental permitting</a>, <a href="/government/policies/business-and-the-environment">Business and the environment</a>, and <a href="/government/policies/waste-and-recycling">Waste and recycling</a>
+</dd>
+      <dt>Published:</dt>
+      <dd>14 October 2011</dd>
+          <dt>Applies to:</dt>
+          <dd>England</dd>
+  </dl>
+</div>
+
+  </div>
+</div>
+	
+	<p class="lede">Standard rules to operate {{ pData.nameGOVUK | lower}}.</p>
+	
+	
+	<div class="grid-row" style="margin-bottom: 45px;">
+		<div class="column-third">
+				<h1 class="section-title">Documents</h1>
+		</div>
+		<div class="column-two-thirds">
+			
+			<section class="attachment embedded" id="attachment_902359">
+			  <div class="attachment-thumb">
+			      <a aria-hidden="true" class="thumbnail" href="{{ pData.guidanceURL }}"><img alt="" src="/public/images/statguide/doc_pdf_icon.png"></a>
+			  </div>
+			  <div class="attachment-details">
+			    <h2 class="title"><a href="{{ pData.guidanceURL }}">Standard rules {{ pData.code }}: {{ pData.nameGOVUK }}</a></h2>
+			    <p class="metadata">
+			        <span class="references">
+			          Ref: <span class="unique_reference">LIT 1234</span>
+			        </span>
+			        <span class="type"><abbr title="Portable Document Format">PDF</abbr></span>, <span class="file-size">291KB</span>, <span class="page-length">11 pages</span>
+			    </p>
+			      <div class="accessibility-warning">
+			        <h2>This file may not be suitable for users of assistive technology.
+			          <a href="#">Request an accessible format.</a>
+			        </h2>
+			      </div>
+			  </div>
+			</section> 
+			
+			
+			<section class="attachment embedded" id="attachment_902359">
+				<div class="attachment-thumb">
+						<a aria-hidden="true" class="thumbnail" href="{{ pData.guidanceURL }}"><img alt="" src="/public/images/statguide/doc_xls_icon.png"></a>
+				</div>
+				<div class="attachment-details">
+					<h2 class="title"><a href="{{ pData.guidanceURL }}">Generic risk assessment for standard rules set number {{ pData.code }}</a></h2>
+					<p class="metadata">
+							<span class="references">
+								Ref: <span class="unique_reference">LIT 1234</span>
+							</span>
+							<span class="type"><abbr title="XLS">MS Excel Spreadsheet</abbr></span>, <span class="file-size">53.5KB</span>, <span class="page-length">2 pages</span>
+					</p>
+						<div class="accessibility-warning">
+							<h2>This file may not be suitable for users of assistive technology.
+								<a href="#">Request an accessible format.</a>
+							</h2>
+						</div>
+				</div>
+			</section> 
+			   
+		</div>
+	</div>
+	
+	<div class="grid-row" style="margin-bottom: 45px;">
+		<div class="column-third">
+				<h1 class="section-title">Details</h1>
+		</div>
+		<div class="column-two-thirds">
+      <section id="gencond1">
+      		<article>
+						<!-- <p>Standard rules guidance for {{pData.friendlyName | lower }}. {{pData.friendlyWeight}}</p> -->
+						
+						<h2 class="section-title" style="margin-top:0;">Apply for this permit</h2>
+						
+						<p><a href="/{{folder}}/check/process-link?chosenPermitID={{pNumber}}">Apply for this standard rules waste permit</a> for
+							
+							{{ "" if ( pData.nameGOVUK | truncate(1, true, "") | lower in ["a","e","i","o","u"] ) else "" }}
+							
+							{{ pData.nameGOVUK | lower }}</p>
+					</article>
+      <section>      
+		</div>
+	</div>
+	
+	
+	<div class="grid-row" style="margin-bottom: 45px;">
+		<div class="column-third">
+				<p class="wp_meta_head">Published:</p>
+				<h1 class="section-title">14 October 2011</h1>
+		</div>
+		<div class="column-two-thirds">
+			<section id="gencond1">
+					<article>
+							<p class="wp_meta_head">From:</p>
+							<h1 class="section-title"><a href="#" style="text-decoration:none;">Environment Agency</a></h1>
+							
+							<p class="wp_meta_head">&nbsp;<br>Part of:</p>
+							<h1 class="section-title"><a href="#" style="text-decoration:none;">Standard rules: environmental permitting</a></h1>
+							<h1 class="section-title"><a href="#" style="text-decoration:none;">Business and the environment</a></h1>
+							<h1 class="section-title"><a href="#" style="text-decoration:none;">Waste and recycling</a></h1>
+					</article>
+			<section>      
+		</div>
+	</div>
+	
+	
+	
+	
+</main>
+
+	{% endif %}
+{% endfor %}
+
+<footer class="group js-footer" id="footer" role="contentinfo">
+
+      <div class="footer-wrapper">
+
+
+        <div class="footer-meta">
+          <div class="footer-meta-inner">
+
+
+            <div class="open-government-licence">
+              <p class="logo"><a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence</a></p>
+
+                <p>All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated</p>
+
+            </div>
+          </div>
+
+          <div class="copyright">
+            <a href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">&copy; Crown copyright</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+{% endblock %}
