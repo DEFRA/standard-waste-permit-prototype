@@ -17,9 +17,9 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
-<h2 class="heading-small">
+<p>
   Upload evidence of one of these:
-</h2>
+</p>
 
 <ul class="list list-bullet">
   <li>deemed competence</li>
@@ -27,27 +27,24 @@
   <li>they were a nominated manager and passed the general knowledge assessment</li>
 </ul>
 
-  <form method="post" action="{{formAction}}">
+<p>
+  You also need to upload an up-to-date continuing competence certificate from WAMITAB. You should renew the continuing competence certificate every 2 years.
+</p>
 
-    <div class="form-group form-upload">
-        <input id="upload1" type="file" aria-labelelledby="upload-label">
-        <input id="filename" name="deemedCertificateFile1" type="hidden">
-    </div>
-    
-    <p class="text form-hint">
-      PDF or JPG files, 30MB maximum file size.
-    </p>
+  <form method="post" action="{{formAction}}">
     
     <h2 class="heading-small">
-      Upload an up-to-date continuing competence certificate from WAMITAB
-    </h2>
-    <p class="text">
-      You need to renew the continuing competence certificate every 2 years.
-    </p>    
-    
+    <label>
+      Upload evidence and a continuing competence certificate
+      <span class="text form-hint">
+        PDF or JPG files, 30MB maximum file size
+      </span>
+    </label>
+  </h2>
+
     <div class="form-group form-upload">
-        <input id="upload2" type="file" aria-labelelledby="upload-label">
-        <input id="filename" name="deemedCertificateFile2" type="hidden">
+        <input id="upload" type="file" aria-labelelledby="upload-label">
+        <input id="filename" name="deemedCertificateFile1" type="hidden">
     </div>
     
     <script>
