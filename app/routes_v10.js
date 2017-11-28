@@ -480,6 +480,12 @@ router.get('/preapp/preapp-discussion', function (req, res) {
 
 router.get('/contact/contact-details', function (req, res) {
   res.render(folder + '/contact/contact-details',{
+      "formAction":"/"+ folder + "/site/site-contact"
+  })
+})
+
+router.post('/site/site-contact', function (req, res) {
+  res.render(folder + '/site/site-contact',{
       "formAction":"/"+ folder + "/check/task-list"
   })
 })
@@ -568,12 +574,6 @@ router.post('/address/address', function (req, res) {
         "formAction":"/"+ folder + "/site/site-contact"
     })
   }
-})
-
-router.post('/site/site-contact', function (req, res) {
-  res.render(folder + '/site/site-contact',{
-      "formAction":"/"+ folder + "/check/task-list"
-  })
 })
 
 
