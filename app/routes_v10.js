@@ -725,19 +725,19 @@ router.get('/operator/company/company-name', function (req, res) {
 router.post('/operator/checkoperator', function (req, res) {
   if(req.body['operatorType']=="Limited company"){ // think you need square bracket for radios
     // show company page
-     res.render(folder + '/selectpermit/before-you-start',{
-         "formAction":"/"+ folder + "/check/task-list"
+     res.render(folder + '/check/save-permit-details',{
+         "formAction":"/"+ folder + "/selectpermit/before-you-start"
      })
- } else if (req.body['operatorType']=="Individual") {
+// } else if (req.body['operatorType']=="Individual") {
     // show individual page
-     res.render(folder + '/operator/individual/individual-details',{
-        "formAction":"/"+ folder + "/operator/individual/postcode"
-    })
- } else if (req.body['operatorType']=="Partnership") {
+//     res.render(folder + '/operator/individual/individual-details',{
+//        "formAction":"/"+ folder + "/operator/individual/postcode"
+//    })
+// } else if (req.body['operatorType']=="Partnership") {
  // show partnership page
-    res.render(folder + '/operator/partnerships/partner1',{
-       "formAction":"/"+ folder + "/operator/partnerships/postcode"
-   })
+//    res.render(folder + '/operator/partnerships/partner1',{
+//       "formAction":"/"+ folder + "/operator/partnerships/postcode"
+ //  })
   } else {
     // go on to error
     res.render(folder + '/error/index',{ 
