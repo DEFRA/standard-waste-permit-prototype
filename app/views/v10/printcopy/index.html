@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% set title = "Download a copy of your application before you send it" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+  <h1 class="heading-large">
+    {{title}}
+  </h1>
+
+  <table class="check-your-answers">
+      <tr>
+        <th colspan="2"></th>
+      </tr>
+      <!--  ARRRRGH... TABLE USED FOR LAYOUT BECAUSE OF A LACK OF TIME -->
+      <!-- PM to remove inline styles -->
+      <tr>
+        <td>
+            <a class="change-answer" href="/{{folder}}/printcopy/app-pdf" target="_blank">
+            <i class="icon icon-file-download" style="width:40px"></i>
+            </a>
+        </td>
+        <td>
+            <a class="change-answer" href="/{{folder}}/printcopy/app-pdf" target="_blank">
+                Download a copy of your application as a PDF file</a><br>
+                This contains all the answers you gave. It doesn’t include the documents you uploaded.
+        </td>
+      </tr>
+  </table>
+
+
+      <form method="post" action="{{formAction}}">
+
+      <div class="form-group" style="margin-top:2em">
+      <button type="submit" class="button" name="Send application">Send application</button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+</main>
+
+{% endblock %}

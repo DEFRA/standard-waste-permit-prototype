@@ -1,0 +1,174 @@
+{% extends "layout_unbranded.html" %}
+
+{% block page_title %}
+	Standard rules: environmental permitting
+{% endblock %}
+
+{% block content %}
+
+{% include folder+"/selectpermit/styles/guide-styles.txt" %}
+
+
+<header class="page-header">
+	<script src="/public/javascripts/jquery-1.11.1.min.js"></script>
+</header>
+<header role="banner" id="global-header" class=" with-proposition">
+    <div class="header-wrapper">
+        <div class="header-global">
+            <div class="header-logo">
+                <a href="https://www.gov.uk" title="Go to the GOV.UK homepage" id="logo" class="content"> <img src="https://assets.publishing.service.gov.uk/static/gov.uk_logotype_crown_invert_trans-203e1db49d3eff430d7dc450ce723c1002542fe1d2bce661b6d8571f14c1043c.png" width="36" height="32" alt=""> GOV.UK </a>
+            </div> 
+            <a href="#search" class="search-toggle js-header-toggle">Search</a>
+            <form id="search" class="site-search" action="/search" method="post" role="search">
+                <div class="content"> <label for="site-search-text">Search</label> <input type="search" name="q" id="site-search-text" title="Search" class="js-search-focus"> <input class="submit" type="submit" value="Search"> </div>
+            </form>
+        </div>
+        <div class="header-proposition">
+            <div class="content"> <a href="#proposition-links" class="js-header-toggle menu">Menu</a>
+                <nav id="proposition-menu" class="no-proposition-name">
+                    <ul id="proposition-links">
+                        <li> <a class="" href="/government/organisations">Departments</a> </li>
+                        <li> <a class="" href="/government/world">Worldwide</a> </li>
+                        <li> <a class="" href="/government/how-government-works">How government works</a> </li>
+                        <li> <a class="" href="/government/get-involved">Get involved</a> </li>
+                        <li class="clear-child"> <a class="" href="/government/policies">Policies</a> </li>
+                        <li> <a class="" href="https://www.gov.uk/government/publications">Publications</a> </li>
+                        <li> <a class="" href="https://www.gov.uk/government/publications?publication_filter_option=consultations">Consultations</a> </li>
+                        <li> <a class="" href="/government/statistics">Statistics</a> </li>
+                        <li> <a class="" href="/government/announcements">Announcements</a> </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+{% from folder+"/custom_inc/category-list-new-json2.html" import categories %}
+{% from folder+"/custom_inc/permit-list-json.html" import permits %}
+
+
+<main id="content" role="main" class="data-exchange-protocol">
+	<div class="heading">
+		<p class="type font-medium">Collection</p>
+		<h1 class="bold-large">Standard rules: environmental permitting</h1>
+	</div>
+	<p class="lede">For each activity there is a set of rules, guidance on how to comply with the rules and a risk assessment.</p>
+	<div class="grid-row">
+		<div class="column-third">
+			<nav class="contextual-info" id="page-navigation">
+				<h1>Contents</h1>
+				<ol class="dash-list">
+
+					{% for c in categories %}
+								<li><a href="#{{ c.category | replace(" ", "-") | replace(",", "") | lower }}">{{c.category}}</a></li>
+					{% else %}
+						<p>No data</p>
+					{% endfor %}
+					
+				</ol>
+			</nav>
+		</div>
+		<div class="column-two-thirds">
+			
+			
+
+			
+<section id="intro">
+		<article>		
+			<p>Check if you need a <a href="https://www.gov.uk/government/publications/environmental-permit-nature-and-heritage-conservation-screening">conservation risk assessment</a> before you submit your permit application.</p>
+  </article>
+<section>
+	
+				{% for c in categories %}
+				<section id="biological">
+						<article>
+							<h3 class="group-title" id="{{ c.category | replace(" ", "-") | replace(",", "") | lower }}">{{c.category}}</h3>
+										<ol class="group-document-list">
+
+							{% for pNumber, pData in permits %}
+
+							  {% if pData.friendlyCategory2==c.category %}
+							    {% if pData.digitalMVP=="Yes" %}
+							    
+							      {% if pData.friendlyWeight!="" %}
+							        {% set weight=" - "+pData.friendlyWeight %}
+							      {% else %}
+							        {% set weight="" %}
+							      {% endif %}
+
+<!-- Removed weight | lower, from label array -->
+							      {% set label = [
+							        '<span class="permitName">',
+							        pData.nameGOVUK,
+							        '</span> ',
+							        '<span class="permitCode">',
+							        pData.code,
+							        '</span>'
+							        ] %}
+							    
+							      {% if pData.digitalMVP=="Yes" %}
+
+												<li class="group-document-list-item">
+						              <h3 class="group-document-list-item-title">
+						                <a href="/{{folder}}/start/rules-page?chosenPermitID={{pNumber}}">{{ label | join | safe }}</a>
+						              </h3>
+
+						              <ul class="group-document-list-item-attributes">
+						                <li>
+						                  <time datetime="2013-06-07T00:00:00Z">
+						                     7 June 2013
+						                  </time>
+						                </li>
+						                <li>Statutory guidance</li>
+						              </ul>
+						            </li>
+												
+												
+												
+							      {% endif %}
+							        
+							    {% endif %}
+							  {% endif %}
+
+							{% else %}
+							  <p>No data</p>
+							{% endfor %}
+							
+						</ol>
+			 </article>
+		 <section> 
+				{% else %}
+					<p>No data</p>
+				{% endfor %}
+
+
+		</div>
+	</div>
+</main>
+
+<footer class="group js-footer" id="footer" role="contentinfo">
+
+      <div class="footer-wrapper">
+
+
+        <div class="footer-meta">
+          <div class="footer-meta-inner">
+
+
+            <div class="open-government-licence">
+              <p class="logo"><a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence</a></p>
+
+                <p>All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated</p>
+
+            </div>
+          </div>
+
+          <div class="copyright">
+            <a href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">&copy; Crown copyright</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+{% endblock %}

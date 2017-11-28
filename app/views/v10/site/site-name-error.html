@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% set title = "What's the site name?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<!-- <h1 class="heading-large">{{title}}</h1> -->
+
+<form method="post" action="{{formAction}}">
+
+<!-- error-summary div -->
+<div class="error-summary" role="group" aria-labelledby="error-summary-heading-example" tabindex="-1">
+
+    <h1 class="heading-medium error-summary-heading" id="error-summary-heading-example">
+      You have 1 error
+    </h1>
+
+    <ul class="error-summary-list">
+      <li><a href="#siteName">You must enter a site name</a></li>
+    </ul>
+
+</div>
+
+<!-- add form-group-error -->
+    <div class="form-group form-group-error">
+
+    <label class="form-label" for="siteName" id="error-site-name">
+      Site name
+    <span class="form-hint">If it does not already have a name, enter the name you will use</span>
+ 
+<!-- add span error-message -->
+    <span class="error-message">Enter the site name</span>   
+
+  </label>
+
+<!-- add form-control-error -->
+    <input class="form-control form-control-error" id="siteName" name="siteName" type="text" value="{{permit.siteName}}">
+  </div>
+
+  </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

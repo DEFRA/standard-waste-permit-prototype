@@ -1,0 +1,96 @@
+{% extends "layout_unbranded.html" %}
+
+{% set imgpath="/public/images/email/" %}
+
+{% block page_title %}
+  Gmail | Standard rules permit application
+{% endblock %}
+
+{% block proposition_header %}
+  <!-- blank to remove the proposition header -->
+{% endblock %}
+
+{% block header_class %}
+  <!-- blank to remove the proposition header -->
+{% endblock %}
+
+{% block content %}
+
+<div id="email">
+
+<div id="gmail_header">
+  <img src="{{ imgpath }}gmail_header.png" alt="" />
+</div>
+
+  <div class="grid-row">
+
+    <div class="column-one-quarter">
+      <img src="{{ imgpath }}gmail_menu_left.png" alt="" />
+    </div>
+
+
+    <div class="column-three-quarter">
+
+      <p class="subject">
+        Standard rules waste permit application return link <img class="inboxicon" src="{{ imgpath }}gmail_icon_inbox.png" alt="" />
+      </p>
+
+      <p class="from">
+        <img src="{{ imgpath }}gmail_from_text.png" alt="" />
+      </p>
+
+      <div id="email_text">
+
+        <div id="banner" class="email-banner"><img src="{{ imgpath }}gov_uk_email_header.png" alt="GOV.UK" /></div>
+
+
+        <h1 class="heading-medium">
+          Standard rules waste permit application return link
+        </h1>
+
+        
+        <p class="bold-medium text">
+          <a href="/{{folder}}/check/task-list?return=y" target="_blank">
+            Go back to your saved permit application
+          </a>
+        </p>
+        
+        <p class="text">
+          You won't need a password.
+        </p>
+
+        <p class="text">
+          Your reference is {{ permit.permitRefNumber }}
+        </p>
+        
+        <h2 class="heading-small">
+          Link not working?
+        </h2>
+        
+        <p class="text">
+          If you can't get back to your application using the link above, copy the following link and paste it into your browser:<br>
+          https://standard-waste-prototype.herokuapp.com/{{folder}}/check/task-list?return=y
+        </p>
+        
+        <h2 class="heading-small">
+          Contact the Environment Agency
+        </h2>
+        <p class="text">
+          <a href="mailto:enquiries@environment-agency.gov.uk">enquiries@environment-agency.gov.uk</a><br />
+          Telephone: 03708 506 506<br />
+          Minicom: 03702 422 549<br />
+          Monday to Friday, 8am to 6pm
+        </p>
+        
+
+
+
+      </div><!-- // end #email_text -->
+
+    </div><!-- // end .column 3/4 -->
+
+  </div><!-- // end .grid_row -->
+
+</div><!-- // end #email -->
+
+{% endblock %}
