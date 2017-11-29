@@ -64,7 +64,7 @@
 {% for o in officers %}
   {% if o.resigned_on==null %}
     {% if o.officer_role=="director" %}
-      {% set dirName = o.name | reverseName | title %}
+      {% set dirName = o.name | reverseName %}
 
       <div>
         <dt class="director-name">

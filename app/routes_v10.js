@@ -15,8 +15,9 @@ var sample = require('./views/'+folder+'/custom_inc/sample-permit.js')
 
 // HTML for standard buttons
 var backlink = '<a href="javascript:history.back()" class="link-back">Back</a>'
-var submitButton = '<button type="submit" class="button" name="Continue">Save and continue</button>'
-var completeLink = '<span id="completeLink"><a href="#" id="completeLater">Complete later</a></span>'
+var submitButton = '<button type="submit" class="button" name="Continue">Continue</button>'
+var completeLink = ''
+// completeLink WAS <span id="completeLink"><a href="#" id="completeLater">Complete later</a></span>
 
 router.use(function (req, res, next) {
   // set a folder and store in locals
@@ -241,6 +242,12 @@ router.get('/preapp/preapp-discussion', function (req, res) {
 
 router.get('/contact/contact-details', function (req, res) {
   res.render(folder + '/contact/contact-details',{
+      "formAction":"/"+ folder + "/site/site-contact"
+  })
+})
+
+router.post('/site/site-contact', function (req, res) {
+  res.render(folder + '/site/site-contact',{
       "formAction":"/"+ folder + "/check/task-list"
   })
 })
@@ -331,12 +338,6 @@ router.post('/address/address', function (req, res) {
   }
 })
 
-router.post('/site/site-contact', function (req, res) {
-  res.render(folder + '/site/site-contact',{
-      "formAction":"/"+ folder + "/check/task-list"
-  })
-})
-
 
 // Manual address is a link - so a GET
 router.get('/address/address-manual', function (req, res) {
@@ -371,13 +372,9 @@ router.get('/evidence/site-plan-check', function (req, res) {
 
 // Technical ability ==========================================================
 
-router.get('/evidence/techcomp/manager-details', function (req, res) {
-  res.render(folder + '/evidence/techcomp/manager-details',{
-      "formAction":"/"+ folder + "/evidence/techcomp/industry-scheme"
-  })
-})
 
-router.post('/evidence/techcomp/industry-scheme', function (req, res) {
+
+router.get('/evidence/techcomp/industry-scheme', function (req, res) {
   res.render(folder + '/evidence/techcomp/industry-scheme',{
       "formAction":"/"+ folder + "/evidence/techcomp/get-evidence"
   })
@@ -388,24 +385,30 @@ router.post('/evidence/techcomp/get-evidence', function (req, res) {
   if( req.body.industryScheme=='WAMITAB' ) {
     // /evidence/techcomp/wamitab-details
     res.render(folder + '/evidence/techcomp/wamitab-details',{
-        "formAction":"/"+ folder + "/check/task-list"
+        "formAction":"/"+ folder + "/evidence/techcomp/manager-details"
     })
   } else if( req.body.industryScheme=='ESA-EU' ) {
     // /evidence/techcomp/esa-eu-details
     res.render(folder + '/evidence/techcomp/esa-eu-details',{
-        "formAction":"/"+ folder + "/check/task-list"
+        "formAction":"/"+ folder + "/evidence/techcomp/manager-details"
     })
   } else if( req.body.industryScheme=='deemed' ) {
     // /evidence/techcomp/deemed
     res.render(folder + '/evidence/techcomp/deemed',{
-        "formAction":"/"+ folder + "/check/task-list"
+        "formAction":"/"+ folder + "/evidence/techcomp/manager-details"
     })
   } else if( req.body.industryScheme=='getting-qualification' ) {
     // /evidence/techcomp/getting-it
     res.render(folder + '/evidence/techcomp/getting-it',{
-        "formAction":"/"+ folder + "/check/task-list"
+        "formAction":"/"+ folder + "/evidence/techcomp/manager-details"
     })
   }
+})
+
+router.get('/evidence/techcomp/manager-details', function (req, res) {
+  res.render(folder + '/evidence/techcomp/manager-details',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
 })
 
 // The 4 options with GET then go back to task list
@@ -498,7 +501,7 @@ router.post('/operator/company/check-company-details', function (req, res) {
             var companyJSON = JSON.parse(body)
             var company = companyJSON.items[0]
             res.render(folder + '/operator/company/check-company-details',{
-                "formAction":"/"+ folder + "/operator/company/company-secretary",
+                "formAction":"/"+ folder + "/operator/company/go-to-check-officers",
                 "company":company,
                 "searchTerm":req.body.companyRegNum,
                 "numberResults":companyJSON.total_results
@@ -510,7 +513,7 @@ router.post('/operator/company/check-company-details', function (req, res) {
 // route for link back from company api search results
 router.get('/operator/company/company-name', function (req, res) {
   res.render(folder + '/operator/company/company-name',{
-      "formAction":"/"+ folder + "/operator/company/company-secretary"
+      "formAction":"/"+ folder + "/operator/company/go-to-check-officers"
   })
 })
 
@@ -519,7 +522,7 @@ router.get('/operator/company/company-name', function (req, res) {
 
 router.post('/operator/company/company-addresses', function (req, res) {
   res.render(folder + '/operator/company/company-addresses',{
-      "formAction":"/"+ folder + "/operator/company/company-secretary"
+      "formAction":"/"+ folder + "/operator/company/go-to-check-officers"
   })
 })
 

@@ -95,7 +95,7 @@ exports.permit =
    "siteName":"Car Breakers Yard",
    "siteGridRef":"ST 58132 72695",
    "sitePostCode":"BS1 5AH",
-   "siteAddress":"5, GRANGE ROAD, BRISTOL",
+   "siteAddress":"5 GRANGE ROAD BRISTOL",
    "sitePlanFilename":"success-one.pdf",
    "industryScheme":"WAMITAB-CIWM",
    "industrySchemeDetails":"",
@@ -103,5 +103,10 @@ exports.permit =
    "manSys":"EC Eco management and audit scheme (EMAS)",
    "firePlanFilename":"success-three.pdf",
    "confidential":"yes",
-   "confidentialReasons":"The way I handle car parts storage is a trade secret"
+   "confidentialReasons":"The way I handle car parts storage is a trade secret",
+   "invoicePostCode":"BS1 5TH",
+   "invoiceAddress":"9a GRANGE ROAD BRISTOL",
+   "invoiceName":"Finance Team",
+   "invoiceEmail":"finance@mycompany.co.uk",
+   "invoiceTelephone":"01179865432"
 }
