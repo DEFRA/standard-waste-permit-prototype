@@ -25,6 +25,12 @@
 <h2 class="heading-medium">You’ll need to know the:</h2>
 
 <ul class="list list-border">
+  
+  {% if permit.operatorType=="Individual" %}  
+      <li>
+        name, address and date of birth for the permit holder
+      </li>
+  {% endif %}
 
   <li>
     contact details for the person dealing with the application
