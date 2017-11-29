@@ -1,0 +1,76 @@
+<!-- {{permit.operatorType}} -->
+
+
+<ul class="list list-border">
+            
+          {% if permit.sitePlanNeeded=="Yes" %}
+              <li>A site plan.
+                <details>
+                  <summary><span class="summary">What your site plan must include</span></summary>
+                  <div class="panel panel-border-narrow">
+                    {% include folder+"/guidance/siteplan.html" %}
+                  </div>
+                </details>
+              </li>
+            {% endif %}
+            
+          
+            {% if permit.firePlanNeeded=="Yes" %}
+              <li>A fire prevention plan.<br>
+                 <a href="https://www.gov.uk/government/publications/fire-prevention-plans-environmental-permits/fire-prevention-plans-environmental-permits" target="_blank" rel="noopener noreferrer">Fire prevention plan guidance on GOV.UK (opens new tab)</a></li>
+            {% endif %}
+            
+            
+            {% if permit.baselineReportRequired=="Yes" %}
+              <li>A baseline report.</a><br>
+              <a href="#" target="_blank" rel="noopener noreferrer">Baseline report guidance on GOV.UK (opens new tab)</a></li>
+            {% endif %}
+
+            
+            {% if permit.technicalAbilityEvidence=="Yes" %}
+              <li>A certificate to prove that your site manager is qualified as a 'competent person', for example from <abbr title="Waste Management Industry Training and Advisory Board">WAMITAB</abbr>.
+              <details>
+                <summary><span class="summary">Relevant WAMITAB qualifications</span></summary>
+                <div class="panel panel-border-narrow">
+                  {{permit.WAMITAB}}
+                </div>
+              </details>
+            </li>
+            {% endif %}
+            
+            {% if permit.wasteRecoveryPlan=="Yes" %}
+              <li>A waste recovery plan.<br>
+                 <a href="https://www.gov.uk/guidance/waste-recovery-plans-and-permits" target="_blank" rel="noopener noreferrer">Waste recovery plan guidance on GOV.UK (opens new tab)</a>
+              </li>
+            {% endif %}
+
+            <li>A written management system.<br>
+              <a href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits" target="_blank" rel="noopener noreferrer">Management system guidance on GOV.UK (opens new tab)</a>
+            </li>
+              
+            <li>The grid reference for the site.
+            <details>
+              <summary><span class="summary">Help finding a grid reference</span></summary>
+              <div class="panel panel-border-narrow">
+                {% include folder+"/site/grid-reference-finder.html" %}
+              </div>
+            </details>
+          </li>
+
+            <li>The name and contact details for the operator.</li>
+
+            <li>For registered companies, the company number.</li>
+          
+        </ul>
+
+
+        <ul class="list list-bullet">
+
+          <li><a href="{{permit.guidanceURL}}" target="_blank" rel="noopener noreferrer">read the conditions within the standard permit rules and the generic risk assessment for your activity</a>
+          </li>
+          <li>check you meet the <a href="https://www.gov.uk/guidance/legal-operator-and-competence-requirements-environmental-permits" target="_blank" rel="noopener noreferrer">legal operator and competency requirements</a> (including technical competency)</li>
+
+          <li>check <a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/guidance/control-and-monitor-emissions-for-your-environmental-permit">how to control and monitor your emissions</a> - you don’t need to submit any emissions information as part of a standard rules permit application</li>
+        </ul>
+
+        <p>You also need to develop a <a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits">management system</a> (a written set of procedures that identifies and minimises the risks of pollution).</p>
