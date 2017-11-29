@@ -10,6 +10,8 @@
 
 <main id="content" role="main">
   {% include "includes/phase_banner_beta.html" %}
+  
+      {{backlink|safe}}
 
   <div class="grid-row">
     <div class="column-two-thirds">
@@ -20,11 +22,18 @@
         <h1 class="heading-large">
           Apply for a standard rules waste permit
         </h1>
+        
+        
+        <p class="print-link"><a href="javascript:window.print()">Print this page</a></p>
 
-        <p class="font-medium text">{{permit.permitName}} - {{permit.permitCode}}<br><a class="font-small" href="/{{folder}}/selectpermit/permit-category2">Select a different permit</a></p>
+        <p class="font-medium text">{{permit.permitName}} - {{permit.permitCode}} - applying as a {{permit.operatorType | lower }}<br>
+          <a class="font-small" href="/{{folder}}/selectpermit/permit-category2">
+            Select a different permit
+          </a>
+        </p>
 
 
-        <h3 class="heading-medium">How to apply</h3>
+        <h2 class="heading-medium">How to apply</h2>
 
         <p>To apply, download and fill in these forms:</p>
 
@@ -34,20 +43,8 @@
           <li><a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/government/publications/application-for-an-environmental-permit-part-f1-opra-charges-declarations">part F1: <abbr title="Operational risk appraisal">Opra</abbr>, charges and declarations</a></li>
         </ul>
 
-
-        <h3 class="heading-medium">What you need to apply:</h3>
-
-        <ul class="list list-bullet">
-
-          <li><a href="{{permit.guidanceURL}}" target="_blank" rel="noopener noreferrer">read the conditions within the standard permit rules and the generic risk assessment for your activity</a>
-          </li>
-          <li>check you meet the <a href="https://www.gov.uk/guidance/legal-operator-and-competence-requirements-environmental-permits" target="_blank" rel="noopener noreferrer">legal operator and competency requirements</a> (including technical competency)</li>
-
-          <li>check <a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/guidance/control-and-monitor-emissions-for-your-environmental-permit">how to control and monitor your emissions</a> - you don’t need to submit any emissions information as part of a standard rules permit application</li>
-        </ul>
-
-        <p>You also need to develop a <a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits">management system</a> (a written set of procedures that identifies and minimises the risks of pollution).</p>
-
+        
+        {% include folder+"/snippets/before-you-start-list.html" %}
 
       </div>
 

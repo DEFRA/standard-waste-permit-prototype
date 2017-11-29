@@ -57,15 +57,40 @@
           </label>
           <input class="form-control form-control-char-25" id="contactTelephone" name="contactTelephone" type="number" value="{{permit.contactTelephone}}">
         </div>
+        
+        <h2 class="heading-small">
+          Email addresses for communications about this application
+        </h2>
 
         <div class="form-group">
           <label class="form-label" for="contactEmail">
-            Email address
-          </label>
+            Email address for main contact
           <span class="form-hint">
-            We'll usually contact you about the application by email
+            They get every communication and also the permit and any notices
           </span>
+          </label>
           <input class="form-control" id="contactEmail" name="contactEmail" type="email" value="{{permit.contactEmail}}">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="companySecretaryEmail">
+            Email address for Company Secretary or a director
+            <span class="form-hint text">
+              They just get a copy of the permit and any notices
+            </span>
+          </label>
+          
+          <details>
+            <summary><span class="summary">What’s this for and whose email can I give?</span></summary>
+            <div class="panel panel-border-narrow" style="margin-bottom:1em;">
+              <p>
+                Legally, we have to send a copy of the permit to the registered office or to an official company email address. Company Secretary is an official legal position, not a secretary or personal assistant. If you don’t have a Company Secretary you can give a director’s email address.
+              </p>
+            </div>
+          </details>
+          
+          
+          <input class="form-control" id="companySecretaryEmail" name="companySecretaryEmail" type="email" value="{{permit.companySecretaryEmail}}">
         </div>
 
         <div class="form-group">

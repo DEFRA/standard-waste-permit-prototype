@@ -15,8 +15,9 @@ var sample = require('./views/'+folder+'/custom_inc/sample-permit.js')
 
 // HTML for standard buttons
 var backlink = '<a href="javascript:history.back()" class="link-back">Back</a>'
-var submitButton = '<button type="submit" class="button" name="Continue">Save and continue</button>'
-var completeLink = '<span id="completeLink"><a href="#" id="completeLater">Complete later</a></span>'
+var submitButton = '<button type="submit" class="button" name="Continue">Continue</button>'
+var completeLink = ''
+// completeLink WAS <span id="completeLink"><a href="#" id="completeLater">Complete later</a></span>
 
 router.use(function (req, res, next) {
   // set a folder and store in locals
@@ -39,85 +40,6 @@ router.get('/cls', function (req, res) {
 })
 
 
-var wc = require('which-country-ea');
-
-// England lat long check
-router.get('/site/grid-reference-eng', function (req, res) {
-  res.render(folder + '/site/grid-reference-eng',{
-     "formAction":"/"+ folder + "/site/grid-reference-eng"
-  })
-})
-router.post('/site/grid-reference-eng', function (req, res) {
-  var lat = req.body['lat']
-  var lng = req.body['lng']
-  var siteGridRef = req.body['siteGridRef']
-  var country="NOT SET"
-  country = wc([lng, lat])
-  if(country==null) country="NOT-ENG"
-  console.log('Country started')
-  console.log(country)
-  res.render(folder + '/site/grid-reference-eng',{
-     "formAction":"/"+ folder + "/site/grid-reference-eng",
-     "country": country,
-     "siteGridRef":siteGridRef
-  })
-})
-
-
-// Screening test
-
-// Function to assemble query string
-function getGISQuery(type,lat,long,distance){
-  var s1 = "https://services.arcgis.com/JJzESW51TqeY9uat/arcgis/rest/services/"
-  var s2 = "/FeatureServer/0/query?where=1%3D1&outFields=*&geometry="
-  var s3 = "%2C"
-  var s4 = "&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance="
-  var s5 = "&units=esriSRUnit_Meter&returnGeometry=false&returnCountOnly=true&outSR=4326&f=json"
-  var URLString = s1+type+s2+lat+s3+long+s4+distance+s5
-  return URLString
-}
-
-router.get('/testscreen', function (req, res) {
-  res.render(folder + '/testscreen/index',{
-     "formAction":"/"+ folder + "/testscreen"
-  })
-})
-router.post('/testscreen', function (req, res) {
-  var screening = req.body['screening']
-  var lat = req.body['lat']
-  var long = req.body['long']
-  var gridref = req.body['gridref']
-  var distance = req.body['distance']
-  var type = "Special_Areas_of_Conservation_England"
-  var gisURL = getGISQuery(type,lat,long,distance)
-  
-  request({
-      url: gisURL, //URL to hit
-      method: 'GET',
-  }, function(error, response, body){
-      if(error) {
-          console.log(error)
-      } else {
-          //console.log(response.statusCode)
-          //console.log("=============================")
-          //console.log(body)
-          //console.log("=============================")
-          var responseJSON = JSON.parse(body)
-          var count = responseJSON.count
-          res.render(folder + '/testscreen/index',{
-            "screening": screening,
-            "lat": lat,
-            "long": long,
-            "gridref": gridref,
-            "distance": distance,
-            "formAction":"/"+ folder + "/testscreen",
-            "message": "We found "+count+" sites. "+gisURL
-          })
-      }
-  })
-})
-
-
 // Rules page from list ==============================================================
 
 router.get('/start/rules-page', function (req, res) {
@@ -134,58 +56,10 @@ router.get('/check/process-link', function (req, res) {
     })
 })
 
-// Start or resume ==============================================================
-
-router.get('/start/start-or-resume', function (req, res) {
-  res.render(folder + '/start/start-or-resume',{
-      "formAction":"/"+ folder + "/save-and-return/save-choice"
-  })
-})
-
-router.post('/start/start-or-resume', function (req, res) {
-  res.render(folder + '/start/start-or-resume',{
-      "formAction":"/"+ folder + "/save-and-return/save-choice"
-  })
-})
-
-// This is not a real page, just a URL for the route
-router.post('/save-and-return/save-choice', function (req, res) {
-  if(req.body['started-application']=="no"){ // think you need square bracket for radios
-      res.render(folder + '/selectpermit/permit-category2',{
-          "formAction":"/"+ folder + "/selectpermit/choose-permit2"
-      })
-  } else {
-      res.render(folder + '/save-and-return/already-started',{
-          "formAction":"/"+ folder + "/save-and-return/link-resent"
-      })
-  }
-})
-
-router.post('/save-and-return/confirm', function (req, res) {
-  res.render(folder + '/save-and-return/confirm',{
-    "formAction":"/"+ folder + "/save-and-return/sent"
-  })
-})
-
-router.post('/save-and-return/sent', function (req, res) {
-  res.render(folder + '/save-and-return/sent',{
-    "formAction":"/"+ folder + "/check/task-list"
-  })
-})
-
-
-router.get('save-and-return/email-save-link', function (req, res) {
-  res.render(folder + 'save-and-return/email-save-link',{
-  })
-})
-
-
 
 // Select permit ==============================================================
 
-// Expanding section method
-
-// required for 'select a different permit' via task list
+// required for 'select a different permit' via start page or task list
 router.get('/selectpermit/permit-category2', function (req, res) {
     res.render(folder + '/selectpermit/permit-category2',{
       "formAction":"/"+ folder + "/selectpermit/choose-permit2",
@@ -210,130 +84,64 @@ router.post('/selectpermit/permit-category2', function (req, res) {
 })
 
 
-// Alternative category page
-router.post('/selectpermit/choose-expanding-sections-new-cats', function (req, res) {
-    // permit NOT YET selected
-    if( req.session.data['chosenPermitID']==null ) {
-      res.render(folder + '/selectpermit/choose-expanding-sections-new-cats',{
-        "formAction":"/"+ folder + "/check/save-permit-details"
-      })
-    // permit set via link on a GOV.UK page so skip this page
-    } else {
-      res.render(folder + '/check/task-list',{ // show save and return pages
-         "formAction":"/"+ folder + "/check/check-answers",
-         "chosenPermitID":req.body['chosenPermitID']
-      })
-    }
-})
-
-// required for 'select a different permit' via task list
-router.get('/selectpermit/choose-expanding-sections-new-cats', function (req, res) {
-    res.render(folder + '/selectpermit/choose-expanding-sections-new-cats',{
-      "formAction":"/"+ folder + "/check/save-permit-details",
-      "chosenPermitID":req.body['chosenPermitID']
-    }) 
-})
-
-
-router.post('/check/save-permit-details', function (req, res) {
-    if( req.session.data['saveReturnEmail']==null ) {
-      res.render(folder + '/check/save-permit-details',{
-        "formAction":"/"+ folder + "/save-and-return/email-or-phone",
-        "chosenPermitID":req.body['chosenPermitID']
-      })
-    } else {
-      res.render(folder + '/check/task-list',{ 
-         "formAction":"/"+ folder + "/check/check-answers",
-         "chosenPermitID":req.body['chosenPermitID']
-      })
-    }
-})
-
-
-// SAVE AND RETURN AS A TASK
-router.get('/save-and-return/email-or-phone', function (req, res) {
-      res.render(folder + '/save-and-return/email-or-phone',{
-        "formAction":"/"+ folder + "/save-and-return/confirm"
-      })
-})
-
-
-// Screening / site location check ===========================================================
-
-// This is not a real page, just a URL for the route
-router.post('/screening/mobile-check', function (req, res) {
-  // check if this is a mobile plant permit
-  if(req.session.data['sitePlanNeeded']=="No"){
-    res.render(folder + '/check/task-list')
-  } else { // not mobile plant permit
-    res.render(folder + '/screening/location-check',{
-        "formAction":"/"+ folder + "/screening/location-options", // Screening question
-        "chosenPermitID":req.body['chosenPermitID']
-      })
-    }
-  })
-
-
-// This is not a real page, just a URL for the route
-router.post('/screening/location-options', function (req, res) {
-  if(req.body['locationCheck']=="No"){ // think you need square bracket for radios
-      res.render(folder + '/check/task-list',{
-          "formAction":"/"+ folder + "/check/task-list"
-      })
-  } else if (req.body['locationCheck']=="No, I've already had it checked") {
-      res.render(folder + '/check/task-list',{
-          "formAction":"/"+ folder + "/check/task-list"
-      })
+router.post('/selectpermit/choose-permit2', function (req, res) {
+  if(typeof req.body['chosenCategory']==='undefined'){  // simple error handling
+    res.render(folder + '/error/index',{ 
+        "errorText":"Please say what you want the permit for"
+    })
   } else {
-      res.render(folder + '/site/site-name',{
-          "formAction":"/"+ folder + "/site/grid-reference"
-      })
+    res.render(folder + '/selectpermit/choose-permit2',{
+      "formAction":"/"+ folder + "/check/save-permit-details",  
+      "chosenCategory":req.body['chosenCategory']
+    })    
   }
 })
 
-router.get('/screening/conservation-screening', function (req, res) {
-  res.render(folder + '/screening/conservation-screening',{
-      "formAction":"/"+ folder + "/check/task-list"
-  })
-})
-
-router.post('/screening/check-your-answers', function (req, res) {
-  res.render(folder + '/screening/check-your-answers',{
-      "formAction":"/"+ folder + "/screening/received"
-  })
-})
-
-
-router.get('/screening/received', function (req, res) {
-  res.render(folder + '/screening/received',{
-      "formAction":"/"+ folder + "/screening/email-eligible"
-  })
-})
-
-router.get('/screening/email-eligible', function (req, res) {
-  res.render(folder + '/screening/email-eligible',{
-      "formAction":"/"+ folder + "/check/task-list"
-  })
-})
-
-
-// Task List 
-
-router.post('/check/task-list', function (req, res) {
-    res.render(folder + '/check/task-list',{ 
-       "chosenPermitID":req.body['chosenPermitID']
+// save permit details is an autosubmit page
+// used to store all the data from the matrix
+router.post('/check/save-permit-details', function (req, res) {
+    res.render(folder + '/check/save-permit-details',{
+      "formAction":"/"+ folder + "/operator/site-operator",
+      "chosenPermitID":req.body['chosenPermitID']
     })
 })
 
-// Called by task list page via AJAX to log the first visit
-router.get('/task-list-visit', function (req, res) {
-  // if this is the first visit, 'saveProgress' will be set to started-application
-  if(req.session.data.saveProgress=='started-application'){
-    req.session.data.saveProgress='task-list-visited'
-  }
-  res.sendStatus(200)
+
+// permit holder screen
+router.post('/operator/site-operator', function (req, res) {
+  res.render(folder + '/operator/site-operator',{
+      "formAction":"/"+ folder + "/operator/checkoperator"
+  })
 })
 
+ router.get('/operator/site-operator', function (req, res) {
+   res.render(folder + '/operator/site-operator',{
+       "formAction":"/"+ folder + "/operator/checkoperator"
+   })
+ })
+
+
+// This is not a real page, just a URL for the route
+router.post('/operator/checkoperator', function (req, res) {
+  if(req.body['operatorType']=="Limited company"){ // think you need square bracket for radios
+     // go to task list with company details
+     res.render(folder + '/check/save-permit-details',{
+         "formAction":"/"+ folder + "/selectpermit/before-you-start"
+     })
+  } else {
+    // go on to 'paper' form page'
+    res.render(folder + '/selectpermit/permit-not-in-service',{
+    })
+  }
+ })
+ 
+// before you start pages
+router.post('/selectpermit/before-you-start', function (req, res) {
+    res.render(folder + '/selectpermit/before-you-start',{ 
+      "formAction":"/"+ folder + "/check/task-list",
+       "chosenPermitID":req.body['chosenPermitID']
+    })
+})
 
 
 
@@ -366,59 +174,14 @@ router.get('/check/task-list', function (req, res) {
 
 
 
-// Category method
-router.post('/selectpermit/permit-category', function (req, res) {
-  res.render(folder + '/selectpermit/permit-category',{
-    "formAction":"/"+ folder + "/selectpermit/choose-permit"
-  })
-})
+// Task List 
 
-// also a get
-router.get('/selectpermit/permit-category', function (req, res) {
-  res.render(folder + '/selectpermit/permit-category',{
-    "formAction":"/"+ folder + "/selectpermit/choose-permit"
-  })
-})
-
-router.post('/selectpermit/permit-category2', function (req, res) {
-  res.render(folder + '/selectpermit/permit-category2',{
-    "formAction":"/"+ folder + "/selectpermit/choose-permit2"
-  })
-})
-
-// also a get
-router.get('/selectpermit/permit-category2', function (req, res) {
-  res.render(folder + '/selectpermit/permit-category2',{
-    "formAction":"/"+ folder + "/selectpermit/choose-permit2"
-  })
-})
-
-
-router.post('/selectpermit/choose-permit', function (req, res) {
-  if(typeof req.body['chosenCategory']==='undefined'){  // simple error handling
-    res.render(folder + '/error/index',{ 
-        "errorText":"Please say what you want the permit for"
+router.post('/check/task-list', function (req, res) {
+    res.render(folder + '/check/task-list',{ 
+       "chosenPermitID":req.body['chosenPermitID']
     })
-  } else {
-    res.render(folder + '/selectpermit/choose-permit',{
-      "formAction":"/"+ folder + "/check/save-permit-details",
-      "chosenCategory":req.body['chosenCategory']
-    })    
-  }
 })
 
-router.post('/selectpermit/choose-permit2', function (req, res) {
-  if(typeof req.body['chosenCategory']==='undefined'){  // simple error handling
-    res.render(folder + '/error/index',{ 
-        "errorText":"Please say what you want the permit for"
-    })
-  } else {
-    res.render(folder + '/selectpermit/choose-permit2',{
-      "formAction":"/"+ folder + "/check/save-permit-details",  
-      "chosenCategory":req.body['chosenCategory']
-    })    
-  }
-})
 
 
 // Before you begin ===========================================================
@@ -479,6 +242,12 @@ router.get('/preapp/preapp-discussion', function (req, res) {
 
 router.get('/contact/contact-details', function (req, res) {
   res.render(folder + '/contact/contact-details',{
+      "formAction":"/"+ folder + "/site/site-contact"
+  })
+})
+
+router.post('/site/site-contact', function (req, res) {
+  res.render(folder + '/site/site-contact',{
       "formAction":"/"+ folder + "/check/task-list"
   })
 })
@@ -564,15 +333,9 @@ router.post('/address/address', function (req, res) {
     })
   } else {
     res.render(folder + '/address/address',{
-        "formAction":"/"+ folder + "/site/site-contact"
+        "formAction":"/"+ folder + "/check/task-list"
     })
   }
-})
-
-router.post('/site/site-contact', function (req, res) {
-  res.render(folder + '/site/site-contact',{
-      "formAction":"/"+ folder + "/check/task-list"
-  })
 })
 
 
@@ -609,13 +372,9 @@ router.get('/evidence/site-plan-check', function (req, res) {
 
 // Technical ability ==========================================================
 
-router.get('/evidence/techcomp/manager-details', function (req, res) {
-  res.render(folder + '/evidence/techcomp/manager-details',{
-      "formAction":"/"+ folder + "/evidence/techcomp/industry-scheme"
-  })
-})
 
-router.post('/evidence/techcomp/industry-scheme', function (req, res) {
+
+router.get('/evidence/techcomp/industry-scheme', function (req, res) {
   res.render(folder + '/evidence/techcomp/industry-scheme',{
       "formAction":"/"+ folder + "/evidence/techcomp/get-evidence"
   })
@@ -626,24 +385,30 @@ router.post('/evidence/techcomp/get-evidence', function (req, res) {
   if( req.body.industryScheme=='WAMITAB' ) {
     // /evidence/techcomp/wamitab-details
     res.render(folder + '/evidence/techcomp/wamitab-details',{
-        "formAction":"/"+ folder + "/check/task-list"
+        "formAction":"/"+ folder + "/evidence/techcomp/manager-details"
     })
   } else if( req.body.industryScheme=='ESA-EU' ) {
     // /evidence/techcomp/esa-eu-details
     res.render(folder + '/evidence/techcomp/esa-eu-details',{
-        "formAction":"/"+ folder + "/check/task-list"
+        "formAction":"/"+ folder + "/evidence/techcomp/manager-details"
     })
   } else if( req.body.industryScheme=='deemed' ) {
     // /evidence/techcomp/deemed
     res.render(folder + '/evidence/techcomp/deemed',{
-        "formAction":"/"+ folder + "/check/task-list"
+        "formAction":"/"+ folder + "/evidence/techcomp/manager-details"
     })
   } else if( req.body.industryScheme=='getting-qualification' ) {
     // /evidence/techcomp/getting-it
     res.render(folder + '/evidence/techcomp/getting-it',{
-        "formAction":"/"+ folder + "/check/task-list"
+        "formAction":"/"+ folder + "/evidence/techcomp/manager-details"
     })
   }
+})
+
+router.get('/evidence/techcomp/manager-details', function (req, res) {
+  res.render(folder + '/evidence/techcomp/manager-details',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
 })
 
 // The 4 options with GET then go back to task list
@@ -709,42 +474,6 @@ router.get('/operator/company/company-name', function (req, res) {
 })
 
 
-// router.get('/operator/site-operator', function (req, res) {
-//   res.render(folder + '/operator/site-operator',{
-//       "formAction":"/"+ folder + "/operator/checkoperator"
-//   })
-// })
-
-// router.post('/operator/site-operator', function (req, res) {
-//   res.render(folder + '/operator/site-operator',{
-//       "formAction":"/"+ folder + "/operator/checkoperator"
-//   })
-// })
-
-// This is not a real page, just a URL for the route
-//router.post('/operator/checkoperator', function (req, res) {
-//  if(req.body['operatorType']=="Limited company"){ // think you need square bracket for radios
-    // show company page
-//     res.render(folder + '/operator/company/company-name',{
-//         "formAction":"/"+ folder + "/operator/company/check-company-details"
-//     })
-// } else if (req.body['operatorType']=="Individual") {
-    // show individual page
-//     res.render(folder + '/operator/individual/individual-details',{
-//        "formAction":"/"+ folder + "/operator/individual/postcode"
-//    })
-// } else if (req.body['operatorType']=="Partnership") {
-// show partnership page
-//    res.render(folder + '/operator/partnerships/partner1',{
-//       "formAction":"/"+ folder + "/operator/partnerships/postcode"
-//   })
-//  } else {
-//    // go on to error
-//    res.render(folder + '/error/index',{ 
-//        "errorText":"We only cover limited companies and individuals in this prototype"
-//    })
-//  }
-// })
 
 router.post('/operator/partnerships/postcode', function (req, res) {
   res.render(folder + '/operator/partnerships/postcode',{
@@ -772,7 +501,7 @@ router.post('/operator/company/check-company-details', function (req, res) {
             var companyJSON = JSON.parse(body)
             var company = companyJSON.items[0]
             res.render(folder + '/operator/company/check-company-details',{
-                "formAction":"/"+ folder + "/operator/company/company-secretary",
+                "formAction":"/"+ folder + "/operator/company/go-to-check-officers",
                 "company":company,
                 "searchTerm":req.body.companyRegNum,
                 "numberResults":companyJSON.total_results
@@ -784,7 +513,7 @@ router.post('/operator/company/check-company-details', function (req, res) {
 // route for link back from company api search results
 router.get('/operator/company/company-name', function (req, res) {
   res.render(folder + '/operator/company/company-name',{
-      "formAction":"/"+ folder + "/operator/company/company-secretary"
+      "formAction":"/"+ folder + "/operator/company/go-to-check-officers"
   })
 })
 
@@ -793,7 +522,7 @@ router.get('/operator/company/company-name', function (req, res) {
 
 router.post('/operator/company/company-addresses', function (req, res) {
   res.render(folder + '/operator/company/company-addresses',{
-      "formAction":"/"+ folder + "/operator/company/company-secretary"
+      "formAction":"/"+ folder + "/operator/company/go-to-check-officers"
   })
 })
 
@@ -1312,11 +1041,140 @@ router.post('/search-permit/sr-permits', function (req, res) {
     })
 })
 
+
+
+var wc = require('which-country-ea');
+
+// England lat long check
+router.get('/site/grid-reference-eng', function (req, res) {
+  res.render(folder + '/site/grid-reference-eng',{
+     "formAction":"/"+ folder + "/site/grid-reference-eng"
+  })
+})
+router.post('/site/grid-reference-eng', function (req, res) {
+  var lat = req.body['lat']
+  var lng = req.body['lng']
+  var siteGridRef = req.body['siteGridRef']
+  var country="NOT SET"
+  country = wc([lng, lat])
+  if(country==null) country="NOT-ENG"
+  console.log('Country started')
+  console.log(country)
+  res.render(folder + '/site/grid-reference-eng',{
+     "formAction":"/"+ folder + "/site/grid-reference-eng",
+     "country": country,
+     "siteGridRef":siteGridRef
+  })
+})
+
+
+// Start or resume ==============================================================
+
+router.get('/start/start-or-resume', function (req, res) {
+  res.render(folder + '/start/start-or-resume',{
+      "formAction":"/"+ folder + "/save-and-return/save-choice"
+  })
+})
+
+router.post('/start/start-or-resume', function (req, res) {
+  res.render(folder + '/start/start-or-resume',{
+      "formAction":"/"+ folder + "/save-and-return/save-choice"
+  })
+})
+
+// This is not a real page, just a URL for the route
+router.post('/save-and-return/save-choice', function (req, res) {
+  if(req.body['started-application']=="no"){ // think you need square bracket for radios
+      res.render(folder + '/selectpermit/permit-category2',{
+          "formAction":"/"+ folder + "/selectpermit/choose-permit2"
+      })
+  } else {
+      res.render(folder + '/save-and-return/already-started',{
+          "formAction":"/"+ folder + "/save-and-return/link-resent"
+      })
+  }
+})
+
+router.post('/save-and-return/confirm', function (req, res) {
+  res.render(folder + '/save-and-return/confirm',{
+    "formAction":"/"+ folder + "/save-and-return/sent"
+  })
+})
+
+router.post('/save-and-return/sent', function (req, res) {
+  res.render(folder + '/save-and-return/sent',{
+    "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+
+router.get('save-and-return/email-save-link', function (req, res) {
+  res.render(folder + 'save-and-return/email-save-link',{
+  })
+})
+
+
+
+
+// Screening test
+
+// Function to assemble query string
+function getGISQuery(type,lat,long,distance){
+  var s1 = "https://services.arcgis.com/JJzESW51TqeY9uat/arcgis/rest/services/"
+  var s2 = "/FeatureServer/0/query?where=1%3D1&outFields=*&geometry="
+  var s3 = "%2C"
+  var s4 = "&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance="
+  var s5 = "&units=esriSRUnit_Meter&returnGeometry=false&returnCountOnly=true&outSR=4326&f=json"
+  var URLString = s1+type+s2+lat+s3+long+s4+distance+s5
+  return URLString
+}
+
+router.get('/testscreen', function (req, res) {
+  res.render(folder + '/testscreen/index',{
+     "formAction":"/"+ folder + "/testscreen"
+  })
+})
+router.post('/testscreen', function (req, res) {
+  var screening = req.body['screening']
+  var lat = req.body['lat']
+  var long = req.body['long']
+  var gridref = req.body['gridref']
+  var distance = req.body['distance']
+  var type = "Special_Areas_of_Conservation_England"
+  var gisURL = getGISQuery(type,lat,long,distance)
+  
+  request({
+      url: gisURL, //URL to hit
+      method: 'GET',
+  }, function(error, response, body){
+      if(error) {
+          console.log(error)
+      } else {
+          //console.log(response.statusCode)
+          //console.log("=============================")
+          //console.log(body)
+          //console.log("=============================")
+          var responseJSON = JSON.parse(body)
+          var count = responseJSON.count
+          res.render(folder + '/testscreen/index',{
+            "screening": screening,
+            "lat": lat,
+            "long": long,
+            "gridref": gridref,
+            "distance": distance,
+            "formAction":"/"+ folder + "/testscreen",
+            "message": "We found "+count+" sites. "+gisURL
+          })
+      }
+  })
+})
+
+
 // Send permit data in session to every page ==================================
 router.all('*', function (req, res, next) {
   res.locals.permit=res.locals.data
   next()
-});
+})
 
 
 module.exports = router

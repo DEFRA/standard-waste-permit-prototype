@@ -18,7 +18,14 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
-<p id="confClaimGuidance">We put all applications into a public register. If you can prove that some information is commercially or industrially confidential, we’ll consider removing that information from the register.</p>
+<div id="confClaimGuidance">
+<p>
+  We put all applications into a public register. If you can prove that some information is commercially or industrially confidential, we’ll consider removing that information from the register.
+</p>
+<p>
+  Guidance about confidentiality is in the <a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/government/publications/environmental-permitting-guidance-core-guidance--2">environmental permitting guidance core guidance on GOV.UK (opens new tab)</a>
+</p>
+</div>
 
 
 <form method="post" action="{{formAction}}">
@@ -27,10 +34,7 @@
 
 <legend class="visually-hidden" aria-describedby="confClaimGuidance">{{title}}</legend>
       
-<div class="multiple-choice">
-<input id="notConfClaim" type="radio" name="confidential" value="no">
-<label for="notConfClaim">No</label>
-</div>
+
 
 <div class="multiple-choice" data-target="confidentialReasonsGroup">
 <input id="yesConfClaim" type="radio" name="confidential" value="yes">
@@ -38,10 +42,17 @@
 </div>
 <div class="panel panel-border-narrow js-hidden" id="confidentialReasonsGroup">
 <label class="form-label" for="confidentialReasons">What information do you think is confidential, and why?
-<span class="form-hint">Guidance about confidentiality is in the <a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/government/publications/environmental-permitting-guidance-core-guidance--2">environmental permitting guidance core guidance on GOV.UK (opens new tab)</a>.</span>
+<span class="form-hint">
+  Check the guidance first to check you qualify
+</span>
 </label>
-<textarea class="form-control form-control-full" name="confidentialReasons" type="text" id="confidentialReasons" rows="5"></textarea>
-<p><span class="form-hint">1,000 character limit</span></p>
+<textarea class="form-control form-control-full" name="confidentialReasons" type="text" id="confidentialReasons" rows="10"></textarea>
+<p><span class="form-hint">2,000 character limit</span></p>
+</div>
+
+<div class="multiple-choice">
+<input id="notConfClaim" type="radio" name="confidential" value="no">
+<label for="notConfClaim">No</label>
 </div>
     
     </fieldset>

@@ -33,7 +33,11 @@
         Read the <a href="{{permit.guidanceURL}}" target="_blank" rel="noopener noreferrer">rules and risk assessment for permit {{permit.permitCode}} on GOV.UK (opens new tab)</a>.
       </p>
 
-      <p>If your operation doesn't meet these rules, you may need a different standard rules permit or a bespoke permit instead.</p>
+      {% if permit.readRules %} 
+      
+      {% else %}
+          <p>If your operation doesn't meet these rules, you may need a different standard rules permit or a bespoke permit instead.</p>
+      {% endif %}
       
         <!-- HIDDEN BECAUSE WE HAVE SCREENING IN THE EARLIER FLOW
 

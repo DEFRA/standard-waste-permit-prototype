@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Upload a course registration email or letter" %}
+{% set title = "Upload the course registration email or letter" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -18,27 +18,33 @@
 <h1 class="heading-large">{{title}}</h1>
 
 <p>
-  The course registration must show that you have registered to get 4 units of an appropriate WAMITAB qualification or are registered on an EPOC course.
+  The email or letter must show that you have registered to get 4 units of an appropriate WAMITAB qualification or are registered on an EPOC course.
 </p>
 <p>
-You must complete the EPOC course or 4 units within 4 weeks of starting  operations.
-You must get a full qualification within 12 months of starting the operation.
+  You must complete the EPOC course or 4 units within 4 weeks of starting  operations.
+</p>
+<p>
+  You must get a full qualification within 12 months of starting the operation.
 </p>
 
-<h2 class="heading-small">
-  Upload the course registration email or letter
-</h2>
+
 
   <form method="post" action="{{formAction}}">
 
     <div class="form-group form-upload">
-        <input id="upload1" type="file" aria-labelelledby="upload-label">
+      <h2 class="heading-small">
+        <label>
+          Upload the course registration email or letter
+          <span class="text form-hint">
+            PDF or JPG files, 30MB maximum file size
+          </span>
+        </label>
+      </h2>
+        <input id="upload" type="file" aria-labelelledby="upload-label">
         <input id="filename" name="deemedCertificateFile1" type="hidden">
     </div>
     
-    <p class="text form-hint">
-      PDF or JPG files, 30MB maximum file size.
-    </p>
+
     
     <script>
       // captures uploaded filename and passes to hidden input

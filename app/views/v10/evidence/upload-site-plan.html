@@ -17,14 +17,24 @@
 
         <h1 class="heading-large" id="upload-label">{{title}}</h1>
         
-        {% include folder+"/snippets/file-upload-hint.html" %}
+        
+        <details>
+          <summary><span class="summary">What your site plan must include</span></summary>
+          <div class="panel panel-border-narrow">
+            {% include folder+"/guidance/siteplan.html" %}
+          </div>
+        </details>
+        
 
         <form method="post" action="{{formAction}}">
 
           <div class="form-group form-upload">
+            <p class="form-hint">
+              You can upload more than one file.<br>
+                PDF or JPG, 30MB maximum file size.
+            </p>
               <input id="upload" type="file" aria-labelelledby="upload-label">
               <input id="filename" name="sitePlanFilename" type="hidden">
-            <a href="#">remove&nbsp;file</a>
           </div>
           
           <script>
@@ -40,13 +50,7 @@
             }
           </script>
 
-        
-        <details>
-          <summary><span class="summary">What your site plan must include</span></summary>
-          <div class="panel panel-border-narrow">
-            {% include folder+"/guidance/siteplan.html" %}
-          </div>
-        </details>
+
 
         
           <div class="form-group">
