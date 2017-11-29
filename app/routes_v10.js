@@ -123,24 +123,13 @@ router.post('/operator/site-operator', function (req, res) {
 // This is not a real page, just a URL for the route
 router.post('/operator/checkoperator', function (req, res) {
   if(req.body['operatorType']=="Limited company"){ // think you need square bracket for radios
-    // show company page
+     // go to task list with company details
      res.render(folder + '/check/save-permit-details',{
          "formAction":"/"+ folder + "/selectpermit/before-you-start"
      })
-// } else if (req.body['operatorType']=="Individual") {
-    // show individual page
-//     res.render(folder + '/operator/individual/individual-details',{
-//        "formAction":"/"+ folder + "/operator/individual/postcode"
-//    })
-// } else if (req.body['operatorType']=="Partnership") {
- // show partnership page
-//    res.render(folder + '/operator/partnerships/partner1',{
-//       "formAction":"/"+ folder + "/operator/partnerships/postcode"
- //  })
   } else {
-    // go on to error
-    res.render(folder + '/error/index',{ 
-        "errorText":"We only cover limited companies and individuals in this prototype"
+    // go on to 'paper' form page'
+    res.render(folder + '/selectpermit/permit-not-in-service',{
     })
   }
  })
