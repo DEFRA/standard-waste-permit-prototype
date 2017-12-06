@@ -26,9 +26,125 @@ REGEXP replacements for google HTML
   <p><a href="index-v10">Version 10</a></p>
   <p>We've not updated the change log for this version yet.</p>
   
+  <table class="change-log">
+  <tr>
+  <th>
+    <p>Summary of change in v10</p>
+  </th>
+  <th>
+    <p>Reason/source</p>
+  </th>
+  </tr>
+  
+  <tr><td colspan="2"><p>
+    v10 contains many big changes following a decision to build a slightly smaller MVP. We won't list all those changes here but these are the major changes.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Remove save and return (for now)
+  </p></td><td><p>
+    We know users want this but we don't have enough information about the required software (Identity Management) to build this yet.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Add page to list everything that is needed for the application
+  </p></td><td><p>
+    Without save and return, users need to know up front what they need in order to apply.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Add page to allow users to apply using PDF forms, if their permit choice or applicant type is not available in the service.
+  </p></td><td><p>
+    Users need to know how to apply, even if they can't apply online initially because some permits are not covered by the service.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Remove cost page and move cost to what you need page.
+  </p></td><td><p>
+    Users like this page but it's not critical to a successful application so it has been de-prioritised for MVP.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Move management scheme information to the declaration section.
+  </p></td><td><p>
+    It's not critical to a successful application so it has been de-prioritised for MVP.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Move applicant (permit holder) type page to before the task list.
+  </p></td><td><p>
+    Allows non-company users to apply, even if they can't apply online initially because we will build first for limited companies only.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Clarify on the 'application sent' what happens after we receive the application. Remove reference to 5 days.
+  </p></td><td><p>
+    Users were slightly confused about the use of the term 'complete'. Users who had applied before (agents) knew the term 'duly made' and wondered if that was the same as 'complete'. The timescale was included becasue we thought it was helpful but users found it confusing.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Combine company name and address page.
+  </p></td><td><p>
+    The two items are for users to check and are not editable so it is a simplification to show them together in context. Testing shows that this performs OK.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Move Company Secretary email to the contact details screen.
+  </p></td><td><p>
+    When this was collected separately, and later, users were confused about which contact would get what information. We've put the inputs together and so far testing shows that this is clearer to users.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Move technical manager contact to after the qualification type pages.
+  </p></td><td><p>
+    When this was collected first, users were confused because they did not always have a name of someone with a qualification, if they were in the process of setting up a site and the person was 'getting' the qualification. Testing shows that users are happy with this new flow.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Move technical manager contact to after the 'qualification type' pages.
+  </p></td><td><p>
+    When this was collected first, users were confused because they did not always have a name of someone with a qualification, if they were in the process of setting up a site and the person was 'getting' the qualification. Testing shows that users are happy with this new flow.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Replace WAMITAB number with a certificate upload.
+  </p></td><td><p>
+    Our initial data suggested that most people (>98%) had a certificate. New data says that >40% will be 'getting a qualification' so we've simplified the screens to capture whatever evidence they need to provide.
+  </p></td></tr>
+
+  <tr><td><p>
+    Added ‘That’s not our registered office address’ help text to explain what to do if the company address is not correct
+  </p></td><td><p>
+    We heard one bit of evidence that some company owners may use a solicitor or company agent and had not since changed their address. As this blocks the application, this seems important to address.
+  </p></td></tr>
+
+  </table>
+  
+  
+  
+  
+  
+  
   <h2 class="heading-large">Version 8 to 9</h2>
   <p><a href="index-v9">Version 9</a></p>
-  <p>We've not updated the change log for this version yet.</p>
+  
+  <table class="change-log">
+  <tr>
+  <th>
+    <p>Summary of change in v9</p>
+  </th>
+  <th>
+    <p>Reason/source</p>
+  </th>
+  </tr>
+
+  <tr><td><p>
+  We've not updated the change log for this version yet.
+  </p></td><td><p>
+   
+  </p></td></tr>
+  
+  
   
   <h2 class="heading-large">Version 7 to 8</h2>
   <p><a href="index-v8">Version 8</a></p>
@@ -76,7 +192,7 @@ Invoice address is required for all permit holder types and the permit holder fl
 <tr><td><p>
 Added a screen to gather name and date of birth for the technically qualified manager.
 </p></td><td><p>
-There is a buisness need to perform enhanced conviction checks on this person, so we need to know who they are and their date of birth to ensure we are checking the right person.
+There is a business need to perform enhanced conviction checks on this person, so we need to know who they are and their date of birth to ensure we are checking the right person.
 </p></td></tr>
 
 <tr><td><p>
