@@ -17,39 +17,73 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
-<p>
-  The minimum WAMITAB qualification they need for these standard rules is:<br>
-  <strong class="bold-small">{{ permit.WAMITAB }}</strong>
-</p>
-<p>
-  If the qualification is over 2 years old they also need a continuing competence certificate.
-</p>
+{% if permit.technicalCertificateFileUploaded=="yes" %}
 
-<div class="panel panel-border-wide">
+<h2 class="heading-small">
+  Uploaded files
+</h2> 
+<dl class="govuk-check-your-answers cya-questions-short cya-file-upload">
+  <div>
+    <dt class="cya-answer">
+      {{permit.technicalCertificateFile}}
+    </dt>
+    <dd class="cya-change">
+      <a href="/{{folder}}/contact/contact-details"> 
+        Remove file <span class="visuallyhidden">{{permit.technicalCertificateFile}}</span>
+      </a>
+    </dd>
+  </div>
+</dl>
+
+{% else %}
+  <p>
+    The minimum WAMITAB qualification they need for these standard rules is:<br>
+    <strong class="bold-small">{{ permit.WAMITAB }}</strong>
+  </p>
+  <p>
+    If the qualification is over 2 years old they also need a continuing competence certificate.
+  </p>
   <p>
     We’ll check their qualification on the WAMITAB database.
   </p>
-</div>
+{% endif %}
+
 
 <form method="post" action="{{formAction}}">
 
-  <div class="form-group form-upload">
-    <h2 class="heading-small">
-    <label>
-      Upload the WAMITAB certificate and continuing competence certificate, if needed
+  <div>
+    <label class="form-label" for="file-input">
+      <span class="bold-small">
+        {% if permit.technicalCertificateFileUploaded=="yes" %}
+          Add another certificate file
+        {% else %}
+          Choose the certificate file
+        {% endif %}
+
+      </span>
       <span class="text form-hint">
         PDF or JPG files, 30MB maximum file size
       </span>
     </label>
-  </h2>
-      <input id="upload" type="file" aria-labelelledby="upload-label">
-      <input id="filename" name="technicalCertificateFile" type="hidden">
-      
   </div>
+  
+<div id="uploader" class="form-group form-uploader">
+    
+  <div class="form-group">
+      <input id="file-input" type="file">
+      <input id="filename" name="technicalCertificateFile" type="hidden">
+      <input name="technicalCertificateFileUploaded" value="yes" type="hidden">
+  </div>
+      
+  <div>
+      <input id="submit-upload" class="upload-button button-secondary" type="submit" value="Upload chosen file" name="submit">
+  </div>
+  
+</div>
   
   <script>
     // captures uploaded filename and passes to hidden input
-    document.getElementById('upload').onchange = uploadOnChange;
+    document.getElementById('file-input').onchange = uploadOnChange;
     function uploadOnChange() {
         var filename = this.value;
         var lastIndex = filename.lastIndexOf("\\");
@@ -62,7 +96,15 @@
 
 
 <div class="form-group">
-    {{submitButton|safe}}{{completeLink|safe}}
+  {% if permit.technicalCertificateFileUploaded=="yes" %}
+    <input class="button" type="submit" value="Continue">
+  {% else %}
+    <input class="button" type="submit" value="Continue" disabled="disabled" aria-disabled="true">
+  {% endif %}
+  
+  
+  
+    
 </div>
 </form>
 

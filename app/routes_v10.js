@@ -385,7 +385,7 @@ router.post('/evidence/techcomp/get-evidence', function (req, res) {
   if( req.body.industryScheme=='WAMITAB' ) {
     // /evidence/techcomp/wamitab-details
     res.render(folder + '/evidence/techcomp/wamitab-details',{
-        "formAction":"/"+ folder + "/evidence/techcomp/manager-details"
+        "formAction":"/"+ folder + "/evidence/techcomp/check-file"
     })
   } else if( req.body.industryScheme=='ESA-EU' ) {
     // /evidence/techcomp/esa-eu-details
@@ -403,6 +403,13 @@ router.post('/evidence/techcomp/get-evidence', function (req, res) {
         "formAction":"/"+ folder + "/evidence/techcomp/manager-details"
     })
   }
+})
+
+// Not a page - just a route to process the form
+router.post('/evidence/techcomp/check-file', function (req, res) {
+      res.render(folder + '/evidence/techcomp/wamitab-details',{
+          "formAction":"/"+ folder + "/evidence/techcomp/manager-details"
+      })
 })
 
 router.get('/evidence/techcomp/manager-details', function (req, res) {

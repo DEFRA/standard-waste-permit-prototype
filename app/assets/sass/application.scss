@@ -380,3 +380,40 @@ span#completeLink{
 details.inside-list{
   margin-bottom:0;
 }
+
+
+.button-secondary {
+    background-color: #dee0e2;
+    position: relative;
+    display: -moz-inline-stack;
+    display: inline-block;
+    padding: .526315em .789473em .263157em;
+    border: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    outline: 1px solid transparent;
+    outline-offset: -1px;
+    -webkit-appearance: none;
+    -webkit-box-shadow: 0 2px 0 #b5babe;
+    -moz-box-shadow: 0 2px 0 #b5babe;
+    box-shadow: 0 2px 0 #b5babe;
+    font-size: 1em;
+    line-height: 1.25;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    cursor: pointer;
+    color: #0b0c0c;
+    text-align: center;
+}
+
+.form-uploader{
+  border:2px solid #000;
+  padding:1em;
+}
+
+.cya-file-upload {
+  div{
+    border-top: 1px solid #bfc1c3;
+  }
+}
