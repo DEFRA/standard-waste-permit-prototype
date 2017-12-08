@@ -412,8 +412,11 @@ details.inside-list{
   padding:1em;
 }
 
-.cya-file-upload {
-  div{
+.govuk-check-your-answers.cya-questions-fileupload > * > * {
+    padding-top: 0.63158em;
     border-top: 1px solid #bfc1c3;
-  }
+}
+
+.govuk-check-your-answers.cya-questions-fileupload {
+    margin-top:0;
 }
