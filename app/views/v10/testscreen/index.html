@@ -8,27 +8,29 @@
 
 {% block content %}
 
-<script language="javascript" src="/public/javascripts/map/geotools_mt.js"></script>
+<script type="text/javascript" src="/public/javascripts/screening/geotools2.js"></script>
 
-<script langauge="javascript">
-  function onConvertGridRef()
-  {
-  	var gr=document.getElementById('gridref').value
-  	var osgb = new OsGridRef()
-  	if (OsGridRef.parse(gr))
-  	{
-  		var wgs84=osgb.getWGS84()
-  		var lat = wgs84.latitude
-  		var long = wgs84.longitude
-      document.getElementById('lat').value = lat
-  		document.getElementById('long').value = long
-  	}
-  	else
-  	{
-  		document.getElementById('lat').value = "n/a"
-  		document.getElementById('long').value = "n/a"
-  	}
-  }
+<script>
+
+function onConvertGridRef()
+{
+	var gr=document.getElementById('gridref').value
+	var osgb = new GT_OSGB()
+
+	if (osgb.parseGridRef(gr))
+	{
+		var wgs84=osgb.getWGS84()
+
+		document.getElementById('lat').value = wgs84.latitude
+		document.getElementById('long').value = wgs84.longitude
+	}
+	else
+	{
+		document.getElementById('lat').value = "n/a"
+		document.getElementById('long').value = "n/a"
+	}
+}
+
 </script>
 
 
@@ -43,15 +45,17 @@
       <h1 class="heading-large">{{title}}</h1>
       
       <div>
-        <h2 class="heading-medium">{{message}}</h2>
+        <p class="text">{{message}}</p>
+        
+        LAT: {{lat}}<br>
+      LONG:  {{long}}<br>
       </div>
 
       <form method="post" action="{{formAction}}">
         
         <input type="hidden" id="lat" name="lat" value="">
         <input type="hidden" id="long" name="long" value="">
-        
-        
+
         <p>
           Select the permit you want
         </p>

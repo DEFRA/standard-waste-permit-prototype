@@ -1132,7 +1132,7 @@ function getGISQuery(type,lat,long,distance){
   var s3 = "%2C"
   var s4 = "&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance="
   var s5 = "&units=esriSRUnit_Meter&returnGeometry=false&returnCountOnly=true&outSR=4326&f=json"
-  var URLString = s1+type+s2+lat+s3+long+s4+distance+s5
+  var URLString = s1+type+s2+long+s3+lat+s4+distance+s5
   return URLString
 }
 
