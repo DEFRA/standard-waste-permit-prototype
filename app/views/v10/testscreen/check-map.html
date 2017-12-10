@@ -1,12 +1,15 @@
 {% extends "layout.html" %}
 
-{% set title = "Check if you can get a permit at the site location" %}
+{% set title = "Is this where your site is?" %}
 
 {% block page_title %}
 {{title}} - GOV.UK
 {% endblock %}
 
 {% block content %}
+
+{% set maplink = "https://osmaps.ordnancesurvey.co.uk/osmaps/"+permit.lat+","+permit.long+","+"20/pin" %}
+
 
 <main id="content" role="main">
   {% include "includes/phase_banner_beta.html" %}
@@ -17,22 +20,13 @@
     <div class="column-two-thirds">
 
       <h1 class="heading-large">{{title}}</h1>
+			
+			<div id="mapdivcontainer" style="padding:1em 0;"> 
+					<object type="text/html" data="{{maplink}}" id="mapdiv" width="600px" height="500px" style="overflow:auto;border:1px solid #DEDEDE;">
+					</object>
+			</div>
 
       <form method="post" action="{{formAction}}">
-
-				<p>
-        You can't get a permit if your site is close to nature conservation sites, water supplies or heritage sites.
-        <p>
-					
-				<h2 class="heading-small">
-					To check you'll need to know:
-				</h2>
-				
-				<ul class="list list-bullet">
-					<li>what permit you want</li>
-					<li>the grid reference for the centre of your site</li>
-					<li>the distance from the centre of your site to the boundarty</li>
-				</ul>
 
         <div class="form-group">
           <button type="submit" class="button" name="Continue">Continue</button>

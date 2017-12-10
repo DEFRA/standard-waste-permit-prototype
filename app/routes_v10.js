@@ -1123,7 +1123,31 @@ router.get('save-and-return/email-save-link', function (req, res) {
 
 
 
-// Screening test
+// Screening test ####################################################
+
+router.get('/testscreen/index', function (req, res) {
+  res.render(folder + '/testscreen/index',{
+     "formAction":"/"+ folder + "/testscreen/choose-permit"
+  })
+})
+
+router.post('/testscreen/choose-permit', function (req, res) {
+  res.render(folder + '/testscreen/choose-permit',{
+     "formAction":"/"+ folder + "/testscreen/grid-reference"
+  })
+})
+
+router.post('/testscreen/grid-reference', function (req, res) {
+  res.render(folder + '/testscreen/grid-reference',{
+     "formAction":"/"+ folder + "/testscreen/check-map"
+  })
+})
+
+router.post('/testscreen/check-map', function (req, res) {
+  res.render(folder + '/testscreen/check-map',{
+     "formAction":"/"+ folder + "/testscreen/check-location"
+  })
+})
 
 // Function to assemble query string
 function getGISQuery(type,lat,long,distance){
@@ -1136,12 +1160,7 @@ function getGISQuery(type,lat,long,distance){
   return URLString
 }
 
-router.get('/testscreen', function (req, res) {
-  res.render(folder + '/testscreen/index',{
-     "formAction":"/"+ folder + "/testscreen"
-  })
-})
-router.post('/testscreen', function (req, res) {
+router.post('/testscreen/check-location', function (req, res) {
   var screening = req.body['screening']
   var lat = req.body['lat']
   var long = req.body['long']
@@ -1163,13 +1182,13 @@ router.post('/testscreen', function (req, res) {
           //console.log("=============================")
           var responseJSON = JSON.parse(body)
           var count = responseJSON.count
-          res.render(folder + '/testscreen/index',{
+          res.render(folder + '/testscreen/check-location',{
             "screening": screening,
             "lat": lat,
             "long": long,
             "gridref": gridref,
             "distance": distance,
-            "formAction":"/"+ folder + "/testscreen",
+            "formAction":"/"+ folder + "/testscreen/check-location",
             "message": "We found "+count+" sites. "+gisURL
           })
       }

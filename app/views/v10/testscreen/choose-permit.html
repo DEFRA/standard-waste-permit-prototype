@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Check if you can get a permit at the site location" %}
+{% set title = "What permit do you want?" %}
 
 {% block page_title %}
 {{title}} - GOV.UK
@@ -17,22 +17,16 @@
     <div class="column-two-thirds">
 
       <h1 class="heading-large">{{title}}</h1>
-
+      
       <form method="post" action="{{formAction}}">
 
-				<p>
-        You can't get a permit if your site is close to nature conservation sites, water supplies or heritage sites.
-        <p>
-					
-				<h2 class="heading-small">
-					To check you'll need to know:
-				</h2>
-				
-				<ul class="list list-bullet">
-					<li>what permit you want</li>
-					<li>the grid reference for the centre of your site</li>
-					<li>the distance from the centre of your site to the boundarty</li>
-				</ul>
+
+        <div class="multiple-choice">
+          <input id="yes" type="radio" name="screening" value="yes" {% if screening=="yes" %} checked="checked"{% endif %}>
+          <label for="yes">
+            Metal recycling, vehicle storage, depollution and dismantling (authorised treatment) facility SR2015 No 18
+          </label>
+        </div>
 
         <div class="form-group">
           <button type="submit" class="button" name="Continue">Continue</button>

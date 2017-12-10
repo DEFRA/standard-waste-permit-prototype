@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+
+{% set title = "Check if you can get a permit at the location of your site" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<script type="text/javascript" src="/public/javascripts/screening/geotools2.js"></script>
+
+<script>
+
+function onConvertGridRef()
+{
+	var gr=document.getElementById('gridref').value
+	var osgb = new GT_OSGB()
+
+	if (osgb.parseGridRef(gr))
+	{
+		var wgs84=osgb.getWGS84()
+
+		document.getElementById('lat').value = wgs84.latitude
+		document.getElementById('long').value = wgs84.longitude
+	}
+	else
+	{
+		document.getElementById('lat').value = "n/a"
+		document.getElementById('long').value = "n/a"
+	}
+}
+
+</script>
+
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">{{title}}</h1>
+			
+			{{permit | dump}}
+      
+      <div>
+        <p class="text">{{message}}</p>
+        
+        LAT: {{lat}}<br>
+      LONG:  {{long}}<br>
+      </div>
+
+      <form method="post" action="{{formAction}}">
+        
+        <input type="hidden" id="lat" name="lat" value="">
+        <input type="hidden" id="long" name="long" value="">
+
+        <p>
+          Select the permit you want
+        </p>
+        <div class="multiple-choice">
+          <input id="yes" type="radio" name="screening" value="yes" {% if screening=="yes" %} checked="checked"{% endif %}>
+          <label for="yes">
+            Metal recycling, vehicle storage, depollution and dismantling (authorised treatment) facility SR2015 No 18
+          </label>
+        </div>
+        
+        
+<!--
+200 metres of a 
+Special Area of Conservation
+candidate Special Area of Conservation
+Special Protection Area
+proposed Special Protection Area
+Ramsar site
+[proposed Ramsar site - not in rules]
+Site of Special Scientific Interest
+-->
+
+        <div class="form-group">
+          <label class="form-label" for="gridref">
+            Grid reference for the centre of the site
+          </label>
+          <input class="form-control form-control-char-20" id="gridref" name="gridref" value="{{gridref}}" onblur="onConvertGridRef()" />
+        </div>
+ 
+
+
+        <div class="form-group">
+          <label class="form-label" for="distance">Distance from the grid reference to the furthest boundary
+          </label>
+          <input class="form-control form-control-char-10" id="distance" name="distance" value="{{distance}}" /> metres
+        </div>
+
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Check location</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
