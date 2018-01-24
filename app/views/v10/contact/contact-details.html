@@ -17,7 +17,7 @@
 
       <h1 class="heading-large">{{title}}</h1>
 
-      <form method="post" action="{{formAction}}">
+      <form method="post" action="{{formAction}}" novalidate>
 
         <div class="form-group">
           <label class="form-label" for="contactFirstName">
@@ -69,7 +69,7 @@
             They get every communication and also the permit and any notices
           </span>
           </label>
-          <input class="form-control" id="contactEmail" name="contactEmail" value="{{permit.contactEmail}}">
+          <input class="form-control" id="contactEmail" name="contactEmail" value="{{permit.contactEmail}}" type="email">
         </div>
         
         <div class="form-group">
