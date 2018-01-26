@@ -49,20 +49,20 @@ function onConvertGridRef()
       <div>
         <p class="text">{{message}}</p>
         
-        LAT: {{lat}}<br>
-      LONG:  {{long}}<br>
+        LAT:   {{permit.lat}}<br>
+      	LONG:  {{permit.long}}<br>
       </div>
 
       <form method="post" action="{{formAction}}">
         
-        <input type="hidden" id="lat" name="lat" value="">
-        <input type="hidden" id="long" name="long" value="">
+        <input type="hidden" id="lat" name="lat" value="{{permit.lat}}">
+        <input type="hidden" id="long" name="long" value="{{permit.long}}">
 
         <p>
           Select the permit you want
         </p>
         <div class="multiple-choice">
-          <input id="yes" type="radio" name="screening" value="yes" {% if screening=="yes" %} checked="checked"{% endif %}>
+          <input id="yes" type="radio" name="screening" value="yes" {% if permit.screening=="yes" %} checked="checked"{% endif %}>
           <label for="yes">
             Metal recycling, vehicle storage, depollution and dismantling (authorised treatment) facility SR2015 No 18
           </label>
@@ -84,7 +84,7 @@ Site of Special Scientific Interest
           <label class="form-label" for="gridref">
             Grid reference for the centre of the site
           </label>
-          <input class="form-control form-control-char-20" id="gridref" name="gridref" value="{{gridref}}" onblur="onConvertGridRef()" />
+          <input class="form-control form-control-char-20" id="gridref" name="gridref" value="{{permit.gridref}}" onblur="onConvertGridRef()" />
         </div>
  
 
@@ -92,7 +92,7 @@ Site of Special Scientific Interest
         <div class="form-group">
           <label class="form-label" for="distance">Distance from the grid reference to the furthest boundary
           </label>
-          <input class="form-control form-control-char-10" id="distance" name="distance" value="{{distance}}" /> metres
+          <input class="form-control form-control-char-10" id="distance" name="distance" value="{{permit.distance}}" /> metres
         </div>
 
 
