@@ -1,7 +1,8 @@
 var express = require('express')
 var router = express.Router()
 
-var request = require('request')
+const request = require('request')
+const async = require('async')
 
 // this file deals with all paths starting /version_x
 // How to use folder variable:
@@ -1150,7 +1151,7 @@ router.post('/testscreen/check-map', function (req, res) {
 })
 
 // Function to assemble query string
-function getGISQuery(type,lat,long,distance){
+function makeGISQuery(type,lat,long,distance){
   var s1 = "https://services.arcgis.com/JJzESW51TqeY9uat/arcgis/rest/services/"
   var s2 = "/FeatureServer/0/query?where=1%3D1&outFields=*&geometry="
   var s3 = "%2C"
@@ -1160,40 +1161,68 @@ function getGISQuery(type,lat,long,distance){
   return URLString
 }
 
+function doScreening(type, lat, long, distance) {
+  
+  return new Promise(function(resolve, reject) {
+      
+    request({
+      url: makeGISQuery(type, lat, long, distance),
+      method: "GET"
+    }, function (error, response, body) {
+       if (error){
+         console.log(error)
+       } else {
+          var responseJSON = JSON.parse(body)
+          numSites=responseJSON.count 
+          resolve(numSites)
+       } // end request
+    }) // end request
+  
+  }) // end promise
+
+} // end function
+
 router.post('/testscreen/check-location', function (req, res) {
   var screening = req.body['screening']
   var lat = req.body['lat']
   var long = req.body['long']
   var gridref = req.body['gridref']
   var distance = req.body['distance']
-  var type = "Special_Areas_of_Conservation_England"
-  var gisURL = getGISQuery(type,lat,long,distance)
   
-  request({
-      url: gisURL, //URL to hit
-      method: 'GET',
-  }, function(error, response, body){
-      if(error) {
-          console.log(error)
-      } else {
-          //console.log(response.statusCode)
-          //console.log("=============================")
-          //console.log(body)
-          //console.log("=============================")
-          var responseJSON = JSON.parse(body)
-          var count = responseJSON.count
-          res.render(folder + '/testscreen/check-location',{
-            "screening": screening,
-            "lat": lat,
-            "long": long,
-            "gridref": gridref,
-            "distance": distance,
-            "formAction":"/"+ folder + "/testscreen/check-location",
-            "message": "We found "+count+" sites. "+gisURL
-          })
-      }
-  })
-})
+  var screeningTypes = [
+    {name:"Special Conservation Area", url:"Special_Areas_of_Conservation_England"},
+    {name:"Proposed Ramsar site", url:"Proposed_Ramsar_England"},
+    {name:"Area of Outstanding Natural Beauty", url:"Areas_of_Outstanding_Natural_Beauty_England"},
+    {name:"Special Protection Area", url:"Special_Protection_Areas_England"},
+    {name:"Ramsar site", url:"Ramsar_England"},
+    {name:"Site of Special Scientific Interest", url:"SSSI_England"}
+  ]
+  
+  var screeningResults = []
+  
+  async function getResults() {
+    await Promise.all(screeningTypes.map(async (type) => {
+      screeningResults[type.name] = doScreening(type.url, lat, long, distance)
+    }))
+  }
+  
+  getResults()
+  
+  if(screeningResults.length>2){
+    console.info(screeningResults)
+    res.render(folder + '/testscreen/check-location',{
+      "screening": screening,
+      "lat": lat,
+      "long": long,
+      "gridref": gridref,
+      "distance": distance,
+      "formAction":"/"+ folder + "/testscreen/check-location",
+      "screeningResults": screeningResults
+    })
+  }
+
+  
+}) // end post
 
 
 // Send permit data in session to every page ==================================
