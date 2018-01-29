@@ -27,7 +27,7 @@ exports.permit =
    "WAMITAB":"WAMITAB Level 4 Medium Risk Operator Competence for Physical Treatment (601/8531/4) (MROC2)",
    "wasteRecoveryPlan":"No",
    "digitalMVP":"Yes",
-   "permitRefNumber":"EPR/MT2653JF",
+   "permitRefNumber":"MT2653JF",
    "costTime":"yes",
    "drainage":"Sewer",
    "specialCasePageVisited":"Yes",
