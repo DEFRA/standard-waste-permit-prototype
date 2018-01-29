@@ -1182,47 +1182,47 @@ function doScreening(type, lat, long, distance) {
 
 } // end function
 
-router.post('/testscreen/check-location', function (req, res) {
-  var screening = req.body['screening']
-  var lat = req.body['lat']
-  var long = req.body['long']
-  var gridref = req.body['gridref']
-  var distance = req.body['distance']
-  
-  var screeningTypes = [
-    {name:"Special Conservation Area", url:"Special_Areas_of_Conservation_England"},
-    {name:"Proposed Ramsar site", url:"Proposed_Ramsar_England"},
-    {name:"Area of Outstanding Natural Beauty", url:"Areas_of_Outstanding_Natural_Beauty_England"},
-    {name:"Special Protection Area", url:"Special_Protection_Areas_England"},
-    {name:"Ramsar site", url:"Ramsar_England"},
-    {name:"Site of Special Scientific Interest", url:"SSSI_England"}
-  ]
-  
-  var screeningResults = []
-  
-  async function getResults() {
-    await Promise.all(screeningTypes.map(async (type) => {
-      screeningResults[type.name] = doScreening(type.url, lat, long, distance)
-    }))
-  }
-  
-  getResults()
-  
-  if(screeningResults.length>2){
-    console.info(screeningResults)
-    res.render(folder + '/testscreen/check-location',{
-      "screening": screening,
-      "lat": lat,
-      "long": long,
-      "gridref": gridref,
-      "distance": distance,
-      "formAction":"/"+ folder + "/testscreen/check-location",
-      "screeningResults": screeningResults
-    })
-  }
-
-  
-}) // end post
+// router.post('/testscreen/check-location', function (req, res) {
+//   var screening = req.body['screening']
+//   var lat = req.body['lat']
+//   var long = req.body['long']
+//   var gridref = req.body['gridref']
+//   var distance = req.body['distance']
+// 
+//   var screeningTypes = [
+//     {name:"Special Conservation Area", url:"Special_Areas_of_Conservation_England"},
+//     {name:"Proposed Ramsar site", url:"Proposed_Ramsar_England"},
+//     {name:"Area of Outstanding Natural Beauty", url:"Areas_of_Outstanding_Natural_Beauty_England"},
+//     {name:"Special Protection Area", url:"Special_Protection_Areas_England"},
+//     {name:"Ramsar site", url:"Ramsar_England"},
+//     {name:"Site of Special Scientific Interest", url:"SSSI_England"}
+//   ]
+// 
+//   var screeningResults = []
+// 
+//   async function getResults() {
+//     await Promise.all(screeningTypes.map(async (type) => {
+//       screeningResults[type.name] = doScreening(type.url, lat, long, distance)
+//     }))
+//   }
+// 
+//   getResults()
+// 
+//   if(screeningResults.length>2){
+//     console.info(screeningResults)
+//     res.render(folder + '/testscreen/check-location',{
+//       "screening": screening,
+//       "lat": lat,
+//       "long": long,
+//       "gridref": gridref,
+//       "distance": distance,
+//       "formAction":"/"+ folder + "/testscreen/check-location",
+//       "screeningResults": screeningResults
+//     })
+//   }
+// 
+// 
+// }) // end post
 
 
 // Send permit data in session to every page ==================================
