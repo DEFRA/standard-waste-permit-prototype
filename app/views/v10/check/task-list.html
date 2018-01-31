@@ -25,7 +25,7 @@
 {% set tPermitHolder = "Give company details" %}
 {% set tSiteDetails = "Give site name and location" %}
 {% set tSitePlan = "Upload the site plan" %}
-{% set tTechManagement = "Give technical management details" %}
+{% set tTechManagement = "Prove technical competence" %}
 {% set tManSystem = "Tell us which management system you use" %}
 {% set tFirePlan = "Upload fire prevention plan" %}
 {% set tConfidentiality = "Confirm confidentiality needs" %}
@@ -243,6 +243,8 @@
             {% endif %}
             -->
 
+        <!-- Tech competence #############################################  -->
+          {% if permit.technicalAbilityEvidence=="Yes" %}
             <li class="task-list-item {% if taskListError and permit.industryScheme==null %} form-group-error{% endif %}" id="{{ tTechManagement  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
               {% if taskListError and permit.industryScheme==null %}
               <span class="error-message">
@@ -257,6 +259,7 @@
               <input type="hidden" name="complete[]" value="{{ tTechManagement }}">
               {% endif %}
             </li>
+          {% endif %}
 
     <!-- <li class="task-list-item {% if taskListError and permit.manSys==null %} form-group-error{% endif %}" id="{{ tManSystem  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
       {% if taskListError and permit.manSys==null %}
