@@ -1161,7 +1161,10 @@ function makeGISQuery(type,lat,long,distance){
   return URLString
 }
 
-function doScreening(type, name, lat, long, distance) {
+function doScreening(type, lat, long, distance) {
+  
+  return new Promise(function(resolve, reject) {
+      
     request({
       url: makeGISQuery(type, lat, long, distance),
       method: "GET"
@@ -1169,13 +1172,14 @@ function doScreening(type, name, lat, long, distance) {
        if (error){
          console.log(error)
        } else {
-          console.log("REQUEST: "+type)
           var responseJSON = JSON.parse(body)
           numSites=responseJSON.count 
-          console.log("numSites: "+numSites)
-          screeningResults[name]=numSites
+          resolve(numSites)
        } // end request
     }) // end request
+  
+  }) // end promise
+
 } // end function
 
 router.post('/testscreen/check-location', function (req, res) {
@@ -1184,8 +1188,6 @@ router.post('/testscreen/check-location', function (req, res) {
   var long = req.body['long']
   var gridref = req.body['gridref']
   var distance = req.body['distance']
-  
-  var screeningResults = []
 
   var screeningTypes = [
     {name:"Special Conservation Area", url:"Special_Areas_of_Conservation_England"},
@@ -1196,9 +1198,11 @@ router.post('/testscreen/check-location', function (req, res) {
     {name:"Site of Special Scientific Interest", url:"SSSI_England"}
   ]
 
+  var screeningResults = []
+
   async function getResults() {
     await Promise.all(screeningTypes.map(async (type) => {
-      doScreening(type.url, type.name, lat, long, distance)
+      screeningResults[type.name] = doScreening(type.url, lat, long, distance)
     }))
   }
 
