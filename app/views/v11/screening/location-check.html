@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% set title = "Do you to want us to check the site location before you apply?" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+      <h1 class="heading-large">{{title}}</h1>
+
+        <p>
+        Standard rules permits have limits for how close your site can be to nature conservation sites, water supplies or heritage sites. We recommend that you ask us to check the site location is not too close to these areas, before you complete your application.
+        <p>
+
+          <form action="{{formAction}}" method="post">
+            <div class="form-group">
+              <fieldset>
+
+                <legend class="visually-hidden">{{title}}</legend>
+
+                <div class="multiple-choice">
+                  <input id="yesScreening" type="radio" name="locationCheck" value="Yes">
+                  <label for="yesScreening">
+                    Yes, I’d like you to check the site location
+                  </label>
+                </div>
+
+               <div class="multiple-choice">
+                <input id="noScreening" type="radio" name="locationCheck" value="No">
+                <label for="noScreening">
+                  No
+                </label>
+              </div>
+
+
+              <div class="multiple-choice">
+                <input id="noScreened" type="radio" name="locationCheck" value="No, I've already had it checked">
+                <label for="noScreened">
+                  No, I've already had it checked
+                </label>
+              </div>
+
+              </fieldset>
+
+            </div>
+
+            <div class="form-group">
+              {{submitButton|safe}}{{completeLink|safe}}
+            </div>
+
+
+          </form>
+
+
+        </div>
+      </div>
+    </main>
+
+    {% endblock %}

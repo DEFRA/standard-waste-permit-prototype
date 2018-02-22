@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% set title = "Pay by bank transfer (BACS)" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_beta.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+<div class="panel panel-border-wide">
+  <p> 
+    <b>The application charge is {{ permit.permitCost }}.</b>
+  </p>
+</div>
+
+<p>
+  Make a transfer to this account:
+</p>
+
+<p>
+  Account number: 1001 4411<br />
+  Sort code: 60 70 80<br />
+  Account name: EA RECEIPTS
+</p>
+
+<p>
+  Use this payment reference:
+  PSCAPP-{{ permit.permitRefNumber }}
+</p>
+
+<p>
+  Company name: Environment Agency<br />
+  Company address: SSCL (Environment Agency), PO Box 797, Newport Gwent, NP10 8FZ<br />
+  Bank: RBS/NatWest<br />
+  Bank address: London Corporate Service Centre, CPB Services, 2nd Floor, 280 Bishopsgate, London EC2M 4RB
+</p>
+
+<form method="post" action="{{formAction}}">
+  <div class="form-group">
+      {{submitButton|safe}}{{completeLink|safe}}
+  </div>
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
