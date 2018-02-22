@@ -10,7 +10,7 @@
 
 <main id="content" role="main">
     {% include "includes/phase_banner_beta.html" %}
-    
+
     <div class="grid-row">
         <div class="column-two-thirds">
 
@@ -18,8 +18,8 @@
 <h1 class="heading-large">{{title}}</h1>
 
 <div class="panel panel-border-wide">
-  <p> 
-    <b>The application charge is {{ permit.permitCost }}.</b>
+  <p>
+    <b>The charge for the application is {{permit.permitCost}}.</b>
   </p>
 </div>
 
@@ -36,20 +36,21 @@
 <label for="paymentCard">
         Debit or credit card
       </label>
+      <span class="form-hint">Application processed immediately</span>
     </div>
       <div class="multiple-choice">
       <input id="paymentBACS" type="radio" name="paymentMethod" value="Bank transfer">
 <label for="paymentBACS">
-        Bank transfer (BACS)
+        Bank transfer by Bacs
       </label>
+      <span class="form-hint">Application processed after the payment arrives</span>
     </div>
-      <div class="multiple-choice">
+    <!-- <div class="multiple-choice">
       <input id="paymentCheque" type="radio" name="paymentMethod" value="Cheque">
 <label for="paymentCheque">
         Cheque
       </label>
-    </div>
-
+    </div> -->
     </fieldset>
   </div>
 
