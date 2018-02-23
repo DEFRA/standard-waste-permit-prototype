@@ -836,10 +836,10 @@ router.get('/check/check-answers', function (req, res) {
 router.post('/check/check-answers', function (req, res) {
   var payPath = ""
   if(paymentMethod=="govpay"){  // yes I know this is ugly
-    payPath = "/pay/enter-card-details"
+    payPath = "/pay/payment-method"
   }
   if(paymentMethod=="worldpay"){
-    payPath = "/pay/worldpay/worldpay-card-details"
+    payPath = "/pay/payment-method"
   }
 
   if(req.body['complete']=="" || req.body['complete']==null){
