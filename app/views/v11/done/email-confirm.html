@@ -45,47 +45,84 @@
 
 
         <h1 class="bold-large">
-        We've received your application
-        </h1>
-        <br>
-        
-        <p class="text font-medium">
-          Standard rules waste permit:
-        <br>
-          <span class="bold-medium">{{permit.permitName}}</span>
-          {{permit.permitCode}}
+          We’ve received your application</br>
+          You should now pay by bank transfer
+        </h1></br>
+        <span class="bold-small">
+        We won’t start processing your application until we get your payment.
+        </span>
+
+        <p></p>
+        <span class="bold-medium">
+        Details for bank transfer by Bacs
+      </span></br>
+      <span class="bold-small">
+        Payment reference:
+      </span>
+
+      <span class="text font-small">
+
+        PSCAPP-{{ permit.permitRefNumber }}
+      </span>
+
+        </br>
+      <span class="bold-small">
+
+        Amount:
+      </span>
+
+
+        <span class="text font-small">£2,650</span>
+      </br>
+
+      <span class="bold-small">
+      Sort code:
+    </span>
+
+    <span class="text font-small">
+        60-70-80
+    </span>
+        </br>
+      <span class="bold-small">
+      Account number:
+    </span>
+
+    <span class="text font-small">
+        1001 4411
+      </span>
+
+      </br>
+
         </p>
-        
+
         {#{permit | dump}#}
 
-        <p class="bold-medium">
-          Your reference is {{ permit.permitRefNumber }}
-        </p>
-        
-        <p class="font-small">
-          Site: 
-          {{ permit.siteName }} 
-          {{ permit.siteAddress }} 
-          {{ permit.sitePostCode }}
-        </p>
-
-        <h2 class="heading-medium">What happens next</h2>
-
-        <div class="panel panel-border-wide">
-          <p class="text font-small">
-            It takes up to 13 weeks in total to issue a permit. It may take longer if the information you gave us does not meet our requirements.
-          </p>
-        </div>
-
-
-
-        <h2 class="heading-medium emailhead">Contact the Environment Agency</h2>
         <p class="text font-small">
-          <a href="mailto:enquiries@environment-agency.gov.uk">enquiries@environment-agency.gov.uk</a><br />
-          Telephone: 03708 506 506<br />
-          Minicom: 03702 422 549<br />
-          Monday to Friday, 8am to 6pm
+          After you’ve paid, email confirmation to psc-bacs@environment-agency.gov.uk. Include the reference number, amount and the date you expect the payment to arrive.
         </p>
+        <h2 class="heading-medium">When we get your payment</h2>
+        <p class="text font-small">
+          We’ll check any documents you’ve uploaded, your technical qualification and any site location. We’ll run checks on the permit holder and any other relevant people. We’ll email you to let you know when we’ve started these checks.
+        </p>
+        <p class="text font-small">
+          It takes up to 13 weeks to issue a permit. It may take longer if the information you gave us doesn’t meet our requirements.
+        </p>
+        <p class="text font-small">
+          We won’t issue a permit if we believe that your operation will pollute the environment or harm human health.
+        </p>
+
+
+
+
+
+        <h2 class="heading-medium emailhead">Application summary
+        </h2>
+        <p class="text font-small">
+        Standard rules waste permit: Vehicle storage depollution and dismantling (authorised treatment) facility SR2015 No 13
+        Application reference: QG9300FD
+        Site: Bob's Autos 7, GRANGE ROAD, BRISTOL BS1 5AH
+        </p>
+
 
           <br />
           <br />

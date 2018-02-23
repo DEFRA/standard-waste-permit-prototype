@@ -12,10 +12,10 @@
   {% include "includes/phase_banner_beta.html" %}
 
   <h1 class="heading-large">{{title}}</h1>
-  
+
   <h2 class="heading-medium">
     Complete application
-  </h2> 
+  </h2>
 
   <dl class="govuk-check-your-answers cya-questions-short">
 
@@ -32,7 +32,7 @@
         {{permit.contactEmail}}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/contact/contact-details"> 
+        <a href="/{{folder}}/contact/contact-details">
           Change <span class="visuallyhidden">Contact details</span>
         </a>
       </dd>
@@ -46,7 +46,7 @@
         {{permit.companyName}}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/operator/company/company-name"> 
+        <a href="/{{folder}}/operator/company/company-name">
           Change <span class="visuallyhidden">company name</span>
         </a>
       </dd>
@@ -62,7 +62,7 @@
         {{permit.businessTradingName}}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/operator/company/company-name"> 
+        <a href="/{{folder}}/operator/company/company-name">
           Change <span class="visuallyhidden">trading name</span>
         </a>
       </dd>
@@ -75,10 +75,10 @@
         Company address
       </dt>
       <dd class="cya-answer">
-        {{permit.companyAddress}} 
+        {{permit.companyAddress}}
       </dd>
       <dd class="cya-change">
-       <!-- <a href="/{{folder}}/operator/company/company-name"> 
+       <!-- <a href="/{{folder}}/operator/company/company-name">
           Change <span class="visuallyhidden">company address</span>
         </a> -->
       </dd>
@@ -93,7 +93,7 @@
         {{permit.mainBusinessAddress}}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/operator/company/main-business-postcode"> 
+        <a href="/{{folder}}/operator/company/main-business-postcode">
           Change <span class="visuallyhidden">main business address</span>
         </a>
       </dd>
@@ -113,7 +113,7 @@
         {% endif %}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/operator/company/billing-postcode"> 
+        <a href="/{{folder}}/operator/company/billing-postcode">
           Change <span class="visuallyhidden">billing address</span>
         </a>
       </dd>
@@ -132,7 +132,7 @@
         {% endfor %}
       </dd>
       <dd class="cya-change">
-        <!-- <a href="/{{folder}}/operator/company/company-name"> 
+        <!-- <a href="/{{folder}}/operator/company/company-name">
           Change <span class="visuallyhidden"> dates of birth</span>
         </a> -->
       </dd>
@@ -148,7 +148,7 @@
         {{permit.companySecretaryEmail}}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/operator/company/company-secretary"> 
+        <a href="/{{folder}}/operator/company/company-secretary">
           Change <span class="visuallyhidden"> email address for permit and official notices</span>
         </a>
       </dd>
@@ -156,7 +156,7 @@
     {% endif %}
 
 
-  
+
     <div>
       <dt class="cya-question">
         Relevant offences
@@ -165,7 +165,7 @@
         {{permit.offences}}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/evidence/declare-offences"> 
+        <a href="/{{folder}}/evidence/declare-offences">
           Change <span class="visuallyhidden"> relevant offences</span>
         </a>
       </dd>
@@ -176,21 +176,21 @@
         Bankruptcy or insolvency
       </dt>
       <dd class="cya-answer">
-        {{permit.bankruptcyInsolvency}} 
+        {{permit.bankruptcyInsolvency}}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/evidence/bankruptcy-insolvency"> 
+        <a href="/{{folder}}/evidence/bankruptcy-insolvency">
           Change <span class="visuallyhidden"> bankruptcy or insolvency</span>
         </a>
       </dd>
     </div>
 
     <!-- DONT'T SHOW SITE FOR MOBILE PERMITS -->
-    {% if 
-    permit.permitID=="SR-2010-4" or 
-    permit.permitID=="SR-2010-5" or 
-    permit.permitID=="SR-2010-6" or 
-    permit.permitID=="SR-2010-11" or 
+    {% if
+    permit.permitID=="SR-2010-4" or
+    permit.permitID=="SR-2010-5" or
+    permit.permitID=="SR-2010-6" or
+    permit.permitID=="SR-2010-11" or
     permit.permitID=="SR-2008-27"
     %}
 
@@ -205,7 +205,7 @@
         {{permit.siteName}}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/site/site-name"> 
+        <a href="/{{folder}}/site/site-name">
           Change <span class="visuallyhidden">site name</span>
         </a>
       </dd>
@@ -219,7 +219,7 @@
         {{permit.siteGridRef}}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/site/grid-reference"> 
+        <a href="/{{folder}}/site/grid-reference">
           Change <span class="visuallyhidden">grid reference</span>
         </a>
       </dd>
@@ -233,7 +233,7 @@
         {{permit.siteAddress}}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/address/address"> 
+        <a href="/{{folder}}/address/address">
           Change <span class="visuallyhidden">site address</span>
         </a>
       </dd>
@@ -249,7 +249,7 @@
         {{permit.siteContactEmail}}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/site/site-contact"> 
+        <a href="/{{folder}}/site/site-contact">
           Change <span class="visuallyhidden">site contact details</span>
         </a>
       </dd>
@@ -264,7 +264,7 @@
         {{permit.sitePlanFilename}}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/evidence/upload-site-plan"> 
+        <a href="/{{folder}}/evidence/upload-site-plan">
           Change <span class="visuallyhidden">site plan</span>
         </a>
       </dd>
@@ -282,7 +282,7 @@
         Number of sites managed: {{ permit.tcmNumSites }}<br>
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/evidence/techcomp/manager-details"> 
+        <a href="/{{folder}}/evidence/techcomp/manager-details">
           Change <span class="visuallyhidden">technical manager</span>
         </a>
       </dd>
@@ -296,7 +296,7 @@
         {{permit.industryScheme}}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/evidence/techcomp/industry-scheme"> 
+        <a href="/{{folder}}/evidence/techcomp/industry-scheme">
           Change <span class="visuallyhidden">qualification</span>
         </a>
       </dd>
@@ -312,7 +312,7 @@
         {{ permit.wamitabCertNum }}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/evidence/techcomp/wamitab-details"> 
+        <a href="/{{folder}}/evidence/techcomp/wamitab-details">
           Change <span class="visuallyhidden">WAMITAB certificate number</span>
         </a>
       </dd>
@@ -328,7 +328,7 @@
         {{ permit.technicalCertificateFile }}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/evidence/techcomp/esa-eu-details"> 
+        <a href="/{{folder}}/evidence/techcomp/esa-eu-details">
           Change <span class="visuallyhidden">ESA EU Skills scheme certificate</span>
         </a>
       </dd>
@@ -344,7 +344,7 @@
         {{ permit.deemedCertificateFile1 }} {{ permit.deemedCertificateFile2 }}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/evidence/techcomp/deemed"> 
+        <a href="/{{folder}}/evidence/techcomp/deemed">
           Change <span class="visuallyhidden">qualification evidence</span>
         </a>
       </dd>
@@ -360,7 +360,7 @@
         {{ permit.deemedCertificateFile1 }}
       </dd>
       <dd class="cya-change">
-        <a href="/{{folder}}/evidence/techcomp/getting-it"> 
+        <a href="/{{folder}}/evidence/techcomp/getting-it">
           Change <span class="visuallyhidden">course registration email or letter</span>
         </a>
       </dd>
@@ -376,7 +376,7 @@
       {{permit.firePlanFilename}}
     </dd>
     <dd class="cya-change">
-      <a href="/{{folder}}/evidence/upload-fire-plan"> 
+      <a href="/{{folder}}/evidence/upload-fire-plan">
         Change <span class="visuallyhidden">name</span>
       </a>
     </dd>
@@ -388,10 +388,10 @@
      Claim confidentiality
    </dt>
    <dd class="cya-answer">
-    {{permit.confidential}} 
+    {{permit.confidential}}
   </dd>
   <dd class="cya-change">
-    <a href="/{{folder}}/check/claim-confidentiality"> 
+    <a href="/{{folder}}/check/claim-confidentiality">
       Change <span class="visuallyhidden">claim confidentiality</span>
     </a>
   </dd>
@@ -405,7 +405,7 @@
     {{permit.invoiceAddress}}
   </dd>
   <dd class="cya-change">
-    <a href="/{{folder}}/billing/invoice-postcode"> 
+    <a href="/{{folder}}/billing/invoice-postcode">
       Change <span class="visuallyhidden">invoice address</span>
     </a>
   </dd>
@@ -425,7 +425,7 @@
     {% endif %}
   </dd>
   <dd class="cya-change">
-    <a href="/{{folder}}/billing/invoice-contact"> 
+    <a href="/{{folder}}/billing/invoice-contact">
       Change <span class="visuallyhidden">Contact details</span>
     </a>
   </dd>
@@ -443,7 +443,7 @@
     <span class="visually-hidden">Warning</span>
   </i>
   <strong class="bold-small">
-    You can be prosecuted and fined if you give false or misleading information.
+    You can be fined if you give false or misleading information.
   </strong>
 </div>
 
@@ -457,26 +457,29 @@
 </ul>
 
 <div class="form-group">
-  <p>
     <a target="_blank" rel="noopener noreferrer" href="/{{folder}}/pages/privacy">Privacy: how we use your personal information (opens new tab)</a>
-  </p>
 </div>
 
+<div class="panel panel-border-wide">
+  <p>
+    If you want a copy of your application, print this page now. You won’t get a copy after you submit.
+  </p>
+</div>
 
 <form method="post" action="{{formAction}}">
 
   <!-- ({{permit.permitCost}}) -->
 
   <div class="form-group">
-    <button type="submit" class="button" name="Submit and continue to payment ({{permit.permitCost}})">Submit and pay {{permit.permitCost}}
+    <button type="submit" class="button" name="Confirm and pay">Confirm and pay
     </button> <br>
-    <span class="form-hint button-hint">
+<!--    <span class="form-hint button-hint">
       {% if paymentMethod=="govpay" %}
       on GOV.UK Pay
       {% elif paymentMethod=="worldpay" %}
       on the Worldpay secure payment site
       {% endif %}
-    </span>
+    </span>-->
   </div>
 
 </form>

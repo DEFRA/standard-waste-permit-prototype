@@ -17,13 +17,20 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
-<div class="panel panel-border-wide">
   <p>
-    <b>We’ll email you a copy of these payment instructions. You can also print this page.</b>
+    We’ll email you a copy of these payment details.
   </p>
-</div>
 
   <dl class="govuk-check-your-answers cya-questions-short">
+    <div>
+      <dt class="cya-question">
+      Payment reference
+    </dt>
+    <dd class="cya-answer">
+      PSCAPP-{{ permit.permitRefNumber }}
+    </dd>
+    </div>
+
     <div>
       <dt class="cya-question">
         Amount
@@ -38,7 +45,7 @@
       Sort code
       </dt>
       <dd class="cya-answer">
-      60 70 80
+      60-70-80
     </dd>
     </div>
 
@@ -51,15 +58,6 @@
 </dd>
 </div>
 
-
-<div>
-  <dt class="cya-question">
-  Use this payment reference
-</dt>
-<dd class="cya-answer">
-  PSCAPP-{{ permit.permitRefNumber }}
-</dd>
-</div>
 </dl>
 
 <!-- <p>
@@ -68,6 +66,32 @@
   Bank: RBS/NatWest<br />
   Bank address: London Corporate Service Centre, CPB Services, 2nd Floor, 280 Bishopsgate, London EC2M 4RB
 </p> -->
+
+<p>
+  After you’ve paid, send an email to <a href="mailto:psc-bacs@environment-agency.gov.uk">psc-bacs@environment-agency.gov.uk</a>. Include the reference number, amount and the date you expect the payment to arrive.
+</p>
+
+<details>
+
+  <summary><span class="summary">Overseas accounts</span></summary>
+
+  <div class="panel panel-border-narrow">
+
+    <p>
+      Use the following details to pay from an overseas account.
+    </p>
+
+    <p>
+      International bank account number (IBAN): GB23NWK60708010014411</br>
+      SWIFT bank identifier code (BIC): NWBKGB2L</br>
+      Use the payment reference above.</br>
+      The payment must be in sterling.</br>
+    </p>
+
+  </div>
+
+</details>
+
 
 <form method="post" action="{{formAction}}">
   <div class="form-group">

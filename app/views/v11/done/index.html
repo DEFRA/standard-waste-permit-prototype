@@ -23,31 +23,75 @@
             <strong class="bold">{{ permit.permitRefNumber }}</strong>
           </p>
         </div>
-
-        <h2 class="heading-medium">You need to pay by bank transfer</h2>
-          <p class="text">
-            We’ve emailed you the payment instructions,
-          </p>
-
+<p class="text">
+  We've sent a confirmation to jane.person@email.com. We’ve included the Bacs payment details.
+</p>
+        <h2 class="heading-medium">You should now pay by bank transfer</h2>
           <p class="text">
             We won’t start processing your application until we get your payment.
           </p>
 
+          <details>
 
-        <h2 class="heading-medium">What happens next</h2>
+            <summary><span class="summary">Bacs payment details</span></summary>
+
+            <div class="panel panel-border-narrow">
+
+              <dl class="govuk-check-your-answers cya-questions-short">
+                <div>
+                  <dt class="cya-question">
+                  Payment reference
+                </dt>
+                <dd class="cya-answer">
+                  PSCAPP-{{ permit.permitRefNumber }}
+                </dd>
+                </div>
+
+                <div>
+                  <dt class="cya-question">
+                    Amount
+                  </dt>
+                  <dd class="cya-answer">
+                {{permit.permitCost}}
+                </dd>
+                </div>
+
+                <div>
+                  <dt class="cya-question">
+                  Sort code
+                  </dt>
+                  <dd class="cya-answer">
+                  60-70-80
+                </dd>
+                </div>
+
+            <div>
+              <dt class="cya-question">
+              Account number
+            </dt>
+            <dd class="cya-answer">
+              1001 4411
+            </dd>
+            </div>
+
+            </dl>
+
+            </div>
+          </details>
+
+        <h2 class="heading-medium">When we get your payment</h2>
           <p class="text">
-            We’ll check the documents you’ve uploaded, your technical qualification and any site location. We’ll also run checks on the permit holder and any other relevant people.          </p>
+            We’ll check the documents you’ve uploaded, your technical qualification and any site location. We’ll also run checks on the permit holder and any other relevant people.
+          </p>
 
-        <div class="panel panel-border-wide">
           <p class="text">
-            It takes up to 13 weeks to issue a permit. It may take longer if the information you gave us doesn’t meet our requirements.</p>
-        </div>
+            It takes up to 13 weeks to issue a permit. It may take longer if the information you gave us doesn’t meet our requirements.
+          </p>
+
           <p class="text">
-            We won’t issue a permit if we believe that your operation will pollute the environment or harm human health.</p>
+            We won’t issue a permit if we believe that your operation will pollute the environment or harm human health.
+          </p>
 
-        <br />
-
-        <p class="text"><a href="#" class="link">What do you think of this service?</a> (takes 30 seconds)</p>
 
         <p>&nbsp;</p>
         <p>&nbsp;</p>
