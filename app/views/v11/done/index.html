@@ -14,7 +14,9 @@
 
         <div class="govuk-box-highlight">
           <h1 class="heading-xlarge">
-              Application received
+              Application received{% if permit.paymentMethod=="Bank transfer" %}.<br>
+              You need to pay.
+              {% endif %}
           </h1>
 
           <p class="font-large">
@@ -24,12 +26,14 @@
           </p>
         </div>
 <p class="text">
-  We've sent a confirmation to jane.person@email.com. We’ve included the Bacs payment details.
+  We've sent a confirmation to jane.person@email.com. {% if permit.paymentMethod=="Bank transfer" %}We’ve included the Bacs payment details.{% endif %}
 </p>
         <h2 class="heading-medium">You should now pay by bank transfer</h2>
           <p class="text">
             We won’t start processing your application until we get your payment.
           </p>
+          
+          {% if permit.paymentMethod=="Bank transfer" %}
 
           <details>
 
@@ -78,8 +82,14 @@
 
             </div>
           </details>
-
+          {% endif %}
+          
+{% if permit.paymentMethod=="Bank transfer" %}
         <h2 class="heading-medium">When we get your payment</h2>
+{% else %}
+        <h2 class="heading-medium">What happens next</h2>
+{% endif %}
+        
           <p class="text">
             We’ll check the documents you’ve uploaded, your technical qualification and any site location. We’ll also run checks on the permit holder and any other relevant people.
           </p>
