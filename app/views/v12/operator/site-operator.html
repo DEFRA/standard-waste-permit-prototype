@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% set title = "Who will be the permit holder?" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">{{title}}</h1>
+
+      <form action="{{formAction}}" method="post">
+        <div class="form-group">
+          <fieldset>
+
+            <legend class="visuallyhidden">{{title}}</legend>
+
+            <div class="multiple-choice">
+              <input id="limited-company" type="radio" name="operatorType" value="Limited company">
+              <label class="selection-button-radio" for="limited-company">
+                Limited company
+              </label>
+            </div>
+            <div class="multiple-choice">
+              <input id="individual" type="radio" name="operatorType" value="Individual">
+              <label class="selection-button-radio" for="individual">
+                Individual or sole trader
+              </label>
+            </div>
+            <div class="multiple-choice">
+              <input id="public-body" type="radio" name="operatorType" value="Local authority or public body">
+              <label class="selection-button-radio" for="public-body">
+                Local authority or public body
+              </label>
+            </div>
+            <div class="multiple-choice">
+              <input id="partnership" type="radio" name="operatorType" value="Partnership">
+              <label class="selection-button-radio" for="partnership">
+                Partnership
+              </label>
+            </div>
+            <div class="multiple-choice">
+              <input id="reg-charity" type="radio" name="operatorType" value="Registered charity">
+              <label class="selection-button-radio" for="reg-charity">
+                Registered charity
+              </label>
+            </div>
+            <div class="multiple-choice">
+              <input id="ll-partnership" type="radio" name="operatorType" value="Limited liability partnership">
+              <label class="selection-button-radio" for="ll-partnership">
+                Limited liability partnership
+              </label>
+            </div>
+            <div class="multiple-choice">
+              <input id="other-org" type="radio" name="operatorType" value="Other organisation">
+              <label class="selection-button-radio" for="other-org">
+                Other organisation, for example a club or association
+              </label>
+            </div>
+          </fieldset>
+        </div>
+
+        <p>Not sure? Call our helpline on <a href="tel:+443708506506">03708 506 506</a>.</p>
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+
+      </form>
+
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

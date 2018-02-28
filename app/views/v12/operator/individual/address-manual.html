@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% set title = "Enter an address" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+<h1 class="heading-large" id="radio_label">{{title}}</h1>
+
+<form method="post" action="{{formAction}}">
+  
+<p>
+  <span class="postcode-prefix">Postcode:</span>
+  <span class="postcode">BS1 5AH</span>
+  <a href="/{{folder}}/address/postcode">
+      Change<span class="visuallyhidden"> postcode</span>
+  </a>
+</p>
+
+<fieldset>
+  <legend class="visuallyhidden">Site address</legend>
+
+  <div class="form-group">
+    <label class="form-label" for="indiv-premises">Building name or number
+      <span class="form-hint">For example, a business premises name or house number</span>
+    </label>
+    <input type="text" class="form-control form-control-char-40" id="indiv-premises" />
+  </div>
+
+  <div class="form-group">
+    <label class="form-label" for="indiv-street_address">Address line 1</label>
+    <input type="text" class="form-control form-control-char-40" id="indiv-street_address" />
+  </div>
+
+  <div class="form-group">
+    <label class="form-label" for="indiv-locality">Address line 2 (optional)</label>
+    <input type="text" class="form-control form-control-char-40" id="indiv-locality" />
+  </div>
+
+  <div class="form-group">
+    <label class="form-label" for="indiv-town">Town or city</label>
+    <input type="text" class="form-control form-control-char-40" id="indiv-town" />
+  </div>
+
+</fieldset>
+
+
+  <div class="form-group">
+      {{submitButton|safe}}{{completeLink|safe}}
+  </div>
+
+</form>
+
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

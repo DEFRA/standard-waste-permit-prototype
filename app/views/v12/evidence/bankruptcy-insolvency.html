@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% set title = "Do you have current or past bankruptcy or insolvency proceedings to declare?" %}
+
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+<p>
+  You must tell us about:
+</p>
+<ul class="list list-bullet">
+  <li>the company itself</li>
+  <li>the officers of the company, for example directors or company secretaries</li>
+  <li>other companies, if the officers of the company were officers of that other company when they were convicted</li>
+</ul>
+
+
+<form method="post" action="{{formAction}}">
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visually-hidden">{{title}}</legend>
+
+<div class="multiple-choice" data-target="bankruptcyInsolvency">
+      <input id="yesBankruptcyInsolvency" type="radio" name="bankruptcyInsolvency" value="yes">
+<label for="yesBankruptcyInsolvency">
+        Yes, there are bankruptcy or insolvency proceedings
+      </label>
+      </div>
+      <div class="panel panel-border-narrow js-hidden" id="bankruptcyInsolvency">
+        <label class="form-label" for="bankruptcyInsolvencyDetails">Give details of the bankruptcy or insolvency
+          <span class="form-hint">
+            Include dates for the proceedings
+          </span>
+        </label>
+        <textarea class="form-control form-control-full" name="bankruptcyInsolvencyDetails" rows="5" type="text" id="bankruptcyInsolvencyDetails"></textarea>
+        <p class="form-hint" style="margin-top:4px;">
+          No more than 2,000 characters
+        </p>
+      </div>
+
+<div class="multiple-choice">
+      <input id="noBankruptcyInsolvency" type="radio" name="bankruptcyInsolvency" value="no">
+<label for="noBankruptcyInsolvency">
+        No 
+      </label>
+      </div>
+    
+    </fieldset>
+  </div>
+  
+  <div class="form-group">
+    <p>
+      We may contact a credit reference agency for a report about your business’s finances.
+    </p>
+  </div>
+
+    <div class="form-group">
+    {{submitButton|safe}}{{completeLink|safe}}
+  </div>
+
+
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

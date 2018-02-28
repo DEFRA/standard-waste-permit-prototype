@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% set title = "Your save and return code" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<!-- See https://permissions-finder.licensing-uat.service.trade.gov.uk/start-application -->
+
+<h1 class="heading-large">{{title}}</h1>
+
+<form action="{{formAction}}" method="post">
+
+  <p>
+    You don't have to complete the application in one go.<br>
+    Make a note of this code to carry on with a saved application.
+  </p>
+  
+  {% set char1 = ["A","H","T","X","M","N","P","R","S","Y","W","Z"] | random %}
+  {% set char2 = ["A","H","T","X","M","N","P","R","S","Y","W","Z"] | random %}
+  {% set char3 = ["A","H","T","X","M","N","P","R","S","Y","W","Z"] | random %}
+  {% set char4 = ["A","H","T","X","M","N","P","R","S","Y","W","Z"] | random %}
+  {% set char5 = ["A","H","T","X","M","N","P","R","S","Y","W","Z"] | random %}
+  {% set rtnCode = char1+char2+char3+char4+char5 %}
+  {% set rtnCode = rtnCode | lower %}
+
+  <div class="panel panel-border-wide">
+    <span class="bold-xlarge">{{rtnCode}}</span>
+  </div>
+  
+  <input type="hidden" name="rtnCode" value="{{rtnCode}}">
+
+<details class="expanded-details" role="group">
+  <summary aria-expanded="false" aria-controls="Email me this code" role="button">
+    <span class="summary">Email me this code</span>
+  </summary>
+  <div aria-hidden="true" class="panel panel-border-wide" id="Email me this code">
+    <div class="form-group ">
+    <label class="form-label" for="emailAddress">
+      Your email address (optional)
+    </label>
+    <input class="form-control " id="emailAddress" name="emailAddress" type="text" value="" data-validation="">
+    </div>
+    <p><a href="/{{folder}}/returncode/email-code?rtnCode={{rtnCode}}" target="_blank" rel="noopener noreferrer">See email</a></p>
+  </div>
+</details>
+
+  <div class="form-group">
+        <input class="button" type="submit" value="Continue">
+  </div>
+
+   
+   <p>
+      <a href="javascript:window.print();">Print this page</a>
+    </p>
+
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
