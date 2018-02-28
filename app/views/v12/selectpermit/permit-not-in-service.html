@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% set title = "How to apply for this permit" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+      {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <form method="post" action="{{formAction}}">
+
+
+        <h1 class="heading-large">
+          Apply for a standard rules waste permit
+        </h1>
+        
+        
+        <p class="print-link"><a href="javascript:window.print()">Print this page</a></p>
+
+        <p class="font-medium text">{{permit.permitName}} - {{permit.permitCode}} - applying as a {{permit.operatorType | lower }}<br>
+          <a class="font-small" href="/{{folder}}/selectpermit/permit-category2">
+            Select a different permit
+          </a>
+        </p>
+
+
+        <h2 class="heading-medium">How to apply</h2>
+
+        <p>To apply, download and fill in these forms:</p>
+
+        <ul class="list list-bullet">
+          <li><a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/government/publications/application-for-an-environmental-permit-part-a-about-you">part A: about you</a></li>
+          <li><a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/government/publications/application-for-an-environmental-permit-part-b1-standard-facilities-permit">part B1: standard facilities permit</a></li>
+          <li><a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/government/publications/application-for-an-environmental-permit-part-f1-opra-charges-declarations">part F1: <abbr title="Operational risk appraisal">Opra</abbr>, charges and declarations</a></li>
+        </ul>
+
+        
+        {% include folder+"/snippets/before-you-start-list.html" %}
+
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+</main>
+
+{% endblock %}
