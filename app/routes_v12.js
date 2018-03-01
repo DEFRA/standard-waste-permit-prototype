@@ -964,7 +964,7 @@ router.post('/pay/enter-card-details', function (req, res) {
 
 router.post('/pay/confirm-payment', function (req, res) {
   res.render(folder + '/pay/confirm-payment',{
-      "formAction":"/"+ folder + "/printcopy/index"
+      "formAction":"/"+ folder + "/done/index"
   })
 })
 
