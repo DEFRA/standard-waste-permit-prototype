@@ -19,38 +19,41 @@
       <form method="post" action="{{formAction}}">
 
 
-        <h1 class="heading-large">
-          {{title}}
-        </h1>
+{% set hs = "You can't apply for " %}
+{% set he = " online yet" %}
         
-
-<div class="panel panel-border-wide">
   
   {% if permit.permitName %}
   <!-- Came from operator choice screen -->
+      <h1 class="heading-large">{{hs}}{{permit.permitName}} - {{permit.permitCode}}{{he}}</h1>
       <p>
-        You choose {{permit.permitName}} - {{permit.permitCode}}.
-      <br>
-        <a class="font-small" href="/{{folder}}/selectpermit/permit-category2">
+        <a class="font-small" href="javascript:history.back()">
           Select a different permit
         </a>
       </p>
   {% endif %}
 
-
-
-  {% if permit.operatorType %}
-  <!-- Came from permit selection screen -->
-    <p>
-      You choose {{permit.operatorType|lower}} as the permit holder.
-    <br>
-      <a class="font-small" href="javascript:history.back()">
-        Select a different permit holder type
-      </a>
-    </p>
+  {% if permit.chosenCategory %}
+  <!-- Came from operator choice screen -->
+      <h1 class="heading-large">{{hs}}{{permit.chosenCategory|lower}}{{he}}</h1>
+      <p>
+        <a class="font-small" href="javascript:history.back()">
+          Select a different type
+        </a>
+      </p>
   {% endif %}
 
-</div>
+  {% if (permit.operatorType and permit.chosenCategory==null) %}
+  <!-- Came from permit selection screen -->
+      <h1 class="heading-large">{{hs}}{{permit.operatorType|lower}}{{he}}</h1>
+      <p>
+        <a class="font-small" href="javascript:history.back()">
+          Select a different permit holder type
+        </a>
+      </p>
+  {% endif %}
+
+
 
 
         <h2 class="heading-medium">How to apply</h2>

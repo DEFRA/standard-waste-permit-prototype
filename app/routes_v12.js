@@ -91,32 +91,13 @@ router.get('save-and-return/email-save-link', function (req, res) {
 router.post('/operator/check-operator', function (req, res) {
   if(req.body['operatorType']=='Limited company') { // Ltd Companies CAN apply
     res.render(folder + '/selectpermit/permit-category2',{
-      "formAction":"/"+ folder + "/selectpermit/choose-permit2",
+      "formAction":"/"+ folder + "/selectpermit/check-category",
     })
   } else {
     // go on to 'paper' form page'
     res.render(folder + '/selectpermit/permit-not-in-service',{
     })
   }
-})
-
-
-
-
-// Rules page from list ==============================================================
-
-router.get('/start/rules-page', function (req, res) {
-  res.render(folder + '/start/rules-page',{
-      "chosenPermitID":req.query['chosenPermitID']
-  })
-})
-
-// This page should not show for long - it just saves permit data
-router.get('/check/process-link', function (req, res) {
-    res.render(folder + '/check/process-link',{ // show save and return pages
-       "formAction":"/"+ folder + "/selectpermit/permit-category2",
-       "chosenPermitID":req.query['chosenPermitID']
-    })
 })
 
 
@@ -147,6 +128,23 @@ router.post('/selectpermit/permit-category2', function (req, res) {
 })
 
 
+// Check category is in-scope ============================
+
+router.post('/selectpermit/check-category', function (req, res) {
+  if(req.body['chosenCategory']=='Flood risk activities' || req.body['chosenCategory']=='Radioactive substances for non-nuclear sites' || req.body['chosenCategory']=='Water discharges') { // These categories are NOT online
+    // go on to 'paper' form page'
+    res.render(folder + '/selectpermit/permit-not-in-service',{})
+  } else {
+    // go on to choose permit
+    res.render(folder + '/selectpermit/choose-permit2',{
+      "formAction":"/"+ folder + "/check/save-permit-details",
+      "chosenCategory":req.body['chosenCategory']
+    })
+  }
+})
+
+// Choose permit ============================
+
 router.post('/selectpermit/choose-permit2', function (req, res) {
   if(typeof req.body['chosenCategory']==='undefined'){  // simple error handling
     res.render(folder + '/error/index',{
@@ -166,6 +164,25 @@ router.post('/check/save-permit-details', function (req, res) {
     res.render(folder + '/check/save-permit-details',{
       "formAction":"/"+ folder + "/check/task-list",
       "chosenPermitID":req.body['chosenPermitID']
+    })
+})
+
+
+
+
+// Rules page from list ==============================================================
+
+router.get('/start/rules-page', function (req, res) {
+  res.render(folder + '/start/rules-page',{
+      "chosenPermitID":req.query['chosenPermitID']
+  })
+})
+
+// This page should not show for long - it just saves permit data
+router.get('/check/process-link', function (req, res) {
+    res.render(folder + '/check/process-link',{ // show save and return pages
+       "formAction":"/"+ folder + "/selectpermit/permit-category2",
+       "chosenPermitID":req.query['chosenPermitID']
     })
 })
 
