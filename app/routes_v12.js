@@ -41,6 +41,68 @@ router.get('/cls', function (req, res) {
 })
 
 
+// Start or resume ==============================================================
+
+router.get('/start/start-or-resume', function (req, res) {
+  res.render(folder + '/start/start-or-resume',{
+      "formAction":"/"+ folder + "/save-and-return/save-choice"
+  })
+})
+
+router.post('/start/start-or-resume', function (req, res) {
+  res.render(folder + '/start/start-or-resume',{
+      "formAction":"/"+ folder + "/save-and-return/save-choice"
+  })
+})
+
+// This is not a real page, just a URL for the route
+router.post('/save-and-return/save-choice', function (req, res) {
+  if(req.body['started-application']=="no"){ // think you need square bracket for radios
+      res.render(folder + '/operator/site-operator',{
+          "formAction":"/"+ folder + "/operator/check-operator"
+      })
+  } else {
+      res.render(folder + '/save-and-return/already-started',{
+          "formAction":"/"+ folder + "/save-and-return/link-resent"
+      })
+  }
+})
+
+router.post('/save-and-return/confirm', function (req, res) {
+  res.render(folder + '/save-and-return/confirm',{
+    "formAction":"/"+ folder + "/save-and-return/sent"
+  })
+})
+
+router.post('/save-and-return/sent', function (req, res) {
+  res.render(folder + '/save-and-return/sent',{
+    "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+
+router.get('save-and-return/email-save-link', function (req, res) {
+  res.render(folder + 'save-and-return/email-save-link',{
+  })
+})
+
+// Check operator is in-scope ============================
+
+router.post('/operator/check-operator', function (req, res) {
+  if(req.body['operatorType']=='Limited company') { // Ltd Companies CAN apply
+    res.render(folder + '/selectpermit/permit-category2',{
+      "formAction":"/"+ folder + "/selectpermit/choose-permit2",
+    })
+  } else {
+    // go on to 'paper' form page'
+    res.render(folder + '/selectpermit/permit-not-in-service',{
+    })
+  }
+})
+
+
+
+
 // Rules page from list ==============================================================
 
 router.get('/start/rules-page', function (req, res) {
@@ -102,7 +164,7 @@ router.post('/selectpermit/choose-permit2', function (req, res) {
 // used to store all the data from the matrix
 router.post('/check/save-permit-details', function (req, res) {
     res.render(folder + '/check/save-permit-details',{
-      "formAction":"/"+ folder + "/operator/site-operator",
+      "formAction":"/"+ folder + "/check/task-list",
       "chosenPermitID":req.body['chosenPermitID']
     })
 })
@@ -121,20 +183,6 @@ router.post('/operator/site-operator', function (req, res) {
    })
  })
 
-
-// This is not a real page, just a URL for the route
-router.post('/operator/checkoperator', function (req, res) {
-  if(req.body['operatorType']=="Limited company"){ // think you need square bracket for radios
-     // go to task list with company details
-     res.render(folder + '/check/save-permit-details',{
-         "formAction":"/"+ folder + "/selectpermit/before-you-start"
-     })
-  } else {
-    // go on to 'paper' form page'
-    res.render(folder + '/selectpermit/permit-not-in-service',{
-    })
-  }
- })
 
 // before you start pages
 router.post('/selectpermit/before-you-start', function (req, res) {
@@ -1072,52 +1120,6 @@ router.post('/site/grid-reference-eng', function (req, res) {
      "formAction":"/"+ folder + "/site/grid-reference-eng",
      "country": country,
      "siteGridRef":siteGridRef
-  })
-})
-
-
-// Start or resume ==============================================================
-
-router.get('/start/start-or-resume', function (req, res) {
-  res.render(folder + '/start/start-or-resume',{
-      "formAction":"/"+ folder + "/save-and-return/save-choice"
-  })
-})
-
-router.post('/start/start-or-resume', function (req, res) {
-  res.render(folder + '/start/start-or-resume',{
-      "formAction":"/"+ folder + "/save-and-return/save-choice"
-  })
-})
-
-// This is not a real page, just a URL for the route
-router.post('/save-and-return/save-choice', function (req, res) {
-  if(req.body['started-application']=="no"){ // think you need square bracket for radios
-      res.render(folder + '/selectpermit/permit-category2',{
-          "formAction":"/"+ folder + "/selectpermit/choose-permit2"
-      })
-  } else {
-      res.render(folder + '/save-and-return/already-started',{
-          "formAction":"/"+ folder + "/save-and-return/link-resent"
-      })
-  }
-})
-
-router.post('/save-and-return/confirm', function (req, res) {
-  res.render(folder + '/save-and-return/confirm',{
-    "formAction":"/"+ folder + "/save-and-return/sent"
-  })
-})
-
-router.post('/save-and-return/sent', function (req, res) {
-  res.render(folder + '/save-and-return/sent',{
-    "formAction":"/"+ folder + "/check/task-list"
-  })
-})
-
-
-router.get('save-and-return/email-save-link', function (req, res) {
-  res.render(folder + 'save-and-return/email-save-link',{
   })
 })
 
