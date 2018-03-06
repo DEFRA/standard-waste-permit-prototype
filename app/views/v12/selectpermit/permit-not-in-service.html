@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "How to apply for this permit" %}
+{% set title = "You can’t apply online yet" %}
 
 {% block page_title %}
 {{title}} - GOV.UK
@@ -19,18 +19,41 @@
       <form method="post" action="{{formAction}}">
 
 
-        <h1 class="heading-large">
-          Apply for a standard rules waste permit
-        </h1>
+{% set hs = "You can't apply for " %}
+{% set he = " online yet" %}
         
-        
-        <p class="print-link"><a href="javascript:window.print()">Print this page</a></p>
+  
+  {% if permit.permitName %}
+  <!-- Came from operator choice screen -->
+      <h1 class="heading-large">{{hs}}{{permit.permitName}} - {{permit.permitCode}}{{he}}</h1>
+      <p>
+        <a class="font-small" href="javascript:history.back()">
+          Select a different permit
+        </a>
+      </p>
+  {% endif %}
 
-        <p class="font-medium text">{{permit.permitName}} - {{permit.permitCode}} - applying as a {{permit.operatorType | lower }}<br>
-          <a class="font-small" href="/{{folder}}/selectpermit/permit-category2">
-            Select a different permit
-          </a>
-        </p>
+  {% if permit.chosenCategory %}
+  <!-- Came from operator choice screen -->
+      <h1 class="heading-large">{{hs}}{{permit.chosenCategory|lower}}{{he}}</h1>
+      <p>
+        <a class="font-small" href="javascript:history.back()">
+          Select a different type
+        </a>
+      </p>
+  {% endif %}
+
+  {% if (permit.operatorType and permit.chosenCategory==null) %}
+  <!-- Came from permit selection screen -->
+      <h1 class="heading-large">{{hs}}{{permit.operatorType|lower}}{{he}}</h1>
+      <p>
+        <a class="font-small" href="javascript:history.back()">
+          Select a different permit holder type
+        </a>
+      </p>
+  {% endif %}
+
+
 
 
         <h2 class="heading-medium">How to apply</h2>
@@ -43,8 +66,6 @@
           <li><a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/government/publications/application-for-an-environmental-permit-part-f1-opra-charges-declarations">part F1: <abbr title="Operational risk appraisal">Opra</abbr>, charges and declarations</a></li>
         </ul>
 
-        
-        {% include folder+"/snippets/before-you-start-list.html" %}
 
       </div>
 
