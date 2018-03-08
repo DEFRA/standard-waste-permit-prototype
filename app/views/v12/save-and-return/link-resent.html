@@ -17,7 +17,7 @@
 
         <h1 class="heading-large">Check your email</h1>
 
-        <p>We sent a secure link to <given-email-address> that will allow you to return to your application.</p>
+        <p>We sent a secure link to <span class="bold">{{ permit.saveReturnEmail }}</span> that will allow you to return to your application.</p>
           <details>
 
             <summary><span class="summary">I can't find the email</span></summary>
@@ -36,7 +36,7 @@
                     <div class="form-group">
                       <label class="form-label" for="user_email">Email address you gave us</label>
                       <span class="form-hint">This must be the email you used before</span>
-                      <input class="form-control form-control-3-4" id="user_email" name="user_email" type="text">
+                      <input class="form-control form-control-3-4" id="user_email" name="saveReturnEmail" type="text" value="{{permit.saveReturnEmail}}">
                     </div>
 
                 </fieldset>

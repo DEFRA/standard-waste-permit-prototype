@@ -385,17 +385,7 @@
 <!-- Only show if 'Tasklist Save' route -->
 {% if permit.saveReturnEmail!==null  %}
 
-<div class="column-one-third application-saved">
-  <aside class="govuk-related-items">
-    <h2 class="heading-medium">Application saved</h2>
-    <p>
-      We sent a secure return link to {{ permit.saveReturnEmail or permit.saveReturnPhone }}.
-    </p>
-    <p>
-      Your reference is {{ permit.permitRefNumber }}.
-    </p>
-  </aside>
-</div>
+
 
 {% endif %}
 
