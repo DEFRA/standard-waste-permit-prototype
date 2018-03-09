@@ -59,7 +59,7 @@ router.post('/start/start-or-resume', function (req, res) {
 router.post('/save-and-return/save-choice', function (req, res) {
   if(req.body['started-application']=="no"){ // think you need square bracket for radios
       res.render(folder + '/operator/site-operator',{
-          "formAction":"/"+ folder + "/operator/check-operator"
+          "formAction":"/"+ folder + "/selectpermit/permit-category2"
       })
   } else {
       res.render(folder + '/save-and-return/already-started',{
@@ -86,20 +86,6 @@ router.get('save-and-return/email-save-link', function (req, res) {
   })
 })
 
-// Check operator is in-scope ============================
-
-router.post('/operator/check-operator', function (req, res) {
-  if(req.body['operatorType']=='Limited company') { // Ltd Companies CAN apply
-    res.render(folder + '/selectpermit/permit-category2',{
-      "formAction":"/"+ folder + "/selectpermit/check-category",
-    })
-  } else {
-    // go on to 'paper' form page'
-    res.render(folder + '/selectpermit/permit-not-in-service',{
-    })
-  }
-})
-
 
 // Select permit ==============================================================
 
@@ -116,7 +102,7 @@ router.post('/selectpermit/permit-category2', function (req, res) {
     // permit NOT YET selected
     if( req.session.data['chosenPermitID']==null ) {
       res.render(folder + '/selectpermit/permit-category2',{
-        "formAction":"/"+ folder + "/selectpermit/choose-permit2"
+        "formAction":"/"+ folder + "/selectpermit/check-category"
       })
     // permit set via link on a GOV.UK page so skip this page
     } else {
@@ -131,7 +117,7 @@ router.post('/selectpermit/permit-category2', function (req, res) {
 // Check category is in-scope ============================
 
 router.post('/selectpermit/check-category', function (req, res) {
-  if(req.body['chosenCategory']=='Flood risk activities' || req.body['chosenCategory']=='Radioactive substances for non-nuclear sites' || req.body['chosenCategory']=='Water discharges') { // These categories are NOT online
+  if(req.body['chosenCategory']=='Flood risk activities' || req.body['chosenCategory']=='Radioactive substances for non-nuclear sites' || req.body['chosenCategory']=='Water discharges' || req.body['operatorType']!='Limited company') { // These categories are NOT online
     // go on to 'paper' form page'
     res.render(folder + '/selectpermit/permit-not-in-service',{})
   } else {
