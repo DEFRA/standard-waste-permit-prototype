@@ -82,7 +82,7 @@ router.post('/save-and-return/sent', function (req, res) {
     })
   // EMAIL NOT RECEIVED SHOW PAGE AGAIN
   } else {
-    res.render(folder + '/save-and-return/sent_again',{
+    res.render(folder + '/save-and-return/sent',{
         "formAction":"/"+ folder + "/save-and-return/sent_again",
         "resent":"resent"  // use this to change the heading
     })
