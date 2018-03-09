@@ -53,12 +53,12 @@
 
     </fieldset>
     <div class="multiple-choice" data-target="contact-by-email">
-        <input id="example-contact-by-email" type="radio" name="radio-contact-group" value="yes">
+        <input id="example-contact-by-email" type="radio" name="GOTEMAIL" value="YES">
         <label for="example-contact-by-email">I got the email</label>
       </div>
 
       <div class="multiple-choice" data-target="contact-by-phone">
-        <input id="example-contact-by-phone" type="radio" name="radio-contact-group" value="no">
+        <input id="example-contact-by-phone" type="radio" name="GOTEMAIL" value="NO">
         <label for="example-contact-by-phone">I can't find the email</label>
       </div>
       <div class="panel panel-border-narrow js-hidden" id="contact-by-phone">
@@ -69,7 +69,7 @@
 <li>Select continue to resend the email.</a>
 </li>
 </ul></br>
-            <input class="form-control form-control-3-4" id="send_email_here" name="send_email_here" type="text" value="{{ permit.saveReturnEmail }}">
+<input class="form-control form-control-3-4" id="user_email" name="saveReturnEmail" type="text" value="{{permit.saveReturnEmail}}">
       </div>
       </fieldset>
     </div>
