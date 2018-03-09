@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
   {% include "includes/phase_banner_beta.html" %}
         {% if permit.GOTEMAIL %}
-{% set title = "You’ve received the email" %}
+{% set title = "You’ve set up save and return for your application" %}
       {% endif %}
       {% if permit.GOTEMAIL %}
             {% else %}
@@ -19,53 +19,19 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <form action="confirm" method="post">
+
 
         <h1 class="heading-large">{{title}}</h1>
       {% if permit.GOTEMAIL %}
 
 
-            <form action="{{formAction}}" method="post">
+            <form action="/v12/check/task-list" method="post">
 
 
       <p>We sent a secure link to <span class="bold">{{ permit.saveReturnEmail }}</span> that allows you to return to your application at any time.</p>
 
-      <p class="text">
-        Your application reference is <span class="bold">{{ permit.permitRefNumber }}</span>.
-      </p>
-
-      <div class="form-group">
-        <fieldset>
-
-    <legend>
-
-    </legend>
-
-
-
-  </fieldset>
-  <div class="multiple-choice" data-target="contact-by-email">
-      <input id="example-contact-by-email" type="radio" name="GOTEMAIL" value="YES">
-      <label for="example-contact-by-email">I got the email</label>
-    </div>
-
-    <div class="multiple-choice" data-target="contact-by-phone">
-      <input id="example-contact-by-phone" type="radio" name="GOTEMAIL" value="NO">
-      <label for="example-contact-by-phone">I can't find the email</label>
-    </div>
-    <div class="panel panel-border-narrow js-hidden" id="contact-by-phone">
-      <ol class="list list-number">
-<li>Check your spam folder.</li>
-<li>Search for 'standard rules permit application' in your emails.</li>
-<li>Wait for a few minutes - email can take a while to arrive.</li>
-<li>Select continue to resend the email.</a>
-</li>
-</ul></br>
-<input class="form-control form-control-3-4" id="user_email" name="saveReturnEmail" type="text" value="{{permit.saveReturnEmail}}">
-    </div>
-    </fieldset>
-  </div>
-        <button type="submit" class="button" name="Continue">Continue</button>
+        <div class="form-group">
+        <button type="submit" class="button" name="Continue">Return to task list</button>
       </div>
 
     </form>
@@ -82,6 +48,7 @@
       {% if permit.GOTEMAIL %}
 
       {% else %}
+            <form action="confirm" method="post">
         <fieldset>
           <legend class="visuallyhidden">
             Save and return later
