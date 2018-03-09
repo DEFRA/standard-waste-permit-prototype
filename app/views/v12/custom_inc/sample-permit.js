@@ -1,6 +1,6 @@
-exports.permit = 
+exports.permit =
 
-  {  
+  {
    "chosenPermitID":"SR-2015-18",
    "baselineReportRequired":"No",
    "permitCode":"SR2015 No 18",
@@ -28,13 +28,17 @@ exports.permit =
    "wasteRecoveryPlan":"No",
    "digitalMVP":"Yes",
    "permitRefNumber":"MT2653JF",
+   "GOTEMAIL":"YES",
+   "SaveReturn":"YES",
+   "saveReturnEmail" : "info@test.com",
+   "saveReturnEmailResent" : "info@test.com",
    "costTime":"yes",
    "drainage":"Sewer",
    "specialCasePageVisited":"Yes",
    "readRules":"yes",
    "preAppDiscussion":"yes",
    "preAppDiscussionRefName":"Fred Smith, Birmingham",
-   "isContactAnAgent":[  
+   "isContactAnAgent":[
       "yes"
    ],
    "contactFirstName":"Regina",
@@ -47,7 +51,7 @@ exports.permit =
    "companyNumber":"04094290",
    "companyName":"Southern Star Power Plc",
    "companyAddress":"123 Sleeve Road, London AB1 6BU",
-   "director":[  
+   "director":[
       "John Smith",
       "David Neil Cowhill",
       "David Docker",
@@ -59,7 +63,7 @@ exports.permit =
       "David Rodderton",
       "Gary Martin Stokenham"
    ],
-   "directorDobDay":{  
+   "directorDobDay":{
      "John Smith":"12",
      "David Neil Cowhill":"12",
      "David Docker":"12",
@@ -71,7 +75,7 @@ exports.permit =
      "David Rodderton":"12",
      "Gary Martin Stokenham":"12"
    },
-   "directorDobRest":{  
+   "directorDobRest":{
       "John Smith":"/4/1963",
       "David Neil Cowhill":"/2/1965",
       "David Docker":"/5/1963",

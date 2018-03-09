@@ -1,7 +1,12 @@
 {% extends "layout.html" %}
-
-{% set title = "Give us your email to save your application" %}
-
+  {% include "includes/phase_banner_beta.html" %}
+        {% if permit.GOTEMAIL %}
+{% set title = "You’ve set up save and return for your application" %}
+      {% endif %}
+      {% if permit.GOTEMAIL %}
+            {% else %}
+{% set title = "We’ll email you a link you can use to get back to your saved application" %}
+    {% endif %}
 {% block page_title %}
     {{title}} - GOV.UK
 {% endblock %}
@@ -9,15 +14,43 @@
 {% block content %}
 
 <main id="content" role="main">
-  {% include "includes/phase_banner_beta.html" %}
+
 
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <form action="{{formAction}}" method="post">
- 
-        <h1 class="heading-large">{{title}}</h1>
 
+
+        <h1 class="heading-large">{{title}}</h1>
+      {% if permit.GOTEMAIL %}
+
+
+            <form action="/v12/check/task-list" method="post">
+
+
+      <p>We sent a secure link to <span class="bold">{{ permit.saveReturnEmail }}</span> that allows you to return to your application at any time.</p>
+      <p class="text">
+Every time you complete a screen we’ll save your data automatically.
+      </p>
+        <div class="form-group">
+        <button type="submit" class="button" name="Continue">Return to task list</button>
+      </div>
+
+    </form>
+    <div class="grid-row">
+      <div class="column-two-thirds">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>For testing:
+      <a href="/{{folder}}/save-and-return/email-save-link" target="_blank">link email</a>
+    </p>
+
+      {% endif %}
+      {% if permit.GOTEMAIL %}
+
+      {% else %}
+            <form action="confirm" method="post">
         <fieldset>
           <legend class="visuallyhidden">
             Save and return later
@@ -27,7 +60,7 @@
             <label class="form-label" for="user_email">Email address</label>
             <input class="form-control form-control-3-4" id="user_email" name="saveReturnEmail" type="text" value="{{permit.saveReturnEmail}}">
           </div>
-          
+
           <!-- ######################################################
 
           <details>
@@ -52,15 +85,15 @@
           </div>
 
           </details>
-          
+
          ###################################################### -->
 
 
         </fieldset>
-        
-        
+
+
         <div class="form-group">
-          
+
           <p>
             <a target="_blank" rel="noopener noreferrer" href="/{{folder}}/pages/privacy">Privacy: how we use your personal information (opens new tab)</a>
           </p>
@@ -72,7 +105,7 @@
         </div>
 
       </form>
-
+      {% endif %}
     </div>
   </div>
 

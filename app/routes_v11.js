@@ -1075,6 +1075,32 @@ router.post('/site/grid-reference-eng', function (req, res) {
   })
 })
 
+// Check your email ==============================================================
+
+router.get('save-and-return/sent', function (req, res) {
+  res.render(folder + 'save-and-return/sent',{
+      "formAction":"/"+ folder + "/save-and-return/save-choice"
+  })
+})
+
+router.post('save-and-return/sent', function (req, res) {
+  res.render(folder + 'save-and-return/sent',{
+      "formAction":"/"+ folder + "/save-and-return/save-choice"
+  })
+})
+
+// This is not a real page, just a URL for the route
+router.post('/save-and-return/save-choice', function (req, res) {
+  if(req.body['started-application']=="no"){ // think you need square bracket for radios
+      res.render(folder + '/selectpermit/permit-category2',{
+          "formAction":"/"+ folder + "/selectpermit/choose-permit2"
+      })
+  } else {
+      res.render(folder + '/save-and-return/already-started',{
+          "formAction":"/"+ folder + "/save-and-return/link-resent"
+      })
+  }
+})
 
 // Start or resume ==============================================================
 
