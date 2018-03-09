@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
-{% set title = "Check your email" %}
+
+  {% set title = "We’ve resent the email - check again" %}
 
 
 {% block page_title %}
@@ -17,7 +18,16 @@
       <form action="{{formAction}}" method="post">
 
 
-          <h1 class="heading-large">Check your email</h1>
+
+        {% if data.user_phone %}
+
+          <h1 class="heading-large">{{title}}</h1>
+
+          <p>We sent a secure code to <span class="bold">{{ permit.saveReturnPhone }}</span> that allows you to return to your application at any time.</p>
+
+        {% else %}
+
+          <h1 class="heading-large">{{title}}</h1>
 
           <p>We sent a secure link to <span class="bold">{{ permit.saveReturnEmail }}</span> that allows you to return to your application at any time.</p>
 
@@ -25,6 +35,8 @@
 Every time you complete a screen we’ll save your data automatically.
           </p>
 
+
+        {% endif %}
 
 
         <div class="form-group">

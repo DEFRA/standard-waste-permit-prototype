@@ -31,6 +31,7 @@ exports.permit =
    "GOTEMAIL":"YES",
    "SaveReturn":"YES",
    "saveReturnEmail" : "info@test.com",
+   "saveReturnEmailResent" : "info@test.com",
    "costTime":"yes",
    "drainage":"Sewer",
    "specialCasePageVisited":"Yes",

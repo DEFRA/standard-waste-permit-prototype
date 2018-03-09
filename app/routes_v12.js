@@ -82,13 +82,27 @@ router.post('/save-and-return/sent', function (req, res) {
     })
   // EMAIL NOT RECEIVED SHOW PAGE AGAIN
   } else {
-    res.render(folder + '/save-and-return/sent',{
-        "formAction":"/"+ folder + "/save-and-return/sent",
+    res.render(folder + '/save-and-return/sent_again',{
+        "formAction":"/"+ folder + "/save-and-return/sent_again",
         "resent":"resent"  // use this to change the heading
     })
   }
 })
 
+router.post('/save-and-return/sent_again', function (req, res) {
+  // IF EMAIL WAS RECEIVED GO TO TASK LIST
+  if(req.body.GOTEMAIL == "YES"){
+    res.render(folder + '/check/task-list',{
+        "formAction":"/"+ folder + "/check/check-answers"
+    })
+  // EMAIL NOT RECEIVED SHOW PAGE AGAIN
+  } else {
+    res.render(folder + '/save-and-return/sent_again',{
+        "formAction":"/"+ folder + "/save-and-return/sent_again",
+        "resent":"resent"  // use this to change the heading
+    })
+  }
+})
 
 router.post('/save-and-return/email-or-phone', function (req, res) {
   // IF EMAIL WAS RECEIVED GO TO TASK LIST
