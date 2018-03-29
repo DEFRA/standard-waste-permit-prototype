@@ -5,7 +5,7 @@
       {% endif %}
       {% if permit.GOTEMAIL %}
             {% else %}
-{% set title = "We’ll email you a link you can use to get back to your saved application" %}
+{% set title = "Save your application" %}
     {% endif %}
 {% block page_title %}
     {{title}} - GOV.UK
@@ -50,7 +50,15 @@ Every time you complete a screen we’ll save your data automatically.
       {% if permit.GOTEMAIL %}
 
       {% else %}
-            <form action="confirm" method="post">
+      
+      
+      <div class="panel panel-border-wide">
+        <p>
+          We'll email you a link you can use to get back to your saved application. Every time you complete a screen we’ll save your data automatically.
+        </p>
+      </div>
+
+        <form action="confirm" method="post">
         <fieldset>
           <legend class="visuallyhidden">
             Save and return later
