@@ -1,0 +1,136 @@
+{% extends "layout.html" %}
+
+{% set title = "Check your answers" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <h1 class="heading-large">
+    {{title}}
+  </h1>
+
+  <dl class="govuk-check-your-answers cya-questions-short">
+   <div>
+    <dt class="cya-question">
+      Site name
+    </dt>
+    <dd class="cya-answer">
+      {{permit.siteName}}
+    </dd>
+    <dd class="cya-change">
+      <a href="/{{folder}}/site/site-name"> 
+        Change <span class="visuallyhidden">site name</span>
+      </a>
+    </dd>
+  </div>
+
+  <div>
+    <dt class="cya-question">
+      Grid reference for the site
+    </dt>
+    <dd class="cya-answer">
+      {{permit.siteGridRef}}
+    </dd>
+    <dd class="cya-change">
+      <a href="/{{folder}}/site/grid-reference"> 
+        Change <span class="visuallyhidden">grid reference</span>
+      </a>
+    </dd>
+  </div>
+
+{% if permit.sitePlanFilename==null %}
+
+  <div>
+    <dt class="cya-question">
+      Site plan file
+    </dt>
+    <dd class="cya-answer">
+      {{permit.sitePlanFilename}}
+    </dd>
+    <dd class="cya-change">
+      <a href="/{{folder}}/evidence/upload-site-plan"> 
+        Change <span class="visuallyhidden">site plan</span>
+      </a>
+    </dd>
+  </div>
+
+{% else %}
+
+  <div>
+    <dt class="cya-question">
+      Distance from grid reference to site boundary
+    </dt>
+    <dd class="cya-answer">
+      {{permit.distanceToBoundary}}
+    </dd>
+    <dd class="cya-change">
+      <a href="/{{folder}}/screening/distance-to-boundary"> 
+        Change <span class="visuallyhidden">distance from grid reference to site boundary</span>
+      </a>
+    </dd>
+  </div>
+
+{% endif %}
+
+
+
+  <div>
+    <dt class="cya-question">
+      Site address
+    </dt>
+    <dd class="cya-answer">
+      {{permit.siteAddress}} 
+    </dd>
+    <dd class="cya-change">
+      <a href="/{{folder}}/address/address"> 
+        Change <span class="visuallyhidden">site address</span>
+      </a>
+    </dd>
+  </div>
+
+  <div>
+    <dt class="cya-question">
+      Contact details
+    </dt>
+    <dd class="cya-answer">
+      {{permit.contactFirstName}} {{permit.contactLastName}}<br>
+      {% if permit.isContactAnAgent == "yes" %}
+      This person is an agent or consultant<br>
+      {{permit.agentCompany}}<br>
+      {% endif %}
+      Telephone {{permit.contactTelephone}}<br>
+      {{permit.contactEmail}}
+    </dd>
+    <dd class="cya-change">
+      <a href="/{{folder}}/contact/contact-details"> 
+        Change <span class="visuallyhidden">Contact details</span>
+      </a>
+    </dd>
+  </div>
+
+</dl>
+
+<div class="form-group">
+  <p>
+    <a target="_blank" rel="noopener noreferrer" href="/{{folder}}/pages/privacy">Privacy: how we use your personal information (opens new tab)</a>
+  </p>
+</div>
+
+
+<form method="post" action="{{formAction}}">
+
+  <div class="form-group">
+    <button type="submit" class="button" name="Submit screening check">Send location check</button>
+  </div>
+
+</form>
+
+</main>
+
+{% endblock %}

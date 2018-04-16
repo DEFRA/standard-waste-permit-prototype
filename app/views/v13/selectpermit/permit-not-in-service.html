@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% set title = "Apply for that permit" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+      {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <form method="post" action="{{formAction}}">
+        
+        <h1 class="heading-large">
+          Apply for 
+            {% if permit.permitName %}
+                {{permit.permitName}} - {{permit.permitCode}}
+            {% elseif (permit.chosenCategory=="Flood risk activities" or permit.chosenCategory=="Water discharges" or permit.chosenCategory=="Radioactive substances for non-nuclear sites") %}
+                {{permit.chosenCategory|lower}} permits
+            {% else %}
+            
+                a permit for 
+                {% if permit.operatorType|first|lower=="i" or permit.operatorType|first|lower=="0" %}
+                an
+                {% else %}
+                a
+                {% endif %}
+                
+                {{permit.operatorType|lower}}
+            {% endif %}
+        </h1>
+  
+        <p>
+          <a class="font-small" href="javascript:history.back()">
+            Change your selection
+          </a>
+        </p>
+  
+
+        <h2 class="heading-medium">How to apply</h2>
+
+        <p>
+          {% if (permit.chosenCategory=="Flood risk activities") %}
+              Download and fill in the forms to apply for a <a href="https://www.gov.uk/guidance/flood-risk-activities-environmental-permits">flood risk activities standard rules permit</a>.
+          {% elseif (permit.chosenCategory=="Water discharges") %}
+              Download and fill in the forms to apply for a <a href="https://www.gov.uk/guidance/flood-risk-activities-environmental-permits#standard-rules-permits">forms to apply for a water discharge permit</a>.
+          {% elseif (permit.chosenCategory=="Radioactive substances for non-nuclear sites") %}
+              Read the guidance about  <a href="https://www.gov.uk/government/collections/radioactive-substances-regulation-for-non-nuclear-sites">radioactive substances regulation for non-nuclear sites</a>.
+          {% else %}
+              Download and fill in the <a href="https://www.gov.uk/government/collections/environmental-permit-application-forms-for-a-standard-permit-installations-mining-waste-or-waste-operation">forms to apply for a standard rules waste permit</a>.
+          {% endif %}
+          
+        </p>
+
+
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% set title = "Who will provide technical management on your site?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<form method="post" action="{{formAction}}">
+
+<div class="form-group">
+  <label class="form-label" for="tcmName">
+    Full name as on the qualification
+  </label>
+  <input class="form-control form-control-char-35" id="tcmName" name="tcmName" type="text" value="{{ permit.tcmName }}">
+</div>
+
+<div class="form-group">
+  <fieldset>
+    <legend>
+      <span class="form-label">Date of birth</span>
+      <span class="form-hint" id="dob-hint">For example, 26 5 1971</span>
+    </legend>
+    <div class="form-date">
+      <div class="form-group form-group-day">
+        <label class="form-label" for="dob-day">Day</label>
+        <input class="form-control" id="dob-day" name="tcmDobDay" type="number" pattern="[0-9]*" min="0" max="31" aria-describedby="dob-hint">
+      </div>
+      <div class="form-group form-group-month">
+        <label class="form-label" for="dob-month">Month</label>
+        <input class="form-control" id="dob-month" name="tcmDobMonth" type="number" pattern="[0-9]*" min="0" max="12">
+      </div>
+      <div class="form-group form-group-year">
+        <label class="form-label" for="dob-year">Year</label>
+        <input class="form-control" id="dob-year" name="tcmDobYear" type="number" pattern="[0-9]*" min="0" max="2016">
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<div class="form-group">
+  <label class="form-label" for="tcmNumSites">
+    How many sites do they provide technical management for?
+    <span class="form-hint">Our policy is that one person shouldn't supervise more than 5 sites at a time</span>
+  </label>
+  <input class="form-control form-control-char-3" id="tcmNumSites" name="tcmNumSites" type="text" value="{{ permit.tcmNumSites }}">
+</div>
+
+
+<div class="form-group">
+    {{submitButton|safe}}{{completeLink|safe}}
+</div>
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
