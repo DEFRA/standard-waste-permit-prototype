@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% set title = "Who should we contact about this application?" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">{{title}}</h1>
+
+      <form method="post" action="{{formAction}}" novalidate>
+
+        <div class="form-group">
+          <label class="form-label" for="contactFirstName">
+            First name
+          </label>
+          <input class="form-control" id="contactFirstName" name="contactFirstName" type="text" value="{{permit.contactFirstName}}">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="contactLastName">
+            Last name
+          </label>
+          <input class="form-control" id="contactLastName" name="contactLastName" type="text" value="{{permit.contactLastName}}">
+        </div>
+
+        <div class="form-group">
+          <div class="multiple-choice" data-target="agentCompanyYes">
+            <input id="isContactAnAgent" name="isContactAnAgent" type="checkbox" value="yes">
+            <label for="isContactAnAgent">
+              This person is acting as an agent or consultant for this application
+            </label>
+          </div>
+        </div>
+        <div class="panel panel-border-narrow js-hidden" id="agentCompanyYes">
+          <label class="form-label" for="agentCompany">
+            Agent’s trading, business or company name (optional)
+          </label>
+          <input class="form-control form-control-char-50" id="agentCompany" name="agentCompany" type="text" value="{{permit.agentCompany}}">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="contactTelephone">
+            Telephone number
+            <span class="form-hint">
+              This can be a landline or mobile
+            </span>
+          </label>
+          <input class="form-control form-control-char-25" id="contactTelephone" name="contactTelephone" value="{{permit.contactTelephone}}">
+        </div>
+        
+        <h2 class="heading-small">
+          Email addresses for communications about this application
+        </h2>
+
+        <div class="form-group">
+          <label class="form-label" for="contactEmail">
+            Email address for main contact
+          <span class="form-hint">
+            They get every communication and also the permit and any notices
+          </span>
+          </label>
+          <input class="form-control" id="contactEmail" name="contactEmail" value="{{permit.contactEmail}}" type="email">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="companySecretaryEmail">
+            Email address for Company Secretary or a director
+            <span class="form-hint text">
+              They just get a copy of the permit and any notices
+            </span>
+          </label>
+          
+          <details>
+            <summary><span class="summary">What’s this for and whose email can I give?</span></summary>
+            <div class="panel panel-border-narrow" style="margin-bottom:1em;">
+              <p>
+                Legally, we have to send a copy of the permit to the registered office or to an official company email address. Company Secretary is an official legal position, not a secretary or personal assistant. If you don’t have a Company Secretary you can give a director’s email address.
+              </p>
+            </div>
+          </details>
+          
+          
+          <input class="form-control" id="companySecretaryEmail" name="companySecretaryEmail" value="{{permit.companySecretaryEmail}}">
+        </div>
+
+        <div class="form-group">
+          {{submitButton|safe}}{{completeLink|safe}}
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

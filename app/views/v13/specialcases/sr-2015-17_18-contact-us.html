@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% set title = "Your drainage system is not suitable - please contact us" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<div class="panel panel-border-wide">
+  <p>
+    You said that your vehicle storage area drains to {{ permit.drainage | lower }}.
+    If you discharge to a water body but do not have a suitable system to prevent pollution then you do not meet the standard rules and cannot get this permit.
+  </p>
+</div>
+
+
+<p>Please contact us to discuss your options.</p>
+
+<h2 class="heading-medium">Contact the Environment Agency</h2>
+
+        <div class="email-url-number">
+            <p class="email">
+              <span class="type">Email</span>
+              <a class="email" href="mailto:enquiries@environment-agency.gov.uk">enquiries@environment-agency.gov.uk</a>
+            </p>
+            <p class="tel">
+              <span class="type">Telephone</span>
+              03708 506 506
+            </p>
+            <p class="tel">
+              <span class="type">Telephone from outside the UK (Monday to Friday, 8am to 6pm GMT)</span>
+              +44 (0) 114 282 5312
+            </p>
+            <p class="tel">
+              <span class="type">Minicom (for the hard of hearing)</span>
+              03702 422 549
+            </p>
+        </div>
+
+        <p class="font-small">Monday to Friday, 8am to 6pm</p>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
