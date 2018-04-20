@@ -18,35 +18,43 @@
 <h1 class="heading-large">{{title}}</h1>
 
 <p>
-This is the area for vehicles that haven’t been depolluted. The surface must be impermeable.
+This is the area for vehicles that have not been depolluted. The surface must be impermeable.
 </p>
 
 <form method="post" action="{{formAction}}">
   <div class="form-group">
 
-<!-- Only shown for SR-2015-17 and SR-2015-18 ##################################### -->
+<!-- Only shown for SR-2015-17, SR-2015-18, SR2015-13 ##################################### -->
   
 <fieldset>
 
   <legend class="visually-hidden">{{title}}</legend>
 
   <div class="multiple-choice">
-    <input id="sewer" type="radio" name="drainage" value="Sewer">
+    <input id="sewer" type="radio" name="drainage" value="a sewer">
     <label for="sewer">
       A sewer, under a consent from the local water company
     </label>
   </div>
   
   <div class="multiple-choice">
-    <input id="blind-sump" type="radio" name="drainage" value="Blind sump">
+    <input id="blind-sump" type="radio" name="drainage" value="a blind sump">
     <label for="blind-sump">
-      Collected in a blind sump for disposal
+      A blind sump to be taken off-site in a tanker for disposal or recovery
+    </label>
+  </div>
+  
+  <div class="multiple-choice">
+    <input id="interceptor" type="radio" name="drainage" value="an interceptor">
+    <label for="interceptor">
+      An oil separator, interceptor or other drainage system that is appropriately designed, operated and maintained
+        <span class="form-hint">If you use this system you can only store undamaged vehicles on the area. The drainage system must be designed, constructed and maintained to ensure the discharge does not adversely impact the water quality of the receiving water body.</span>
     </label>
   </div>
   
   <!-- if Water body then go to next page -->
-  <div class="multiple-choice" data-target="waterBody">
-    <input id="water-body" type="radio" name="drainage" value="Water body">
+  <div class="multiple-choice">
+    <input id="water-body" type="radio" name="drainage" value="a water body">
     <label for="water-body">
       Surface water drains, a watercourse, the ground or a water body
     </label>

@@ -860,6 +860,11 @@ router.get('/check-special-cases', function (req, res) {
     res.render(folder + '/specialcases/sr-2014-2',{
         "formAction":"/"+ folder + nextPage
     })
+  } else if (req.session.data['permitID'] == "SR-2015-13") {
+    res.render(folder + '/specialcases/sr-2015-17_18',{
+        // send to a page for routes
+        "formAction":"/"+ folder + "/specialcases/check-sr-2015-17_18"
+    })
   } else if (req.session.data['permitID'] == "SR-2015-17") {
     res.render(folder + '/specialcases/sr-2015-17_18',{
         // send to a page for routes
@@ -892,20 +897,11 @@ router.get('/specialcases/2009-8/sr-2009-8', function (req, res) {
 
 // This is not a real page, just a URL for the route
 router.post('/specialcases/check-sr-2015-17_18', function (req, res) {
-  if(req.body['drainage']=="Water body"){ // think you need square bracket for radios
-    // show Water body question
-      res.render(folder + '/specialcases/sr-2015-17_18-waterbody',{
-          "formAction":"/"+ folder + "/specialcases/check-waterbody"
+  if(req.body['drainage']=="a water body"){ // think you need square bracket for radios
+    // show Contact us page
+      res.render(folder + '/specialcases/sr-2015-17_18-contact-us',{
       })
-  } else {
-   res.render(folder + '/check/task-list',{
-    })
-  }
-})
-
-// This is not a real page, just a URL for the route
-router.post('/specialcases/check-waterbody', function (req, res) {
-  if(req.body['waterBodyDrainage']=="No"){ // think you need square bracket for radios
+  } else if(req.session.data['permitID'] == "SR-2015-13" && req.body['drainage']=="an interceptor"){ // think you need square bracket for radios
     // show Contact us page
       res.render(folder + '/specialcases/sr-2015-17_18-contact-us',{
       })
