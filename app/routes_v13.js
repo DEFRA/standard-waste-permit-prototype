@@ -11,7 +11,7 @@ const async = require('async')
 
 var folder = "v13"
 var servicename = "Apply for a standard rules waste permit"
-var paymentMethod = "worldpay"  // or "govpay"
+var paymentMethod = "govpay"  // or "govpay"
 
 var sample = require('./views/'+folder+'/custom_inc/sample-permit.js')
 //console.log(sample.permit)

@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Who will provide technical management on your site?" %}
+{% set title = "Upload details for all technically competent managers" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -17,49 +17,80 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
+<p>
+  <span class="bold-small">
+    1. Download this form and save on your computer
+  </span><br>
+  <a href="/public/images/tcm-form/technically-competent-manager-details-form.pdf" download="technically-competent-manager-details-form-{{ permit.permitRefNumber }}.pdf">
+    Technically competent manager details form (pdf)
+  </a> 
+</p>
+
+<p>
+  <span class="bold-small">
+    2. Complete the form and save it again
+  </span><br>
+  You’ll need to give name, date of birth, email and phone numbers for each manager and the permit numbers and addresses for the operations they manage.
+</p>
+
+
 <form method="post" action="{{formAction}}">
 
-<div class="form-group">
-  <label class="form-label" for="tcmName">
-    Full name as on the qualification
-  </label>
-  <input class="form-control form-control-char-35" id="tcmName" name="tcmName" type="text" value="{{ permit.tcmName }}">
+  <div>
+    <label class="form-label" for="file-input">
+      <span class="bold-small">
+        {% if permit.technicalCertificateFileUploaded=="yes" %}
+          3. Upload another form if you need to
+        {% else %}
+          3. Upload the completed form
+        {% endif %}
+
+      </span>
+      <span class="text form-hint">
+        PDF or JPG files<br>
+        30MB maximum file size
+      </span>
+    </label>
+  </div>
+  
+<div id="uploader" class="form-group form-uploader">
+    
+  <div class="form-group">
+      <input id="file-input" type="file">
+      <input id="filename" name="technicalCertificateFile" type="hidden">
+      <input name="technicalCertificateFileUploaded" value="yes" type="hidden">
+  </div>
+      
+  <div>
+      <input id="submit-upload" class="upload-button button-secondary" type="submit" value="Upload chosen file" name="submit">
+  </div>
+  
 </div>
-
-<div class="form-group">
-  <fieldset>
-    <legend>
-      <span class="form-label">Date of birth</span>
-      <span class="form-hint" id="dob-hint">For example, 26 5 1971</span>
-    </legend>
-    <div class="form-date">
-      <div class="form-group form-group-day">
-        <label class="form-label" for="dob-day">Day</label>
-        <input class="form-control" id="dob-day" name="tcmDobDay" type="number" pattern="[0-9]*" min="0" max="31" aria-describedby="dob-hint">
-      </div>
-      <div class="form-group form-group-month">
-        <label class="form-label" for="dob-month">Month</label>
-        <input class="form-control" id="dob-month" name="tcmDobMonth" type="number" pattern="[0-9]*" min="0" max="12">
-      </div>
-      <div class="form-group form-group-year">
-        <label class="form-label" for="dob-year">Year</label>
-        <input class="form-control" id="dob-year" name="tcmDobYear" type="number" pattern="[0-9]*" min="0" max="2016">
-      </div>
-    </div>
-  </fieldset>
-</div>
-
-<div class="form-group">
-  <label class="form-label" for="tcmNumSites">
-    How many sites do they provide technical management for?
-    <span class="form-hint">Our policy is that one person shouldn't supervise more than 5 sites at a time</span>
-  </label>
-  <input class="form-control form-control-char-3" id="tcmNumSites" name="tcmNumSites" type="text" value="{{ permit.tcmNumSites }}">
-</div>
+  
+  <script>
+    // captures uploaded filename and passes to hidden input
+    document.getElementById('file-input').onchange = uploadOnChange;
+    function uploadOnChange() {
+        var filename = this.value;
+        var lastIndex = filename.lastIndexOf("\\");
+        if (lastIndex >= 0) {
+            filename = filename.substring(lastIndex + 1);
+        }
+        document.getElementById('filename').value = filename;
+    }
+  </script>
 
 
 <div class="form-group">
-    {{submitButton|safe}}{{completeLink|safe}}
+  {% if permit.technicalCertificateFileUploaded=="yes" %}
+    <input class="button" type="submit" value="Continue">
+  {% else %}
+    <input class="button" type="submit" value="Continue" disabled="disabled" aria-disabled="true">
+  {% endif %}
+  
+  
+  
+    
 </div>
 </form>
 
