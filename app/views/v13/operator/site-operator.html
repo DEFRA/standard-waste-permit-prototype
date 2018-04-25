@@ -10,9 +10,9 @@
 
 <main id="content" role="main">
   {% include "includes/phase_banner_beta.html" %}
-  
+
   {{backlink|safe}}
-  
+
   <div class="grid-row">
     <div class="column-two-thirds">
 
@@ -33,7 +33,13 @@
             <div class="multiple-choice">
               <input id="individual" type="radio" name="operatorType" value="Individual">
               <label class="selection-button-radio" for="individual">
-                Individual or sole trader
+                Individual
+              </label>
+            </div>
+            <div class="multiple-choice">
+              <input id="sole-trader" type="radio" name="operatorType" value="Sole Trader">
+              <label class="selection-button-radio" for="sole-trader">
+                Sole trader
               </label>
             </div>
             <div class="multiple-choice">

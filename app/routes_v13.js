@@ -157,7 +157,7 @@ router.post('/selectpermit/permit-category2', function (req, res) {
 // Check category is in-scope ============================
 
 router.post('/selectpermit/check-category', function (req, res) {
-  if(req.body['chosenCategory']=='Flood risk activities' || req.body['chosenCategory']=='Radioactive substances for non-nuclear sites' || req.body['chosenCategory']=='Water discharges' || req.body['operatorType']!='Limited company') { // These categories are NOT online
+  if(req.body['chosenCategory']=='Flood risk activities' || req.body['chosenCategory']=='Radioactive substances for non-nuclear sites' || req.body['chosenCategory']=='Water discharges' || (req.body['operatorType']!='Limited company' && req.body['operatorType']!='Sole trader' && req.body['operatorType']!='Individual')) { // These categories are NOT online
     // go on to 'paper' form page'
     res.render(folder + '/selectpermit/permit-not-in-service',{})
   } else {
