@@ -39,7 +39,7 @@
   <div>
     <label class="form-label" for="file-input">
       <span class="bold-small">
-        {% if permit.technicalCertificateFileUploaded=="yes" %}
+        {% if permit.TCMdeatilsFileUploaded=="yes" %}
           3. Upload another form if you need to
         {% else %}
           3. Upload the completed form
@@ -58,7 +58,7 @@
   <div class="form-group">
       <input id="file-input" type="file">
       <input id="filename" name="technicalCertificateFile" type="hidden">
-      <input name="technicalCertificateFileUploaded" value="yes" type="hidden">
+      <input name="TCMdeatilsFileUploaded" value="yes" type="hidden">
   </div>
       
   <div>
@@ -82,7 +82,7 @@
 
 
 <div class="form-group">
-  {% if permit.technicalCertificateFileUploaded=="yes" %}
+  {% if permit.TCMdeatilsFileUploaded=="yes" %}
     <input class="button" type="submit" value="Continue">
   {% else %}
     <input class="button" type="submit" value="Continue" disabled="disabled" aria-disabled="true">
