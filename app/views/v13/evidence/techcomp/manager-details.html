@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Upload details for all technically competent managers" %}
+{% set title = "Give details for all technically competent managers" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -21,9 +21,11 @@
   <span class="bold-small">
     1. Download this form and save on your computer
   </span><br>
-  <a href="/public/images/tcm-form/technically-competent-manager-details-form.pdf" download="technically-competent-manager-details-form-{{ permit.permitRefNumber }}.pdf">
-    Technically competent manager details form (pdf)
-  </a> 
+
+  
+  <a href="/public/images/tcm-form/technically-competent-manager-details-form-WORD.doc" download="technically-competent-manager-details-form-WORD-{{ permit.permitRefNumber }}.doc">Technically competent manager form (Word doc)</a> |
+  
+  <a href="/public/images/tcm-form/technically-competent-manager-details-form-ODF.odt" download="technically-competent-manager-details-form-ODF-{{ permit.permitRefNumber }}.odt">Open Document Text</a> 
 </p>
 
 <p>
