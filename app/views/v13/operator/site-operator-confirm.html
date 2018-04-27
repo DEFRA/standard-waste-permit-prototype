@@ -18,26 +18,26 @@
 
       <h1 class="heading-large">{{title}}</h1>
 
-      <form action="/docs/examples/over-18" method="get" class="form">
+      <form action="/v13/operator/company/company-decision" method="get" class="form">
         <div class="form-group">
           <fieldset>
 
             <legend class="visuallyhidden">{{title}}</legend>
 
             <div class="multiple-choice">
-              <input id="over18True" type="radio" name="over18" value="true">
+              <input id="over18True" type="radio" name="operatorType" value="Limited company">
               <label class="selection-button-radio" for="limited-company">
                 Limited company
               </label>
             </div>
             <div class="multiple-choice">
-              <input id="over18False" type="radio" name="over18" value="false">
+              <input id="over18False" type="radio" name="operatorType" value="Individual">
               <label class="selection-button-radio" for="individual">
                 Individual
               </label>
             </div>
             <div class="multiple-choice">
-              <input id="over18False" type="radio" name="over18" value="false">
+              <input id="over18False" type="radio" name="operatorType" value="Sole trader">
               <label class="selection-button-radio" for="sole-trader">
                 Sole trader
               </label>
