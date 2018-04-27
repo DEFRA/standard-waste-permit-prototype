@@ -129,18 +129,18 @@ router.get('save-and-return/email-save-link', function (req, res) {
 // Confirm operator type=======================================================
 
 router.get('/operator/company/company-decision', function (req, res) {
-  // get the answer from the query string (eg. ?over18=false)
+  // get the answer from the query string (eg. Limited company, individual, sole trader)
   var operatorType = req.query.operatorType
 
   if (operatorType === 'Limited company') {
     // redirect to the relevant page
-    res.redirect('/examples/Limited')
+    res.redirect("/"+ folder + '/operator/company/company-name')
   } else if (operatorType === 'Individual') {
       // redirect to the relevant page
-    res.render('/docs/examples/Individual')
+    res.redirect("/"+ folder + '/operator/company/individual')
   } else {
-    // if over18 is any other value (or is missing) render the page requested
-    res.render('/docs/examples/sole-trader')
+    // if operator type is sole trader (or is missing) redirect to the page requested
+    res.redirect("/"+ folder + '/operator/company/sole-trader')
   }
 })
 
