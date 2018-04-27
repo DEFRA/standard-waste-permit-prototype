@@ -137,10 +137,10 @@ router.get('/operator/company/company-decision', function (req, res) {
     res.redirect("/"+ folder + '/operator/company/company-name')
   } else if (operatorType === 'Individual') {
       // redirect to the relevant page
-    res.redirect("/"+ folder + '/operator/company/individual')
+    res.redirect("/"+ folder + '/operator/individual/individual-details')
   } else {
     // if operator type is sole trader (or is missing) redirect to the page requested
-    res.redirect("/"+ folder + '/operator/company/sole-trader')
+    res.redirect("/"+ folder + '/operator/sole-trader/sole-trader')
   }
 })
 

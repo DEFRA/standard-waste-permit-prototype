@@ -9,71 +9,71 @@
 {% block content %}
 <main id="content" role="main">
   {% include "includes/phase_banner_beta.html" %}
-  
+
   {{backlink|safe}}
-  
-  <div class="grid-row">
-      <div class="column-two-thirds">
 
-<h1 class="heading-large">{{title}}</h1>
+<div class="grid-row">
+  <div class="column-two-thirds">
 
-<form method="post" action="{{formAction}}">
+    <h1 class="heading-large">{{title}}</h1>
 
-<div class="form-group">
-  <label class="form-label" for="individualFirstName">
-    First name
-  </label>
-  <input class="form-control" id="individualFirstName" name="individualFirstName" type="text" value="{{permit.individualFirstName}}">
-</div>
+    <form action="/v13/operator/individual/permit-holder-details" method="post">
 
-<div class="form-group">
-  <label class="form-label" for="individualLastName">
-    Last name
-  </label>
-  <input class="form-control" id="individualLastName" name="individualLastName" type="text" value="{{permit.individualLastName}}">
-</div>
 
-<div class="form-group">
+        <div class="form-group">
+          <label class="form-label visuallyhidden" for="companyRegNum">
+            {{title}}
+          </label>
+          <label class="form-label" for="first-name-2">First name</label>
+          <input class="form-control" id="first-name-2" name="first-name-2" type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="last-name-2">Last name</label>
+          <input class="form-control" id="last-name-2" name="last-name-2" type="text">
+        </div>
+
+
+
+      <div class="panel panel-border-wide">
+        <p>
+          We need their date of birth to identify them when we do security checks. We won't include it in the public permit register.
+        </p>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="date-of-birth">Date of birth</label>
+
+    <span class="form-hint">
+      For example, 26  5  1971
+    </span>
+
   <fieldset>
-    <legend>
-      <span class="form-label">Date of birth</span>
-      <span class="form-hint" id="dob-hint">For example, 26 5 1976</span>
-    </legend>
     <div class="form-date">
       <div class="form-group form-group-day">
         <label class="form-label" for="dob-day">Day</label>
-        <input class="form-control" id="dob-day" name="individualDobDay" type="number" pattern="[0-9]*" min="0" max="31" aria-describedby="dob-hint">
+        <input class="form-control" id="dob-day" name="dob-day" type="number" pattern="[0-9]*" min="0" max="31" aria-describedby="dob-hint">
       </div>
       <div class="form-group form-group-month">
         <label class="form-label" for="dob-month">Month</label>
-        <input class="form-control" id="dob-month" name="individualDobMonth" type="number" pattern="[0-9]*" min="0" max="12">
+        <input class="form-control" id="dob-month" name="dob-month" type="number" pattern="[0-9]*" min="0" max="12">
       </div>
       <div class="form-group form-group-year">
         <label class="form-label" for="dob-year">Year</label>
-        <input class="form-control" id="dob-year" name="individualDobYear" type="number" pattern="[0-9]*" min="0" max="2016">
+        <input class="form-control" id="dob-year" name="dob-year" type="number" pattern="[0-9]*" min="0" max="2016">
       </div>
     </div>
   </fieldset>
-</div>
 
+</br>
+      <div class="form-group">
+        <input type="submit" class="button" value="Continue">
+      </div>
 
-<div class="form-group">
-  <label class="form-label" for="businessTradingName">
-    Business trading name, if you don’t use your own name
-  </label>
-  <input class="form-control form-control-char-40" id="businessTradingName" name="businessTradingName" type="text" value="{{permit.businessTradingName}}">
-</div>
+    </form>
 
-
-
-<div class="form-group">
-    {{submitButton|safe}}{{completeLink|safe}}
-</div>
-</form>
-
-
-    </div>
   </div>
+</div>
+
 </main>
 
 {% endblock %}
