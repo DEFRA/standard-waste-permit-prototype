@@ -10,17 +10,17 @@
 
 <main id="content" role="main">
   {% include "includes/phase_banner_beta.html" %}
-  
+
   {{backlink|safe}}
-  
+
   <div class="grid-row">
       <div class="column-two-thirds">
 
 
       <h1 class="heading-large" id="radio_label">{{title}}</h1>
 
-      <form method="post" action="{{formAction}}">
-        
+      <form action="/v13/operator/individual/convictions" method="post">
+
 <p>
   <span class="postcode-prefix">Postcode:</span>
   <span class="postcode">BS1 5AH</span>
@@ -67,12 +67,12 @@
 
 
         <div class="form-group">
-            {{submitButton|safe}}{{completeLink|safe}}
+          <input type="submit" class="button" value="Continue">
         </div>
 
       </form>
 
-      
+
     </div>
   </div>
 

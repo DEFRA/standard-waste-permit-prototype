@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "What's the postcode for the site?" %}
+{% set title = "What's their address?" %}
 
 {% block page_title %}
 {{title}} - GOV.UK
@@ -16,24 +16,24 @@
     <div class="column-two-thirds">
 
       <h1 class="heading-large">{{title}}</h1>
-      <form action="/v13/operator/individual/convictions" method="post">
+      <form action="/v13/operator/individual/address" method="post">
 
         <fieldset>
           <legend class="visuallyhidden">Postcode</legend>
 
           <div class="form-group">
-            <label class="form-label" for="postcode">UK postcode for the site
+            <label class="form-label" for="postcode">UK postcode
               <span class="form-hint">For example, BS1 5AH</span>
             </label>
-            <input type="text" class="form-control form-control-char-10" id="postcode" name="sitePostCode" value="{{permit.sitePostCode}}" />
+            <input type="text" class="form-control form-control-char-10" id="postcode" name="sitePostCode" />
           </div>
 
           <div class="form-group">
-            <p>
+
               <a href="/{{folder}}/operator/individual/address-manual">
-                The site doesn’t have a postcode
+                Enter address manually
               </a>
-            </p>
+
           </div>
 
 
