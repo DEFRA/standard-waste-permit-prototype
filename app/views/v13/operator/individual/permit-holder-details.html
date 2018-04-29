@@ -18,8 +18,10 @@
     <h1 class="heading-large">{{title}}</h1>
 
     <form action="/v13/operator/individual/postcode" method="post">
+      <input type="hidden" name="permitHolderDetails" value="yes">
 
           <div class="form-group">
+
             <label class="form-label visuallyhidden" for="companyRegNum">
               {{title}}
             </label>
