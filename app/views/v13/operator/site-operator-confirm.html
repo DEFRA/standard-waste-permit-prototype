@@ -1,6 +1,22 @@
 {% extends "layout.html" %}
 
-{% set title = "Who will be the permit holder?" %}
+{% set title = "Confirm who the permit holder will be" %}
+
+{% set IndividualChecked = '' %}
+{% if permit.operatorType=='Individual' %}
+    {% set IndividualChecked = ' checked="checked"' %}
+{% endif %}
+
+{% set SoleTraderChecked = '' %}
+{% if permit.operatorType=='Sole trader' %}
+    {% set SoleTraderChecked = ' checked="checked"' %}
+{% endif %}
+
+{% set LimitedCompanyChecked = '' %}
+{% if permit.operatorType=='Limited company' %}
+    {% set LimitedCompanyChecked = ' checked="checked"' %}
+{% endif %}
+
 
 {% block page_title %}
 {{title}} - GOV.UK
@@ -24,24 +40,26 @@
 
             <legend class="visuallyhidden">{{title}}</legend>
             <div class="multiple-choice">
-              <input id="limited-company" type="radio" name="operatorType" value="Limited company" checked=“checked”’>
+              <input id="limited-company" type="radio" name="operatorType" value="Limited company"{{LimitedCompanyChecked}}>
               <label class="selection-button-radio" for="limited-company">
                 Limited company
               </label>
             </div>
 
             <div class="multiple-choice">
-              <input id="individual" type="radio" name="operatorType" value="Individual">
-              <label class="selection-button-radio" for="individual">
-                Individual
-              </label>
-            </div>
-            <div class="multiple-choice">
-              <input id="sole-trader" type="radio" name="operatorType" value="Sole trader">
+              <input id="sole-trader" type="radio" name="operatorType" value="Sole trader"{{SoleTraderChecked}}>
               <label class="selection-button-radio" for="sole-trader">
                 Sole trader
               </label>
             </div>
+
+            <div class="multiple-choice">
+              <input id="individual" type="radio" name="operatorType" value="Individual"{{IndividualChecked}}>
+              <label class="selection-button-radio" for="individual">
+                Individual
+              </label>
+            </div>
+
             <!--...
             <div class="multiple-choice">
               <input id="public-body" type="radio" name="operatorType" value="Local authority or public body">

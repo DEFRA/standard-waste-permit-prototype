@@ -193,10 +193,10 @@
                   Complete this task
                 </span>
                 {% endif %}
-                <a class="task-name" href="/{{folder}}/operator/site-operator-confirm" {% if permit.companyName!=null %} aria-describedby="site-operator-completed"{% endif %}>
+                <a class="task-name" href="/{{folder}}/operator/site-operator-confirm" {% if permit.bankruptcyInsolvencyDetails!=null %} aria-describedby="site-operator-completed"{% endif %}>
                   {{ tPermitHolder }}
                 </a>
-                {% if permit.companyName!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong>
+                {% if permit.bankruptcyInsolvencyDetails!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong>
                 {% else %}
                 <input type="hidden" name="complete[]" value="{{ tPermitHolder }}">
                 {% endif %}

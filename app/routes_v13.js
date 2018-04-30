@@ -10,7 +10,7 @@ const async = require('async')
 // small test edit
 
 var folder = "v13"
-var servicename = "Apply for a standard rules waste permit"
+var servicename = "Apply for a standard rules environmental permit"
 var paymentMethod = "govpay"  // or "govpay"
 
 var sample = require('./views/'+folder+'/custom_inc/sample-permit.js')
