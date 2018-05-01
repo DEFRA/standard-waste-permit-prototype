@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% set title = "Do they do business using their own name or a trading name?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+
+    <h1 class="heading-large">{{title}}</h1>
+
+    <form action="/v13/operator/sole-trader/permit-holder-details" method="post">
+
+      <div class="form-group">
+        <label class="form-label visuallyhidden" for="companyRegNum">
+          {{title}}
+        </label>
+    </div>
+
+  <fieldset>
+    <div class="multiple-choice" data-target="contact-by-email">
+      <input id="example-contact-by-email" type="radio" name="radio-contact-group" value="Yes">
+      <label for="example-contact-by-email">They use their own name</label>
+    </div>
+
+    <div class="multiple-choice" data-target="contact-by-phone">
+      <input id="example-contact-by-phone" type="radio" name="radio-contact-group" value="No">
+      <label for="example-contact-by-phone">They use a trading name</label>
+      <span class="form-hint">For example ‘ABC Waste Services’
+      </span>
+    </div>
+    <div class="panel panel-border-narrow js-hidden" id="contact-by-phone">
+      <label class="form-label" for="contact-phone">Trading name for the sole trader</label>
+      <span class="form-hint">If this is a registered company, go back and apply as a registered company
+      </span>
+      <input class="form-control" name="contact-phone" type="text" id="contact-phone">
+    </div>
+
+  </fieldset>
+
+</br>
+      <div class="form-group">
+        <input type="submit" class="button" value="Continue">
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+</main>
+
+{% endblock %}

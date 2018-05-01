@@ -12,7 +12,7 @@
 
 {% if directorCount>1 %}
     {% set title = "What are the directors' dates of birth?" %}
-{% else %}    
+{% else %}
     {% set title = "What is the director’s date of birth?" %}
 {% endif %}
 
@@ -23,16 +23,16 @@
 {% block content %}
 <main id="content" role="main">
   {% include "includes/phase_banner_beta.html" %}
-  
+
   {{backlink|safe}}
-  
+
   <div class="grid-row">
     <div class="column-two-thirds">
 
     <h1 class="heading-large">{{title}}</h1>
 
-    <form action="{{formAction}}" method="post" id="dob-form">
-  
+    <form action="/v13/contact/company-secretary" method="post" id="dob-form">
+
     <p>
       We use the date of birth to identify the person when we do security checks. We won't include it in the public permit register.
     </p>
@@ -40,7 +40,7 @@
   <fieldset>
     <legend class="visuallyhidden">Date of birth for director - we only need the date in the month</legend>
 
-{% set months = 
+{% set months =
   {
     "1" : "January",
     "2" : "February",
@@ -60,7 +60,7 @@
   <dl class="dates-of-birth">
 
 {% set loopnum=1 %}
-      
+
 {% for o in officers %}
   {% if o.resigned_on==null %}
     {% if o.officer_role=="director" %}
@@ -83,7 +83,7 @@
           </div>
         </dd>
       </div>
-      
+
       {% set loopnum=loopnum+1 %}
     {% endif %}
   {% endif %}
@@ -96,7 +96,7 @@
 </fieldset>
 
 <div class="form-group">
-  {{submitButton|safe}}{{completeLink|safe}}
+  <input type="submit" class="button" value="Continue">
 </div>
 
 
