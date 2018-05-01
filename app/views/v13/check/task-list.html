@@ -69,6 +69,24 @@
               <span class="task-list-section-number">1. </span> Before you apply
             </h2>
             <ul class="task-list-items">
+              
+              
+              <li class="task-list-item {% if taskListError and permit.costTime==null %} form-group-error{% endif %}" id="{{ tCheckCost  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+               {% if taskListError and permit.costTime==null %}
+                 <span class="error-message">
+                   Complete this task
+                 </span>
+               {% endif %}
+               <a class="task-name" href="/{{folder}}/selectpermit/cost-and-time" {% if permit.costTime %} aria-describedby="cost-and-time-completed"{% endif %}>
+                 {{ tCheckCost }}
+               </a>
+               {% if permit.costTime %} 
+               <strong class="task-completed" id="cost-and-time-completed">Completed</strong> 
+               {% else %}
+               <input type="hidden" name="complete[]" value="{{ tCheckCost }}">
+               {% endif %}
+             </li>
+             
 
               <li class="task-list-item {% if taskListError and permit.readRules==null %} form-group-error{% endif %}" id="{{ tCheckRules  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
               {% if taskListError and permit.readRules==null %}
@@ -110,7 +128,7 @@
             </ul>
             </li>
 
-            <!-- 3. SEND AND PAY  ############################################################### -->
+            <!-- 2. PREPARE  ############################################################### -->
             <li>
             <h2 class="task-list-section">
             <span class="task-list-section-number">2. </span> Prepare application
