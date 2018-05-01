@@ -33,14 +33,80 @@ REGEXP replacements for google HTML
     <p>Summary of change in v13</p>
   </th>
   <th>
-    <p>Reason/source</p>
+    <p>User need, reason or source</p>
   </th>
   </tr>
   
   <tr><td><p>
-    xxxxxxx
+    Add screens to allow sole traders and individuals to apply for a permit. Add sole trader as an option so that we can capture their extra business details.
   </p></td><td><p>
-    xxxxxxx
+    After companies, indviduals are the next most common group of applicants (about 6% of applications). Defra stores customer records for businesses (in this case 'sole traders') separately from private indviduals, so we designed the screens to allow users to identify themselves in a simple way and show them the required screens.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Replace the technical competence PDF with a Word and ODT version
+  </p></td><td><p>
+    During testing we found that applicants using Chrome browser to download and open the PDF form could not save the form and were uploading a blank form. We've replaced the PDf with Word and ODT versions that Chrome does not try to open. 
+  </p></td></tr>
+  
+  <tr><td><p>
+    Allow applicants for 'car breaker' - end of life vehicle - permits to check if their drainage system meets the rules
+  </p></td><td><p>
+    Users can't get a permit if they don't meet the rules and for these rule sets, the drainage requirements are not always spotted in the rule sets. We've broken out the requirements as options and explain if there is a problem. It's not an ideal method, but it makes the content clearer than a block of text.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Move Company Secretary email screens to a new single screen.
+  </p></td><td><p>
+    We had limited feedback that there's still some confusion about what this address is used for so we've rewritten the help text and moved the input to its own screen.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Add a feature to check cost and processing time
+  </p></td><td><p>
+    The Strategic Review of Charging introduced increased and new charges in April 2018. We had past feedback that users really valued having clear information about costs.  and with the new charges we felt there was a clear user need to know the cost of the application.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Add routing screens for permit holders that are not companies
+  </p></td><td><p>
+    The private beta service will work for companies but not for other applicant types. We want to make sure that other applicants are directed to the PDF form version of the service. Users told us that they find content on GOV.UK hard to navigate so we've given them links difrectly to the forms they need.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Add routing screens for rule sets that are not in the private beta. If users select a permit that we don't deal with in the service they are given a link to go directly to the correct forms.
+  </p></td><td><p>
+    We want to make sure that applicants are directed to correct method for applying if they cannot apply online.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Add a route for users who (incorrectly) end up on the service trying to apply for standard rules that we don't offer yet - for example flood risk.
+  </p></td><td><p>
+    We want to make sure that applicants are directed to correct method for applying if they cannot apply online.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Provide link to guidance for users who need to know how to identify the legal operator.
+  </p></td><td><p>
+    There is detailed guidance about this on GOV.UK so we provide a link to the correct guidance.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Implement a few small content changes to improve accessibility. For example, change the order of information in the 'check company' screen.
+  </p></td><td><p>
+    We carried out an accessibility review and implemented the changes to improve accessibility. This will be validated by an external review including users with access needs.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Minor updates to the technical competence screens.
+  </p></td><td><p>
+    Some terms used by the qualification awarding bodies had been changed and we had feedback from subject matter experts about minor updates to the conditions.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Add a screen to allow users to give details about the technically competent managers and the sites they supervise.
+  </p></td><td><p>
+    This requirement arrived late in the development process and we needed a tactical solution. We've provided a means to download a PDF form and upload it again. It's not ideal but seems to work OK.
   </p></td></tr>
   
   </table>
@@ -56,14 +122,32 @@ REGEXP replacements for google HTML
     <p>Summary of change in v12</p>
   </th>
   <th>
-    <p>Reason/source</p>
+    <p>User need, reason or source</p>
   </th>
   </tr>
   
   <tr><td><p>
-    xxxxxxx
+    Added a simple save and return method into the service
   </p></td><td><p>
-    xxxxxxx
+    There is a strong user need to be able to complete the application over a number of sessions. We've added a method based on an alpha GDS pattern that uses an email with a return link. We did have this before but it had been removed for the 'reduced' MVP.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Updated Bacs payment information
+  </p></td><td><p>
+    We added account name to the Bacs details. It's not required by the Bacs standard, but when we did a little research on typical bank payment screens, we discovered that it's an optional field. We felt it would be helpful to users to say what to use.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Added back links to 3 pages: check answers, payment and Bacs
+  </p></td><td><p>
+    These were added to have a consistent interface for users.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Update content following a content review by legal and subject matter experts.
+  </p></td><td><p>
+    These were added to have a consistent interface for users.
   </p></td></tr>
   
   </table>
@@ -80,14 +164,32 @@ REGEXP replacements for google HTML
     <p>Summary of change in v11</p>
   </th>
   <th>
-    <p>Reason/source</p>
+    <p>User need, reason or source</p>
   </th>
   </tr>
   
   <tr><td><p>
-    xxxxxxx
+    Add BACS payment information to the final page and the application received email
   </p></td><td><p>
-    xxxxxxx
+    We'd seen some evidence from earlier testing that is we added the BACS payment information to a spearate page that some users did not click through to the final page. Therefore we've move the details to the final page and changed the continue button to 'Send application'.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Added GOV.UK Pay as the method for card payments instead of Worldpay.
+  </p></td><td><p>
+    GOV.UK Pay offers a better user experience and is more accessible than the Worldpay option.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Change done page to match new GDS pattern
+  </p></td><td><p>
+    The GDS pattern for the done page was updated to increase the heading size and margins.
+  </p></td></tr>
+  
+  <tr><td><p>
+    Change use of term 'technical management' to 'technical competence'
+  </p></td><td><p>
+    Guidance on GOV.UK refers to 'technical competence' and so it's better for users to have a consistent use of terminology.
   </p></td></tr>
   
   </table>
@@ -104,7 +206,7 @@ REGEXP replacements for google HTML
     <p>Summary of change in v10</p>
   </th>
   <th>
-    <p>Reason/source</p>
+    <p>User need, reason or source</p>
   </th>
   </tr>
   
@@ -224,7 +326,7 @@ REGEXP replacements for google HTML
     <p>Summary of change in v9</p>
   </th>
   <th>
-    <p>Reason/source</p>
+    <p>User need, reason or source</p>
   </th>
   </tr>
   
@@ -251,7 +353,7 @@ REGEXP replacements for google HTML
   <p>Summary of change in v8</p>
 </th>
 <th>
-  <p>Reason/source</p>
+  <p>User need, reason or source</p>
 </th>
 </tr>
 
@@ -379,7 +481,7 @@ Changes to the permit matrix had introduced bugs.
   <p>Summary of change in v7</p>
 </th>
 <th>
-  <p>Reason/source</p>
+  <p>User need, reason or source</p>
 </th>
 </tr>
 
@@ -524,7 +626,7 @@ We can't use the OS Places postcode lookup without adding this statement and a l
       <p>Summary of change in v6</p>
     </th>
     <th>
-      <p>Reason/source</p>
+      <p>User need, reason or source</p>
     </th>
   </tr>
 
@@ -586,7 +688,7 @@ This is a first draft for user lab testing based on a smart answer format.
                   <p>Summary of change in v5</p>
               </th>
               <th>
-                  <p>Reason/source</p>
+                  <p>User need, reason or source</p>
               </th>
           </tr>
           <tr>
@@ -725,7 +827,7 @@ Allows users to find a contact method on every if they are unable to complete th
                   <p>Summary of change in v4</p>
               </th>
               <th>
-                  <p>Reason/source</p>
+                  <p>User need, reason or source</p>
               </th>
           </tr>
           <tr>
@@ -784,7 +886,7 @@ Allows users to find a contact method on every if they are unable to complete th
         <p>Summary of change in v3</p>
       </th>
       <th>
-        <p>Reason/source</p>
+        <p>User need, reason or source</p>
       </th>
     </tr>
     <tr>
@@ -822,7 +924,7 @@ Allows users to find a contact method on every if they are unable to complete th
          <p>Summary of change in v2a</p>
         </th>
         <th>
-         <p>Reason/source</p>
+         <p>User need, reason or source</p>
         </th>
        </tr>
        <tr>
@@ -856,7 +958,7 @@ Allows users to find a contact method on every if they are unable to complete th
          <p>Summary of change in v2</p>
         </th>
         <th>
-         <p>Reason/source</p>
+         <p>User need, reason or source</p>
         </th>
        </tr>
        <tr>
@@ -996,7 +1098,7 @@ Allows users to find a contact method on every if they are unable to complete th
         <p>Summary of change in v1</p>
       </th>
       <th>
-        <p>Reason/source</p>
+        <p>User need, reason or source</p>
       </th>
     </tr>
     <tr>
