@@ -31,14 +31,29 @@
 
 <form action="{{formAction}}" method="post">
 
-    <div class="panel panel-border-wide form-group">
-    <p>Company number {{company.company_number}}. <a href="/{{folder}}/operator/company/company-name">Enter a different number</a>.</p>
-    </div>
+
 
     <h2 class="heading-medium">{{company.title}}</h2>
     
+    
+    <div class="panel panel-border-wide form-group">
+    <p>Company number {{company.company_number}}. <a href="/{{folder}}/operator/company/company-name">Enter a different number</a>.</p>
+    </div>
+    
+    <h2 class="heading-medium">Check the registered address</h2>
+    
     <p>{{company.address_snippet}}</p>
+    
+    <details>
+      <summary><span class="summary">That’s not our registered office address</span></summary>
 
+      <div class="panel panel-border-narrow">
+        <p>
+        We can only accept applications using the address that's registered with Companies House. If your address has changed then you should <a href="https://www.gov.uk/file-changes-to-a-company-with-companies-house" target="_blank">tell Companies House about the change (opens new tab)</a> before you complete this application.
+        </p>
+      </div>
+      
+    </details>
 
     <input type="hidden" name="companyNumber" value="{{company.company_number}}">
     <input type="hidden" name="companyName" value="{{company.title}}">
