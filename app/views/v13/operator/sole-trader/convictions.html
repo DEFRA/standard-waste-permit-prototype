@@ -20,15 +20,14 @@
       <h1 class="heading-large">{{title}}</h1>
 
       <div>
-
-        <!-- MVP = limited company only -->
-        <!-- {% if permit.operatorType=="Limited company" %} -->
         <p>You must tell us about:</p>
         <ul class="list list-bullet">
-          <li>the company itself</li>
-          <li>its directors, managers or company secretaries</li>
-          <li>other companies, if the officers of the company were officers of that other company when they were convicted</li>
+          <li>the individual</li>
+          <li>companies for which the individual is a director, manager or company secretary</li>
         </ul>
+        <!-- MVP = limited company only -->
+        <!-- {% if permit.operatorType=="Limited company" %} -->
+
 
        <!-- {% elseif permit.operatorType=="Individual" %}
         <p>You must tell us about:</p>
