@@ -9,7 +9,7 @@
 {% block content %}
 <main id="content" role="main">
   {% include "includes/phase_banner_beta.html" %}
-  
+
   {{backlink|safe}}
 
   <div class="grid-row">
@@ -43,7 +43,7 @@
         </div>
         <div class="panel panel-border-narrow js-hidden" id="agentCompanyYes">
           <label class="form-label" for="agentCompany">
-            Agent’s trading, business or company name (optional)
+            Agent’s trading, business or company name
           </label>
           <input class="form-control form-control-char-50" id="agentCompany" name="agentCompany" type="text" value="{{permit.agentCompany}}">
         </div>
@@ -57,41 +57,15 @@
           </label>
           <input class="form-control form-control-char-25" id="contactTelephone" name="contactTelephone" value="{{permit.contactTelephone}}">
         </div>
-        
-        <h2 class="heading-small">
-          Email addresses for communications about this application
-        </h2>
 
         <div class="form-group">
           <label class="form-label" for="contactEmail">
-            Email address for main contact
-          <span class="form-hint">
-            They get every communication and also the permit and any notices
-          </span>
+            Email address
           </label>
           <input class="form-control" id="contactEmail" name="contactEmail" value="{{permit.contactEmail}}" type="email">
         </div>
-        
-        <div class="form-group">
-          <label class="form-label" for="companySecretaryEmail">
-            Email address for Company Secretary or a director
-            <span class="form-hint text">
-              They just get a copy of the permit and any notices
-            </span>
-          </label>
-          
-          <details>
-            <summary><span class="summary">What’s this for and whose email can I give?</span></summary>
-            <div class="panel panel-border-narrow" style="margin-bottom:1em;">
-              <p>
-                Legally, we have to send a copy of the permit to the registered office or to an official company email address. Company Secretary is an official legal position, not a secretary or personal assistant. If you don’t have a Company Secretary you can give a director’s email address.
-              </p>
-            </div>
-          </details>
-          
-          
-          <input class="form-control" id="companySecretaryEmail" name="companySecretaryEmail" value="{{permit.companySecretaryEmail}}">
-        </div>
+
+        <p><a target="_blank" href="/{{folder}}/pages/privacy">Privacy: how we use your personal information (opens new tab)</a></p>
 
         <div class="form-group">
           {{submitButton|safe}}{{completeLink|safe}}

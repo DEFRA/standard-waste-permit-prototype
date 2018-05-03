@@ -24,13 +24,13 @@
   You must tell us about:
 </p>
 <ul class="list list-bullet">
-  <li>the company itself</li>
-  <li>the officers of the company, for example directors or company secretaries</li>
-  <li>other companies, if the officers of this company were officers of that other company when it became insolvent</li>
+  <li>the individual</li>
+  <li>companies for which the individual is a director, manager or company secretary</li>
 </ul>
 
 
-<form method="post" action="{{formAction}}">
+<form action="/v13/check/task-list" method="post">
+
   <div class="form-group">
     <fieldset>
 
@@ -68,9 +68,8 @@
       We may contact a credit reference agency for a report about your business’s finances.
     </p>
 
-
-    <div class="form-group">
-    {{submitButton|safe}}{{completeLink|safe}}
+  <div class="form-group">
+    <input type="submit" class="button" value="Continue">
   </div>
 
 

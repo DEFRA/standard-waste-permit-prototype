@@ -4,9 +4,9 @@
   Prototype change log
 {% endblock %}
 
-<!-- 
+<!--
 REGEXP replacements for google HTML
- class="c[0-9][0-9]? ?c?[0-9][0-9]?" 
+ class="c[0-9][0-9]? ?c?[0-9][0-9]?"
 </?span>
 
 <h2 class="heading-large"   with  <h2 class="heading-large" class="heading-large"
@@ -21,12 +21,12 @@ REGEXP replacements for google HTML
   </h1>
 
   <p>This summarises the main changes we've made in response to feedback.</p>
-  
-  
-  
+
+
+
   <h2 class="heading-large">Version 12 to 13</h2>
   <p><a href="index-v13">Version 13</a></p>
-  
+
   <table class="change-log">
   <tr>
   <th>
@@ -36,86 +36,86 @@ REGEXP replacements for google HTML
     <p>User need, reason or source</p>
   </th>
   </tr>
-  
+
   <tr><td><p>
     Add screens to allow sole traders and individuals to apply for a permit. Add sole trader as an option so that we can capture their extra business details.
   </p></td><td><p>
-    After companies, indviduals are the next most common group of applicants (about 6% of applications). Defra stores customer records for businesses (in this case 'sole traders') separately from private indviduals, so we designed the screens to allow users to identify themselves in a simple way and show them the required screens.
+    After companies, individuals are the next most common group of applicants (about 6% of applications). Defra stores customer records for businesses (in this case 'sole traders') separately from private individuals, so we designed the screens to allow users to identify themselves in a simple way and show them the required screens.
   </p></td></tr>
-  
+
   <tr><td><p>
     Replace the technical competence PDF with a Word and ODT version
   </p></td><td><p>
-    During testing we found that applicants using Chrome browser to download and open the PDF form could not save the form and were uploading a blank form. We've replaced the PDf with Word and ODT versions that Chrome does not try to open. 
+    During testing we found that applicants using Chrome browser to download and open the PDF form could not save the form and were uploading a blank form. We've replaced the PDF with Word and ODT versions that Chrome does not try to open.
   </p></td></tr>
-  
+
   <tr><td><p>
     Allow applicants for 'car breaker' - end of life vehicle - permits to check if their drainage system meets the rules
   </p></td><td><p>
     Users can't get a permit if they don't meet the rules and for these rule sets, the drainage requirements are not always spotted in the rule sets. We've broken out the requirements as options and explain if there is a problem. It's not an ideal method, but it makes the content clearer than a block of text.
   </p></td></tr>
-  
+
   <tr><td><p>
     Move Company Secretary email screens to a new single screen.
   </p></td><td><p>
     We had limited feedback that there's still some confusion about what this address is used for so we've rewritten the help text and moved the input to its own screen.
   </p></td></tr>
-  
+
   <tr><td><p>
     Add a feature to check cost and processing time
   </p></td><td><p>
-    The Strategic Review of Charging introduced increased and new charges in April 2018. We had past feedback that users really valued having clear information about costs.  and with the new charges we felt there was a clear user need to know the cost of the application.
+    The Strategic Review of Charging introduced increased and new charges in April 2018. We had past feedback that users really valued having clear information about costs and with the new charges we felt there was a clear user need to know the cost of the application.
   </p></td></tr>
-  
+
   <tr><td><p>
     Add routing screens for permit holders that are not companies
   </p></td><td><p>
-    The private beta service will work for companies but not for other applicant types. We want to make sure that other applicants are directed to the PDF form version of the service. Users told us that they find content on GOV.UK hard to navigate so we've given them links difrectly to the forms they need.
+    The private beta service will work for companies but not for other applicant types. We want to make sure that other applicants are directed to the PDF form version of the service. Users told us that they find content on GOV.UK hard to navigate so we've given them links directly to the forms they need.
   </p></td></tr>
-  
+
   <tr><td><p>
     Add routing screens for rule sets that are not in the private beta. If users select a permit that we don't deal with in the service they are given a link to go directly to the correct forms.
   </p></td><td><p>
     We want to make sure that applicants are directed to correct method for applying if they cannot apply online.
   </p></td></tr>
-  
+
   <tr><td><p>
     Add a route for users who (incorrectly) end up on the service trying to apply for standard rules that we don't offer yet - for example flood risk.
   </p></td><td><p>
     We want to make sure that applicants are directed to correct method for applying if they cannot apply online.
   </p></td></tr>
-  
+
   <tr><td><p>
     Provide link to guidance for users who need to know how to identify the legal operator.
   </p></td><td><p>
     There is detailed guidance about this on GOV.UK so we provide a link to the correct guidance.
   </p></td></tr>
-  
+
   <tr><td><p>
     Implement a few small content changes to improve accessibility. For example, change the order of information in the 'check company' screen.
   </p></td><td><p>
     We carried out an accessibility review and implemented the changes to improve accessibility. This will be validated by an external review including users with access needs.
   </p></td></tr>
-  
+
   <tr><td><p>
     Minor updates to the technical competence screens.
   </p></td><td><p>
     Some terms used by the qualification awarding bodies had been changed and we had feedback from subject matter experts about minor updates to the conditions.
   </p></td></tr>
-  
+
   <tr><td><p>
     Add a screen to allow users to give details about the technically competent managers and the sites they supervise.
   </p></td><td><p>
     This requirement arrived late in the development process and we needed a tactical solution. We've provided a means to download a PDF form and upload it again. It's not ideal but seems to work OK.
   </p></td></tr>
-  
+
   </table>
-  
-  
-  
+
+
+
   <h2 class="heading-large">Version 11 to 12</h2>
   <p><a href="index-v12">Version 12</a></p>
-  
+
   <table class="change-log">
   <tr>
   <th>
@@ -125,39 +125,39 @@ REGEXP replacements for google HTML
     <p>User need, reason or source</p>
   </th>
   </tr>
-  
+
   <tr><td><p>
     Added a simple save and return method into the service
   </p></td><td><p>
     There is a strong user need to be able to complete the application over a number of sessions. We've added a method based on an alpha GDS pattern that uses an email with a return link. We did have this before but it had been removed for the 'reduced' MVP.
   </p></td></tr>
-  
+
   <tr><td><p>
     Updated Bacs payment information
   </p></td><td><p>
     We added account name to the Bacs details. It's not required by the Bacs standard, but when we did a little research on typical bank payment screens, we discovered that it's an optional field. We felt it would be helpful to users to say what to use.
   </p></td></tr>
-  
+
   <tr><td><p>
     Added back links to 3 pages: check answers, payment and Bacs
   </p></td><td><p>
     These were added to have a consistent interface for users.
   </p></td></tr>
-  
+
   <tr><td><p>
     Update content following a content review by legal and subject matter experts.
   </p></td><td><p>
     These were added to have a consistent interface for users.
   </p></td></tr>
-  
+
   </table>
-  
-  
-  
-  
+
+
+
+
   <h2 class="heading-large">Version 10 to 11</h2>
   <p><a href="index-v11">Version 11</a></p>
-  
+
   <table class="change-log">
   <tr>
   <th>
@@ -167,39 +167,39 @@ REGEXP replacements for google HTML
     <p>User need, reason or source</p>
   </th>
   </tr>
-  
+
   <tr><td><p>
     Add BACS payment information to the final page and the application received email
   </p></td><td><p>
-    We'd seen some evidence from earlier testing that is we added the BACS payment information to a spearate page that some users did not click through to the final page. Therefore we've move the details to the final page and changed the continue button to 'Send application'.
+    We'd seen some evidence from earlier testing - where we added the BACS payment information to a separate page - showing some users did not click through to the final page. Therefore we've move the details to the final page and changed the continue button to 'Send application'.
   </p></td></tr>
-  
+
   <tr><td><p>
     Added GOV.UK Pay as the method for card payments instead of Worldpay.
   </p></td><td><p>
     GOV.UK Pay offers a better user experience and is more accessible than the Worldpay option.
   </p></td></tr>
-  
+
   <tr><td><p>
     Change done page to match new GDS pattern
   </p></td><td><p>
     The GDS pattern for the done page was updated to increase the heading size and margins.
   </p></td></tr>
-  
+
   <tr><td><p>
     Change use of term 'technical management' to 'technical competence'
   </p></td><td><p>
     Guidance on GOV.UK refers to 'technical competence' and so it's better for users to have a consistent use of terminology.
   </p></td></tr>
-  
+
   </table>
-  
-  
-  
-  
+
+
+
+
   <h2 class="heading-large">Version 9 to 10</h2>
   <p><a href="index-v10">Version 10</a></p>
-  
+
   <table class="change-log">
   <tr>
   <th>
@@ -209,95 +209,95 @@ REGEXP replacements for google HTML
     <p>User need, reason or source</p>
   </th>
   </tr>
-  
+
   <tr><td colspan="2"><p>
     v10 contains many big changes following a decision to build a slightly smaller MVP. We won't list all those changes here but these are the major changes.
   </p></td></tr>
-  
+
   <tr><td><p>
     Allow users to skip postcode entry for site without a postcode.
   </p></td><td><p>
     Some (rural) sites don't have a postcode and this causes problems for users.
   </p></td></tr>
-  
+
   <tr><td><p>
     Clarify help text for directors' date of birth.
   </p></td><td><p>
     A couple of users thought that this is a ‘security credential’ not to allow us to ‘perform’ a security check.
   </p></td></tr>
-  
+
   <tr><td><p>
     Adjust category names to add 'land treatment'.
   </p></td><td><p>
     A user pointed out that the land treatment text in storage hint was confusing and that adding the keyword to mobile plant would help select this category with confidence.
   </p></td></tr>
-  
+
   <tr><td><p>
     Remove save and return (for now)
   </p></td><td><p>
     We know users want this but we don't have enough information about the required software (Identity Management) to build this yet.
   </p></td></tr>
-  
+
   <tr><td><p>
     Add page to list everything that is needed for the application
   </p></td><td><p>
     Without save and return, users need to know up front what they need in order to apply.
   </p></td></tr>
-  
+
   <tr><td><p>
     Add page to allow users to apply using PDF forms, if their permit choice or applicant type is not available in the service.
   </p></td><td><p>
     Users need to know how to apply, even if they can't apply online initially because some permits are not covered by the service.
   </p></td></tr>
-  
+
   <tr><td><p>
     Remove cost page and move cost to what you need page.
   </p></td><td><p>
     Users like this page but it's not critical to a successful application so it has been de-prioritised for MVP.
   </p></td></tr>
-  
+
   <tr><td><p>
     Move management scheme information to the declaration section.
   </p></td><td><p>
     It's not critical to a successful application so it has been de-prioritised for MVP.
   </p></td></tr>
-  
+
   <tr><td><p>
     Move applicant (permit holder) type page to before the task list.
   </p></td><td><p>
     Allows non-company users to apply, even if they can't apply online initially because we will build first for limited companies only.
   </p></td></tr>
-  
+
   <tr><td><p>
     Clarify on the 'application sent' what happens after we receive the application. Remove reference to 5 days.
   </p></td><td><p>
     Users were slightly confused about the use of the term 'complete'. Users who had applied before (agents) knew the term 'duly made' and wondered if that was the same as 'complete'. The timescale was included becasue we thought it was helpful but users found it confusing.
   </p></td></tr>
-  
+
   <tr><td><p>
     Combine company name and address page.
   </p></td><td><p>
     The two items are for users to check and are not editable so it is a simplification to show them together in context. Testing shows that this performs OK.
   </p></td></tr>
-  
+
   <tr><td><p>
     Move Company Secretary email to the contact details screen.
   </p></td><td><p>
     When this was collected separately, and later, users were confused about which contact would get what information. We've put the inputs together and so far testing shows that this is clearer to users.
   </p></td></tr>
-  
+
   <tr><td><p>
     Move technical manager contact to after the qualification type pages.
   </p></td><td><p>
     When this was collected first, users were confused because they did not always have a name of someone with a qualification, if they were in the process of setting up a site and the person was 'getting' the qualification. Testing shows that users are happy with this new flow.
   </p></td></tr>
-  
+
   <tr><td><p>
     Move technical manager contact to after the 'qualification type' pages.
   </p></td><td><p>
     When this was collected first, users were confused because they did not always have a name of someone with a qualification, if they were in the process of setting up a site and the person was 'getting' the qualification. Testing shows that users are happy with this new flow.
   </p></td></tr>
-  
+
   <tr><td><p>
     Replace WAMITAB number with a certificate upload.
   </p></td><td><p>
@@ -311,15 +311,15 @@ REGEXP replacements for google HTML
   </p></td></tr>
 
   </table>
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
   <h2 class="heading-large">Version 8 to 9</h2>
   <p><a href="index-v9">Version 9</a></p>
-  
+
   <table class="change-log">
   <tr>
   <th>
@@ -329,7 +329,7 @@ REGEXP replacements for google HTML
     <p>User need, reason or source</p>
   </th>
   </tr>
-  
+
   <tr><td colspan="2"><p>
     v9 was a minor version with few changes.
   </p></td></tr>
@@ -339,11 +339,11 @@ REGEXP replacements for google HTML
   </p></td><td><p>
     Users had poor recall of having setup a save and return. We wanted to test another flow.
   </p></td></tr>
-  
+
 </table>
-  
-  
-  
+
+
+
   <h2 class="heading-large">Version 7 to 8</h2>
   <p><a href="index-v8">Version 8</a></p>
 
@@ -358,13 +358,13 @@ REGEXP replacements for google HTML
 </tr>
 
 <tr><td><p>
-Swap card payment method to use Worldpay. 
+Swap card payment method to use Worldpay.
 </p></td><td><p>
 Business decision taken to use Worldpay initially and not GOV.UK Pay.
 </p></td></tr>
 
 <tr><td><p>
-Allow users to choose to order a location screening check before they carry on with the application. 
+Allow users to choose to order a location screening check before they carry on with the application.
 </p></td><td><p>
 This has been added an an experiment to test in the next round of remote testing. It's been added because we know that users (about 250 a year) have a need to check their location before a full application (25% fail at this stage) and we know that some applications (5%) fail the location check after a full application.
 </p></td></tr>
@@ -400,7 +400,7 @@ The user does not have to scan their original certificate and continuing compete
 </p></td></tr>
 
 <tr><td><p>
-Added a choice screen for the technically qualified manager to state what type of qualification the manager has. 
+Added a choice screen for the technically qualified manager to state what type of qualification the manager has.
 </p></td><td><p>
 The user only has to read the guidance appropriate to their qualifiation.
 </p></td></tr>
@@ -420,14 +420,14 @@ This helps ensure we're meeting GDS standards.
 <tr><td><p>
 Make the input box for director's date of birth slightly wider so it looks like a rectangle not a square.
 </p></td><td><p>
-On user assumed that the square box was a checkbox. Although this was only one user, it seems sensible to avoid replicating the appearance of a checkbox. 
+On user assumed that the square box was a checkbox. Although this was only one user, it seems sensible to avoid replicating the appearance of a checkbox.
 </p></td></tr>
 
 
 <tr><td><p>
 Added option to give different main UK business and billing addresses for limited companies.
 </p></td><td><p>
-A company permit holder may have a different main business address and/or billing address from the registered office address listed at Companies House. 
+A company permit holder may have a different main business address and/or billing address from the registered office address listed at Companies House.
 </p></td></tr>
 
 
@@ -452,7 +452,7 @@ All three users in the Sheffield lab who were selecting rule sets in this catego
 <tr><td><p>
 Fix error in convictions help text and reduce complexity by showing only the correct text for each permit holder type.
 </p></td><td><p>
-Mistake in text spotted by both users and staff: "...or employees of a company” is not correct. The actual guidance is: ‘director, manager, secretary or similar officer’. 
+Mistake in text spotted by both users and staff: "...or employees of a company” is not correct. The actual guidance is: ‘director, manager, secretary or similar officer’.
 </p></td></tr>
 
 <tr><td><p>
@@ -492,11 +492,11 @@ Agreed with business to simplify requirements so that a mining waste plan check 
 </p></td></tr>
 
 <tr><td><p>
-Add these waste transfer station rule sets to the list of available permits: 
-2008-10 and 2008-11 inert waste; 
-2008-24 clinical waste and healthcare waste; 
-2008-25 clinical waste and healthcare waste treatment; 
-2009-5 inert and excavation waste under 250kte; 
+Add these waste transfer station rule sets to the list of available permits:
+2008-10 and 2008-11 inert waste;
+2008-24 clinical waste and healthcare waste;
+2008-25 clinical waste and healthcare waste treatment;
+2009-5 inert and excavation waste under 250kte;
 2009-6 inert and excavation waste transfer station with treatment under 250kte
 </p></td><td><p>
 These permits are available - the GOV.UK page was incorrect (it is being fixed soon).
@@ -519,7 +519,7 @@ Allow user to give a trading name for company, partnership or sole trader.
 </p></td><td><p>
 Users who trade as 'Jane's Motors' may have a company called 123 Autos Ltd but hardly ever use that name. Collecting the trading name means that we can refer to their business using the term they most often use.
 </p></td></tr>
-  
+
 <tr><td><p>
 Added a timeout page.
 </p></td><td><p>
@@ -551,7 +551,7 @@ Helps users to work out what to do if they try to visit a URL that does not exis
 </p></td></tr>
 
 <tr><td><p>
-In HTML, add a 'rel="noopener noreferrer"' attribute to any links that use 'target="_blank"'. 
+In HTML, add a 'rel="noopener noreferrer"' attribute to any links that use 'target="_blank"'.
 </p></td><td><p>
 GDS recommendation: this protects users against security vulnerabilities associated with the 'target="_blank"' attribute.
 </p></td></tr>
@@ -583,7 +583,7 @@ Some users found the deposit for recovery tricky to find and it's a popular perm
 <tr><td><p>
 Add a page to collect dates of birth for company directors.
 </p></td><td><p>
-Business requirement. We use this to check conviction and other records. To help users, we propose to get a list of the 'active' company directors from Companies House together with month and year. Users then will be asked to supply the day date for each director. 
+Business requirement. We use this to check conviction and other records. To help users, we propose to get a list of the 'active' company directors from Companies House together with month and year. Users then will be asked to supply the day date for each director.
 </p></td></tr>
 
 <tr><td><p>
@@ -616,7 +616,7 @@ We can't use the OS Places postcode lookup without adding this statement and a l
 
 
 
-       
+
     <h2 class="heading-large">Version 5 to 6</h2>
     <p><a href="index-v6">Version 6</a></p>
 
@@ -672,17 +672,17 @@ Update drainage questions for SR2015-17/18 to a first draft for inital testing. 
 This is a first draft for user lab testing based on a smart answer format.
 </p></td></tr>
 
-</table>   
+</table>
 
 
 
 
-      
+
       <h2 class="heading-large">Version 4 to 5</h2>
   <p><a href="index-v5">Version 5</a> incorporates feedback from user testing and a GDS review of how we were using the task list pattern. </p>
 
   <table class="change-log">
-      
+
           <tr>
               <th>
                   <p>Summary of change in v5</p>
@@ -763,7 +763,7 @@ This is a first draft for user lab testing based on a smart answer format.
                   <p>Weight limit is only part of the rules. 'Comply with' not Plain English.</p>
               </td>
           </tr>
-          
+
 
 <tr><td><p>
 Change legal warning styling to panel
@@ -810,18 +810,18 @@ Allows users to find a contact method on every if they are unable to complete th
 </p></td></tr>
 
 
-          
-      
-  </table>        
-      
-      
+
+
+  </table>
+
+
 
 
       <h2 class="heading-large">Version 3 to 4</h2>
   <p><a href="index-v4">Version 4</a> incorporates feedback from the third round of user testing. </p>
 
   <table class="change-log">
-      
+
           <tr>
               <th>
                   <p>Summary of change in v4</p>
@@ -870,17 +870,17 @@ Allows users to find a contact method on every if they are unable to complete th
                   <p>Convictions and bankruptcy: users not filling in because they don't think it is applicable to them.</p>
               </td>
           </tr>
-      
+
   </table>
-  
-  
+
+
 
 
 <h2 class="heading-large">Version 2a to 3</h2>
 <p><a href="index-v3">Version 3</a> uses the newly-published GDS pattern for the task list.</p>
 
 <table class="change-log">
-  
+
     <tr>
       <th>
         <p>Summary of change in v3</p>
@@ -907,18 +907,18 @@ Allows users to find a contact method on every if they are unable to complete th
         <p>GDS service standard - use the GOV.UK design patterns</p>
       </td>
     </tr>
-  
+
 </table>
 <p></p>
 
 
 
-      
+
      <h2 class="heading-large">Version 2 to 2a</h2>
      <p><a href="index-v2a">Version 2a</a> adds a save and return code and a task list based on the PAFS code</p>
-      
+
      <table class="change-log">
-      
+
        <tr>
         <th>
          <p>Summary of change in v2a</p>
@@ -943,16 +943,16 @@ Allows users to find a contact method on every if they are unable to complete th
          <p>V1 research - users don&rsquo;t think they can complete in one go</p>
         </td>
        </tr>
-      
-     </table>
-      
-      
 
-      
+     </table>
+
+
+
+
      <h2 class="heading-large">Version 1 to 2</h2>
      <p><a href="index-v2">Version 2</a> incorporates feedback from the first round of user testing.</p>
      <table class="change-log">
-      
+
        <tr>
         <th>
          <p>Summary of change in v2</p>
@@ -1081,10 +1081,10 @@ Allows users to find a contact method on every if they are unable to complete th
          <p>User feedback.</p>
         </td>
        </tr>
-      
+
      </table>
-      
-      
+
+
 
 
 <h2 class="heading-large">Version 0 to 1</h2>
@@ -1092,7 +1092,7 @@ Allows users to find a contact method on every if they are unable to complete th
 <p><a href="index-v1">Version 1</a> was our first main iteration for testing</p>
 
 <table class="change-log">
-  
+
     <tr>
       <th>
         <p>Summary of change in v1</p>
@@ -1149,10 +1149,10 @@ Allows users to find a contact method on every if they are unable to complete th
         <p>Shows likely journey as we won&rsquo;t be allowed a start page due to volume of transactions</p>
       </td>
     </tr>
-  
+
 </table>
-        
-        
+
+
 <p>&nbsp;</p>
 
 <p>Feedback from EA staff:<br>

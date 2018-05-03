@@ -10,7 +10,7 @@ const async = require('async')
 // small test edit
 
 var folder = "v13"
-var servicename = "Apply for a standard rules waste permit"
+var servicename = "Apply for a standard rules environmental permit"
 var paymentMethod = "govpay"  // or "govpay"
 
 var sample = require('./views/'+folder+'/custom_inc/sample-permit.js')
@@ -126,6 +126,25 @@ router.get('save-and-return/email-save-link', function (req, res) {
   })
 })
 
+// Confirm operator type=======================================================
+
+router.get('/operator/company/company-decision', function (req, res) {
+  // get the answer from the query string (eg. Limited company, individual, sole trader)
+  var operatorType = req.query.operatorType
+
+  if (operatorType === 'Limited company') {
+    // redirect to the relevant page
+    res.redirect("/"+ folder + '/operator/company/company-name')
+  } else if (operatorType === 'Individual') {
+      // redirect to the relevant page
+    res.redirect("/"+ folder + '/operator/individual/individual-details')
+  } else {
+    // if operator type is sole trader (or is missing) redirect to the page requested
+    res.redirect("/"+ folder + '/operator/sole-trader/sole-trader')
+  }
+})
+
+module.exports = router
 
 // Select permit ==============================================================
 
@@ -157,7 +176,7 @@ router.post('/selectpermit/permit-category2', function (req, res) {
 // Check category is in-scope ============================
 
 router.post('/selectpermit/check-category', function (req, res) {
-  if(req.body['chosenCategory']=='Flood risk activities' || req.body['chosenCategory']=='Radioactive substances for non-nuclear sites' || req.body['chosenCategory']=='Water discharges' || req.body['operatorType']!='Limited company') { // These categories are NOT online
+  if(req.body['chosenCategory']=='Flood risk activities' || req.body['chosenCategory']=='Radioactive substances for non-nuclear sites' || req.body['chosenCategory']=='Water discharges' || (req.body['operatorType']!='Limited company' && req.body['operatorType']!='Sole trader' && req.body['operatorType']!='Individual')) { // These categories are NOT online
     // go on to 'paper' form page'
     res.render(folder + '/selectpermit/permit-not-in-service',{})
   } else {

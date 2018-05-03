@@ -18,9 +18,15 @@
 
 <h1 class="heading-large" id="radio_label">{{title}}</h1>
 
-<form action="/v13/operator/individual/convictions" method="post">
+<form action="/v13/operator/sole-trader/convictions" method="post">
 
-
+<p>
+  <span class="postcode-prefix">Postcode:</span>
+  <span class="postcode">BS1 5AH</span>
+  <a href="/{{folder}}/operator/sole-trader/postcode">
+      Change<span class="visuallyhidden"> postcode</span>
+  </a>
+</p>
 
 <fieldset>
   <legend class="visuallyhidden">Site address</legend>
@@ -46,7 +52,6 @@
     <label class="form-label" for="indiv-town">Town or city</label>
     <input type="text" class="form-control form-control-char-40" id="indiv-town" />
   </div>
-
 
 </fieldset>
 
