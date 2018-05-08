@@ -2,6 +2,21 @@
 
 {% set title = "Task list: apply for a standard rules environmental permit" %}
 
+{% set IndividualChecked = '' %}
+{% if permit.operatorType=='Individual' %}
+    {% set HrefLink = '/v13/operator/individual/individual-details' %}
+{% endif %}
+
+{% set SoleTraderChecked = '' %}
+{% if permit.operatorType=='Sole trader' %}
+    {% set HrefLink = '/v13/operator/sole-trader/sole-trader' %}
+{% endif %}
+
+{% set LimitedCompanyChecked = '' %}
+{% if permit.operatorType=='Limited company' %}
+    {% set HrefLink = '/v13/operator/company/company-name' %}
+{% endif %}
+
 {% block page_title %}
 {{title}} - GOV.UK
 {% endblock %}
@@ -69,8 +84,8 @@
               <span class="task-list-section-number">1. </span> Before you apply
             </h2>
             <ul class="task-list-items">
-              
-              
+
+
               <li class="task-list-item {% if taskListError and permit.costTime==null %} form-group-error{% endif %}" id="{{ tCheckCost  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
                {% if taskListError and permit.costTime==null %}
                  <span class="error-message">
@@ -80,13 +95,13 @@
                <a class="task-name" href="/{{folder}}/selectpermit/cost-and-time" {% if permit.costTime %} aria-describedby="cost-and-time-completed"{% endif %}>
                  {{ tCheckCost }}
                </a>
-               {% if permit.costTime %} 
-               <strong class="task-completed" id="cost-and-time-completed">Completed</strong> 
+               {% if permit.costTime %}
+               <strong class="task-completed" id="cost-and-time-completed">Completed</strong>
                {% else %}
                <input type="hidden" name="complete[]" value="{{ tCheckCost }}">
                {% endif %}
              </li>
-             
+
 
               <li class="task-list-item {% if taskListError and permit.readRules==null %} form-group-error{% endif %}" id="{{ tCheckRules  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
               {% if taskListError and permit.readRules==null %}
@@ -211,7 +226,7 @@
                   Complete this task
                 </span>
                 {% endif %}
-                <a class="task-name" href="/{{folder}}/operator/site-operator-confirm" {% if permit.bankruptcyInsolvencyDetails!=null %} aria-describedby="site-operator-completed"{% endif %}>
+                <a class="task-name" href="{{HrefLink}}" {% if permit.bankruptcyInsolvencyDetails!=null %} aria-describedby="{{HrefLink}}"{% endif %}>
                   {{ tPermitHolder }}
                 </a>
                 {% if permit.bankruptcyInsolvencyDetails!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong>

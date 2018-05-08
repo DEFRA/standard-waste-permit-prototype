@@ -10,23 +10,15 @@
 
 <main id="content" role="main">
   {% include "includes/phase_banner_beta.html" %}
-  
+
   {{backlink|safe}}
-  
+
   <div class="grid-row">
     <div class="column-two-thirds">
 
 <h1 class="heading-large" id="radio_label">{{title}}</h1>
 
 <form method="post" action="{{formAction}}">
-  
-<p>
-  <span class="postcode-prefix">Postcode:</span>
-  <span class="postcode">BS1 5AH</span>
-  <a href="/{{folder}}/address/postcode">
-      Change<span class="visuallyhidden"> postcode</span>
-  </a>
-</p>
 
 <fieldset>
   <legend class="visuallyhidden">Site address</legend>
@@ -53,6 +45,12 @@
     <input type="text" class="form-control form-control-char-40" id="town" />
   </div>
 
+  <div class="form-group">
+    <label class="form-label" for="postcode">UK postcode (optional)
+    </label>
+    <input type="text" class="form-control form-control-char-10" id="postcode" name="sitePostCode" value="" />
+  </div>
+
 </fieldset>
 
 
@@ -62,7 +60,7 @@
 
 </form>
 
-      
+
     </div>
   </div>
 
