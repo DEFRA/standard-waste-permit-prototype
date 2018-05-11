@@ -5,7 +5,6 @@
 {% block page_title %}
     {{title}} - GOV.UK
 {% endblock %}
-{% set version = "v14" %}
 
 {% block content %}
 <main id="content" role="main">
@@ -18,7 +17,7 @@
 
     <h1 class="heading-large">{{title}}</h1>
 
-    <form action="/{{version}}/operator/individual/postcode" method="post">
+    <form action="/{{folder}}/operator/individual/postcode" method="post">
       <input type="hidden" name="permitHolderDetails" value="yes">
 
           <div class="form-group">
