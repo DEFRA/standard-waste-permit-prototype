@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% set title = "What are the permit holder’s contact details?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+
+    <h1 class="heading-large">{{title}}</h1>
+
+    <form action="/v13/operator/sole-trader/postcode" method="post">
+
+          <div class="form-group">
+            <label class="form-label visuallyhidden" for="companyRegNum">
+              {{title}}
+            </label>
+            <label class="form-label" for="contact-phone">Email address</label>
+              <span class="form-hint">Used to send a copy of the permit and any official notices
+              </span>
+            <input class="form-control" id="contact-phone" name="contact-phone" type="text">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-email">Telephone number</label>
+              <span class="form-hint">This can be a landline or mobile
+              </span>
+            <input class="form-control" id="contact-email" name="contact-email" type="text">
+          </div>
+
+
+
+      <div class="form-group">
+        <input type="submit" class="button" value="Continue">
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+</main>
+
+{% endblock %}

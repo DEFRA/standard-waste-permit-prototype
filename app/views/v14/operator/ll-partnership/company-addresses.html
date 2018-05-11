@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% set title = "Check the company's registered address" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">{{title}}</h1>
+
+      <div class="registered-office-address">
+       <h2 class="heading-medium">
+        {{permit.companyAddress}}
+      </h2>
+    </div>
+
+    <form action="{{formAction}}" method="post">
+
+     <div class="form-group">
+        <div class="multiple-choice" data-target="reg-address-change">
+          <input id="reg-address-details" name="reg-address-details" type="checkbox" value="Yes">
+          <label for="reg-address-details" aria-describedby="reg-address-change">I want to change the registered address</label>
+        </div>
+        <div class="panel panel-border-narrow js-hidden" id="reg-address-change">
+          <p>
+            We can only issue a permit using the address registered with Companies House. To change the registered address, follow these steps.
+          </p>
+            <ul class="list list-number">
+              <li>
+                <a href="https://www.gov.uk/file-changes-to-a-company-with-companies-house" target="_blank" rel="noopener noreferrer">Tell Companies House you want to change your registered address (opens new tab)</a>. You can do this online if you have your Companies House account details.
+              </li>
+              <li>
+                Continue this application using the old address.
+              </li>
+              <li>
+                After Companies House have updated the address, return to this task and uncheck the box.
+              </li>
+          </ul>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+      {{submitButton|safe}}{{completeLink|safe}}
+    </div>
+
+  </form>
+
+</div>
+</div>
+</main>
+
+{% endblock %}

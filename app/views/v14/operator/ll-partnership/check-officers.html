@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% set directorCount=0 %}
+{% for o in officers %}
+  {% if o.resigned_on==null %}
+    {% if o.officer_role=="director" %}
+        {% set directorCount=directorCount+1 %}
+    {% endif %}
+  {% endif %}
+{% else %}
+{% endfor %}
+
+{% if directorCount>1 %}
+    {% set title = "Email address for a designated member" %}
+{% else %}
+    {% set title = "Email address for a designated member" %}
+{% endif %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+{% set version = "v14" %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+    <h1 class="heading-large">{{title}}</h1>
+
+    <form action="/{{version}}/operator/ll-partnership/officer-email" method="post" id="dob-form">
+
+      <p>
+We use the email address as a contact email for the permit. We won't include it in the public permit register.
+      </p>
+
+      <div class="form-group">
+    <fieldset>
+      <legend class="visuallyhidden">We use the email address as a contact email for the permit. We won't include it in the public permit register.</legend>
+
+
+
+  {% set loopnum=1 %}
+
+  {% for o in officers %}
+    {% if o.resigned_on==null %}
+      {% if o.officer_role=="director" %}
+        {% set dirName = o.name | reverseName %}
+
+
+        <div class="multiple-choice" data-target="contact-by-text">
+          <input id="example-contact-by-text" type="radio" name="radio-contact-group" value="No">
+          <label for="example-contact-by-text">{{ dirName }}</label>
+        </div>
+        <div class="panel panel-border-narrow js-hidden" id="contact-by-text">
+          <label class="form-label" for="contact-text-message">Email address</label>
+          <input class="form-control" name="contact-text-message" type="text" id="contact-text-message">
+        </div>
+
+        {% set loopnum=loopnum+1 %}
+      {% endif %}
+    {% endif %}
+
+  {% else %}
+    <p>No data</p>
+  {% endfor %}
+
+  </fieldset>
+
+</br>
+  <div class="form-group">
+    <input type="submit" class="button" value="Continue">
+  </div>
+
+
+  </form>
+
+      </div>
+
+    </div>
+  </div>
+  </main>
+
+  {% endblock %}

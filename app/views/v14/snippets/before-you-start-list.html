@@ -1,0 +1,140 @@
+
+
+<!-- ############################################### -->
+<h2 class="heading-medium">Before you apply:</h2>
+
+<ul class="list list-border">
+  <li>
+    we recommend that you <a href="#">contact us</a> for a pre-application discussion
+  </li>
+  
+  {% if permit.sitePlanNeeded=="Yes" %}
+    <li>
+      you should <a href="https://www.gov.uk/government/publications/environmental-permit-nature-and-heritage-conservation-screening">order a free nature and heritage screening report</a> to check that your site meets the location conditions for the permit
+    </li>
+  {% endif %}
+
+  <li>
+    check you can comply with the <a href="{{permit.guidanceURL}}" target="_blank" rel="noopener noreferrer">rules and the generic risk assessment for your permit</a>
+  </li>
+</ul> 
+
+
+
+<!-- ############################################### -->
+<h2 class="heading-medium">You’ll need to know the:</h2>
+
+<ul class="list list-border">
+  
+  {% if permit.operatorType=="Individual" %}  
+      <li>
+        name, address and date of birth for the permit holder
+      </li>
+  {% endif %}
+
+  <li>
+    contact details for the person dealing with the application
+  </li>
+
+  <li>
+    address for us to send invoices for the annual permit charge (not the initial application fee)
+  </li>
+  
+  {% if permit.sitePlanNeeded=="Yes" %}
+      <li>grid reference for the site
+      <details class="inside-list">
+        <summary><span class="summary">Help finding a grid reference</span></summary>
+        <div class="panel panel-border-narrow">
+          {% include folder+"/site/grid-reference-finder.html" %}
+        </div>
+      </details>
+      </li>
+      
+      <li>
+        site address and postcode (if it has one)
+      </li>
+  {% endif %}
+
+  {% if permit.operatorType=="Limited company" %}  
+      <li>
+        Company Secretary or a director’s email address
+      </li>
+      <li>
+        <a href="https://www.gov.uk/get-information-about-a-company">company registration number</a>
+      </li>
+      <li>
+        date of birth for every current director of the company
+      </li>
+  {% endif %}
+  
+  <li>
+    details of any <a href="">relevant convictions</a> or bankruptcy
+  </li>
+  
+  <li>
+    name and date of birth for the <a href="https://www.gov.uk/guidance/legal-operator-and-competence-requirements-environmental-permits">technically qualified manager</a>
+  </li>
+  
+</ul>
+
+
+<!-- ############################################### -->
+<h2 class="heading-medium">Documents you'll need are a:</h2>
+  
+<ul class="list list-border">
+  
+  {% if permit.sitePlanNeeded=="Yes" %}
+      <li>site plan
+        <details class="inside-list">
+          <summary><span class="summary">What your site plan must include</span></summary>
+          <div class="panel panel-border-narrow">
+            {% include folder+"/guidance/siteplan.html" %}
+          </div>
+        </details>
+      </li>
+    {% endif %}
+    
+    <li>
+      written <a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits">management system</a> (a written set of procedures that identifies and minimises the risks of pollution) - you don't need to submit this with your application but we will check it when we visit
+    </li>
+    
+    {% if permit.technicalAbilityEvidence=="Yes" %}
+      <li>copy of the <abbr title="Waste Management Industry Training and Advisory Board">WAMITAB</abbr> certificate or a letter or email to show you have registered to get one.
+      <details class="inside-list">
+        <summary><span class="summary">Relevant WAMITAB qualifications</span></summary>
+        <div class="panel panel-border-narrow">
+          {{permit.WAMITAB}}
+        </div>
+      </details>
+    </li>
+    {% endif %}  
+          
+    {% if permit.firePlanNeeded=="Yes" %}
+      <li>fire prevention plan<br>
+         <a href="https://www.gov.uk/government/publications/fire-prevention-plans-environmental-permits/fire-prevention-plans-environmental-permits" target="_blank" rel="noopener noreferrer">Fire prevention plan guidance on GOV.UK (opens new tab)</a>
+       </li>
+    {% endif %}
+            
+
+    {% if permit.baselineReportRequired=="Yes" %}
+      <li>baseline report</a><br>
+      <a href="#" target="_blank" rel="noopener noreferrer">Baseline report guidance on GOV.UK (opens new tab)</a></li>
+    {% endif %}
+
+    {% if permit.wasteRecoveryPlan=="Yes" %}
+      <li>waste recovery plan<br>
+         <a href="https://www.gov.uk/guidance/waste-recovery-plans-and-permits" target="_blank" rel="noopener noreferrer">Waste recovery plan guidance on GOV.UK (opens new tab)</a>
+      </li>
+    {% endif %}
+              
+</ul>
+        
+        
+<!-- ############################################### -->
+<h2 class="heading-medium">To pay you'll need:</h2>
+
+<ul class="list list-border">
+  <li>
+    a debit or credit card to pay £2,641 or £3,926, depending on the permit
+  </li>
+</ul>
