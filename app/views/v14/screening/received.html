@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Location check received - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <div class="govuk-box-highlight">
+        <h1 class="bold-large">
+          Location check received
+        </h1>
+
+        <p>
+          Your reference is {{ permit.permitRefNumber }}
+        </p>
+      </div>
+
+      <p class="text">
+        We've sent a confirmation to {{ permit.contactEmail }}.
+      </p>
+
+      <h2 class="heading-medium">What happens next</h2>
+      <p class="text">
+        We'll contact you within 5 working days to let you know the results of the check. 
+      </p>
+
+      <p class="text">
+        If the check does not report any problems we'll send you a link so you can use the information you've given already to continue the application for this permit.
+      </p>
+
+      <p class="text">The check you requested is:</p>
+
+      <ul class="list list-bullet">
+        <li>at grid reference {{permit.siteGridRef}}</li>
+        <li>for {{permit.permitName | lower }} {{permit.permitCode}}</li>
+      </ul>
+
+      <p class="text"><a href="#" class="link">What do you think of this service?</a> (takes 30 seconds)</p>
+
+      <p>&nbsp;</p>
+      <p>For testing:</p>
+      <ul class="list list-bullet">
+        <li><a href="/{{folder}}/screening/confirmation-email" target="_blank">Confirmation email</a></li>
+        <li><a href="/{{folder}}/screening/email-eligible" target="_blank">Eligible email</a></li>
+        <li><a href="/{{folder}}/screening/email-ineligible" target="_blank">Ineligible email</a></li>
+
+      </ul>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

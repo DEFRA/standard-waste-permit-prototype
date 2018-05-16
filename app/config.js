@@ -22,7 +22,7 @@ module.exports = {
   useHttps: 'true',
 
   // Cookie warning - update link to service's cookie page.
-  cookieText: 'GOV.UK uses cookies to make the site simpler. <a href="#">Find out more about cookies</a>',
+  cookieText: 'We use cookies to store an encrypted reference number, remember choices and help count visits. <a href="/v14/pages/cookies">Find out more about these cookies</a>',
 
   // Enable or disable Browser Sync
   useBrowserSync: 'true'

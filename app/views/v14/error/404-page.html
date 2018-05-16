@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+    Problem: we can't find that page - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_beta.html" %}
+    
+    {{backlink|safe}}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+            <h1 class="heading-large">
+              We can't find that page
+            </h1>
+            
+            <p>
+              Please check that the web address is correct, or you can:
+            </p>
+            
+            <ul class="list list-bullet">
+              <li>go to the <a href="/{{folder}}/check/task-list">task list for your application</a></li>
+              <li><a href="/{{folder}}/selectpermit/permit-category2">apply for a standard rules environmental permit</a></li>
+            </ul>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

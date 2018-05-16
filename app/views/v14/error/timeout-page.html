@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+    We've closed and saved your application - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_beta.html" %}
+    
+    {{backlink|safe}}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+            <h1 class="heading-large">
+              We've closed and saved your application
+            </h1>
+            
+            <p>
+              You hadn’t submitted anything for a while, so we closed your application to keep your data secure.
+            </p>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,496 @@
+{% extends "layout.html" %}
+
+{% set title = "Check your answers" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+  <h1 class="heading-large">{{title}}</h1>
+
+  <dl class="govuk-check-your-answers cya-questions-short">
+
+    <div>
+      <dt class="cya-question">
+        Contact details
+      </dt>
+      <dd class="cya-answer">
+        {{permit.contactFirstName}} {{permit.contactLastName}}<br>
+        {% if permit.isContactAnAgent == "yes" %}
+        This person is an agent or consultant<br>
+        {% endif %}
+        Telephone {{permit.contactTelephone}}<br>
+        {{permit.contactEmail}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/contact/contact-details">
+          Change <span class="visuallyhidden">Contact details</span>
+        </a>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">
+        Company name
+      </dt>
+      <dd class="cya-answer">
+        {{permit.companyName}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/company/company-name">
+          Change <span class="visuallyhidden">company name</span>
+        </a>
+      </dd>
+    </div>
+
+
+    {% if permit.useBusinessTradingName=="Yes" %}
+    <div>
+      <dt class="cya-question">
+        Business trading name
+      </dt>
+      <dd class="cya-answer">
+        {{permit.businessTradingName}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/company/company-name">
+          Change <span class="visuallyhidden">trading name</span>
+        </a>
+      </dd>
+    </div>
+    {% endif %}
+
+
+    <div>
+      <dt class="cya-question">
+        Company address
+      </dt>
+      <dd class="cya-answer">
+        {{permit.companyAddress}}
+      </dd>
+      <dd class="cya-change">
+       <!-- <a href="/{{folder}}/operator/company/company-name">
+          Change <span class="visuallyhidden">company address</span>
+        </a> -->
+      </dd>
+    </div>
+
+    {% if permit.differentMainBusinessAddress=="Yes" %}
+    <div>
+      <dt class="cya-question">
+        Main business address
+      </dt>
+      <dd class="cya-answer">
+        {{permit.mainBusinessAddress}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/company/main-business-postcode">
+          Change <span class="visuallyhidden">main business address</span>
+        </a>
+      </dd>
+    </div>
+    {% endif %}
+
+    {% if permit.differentBillingAddress=="Yes" or permit.mainAsBillingAddress =="Yes" %}
+    <div>
+      <dt class="cya-question">
+        Billing address
+      </dt>
+      <dd class="cya-answer">
+        {% if permit.mainAsBillingAddress =="Yes" %}
+        {{permit.mainBusinessAddress}}
+        {% else %}
+        {{permit.billingAddress}}
+        {% endif %}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/company/billing-postcode">
+          Change <span class="visuallyhidden">billing address</span>
+        </a>
+      </dd>
+    </div>
+    {% endif %}
+
+      <div>
+      <dt class="cya-question">
+        Company directors' dates of birth
+      </dt>
+      <dd class="cya-answer">
+        {% for d in permit.director %}
+        {{ d }}
+        {{ permit.directorDobDay[d]}}{{ permit.directorDobRest[d]}}
+        <br>
+        {% endfor %}
+      </dd>
+      <dd class="cya-change">
+        <!-- <a href="/{{folder}}/operator/company/company-name">
+          Change <span class="visuallyhidden"> dates of birth</span>
+        </a> -->
+      </dd>
+    </div>
+
+
+    {% if permit.companySecretaryEmail!=="" %}
+    <div>
+      <dt class="cya-question">
+        Email address for permit and official notices
+      </dt>
+      <dd class="cya-answer">
+        {{permit.companySecretaryEmail}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/company/company-secretary">
+          Change <span class="visuallyhidden"> email address for permit and official notices</span>
+        </a>
+      </dd>
+    </div>
+    {% endif %}
+
+
+
+    <div>
+      <dt class="cya-question">
+        Relevant offences
+      </dt>
+      <dd class="cya-answer">
+        {{permit.offences}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/declare-offences">
+          Change <span class="visuallyhidden"> relevant offences</span>
+        </a>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">
+        Bankruptcy or insolvency
+      </dt>
+      <dd class="cya-answer">
+        {{permit.bankruptcyInsolvency}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/bankruptcy-insolvency">
+          Change <span class="visuallyhidden"> bankruptcy or insolvency</span>
+        </a>
+      </dd>
+    </div>
+
+    <!-- DONT'T SHOW SITE FOR MOBILE PERMITS -->
+    {% if
+    permit.permitID=="SR-2010-4" or
+    permit.permitID=="SR-2010-5" or
+    permit.permitID=="SR-2010-6" or
+    permit.permitID=="SR-2010-11" or
+    permit.permitID=="SR-2008-27"
+    %}
+
+    <!-- DO NOT SHOW -->
+    {% else %}
+
+    <div>
+      <dt class="cya-question">
+        Site name
+      </dt>
+      <dd class="cya-answer">
+        {{permit.siteName}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/site/site-name">
+          Change <span class="visuallyhidden">site name</span>
+        </a>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">
+        Grid reference for the site
+      </dt>
+      <dd class="cya-answer">
+        {{permit.siteGridRef}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/site/grid-reference">
+          Change <span class="visuallyhidden">grid reference</span>
+        </a>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">
+        Site address
+      </dt>
+      <dd class="cya-answer">
+        {{permit.siteAddress}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/address/address">
+          Change <span class="visuallyhidden">site address</span>
+        </a>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">
+        Site contact details
+      </dt>
+      <dd class="cya-answer">
+        {{permit.siteContactFirstName}} {{permit.siteContactLastName}}<br>
+        Telephone {{permit.siteContactTelephone}}<br>
+        {{permit.siteContactEmail}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/site/site-contact">
+          Change <span class="visuallyhidden">site contact details</span>
+        </a>
+      </dd>
+    </div>
+
+
+    <div>
+      <dt class="cya-question">
+        Site plan
+      </dt>
+      <dd class="cya-answer">
+        {{permit.sitePlanFilename}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/upload-site-plan">
+          Change <span class="visuallyhidden">site plan</span>
+        </a>
+      </dd>
+    </div>
+
+    {% endif %}
+
+    <!--
+    <div>
+      <dt class="cya-question">
+        Technical manager
+      </dt>
+      <dd class="cya-answer">
+        {{permit.tcmName}}<br>
+        {{ permit.tcmDobDay }} / {{ permit.tcmDobMonth }} / {{ permit.tcmDobYear }}<br>
+        Number of sites managed: {{ permit.tcmNumSites }}<br>
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/techcomp/manager-details">
+          Change <span class="visuallyhidden">technical manager</span>
+        </a>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">
+        Qualification
+      </dt>
+      <dd class="cya-answer">
+        {{permit.industryScheme}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/techcomp/industry-scheme">
+          Change <span class="visuallyhidden">qualification</span>
+        </a>
+      </dd>
+    </div>
+  -->
+
+
+    {% if permit.industryScheme=="WAMITAB" %}
+        <div>
+      <dt class="cya-question">
+        WAMITAB certificate number
+      </dt>
+      <dd class="cya-answer">
+        {{ permit.wamitabCertNum }}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/techcomp/wamitab-details">
+          Change <span class="visuallyhidden">WAMITAB certificate number</span>
+        </a>
+      </dd>
+    </div>
+    {% endif %}
+
+        {% if permit.industryScheme=="ESA-EU" %}
+        <div>
+      <dt class="cya-question">
+        ESA EU Skills scheme certificate
+      </dt>
+      <dd class="cya-answer">
+        {{ permit.technicalCertificateFile }}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/techcomp/esa-eu-details">
+          Change <span class="visuallyhidden">ESA EU Skills scheme certificate</span>
+        </a>
+      </dd>
+    </div>
+    {% endif %}
+
+        {% if permit.industryScheme=="deemed" %}
+        <div>
+      <dt class="cya-question">
+        Qualification evidence
+      </dt>
+      <dd class="cya-answer">
+        {{ permit.deemedCertificateFile1 }} {{ permit.deemedCertificateFile2 }}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/techcomp/deemed">
+          Change <span class="visuallyhidden">qualification evidence</span>
+        </a>
+      </dd>
+    </div>
+    {% endif %}
+
+      {% if permit.industryScheme=="getting-qualification" %}
+        <div>
+      <dt class="cya-question">
+        Course registration email or letter
+      </dt>
+      <dd class="cya-answer">
+        {{ permit.deemedCertificateFile1 }}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/techcomp/getting-it">
+          Change <span class="visuallyhidden">course registration email or letter</span>
+        </a>
+      </dd>
+    </div>
+    {% endif %}
+
+  {% if permit.firePlanNeeded=="Yes" %}
+  <div>
+    <dt class="cya-question">
+      Fire prevention plan filename
+    </dt>
+    <dd class="cya-answer">
+      {{permit.firePlanFilename}}
+    </dd>
+    <dd class="cya-change">
+      <a href="/{{folder}}/evidence/upload-fire-plan">
+        Change <span class="visuallyhidden">name</span>
+      </a>
+    </dd>
+  </div>
+  {% endif %}
+
+  <div>
+    <dt class="cya-question">
+     Claim confidentiality
+   </dt>
+   <dd class="cya-answer">
+    {{permit.confidential}}
+  </dd>
+  <dd class="cya-change">
+    <a href="/{{folder}}/check/claim-confidentiality">
+      Change <span class="visuallyhidden">claim confidentiality</span>
+    </a>
+  </dd>
+</div>
+
+<div>
+  <dt class="cya-question">
+    Invoice address
+  </dt>
+  <dd class="cya-answer">
+    {{permit.invoiceAddress}}
+  </dd>
+  <dd class="cya-change">
+    <a href="/{{folder}}/billing/invoice-postcode">
+      Change <span class="visuallyhidden">invoice address</span>
+    </a>
+  </dd>
+</div>
+
+<div>
+  <dt class="cya-question">
+    Invoice contact details
+  </dt>
+  <dd class="cya-answer">
+    {{permit.invoiceName}}<br>
+    {% if permit.invoiceEmail!=="" %}
+    {{permit.invoiceEmail}}<br>
+    {% endif %}
+    {% if permit.invoiceTelephone!=="" %}
+    Telephone {{permit.invoiceTelephone}}<br>
+    {% endif %}
+  </dd>
+  <dd class="cya-change">
+    <a href="/{{folder}}/billing/invoice-contact">
+      Change <span class="visuallyhidden">Contact details</span>
+    </a>
+  </dd>
+</div>
+
+</dl>
+
+
+<h2 class="heading-medium">
+  Declaration
+</h2>
+
+<div class="form-group notice">
+  <i class="icon icon-important">
+    <span class="visually-hidden">Warning</span>
+  </i>
+  <strong class="bold-small">
+    You can be fined if you give false or misleading information.
+  </strong>
+</div>
+
+<p class="text">
+  I confirm that:
+</p>
+<ul class="list list-bullet">
+  <li>we'll have a written <a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits">management system (opens new tab)</a> in place before we start operating</li>
+  <li>I'm authorised to apply for this permit by the organisation or individual responsible</li>
+  <li>the information I've given is true</li>
+</ul>
+
+<div class="form-group">
+    <a target="_blank" rel="noopener noreferrer" href="/{{folder}}/pages/privacy">Privacy: how we use your personal information (opens new tab)</a>
+</div>
+
+<div class="panel panel-border-wide">
+  <p>
+    If you want a copy of your application, print this page now. You won’t get a copy after you submit.
+  </p>
+</div>
+
+<form method="post" action="{{formAction}}">
+
+  <!-- ({{permit.permitCost}}) -->
+
+  <div class="form-group">
+    <button type="submit" class="button" name="Confirm and pay">Confirm and continue
+    </button> <br>
+<!--    <span class="form-hint button-hint">
+      {% if paymentMethod=="govpay" %}
+      on GOV.UK Pay
+      {% elif paymentMethod=="worldpay" %}
+      on the Worldpay secure payment site
+      {% endif %}
+    </span>-->
+  </div>
+
+</form>
+
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
