@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% set title = "Mining waste management plan" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+        
+        <!-- This page is only shown for SR-2009-8  ##################### -->
+
+        <h1 class="heading-large">{{title}}</h1>
+        
+        {% if permit.miningWasteManagementPlanConfirmed %} 
+          <div class="panel panel-border-wide">
+          <p>
+            You confirmed that your plan meets the requirements.
+          </p>
+          </div>
+        {% endif %}
+        
+        <div class="panel panel-border-wide">
+          <p>
+            You must have a written waste management plan. It should cover how your operation will deal with mining waste.
+          </p>
+        </div>
+        <p>
+          <a href="https://www.gov.uk/government/publications/mining-waste-operations-epr-614-additional-guidance" target="_blank">Mining waste operations guidance on GOV.UK (opens new tab)</a> explains what your plan should include.
+        </p>
+        <p>
+          You don’t have to send us the plan now but we will check it when we visit your site.
+        </p>
+
+        <form method="post" action="{{formAction}}">
+          
+          <input type="hidden" name="miningWasteManagementPlanConfirmed" value="Yes">
+          
+          <div class="form-group">
+            <button type="submit" class="button" name="confirm">
+              {% if permit.miningWasteManagementPlanConfirmed %}
+                Return to task list
+              {% else %}
+                Our plan meets the requirements
+              {% endif %}
+          </button>
+          </div>
+
+        </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% set title = "Check company directors" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+
+{% if numberResults==0 %}
+
+<h1 class="heading-large">We couldn't find that company</h1>
+
+    <p>We couldn't find a company with the number <b>{{searchTerm}}</b> at Companies House</p>
+    
+    <p><a href="/{{folder}}/operator/company/company-name">Enter a different number</a>
+    </p>
+
+{% else %}
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+<form action="{{formAction}}" method="post">
+
+      <div class="form-group">
+        <label class="form-label" for="companyRegNum">
+          Company number (eg 04094290 or 02366661)
+        </label>
+        <input class="form-control" id="companyRegNum" name="companyRegNum" type="text" value={{searchTerm}}>
+      </div>
+    
+
+      <div class="form-group">
+      <button type="submit" class="button" name="Search">Search</button>
+    </div>
+
+  </form>
+
+{% set role="director" %}
+
+<p>{{numberResults}} officer{{'s' if numberResults>1}} for company number <b>{{searchTerm}}</b><br>
+Resigned: {{resigned_count}}<br>
+Active: {{active_count}}<br>
+Directors:
+</p>
+
+<table>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Day of birth</th>
+          <th>Month</th>
+          <th>Year</th>
+          <th>Resigned on</th>
+        </tr>
+      
+{% for o in officers %}
+  {% if o.resigned_on==null %}
+    {% if o.officer_role==role %}
+        <tr>
+          <td>{{ o.name | reverseName | title }}</td>
+          <td>{{ o.officer_role | title }}</td>
+          <td>{{ o.date_of_birth.day }}</td>
+          <td>{{ o.date_of_birth.month }}</td>
+          <td>{{ o.date_of_birth.year }}</td>
+          <td>{{ o.resigned_on }}</td>
+        </tr>
+    {% endif %}
+  {% endif %}
+
+{% else %}
+  <tr><td>No data</td></tr>
+{% endfor %}
+</table>
+
+
+
+{% endif %}
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

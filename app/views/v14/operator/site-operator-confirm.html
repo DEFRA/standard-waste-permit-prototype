@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+
+{% set title = "Confirm who the permit holder will be" %}
+
+{% set IndividualChecked = '' %}
+{% if permit.operatorType=='Individual' %}
+    {% set IndividualChecked = ' checked="checked"' %}
+{% endif %}
+
+{% set SoleTraderChecked = '' %}
+{% if permit.operatorType=='Sole trader' %}
+    {% set SoleTraderChecked = ' checked="checked"' %}
+{% endif %}
+
+{% set LimitedCompanyChecked = '' %}
+{% if permit.operatorType=='Limited company' %}
+    {% set LimitedCompanyChecked = ' checked="checked"' %}
+{% endif %}
+
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">{{title}}</h1>
+
+      <form action="/v13/operator/company/company-decision" method="get" class="form">
+        <div class="form-group">
+          <fieldset>
+
+            <legend class="visuallyhidden">{{title}}</legend>
+            <div class="multiple-choice">
+              <input id="limited-company" type="radio" name="operatorType" value="Limited company"{{LimitedCompanyChecked}}>
+              <label class="selection-button-radio" for="limited-company">
+                Limited company
+              </label>
+            </div>
+
+            <div class="multiple-choice">
+              <input id="sole-trader" type="radio" name="operatorType" value="Sole trader"{{SoleTraderChecked}}>
+              <label class="selection-button-radio" for="sole-trader">
+                Sole trader
+              </label>
+            </div>
+
+            <div class="multiple-choice">
+              <input id="individual" type="radio" name="operatorType" value="Individual"{{IndividualChecked}}>
+              <label class="selection-button-radio" for="individual">
+                Individual
+              </label>
+            </div>
+
+            <!--...
+            <div class="multiple-choice">
+              <input id="public-body" type="radio" name="operatorType" value="Local authority or public body">
+              <label class="selection-button-radio" for="public-body">
+                Local authority or public body
+              </label>
+            </div>
+            <div class="multiple-choice">
+              <input id="partnership" type="radio" name="operatorType" value="Partnership">
+              <label class="selection-button-radio" for="partnership">
+                Partnership
+              </label>
+            </div>
+            <div class="multiple-choice">
+              <input id="reg-charity" type="radio" name="operatorType" value="Registered charity">
+              <label class="selection-button-radio" for="reg-charity">
+                Registered charity
+              </label>
+            </div>
+            <div class="multiple-choice">
+              <input id="ll-partnership" type="radio" name="operatorType" value="Limited liability partnership">
+              <label class="selection-button-radio" for="ll-partnership">
+                Limited liability partnership
+              </label>
+            </div>
+            <div class="multiple-choice">
+              <input id="other-org" type="radio" name="operatorType" value="Other organisation">
+              <label class="selection-button-radio" for="other-org">
+                Other organisation, for example a club or association
+              </label>
+            </div>
+          -->
+          </fieldset>
+        </div>
+
+        <div class="form-group">
+          <input type="submit" class="button" value="Continue">
+                </div>
+
+      </form>
+
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% set title = "What’s the grid reference for the centre of the site?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<style>
+  #mapdivcontainer{display:none;}
+</style>
+
+<script language="javascript" src="/public/javascripts/map/geotools.js"></script>
+
+<script langauge="javascript">
+  function onConvertGridRef()
+  {
+  	var gr=document.getElementById('grid-reference').value;
+  	var osgb = new GT_OSGB();
+  	if (osgb.parseGridRef(gr))
+  	{
+  		var wgs84=osgb.getWGS84();
+  		var lat = wgs84.latitude;
+  		var lng = wgs84.longitude;
+      document.getElementById('lat').value = lat;
+  		document.getElementById('lng').value = lng;
+  	}
+  	else
+  	{
+  		document.getElementById('lat').value = "n/a";
+  		document.getElementById('lng').value = "n/a";
+  	}
+  }
+</script>
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_beta.html" %}
+    
+    {{backlink|safe}}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+
+          <form method="post" class="form" action="{{formAction}}">
+
+<h1 class="heading-large">{{title}}</h1>
+
+                  <!-- Grid reference -->
+                  <div class="form-group">
+                    <label class="form-label" for="grid-reference">National Grid reference
+                      <span class="form-hint">
+                        Enter 2 letters and 10 digits. For example, ST 58132 72695.
+                      </span>
+                    </label>
+                    <input type="text" class="form-control form-control-char-20" id="grid-reference" name="siteGridRef" aria-describedby="ngr_help" value="{{siteGridRef}}" />
+                  </div>
+                  
+                  <input type="hidden" id="lat" name="lat" value="" />
+                  <input type="hidden" id="lng" name="lng" value="" />
+                  
+                  <h1 class="heading-large">
+                    {% if country=="ENG" %}
+                       is in England
+                    {% elseif country=="WAL" %}
+                      is in Wales
+                    {% elseif country=="SCO" %}
+                      is in Scotland
+                    {% elseif country=="NIR" %}
+                      is in Northern Ireland
+                    {% elseif country=="NOT-ENG" %}
+                      is not in England (or in Scotland, Wales or Northern Ireland)
+                    {% else %}
+                      {{country}}
+                    {% endif %}
+                  </h1>
+
+
+                <!-- Primary button -->
+                <div class="form-group">
+                  <input onclick="onConvertGridRef()" type="submit" class="button" value="Check country" />
+                </div>
+                
+                <p>Test points</p>
+                <ul class="list list-bullet">
+                  <li>Avonmouth coast ST 49358 77588</li>
+                  <li>Avonmouth in estuary ST 48777 77903</li>
+                  <li>Centre of England SK 49602 01577</li>
+                  <li>In England near Scottish border NT 69497 06265</li>
+                  <li>In Scotland, near border NT 68513 06358</li>
+                  <li>Belfast NW 47105 28827</li>
+                  <li>England, near Welsh border SJ 41192 55495</li>
+                  <li>In Wales, near border SJ 31383 16447</li>
+                  <li>Portsmouth harbour SU 62221 02937</li>
+                  <li>In Portsmouth SZ 65393 98753</li>
+                </ul>
+
+          </form>
+
+
+          
+    </div>
+  </div>
+</main>
+
+{% endblock %}
