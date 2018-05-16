@@ -1,6 +1,10 @@
 {% extends "layout.html" %}
 
-{% set title = "Is this the right limited liability partnership?" %}
+{% if numberResults==0 %}
+    {% set title = "We can't find that limited liability partnership" %}
+{% else %}
+    {% set title = "Is this the right limited liability partnership?" %}
+{% endif %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -18,9 +22,9 @@
 
 {% if numberResults==0 %}
 
-<h1 class="heading-large">We can't find that company</h1>
+<h1 class="heading-large">We can't find that limited liability partnership</h1>
 
-    <p>We can't find a company with the number {{searchTerm}} at Companies House.</p>
+    <p>We can't find a partnership with the number {{searchTerm}} at Companies House.</p>
 
     <p><a href="/{{folder}}/operator/ll-partnership/check-officers">Enter a different number</a></p>
 
@@ -37,7 +41,7 @@
 
 
     <div class="panel panel-border-wide form-group">
-    <p>Limited liability partnership number {{company.company_number}}. <a href="/{{folder}}/operator/ll-partnership/check-officers">Enter a different number</a>.</p>
+    <p>Company number {{company.company_number}}. <a href="/{{folder}}/operator/ll-partnership/check-officers">Enter a different number</a>.</p>
     </div>
 
     <h2 class="heading-medium">Check the registered address</h2>

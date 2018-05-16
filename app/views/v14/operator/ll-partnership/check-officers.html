@@ -10,11 +10,8 @@
 {% else %}
 {% endfor %}
 
-{% if directorCount>1 %}
-    {% set title = "Email address for a designated member" %}
-{% else %}
-    {% set title = "Email address for a designated member" %}
-{% endif %}
+{% set title = "Email address for one of the designated members" %}
+
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -34,10 +31,8 @@
 
     <form action="/{{version}}/operator/ll-partnership/officer-email" method="post" id="dob-form">
 
-      <p>
-We use the email address as a contact email for the permit. We won't include it in the public permit register.
-      </p>
-
+      <p>A limited liability partnership must have at least 2 designated members. We’ll send a copy of any official notices to one of these designated members.</p>
+      <p>The main contact for the application will get a copy of all communications.</p>
       <div class="form-group">
     <fieldset>
       <legend class="visuallyhidden">We use the email address as a contact email for the permit. We won't include it in the public permit register.</legend>
@@ -48,7 +43,7 @@ We use the email address as a contact email for the permit. We won't include it 
         <div class="form-group">
 
         <label class="form-label" for="designatedMemberEmail">
-          Designated member's email
+          Email address for a designated member
         </label>
         <input class="form-control" id="designatedMemberEmail" name="designatedMemberEmail" value="{{permit.designatedMemberEmail}}">
 
