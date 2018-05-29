@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "What's the site name?" %}
+{% set title = "What is the site name?" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -24,7 +24,7 @@
   <div class="form-group">
     <label class="form-label" for="siteName">
     Site name
-    <span class="form-hint">If it doesn’t already have a name, enter the name you’ll use</span>
+    <span class="form-hint">If it does not already have a name, enter the name you will use</span>
     </label>
     <input class="form-control form-control-char-60" id="siteName" name="siteName" type="text" value="{{permit.siteName}}">
   </div>
