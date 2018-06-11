@@ -19,51 +19,45 @@
 <div id="email">
 
 <div id="gmail_header">
-  <img src="{{ imgpath }}gmail_header.png" alt="" />
+  <img src="/public/images/email/gmail_header.png" alt="" />
 </div>
 
   <div class="grid-row">
 
     <div class="column-one-quarter">
-      <img src="{{ imgpath }}gmail_menu_left.png" alt="" />
+      <img src="/public/images/email/gmail_menu_left.png" alt="" />
     </div>
 
 
     <div class="column-three-quarter">
 
       <p class="subject">
-         Application received - standard rules environmental permit <img class="inboxicon" src="{{ imgpath }}gmail_icon_inbox.png" alt="" />
+         Application received - standard rules environmental permit <img class="inboxicon" src="/public/images/email/gmail_icon_inbox.png" alt="" />
       </p>
 
       <p class="from">
-        <img src="{{ imgpath }}gmail_from_text.png" alt="" />
+        <img src="/public/images/email/gmail_from_text.png" alt="" />
       </p>
 
       <div id="email_text">
 
-        <div id="banner" class="email-banner"><img src="{{ imgpath }}gov_uk_email_header.png" alt="GOV.UK" /></div>
+        <div id="banner" class="email-banner"><img src="/public/images/email/gov_uk_email_header.png" alt="GOV.UK" /></div>
 
 
       <h1 class="bold-large">
         We have received your application.<br>
         
-        {% if permit.paymentMethod=="Bank transfer" %}
-        You should now pay by bank transfer.
-        {% endif %}
         
-        {% if permit.paymentMethod=="Debit or credit card" %}
-        You paid {{permit.permitCost}} by card.
-        {% endif %}
+        You should now pay by bank transfer.
+        
+        
+        
       </h1>
       
-      {% if permit.paymentMethod=="Debit or credit card" %}
-      <p class="text font-small">
-        We have emailed you a separate receipt for your card payment.
-      </p>
-      {% endif %}
       
       
-{% if permit.paymentMethod=="Bank transfer" %}
+      
+
       <p class="bold-small">
         We will not start processing your application until we get your payment.
       </p>
@@ -77,13 +71,13 @@
         Payment reference:
         </span>
         <span class="text font-small">
-          WP-{{ permit.permitRefNumber }}
+          WP-MT2653JF
         </span>
       <br>
         <span class="bold-small">
           Amount:
         </span>
-        <span class="text font-small">{{ permit.permitCost }}</span>
+        <span class="text font-small">£1,630</span>
       <br>
         <span class="bold-small">
           Sort code:
@@ -114,12 +108,12 @@
         Email <a href="mailto:psc-bacs@environment-agency.gov.uk">psc-bacs@environment-agency.gov.uk</a>. Include the payment reference, amount and the date you expect the payment to arrive.
       </p>
 
-{% endif %}      
+      
       
       <h2 class="heading-medium emailhead">Application details
       </h2>
       <p class="text font-small">
-      Application reference: {{ permit.permitRefNumber }}<br>
+      Application reference: MT2653JF<br>
       Standard rules permit: Vehicle storage depollution and dismantling (authorised treatment) facility SR2015 No 13<br>
       Site: Bob's Autos 7, GRANGE ROAD, BRISTOL BS1 5AH<br>
       Operator: ABC Limited<br>
@@ -128,13 +122,11 @@
       
 
 <h2 class="heading-medium emailhead">
-      {% if permit.paymentMethod=="Bank transfer" %}
+      
         What happens after we get your payment
-      {% endif %}
+      
 
-      {% if permit.paymentMethod=="Debit or credit card" %}
-        What happens next
-      {% endif %}
+      
 
 </h2>
         <p class="text font-small">
