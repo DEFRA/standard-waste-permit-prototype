@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% set title = "Does anyone connected with your business have a conviction for a relevant offence?" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+      <h1 class="heading-large">{{title}}</h1>
+
+      <div>
+        <p>You must tell us about:</p>
+        <ul class="list list-bullet">
+          <li>the individual</li>
+          <li>companies for which the individual is a director, manager or company secretary</li>
+        </ul>
+        <!-- MVP = limited company only -->
+        <!-- {% if permit.operatorType=="Limited company" %} -->
+
+
+       <!-- {% elseif permit.operatorType=="Individual" %}
+        <p>You must tell us about:</p>
+        <ul class="list list-bullet">
+          <li>the individual</li>
+          <li>companies for which the individual is a director, manager or company secretary</li>
+        </ul>
+
+        {% elseif permit.operatorType=="Partnership" %}
+        <p>You must tell us about:</p>
+        <ul class="list list-bullet">
+          <li>the individual partners</li>
+          <li>business partners, where the offence was committed in the course of their business</li>
+        </ul>
+
+      {% else %}
+
+
+      {% endif %} -->
+
+      <p>
+        The <a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/government/publications/relevant-conviction-guidance-for-permit-applications-for-waste-activities-and-installations-only">relevant conviction guidance on GOV.UK (opens new tab)</a> gives a full list of people and offences you should include.
+      </p>
+
+    </div>
+
+    <form action="/{{folder}}/operator/individual/bankruptcy-insolvency" method="post">
+
+      <div class="form-group">
+        <fieldset>
+
+          <legend class="visually-hidden">Does anyone connected with your business have a conviction for a relevant offence?
+          </legend>
+
+          <div class="multiple-choice" data-target="relevantOffencesD">
+            <input id="yesOffences" type="radio" name="offences" value="yes">
+            <label for="yesOffences">
+              Yes, there are convictions to declare
+            </label>
+          </div>
+          <div class="panel panel-border-narrow js-hidden" id="relevantOffencesD">
+            <label class="form-label" for="relevantOffencesDetails">
+              Give details of the convictions
+              <span class="form-hint">
+                Include the names of the people or companies, the offences and penalties given
+              </span>
+            </label>
+            <textarea class="form-control form-control-full" name="relevantOffencesDetails" rows="10" type="text" id="relevantOffencesDetails"></textarea>
+            <p class="form-hint" style="margin-top:4px;">
+              No more than 2,000 characters
+            </p>
+          </div>
+
+          <div class="multiple-choice">
+            <input id="noOffences" type="radio" name="offences" value="no">
+            <label for="noOffences">
+              No
+            </label>
+          </div>
+
+        </fieldset>
+      </div>
+
+      <div class="form-group">
+        <input type="submit" class="button" value="Continue">
+      </div>
+
+
+    </form>
+
+
+  </div>
+</div>
+</main>
+
+{% endblock %}

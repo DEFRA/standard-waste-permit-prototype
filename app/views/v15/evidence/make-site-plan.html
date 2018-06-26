@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% set title = "Make a site plan" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large" id="upload-label">{{title}}</h1>
+
+      <p>As part of your location check, we made a map based on the grid reference you gave us. You can use this to make a site map. (Or upload your own).</p>
+
+
+      <form method="post" action="{{formAction}}">
+
+
+        <div class="form-group">
+
+         <div class="multiple-choice" data-target="location-map">
+          <input id="use-location-check-map" type="radio" name="make-site-plan" value="Yes">
+          <label for="use-location-check-map">Use the map made for my location check</label>
+        </div>
+        <div class="panel panel-border-narrow js-hidden" id="location-map">
+
+          <div class="grid-row">
+            <div class="column-one-third">
+
+              <div class="attachment-thumb">
+                <a class="thumbnail" href="public/images/map/screening-report-map.png" target="_blank"><img width="100%" height="auto" alt="Location check map" src="/public/images/map/screening-report-map.png"></a>
+              </div>
+            </div>
+
+            <div class="column-two-thirds">
+
+              <h2 class="font-medium"><a href="/public/images/map/screening-report-map.png" target="_blank">Location check map</a></h2>
+
+              <p class="font-xsmall">
+                <span class="type"><abbr title="Portable Document Format">PDF</abbr></span>, <span class="file-size">123KB</span>
+              </p>
+
+              <p class="font-xsmall">This file may not be suitable for users of assistive technology. <a href="#">Request an accessible format.</a></p>
+            </div>
+          </div>
+
+          <br>
+          <p>Download this map and print it out. Draw an outline of the area you want the permit to cover, clearly marked in green. Scan it.</p> 
+        </div>
+
+        <div class="multiple-choice" data-target="site-plan-guidance">
+          <input id="use-own-site-plan" type="radio" name="make-site-plan" value="No">
+          <label for="use-own-site-plan">Use my own site plan
+          </label>
+        </div>
+        <div class="panel panel-border-narrow js-hidden" id="site-plan-guidance">
+          {% include folder+"/guidance/siteplan.html" %}
+        </div>
+      </div>
+
+      <div class="form-group">
+        {{submitButton|safe}}{{completeLink|safe}}
+      </div>
+
+    </form>
+
+  </div>
+</div>
+</main>
+
+{% endblock %}

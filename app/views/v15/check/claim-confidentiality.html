@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% set title = "Is part of your application commercially confidential?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<div id="confClaimGuidance">
+<p>
+  We put all applications into a public register. If you can prove that some information is commercially or industrially confidential, we will consider removing that information from the register.
+</p>
+<p>
+  Guidance about confidentiality is in the <a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/government/publications/environmental-permitting-guidance-core-guidance--2">environmental permitting guidance core guidance on GOV.UK (opens new tab)</a>
+</p>
+</div>
+
+
+<form method="post" action="{{formAction}}">
+  <div class="form-group">
+    <fieldset>
+
+<legend class="visually-hidden" aria-describedby="confClaimGuidance">{{title}}</legend>
+      
+
+
+<div class="multiple-choice" data-target="confidentialReasonsGroup">
+<input id="yesConfClaim" type="radio" name="confidential" value="yes">
+<label for="yesConfClaim">Yes, I want to claim confidentiality for part of my application</label>
+</div>
+<div class="panel panel-border-narrow js-hidden" id="confidentialReasonsGroup">
+<label class="form-label" for="confidentialReasons">What information do you think is confidential, and why?
+<span class="form-hint">
+  Check the guidance first to check you qualify
+</span>
+</label>
+<textarea class="form-control form-control-full" name="confidentialReasons" type="text" id="confidentialReasons" rows="10"></textarea>
+<p><span class="form-hint">2,000 character limit</span></p>
+</div>
+
+<div class="multiple-choice">
+<input id="notConfClaim" type="radio" name="confidential" value="no">
+<label for="notConfClaim">No</label>
+</div>
+    
+    </fieldset>
+  </div>
+  
+<div class="form-group">
+  {{submitButton|safe}}{{completeLink|safe}}
+</div>
+
+</form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
