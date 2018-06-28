@@ -203,9 +203,30 @@ router.post('/selectpermit/permit-category2', function (req, res) {
 // required for 'select a different permit' via start page or task list
 router.post('/selectpermit/bespoke-or-standard', function (req, res) {
     res.render(folder + '/selectpermit/bespoke-or-standard',{
-      "formAction":"/"+ folder + "/selectpermit/permit-category2"
+      "formAction":"/"+ folder + "/selectpermit/select-bespoke-or-standard"
       // "chosenPermitID":req.body['chosenPermitID']
     })
+})
+
+// required for 'select an activity for bespoke' via start page or task list
+router.post('/selectpermit/select-bespoke-or-standard', function (req, res) {
+  if(req.body['permit-type']=="standard-rule"){ // think you need square bracket for radios
+      res.render(folder + '/selectpermit/permit-category2',{
+        "formAction":"/"+ folder + "/selectpermit/choose-permit2",
+        "chosenPermitID":req.body['chosenPermitID']
+      })
+  } else {
+      res.render(folder + '/bespoke/select-activity',{
+          "formAction":"/"+ folder + "/bespoke/select-assessments"
+      })
+  }
+})
+
+// required for 'select an assessment for bespoke'
+router.get('/bespoke/select-assessments', function (req, res) {
+  res.render(folder + '/bespoke/select-assessments',{
+      "formAction":"/"+ folder + "/bespoke/task-list"
+  })
 })
 
 router.post('/selectpermit/check-category', function (req, res) {
