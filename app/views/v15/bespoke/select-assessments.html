@@ -27,7 +27,7 @@
       <form method="post" action="{{formAction}}">
 
       <!-- STORE operatorType to pass on -->
-      <input type="hidden" name="operatorType" value="{{permit.operatorType}}">
+      <input type="hidden" name="chosenActivity" value="{{assessment.category}}">
 
         <div class="form-group">
           <fieldset aria-labelledby="radio_label">
@@ -36,8 +36,8 @@
             {% for assessment in assessment %}
 
             <div class="multiple-choice">
-              <input id="{{activity.category}}" type="radio" name="chosenCategory" value="{{activity.category}}">
-              <label for="{{activity.category}}">
+              <input id="{{assessment.category}}" type="radio" name="chosenActivity" value="{{assessment.category}}">
+              <label for="{{assessment.category}}">
                 {{assessment.category}} {{assessment.hint}}
 
               </label>
