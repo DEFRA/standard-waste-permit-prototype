@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% set title = "Confidentiality" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <h1 class="heading-large">{{title}}</h1>
+
+  <dl class="govuk-check-your-answers cya-questions-short">
+    <div>
+      <dt class="cya-question">
+     Claim confidentiality
+      </dt>
+      <dd class="cya-answer">
+      {{permit.confidential}} 
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/check/claim-confidentiality"> 
+        Change <span class="visuallyhidden">claim confidentiality</span>
+        </a>
+      </dd>
+    </div>
+  </dl>
+
+      <form method="post" action="{{formAction}}">
+
+      <div class="form-group">
+        <button type="submit" class="button" name="Return to task list">Return to task list</button>
+      </div>
+
+    </form>
+    
+</main>
+
+{% endblock %}

@@ -23,7 +23,7 @@ router.use('/v12', require('./routes_v12'));
 router.use('/v13', require('./routes_v13'));
 router.use('/v14', require('./routes_v14'));
 router.use('/v15', require('./routes_v15'));
-
+router.use('/v16', require('./routes_v16'));
 
 
 // Route index page

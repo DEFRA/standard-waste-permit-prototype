@@ -1,0 +1,27 @@
+{% extends "layout_unbranded.html" %}
+
+{% block page_title %}
+  Example without branding
+{% endblock %}
+
+{% block content %}
+
+
+<div id="worldpay-card-details">
+
+    <div id="worldpay-description">
+    {{ permit.permitName | truncate(45) }} {{ permit.permitCode }}
+    </div>
+
+    <div id="worldpay-amount">
+    {{ permit.permitCost }}
+    </div>
+    
+    <div id="worldpay-pay-button">
+     <a href="{{formAction}}"><img alt="" src="/public/images/worldpay/_.gif" height="40px" width="80px" border="0" /></a>
+    </div>
+
+</div>
+
+
+{% endblock %}
