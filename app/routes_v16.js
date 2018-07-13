@@ -210,14 +210,14 @@ router.post('/selectpermit/bespoke-or-standard', function (req, res) {
 
 // required for 'select an activity for bespoke' via start page or task list
 router.post('/selectpermit/select-bespoke-or-standard', function (req, res) {
-  if(req.body['permit-type']=="standard-rule"){ // think you need square bracket for radios
+  if(req.body['bespokePermit']=="standard"){ // think you need square bracket for radios
       res.render(folder + '/selectpermit/permit-category2',{
         "formAction":"/"+ folder + "/selectpermit/choose-permit2",
         "chosenPermitID":req.body['chosenPermitID']
       })
   } else {
-      res.render(folder + '/bespoke/task-list',{
-          "formAction":"/"+ folder + "/bespoke/task-list"
+      res.render(folder + '/check/task-list',{
+          "formAction":"/"+ folder + "/check/task-list"
       })
   }
 })

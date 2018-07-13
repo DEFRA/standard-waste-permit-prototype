@@ -32,7 +32,9 @@
 {% import folder+"/custom_inc/macros.html" as macros %}
 {% from folder+"/custom_inc/permit-list-json.html" import permits %}
 
-{% set tCheckCost = "Enter costs and check processing time" %}
+{% set tCheckCost = "Check costs and processing time" %}
+{% set tGiveCost = "Enter costs and check processing time" %}
+{% set tDownloadForms = "Download forms" %}
 {% set tCheckRules = "Confirm you can meet the rules" %}
 {% set tStackHeight = "Give the stack height" %}
 {% set tMiningWasteManPlan = "Confirm you have a mining waste management plan" %}
@@ -44,6 +46,7 @@
 {% set tPreApp = "Tell us if you have discussed this application with us" %}
 {% set tContactDetails = "Give contact details" %}
 {% set tPermitHolder = "Give permit holder details" %}
+{% set tUploadForms = "Upload forms and supporting documents" %}
 {% set tSiteDetails = "Give site name and location" %}
 {% set tSitePlan = "Upload the site plan" %}
 {% set tTechManagement = "Prove technical competence" %}
@@ -90,23 +93,61 @@
             </h2>
             <ul class="task-list-items">
 
+              {% if permit.bespokePermit=="bespoke" %}
 
-              <li class="task-list-item {% if taskListError and permit.costTime==null %} form-group-error{% endif %}" id="{{ tCheckCost  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
-               {% if taskListError and permit.costTime==null %}
-                 <span class="error-message">
-                   Complete this task
-                 </span>
-               {% endif %}
-               <a class="task-name" href="/{{folder}}/selectpermit/cost-and-time" {% if permit.costTime %} aria-describedby="cost-and-time-completed"{% endif %}>
-                 {{ tCheckCost }}
+                           <li class="task-list-item {% if taskListError and permit.costTime==null %} form-group-error{% endif %}" id="{{ tGiveCost  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+                            {% if taskListError and permit.costTime==null %}
+                              <span class="error-message">
+                                Complete this task
+                              </span>
+                            {% endif %}
+                            <a class="task-name" href="/{{folder}}/selectpermit/cost-and-time" {% if permit.costTime %} aria-describedby="cost-and-time-completed"{% endif %}>
+                              {{ tGiveCost }}
+                            </a>
+                            {% if permit.costTime %}
+                            <strong class="task-completed" id="cost-and-time-completed">Completed</strong>
+                            {% else %}
+                            <input type="hidden" name="complete[]" value="{{ tGiveCost }}">
+                            {% endif %}
+                          </li>
+                  {% else %}
+                  <li class="task-list-item {% if taskListError and permit.costTime==null %} form-group-error{% endif %}" id="{{ tCheckCost  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+                   {% if taskListError and permit.costTime==null %}
+                     <span class="error-message">
+                       Complete this task
+                     </span>
+                   {% endif %}
+                   <a class="task-name" href="/{{folder}}/selectpermit/cost-and-time" {% if permit.costTime %} aria-describedby="cost-and-time-completed"{% endif %}>
+                     {{ tCheckCost }}
+                   </a>
+                   {% if permit.costTime %}
+                   <strong class="task-completed" id="cost-and-time-completed">Completed</strong>
+                   {% else %}
+                   <input type="hidden" name="complete[]" value="{{ tCheckCost }}">
+                   {% endif %}
+                  </li>
+              {% endif %}
+
+
+
+              {% if permit.bespokePermit=="bespoke" %}
+
+              <li class="task-list-item {% if taskListError and permit.readRules==null %} form-group-error{% endif %}" id="{{ tDownloadForms  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+              {% if taskListError and permit.readRules==null %}
+                  <span class="error-message">
+                    Complete this task
+                  </span>
+              {% endif %}
+               <a class="task-name" href="/{{folder}}/read-rules/index" {% if permit.readRules %} aria-describedby="operation-rules-complete"{% endif %}>
+                 {{ tDownloadForms }}
                </a>
-               {% if permit.costTime %}
-               <strong class="task-completed" id="cost-and-time-completed">Completed</strong>
+               {% if permit.readRules %}
+               <strong class="task-completed" id="operation-rules-complete">Completed</strong>
                {% else %}
-               <input type="hidden" name="complete[]" value="{{ tCheckCost }}">
+               <input type="hidden" name="complete[]" value="Confirm that your operation meets the rules">
                {% endif %}
-             </li>
-
+              </li>
+              {% endif %}
 
               <li class="task-list-item {% if taskListError and permit.readRules==null %} form-group-error{% endif %}" id="{{ tCheckRules  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
               {% if taskListError and permit.readRules==null %}
@@ -124,29 +165,30 @@
                {% endif %}
               </li>
 
-                            <li class="task-list-item {% if taskListError and permit.saveReturnEmail==null %} form-group-error{% endif %}" id="{{ tSaveReturn | lower | replace(' ', '-') | replace('\'', '') | safe }}">
-                            {% if taskListError and permit.saveReturnEmail==null %}
-                              <span class="error-message">
-                                Complete this task
-                              </span>
-                            {% endif %}
-                              <a class="task-name" href="{% if permit.saveReturnEmail!=null %}
-                                /{{folder}}/save-and-return/email-or-phone
-                              {% else %}
-                                /{{folder}}/save-and-return/email-or-phone
-                              {% endif %}" {% if permit.saveReturnEmail!=null %} aria-describedby="save-completed"{% endif %}>
-                                {{ tSaveReturn }}
-                              </a>
-                              {% if permit.saveReturnEmail!=null %} <strong class="task-completed" id="save-completed">Completed</strong>
-                              {% else %}
-                              <input type="hidden" name="complete[]" value="{{ tSaveReturn }}">
-                              {% endif %}
-                            </li>
+
+
+              <li class="task-list-item {% if taskListError and permit.saveReturnEmail==null %} form-group-error{% endif %}" id="{{ tSaveReturn | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+                {% if taskListError and permit.saveReturnEmail==null %}
+                <span class="error-message">
+                  Complete this task
+                </span>
+                  {% endif %}
+              <a class="task-name" href="{% if permit.saveReturnEmail!=null %}
+                      /{{folder}}/save-and-return/email-or-phone
+                    {% else %}
+                      /{{folder}}/save-and-return/email-or-phone
+                    {% endif %}" {% if permit.saveReturnEmail!=null %} aria-describedby="save-completed"{% endif %}>
+                  {{ tSaveReturn }}
+              </a>
+                  {% if permit.saveReturnEmail!=null %} <strong class="task-completed" id="save-completed">Completed</strong>
+                  {% else %}
+                      <input type="hidden" name="complete[]" value="{{ tSaveReturn }}">
+                  {% endif %}
+                </li>
 
             </li>
 
             </ul>
-            </li>
 
             <!-- 2. PREPARE  ############################################################### -->
             <li>
@@ -187,6 +229,10 @@
                 permit.permitID=="SR-2015-18" or
                 permit.permitID=="SR-2015-39"
                %}
+
+
+
+
                   <li class="task-list-item {% if taskListError and permit.specialCasePageVisited==null %} form-group-error{% endif %}" id="{{ linkText  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
                     {% if taskListError and permit.specialCasePageVisited==null %}
                     <span class="error-message">
@@ -225,6 +271,7 @@
                 {% endif %}
               </li>
 
+
               <li class="task-list-item {% if taskListError and permit.companyName==null %} form-group-error{% endif %}" id="{{ tPermitHolder  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
                 {% if taskListError and permit.companyName==null %}
                 <span class="error-message">
@@ -240,6 +287,26 @@
                 {% endif %}
               </li>
 
+
+              {% if permit.bespokePermit=="bespoke" %}
+              <!--Upload forms--------------->
+              <li class="task-list-item {% if taskListError and permit.companyName==null %} form-group-error{% endif %}" id="{{ tUploadForms  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+                {% if taskListError and permit.companyName==null %}
+                <span class="error-message">
+                  Complete this task
+                </span>
+                {% endif %}
+                <a class="task-name" href="{{version}}{{HrefLink}}" {% if permit.bankruptcyInsolvencyDetails!=null %} aria-describedby="{{version}}{{HrefLink}}"{% endif %}>
+                  {{ tUploadForms }}
+                </a>
+                {% if permit.bankruptcyInsolvencyDetails!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong>
+                {% else %}
+                <input type="hidden" name="complete[]" value="{{ tUploadForms }}">
+                {% endif %}
+                {% endif %}
+
+              </li>
+
               <!-- DONT'T SHOW SITE FOR MOBILE PERMITS -->
               {% if
               permit.permitID=="SR-2010-4" or
@@ -251,7 +318,9 @@
 
               <!-- DO NOT SHOW -->
               {% else %}
-<!--
+
+              {% if permit.bespokePermit=="bespoke" %}
+              {% else %}
               <li class="task-list-item {% if taskListError and permit.siteName==null %} form-group-error{% endif %}" id="{{ tSiteDetails  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
                 {% if taskListError and permit.siteName==null %}
                 <span class="error-message">
@@ -265,11 +334,14 @@
                 {% else %}
                 <input type="hidden" name="complete[]" value="{{ tSiteDetails }}">
                 {% endif %}
-              </li>-->
-
+              </li>
+                {% endif %}
               {% endif %}
 
-              <!-- Site plan ###############################################################
+              {% if permit.bespokePermit=="bespoke" %}
+              {% else %}
+
+              <!-- Site plan ###############################################################-->
               {% if permit.sitePlanNeeded=="Yes" %}
               <li class="task-list-item {% if taskListError and permit.sitePlanFilename==null %} form-group-error{% endif %}" id="{{ tSitePlan  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
                 {% if taskListError and permit.sitePlanFilename==null %}
@@ -285,9 +357,13 @@
                 <input type="hidden" name="complete[]" value="{{ tSitePlan }}">
                 {% endif %}
               </li>
-              {% endif %}-->
 
-              <!-- Mining waste management plan 2009-8 ###############################################################
+               {% endif %}
+               {% endif %}
+
+               {% if permit.bespokePermit=="bespoke" %}
+               {% else %}
+              <!-- Mining waste management plan 2009-8 ###############################################################-->
               {% if permit.miningWasteManagementPlanRequired=="Yes" %}
               <li class="task-list-item {% if taskListError and permit.miningWasteManagementPlanConfirmed==null %} form-group-error{% endif %}" id="{{ tMiningWasteManPlan  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
                 {% if taskListError and permit.miningWasteManagementPlanConfirmed==null %}
@@ -308,9 +384,11 @@
               {% endif %}
             </li>
             {% endif %}
-            -->
+            {% endif %}
 
-        <!-- Tech competence #############################################
+            {% if permit.bespokePermit=="bespoke" %}
+            {% else %}
+          <!-- Tech competence #############################################-->
           {% if permit.technicalAbilityEvidence=="Yes" %}
             <li class="task-list-item {% if taskListError and permit.industryScheme==null %} form-group-error{% endif %}" id="{{ tTechManagement  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
               {% if taskListError and permit.industryScheme==null %}
@@ -326,9 +404,11 @@
               <input type="hidden" name="complete[]" value="{{ tTechManagement }}">
               {% endif %}
             </li>
-          {% endif %}-->
+          {% endif %}
+          {% endif %}
 
-    <!-- <li class="task-list-item {% if taskListError and permit.manSys==null %} form-group-error{% endif %}" id="{{ tManSystem  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+    <!--
+     <li class="task-list-item {% if taskListError and permit.manSys==null %} form-group-error{% endif %}" id="{{ tManSystem  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
       {% if taskListError and permit.manSys==null %}
         <span class="error-message">
           Complete this task
@@ -345,11 +425,12 @@
       {% else %}
       <input type="hidden" name="complete[]" value="{{ tManSystem }}">
       {% endif %}
-    </li> -->
+    </li>
+  -->
 
-
-
-    <!-- Fire prevention plan ###############################################################
+  {% if permit.bespokePermit=="bespoke" %}
+  {% else %}
+    <!-- Fire prevention plan ###############################################################-->
     {% if permit.firePlanNeeded=="Yes" %}
     <li class="task-list-item {% if taskListError and permit.firePlanFilename==null %} form-group-error{% endif %}" id="{{ tFirePlan  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
       {% if taskListError and permit.firePlanFilename==null %}
@@ -365,7 +446,9 @@
       <input type="hidden" name="complete[]" value="{{ tFirePlan }}">
       {% endif %}
     </li>
-    {% endif %}-->
+    {% endif %}
+    {% endif %}
+
 
     <!-- Confidentiality ############################################################### -->
     <li class="task-list-item {% if taskListError and permit.confidential==null %} form-group-error{% endif %}" id="{{ tConfidentiality  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
@@ -384,7 +467,7 @@
     </li>
 
 
-    <!-- Invoicing ###############################################################
+    <!-- Invoicing ###############################################################-->
     <li class="task-list-item {% if taskListError and permit.invoiceAddress==null %} form-group-error{% endif %}" id="{{ tBilling  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
       {% if taskListError and permit.invoiceAddress==null %}
       <span class="error-message">
@@ -398,7 +481,7 @@
       {% else %}
       <input type="hidden" name="complete[]" value="{{ tBilling }}">
       {% endif %}
-    </li>-->
+    </li>
 
   </ul>
 </li>
