@@ -381,6 +381,19 @@ router.get('/returncode/email-code', function (req, res) {
   })
 })
 
+// Download ==============================================================
+router.get('/bespoke/download-forms', function (req, res) {
+  res.render(folder + '/bespoke/download-forms',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+// Call us for costs ==============================================================
+router.get('/bespoke/give-cost-and-time', function (req, res) {
+  res.render(folder + '/bespoke/give-cost-and-time',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
 
 // Cost and time ==============================================================
 router.get('/selectpermit/cost-and-time', function (req, res) {

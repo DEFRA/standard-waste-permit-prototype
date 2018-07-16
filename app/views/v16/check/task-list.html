@@ -96,17 +96,17 @@
 
               {% if permit.bespokePermit=="bespoke" %}
 
-                           <li class="task-list-item {% if taskListError and permit.costTime==null %} form-group-error{% endif %}" id="{{ tGiveCost  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
-                            {% if taskListError and permit.costTime==null %}
+                           <li class="task-list-item {% if taskListError and permit.giveCost==null %} form-group-error{% endif %}" id="{{ tGiveCost  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+                            {% if taskListError and permit.giveCost==null %}
                               <span class="error-message">
                                 Complete this task
                               </span>
                             {% endif %}
-                            <a class="task-name" href="/{{folder}}/bespoke/give-cost-and-time" {% if permit.costTime %} aria-describedby="cost-and-time-completed"{% endif %}>
+                            <a class="task-name" href="/{{folder}}/bespoke/give-cost-and-time" {% if permit.giveCost %} aria-describedby="give-cost-and-time-completed"{% endif %}>
                               {{ tGiveCost }}
                             </a>
                             {% if permit.costTime %}
-                            <strong class="task-completed" id="cost-and-time-completed">Completed</strong>
+                            <strong class="task-completed" id="give-cost-and-time-completed">Completed</strong>
                             {% else %}
                             <input type="hidden" name="complete[]" value="{{ tGiveCost }}">
                             {% endif %}
@@ -303,7 +303,7 @@
                 <a class="task-name" href="/{{folder}}/bespoke/upload-forms" {% if permit.bankruptcyInsolvencyDetails!=null %} aria-describedby="/{{folder}}/bespoke/upload-forms"{% endif %}>
                   {{ tUploadForms }}
                 </a>
-                {% if permit.uploadForms!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong>
+                {% if permit.bankruptcyInsolvencyDetails!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong>
                 {% else %}
                 <input type="hidden" name="complete[]" value="{{ tUploadForms }}">
                 {% endif %}

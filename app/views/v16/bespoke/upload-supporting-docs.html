@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Upload the fire prevention plan" %}
+{% set title = "Upload supporting documents [UNFINISHED]" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -9,9 +9,9 @@
 {% block content %}
 <main id="content" role="main">
   {% include "includes/phase_banner_beta.html" %}
-  
+
   {{backlink|safe}}
-  
+
   <div class="grid-row">
       <div class="column-two-thirds">
 
@@ -25,7 +25,7 @@
         <input id="upload" type="file" aria-labelelledby="upload-label">
         <input id="filename" name="firePlanFilename" type="hidden">
     </div>
-    
+
     <script>
       // captures uploaded filename and passes to hidden input
       document.getElementById('upload').onchange = uploadOnChange;
@@ -38,9 +38,9 @@
           document.getElementById('filename').value = filename;
       }
     </script>
-    
 
-  
+
+
   <p><a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/government/publications/fire-prevention-plans-environmental-permits/fire-prevention-plans-environmental-permits">Fire prevention plan guidance on GOV.UK (opens new tab)</a></p>
 
   </br>

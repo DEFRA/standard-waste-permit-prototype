@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Costs and processing time" %}
+{% set title = "How much will your permit cost?[UNFINISHED]" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -10,59 +10,39 @@
 
 <main id="content" role="main">
     {% include "includes/phase_banner_beta.html" %}
-    
+
     {{backlink|safe}}
 
     <div class="grid-row">
         <div class="column-two-thirds">
-    
+
           <h1 class="heading-large" id="radio_label">{{title}}</h1>
-          
+
       <form method="post" action="{{formAction}}">
-      
 
-      <table>
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th class="numeric" scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="bold-small">Cost to apply</span><br>
-              You will pay this when you send your application.</td>
-              <td class="numeric"><span class="bold-medium">{{permit.permitCost}}</span></td>
-            </tr>
-        {% if permit.subsistenceFee!="mobile" %}
-            <tr>
-              <td><span class="bold-small">Annual cost (it is called the subsistence charge)</span><br>
-              We will invoice you if your application is successful.</td>
-              <td class="numeric"><span class="bold-medium">{{permit.subsistenceFee}}</span></td>
-            </tr>
-        {% else %}
-          <tr>
-            <td>
-              <span class="bold-small">
-                Other costs</span><br>
-                You pay for each deployment.  
-                We will tell you how much it will cost when you apply for the deployment.
-            </td>
-            <td>&nbsp;</td>
-          </tr>
-        {% endif %}
-            <tr>
-              <td><span class="bold-small">Time to wait after applying</span><br>
-                It may take longer if we need to ask you for more information.</td>
-              <td class="numeric"><span class="bold-medium">up to 13 weeks</span></td>
-            </tr>
-          </tbody>
-        </table>
 
-        <p class="vat-statement">You do not pay <abbr title="Value Added Tax">VAT</abbr> on these costs.
+      <h3 class="heading-small">Cost to apply</h3>
+      <p>Find your reference application number and then call us to get a cost for your permit.</p>
+      <p>We are open Monday to Friday, 8am to 6pm.</p>
+
+      <div class="email-url-number">
+        <p class="tel">
+          <span class="type">Telephone</span>
+          03708 506 506
         </p>
+        <p class="tel">
+          <span class="type">Telephone from outside the UK</span>
+          +44 (0) 114 282 5312
+        </p>
+        <p class="tel">
+          <span class="type">Minicom (for the hard of hearing)</span>
+          03702 422 549
+        </p>
+      </div>
 
-         <!-- set costTime to yes -->       
+              <br>
+
+         <!-- set costTime to yes -->
         <input type="hidden" name="costTime" value="yes">
 
 
@@ -72,10 +52,25 @@
         </div>
 
       </form>
-      
+
     </div>
   </div>
+  <details>
 
+  <summary><span class="summary">Thoughts for this task list item</span></summary>
+
+  <div class="panel panel-border-narrow">
+  <p>As a user I want to:</p>
+  <ul>
+  <li> - enter costs I know from reading the guidance</li>
+  <li> - add details of how I got to my costings<li>
+  <li> - call to find out costs<li>
+  <li> - edit the cost I was given over the phone, by adding the cost of a single activity I know the cost of<li>
+  <li> - add details of how I got to my new costings<li>
+  <li> - as a user I want to come back to this page when the phone lines are open</li>
+</ul>
+  </div>
+  </details>
 </main>
 
 {% endblock %}
