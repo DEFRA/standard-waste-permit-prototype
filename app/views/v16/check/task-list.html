@@ -46,7 +46,8 @@
 {% set tPreApp = "Tell us if you have discussed this application with us" %}
 {% set tContactDetails = "Give contact details" %}
 {% set tPermitHolder = "Give permit holder details" %}
-{% set tUploadForms = "Upload forms and supporting documents" %}
+{% set tUploadForms = "Upload forms" %}
+{% set tUploadSupportingDocs = "Upload supporting documents" %}
 {% set tSiteDetails = "Give site name and location" %}
 {% set tSitePlan = "Upload the site plan" %}
 {% set tTechManagement = "Prove technical competence" %}
@@ -101,7 +102,7 @@
                                 Complete this task
                               </span>
                             {% endif %}
-                            <a class="task-name" href="/{{folder}}/selectpermit/cost-and-time" {% if permit.costTime %} aria-describedby="cost-and-time-completed"{% endif %}>
+                            <a class="task-name" href="/{{folder}}/bespoke/give-cost-and-time" {% if permit.costTime %} aria-describedby="cost-and-time-completed"{% endif %}>
                               {{ tGiveCost }}
                             </a>
                             {% if permit.costTime %}
@@ -138,7 +139,7 @@
                     Complete this task
                   </span>
               {% endif %}
-               <a class="task-name" href="/{{folder}}/read-rules/index" {% if permit.readRules %} aria-describedby="operation-rules-complete"{% endif %}>
+               <a class="task-name" href="/{{folder}}/bespoke/download-forms" {% if permit.readRules %} aria-describedby="operation-rules-complete"{% endif %}>
                  {{ tDownloadForms }}
                </a>
                {% if permit.readRules %}
@@ -148,6 +149,9 @@
                {% endif %}
               </li>
               {% endif %}
+
+              {% if permit.bespokePermit=="bespoke" %}
+              {% else %}
 
               <li class="task-list-item {% if taskListError and permit.readRules==null %} form-group-error{% endif %}" id="{{ tCheckRules  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
               {% if taskListError and permit.readRules==null %}
@@ -164,7 +168,7 @@
                <input type="hidden" name="complete[]" value="Confirm that your operation meets the rules">
                {% endif %}
               </li>
-
+              {% endif %}
 
 
               <li class="task-list-item {% if taskListError and permit.saveReturnEmail==null %} form-group-error{% endif %}" id="{{ tSaveReturn | lower | replace(' ', '-') | replace('\'', '') | safe }}">
@@ -278,7 +282,7 @@
                   Complete this task
                 </span>
                 {% endif %}
-                <a class="task-name" href="{{version}}{{HrefLink}}" {% if permit.bankruptcyInsolvencyDetails!=null %} aria-describedby="{{version}}{{HrefLink}}"{% endif %}>
+                <a class="task-name" href="/{{folder}}{{HrefLink}}" {% if permit.bankruptcyInsolvencyDetails!=null %} aria-describedby="{{folder}}{{HrefLink}}"{% endif %}>
                   {{ tPermitHolder }}
                 </a>
                 {% if permit.bankruptcyInsolvencyDetails!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong>
@@ -290,18 +294,37 @@
 
               {% if permit.bespokePermit=="bespoke" %}
               <!--Upload forms--------------->
-              <li class="task-list-item {% if taskListError and permit.companyName==null %} form-group-error{% endif %}" id="{{ tUploadForms  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
-                {% if taskListError and permit.companyName==null %}
+              <li class="task-list-item {% if taskListError and permit.uploadForms==null %} form-group-error{% endif %}" id="{{ tUploadForms  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+                {% if taskListError and permit.uploadForms==null %}
                 <span class="error-message">
                   Complete this task
                 </span>
                 {% endif %}
-                <a class="task-name" href="{{version}}{{HrefLink}}" {% if permit.bankruptcyInsolvencyDetails!=null %} aria-describedby="{{version}}{{HrefLink}}"{% endif %}>
+                <a class="task-name" href="/{{folder}}/bespoke/upload-forms" {% if permit.bankruptcyInsolvencyDetails!=null %} aria-describedby="/{{folder}}/bespoke/upload-forms"{% endif %}>
                   {{ tUploadForms }}
                 </a>
-                {% if permit.bankruptcyInsolvencyDetails!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong>
+                {% if permit.uploadForms!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong>
                 {% else %}
                 <input type="hidden" name="complete[]" value="{{ tUploadForms }}">
+                {% endif %}
+                {% endif %}
+
+              </li>
+
+              {% if permit.bespokePermit=="bespoke" %}
+              <!--Upload supporting documents--------------->
+              <li class="task-list-item {% if taskListError and permit.uploadSupportingDocs==null %} form-group-error{% endif %}" id="{{ tUploadSupportingDocs  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+                {% if taskListError and permit.uploadSupportingDocs==null %}
+                <span class="error-message">
+                  Complete this task
+                </span>
+                {% endif %}
+                <a class="task-name" href="/{{folder}}/bespoke/upload-supporting-docs" {% if permit.bankruptcyInsolvencyDetails!=null %} aria-describedby="/{{folder}}/bespoke/upload-supporting-docs"{% endif %}>
+                  {{ tUploadSupportingDocs }}
+                </a>
+                {% if permit.uploadSupportingDocs!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong>
+                {% else %}
+                <input type="hidden" name="complete[]" value="{{ tUploadSupportingDocs }}">
                 {% endif %}
                 {% endif %}
 

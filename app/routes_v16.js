@@ -60,7 +60,7 @@ router.post('/start/start-or-resume', function (req, res) {
 // This is not a real page, just a URL for the route
 router.post('/save-and-return/save-choice', function (req, res) {
   if(req.body['started-application']=="no"){ // think you need square bracket for radios
-    console.log('###HELLO##:D')
+
       res.render(folder + '/operator/site-operator',{
           // "formAction":"/"+ folder + "/selectpermit/permit-category2"
         "formAction":"/"+ folder + "/selectpermit/bespoke-or-standard"
