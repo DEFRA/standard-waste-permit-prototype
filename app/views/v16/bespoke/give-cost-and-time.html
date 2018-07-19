@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "How much will your permit cost?[UNFINISHED]" %}
+{% set title = "Enter the total application cost" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -21,25 +21,16 @@
       <form method="post" action="{{formAction}}">
 
 
-      <h3 class="heading-small">Cost to apply</h3>
-      <p>Find your reference application number and then call us to get a cost for your permit.</p>
-      <p>We are open Monday to Friday, 8am to 6pm.</p>
+      <h3 class="heading-small">How to work out the cost</h3>
+      <p>You can <a href="https://www.gov.uk/guidance/waste-environmental-permits#contact" target="_blank">contact the Environment Agency (opens new tab)</a> for help to work out the total cost.</p>
+      <p>Or you can calculate it yourself using the <a href="https://www.gov.uk/government/publications/environmental-permitting-charges-guidance" target="_blank">environmental permitting charges guidance (opens new tab)</a>.</p>
 
-      <div class="email-url-number">
-        <p class="tel">
-          <span class="type">Telephone</span>
-          03708 506 506
-        </p>
-        <p class="tel">
-          <span class="type">Telephone from outside the UK</span>
-          +44 (0) 114 282 5312
-        </p>
-        <p class="tel">
-          <span class="type">Minicom (for the hard of hearing)</span>
-          03702 422 549
-        </p>
+      <div class="form-group">
+        <label class="form-label" for="permitCost">
+          <span class="heading-small">Total application cost</span>
+        </label>
+        <span class="costGBP">£</span><input class="form-control form-control-1-4" id="permitCost" name="giveCost" type="text" value="{{permit.giveCost}}">
       </div>
-
               <br>
 
          <!-- set costTime to yes -->
@@ -55,22 +46,7 @@
 
     </div>
   </div>
-  <details>
 
-  <summary><span class="summary">Thoughts for this task list item</span></summary>
-
-  <div class="panel panel-border-narrow">
-  <p>As a user I want to:</p>
-  <ul>
-  <li> - enter costs I know from reading the guidance</li>
-  <li> - add details of how I got to my costings<li>
-  <li> - call to find out costs<li>
-  <li> - edit the cost I was given over the phone, by adding the cost of a single activity I know the cost of<li>
-  <li> - add details of how I got to my new costings<li>
-  <li> - as a user I want to come back to this page when the phone lines are open</li>
-</ul>
-  </div>
-  </details>
 </main>
 
 {% endblock %}

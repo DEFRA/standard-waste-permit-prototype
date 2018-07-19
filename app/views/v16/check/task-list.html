@@ -33,8 +33,9 @@
 {% from folder+"/custom_inc/permit-list-json.html" import permits %}
 
 {% set tCheckCost = "Check costs and processing time" %}
-{% set tGiveCost = "Enter costs and check processing time" %}
-{% set tDownloadForms = "Download forms" %}
+{% set tGiveCost = "    Enter  the application cost
+" %}
+{% set tDownloadForms = "Download the application forms B2 and B4" %}
 {% set tCheckRules = "Confirm you can meet the rules" %}
 {% set tStackHeight = "Give the stack height" %}
 {% set tMiningWasteManPlan = "Confirm you have a mining waste management plan" %}
@@ -46,7 +47,8 @@
 {% set tPreApp = "Tell us if you have discussed this application with us" %}
 {% set tContactDetails = "Give contact details" %}
 {% set tPermitHolder = "Give permit holder details" %}
-{% set tUploadForms = "Upload forms" %}
+{% set tb2UploadForms = "Upload form B2" %}
+{% set tb4UploadForms = "Upload forms B4" %}
 {% set tUploadSupportingDocs = "Upload supporting documents" %}
 {% set tSiteDetails = "Give site name and location" %}
 {% set tSitePlan = "Upload the site plan" %}
@@ -94,6 +96,29 @@
             </h2>
             <ul class="task-list-items">
 
+              <li class="task-list-item {% if taskListError and permit.saveReturnEmail==null %} form-group-error{% endif %}" id="{{ tSaveReturn | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+                {% if taskListError and permit.saveReturnEmail==null %}
+                <span class="error-message">
+                  Complete this task
+                </span>
+                  {% endif %}
+              <a class="task-name" href="{% if permit.saveReturnEmail!=null %}
+                      /{{folder}}/save-and-return/email-or-phone
+                    {% else %}
+                      /{{folder}}/save-and-return/email-or-phone
+                    {% endif %}" {% if permit.saveReturnEmail!=null %} aria-describedby="save-completed"{% endif %}>
+                  {{ tSaveReturn }}
+              </a>
+                  {% if permit.saveReturnEmail!=null %} <strong class="task-completed" id="save-completed">Completed</strong>
+                  {% else %}
+                      <input type="hidden" name="complete[]" value="{{ tSaveReturn }}">
+                  {% endif %}
+                </li>
+
+              </li>
+
+
+
               {% if permit.bespokePermit=="bespoke" %}
 
                            <li class="task-list-item {% if taskListError and permit.giveCost==null %} form-group-error{% endif %}" id="{{ tGiveCost  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
@@ -133,19 +158,19 @@
 
               {% if permit.bespokePermit=="bespoke" %}
 
-              <li class="task-list-item {% if taskListError and permit.readRules==null %} form-group-error{% endif %}" id="{{ tDownloadForms  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
-              {% if taskListError and permit.readRules==null %}
+              <li class="task-list-item {% if taskListError and permit.DownloadForms==null %} form-group-error{% endif %}" id="{{ tDownloadForms  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+              {% if taskListError and permit.DownloadForms==null %}
                   <span class="error-message">
                     Complete this task
                   </span>
               {% endif %}
-               <a class="task-name" href="/{{folder}}/bespoke/download-forms" {% if permit.readRules %} aria-describedby="operation-rules-complete"{% endif %}>
+               <a class="task-name" href="/{{folder}}/bespoke/download-forms" {% if permit.DownloadForms %} aria-describedby="download-forms-complete"{% endif %}>
                  {{ tDownloadForms }}
                </a>
-               {% if permit.readRules %}
-               <strong class="task-completed" id="operation-rules-complete">Completed</strong>
+               {% if permit.DownloadForms %}
+               <strong class="task-completed" id="download-forms-complete">Completed</strong>
                {% else %}
-               <input type="hidden" name="complete[]" value="Confirm that your operation meets the rules">
+               <input type="hidden" name="complete[]" value="Confirm that you have downloded B2 and B4">
                {% endif %}
               </li>
               {% endif %}
@@ -169,28 +194,6 @@
                {% endif %}
               </li>
               {% endif %}
-
-
-              <li class="task-list-item {% if taskListError and permit.saveReturnEmail==null %} form-group-error{% endif %}" id="{{ tSaveReturn | lower | replace(' ', '-') | replace('\'', '') | safe }}">
-                {% if taskListError and permit.saveReturnEmail==null %}
-                <span class="error-message">
-                  Complete this task
-                </span>
-                  {% endif %}
-              <a class="task-name" href="{% if permit.saveReturnEmail!=null %}
-                      /{{folder}}/save-and-return/email-or-phone
-                    {% else %}
-                      /{{folder}}/save-and-return/email-or-phone
-                    {% endif %}" {% if permit.saveReturnEmail!=null %} aria-describedby="save-completed"{% endif %}>
-                  {{ tSaveReturn }}
-              </a>
-                  {% if permit.saveReturnEmail!=null %} <strong class="task-completed" id="save-completed">Completed</strong>
-                  {% else %}
-                      <input type="hidden" name="complete[]" value="{{ tSaveReturn }}">
-                  {% endif %}
-                </li>
-
-            </li>
 
             </ul>
 
@@ -293,23 +296,44 @@
 
 
               {% if permit.bespokePermit=="bespoke" %}
-              <!--Upload forms--------------->
-              <li class="task-list-item {% if taskListError and permit.uploadForms==null %} form-group-error{% endif %}" id="{{ tUploadForms  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
-                {% if taskListError and permit.uploadForms==null %}
+              <!--B2 Upload forms--------------->
+              <li class="task-list-item {% if taskListError and permit.b2UploadForms==null %} form-group-error{% endif %}" id="{{ tb2UploadForms  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+                {% if taskListError and permit.b2UploadForms==null %}
                 <span class="error-message">
                   Complete this task
                 </span>
                 {% endif %}
-                <a class="task-name" href="/{{folder}}/bespoke/upload-forms" {% if permit.bankruptcyInsolvencyDetails!=null %} aria-describedby="/{{folder}}/bespoke/upload-forms"{% endif %}>
-                  {{ tUploadForms }}
+                <a class="task-name" href="/{{folder}}/bespoke/upload-B2-forms" {% if permit.b2UploadForms!=null %} aria-describedby="/{{folder}}/bespoke/upload-B2-forms"{% endif %}>
+                  {{ tb2UploadForms }}
                 </a>
-                {% if permit.bankruptcyInsolvencyDetails!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong>
+                {% if permit.b2UploadForms!=null %} <strong class="task-completed" id="B2-form-upload-completed">Completed</strong>
                 {% else %}
-                <input type="hidden" name="complete[]" value="{{ tUploadForms }}">
+                <input type="hidden" name="complete[]" value="{{ tb2UploadForms }}">
                 {% endif %}
                 {% endif %}
 
               </li>
+
+              {% if permit.bespokePermit=="bespoke" %}
+              <!--B4 Upload forms--------------->
+              <li class="task-list-item {% if taskListError and permit.b4UploadForms==null %} form-group-error{% endif %}" id="{{ tb4UploadForms  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+                {% if taskListError and permit.b4UploadForms==null %}
+                <span class="error-message">
+                  Complete this task
+                </span>
+                {% endif %}
+                <a class="task-name" href="/{{folder}}/bespoke/upload-B4-forms" {% if permit.b4UploadForms!=null %} aria-describedby="/{{folder}}/bespoke/upload-B4-forms"{% endif %}>
+                  {{ tb4UploadForms }}
+                </a>
+                {% if permit.b4UploadForms!=null %} <strong class="task-completed" id="B4-form-upload-completed">Completed</strong>
+                {% else %}
+                <input type="hidden" name="complete[]" value="{{ tb4UploadForms }}">
+                {% endif %}
+                {% endif %}
+
+              </li>
+
+
 
               {% if permit.bespokePermit=="bespoke" %}
               <!--Upload supporting documents--------------->

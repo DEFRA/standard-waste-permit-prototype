@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Upload B2 and B4 [UNFINISHED]" %}
+{% set title = "Complete and upload form B2" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -17,13 +17,24 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
-  {% include folder+"/snippets/file-upload-hint.html" %}
+<div class="panel panel-border-wide">
+    <p>Complete form B2 on your computer. You can also print it out, fill it in and scan it.</p>
+    <p>Upload the completed file.</p>
+</div>
+
+<span class="upload-form-B2">Upload form B2</span>
+
+  <span class="form-hint">
+
+            PDF or JPG</br>
+            30MB maximum file size
+  </span>
 
   <form method="post" action="{{formAction}}">
 
     <div class="form-group form-upload">
         <input id="upload" type="file" aria-labelelledby="upload-label">
-        <input id="filename" name="firePlanFilename" type="hidden">
+        <input id="b2UploadForms" name="b2UploadForms" type="hidden">
     </div>
 
     <script>
@@ -38,12 +49,6 @@
           document.getElementById('filename').value = filename;
       }
     </script>
-
-
-
-  <p><a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/government/publications/fire-prevention-plans-environmental-permits/fire-prevention-plans-environmental-permits">Fire prevention plan guidance on GOV.UK (opens new tab)</a></p>
-
-  </br>
 
     <div class="form-group">
       {{submitButton|safe}}{{completeLink|safe}}
