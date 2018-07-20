@@ -20,7 +20,12 @@
 
 <div class="panel panel-border-wide">
   <p>
+    {% if permit.bespokePermit=="bespoke" %}
+    <b>The cost of the application is £{{permit.giveCost}}.</b>
+    {% else %}
     <b>The cost of the application is {{permit.permitCost}}.</b>
+    {% endif %}
+
   </p>
 </div>
 
