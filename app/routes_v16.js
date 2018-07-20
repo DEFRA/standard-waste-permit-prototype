@@ -182,22 +182,6 @@ router.post('/selectpermit/permit-category2', function (req, res) {
     }
 })
 
-// Bespoke or standard
-      // router.post('/selectpermit/bespoke-or-standard', function (req, res) {
-      //     console.log('------------------')
-      //     // permit NOT YET selected
-      //     if( req.session.data['chosenPermitID']==null ) {
-      //       res.render(folder + '/selectpermit/permit-category2',{
-      //         "formAction":"/"+ folder + "/selectpermit/check-category"
-      //       })
-      //     // permit set via link on a GOV.UK page so skip this page
-      //     } else {
-      //       res.render(folder + '/check/task-list',{ // show save and return pages
-      //          "formAction":"/"+ folder + "/check/check-answers",
-      //          "chosenPermitID":req.body['chosenPermitID']
-      //       })
-      //     }
-    //  })
 
 // Check category is in-scope ============================
 
@@ -223,6 +207,8 @@ router.post('/selectpermit/select-bespoke-or-standard', function (req, res) {
         "formAction":"/"+ folder + "/selectpermit/choose-permit2",
         "chosenPermitID":req.body['chosenPermitID']
       })
+  } else if(req.body['bespokePermit']=="bespoke-other") {
+      res.render(folder + '/selectpermit/bespoke-offline')
   } else {
       res.render(folder + '/check/task-list',{
           "formAction":"/"+ folder + "/check/task-list"
