@@ -22,6 +22,7 @@ $path: "/public/images/";
     margin-bottom: 0.5em;
   }
 
+
   li {
     margin-bottom: 10px;
     list-style-type: none;
@@ -30,11 +31,20 @@ $path: "/public/images/";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
-// Protoype specific styles by MG and PM. Do not import for production code.
-@import 'prototype'; 
+span.costGBP {
+//  font-weight: bold;
+  margin-right: 5px;
+}
 
-// used for experimental guidance pages. 
-// @import 'verify'; 
+span.upload-form-B2 {
+  font-weight: bold;
+}
+
+// Protoype specific styles by MG and PM. Do not import for production code.
+@import 'prototype';
+
+// used for experimental guidance pages.
+// @import 'verify';
 
 // Choose permit radio button list
 .permitSelector {
@@ -63,7 +73,7 @@ label.permitItem {
     }
 }
 
-// style phone number links on mobile only. Not ea-footer. 
+// style phone number links on mobile only. Not ea-footer.
 @include media(tablet) {
   main a[href^="tel:"] {
     text-decoration: none;
@@ -72,12 +82,12 @@ label.permitItem {
 }
 
 // Add spacing below details (progressive disclosure)
-// Check if this is always required. If not, introduce class. 
+// Check if this is always required. If not, introduce class.
 details {
   margin-bottom: 30px;
 }
 
-// Address-manual. Spacing bewteen postcode and change link. 
+// Address-manual. Spacing bewteen postcode and change link.
 span.postcode {
   margin-right: 10px;
 }
@@ -232,7 +242,7 @@ span.postcode {
 // Directors DOB definition lists - based on the check your answers CSS
 .dates-of-birth {
 
-  margin-bottom: 30px; 
+  margin-bottom: 30px;
 
   @include media(desktop) {
     display: table;
@@ -302,7 +312,7 @@ span.pay-text {
   h2 { margin-top: 0; }
 }
 
-// Application recieved email mock-up 
+// Application recieved email mock-up
 
 .email-banner {
   background: $black;
@@ -350,7 +360,7 @@ table.change-log th p, table.change-log td p{margin:0.2em 0;}
 	margin:0;
 	padding:0;
 	}
-  
+
 #worldpay-success{
 	background-image:url('/public/images/worldpay/worldpay-success-bg.gif');
 	height:390px;
@@ -358,7 +368,7 @@ table.change-log th p, table.change-log td p{margin:0.2em 0;}
 	margin:0 auto 40px auto;
 	position: relative;
 	}
-	
+
 #worldpay-continue-button{
 	position:absolute;
 	top:270px;
@@ -366,7 +376,7 @@ table.change-log th p, table.change-log td p{margin:0.2em 0;}
 	margin:0;
 	padding:0;
 	}
-  
+
 span.button-hint{
   display:block;
   margin-top:8px;
@@ -414,7 +424,7 @@ details.inside-list{
 
 .govuk-check-your-answers.cya-questions-fileupload > * > * {
   padding-top: 0.63158em;
-  border-top: 1px solid #bfc1c3;
+  border: 1px solid #bfc1c3;
 }
 
 .govuk-check-your-answers.cya-questions-fileupload {
@@ -430,7 +440,7 @@ details.inside-list{
 
     p,a{color:#FFFFFF;margin:0;font-weight: bold;}
     span{font-weight:normal;}
-  
+
 }
 
 .contents{

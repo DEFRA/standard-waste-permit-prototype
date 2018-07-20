@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% set title = "What permit do you want?" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">{{title}}</h1>
+      
+      <form method="post" action="{{formAction}}">
+
+
+        <div class="multiple-choice">
+          <input id="yes" type="radio" name="screening" value="yes" {% if screening=="yes" %} checked="checked"{% endif %}>
+          <label for="yes">
+            Metal recycling, vehicle storage, depollution and dismantling (authorised treatment) facility SR2015 No 18
+          </label>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

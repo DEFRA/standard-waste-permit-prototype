@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% set title = "Loading page" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_beta.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+          
+          <p>
+            {{ title }}
+          </p>
+      
+      <form method="post" action="{{formAction}}" id="autoSubmit">
+
+        <div class="form-group">
+            <button type="submit" class="button" name="Next">Next</button>
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

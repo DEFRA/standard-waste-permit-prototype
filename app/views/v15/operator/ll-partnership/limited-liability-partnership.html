@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% set title = "What is the company number for the  limited liability partnership?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+
+    <h1 class="heading-large">{{title}}</h1>
+
+    <form action="{{formAction}}" method="post">
+
+      <div class="form-group">
+        <label class="form-label visuallyhidden" for="companyRegNum">
+          {{title}}
+        </label>
+        <input class="form-control" id="companyRegNum" name="companyRegNum" type="text" value="{{permit.companyRegNum}}">
+      </div>
+
+        <p>
+          We will look up the details in the Companies House register.
+        </p>
+
+
+
+      <div class="form-group">
+        {{submitButton|safe}}{{completeLink|safe}}
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+</main>
+
+{% endblock %}

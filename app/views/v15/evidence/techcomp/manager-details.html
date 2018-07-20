@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% set title = "Give details for all technically competent managers" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<p>
+  <span class="bold-small">
+    1. Download this form and save on your computer
+  </span><br>
+
+  
+  <a href="/public/images/tcm-form/technically-competent-manager-details-form-WORD.doc" download="technically-competent-manager-details-form-WORD-{{ permit.permitRefNumber }}.doc">Technically competent manager form (Word doc)</a> |
+  
+  <a href="/public/images/tcm-form/technically-competent-manager-details-form-ODF.odt" download="technically-competent-manager-details-form-ODF-{{ permit.permitRefNumber }}.odt">Open Document Text</a> 
+</p>
+
+<p>
+  <span class="bold-small">
+    2. Complete the form and save it again
+  </span><br>
+  You will need to give name, date of birth, email and phone numbers for each manager and the permit numbers and addresses for the operations they manage.
+</p>
+
+
+<form method="post" action="{{formAction}}">
+
+  <div>
+    <label class="form-label" for="file-input">
+      <span class="bold-small">
+        {% if permit.TCMdeatilsFileUploaded=="yes" %}
+          3. Upload another form if you need to
+        {% else %}
+          3. Upload the completed form
+        {% endif %}
+
+      </span>
+      <span class="text form-hint">
+        PDF or JPG files<br>
+        30MB maximum file size
+      </span>
+    </label>
+  </div>
+  
+<div id="uploader" class="form-group form-uploader">
+    
+  <div class="form-group">
+      <input id="file-input" type="file">
+      <input id="filename" name="technicalCertificateFile" type="hidden">
+      <input name="TCMdeatilsFileUploaded" value="yes" type="hidden">
+  </div>
+      
+  <div>
+      <input id="submit-upload" class="upload-button button-secondary" type="submit" value="Upload chosen file" name="submit">
+  </div>
+  
+</div>
+  
+  <script>
+    // captures uploaded filename and passes to hidden input
+    document.getElementById('file-input').onchange = uploadOnChange;
+    function uploadOnChange() {
+        var filename = this.value;
+        var lastIndex = filename.lastIndexOf("\\");
+        if (lastIndex >= 0) {
+            filename = filename.substring(lastIndex + 1);
+        }
+        document.getElementById('filename').value = filename;
+    }
+  </script>
+
+
+<div class="form-group">
+  {% if permit.TCMdeatilsFileUploaded=="yes" %}
+    <input class="button" type="submit" value="Continue">
+  {% else %}
+    <input class="button" type="submit" value="Continue" disabled="disabled" aria-disabled="true">
+  {% endif %}
+  
+  
+  
+    
+</div>
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

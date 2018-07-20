@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% set title = "How do you want to pay?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_beta.html" %}
+    {{backlink|safe}}
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+<div class="panel panel-border-wide">
+  <p>
+    <b>The cost of the application is {{permit.permitCost}}.</b>
+  </p>
+</div>
+
+<form method="post" action="{{formAction}}">
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visually-hidden">{{title}}</legend>
+
+      <!-- paymentMethod -->
+
+      <div class="multiple-choice">
+      <input id="paymentCard" type="radio" name="paymentMethod" value="Debit or credit card">
+<label for="paymentCard">
+        Debit or credit card
+      </label>
+      <span class="form-hint">Application processed immediately.  No extra fee.</span>
+    </div>
+      <div class="multiple-choice">
+      <input id="paymentBACS" type="radio" name="paymentMethod" value="Bank transfer">
+<label for="paymentBACS">
+        Bank transfer by Bacs
+      </label>
+      <span class="form-hint">Application processed after the payment arrives</span>
+    </div>
+    <!-- <div class="multiple-choice">
+      <input id="paymentCheque" type="radio" name="paymentMethod" value="Cheque">
+<label for="paymentCheque">
+        Cheque
+      </label>
+    </div> -->
+    </fieldset>
+  </div>
+
+
+  <div class="form-group">
+    {{submitButton|safe}}{{completeLink|safe}}
+  </div>
+</form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
