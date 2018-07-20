@@ -39,7 +39,7 @@
 
   {% if permit.paymentMethod=="Bank transfer" %}
 
-        <h2 class="heading-medium">Bacs payment details</h2>    
+        <h2 class="heading-medium">Bacs payment details</h2>
 
 
 
@@ -58,7 +58,13 @@
                     Amount
                   </dt>
                   <dd class="cya-answer">
+
+                {% if permit.bespokePermit=="bespoke" %}
+                £{{permit.giveCost}}
+                {% else %}
                 {{permit.permitCost}}
+
+                {% endif %}
                 </dd>
                 </div>
 
