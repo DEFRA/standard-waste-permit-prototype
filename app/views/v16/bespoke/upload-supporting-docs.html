@@ -91,7 +91,7 @@
 {% endif %}
 
 
-<form method="post" action="{{formAction}}">
+<form method="post" action="{{formAction}}" id="uploadForm">
 
 {% if permit.sDocFile1|typeof == "undefined" %}
 
@@ -107,7 +107,7 @@
 
 
     <p class="upload_head">Upload document file</p>
-    <p class="text form-hint">
+    <p class="text form-hint form-hint-upload">
       PDF, JPG, DOC or DOCX files, 30MB maximum file size.<br>
       You can upload more than one file at a time.
     </p>
@@ -142,7 +142,7 @@
       </div>
       
       <p class="upload_head">Upload document file</p>
-      <p class="text form-hint">
+      <p class="text form-hint form-hint-upload">
         PDF, JPG, DOC or DOCX files, 30MB maximum file size.<br>
         You can upload more than one file at a time.
       </p>

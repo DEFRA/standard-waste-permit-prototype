@@ -436,6 +436,20 @@ details.inside-list{
   padding:1em;
 }
 
+#uploadForm input[type="file"]::-webkit-file-upload-button{
+    font-size:2rem;
+    padding:0.5rem 1rem;
+    background:#dee0e2;
+    color:#000
+}
+#uploadForm input[type=file]:hover,#uploadForm input[type=file]::-webkit-file-upload-button:hover{
+    cursor:pointer
+}
+
+.form-hint-upload{
+  margin-bottom:0;
+}
+
 .upload_head{
   font-weight:bold;
   margin-bottom:0;
