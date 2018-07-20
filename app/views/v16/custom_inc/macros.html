@@ -9,3 +9,40 @@
  </div>
 
 {% endmacro %}
+
+
+{% macro uploadList( fileTitle,fileName ) %}
+
+<div>
+  <dt class="cya-question">
+    {{ fileTitle }}
+  </dt>
+  <dd class="cya-answer">
+    {{ fileName }}
+  </dd>
+  <dd class="cya-change">
+    <a href="#">
+      Remove file <span class="visuallyhidden">{{ fileName }}</span>
+    </a>
+  </dd>
+</div>
+
+{% endmacro %}
+
+{% macro uploadListCheck( fileTitle,fileName ) %}
+
+<div>
+  <dt class="cya-question">
+    {{ fileTitle }}
+  </dt>
+  <dd class="cya-answer">
+    {{ fileName }}
+  </dd>
+  <dd class="cya-change">
+    <a href="#">
+      Change <span class="visuallyhidden">{{ fileName }}</span>
+    </a>
+  </dd>
+</div>
+
+{% endmacro %}

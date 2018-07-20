@@ -82,9 +82,21 @@
         {% endif %}
 
         <h1 class="heading-large">
-          <span class="visually-hidden">Task list:</span>
+          <span class="visually-hidden">Task list:</span> 
+{% if permit.bespokePermit=="standard" %}
           Apply for a standard rules environmental permit
+{% else %} 
+          Apply for a bespoke environmental permit
+{% endif %}
         </h1>
+
+{% if permit.bespokePermit=="bespoke" %}      
+        <p>
+          <a href="/{{folder}}/selectpermit/bespoke-or-standard">
+            Select a different permit type
+          </a>
+        </p>
+{% endif %}
 
 
         <ol class="task-list">
@@ -336,8 +348,10 @@
 
               {% if permit.bespokePermit=="bespoke" %}
               <!--Upload supporting documents--------------->
-              <li class="task-list-item {% if taskListError and permit.UploadSupportingDocs==null %} form-group-error{% endif %}" id="{{ tUploadSupportingDocs  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
-                {% if taskListError and permit.UploadSupportingDocs==null %}
+
+              <li class="task-list-item {% if taskListError and permit.sDocFile1==null %} form-group-error{% endif %}" id="{{ tUploadSupportingDocs  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+                {% if taskListError and permit.sDocFile1==null %}
+
                 <span class="error-message">
                   Complete this task
                 </span>
@@ -345,7 +359,9 @@
                 <a class="task-name" href="/{{folder}}/bespoke/upload-supporting-docs" {% if permit.UploadSupportingDocs!=null %} aria-describedby="/{{folder}}/bespoke/upload-supporting-docs"{% endif %}>
                   {{ tUploadSupportingDocs }}
                 </a>
-                {% if permit.UploadSupportingDocs!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong>
+
+                {% if permit.sDocFile1!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong>
+
                 {% else %}
                 <input type="hidden" name="complete[]" value="{{ tUploadSupportingDocs }}">
                 {% endif %}

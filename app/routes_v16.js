@@ -208,6 +208,13 @@ router.post('/selectpermit/bespoke-or-standard', function (req, res) {
     })
 })
 
+router.get('/selectpermit/bespoke-or-standard', function (req, res) {
+    res.render(folder + '/selectpermit/bespoke-or-standard',{
+      "formAction":"/"+ folder + "/selectpermit/select-bespoke-or-standard"
+      // "chosenPermitID":req.body['chosenPermitID']
+    })
+})
+
 // required for 'select an activity for bespoke' via start page or task list
 router.post('/selectpermit/select-bespoke-or-standard', function (req, res) {
   if(req.body['bespokePermit']=="standard"){ // think you need square bracket for radios
@@ -952,12 +959,81 @@ router.get('/evidence/bankruptcy-insolvency', function (req, res) {
 })
 
 
+// Upload B2 and B4 forms ========================================================
+
+router.get('/bespoke/upload-B2-forms', function (req, res) {
+  res.render(folder + '/bespoke/upload-B2-forms',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+router.get('/bespoke/upload-B4-forms', function (req, res) {
+  res.render(folder + '/bespoke/upload-B4-forms',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+
+
+
+
+// Upload supporting docs ========================================================
+
+router.get('/bespoke/upload-supporting-docs', function (req, res) {
+  res.render(folder + '/bespoke/upload-supporting-docs',{
+        "formAction":"/"+ folder + "/check-supporting-docs"
+    })
+})
+
+// fake route for first check of file uploads
+router.post('/check-supporting-docs', function (req, res) {
+    res.render(folder + '/bespoke/upload-supporting-docs',{
+      "formAction":"/"+ folder + "/check-supporting-docs2"
+    })
+})
+
+// fake route for second check of file uploads
+router.post('/check-supporting-docs2', function (req, res) {
+  if(req.session.data['uploadOtherFile']=="yes"){
+    res.render(folder + '/bespoke/upload-supporting-docs',{
+      "formAction":"/"+ folder + "/check-supporting-docs2"
+    })
+  } else {
+    // Display task list
+    res.render(folder + '/check/task-list',{
+        "formAction":"/"+ folder + "/check/task-list"
+    })
+  }
+})
+
+
 // Fire prevention plan ========================================================
 
 router.get('/evidence/upload-fire-plan', function (req, res) {
   res.render(folder + '/evidence/upload-fire-plan',{
+        "formAction":"/"+ folder + "/check-fire-plan"
+    })
+})
+
+// fake route for first check of file uploads
+router.post('/check-fire-plan', function (req, res) {
+    res.render(folder + '/evidence/upload-fire-plan',{
+      "formAction":"/"+ folder + "/check-fire-plan2"
+    })
+})
+
+// fake route for second check of file uploads
+router.post('/check-fire-plan2', function (req, res) {
+  if(req.session.data['uploadOtherFile']=="yes"){
+    res.render(folder + '/evidence/upload-fire-plan',{
+      "formAction":"/"+ folder + "/check-fire-plan2"
+    })
+  } else {
+    // Display task list
+    res.render(folder + '/check/task-list',{
         "formAction":"/"+ folder + "/check/task-list"
     })
+  }
 })
 
 // Claim confidentiality ========================================================

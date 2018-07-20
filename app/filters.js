@@ -41,6 +41,10 @@ module.exports = function (env) {
   filters.nl2br = function(textStr) {
       return textStr.replace(/\r|\n|\r\n/g, '<br />')
   }
+  
+  filters.typeof = function(textStr) {
+      return typeof textStr
+  }
 
   filters.reverseName = function(textStr) {
      var parts = textStr.split(',')
