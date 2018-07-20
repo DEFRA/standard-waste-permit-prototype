@@ -33,8 +33,7 @@
 {% from folder+"/custom_inc/permit-list-json.html" import permits %}
 
 {% set tCheckCost = "Check costs and processing time" %}
-{% set tGiveCost = "    Enter  the application cost
-" %}
+{% set tGiveCost = "Enter the application cost" %}
 {% set tDownloadForms = "Download the application forms B2 and B4" %}
 {% set tCheckRules = "Confirm you can meet the rules" %}
 {% set tStackHeight = "Give the stack height" %}
@@ -337,16 +336,16 @@
 
               {% if permit.bespokePermit=="bespoke" %}
               <!--Upload supporting documents--------------->
-              <li class="task-list-item {% if taskListError and permit.uploadSupportingDocs==null %} form-group-error{% endif %}" id="{{ tUploadSupportingDocs  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
-                {% if taskListError and permit.uploadSupportingDocs==null %}
+              <li class="task-list-item {% if taskListError and permit.UploadSupportingDocs==null %} form-group-error{% endif %}" id="{{ tUploadSupportingDocs  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+                {% if taskListError and permit.UploadSupportingDocs==null %}
                 <span class="error-message">
                   Complete this task
                 </span>
                 {% endif %}
-                <a class="task-name" href="/{{folder}}/bespoke/upload-supporting-docs" {% if permit.bankruptcyInsolvencyDetails!=null %} aria-describedby="/{{folder}}/bespoke/upload-supporting-docs"{% endif %}>
+                <a class="task-name" href="/{{folder}}/bespoke/upload-supporting-docs" {% if permit.UploadSupportingDocs!=null %} aria-describedby="/{{folder}}/bespoke/upload-supporting-docs"{% endif %}>
                   {{ tUploadSupportingDocs }}
                 </a>
-                {% if permit.uploadSupportingDocs!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong>
+                {% if permit.UploadSupportingDocs!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong>
                 {% else %}
                 <input type="hidden" name="complete[]" value="{{ tUploadSupportingDocs }}">
                 {% endif %}
