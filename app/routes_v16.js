@@ -10,7 +10,7 @@ const async = require('async')
 // small test edit
 
 var folder = "v16"
-var servicename = "Apply for a standard rules environmental permit"
+var servicename = "Apply for an environmental permit"
 var paymentMethod = "govpay"  // or "govpay"
 
 var sample = require('./views/'+folder+'/custom_inc/sample-permit.js')
@@ -30,6 +30,7 @@ router.use(function (req, res, next) {
   res.locals.submitButton=submitButton
   res.locals.completeLink=completeLink
   res.locals.paymentMethod=paymentMethod
+  res.locals.serviceName=servicename
   // permit and autostore data set in all statement at bottom
   res.locals.permit=res.locals.data
 
