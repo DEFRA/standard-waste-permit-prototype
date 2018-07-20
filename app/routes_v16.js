@@ -959,6 +959,24 @@ router.get('/evidence/bankruptcy-insolvency', function (req, res) {
 })
 
 
+// Upload B2 and B4 forms ========================================================
+
+router.get('/bespoke/upload-B2-forms', function (req, res) {
+  res.render(folder + '/bespoke/upload-B2-forms',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+router.get('/bespoke/upload-B4-forms', function (req, res) {
+  res.render(folder + '/bespoke/upload-B4-forms',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+
+
+
+
 // Upload supporting docs ========================================================
 
 router.get('/bespoke/upload-supporting-docs', function (req, res) {
