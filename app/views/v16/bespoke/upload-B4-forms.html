@@ -22,16 +22,18 @@
             <p>Upload the completed file.</p>
         </div>
 
-          <span class="form-hint">
-
-                    PDF or JPG</br>
-                    30MB maximum file size
-          </span>
-
-          <form method="post" action="/v16/check/task-list">
 
 
-    <div class="form-group form-upload">
+    <form method="post" action="{{formAction}}" id="uploadForm">
+      
+      <p class="upload_head">Upload form B4</p>
+      <p class="text form-hint form-hint-upload">
+        PDF or JPG<br>
+        30MB maximum file size.
+      </p>
+
+
+    <div class="form-group form-uploader">
         <input id="upload" type="file" aria-labelelledby="upload-label">
         <input id="filename" name="firePlanFilename" type="hidden">
         <input id="b4UploadForms" name="b4UploadForms" type="hidden">
