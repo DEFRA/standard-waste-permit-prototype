@@ -348,16 +348,20 @@
 
               {% if permit.bespokePermit=="bespoke" %}
               <!--Upload supporting documents--------------->
+
               <li class="task-list-item {% if taskListError and permit.sDocFile1==null %} form-group-error{% endif %}" id="{{ tUploadSupportingDocs  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
                 {% if taskListError and permit.sDocFile1==null %}
+
                 <span class="error-message">
                   Complete this task
                 </span>
                 {% endif %}
-                <a class="task-name" href="/{{folder}}/bespoke/upload-supporting-docs" {% if permit.bankruptcyInsolvencyDetails!=null %} aria-describedby="/{{folder}}/bespoke/upload-supporting-docs"{% endif %}>
+                <a class="task-name" href="/{{folder}}/bespoke/upload-supporting-docs" {% if permit.UploadSupportingDocs!=null %} aria-describedby="/{{folder}}/bespoke/upload-supporting-docs"{% endif %}>
                   {{ tUploadSupportingDocs }}
                 </a>
+
                 {% if permit.sDocFile1!=null %} <strong class="task-completed" id="site-operator-completed">Completed</strong>
+
                 {% else %}
                 <input type="hidden" name="complete[]" value="{{ tUploadSupportingDocs }}">
                 {% endif %}

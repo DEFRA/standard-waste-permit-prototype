@@ -19,10 +19,10 @@
       <div class="column-two-thirds">
   	  <h1 class="heading-large">Confirm your payment</h1>
   	  <div class="check-details">
-  
+
   	  	<table class="payment-confirm">
   		    <tbody>
-  
+
   		      <tr>
   		        <td>Card number</td>
   		        <td class="table-info">************6256</td>
@@ -41,10 +41,18 @@
   		      </tr>
   		      <tr>
   		        <td>Payment for</td>
+              {% if permit.bespokePermit=="bespoke" %}
+              <td class="table-info">Bespoke permit</td>
+
+              {% endif %}
+
   		        <td class="table-info">{{ permit.permitName }} {{ permit.permitCode }}</td>
   		      </tr>
   		      <tr>
   		        <td>Amount to pay</td>
+              {% if permit.bespokePermit=="bespoke" %}
+              <td class="table-info">£{{permit.giveCost}}</td>
+              {% endif %}
   		        <td class="table-info">{{ permit.permitCost }}</td>
   		      </tr>
   		    </tbody>
@@ -52,7 +60,7 @@
   		</div>
   	</div>
   </div>
-  
+
   	<div class="grid-row">
   		<div class="column-two-thirds">
 
@@ -62,14 +70,14 @@
               {{submitButton|safe}}{{completeLink|safe}}
           </div>
         </form>
-  		 		
+
           <div class="back">
-  				<a href="#">Cancel payment</a>
+  				<a href="/v16/pay/payment-method">Cancel payment</a>
   			</div>
-        
+
   		 </div>
   	 </div>
-  
+
 
 
 </main>

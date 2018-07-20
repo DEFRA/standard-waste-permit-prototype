@@ -10,16 +10,30 @@
 
 <main id="content" role="main">
   {% include "includes/phase_banner_beta.html" %}
-  
+
   {{backlink|safe}}
-  
+
   <div class="grid-row">
       <div class="column-two-thirds">
 
   <h1 class="heading-large">{{title}}</h1>
 
   <dl class="govuk-check-your-answers cya-questions-short">
-
+    {% if permit.bespokePermit=="bespoke" %}
+ <div>
+   <dt class="cya-question">
+     Application cost
+   </dt>
+   <dd class="cya-answer">
+     £{{permit.giveCost}}
+   </dd>
+   <dd class="cya-change">
+     <a href="/{{folder}}/bespoke/give-cost-and-time">
+       Change <span class="visuallyhidden">Give cost</span>
+     </a>
+   </dd>
+ </div>
+    {% endif %}
     <div>
       <dt class="cya-question">
         Contact details
@@ -197,6 +211,8 @@
 
     <!-- DO NOT SHOW -->
     {% else %}
+              {% if permit.bespokePermit=="bespoke" %}
+              {% else %}
 
     <div>
       <dt class="cya-question">
@@ -239,6 +255,7 @@
         </a>
       </dd>
     </div>
+    {% endif %}
 
     <div>
       <dt class="cya-question">
@@ -256,7 +273,8 @@
       </dd>
     </div>
 
-
+    {% if permit.bespokePermit=="bespoke" %}
+    {% else %}
     <div>
       <dt class="cya-question">
         Site plan
@@ -270,6 +288,7 @@
         </a>
       </dd>
     </div>
+    {% endif %}
 
     {% endif %}
 
@@ -369,7 +388,8 @@
       </dd>
     </div>
     {% endif %}
-
+    {% if permit.bespokePermit=="bespoke" %}
+    {% else %}
   {% if permit.firePlanNeeded=="Yes" %}
   <div>
     <dt class="cya-question">
@@ -385,6 +405,7 @@
     </dd>
   </div>
   {% endif %}
+
   
   
   
@@ -402,6 +423,7 @@
 {{ macros.uploadListCheck( permit.sDocTitle9,permit.sDocFile9 ) if permit.sDocFile9|typeof != "undefined" }}
   
   
+
 
   <div>
     <dt class="cya-question">
@@ -450,7 +472,49 @@
     </a>
   </dd>
 </div>
+{% if permit.bespokePermit=="bespoke" %}
+<div>
+  <dt class="cya-question">
+    Uploaded B2 form
+  </dt>
+  <dd class="cya-answer">
+    insert document title
+  </dd>
+  <dd class="cya-change">
+    <a href="/{{folder}}/bespoke/upload-B2-forms">
+      Change <span class="visuallyhidden">Uploaded B2 form</span>
+    </a>
+  </dd>
+</div>
 
+<div>
+  <dt class="cya-question">
+    Uploaded B4 form
+  </dt>
+  <dd class="cya-answer">
+    insert document title
+  </dd>
+  <dd class="cya-change">
+    <a href="/{{folder}}/bespoke/upload-B4-forms">
+      Change <span class="visuallyhidden">Uploaded B4 form</span>
+    </a>
+  </dd>
+</div>
+
+<div>
+  <dt class="cya-question">
+    Supporting documents
+  </dt>
+  <dd class="cya-answer">
+    insert document title1, insert document title2, insert document title3, insert document title.
+  </dd>
+  <dd class="cya-change">
+    <a href="/{{folder}}/bespoke/upload-supporting-docs">
+      Change <span class="visuallyhidden">Supporting documents</span>
+    </a>
+  </dd>
+</div>
+{% endif %}
 </dl>
 
 

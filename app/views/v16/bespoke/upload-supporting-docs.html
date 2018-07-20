@@ -27,6 +27,7 @@
 
 
 
+
 {% if permit.sDocFile1|typeof != "undefined" %}
   <dl class="govuk-check-your-answers cya-questions-short">
     <div>
@@ -106,14 +107,17 @@
     <input class="form-control form-control-2-4" id="documentTitle" name="{{sdoctitle}}" type="text">
   </div>
 
+
     <p class="upload_head">Upload document file</p>
     <p class="text form-hint">
       PDF, JPG, DOC or DOCX files, 30MB maximum file size.<br>
       You can upload more than one file at a time.
     </p>
 
+
     <div class="form-group form-uploader">
         <input id="upload" type="file" aria-labelelledby="upload-label">
+
         <input id="filename" name="{{filename}}" type="hidden">
     </div>
     
@@ -153,6 +157,7 @@
     
     
     
+
     <script>
       // captures uploaded filename and passes to hidden input
       document.getElementById('upload').onchange = uploadOnChange;
@@ -165,6 +170,7 @@
           document.getElementById('filename').value = filename;
       }
     </script>
+
 
     <div class="form-group">
       {{submitButton|safe}}{{completeLink|safe}}
