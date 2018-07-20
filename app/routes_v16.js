@@ -956,8 +956,29 @@ router.get('/evidence/bankruptcy-insolvency', function (req, res) {
 
 router.get('/evidence/upload-fire-plan', function (req, res) {
   res.render(folder + '/evidence/upload-fire-plan',{
+        "formAction":"/"+ folder + "/check-fire-plan"
+    })
+})
+
+// fake route for first check of file uploads
+router.post('/check-fire-plan', function (req, res) {
+    res.render(folder + '/evidence/upload-fire-plan',{
+      "formAction":"/"+ folder + "/check-fire-plan2"
+    })
+})
+
+// fake route for second check of file uploads
+router.post('/check-fire-plan2', function (req, res) {
+  if(req.session.data['uploadOtherFile']=="yes"){
+    res.render(folder + '/evidence/upload-fire-plan',{
+      "formAction":"/"+ folder + "/check-fire-plan2"
+    })
+  } else {
+    // Display task list
+    res.render(folder + '/check/task-list',{
         "formAction":"/"+ folder + "/check/task-list"
     })
+  }
 })
 
 // Claim confidentiality ========================================================
