@@ -208,6 +208,13 @@ router.post('/selectpermit/bespoke-or-standard', function (req, res) {
     })
 })
 
+router.get('/selectpermit/bespoke-or-standard', function (req, res) {
+    res.render(folder + '/selectpermit/bespoke-or-standard',{
+      "formAction":"/"+ folder + "/selectpermit/select-bespoke-or-standard"
+      // "chosenPermitID":req.body['chosenPermitID']
+    })
+})
+
 // required for 'select an activity for bespoke' via start page or task list
 router.post('/selectpermit/select-bespoke-or-standard', function (req, res) {
   if(req.body['bespokePermit']=="standard"){ // think you need square bracket for radios

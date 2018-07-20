@@ -33,8 +33,7 @@
 {% from folder+"/custom_inc/permit-list-json.html" import permits %}
 
 {% set tCheckCost = "Check costs and processing time" %}
-{% set tGiveCost = "    Enter  the application cost
-" %}
+{% set tGiveCost = "Enter the application cost" %}
 {% set tDownloadForms = "Download the application forms B2 and B4" %}
 {% set tCheckRules = "Confirm you can meet the rules" %}
 {% set tStackHeight = "Give the stack height" %}
@@ -83,9 +82,21 @@
         {% endif %}
 
         <h1 class="heading-large">
-          <span class="visually-hidden">Task list:</span>
+          <span class="visually-hidden">Task list:</span> 
+{% if permit.bespokePermit=="standard" %}
           Apply for a standard rules environmental permit
+{% else %} 
+          Apply for a bespoke environmental permit
+{% endif %}
         </h1>
+
+{% if permit.bespokePermit=="bespoke" %}      
+        <p>
+          <a href="/{{folder}}/selectpermit/bespoke-or-standard">
+            Select a different permit type
+          </a>
+        </p>
+{% endif %}
 
 
         <ol class="task-list">
