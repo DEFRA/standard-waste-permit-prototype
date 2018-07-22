@@ -22,21 +22,20 @@
     <p>Upload the completed file.</p>
 </div>
 
-<span class="upload-form-B2">Upload form B2</span>
 
-  <span class="form-hint">
+<form method="post" action="{{formAction}}" id="uploadForm">
+    
+  <p class="upload_head">Upload form B2</p>
+  <p class="text form-hint form-hint-upload">
+    PDF or JPG<br>
+    30MB maximum file size.
+  </p>
 
-            PDF or JPG</br>
-            30MB maximum file size
-  </span>
-
-  <form method="post" action="/v16/check/task-list">
-
-    <div class="form-group form-upload">
+    <div class="form-group form-uploader">
         <input id="upload" type="file" aria-labelelledby="upload-label">
-        <input id="b2UploadForms" name="b2UploadForms" type="hidden">
+        <input id="b2UploadForm" name="b2UploadForm" type="hidden">
     </div>
-<!--
+
     <script>
       // captures uploaded filename and passes to hidden input
       document.getElementById('upload').onchange = uploadOnChange;
@@ -46,9 +45,9 @@
           if (lastIndex >= 0) {
               filename = filename.substring(lastIndex + 1);
           }
-          document.getElementById('filename').value = filename;
+          document.getElementById('b2UploadForm').value = filename;
       }
-    </script> -->
+    </script>
 
     <div class="form-group">
       {{submitButton|safe}}{{completeLink|safe}}

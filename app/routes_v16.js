@@ -10,7 +10,7 @@ const async = require('async')
 // small test edit
 
 var folder = "v16"
-var servicename = "Apply for a standard rules environmental permit"
+var servicename = "Apply for an environmental permit"
 var paymentMethod = "govpay"  // or "govpay"
 
 var sample = require('./views/'+folder+'/custom_inc/sample-permit.js')
@@ -30,6 +30,7 @@ router.use(function (req, res, next) {
   res.locals.submitButton=submitButton
   res.locals.completeLink=completeLink
   res.locals.paymentMethod=paymentMethod
+  res.locals.serviceName=servicename
   // permit and autostore data set in all statement at bottom
   res.locals.permit=res.locals.data
 
@@ -181,22 +182,6 @@ router.post('/selectpermit/permit-category2', function (req, res) {
     }
 })
 
-// Bespoke or standard
-      // router.post('/selectpermit/bespoke-or-standard', function (req, res) {
-      //     console.log('------------------')
-      //     // permit NOT YET selected
-      //     if( req.session.data['chosenPermitID']==null ) {
-      //       res.render(folder + '/selectpermit/permit-category2',{
-      //         "formAction":"/"+ folder + "/selectpermit/check-category"
-      //       })
-      //     // permit set via link on a GOV.UK page so skip this page
-      //     } else {
-      //       res.render(folder + '/check/task-list',{ // show save and return pages
-      //          "formAction":"/"+ folder + "/check/check-answers",
-      //          "chosenPermitID":req.body['chosenPermitID']
-      //       })
-      //     }
-    //  })
 
 // Check category is in-scope ============================
 
@@ -222,6 +207,8 @@ router.post('/selectpermit/select-bespoke-or-standard', function (req, res) {
         "formAction":"/"+ folder + "/selectpermit/choose-permit2",
         "chosenPermitID":req.body['chosenPermitID']
       })
+  } else if(req.body['bespokePermit']=="bespoke-other") {
+      res.render(folder + '/selectpermit/bespoke-offline')
   } else {
       res.render(folder + '/check/task-list',{
           "formAction":"/"+ folder + "/check/task-list"
@@ -980,13 +967,31 @@ router.get('/bespoke/upload-B4-forms', function (req, res) {
 // Upload supporting docs ========================================================
 
 router.get('/bespoke/upload-supporting-docs', function (req, res) {
-  res.render(folder + '/bespoke/upload-supporting-docs',{
-        "formAction":"/"+ folder + "/check-supporting-docs"
+  if(req.session.data['sDocFile2']!="") { // no file uploaded so send to first route
+    res.render(folder + '/bespoke/upload-supporting-docs',{
+          "formAction":"/"+ folder + "/check-supporting-docs"
     })
+  } else { // file uploaded so send to second route
+    res.render(folder + '/bespoke/upload-supporting-docs',{
+          "formAction":"/"+ folder + "/check-supporting-docs2"
+    })
+  }
+
 })
 
 // fake route for first check of file uploads
 router.post('/check-supporting-docs', function (req, res) {
+  
+  // cleanup any blank files - set because hidden field is set on post
+  if(req.session.data['sDocFile2']=="") delete req.session.data['sDocFile2']
+  if(req.session.data['sDocFile3']=="") delete req.session.data['sDocFile3']
+  if(req.session.data['sDocFile4']=="") delete req.session.data['sDocFile4']
+  if(req.session.data['sDocFile5']=="") delete req.session.data['sDocFile5']
+  if(req.session.data['sDocFile6']=="") delete req.session.data['sDocFile6']
+  if(req.session.data['sDocFile7']=="") delete req.session.data['sDocFile7']
+  if(req.session.data['sDocFile8']=="") delete req.session.data['sDocFile8']
+  if(req.session.data['sDocFile9']=="") delete req.session.data['sDocFile9']
+  
     res.render(folder + '/bespoke/upload-supporting-docs',{
       "formAction":"/"+ folder + "/check-supporting-docs2"
     })
@@ -994,6 +999,17 @@ router.post('/check-supporting-docs', function (req, res) {
 
 // fake route for second check of file uploads
 router.post('/check-supporting-docs2', function (req, res) {
+  
+  // cleanup any blank files - set because hidden field is set on post
+  if(req.session.data['sDocFile2']=="") delete req.session.data['sDocFile2']
+  if(req.session.data['sDocFile3']=="") delete req.session.data['sDocFile3']
+  if(req.session.data['sDocFile4']=="") delete req.session.data['sDocFile4']
+  if(req.session.data['sDocFile5']=="") delete req.session.data['sDocFile5']
+  if(req.session.data['sDocFile6']=="") delete req.session.data['sDocFile6']
+  if(req.session.data['sDocFile7']=="") delete req.session.data['sDocFile7']
+  if(req.session.data['sDocFile8']=="") delete req.session.data['sDocFile8']
+  if(req.session.data['sDocFile9']=="") delete req.session.data['sDocFile9']
+  
   if(req.session.data['uploadOtherFile']=="yes"){
     res.render(folder + '/bespoke/upload-supporting-docs',{
       "formAction":"/"+ folder + "/check-supporting-docs2"
