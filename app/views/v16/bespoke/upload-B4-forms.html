@@ -35,12 +35,11 @@
 
     <div class="form-group form-uploader">
         <input id="upload" type="file" aria-labelelledby="upload-label">
-        <input id="filename" name="firePlanFilename" type="hidden">
-        <input id="b4UploadForms" name="b4UploadForms" type="hidden">
+        <input id="b4UploadForm" name="b4UploadForm" type="hidden">
     </div>
 
 
-<!--
+
     <script>
       // captures uploaded filename and passes to hidden input
       document.getElementById('upload').onchange = uploadOnChange;
@@ -50,10 +49,10 @@
           if (lastIndex >= 0) {
               filename = filename.substring(lastIndex + 1);
           }
-          document.getElementById('filename').value = filename;
+          document.getElementById('b4UploadForm').value = filename;
       }
     </script>
--->
+
 
 
     <div class="form-group">

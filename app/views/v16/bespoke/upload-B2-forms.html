@@ -33,9 +33,9 @@
 
     <div class="form-group form-uploader">
         <input id="upload" type="file" aria-labelelledby="upload-label">
-        <input id="b2UploadForms" name="b2UploadForms" type="hidden">
+        <input id="b2UploadForm" name="b2UploadForm" type="hidden">
     </div>
-<!--
+
     <script>
       // captures uploaded filename and passes to hidden input
       document.getElementById('upload').onchange = uploadOnChange;
@@ -45,9 +45,9 @@
           if (lastIndex >= 0) {
               filename = filename.substring(lastIndex + 1);
           }
-          document.getElementById('filename').value = filename;
+          document.getElementById('b2UploadForm').value = filename;
       }
-    </script> -->
+    </script>
 
     <div class="form-group">
       {{submitButton|safe}}{{completeLink|safe}}
