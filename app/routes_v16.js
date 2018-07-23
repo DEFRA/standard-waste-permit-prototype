@@ -21,6 +21,13 @@ var submitButton = '<button type="submit" class="button" name="Continue">Continu
 var completeLink = ''
 // completeLink WAS <span id="completeLink"><a href="#" id="completeLater">Complete later</a></span>
 
+function nocache(req, res, next) {
+  res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+  res.header('Expires', '-1');
+  res.header('Pragma', 'no-cache');
+  next();
+}
+
 router.use(function (req, res, next) {
   // set a folder and store in locals
   // this can then be used in pages as {{folder}}
@@ -980,7 +987,7 @@ router.get('/bespoke/upload-supporting-docs', function (req, res) {
 
 // fake route for first check of file uploads
 router.post('/check-supporting-docs', function (req, res) {
-  
+
   // cleanup any blank files - set because hidden field is set on post
   if(req.session.data['sDocFile2']=="") delete req.session.data['sDocFile2']
   if(req.session.data['sDocFile3']=="") delete req.session.data['sDocFile3']
@@ -1019,6 +1026,36 @@ router.post('/check-supporting-docs2', function (req, res) {
         "formAction":"/"+ folder + "/check/task-list"
     })
   }
+})
+
+// Remove file from LIST - fake route
+router.get('/remove-supporting-doc', nocache, function (req, res) {
+    // remove selected file (in query string)
+    // stored in req.query.removeFile
+    var removeFile = req.query['removeFile']
+    var fileNumber  = removeFile.substr(removeFile.length-1, 1)   // last part of sDocFile1
+    var titleStr = "sDocTitle"+fileNumber  // eg 2
+    var finished = false
+    
+    if(req.query['removeFile']!="") {
+      // have to repeat deletion as it is stored in both session and locals objects
+      delete res.locals.data[removeFile] // remove filename string
+          delete req.session.data[removeFile] // remove filename string
+      delete res.locals.data[titleStr]   // and remove title string
+          delete req.session.data[titleStr]   // and remove title string
+      delete res.locals.data.removeFile // clean up
+          delete req.session.data.removeFile // clean up
+      var finished = true
+    }
+   console.log(res.locals.data)
+  
+    // then re-display page
+    if(finished){
+      res.render(folder + '/bespoke/upload-supporting-docs',{
+        "formAction":"/"+ folder + "/check-supporting-docs"
+      })
+    }
+    
 })
 
 
