@@ -7,7 +7,6 @@ const async = require('async')
 // this file deals with all paths starting /version_x
 // How to use folder variable:
 // res.redirect( '/' + folder + '/exemptions/add_exemptions');
-// small test edit
 
 var folder = "v16"
 var servicename = "Apply for an environmental permit"
