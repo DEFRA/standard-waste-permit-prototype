@@ -64,8 +64,8 @@
 
   <div class="grid-row">
     <div class="column-two-thirds column-minimum">
-      
-      
+
+
 
       <form method="post" action="/{{folder}}/check/check-answers" name="tasklist">
 
@@ -84,15 +84,15 @@
         {% endif %}
 
         <h1 class="heading-large">
-          <span class="visually-hidden">Task list:</span> 
+          <span class="visually-hidden">Task list:</span>
 {% if permit.bespokePermit=="standard" %}
           Apply for a standard rules environmental permit
-{% else %} 
+{% else %}
           Apply for a bespoke environmental permit
 {% endif %}
         </h1>
 
-{% if permit.bespokePermit=="bespoke" %}      
+{% if permit.bespokePermit=="bespoke" %}
         <p>
           <a href="/{{folder}}/selectpermit/bespoke-or-standard">
             Select a different permit type
@@ -319,7 +319,7 @@
                 <a class="task-name" href="/{{folder}}/bespoke/upload-B2-forms" {% if permit.b2UploadForm!=null %} aria-describedby="/{{folder}}/bespoke/upload-B2-forms"{% endif %}>
                   {{ tb2UploadForm }}
                 </a>
-                {% if permit.b2UploadForm!=null %} <strong class="task-completed" id="B2-form-upload-completed">Completed</strong>
+                {% if permit.b4DocFile!=null %} <strong class="task-completed" id="B2-form-upload-completed">Completed</strong>
                 {% else %}
                 <input type="hidden" name="complete[]" value="{{ tb2UploadForm }}">
                 {% endif %}
