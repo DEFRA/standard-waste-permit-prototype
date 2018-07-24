@@ -17,26 +17,47 @@
 
         <h1 class="heading-large">{{title}}</h1>
 
-        <div class="panel panel-border-wide">
-            <p>Complete form B4 on your computer. You can also print it out, fill it in and scan it.</p>
-            <p>Upload the completed file.</p>
-        </div>
+  
+  {% if permit.b4DocFile|typeof != "undefined"  %}
+    <dl class="govuk-check-your-answers cya-questions-short">
 
-
-
-    <form method="post" action="{{formAction}}" id="uploadForm">
+      <div>
+        <dt class="cya-question">
+          Form B4
+        </dt>
+        <dd class="cya-answer">
+          {{permit.b4DocFile}}
+        </dd>
+        <dd class="cya-change">
+          <a href="/v16/remove-b4?removeFile=b4DocFile">
+            Remove file <span class="visuallyhidden">{{permit.b4DocFile}}</span>
+          </a>
+        </dd>
+      </div>
       
-      <p class="upload_head">Upload form B4</p>
-      <p class="text form-hint form-hint-upload">
-        PDF or JPG<br>
-        30MB maximum file size.
-      </p>
+      </dl>
+  {% endif %}
 
 
+<form method="post" action="{{formAction}}" id="uploadForm">
+
+
+{% if permit.b4DocFile|typeof == "undefined" %}
+    <div class="panel panel-border-wide">
+        <p>Complete form B4 on your computer. You can also print it out, fill it in and scan it.</p>
+        <p>Upload the completed file.</p>
+    </div>
+    <p class="upload_head">Upload form B4</p>
+    <p class="text form-hint form-hint-upload">
+      PDF or JPG<br>
+      30MB maximum file size.
+    </p>
     <div class="form-group form-uploader">
         <input id="upload" type="file" aria-labelelledby="upload-label">
-        <input id="b4UploadForm" name="b4UploadForm" type="hidden">
+        <input id="filename" name="b4DocFile" type="hidden">
     </div>
+{% endif %}
+
 
 
 
@@ -49,7 +70,7 @@
           if (lastIndex >= 0) {
               filename = filename.substring(lastIndex + 1);
           }
-          document.getElementById('b4UploadForm').value = filename;
+          document.getElementById('filename').value = filename;
       }
     </script>
 

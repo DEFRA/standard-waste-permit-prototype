@@ -14,62 +14,50 @@
 
   <div class="grid-row">
       <div class="column-two-thirds">
+        
+          <h1 class="heading-large">{{title}}</h1>
+        
 
-  {% if permit.b4DocFile|typeof != "undefined"  %}
-    <dl class="govuk-check-your-answers cya-questions-short">
-      <div>
-        <dt class="cya-question">Uploaded B4 file</dt>
-        <dd class="cya-answer"></dd>
-        <dd class="cya-change"></dd>
-      </div>
+    
+    {% if permit.b2DocFile|typeof != "undefined"  %}
+      <dl class="govuk-check-your-answers cya-questions-short">
 
-  {% endif %}
-
-    {% import folder+"/custom_inc/macros.html" as macros %}
-
-    {{ macros.uploadListB2( permit.b4DocFile ) if permit.b4DocFile|typeof != "undefined" }}
-
-  {% if permit.b4DocFile|typeof == "undefined" %}
-      {% set filename = "b4DocFile1" %}
-
-  {% endif %}
-
-
-  {% if permit.b4DocFile|typeof != "undefined"  %}
-      </dl>
-  {% endif %}
+        <div>
+          <dt class="cya-question">
+            Form B2
+          </dt>
+          <dd class="cya-answer">
+            {{permit.b2DocFile}}
+          </dd>
+          <dd class="cya-change">
+            <a href="/v16/remove-b2?removeFile=b2DocFile">
+              Remove file <span class="visuallyhidden">{{permit.b2DocFile}}</span>
+            </a>
+          </dd>
+        </div>
+        
+        </dl>
+    {% endif %}
 
 
   <form method="post" action="{{formAction}}" id="uploadForm">
 
-  {% if permit.b4DocFile|typeof == "undefined" %}
 
-
-
-
-  <h1 class="heading-large">{{title}}</h1>
-
-  <div class="panel panel-border-wide">
-      <p>Complete form B2 on your computer. You can also print it out, fill it in and scan it.</p>
-      <p>Upload the completed file.</p>
-  </div>
-
-    <p class="upload_head">Upload form B2</p>
-    <p class="text form-hint form-hint-upload">
-      PDF or JPG<br>
-      30MB maximum file size.
-    </p>
-
-
-
+  {% if permit.b2DocFile|typeof == "undefined" %}
+      <div class="panel panel-border-wide">
+          <p>Complete form B2 on your computer. You can also print it out, fill it in and scan it.</p>
+          <p>Upload the completed file.</p>
+      </div>
+      <p class="upload_head">Upload form B2</p>
+      <p class="text form-hint form-hint-upload">
+        PDF or JPG<br>
+        30MB maximum file size.
+      </p>
       <div class="form-group form-uploader">
           <input id="upload" type="file" aria-labelelledby="upload-label">
-
-          <input id="filename" name="{{filename}}" type="hidden">
+          <input id="filename" name="b2DocFile" type="hidden">
       </div>
-
-
-    {% endif %}
+  {% endif %}
 
 
 
