@@ -1059,6 +1059,55 @@ router.get('/remove-supporting-doc', nocache, function (req, res) {
 })
 
 
+// Remove B2 file from LIST - fake route
+router.get('/remove-b2', nocache, function (req, res) {
+    // remove selected file (in query string)
+    // stored in req.query.removeFile
+    var removeFile = req.query['removeFile']
+    
+    if(req.query['removeFile']!="") {
+      // have to repeat deletion as it is stored in both session and locals objects
+      delete res.locals.data[removeFile] // remove filename string
+          delete req.session.data[removeFile] // remove filename string
+      delete res.locals.data.removeFile // clean up
+          delete req.session.data.removeFile // clean up
+      var finished = true
+    }
+  
+    // then re-display page
+    if(finished){
+      res.render(folder + '/bespoke/upload-B2-forms',{
+        "formAction":"/"+ folder + "/check/task-list"
+      })
+    }
+    
+})
+
+// Remove B4 file from LIST - fake route
+router.get('/remove-b4', nocache, function (req, res) {
+    // remove selected file (in query string)
+    // stored in req.query.removeFile
+    var removeFile = req.query['removeFile']
+    
+    if(req.query['removeFile']!="") {
+      // have to repeat deletion as it is stored in both session and locals objects
+      delete res.locals.data[removeFile] // remove filename string
+          delete req.session.data[removeFile] // remove filename string
+      delete res.locals.data.removeFile // clean up
+          delete req.session.data.removeFile // clean up
+      var finished = true
+    }
+  
+    // then re-display page
+    if(finished){
+      res.render(folder + '/bespoke/upload-B4-forms',{
+        "formAction":"/"+ folder + "/check/task-list"
+      })
+    }
+    
+})
+
+
 // Fire prevention plan ========================================================
 
 router.get('/evidence/upload-fire-plan', function (req, res) {
