@@ -222,12 +222,7 @@ router.post('/selectpermit/select-bespoke-or-standard', function (req, res) {
   }
 })
 
-// required for 'select an assessment for bespoke'
-router.get('/bespoke/select-assessments', function (req, res) {
-  res.render("/"+ folder + '/bespoke/select-assessments',{
-      "formAction":"/"+ folder + "/bespoke/task-list"
-  })
-})
+
 
 router.post('/selectpermit/check-category', function (req, res) {
   switch (req.body['chosenCategory']) {
@@ -269,7 +264,44 @@ router.post('/selectpermit/choose-permit2', function (req, res) {
   }
 })
 
-// save permit details is an autosubmit page
+
+
+// Select Bespoke activity permit ===============================================
+
+// Select type - GET
+router.get('/bespoke/bespoke-category', function (req, res) {
+    res.render(folder + '/bespoke/bespoke-category',{
+      "formAction":"/"+ folder + "/bespoke/bespoke-choose-activity",
+      "chosenPermitID":req.session.data['chosenPermitID']
+    })
+})
+
+// Select tupe POST version
+router.post('/bespoke/bespoke-category', function (req, res) {
+    res.render(folder + '/bespoke/bespoke-category',{
+      "formAction":"/"+ folder + "/bespoke/bespoke-choose-activity",
+      "chosenPermitID":req.session.data['chosenPermitID']
+    })
+})
+
+// Select activity page
+router.post('/bespoke/bespoke-choose-activity', function (req, res) {
+    res.render(folder + '/bespoke/bespoke-choose-activity',{
+      "formAction":"/"+ folder + "/bespoke/select-assessments",
+      "chosenPermitID":req.session.data['chosenPermitID']
+    })
+})
+
+// Select an assessment for bespoke
+router.post('/bespoke/select-assessments', function (req, res) {
+    res.render(folder + '/bespoke/select-assessments',{
+        "formAction":"/"+ folder + "xxxxxxxxxx"
+    })
+})
+
+
+
+// save permit details is an autosubmit page ========================================
 // used to store all the data from the matrix
 router.post('/check/save-permit-details', function (req, res) {
     res.render(folder + '/check/save-permit-details',{
