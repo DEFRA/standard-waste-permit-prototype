@@ -1,0 +1,227 @@
+{% extends "layout.html" %}
+
+{% set title = "Permit holder details" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <h1 class="heading-large">
+    {{title}}
+  </h1>
+
+  <dl class="govuk-check-your-answers cya-questions-short">
+    <div>
+      <dt class="cya-question">
+        Permit holder type
+      </dt>
+      <dd class="cya-answer">
+        {{permit.operatorType}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/site-operator"> 
+          Change <span class="visuallyhidden">permit holder type</span>
+        </a>
+      </dd>
+    </div>
+
+    {% if permit.operatorType=="Limited company" %}
+    <div>
+      <dt class="cya-question">
+        Company name
+      </dt>
+      <dd class="cya-answer">
+        {{permit.companyName}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/company/company-name"> 
+          Change <span class="visuallyhidden">company name</span>
+        </a>
+      </dd>
+    </div>
+    
+    {% if permit.businessTradingName!="" %}
+
+    <div>
+      <dt class="cya-question">
+        Business trading name
+      </dt>
+      <dd class="cya-answer">
+        {{permit.businessTradingName}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/company/company-name"> 
+          Change <span class="visuallyhidden">trading name</span>
+        </a>
+      </dd>
+    </div>
+
+    {% endif %}
+
+    <div>
+      <dt class="cya-question">
+        Company address
+      </dt>
+      <dd class="cya-answer">
+        {{permit.companyAddress}} 
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/company/company-name"> 
+          Change <span class="visuallyhidden">company address</span>
+        </a>
+      </dd>
+    </div>
+
+    {% if permit.companySecretaryEmail!="" %}
+
+    <div>
+      <dt class="cya-question">
+        Company secretary's email address
+      </dt>
+      <dd class="cya-answer">
+        {{permit.companySecretaryEmail}} 
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/company/company-secretary"> 
+          Change <span class="visuallyhidden">company secretary's email address</span>
+        </a>
+      </dd>
+    </div>
+
+    {% endif %}
+
+    <div>
+      <dt class="cya-question">
+        Company directors' dates of birth
+      </dt>
+      <dd class="cya-answer">
+        {% for d in permit.director %}
+        {{ d }}
+        {{ permit.directorDobDay[d]}}{{ permit.directorDobRest[d]}}
+        <br>
+        {% endfor %}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/company/company-name"> 
+          Change <span class="visuallyhidden"> dates of birth</span>
+        </a>
+      </dd>
+    </div>
+
+    {% endif %}
+
+    {% if permit.operatorType=="Individual" %}
+
+    <div>
+      <dt class="cya-question">
+        Name
+      </dt>
+      <dd class="cya-answer">
+        {{permit.individualFirstName}} {{permit.individualLastName}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/individual/individual-details"> 
+          Change <span class="visuallyhidden"> name</span>
+        </a>
+      </dd>
+    </div>
+    
+    <div>
+      <dt class="cya-question">
+        Date of birth
+      </dt>
+      <dd class="cya-answer">
+        {{permit.individualDobDay}}/{{permit.individualDobMonth}}/
+        {{permit.individualDobYear}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/individual/individual-details"> 
+          Change <span class="visuallyhidden"> date of birth</span>
+        </a>
+      </dd>
+    </div>
+    
+    {% if permit.businessTradingName!="" %}
+
+    <div>
+      <dt class="cya-question">
+        Business trading name
+      </dt>
+      <dd class="cya-answer">
+        {{permit.businessTradingName}} 
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/individual/individual-details"> 
+          Change <span class="visuallyhidden"> trading name</span>
+        </a>
+      </dd>
+    </div>
+
+    {% endif %}
+
+    <div>
+      <dt class="cya-question">
+        Address
+      </dt>
+      <dd class="cya-answer">
+        {{permit.individualAddress}} 
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/operator/individual/postcode"> 
+          Change <span class="visuallyhidden"> address</span>
+        </a>
+      </dd>
+    </div>
+
+    {% endif %}
+
+
+
+
+    <div>
+      <dt class="cya-question">
+        Relevant offences
+      </dt>
+      <dd class="cya-answer">
+        {{permit.offences}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/declare-offences"> 
+          Change <span class="visuallyhidden"> relevant offences</span>
+        </a>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">
+        Bankruptcy or insolvency
+      </dt>
+      <dd class="cya-answer">
+        {{permit.bankruptcyInsolvency}} 
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/bankruptcy-insolvency"> 
+          Change <span class="visuallyhidden"> bankruptcy or insolvency</span>
+        </a>
+      </dd>
+    </div>
+
+  </dl>
+
+  <form method="post" action="{{formAction}}">
+
+    <div class="form-group">
+      <button type="submit" class="button" name="Return to task list">Return to task list</button>
+    </div>
+
+  </form>
+
+
+</main>
+
+{% endblock %}

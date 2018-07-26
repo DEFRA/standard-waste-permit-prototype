@@ -1,0 +1,161 @@
+{% extends "layout_unbranded.html" %}
+
+{% set imgpath="/public/images/email/" %}
+
+{% block page_title %}
+  Gmail | Application received: standard rules environmental permit
+{% endblock %}
+
+{% block proposition_header %}
+  <!-- blank to remove the proposition header -->
+{% endblock %}
+
+{% block header_class %}
+  <!-- blank to remove the proposition header -->
+{% endblock %}
+
+{% block content %}
+
+<div id="email">
+
+<div id="gmail_header">
+  <img src="/public/images/email/gmail_header.png" alt="" />
+</div>
+
+  <div class="grid-row">
+
+    <div class="column-one-quarter">
+      <img src="/public/images/email/gmail_menu_left.png" alt="" />
+    </div>
+
+
+    <div class="column-three-quarter">
+
+      <p class="subject">
+         Application received - standard rules environmental permit <img class="inboxicon" src="/public/images/email/gmail_icon_inbox.png" alt="" />
+      </p>
+
+      <p class="from">
+        <img src="/public/images/email/gmail_from_text.png" alt="" />
+      </p>
+
+      <div id="email_text">
+
+        <div id="banner" class="email-banner"><img src="/public/images/email/gov_uk_email_header.png" alt="GOV.UK" /></div>
+
+
+      <h1 class="bold-large">
+        We have received your application.<br>
+        
+        
+        You should now pay by bank transfer.
+        
+        
+        
+      </h1>
+      
+      
+      
+      
+
+      <p class="bold-small">
+        We will not start processing your application until we get your payment.
+      </p>
+
+      <h2 class="heading-medium">
+        Step 1: pay using these Bacs details
+      </h2>
+
+      <p class="text font-small">
+        <span class="bold-small">
+        Payment reference:
+        </span>
+        <span class="text font-small">
+          WP-MT2653JF
+        </span>
+      <br>
+        <span class="bold-small">
+          Amount:
+        </span>
+        <span class="text font-small">£1,630</span>
+      <br>
+        <span class="bold-small">
+          Sort code:
+        </span>
+        <span class="text font-small">
+          60-70-80
+        </span>
+      <br>
+        <span class="bold-small">
+          Account number:
+        </span>
+        <span class="text font-small">
+          1001 4411
+        </span>
+        <br>
+          <span class="bold-small">
+            Account name:
+          </span>
+          <span class="text font-small">
+            EA RECEIPTS
+          </span>
+      </p>
+      
+      <h2 class="heading-medium emailhead">
+        Step 2: send us an email to tell us you have paid
+      </h2>
+      <p class="text font-small">
+        Email <a href="mailto:psc-bacs@environment-agency.gov.uk">psc-bacs@environment-agency.gov.uk</a>. Include the payment reference, amount and the date you expect the payment to arrive.
+      </p>
+
+      
+      
+      <h2 class="heading-medium emailhead">Application details
+      </h2>
+      <p class="text font-small">
+      Application reference: MT2653JF<br>
+      Standard rules permit: Vehicle storage depollution and dismantling (authorised treatment) facility SR2015 No 13<br>
+      Site: Bob's Autos 7, GRANGE ROAD, BRISTOL BS1 5AH<br>
+      Operator: ABC Limited<br>
+      Date received: 12 March 2018
+      </p>    
+      
+
+<h2 class="heading-medium emailhead">
+      
+        What happens after we get your payment
+      
+
+      
+
+</h2>
+        <p class="text font-small">
+          We will check any documents you have uploaded, your technical qualification and the site location, if applicable. We will run checks on the permit holder and any other relevant people.
+        </p>
+        
+        <p class="text font-small">
+          It takes up to 13 weeks to issue a permit. It may take longer if the information you gave us does not meet our requirements.
+        </p>
+        
+        <p class="text font-small">
+          We will not issue a permit if we believe that your operation will pollute the environment or harm human health.
+        </p>
+        
+        <h2 class="heading-medium emailhead">To contact us
+        </h2>
+          <p class="text font-small">
+            Permitting and Support Centre<br>
+            <a href="mailto:p&sc-default-team@environment-agency.gov.uk">p&sc-default-team@environment-agency.gov.uk</a><br>
+            Telephone: 02030 253 898<br>
+            Monday to Friday, 8am to 5pm<br>
+          </p>
+
+      </div><!-- // end #email_text -->
+
+    </div><!-- // end .column 3/4 -->
+
+  </div><!-- // end .grid_row -->
+
+</div><!-- // end #email -->
+
+{% endblock %}

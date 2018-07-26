@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% set title = "Where does the vehicle storage area drain to?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<p>
+This is the area for vehicles that have not been depolluted. The surface must be impermeable.
+</p>
+
+<form method="post" action="{{formAction}}">
+  <div class="form-group">
+
+<!-- Only shown for SR-2015-17, SR-2015-18, SR2015-13 ##################################### -->
+  
+<fieldset>
+
+  <legend class="visually-hidden">{{title}}</legend>
+
+  <div class="multiple-choice">
+    <input id="sewer" type="radio" name="drainage" value="a sewer">
+    <label for="sewer">
+      A sewer, under a consent from the local water company
+    </label>
+  </div>
+  
+  <div class="multiple-choice">
+    <input id="blind-sump" type="radio" name="drainage" value="a blind sump">
+    <label for="blind-sump">
+      A blind sump to be taken off-site in a tanker for disposal or recovery
+    </label>
+  </div>
+  
+  <div class="multiple-choice">
+    <input id="interceptor" type="radio" name="drainage" value="an interceptor">
+    <label for="interceptor">
+      An oil separator, interceptor or other drainage system that is appropriately designed, operated and maintained
+        <span class="form-hint">If you use this system you can only store undamaged vehicles on the area. The drainage system must be designed, constructed and maintained to ensure the discharge does not adversely impact the water quality of the receiving water body.</span>
+    </label>
+  </div>
+  
+  <!-- if Water body then go to next page -->
+  <div class="multiple-choice">
+    <input id="water-body" type="radio" name="drainage" value="a water body">
+    <label for="water-body">
+      Surface water drains, a watercourse, the ground or a water body
+    </label>
+  </div>
+  
+  </fieldset>
+  </div>
+
+<input type="hidden" name="specialCasePageVisited" value="Yes">
+
+<div class="form-group">
+    {{submitButton|safe}}{{completeLink|safe}}
+</div>
+
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

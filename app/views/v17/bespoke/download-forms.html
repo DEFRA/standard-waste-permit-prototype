@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% set title = "Download the application forms" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+  <form method="post" action="{{formAction}}">
+
+    <div class="panel panel-border-wide">
+      <p>You should download new forms to your computer each time you apply to make sure that you have the current versions of the forms.</p>
+      <p>You don't need forms A and F1 when you apply online.</p>
+      <p>Complete the forms on your computer, or by hand and scan them.</p>
+    </div>
+
+  <span class="bold-small">
+    Forms and guidance (open in new tabs)
+  </span>
+
+  <ul>
+    <li><a href="https://www.gov.uk/government/publications/application-for-an-environmental-permit-part-b2-new-bespoke" target="_blank">Form B2 and guidance</a></li>
+    <li><a href="https://www.gov.uk/government/publications/application-for-an-environmental-permit-part-b4-new-bespoke-waste-operation" target="_blank">Form B4 and guidance</a></li>
+  </ul>
+
+</br>
+
+
+  <div class="multiple-choice" data-target="DownloadForms">
+    <input id="DownloadForms" name="DownloadForms" type="checkbox" value="{{DownloadForms}}">
+    <label for="DownloadForms">I have downloaded the forms</label>
+  </div>
+
+</br>
+</br></br>
+
+    <input class="button" type="submit" value="Continue">
+
+
+
+
+
+</div>
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

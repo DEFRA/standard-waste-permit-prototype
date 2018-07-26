@@ -1,0 +1,86 @@
+
+{% macro radio_button(label,name,id,value,labelClass='') %}
+
+<div class="multiple-choice permitSelector">
+  <input id="{{name}}_{{id}}" type="radio" name="{{name}}" value="{{ value }}">
+  <label class="selection-button-radio{{labelClass}}" for="{{name}}_{{id}}">
+    {{ label }}
+  </label>
+ </div>
+
+{% endmacro %}
+
+
+{% macro uploadList( fileTitle,fileName,fileNameVar ) %}
+
+<div>
+  <dt class="cya-question">
+    {{ fileTitle }}
+  </dt>
+  <dd class="cya-answer">
+    {{ fileName }}
+  </dd>
+  <dd class="cya-change">
+    <a href="/v16/remove-supporting-doc?removeFile={{fileNameVar}}">
+      Remove file <span class="visuallyhidden">{{ fileName }}</span>
+    </a>
+  </dd>
+</div>
+
+{% endmacro %}
+
+
+{% macro uploadListCheck( fileTitle,fileName ) %}
+
+<div>
+  <dt class="cya-question">
+    {{ fileTitle }}
+  </dt>
+  <dd class="cya-answer">
+    {{ fileName }}
+  </dd>
+  <dd class="cya-change">
+    <a href="#">
+      Change <span class="visuallyhidden">{{ fileName }}</span>
+    </a>
+  </dd>
+</div>
+
+{% endmacro %}
+
+{% macro uploadListB2( fileTitle,fileName,fileNameVar ) %}
+
+<div>
+  <dt class="cya-question">
+    {{ fileTitle }}
+  </dt>
+  <dd class="cya-answer">
+    {{ fileName }}
+  </dd>
+  <dd class="cya-change">
+    <a href="/v16/bespoke/upload-B2-forms?removeFile={{fileNameVar}}">
+      Remove file <span class="visuallyhidden">{{ fileName }}</span>
+    </a>
+  </dd>
+</div>
+
+{% endmacro %}
+
+
+{% macro uploadListB2Check( fileTitle,fileName ) %}
+
+<div>
+  <dt class="cya-question">
+    {{ fileTitle }}
+  </dt>
+  <dd class="cya-answer">
+    {{ fileName }}
+  </dd>
+  <dd class="cya-change">
+    <a href="#">
+      Change <span class="visuallyhidden">{{ fileName }}</span>
+    </a>
+  </dd>
+</div>
+
+{% endmacro %}
