@@ -92,3 +92,21 @@
 </div>
 
 {% endmacro %}
+
+
+
+{% macro checklist( col1,col2,col3 ) %}
+
+<div>
+  <dt class="cya-question">
+    {{ col1 }}
+  </dt>
+  <dd class="cya-answer">
+    {{ col2 }}
+  </dd>
+  <dd class="cya-change">
+    {{ col3 }}
+  </dd>
+</div>
+
+{% endmacro %}

@@ -45,6 +45,10 @@ module.exports = function (env) {
   filters.typeof = function(textStr) {
       return typeof textStr
   }
+  
+  filters.formatnumber = function(num) {
+      return "£" + num.toLocaleString('en')
+  }
 
   filters.reverseName = function(textStr) {
      var parts = textStr.split(',')
