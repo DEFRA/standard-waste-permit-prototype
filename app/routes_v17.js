@@ -301,6 +301,41 @@ router.post('/bespoke/v1-activities/select-assessments', function (req, res) {
 })
 
 
+// Select Bespoke activity permit v2 ===============================================
+
+// Select type - GET
+router.get('/bespoke/v2-activities/bespoke-category', function (req, res) {
+    res.render(folder + '/bespoke/v2-activities/bespoke-category',{
+      "formAction":"/"+ folder + "/bespoke/v2-activities/bespoke-choose-activity",
+      "chosenPermitID":req.session.data['chosenPermitID']
+    })
+})
+
+// Select type POST version
+router.post('/bespoke/v2-activities/bespoke-category', function (req, res) {
+    res.render(folder + '/bespoke/v2-activities/bespoke-category',{
+      "formAction":"/"+ folder + "/bespoke/v2-activities/bespoke-choose-activity",
+      "chosenPermitID":req.session.data['chosenPermitID']
+    })
+})
+
+// Select activity page
+router.post('/bespoke/v2-activities/bespoke-choose-activity', function (req, res) {
+    res.render(folder + '/bespoke/v2-activities/bespoke-choose-activity',{
+      "formAction":"/"+ folder + "/bespoke/v2-activities/select-assessments",
+      "chosenPermitID":req.session.data['chosenPermitID']
+    })
+})
+
+// Select an assessment for bespoke
+router.post('/bespoke/v1-activities/select-assessments', function (req, res) {
+    res.render(folder + '/bespoke/v1-activities/select-assessments',{
+        "formAction":"/"+ folder + "xxxxxxxxxx",
+        "chosenPermitID":req.session.data['chosenPermitID']
+    })
+})
+
+
 
 // save permit details is an autosubmit page ========================================
 // used to store all the data from the matrix
