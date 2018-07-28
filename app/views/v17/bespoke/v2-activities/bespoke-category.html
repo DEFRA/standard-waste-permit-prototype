@@ -36,7 +36,7 @@
             {% for t in types %}
 
             <div class="multiple-choice">
-              <input id="{{t.category}}" type="radio" name="chosenCategory" value="{{t.category}}">
+              <input id="{{t.category}}" type="checkbox" name="chosenCategory" value="{{t.category}}">
               <label for="{{t.category}}">
                 {{t.category}} {{t.hint}}
 
