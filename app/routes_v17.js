@@ -295,7 +295,8 @@ router.post('/bespoke/v1-activities/bespoke-choose-activity', function (req, res
 // Select an assessment for bespoke
 router.post('/bespoke/v1-activities/select-assessments', function (req, res) {
     res.render(folder + '/bespoke/v1-activities/select-assessments',{
-        "formAction":"/"+ folder + "xxxxxxxxxx"
+        "formAction":"/"+ folder + "xxxxxxxxxx",
+        "chosenPermitID":req.session.data['chosenPermitID']
     })
 })
 

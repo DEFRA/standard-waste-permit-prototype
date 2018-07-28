@@ -17,9 +17,12 @@
     <div class="column-two-thirds">
       
             <h1 class="heading-large" id="radio_label">{{title}}</h1>
-      
-{% from folder+"/bespoke/v1-activities/json/bespoke_activities.html" import activities %}
-{% import folder+"/custom_inc/macros.html" as macros %}
+            
+            
+      {% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/bespoke/v1-activities/json/bespoke-assessment-list.html" import assessments %}
+      {% from folder+"/bespoke/v1-activities/json/bespoke_activities.html" import activities %}
+
 
 <dl class="govuk-check-your-answers cya-questions-short">
   <div>
@@ -109,10 +112,6 @@
 
       
       <p>Select all that apply</p>
-
-
-      {% import folder+"/custom_inc/macros.html" as macros %}
-      {% from folder+"/bespoke/activities/bespoke-assessment-list.html" import assessments %}
 
 
       <form method="post" action="{{formAction}}">
