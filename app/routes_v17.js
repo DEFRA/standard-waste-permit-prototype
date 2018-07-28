@@ -266,35 +266,35 @@ router.post('/selectpermit/choose-permit2', function (req, res) {
 
 
 
-// Select Bespoke activity permit ===============================================
+// Select Bespoke activity permit v1 ===============================================
 
 // Select type - GET
-router.get('/bespoke/bespoke-category', function (req, res) {
-    res.render(folder + '/bespoke/bespoke-category',{
-      "formAction":"/"+ folder + "/bespoke/bespoke-choose-activity",
+router.get('/bespoke/v1-activities/bespoke-category', function (req, res) {
+    res.render(folder + '/bespoke/v1-activities/bespoke-category',{
+      "formAction":"/"+ folder + "/bespoke/v1-activities/bespoke-choose-activity",
       "chosenPermitID":req.session.data['chosenPermitID']
     })
 })
 
-// Select tupe POST version
-router.post('/bespoke/bespoke-category', function (req, res) {
-    res.render(folder + '/bespoke/bespoke-category',{
-      "formAction":"/"+ folder + "/bespoke/bespoke-choose-activity",
+// Select type POST version
+router.post('/bespoke/v1-activities/bespoke-category', function (req, res) {
+    res.render(folder + '/bespoke/v1-activities/bespoke-category',{
+      "formAction":"/"+ folder + "/bespoke/v1-activities/bespoke-choose-activity",
       "chosenPermitID":req.session.data['chosenPermitID']
     })
 })
 
 // Select activity page
-router.post('/bespoke/bespoke-choose-activity', function (req, res) {
-    res.render(folder + '/bespoke/bespoke-choose-activity',{
-      "formAction":"/"+ folder + "/bespoke/select-assessments",
+router.post('/bespoke/v1-activities/bespoke-choose-activity', function (req, res) {
+    res.render(folder + '/bespoke/v1-activities/bespoke-choose-activity',{
+      "formAction":"/"+ folder + "/bespoke/v1-activities/select-assessments",
       "chosenPermitID":req.session.data['chosenPermitID']
     })
 })
 
 // Select an assessment for bespoke
-router.post('/bespoke/select-assessments', function (req, res) {
-    res.render(folder + '/bespoke/select-assessments',{
+router.post('/bespoke/v1-activities/select-assessments', function (req, res) {
+    res.render(folder + '/bespoke/v1-activities/select-assessments',{
         "formAction":"/"+ folder + "xxxxxxxxxx"
     })
 })
