@@ -21,8 +21,10 @@
 
 
       {% import folder+"/custom_inc/macros.html" as macros %}
-      {% from folder+"/bespoke/v2-activities/json/bespoke_activity_types.html" import types %}
+      {% from folder+"/bespoke/v2-activities/json/bespoke_activity_types_dsub.html" import types %}
 
+      {# bespoke_activity_types_dsub.html has the more granular categories #}
+      {# bespoke_activity_types.html has the SRoC+D borader options categories #}
 
       <form method="post" action="{{formAction}}">
         

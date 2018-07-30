@@ -31,6 +31,7 @@
         <p>Select all activities that apply</p>
 
 
+
       {% import folder+"/custom_inc/macros.html" as macros %}
       {% from folder+"/bespoke/v2-activities/json/bespoke_activities.html" import activities %}
 
@@ -40,11 +41,14 @@
           <fieldset class="permitList" aria-labelledby="radio_label">
             <legend="Permit">
 
+
 {% for aNumber, aData in activities %}
             
       {% for cat in permit.chosenCategory %}
 
-            {% if aData.D_Activity_Table==cat %}
+            {% if aData.D_Activity_Subtype==cat %}
+            {# D_Activity_Subtype has the more granular categories #}
+            {# D_Activity_Table has the SRoC+D borader options categories #}
 
             {% set label = [
             '<span class="permitName">',
