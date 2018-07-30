@@ -47,7 +47,7 @@ module.exports = function (env) {
   }
   
   filters.formatnumber = function(num) {
-      return "£" + num.toLocaleString('en')
+      return num.toLocaleString('en',{ style: 'currency', currency: 'GBP' })
   }
 
   filters.reverseName = function(textStr) {
