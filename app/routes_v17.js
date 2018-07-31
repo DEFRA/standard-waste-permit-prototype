@@ -365,6 +365,14 @@ router.post('/bespoke/v3-activities/bespoke-choose-activity', function (req, res
 // Select an assessment for bespoke
 router.post('/bespoke/v3-activities/select-assessments', function (req, res) {
     res.render(folder + '/bespoke/v3-activities/select-assessments',{
+        "formAction":"/"+ folder + "/bespoke/v3-activities/summary",
+        "chosenPermitID":req.session.data['chosenPermitID']
+    })
+})
+
+// Select an assessment for bespoke
+router.post('/bespoke/v3-activities/summary', function (req, res) {
+    res.render(folder + '/bespoke/v3-activities/summary',{
         "formAction":"/"+ folder + "xxxxxxxxxx",
         "chosenPermitID":req.session.data['chosenPermitID']
     })

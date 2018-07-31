@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "What do we need to assess?" %}
+{% set title = "Confirm activities and assessments" %}
 
 {% block page_title %}
 {{title}} - GOV.UK
@@ -20,8 +20,8 @@
             
             
       {% import folder+"/custom_inc/macros.html" as macros %}
-      {% from folder+"/bespoke/v2-activities/json/bespoke-assessment-list.html" import assessments %}
-      {% from folder+"/bespoke/v2-activities/json/bespoke_activities.html" import activities %}
+      {% from folder+"/bespoke/v3-activities/json/bespoke-assessment-list.html" import assessments %}
+      {% from folder+"/bespoke/v3-activities/json/bespoke_activities.html" import activities %}
 
 
 <dl class="govuk-check-your-answers cya-questions-short">
@@ -103,6 +103,7 @@
 
     {% set discountrate = 0.5 %}
     {% set discount = lowestcost * discountrate * -1 %}
+    {% set totalcost = totalcost + discount %}
 
     <div>
       <dt class="cya-question">Second activity discount</dt>
@@ -112,43 +113,58 @@
 
 {% endif %}
 
+<!-- Output chosen activities ############################################ -->
+{% for assess in permit.assessment %}
+
+    {% for a in assessments %}
+    
+        {% if assess==a.SRoC_Assessment_Title %}
+
+            <!-- Output as a CYA styled row ============================== -->  
+            <div>
+              <dt class="cya-question">{{ a.SRoC_Ref }}</dt>
+              <dd class="cya-answer">{{ a.SRoC_Assessment_Title }}</dd>
+              <dd class="cya-change">{{ a.SROC_Assessment_Charge | formatnumber }}</dd>
+            </div>
+            
+            {% set totalcost = totalcost + a.SROC_Assessment_Charge %}
+        
+        {% endif %}
+
+    {% else %}
+        <!-- NO ASSESSMENTS PICKED -->
+    {% endfor %}
+            
+{% else %}
+    <!-- NO ASSESSMENTS PICKED -->
+{% endfor %}
+
+<div>
+  <dt class="cya-question">Total cost</dt>
+  <dd class="cya-answer"></dd>
+  <dd class="cya-change">{{ totalcost | formatnumber }}</dd>
+</div>
 
 </dl>
 
-<div class="panel panel-border-wide">
-      <p>Some activities include assessments. You do not need to add them again.
+<p>
+  You must pay these charges before we will start assessing your application. You do not pay VAT on these costs.
 </p>
-</div>
-
 
       <form method="post" action="{{formAction}}">
-
-
+      
         <div class="form-group">
-          <fieldset aria-labelledby="radio_label">
-            <legend class="Permit type visuallyhidden">{{title}}</legend>
-
-            {% for a in assessments %}
-
-                <div class="multiple-choice">
-                  <input id="{{a.SRoC_Ref}}" type="checkbox" name="assessment" value="{{a.D_Assessment_Title}}"{{ disabled }}>
-                  <label for="{{a.SRoC_Ref}}">
-                    {{a.D_Assessment_Title}}
-                  </label>
-                </div>
-
-            {% else %}
-                <p>No assessments</p>
-            {% endfor %}
-          </div>
-
-
-        <div class="form-group">
-          <button type="submit" class="button" name="Continue">Continue</button>
+            <p>
+            <a href="#">Change activities or assessments</a>
+            </p>
         </div>
 
+        <div class="form-group">  
+            <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
 
       </form>
+      
 
 
     </div>
