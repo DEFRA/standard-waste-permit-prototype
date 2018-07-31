@@ -328,8 +328,43 @@ router.post('/bespoke/v2-activities/bespoke-choose-activity', function (req, res
 })
 
 // Select an assessment for bespoke
-router.post('/bespoke/v1-activities/select-assessments', function (req, res) {
-    res.render(folder + '/bespoke/v1-activities/select-assessments',{
+router.post('/bespoke/v2-activities/select-assessments', function (req, res) {
+    res.render(folder + '/bespoke/v2-activities/select-assessments',{
+        "formAction":"/"+ folder + "xxxxxxxxxx",
+        "chosenPermitID":req.session.data['chosenPermitID']
+    })
+})
+
+
+// Select Bespoke activity permit v3 ===============================================
+
+// Select type - GET
+router.get('/bespoke/v3-activities/bespoke-category', function (req, res) {
+    res.render(folder + '/bespoke/v3-activities/bespoke-category',{
+      "formAction":"/"+ folder + "/bespoke/v3-activities/bespoke-choose-activity",
+      "chosenPermitID":req.session.data['chosenPermitID']
+    })
+})
+
+// Select type POST version
+router.post('/bespoke/v3-activities/bespoke-category', function (req, res) {
+    res.render(folder + '/bespoke/v3-activities/bespoke-category',{
+      "formAction":"/"+ folder + "/bespoke/v3-activities/bespoke-choose-activity",
+      "chosenPermitID":req.session.data['chosenPermitID']
+    })
+})
+
+// Select activity page
+router.post('/bespoke/v3-activities/bespoke-choose-activity', function (req, res) {
+    res.render(folder + '/bespoke/v3-activities/bespoke-choose-activity',{
+      "formAction":"/"+ folder + "/bespoke/v3-activities/select-assessments",
+      "chosenPermitID":req.session.data['chosenPermitID']
+    })
+})
+
+// Select an assessment for bespoke
+router.post('/bespoke/v3-activities/select-assessments', function (req, res) {
+    res.render(folder + '/bespoke/v3-activities/select-assessments',{
         "formAction":"/"+ folder + "xxxxxxxxxx",
         "chosenPermitID":req.session.data['chosenPermitID']
     })
