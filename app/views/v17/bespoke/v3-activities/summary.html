@@ -108,7 +108,7 @@
     <div>
       <dt class="cya-question">Second activity discount</dt>
       <dd class="cya-answer">{{ discountrate*100 }}% of lowest fee for associated activity</dd>
-      <dd class="cya-change">{{ discount | formatnumber }}</dd>
+      <dd class="cya-change" style="white-space: nowrap">{{ discount | formatnumber }}</dd>
     </div>
 
 {% endif %}
@@ -142,7 +142,7 @@
 <div>
   <dt class="cya-question"></dt>
   <dd class="cya-answer heading-small">Total cost for the application</dd>
-  <dd class="cya-change heading-small">{{ totalcost | formatnumber }}</dd>
+  <dd class="cya-change heading-small" style="white-space: nowrap">{{ totalcost | formatnumber }}</dd>
 </div>
 
 </dl>
