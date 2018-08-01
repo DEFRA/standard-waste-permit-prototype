@@ -1,0 +1,192 @@
+{% extends "layout.html" %}
+
+{% set title = "Upload all supporting documents" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+  
+  <!-- 
+  <details>
+    <summary><span class="summary">Permit data</span></summary>
+    <div class="panel panel-border-narrow">
+      {{data|dump}}
+    </div>
+  </details>
+-->
+  
+
+
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<div class="panel panel-border-wide">
+    <p>Upload your supporting documents one at a time. Give each one a title so we know what it is for. You can upload documents as you complete them and come back to your saved application to upload more.</p>
+</div>
+
+
+
+
+{% if permit.sDocFile1|typeof != "undefined" or permit.sDocFile2|typeof != "undefined" or permit.sDocFile3|typeof != "undefined" or permit.sDocFile4|typeof != "undefined"  %}
+  <dl class="govuk-check-your-answers cya-questions-short">
+    <div>
+      <dt class="cya-question">Uploaded files</dt>
+      <dd class="cya-answer"></dd>
+      <dd class="cya-change"></dd>
+    </div>
+{% endif %}
+  
+  {% import folder+"/custom_inc/macros.html" as macros %}
+  
+  {{ macros.uploadList( permit.sDocTitle1,permit.sDocFile1,"sDocFile1" ) if permit.sDocFile1|typeof != "undefined" }}
+  {{ macros.uploadList( permit.sDocTitle2,permit.sDocFile2,"sDocFile2" ) if permit.sDocFile2|typeof != "undefined" }}
+  {{ macros.uploadList( permit.sDocTitle3,permit.sDocFile3,"sDocFile3" ) if permit.sDocFile3|typeof != "undefined" }}
+  {{ macros.uploadList( permit.sDocTitle4,permit.sDocFile4,"sDocFile4" ) if permit.sDocFile4|typeof != "undefined" }}
+  {{ macros.uploadList( permit.sDocTitle5,permit.sDocFile5,"sDocFile5" ) if permit.sDocFile5|typeof != "undefined" }}
+  {{ macros.uploadList( permit.sDocTitle6,permit.sDocFile6,"sDocFile6" ) if permit.sDocFile6|typeof != "undefined" }}
+  {{ macros.uploadList( permit.sDocTitle7,permit.sDocFile7,"sDocFile7" ) if permit.sDocFile7|typeof != "undefined" }}
+  {{ macros.uploadList( permit.sDocTitle8,permit.sDocFile8,"sDocFile8" ) if permit.sDocFile8|typeof != "undefined" }}
+  {{ macros.uploadList( permit.sDocTitle9,permit.sDocFile9,"sDocFile9" ) if permit.sDocFile9|typeof != "undefined" }}
+
+    
+{% if permit.sDocFile1|typeof == "undefined" %}
+    {% set sdoctitle = "sDocTitle1" %}
+    {% set filename = "sDocFile1" %}
+    
+{% elif permit.sDocFile2|typeof == "undefined" %}
+    {% set sdoctitle = "sDocTitle2" %}
+    {% set filename = "sDocFile2" %}
+
+{% elif permit.sDocFile3|typeof == "undefined" %}
+    {% set sdoctitle = "sDocTitle3" %}
+    {% set filename = "sDocFile3" %}
+
+{% elif permit.sDocFile4|typeof == "undefined" %}
+    {% set sdoctitle = "sDocTitle4" %}
+    {% set filename = "sDocFile4" %}
+
+{% elif permit.sDocFile5|typeof == "undefined" %}
+    {% set sdoctitle = "sDocTitle5" %}
+    {% set filename = "sDocFile5" %}
+
+{% elif permit.sDocFile6|typeof == "undefined" %}
+    {% set sdoctitle = "sDocTitle6" %}
+    {% set filename = "sDocFile6" %}
+
+{% elif permit.sDocFile7|typeof == "undefined" %}
+    {% set sdoctitle = "sDocTitle7" %}
+    {% set filename = "sDocFile7" %}
+    
+{% elif permit.sDocFile8|typeof == "undefined" %}
+    {% set sdoctitle = "sDocTitle8" %}
+    {% set filename = "sDocFile8" %}
+    
+{% else %}
+    {% set sdoctitle = "sDocTitle9" %}
+    {% set filename = "sDocFile9" %}
+{% endif %}
+
+
+{% if permit.sDocFile1|typeof != "undefined" or permit.sDocFile2|typeof != "undefined" or permit.sDocFile3|typeof != "undefined" or permit.sDocFile4|typeof != "undefined"  %}
+    </dl>
+{% endif %}
+
+
+<form method="post" action="{{formAction}}" id="uploadForm">
+
+{% if permit.sDocFile1|typeof == "undefined" %}
+
+  <div class="form-group">
+    <label class="form-label" for="documentTitle">
+      <span class="heading-small">Document title</span>
+    </label>
+    <span class="form-hint">
+          For example, 'Environmental risk assessment'
+    </span>
+    <input class="form-control form-control-2-4" id="documentTitle" name="{{sdoctitle}}" type="text">
+  </div>
+
+
+    <p class="upload_head">Upload document file</p>
+    <p class="text form-hint form-hint-upload">
+      PDF, JPG, DOC or DOCX files, 30MB maximum file size.<br>
+      You can upload more than one file at a time.
+    </p>
+
+
+    <div class="form-group form-uploader">
+        <input id="upload" type="file" aria-labelelledby="upload-label">
+
+        <input id="filename" name="{{filename}}" type="hidden">
+    </div>
+    
+{% else %}
+
+    <div class="form-group">
+      <div class="multiple-choice" data-target="uploadAnotherFile">
+        <input id="uploadOtherFile" name="uploadOtherFile" type="checkbox" value="yes">
+        <label for="uploadOtherFile">
+          Upload another file
+        </label>
+      </div>
+    </div>
+    <div class="panel panel-border-narrow js-hidden" id="uploadAnotherFile">
+      
+      <div class="form-group">
+        <label class="form-label" for="documentTitle">
+          <span class="heading-small">Document title</span>
+        </label>
+        <span class="form-hint">
+              For example, ‘Environmental risk assessment’
+        </span>
+        <input class="form-control form-control-2-4" id="documentTitle" name="{{sdoctitle}}" type="text">
+      </div>
+      
+      <p class="upload_head">Upload document file</p>
+      <p class="text form-hint form-hint-upload">
+        PDF, JPG, DOC or DOCX files, 30MB maximum file size.<br>
+        You can upload more than one file at a time.
+      </p>
+      <div class="form-group form-uploader">
+          <input id="upload" type="file" aria-labelelledby="upload-label">
+          <input id="filename" name="{{filename}}" type="hidden">
+      </div>
+    </div>
+  {% endif %}  
+    
+    
+    
+
+    <script>
+      // captures uploaded filename and passes to hidden input
+      document.getElementById('upload').onchange = uploadOnChange;
+      function uploadOnChange() {
+          var filename = this.value;
+          var lastIndex = filename.lastIndexOf("\\");
+          if (lastIndex >= 0) {
+              filename = filename.substring(lastIndex + 1);
+          }
+          document.getElementById('filename').value = filename;
+      }
+    </script>
+
+
+    <div class="form-group">
+      {{submitButton|safe}}{{completeLink|safe}}
+    </div>
+
+  </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

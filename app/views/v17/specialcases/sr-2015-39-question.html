@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% set title = "Have we checked your waste recovery plan?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+<p>You must prepare a waste recovery plan. We will assess it to check your operation is a waste recovery activity.</p>
+
+<p>We recommend that you get it checked by us before you send your application. You will get a decision within 14 days.</p>
+
+<p><a href="https://www.gov.uk/guidance/waste-recovery-plans-and-permits" target="_blank" rel="noopener noreferrer">
+Guidance about waste recovery plans and permits (opens new tab)</a></p>
+
+
+<form method="post" action="{{formAction}}">
+
+  <div class="form-group">
+    <fieldset>
+
+      <legend class="visually-hidden">{{title}}</legend>
+
+		<div class="multiple-choice" data-target="recovery-ref">
+		<input id="yes-recovery-plan" type="radio" name="recovery-plan-check" value="yes">
+		<label for="yes-recovery-plan">
+		Yes, the Environment Agency approved it and there have been no changes since then
+		</label>
+		</div>
+			<div class="panel panel-border-narrow js-hidden" id="recovery-ref">
+			<label class="form-label" for="recovery-ref-number">Reference number we gave you when we approved the plan
+			<span class="form-hint">For example, EPR/AB1234CD</span>
+			</label>
+			<input class="form-control" name="recovery-ref-number" type="text" id="recovery-ref-number">
+			</div>
+
+		<div class="multiple-choice">
+		<input id="no-recovery-check" type="radio" name="recovery-plan-check" value="yes">
+		<label for="no-recovery-check">
+		No, I do not want to get it checked in advance 
+		</label>
+		</div>
+
+		<div class="multiple-choice" data-target="no-check-advice">
+		<input id="no-get-check" type="radio" name="recovery-plan-check" value="no">
+		<label for="no-get-check">
+		No, but I would like to get it checked
+		</label></div>
+			<div class="panel panel-border-narrow js-hidden" id="no-check-advice">
+			<p>Email your waste recovery plan to <a href="mailto:psc@environment-agency.gov.uk">psc@environment-agency.gov.uk</a> and include:</p>
+			<ul class="list list-bullet">
+			<li>a covering letter stating that it’s a waste recovery plan for assessment</li>
+			<li>a contact name, number and email</li>
+			<li>the site address</li>
+			<li>any reference numbers we have given you</li>
+			</ul>
+			</div>      
+
+    </fieldset>
+
+  </div>
+  
+
+  
+
+<div class="form-group">
+    {{submitButton|safe}}{{completeLink|safe}}
+</div>
+
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

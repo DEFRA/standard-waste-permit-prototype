@@ -1,0 +1,165 @@
+{% extends "layout.html" %}
+
+{% set title = "What do we need to assess?" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      
+            <h1 class="heading-large" id="radio_label">{{title}}</h1>
+            
+            
+      {% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/bespoke/v1-activities/json/bespoke-assessment-list.html" import assessments %}
+      {% from folder+"/bespoke/v1-activities/json/bespoke_activities.html" import activities %}
+
+
+<dl class="govuk-check-your-answers cya-questions-short">
+  <div>
+    <dt class="cya-question">Chosen activities</dt>
+    <dd class="cya-answer"></dd>
+    <dd class="cya-change"></dd>
+  </div>
+
+{% set num = cycler("first", "second", "third") %}
+{% set numactivities = 0 %}
+{% set totalcost = 0 %}
+{% set lowestcost = 100000 %}
+{% set fpp = "No" %}
+{% set omp = "No" %}
+
+{% for ref in permit.chosenPermitID %}
+
+      {% for aNumber, aData in activities %}
+      
+            {% if aNumber==ref %}
+            
+                  {% if aData.SROC_Assessment_Fireplan == "Yes" and aData.SROC_Assessment_Odour == "Yes"  %}
+                      {% set title = aData.D_Activity_Title + " - includes assessment of fire prevention plan and odour management plan" %}
+                      {% set fpp = "Yes" %}
+                      {% set omp = "Yes" %}
+                  {% elif aData.SROC_Assessment_Fireplan == "Yes" %}
+                      {% set title = aData.D_Activity_Title + " - includes assessment of fire prevention plan" %}
+                      {% set fpp = "Yes" %}
+                  {% elif aData.SROC_Assessment_Odour == "Yes" %}
+                      {% set title = aData.D_Activity_Title + " - includes assessment of the odour management plan" %}
+                      {% set omp = "Yes" %}
+                  {% else %}
+                      {% set title = aData.D_Activity_Title %}
+                  {% endif %}
+
+                  {{ macros.checklist( 
+                    ref, 
+                    title, 
+                    aData.SROC_Application_Charge | formatnumber 
+                    ) }}
+
+                  {% if aData.SROC_Application_Charge < lowestcost %}
+                      {% set lowestcost = aData.SROC_Application_Charge %}
+                  {% endif %}
+                    
+                  {% set totalcost = totalcost + aData.SROC_Application_Charge %}
+
+
+                <input type="hidden" name="cost-{{ num.next() }}" value="{{ aData.SROC_Application_Charge }}">
+                <input type="hidden" name="activity-{{ num.next() }}" value="{{ aData.D_Activity_Title }}">
+                
+                {% set numactivities = numactivities+1 %}
+                
+            {% endif %}
+            
+      {% else %}
+      <p>No activities</p>
+      {% endfor %}
+
+{% else %}
+    <p>You must select at least one activity</p>
+{% endfor %}
+
+{% if numactivities > 1 %}
+
+    {% set discountrate = 0.5 %}
+    {% set discount = lowestcost * discountrate * -1 %}
+    {% set totalcost = totalcost + discount %}
+
+    <div>
+      <dt class="cya-question">Second activity discount</dt>
+      <dd class="cya-answer">{{ discountrate*100 }}% of lowest fee for associated activity</dd>
+      <dd class="cya-change">{{ discount | formatnumber }}</dd>
+    </div>
+
+{% endif %}
+
+<div>
+  <dt class="cya-question">Total cost</dt>
+  <dd class="cya-answer"></dd>
+  <dd class="cya-change">{{ totalcost | formatnumber }}</dd>
+</div>
+
+
+
+</dl>
+
+      
+      <p>Select all that apply</p>
+
+
+      <form method="post" action="{{formAction}}">
+
+
+        <div class="form-group">
+          <fieldset aria-labelledby="radio_label">
+            <legend class="Permit type visuallyhidden">{{title}}</legend>
+
+            {% for a in assessments %}
+            
+                {% set disabled = "" %}
+                {% set message = "" %}
+                
+                {% if a.D_Assessment_Title == "Fire prevention plan" and fpp=="Yes" %}
+                    {% set disabled = " disabled" %}
+                    {% set message = " - fire prevention plan assessment is included in the application fee" %}
+                {% endif %}
+                
+                {% if a.D_Assessment_Title == "Odour management plan" and omp=="Yes" %}
+                    {% set disabled = " disabled" %}
+                    {% set message = " - odour management plan assessment is included in the application fee" %}
+                {% endif %}
+
+                <div class="multiple-choice">
+                  <input id="{{a.SRoC_Ref}}" type="checkbox" name="assessment" value="{{a.D_Assessment_Title}}"{{ disabled }}>
+                  <label for="{{a.SRoC_Ref}}">
+                    {{a.D_Assessment_Title}} &pound;{{a.SROC_Assessment_Charge}}{{message}}
+                  </label>
+                </div>
+
+            {% else %}
+                <p>No assessments</p>
+            {% endfor %}
+          </div>
+
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+
+
+      </form>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

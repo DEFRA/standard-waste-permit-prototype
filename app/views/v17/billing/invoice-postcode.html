@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% set title = "Where should we send invoices for the annual costs after the permit has been issued?" %}
+<!-- What is the postcode for your invoice address? -->
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">{{title}}</h1>
+
+     <!--  {% if permit.invoiceAddress!=="Different address" %} -->
+
+      <div class="panel panel-border-wide">
+        <p>This should be where we can send invoices for your ongoing annual costs (the subsistence charge) after the permit has been issued.</p>
+      </div>
+
+      <!-- {% endif %} -->
+
+      <form method="post" action="{{formAction}}">
+        <fieldset>
+
+          <legend class="visuallyhidden">Postcode</legend>
+
+          <div class="form-group">
+            <label class="form-label" for="postcode">UK postcode
+              <span class="form-hint">For example, BS1 5AH</span>
+            </label>
+            <input type="text" class="form-control form-control-char-10" id="postcode" name="invoicePostCode" value="{{permit.invoicePostCode}}" />
+          </div>
+        </fieldset>
+
+        <div class="form-group">
+          {{submitButton|safe}}{{completeLink|safe}}
+        </div>
+
+        <div class="form-group">
+          <hr>
+          <p class="text font-xsmall" id="os-notice">
+            &copy; Crown copyright and database rights 2017 Ordnance Survey 100024198. Use of this addressing data is subject to the <a target="_blank" rel="noopener noreferrer" href="/{{folder}}/address/os_place_terms">terms and conditions (opens new window)</a>.
+          </p>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

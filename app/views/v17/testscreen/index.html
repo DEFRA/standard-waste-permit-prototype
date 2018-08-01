@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% set title = "Check if you can get a permit at the site location" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">{{title}}</h1>
+
+      <form method="post" action="{{formAction}}">
+
+				<p>
+        You cannot get a permit if your site is close to nature conservation sites, water supplies or heritage sites.
+      </p>
+					
+				<h2 class="heading-small">
+					To check you will need to know:
+				</h2>
+				
+				<ul class="list list-bullet">
+					<li>what permit you want</li>
+					<li>the grid reference for the centre of your site</li>
+					<li>the distance from the centre of your site to the boundarty</li>
+				</ul>
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
