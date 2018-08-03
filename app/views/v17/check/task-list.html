@@ -100,10 +100,10 @@
       {% for aNumber, aData in activities %}
             {% if aNumber==ref %}
 
-            <!-- Output as a paragraph ============================== --> 
-                  <p>{{ ref }} {{ aData.D_Activity_Title }}</p>
+            <!-- Output as a paragraph ============================== -->
+                  {{ ref }} {{ aData.D_Activity_Title }}</br>
 
-            {% endif %}    
+            {% endif %}
       {% else %}
       <p>No activities</p>
       {% endfor %}
@@ -111,29 +111,29 @@
     <p>You must select at least one activity</p>
 {% endfor %}
 
-
+<span class="assessments">Assessment:</span>
 <!-- Output chosen assessments ############################################ -->
 {% for assess in permit.assessment %}
     {% for a in assessments %}
         {% if assess==a.D_Assessment_Title %}
-            <p>{{ a.SRoC_Ref }} {{ a.D_Assessment_Title }}</p>
+            {{ a.SRoC_Ref }} {{ a.D_Assessment_Title }}</br>
         {% endif %}
     {% else %}
         <!-- NO ASSESSMENTS PICKED -->
-    {% endfor %}    
+    {% endfor %}
 {% else %}
     <!-- NO ASSESSMENTS PICKED -->
 {% endfor %}
 
 <!-- Output chosen activities ############################################ -->
-<p>{{ permit.totalcost }}</p>
+<h3 class="heading-small">Total cost {{ permit.totalcost }}</h3>
 
 
 <!-- Link to change permit activities ############################################ -->
 {% if permit.bespokePermit=="bespoke" %}
         <p>
-          <a href="/{{folder}}/selectpermit/select-bespoke-or-standard">
-            Select a different permit type
+          <a href="#">
+            Change activities or assessments
           </a>
         </p>
 {% endif %}
