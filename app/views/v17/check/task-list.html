@@ -34,7 +34,7 @@
 
 {% set tCheckCost = "Check costs and processing time" %}
 {% set tGiveCost = "Enter the application cost" %}
-{% set tDownloadForms = "Download the application forms B2 and B4" %}
+{% set tDownloadForms = "Download the application forms" %}
 {% set tCheckRules = "Confirm you can meet the rules" %}
 {% set tStackHeight = "Give the stack height" %}
 {% set tMiningWasteManPlan = "Confirm you have a mining waste management plan" %}
@@ -131,7 +131,7 @@
               </li>
 
 
-
+<!--
               {% if permit.bespokePermit=="bespoke" %}
 
                            <li class="task-list-item {% if taskListError and permit.giveCost==null %} form-group-error{% endif %}" id="{{ tGiveCost  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
@@ -166,7 +166,7 @@
                    {% endif %}
                   </li>
               {% endif %}
-
+ -->
 
 
               {% if permit.bespokePermit=="bespoke" %}
