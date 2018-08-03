@@ -58,14 +58,17 @@
 {% set tBilling = "Give invoicing details" %}
 {% set tSend = "Send application and pay" %}
 
+
+{% import folder+"/custom_inc/macros.html" as macros %}
+{% from folder+"/bespoke/v3-activities/json/bespoke-assessment-list.html" import assessments %}
+{% from folder+"/bespoke/v3-activities/json/bespoke_activities.html" import activities %}
+
 <main id="content" role="main" class="task-list">
   {% include "includes/phase_banner_beta.html" %}
 
 
   <div class="grid-row">
     <div class="column-two-thirds column-minimum">
-
-
 
       <form method="post" action="/{{folder}}/check/check-answers" name="tasklist">
 
@@ -92,9 +95,45 @@
 {% endif %}
         </h1>
 
+
+<!-- Output chosen activities ############################################ -->
+{% for ref in permit.chosenPermitID %}
+      {% for aNumber, aData in activities %}
+            {% if aNumber==ref %}
+
+            <!-- Output as a paragraph ============================== --> 
+                  <p>{{ ref }} {{ aData.D_Activity_Title }}</p>
+
+            {% endif %}    
+      {% else %}
+      <p>No activities</p>
+      {% endfor %}
+{% else %}
+    <p>You must select at least one activity</p>
+{% endfor %}
+
+
+<!-- Output chosen assessments ############################################ -->
+{% for assess in permit.assessment %}
+    {% for a in assessments %}
+        {% if assess==a.D_Assessment_Title %}
+            <p>{{ a.SRoC_Ref }} {{ a.D_Assessment_Title }}</p>
+        {% endif %}
+    {% else %}
+        <!-- NO ASSESSMENTS PICKED -->
+    {% endfor %}    
+{% else %}
+    <!-- NO ASSESSMENTS PICKED -->
+{% endfor %}
+
+<!-- Output chosen activities ############################################ -->
+<p>{{ permit.totalcost }}</p>
+
+
+<!-- Link to change permit activities ############################################ -->
 {% if permit.bespokePermit=="bespoke" %}
         <p>
-          <a href="/{{folder}}/selectpermit/bespoke-or-standard">
+          <a href="/{{folder}}/selectpermit/select-bespoke-or-standard">
             Select a different permit type
           </a>
         </p>
