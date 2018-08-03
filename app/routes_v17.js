@@ -216,8 +216,8 @@ router.post('/selectpermit/select-bespoke-or-standard', function (req, res) {
   } else if(req.body['bespokePermit']=="bespoke-other") {
       res.render(folder + '/selectpermit/bespoke-offline')
   } else {
-      res.render(folder + '/check/task-list',{
-          "formAction":"/"+ folder + "/check/task-list"
+      res.render(folder + '/bespoke/v3-activities/bespoke-category',{
+          "formAction":"/"+ folder + "/bespoke/v3-activities/bespoke-choose-activity"
       })
   }
 })
@@ -373,7 +373,7 @@ router.post('/bespoke/v3-activities/select-assessments', function (req, res) {
 // Select an assessment for bespoke
 router.post('/bespoke/v3-activities/summary', function (req, res) {
     res.render(folder + '/bespoke/v3-activities/summary',{
-        "formAction":"/"+ folder + "xxxxxxxxxx",
+        "formAction":"/"+ folder + '/check/task-list',
         "chosenPermitID":req.session.data['chosenPermitID']
     })
 })
@@ -1108,7 +1108,7 @@ router.post('/check-supporting-docs', function (req, res) {
   if(req.session.data['sDocFile7']=="") delete req.session.data['sDocFile7']
   if(req.session.data['sDocFile8']=="") delete req.session.data['sDocFile8']
   if(req.session.data['sDocFile9']=="") delete req.session.data['sDocFile9']
-  
+
     res.render(folder + '/bespoke/upload-supporting-docs',{
       "formAction":"/"+ folder + "/check-supporting-docs2"
     })
@@ -1116,7 +1116,7 @@ router.post('/check-supporting-docs', function (req, res) {
 
 // fake route for second check of file uploads
 router.post('/check-supporting-docs2', function (req, res) {
-  
+
   // cleanup any blank files - set because hidden field is set on post
   if(req.session.data['sDocFile2']=="") delete req.session.data['sDocFile2']
   if(req.session.data['sDocFile3']=="") delete req.session.data['sDocFile3']
@@ -1126,7 +1126,7 @@ router.post('/check-supporting-docs2', function (req, res) {
   if(req.session.data['sDocFile7']=="") delete req.session.data['sDocFile7']
   if(req.session.data['sDocFile8']=="") delete req.session.data['sDocFile8']
   if(req.session.data['sDocFile9']=="") delete req.session.data['sDocFile9']
-  
+
   if(req.session.data['uploadOtherFile']=="yes"){
     res.render(folder + '/bespoke/upload-supporting-docs',{
       "formAction":"/"+ folder + "/check-supporting-docs2"
@@ -1147,7 +1147,7 @@ router.get('/remove-supporting-doc', nocache, function (req, res) {
     var fileNumber  = removeFile.substr(removeFile.length-1, 1)   // last part of sDocFile1
     var titleStr = "sDocTitle"+fileNumber  // eg 2
     var finished = false
-    
+
     if(req.query['removeFile']!="") {
       // have to repeat deletion as it is stored in both session and locals objects
       delete res.locals.data[removeFile] // remove filename string
@@ -1159,14 +1159,14 @@ router.get('/remove-supporting-doc', nocache, function (req, res) {
       var finished = true
     }
    console.log(res.locals.data)
-  
+
     // then re-display page
     if(finished){
       res.render(folder + '/bespoke/upload-supporting-docs',{
         "formAction":"/"+ folder + "/check-supporting-docs"
       })
     }
-    
+
 })
 
 
@@ -1175,7 +1175,7 @@ router.get('/remove-b2', nocache, function (req, res) {
     // remove selected file (in query string)
     // stored in req.query.removeFile
     var removeFile = req.query['removeFile']
-    
+
     if(req.query['removeFile']!="") {
       // have to repeat deletion as it is stored in both session and locals objects
       delete res.locals.data[removeFile] // remove filename string
@@ -1184,14 +1184,14 @@ router.get('/remove-b2', nocache, function (req, res) {
           delete req.session.data.removeFile // clean up
       var finished = true
     }
-  
+
     // then re-display page
     if(finished){
       res.render(folder + '/bespoke/upload-B2-forms',{
         "formAction":"/"+ folder + "/check/task-list"
       })
     }
-    
+
 })
 
 // Remove B4 file from LIST - fake route
@@ -1199,7 +1199,7 @@ router.get('/remove-b4', nocache, function (req, res) {
     // remove selected file (in query string)
     // stored in req.query.removeFile
     var removeFile = req.query['removeFile']
-    
+
     if(req.query['removeFile']!="") {
       // have to repeat deletion as it is stored in both session and locals objects
       delete res.locals.data[removeFile] // remove filename string
@@ -1208,14 +1208,14 @@ router.get('/remove-b4', nocache, function (req, res) {
           delete req.session.data.removeFile // clean up
       var finished = true
     }
-  
+
     // then re-display page
     if(finished){
       res.render(folder + '/bespoke/upload-B4-forms',{
         "formAction":"/"+ folder + "/check/task-list"
       })
     }
-    
+
 })
 
 
