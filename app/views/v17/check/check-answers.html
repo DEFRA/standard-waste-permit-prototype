@@ -8,6 +8,10 @@
 
 {% block content %}
 
+{% import folder+"/custom_inc/macros.html" as macros %}
+{% from folder+"/bespoke/v3-activities/json/bespoke-assessment-list.html" import assessments %}
+{% from folder+"/bespoke/v3-activities/json/bespoke_activities.html" import activities %}
+
 <main id="content" role="main">
   {% include "includes/phase_banner_beta.html" %}
 
@@ -21,12 +25,64 @@
 
   <dl class="govuk-check-your-answers cya-questions-short">
     {% if permit.bespokePermit=="bespoke" %}
+    
+    
+<!-- Output chosen activities ############################################ -->
+
+<div>
+  <dt class="cya-question">Activities</dt>
+  <dd class="cya-answer">
+    
+{% for ref in permit.chosenPermitID %}
+      {% for aNumber, aData in activities %}
+            {% if aNumber==ref %}
+
+            <!-- Output as a paragraph ============================== -->
+                  {{ ref }} {{ aData.D_Activity_Title }}</br>
+
+            {% endif %}
+      {% else %}
+      <p>No activities</p>
+      {% endfor %}
+{% else %}
+    <p>You must select at least one activity</p>
+{% endfor %}
+    
+
+    </dd>
+    <dd class="cya-change"><a href="/{{folder}}/bespoke/v3-activities/bespoke-category">Change</a></dd>
+  </div>    
+    
+  <!-- Output chosen activities ############################################ -->
+ 
+  <div>
+    <dt class="cya-question">Assessments</dt>
+    <dd class="cya-answer">
+    
+      <!-- Output chosen assessments ############################################ -->
+      {% for assess in permit.assessment %}
+          {% for a in assessments %}
+              {% if assess==a.D_Assessment_Title %}
+                  {{ a.SRoC_Ref }} {{ a.D_Assessment_Title }}</br>
+              {% endif %}
+          {% else %}
+              No assessments
+          {% endfor %}
+      {% else %}
+          <!-- NO ASSESSMENTS PICKED -->
+      {% endfor %}  
+
+    </dd>
+    <dd class="cya-change"><a href="/{{folder}}/bespoke/v3-activities/bespoke-category">Change</a></dd>
+  </div>
+  
+    
  <div>
    <dt class="cya-question">
      Application cost
    </dt>
    <dd class="cya-answer">
-     £{{permit.totalcost}}
+     {{permit.totalcost}}
    </dd>
    <dd class="cya-change">
      <a href="/{{folder}}/bespoke/give-cost-and-time">

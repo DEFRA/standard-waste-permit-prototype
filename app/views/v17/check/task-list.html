@@ -111,12 +111,12 @@
     <p>You must select at least one activity</p>
 {% endfor %}
 
-<span class="assessments">Assessment:</span>
+
 <!-- Output chosen assessments ############################################ -->
 {% for assess in permit.assessment %}
     {% for a in assessments %}
         {% if assess==a.D_Assessment_Title %}
-            {{ a.SRoC_Ref }} {{ a.D_Assessment_Title }}</br>
+            <span class="assessments">Assessment:</span> {{ a.SRoC_Ref }} {{ a.D_Assessment_Title }}</br>
         {% endif %}
     {% else %}
         <!-- NO ASSESSMENTS PICKED -->
@@ -126,13 +126,13 @@
 {% endfor %}
 
 <!-- Output chosen activities ############################################ -->
-<h3 class="heading-small">Total cost {{ permit.totalcost }}</h3>
+<span class="totalCost">Total cost {{ permit.totalcost }}</span>
 
 
 <!-- Link to change permit activities ############################################ -->
 {% if permit.bespokePermit=="bespoke" %}
         <p>
-          <a href="#">
+          <a href="/{{folder}}/bespoke/v3-activities/bespoke-category">
             Change activities or assessments
           </a>
         </p>
