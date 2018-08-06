@@ -51,7 +51,7 @@
   		      <tr>
   		        <td>Amount to pay</td>
               {% if permit.bespokePermit=="bespoke" %}
-              <td class="table-info">£{{permit.giveCost}}</td>
+              <td class="table-info">{{permit.totalcost}}</td>
               {% endif %}
   		        <td class="table-info">{{ permit.permitCost }}</td>
   		      </tr>

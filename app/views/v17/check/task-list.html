@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set version = "/v14" %}
+{% set version = "/v17" %}
 
 {% set title = "Task list: apply for a standard rules environmental permit" %}
 
@@ -100,10 +100,10 @@
       {% for aNumber, aData in activities %}
             {% if aNumber==ref %}
 
-            <!-- Output as a paragraph ============================== --> 
-                  <p>{{ ref }} {{ aData.D_Activity_Title }}</p>
+            <!-- Output as a paragraph ============================== -->
+                  {{ ref }} {{ aData.D_Activity_Title }}</br>
 
-            {% endif %}    
+            {% endif %}
       {% else %}
       <p>No activities</p>
       {% endfor %}
@@ -116,24 +116,24 @@
 {% for assess in permit.assessment %}
     {% for a in assessments %}
         {% if assess==a.D_Assessment_Title %}
-            <p>{{ a.SRoC_Ref }} {{ a.D_Assessment_Title }}</p>
+            <span class="assessments">Assessment:</span> {{ a.SRoC_Ref }} {{ a.D_Assessment_Title }}</br>
         {% endif %}
     {% else %}
         <!-- NO ASSESSMENTS PICKED -->
-    {% endfor %}    
+    {% endfor %}
 {% else %}
     <!-- NO ASSESSMENTS PICKED -->
 {% endfor %}
 
 <!-- Output chosen activities ############################################ -->
-<p>{{ permit.totalcost }}</p>
+<span class="totalCost">Total cost {{ permit.totalcost }}</span>
 
 
 <!-- Link to change permit activities ############################################ -->
 {% if permit.bespokePermit=="bespoke" %}
         <p>
-          <a href="/{{folder}}/selectpermit/select-bespoke-or-standard">
-            Select a different permit type
+          <a href="/{{folder}}/bespoke/v3-activities/bespoke-category">
+            Change activities or assessments
           </a>
         </p>
 {% endif %}
