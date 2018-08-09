@@ -34,7 +34,7 @@
 
 
       {% import folder+"/custom_inc/macros.html" as macros %}
-      {% from folder+"/bespoke/v2-activities/json/bespoke_activities.html" import activities %}
+      {% from folder+"/bespoke/v3-activities/json/bespoke_activities.html" import activities %}
 
 
       <form method="post" action="{{formAction}}">
@@ -49,11 +49,11 @@
 
             {% if aData.D_Activity_Table==cat %}
             {# D_Activity_Subtype has the more granular categories #}
-            {# D_Activity_Table has the SRoC+D borader options categories #}
+            {# D_Activity_Table has the SRoC+D broader options categories #}
 
             {% set label = [
             '<span class="permitName">',
-            aData.D_Activity_Title,
+            aData.SRoC_Activity_Title,
             '</span>',
             '<span class="permitCode">',
             aNumber,
