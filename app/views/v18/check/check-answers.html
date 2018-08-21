@@ -256,6 +256,23 @@
         </a>
       </dd>
     </div>
+    
+    
+    {% if permit.wasteCodesFile!="" %}
+    <div>
+      <dt class="cya-question">
+        Waste codes spreadsheet filename
+      </dt>
+      <dd class="cya-answer">
+        {{permit.wasteCodesFile}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/bespoke/waste-codes">
+          Change <span class="visuallyhidden">file</span>
+        </a>
+      </dd>
+    </div>
+    {% endif %}
 
     <!-- DONT'T SHOW SITE FOR MOBILE PERMITS -->
     {% if

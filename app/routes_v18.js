@@ -8,7 +8,7 @@ const async = require('async')
 // How to use folder variable:
 // res.redirect( '/' + folder + '/exemptions/add_exemptions');
 
-var folder = "v17"
+var folder = "v18"
 var servicename = "Apply for an environmental permit"
 var paymentMethod = "govpay"  // or "govpay"
 
@@ -1212,6 +1212,31 @@ router.get('/remove-b4', nocache, function (req, res) {
     // then re-display page
     if(finished){
       res.render(folder + '/bespoke/upload-B4-forms',{
+        "formAction":"/"+ folder + "/check/task-list"
+      })
+    }
+
+})
+
+// Remove any from LIST - fake route
+router.get('/remove-file', nocache, function (req, res) {
+    // remove selected file (in query string)
+    // stored in req.query.removeFile
+    var removeFile = req.query['removeFile']
+    var returnPath = req.query['returnPath']
+
+    if(req.query['removeFile']!="") {
+      // have to repeat deletion as it is stored in both session and locals objects
+      delete res.locals.data[removeFile] // remove filename string
+          delete req.session.data[removeFile] // remove filename string
+      delete res.locals.data.removeFile // clean up
+          delete req.session.data.removeFile // clean up
+      var finished = true
+    }
+
+    // then re-display page
+    if(finished){
+      res.render(folder + returnPath,{
         "formAction":"/"+ folder + "/check/task-list"
       })
     }
