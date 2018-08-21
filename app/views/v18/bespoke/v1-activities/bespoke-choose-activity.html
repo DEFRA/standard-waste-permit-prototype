@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% set title = "Select the activities you want the permit to cover" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+
+        <p>Showing activities for {{permit.chosenCategory | lower }}. </p>
+        
+        <p>Select all that apply</p>
+
+
+      {% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/bespoke/v1-activities/json/bespoke_activities.html" import activities %}
+
+
+      <form method="post" action="{{formAction}}">
+        <div class="form-group">
+          <fieldset class="permitList" aria-labelledby="radio_label">
+            <legend="Permit">
+
+            {% for aNumber, aData in activities %}
+
+            {% if aData.D_Activity_Table==permit.chosenCategory %}
+
+            {% set label = [
+            '<span class="permitName">',
+            aData.D_Activity_Title,
+            '</span>',
+            '<span class="permitCode">',
+            aNumber,
+            '</span>'
+            ] %}
+
+            {{ macros.checkbox(
+            label | join | safe,
+            "chosenPermitID",
+            loop.index,
+            aNumber,
+            " permitItem"
+            ) }}
+
+            {% endif %}
+
+            {% else %}
+            <p>No radios</p>
+            {% endfor %}
+
+          </fieldset>
+        </div>
+
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+
+
+
+      </form>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
