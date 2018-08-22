@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% set title = "List the recovery R codes for this activity" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+  <h1 class="heading-large">
+    {{title}}
+  </h1>
+
+  <p>You can find guidance in the <a href="">waste R and D code flowchart.</a></p>
+
+  <h4 class="heading-small">R codes for household, commercial and industrial waste transfer station</h4>
+  <div class="hint">Select all that apply. Leave blank if there is no recovery for this activity.</div>
+</br>
+
+{% import folder+"/custom_inc/macros.html" as macros %}
+{% from folder+"/bespoke/v2-activities/json/bespoke_activity_types.html" import types %}
+
+{# bespoke_activity_types_dsub.html has the more granular categories #}
+{# bespoke_activity_types.html has the SRoC+D broader options categories #}
+
+
+          {% for t in types %}
+
+          <div class="multiple-choice">
+            <input id="{{t.category}}" type="checkbox" name="chosenCategory" value="{{t.category}}">
+            <label for="{{t.category}}">
+              {{t.category}} {{t.hint}}
+
+            </label>
+          </div>
+
+          {% else %}
+          <p>No types</p>
+          {% endfor %}
+        </div>
+      </div>
+</br>
+
+  <div class="form-group">
+      {{submitButton|safe}}{{completeLink|safe}}
+    </div>
+  </div>
+</div>
+
+</main>
+
+{% endblock %}
