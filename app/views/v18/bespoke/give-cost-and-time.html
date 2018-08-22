@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% set title = "Enter the total application cost" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_beta.html" %}
+
+    {{backlink|safe}}
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+          <h1 class="heading-large" id="radio_label">{{title}}</h1>
+
+      <form method="post" action="{{formAction}}">
+
+
+      <h3 class="heading-small">How to work out the cost</h3>
+      <p>You can <a href="https://www.gov.uk/guidance/waste-environmental-permits#contact" target="_blank">contact the Environment Agency (opens new tab)</a> for help to work out the total cost.</p>
+      <p>Or you can calculate it yourself using the <a href="https://www.gov.uk/government/publications/environmental-permitting-charges-guidance" target="_blank">environmental permitting charges guidance (opens new tab)</a>.</p>
+
+      <div class="form-group">
+        <label class="form-label" for="permitCost">
+          <span class="heading-small">Total application cost</span>
+        </label>
+        <span class="costGBP">£</span><input class="form-control form-control-1-4" id="giveCost" name="totalcost" type="text" value="{{permit.totalcost}}">
+      </div>
+              <br>
+
+         <!-- set costTime to yes -->
+        <input type="hidden" name="costTime" value="yes">
+
+
+        <div class="form-group">
+            {{submitButton|safe}}{{completeLink|safe}}
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

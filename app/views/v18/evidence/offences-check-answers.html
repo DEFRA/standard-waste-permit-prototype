@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% set title = "Check your answers" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <h1 class="heading-large">
+    {{title}}
+  </h1>
+
+  <table class="check-your-answers">
+
+    <thead>
+      <tr>
+        <th colspan="2">
+          <h2 class="heading-medium">
+            Relevant offences
+          </h2>
+        </th>
+        <th>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          Relevant offences
+        </td>
+        <td>
+          {{permit.offences}}
+        </td>
+        <td class="change-answer">
+          <a href="/{{folder}}/evidence/declare-offences">
+            Change <span class="visuallyhidden">relevant offences</span>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+
+  <a href="/{{folder}}/check/task-list">Return to task list</a>
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,150 @@
+{% extends "layout.html" %}
+
+{% set title = "What do we need to assess?" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      
+            <h1 class="heading-large" id="radio_label">{{title}}</h1>
+            
+    
+            
+      {% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/bespoke/v3-activities/json/bespoke-assessment-list.html" import assessments %}
+      {% from folder+"/bespoke/v3-activities/json/bespoke_activities.html" import activities %}
+
+
+<dl class="govuk-check-your-answers cya-questions-short">
+  <div>
+    <dt class="cya-question">Chosen activities</dt>
+    <dd class="cya-answer"></dd>
+    <dd class="cya-change"></dd>
+  </div>
+
+{% set num = cycler("first", "second", "third") %}
+{% set numactivities = 0 %}
+{% set totalcost = 0 %}
+{% set lowestcost = 100000 %}
+{% set fpp = "No" %}
+{% set omp = "No" %}
+{% set isDepositForRecovery="No" %}
+
+<!-- Output chosen activities ############################################ -->
+{% for ref in permit.chosenPermitID %}
+
+      {% for aNumber, aData in activities %}
+      
+            {% if aNumber==ref %}
+            
+            <!-- Add text for included assessments ======================= -->            
+                  {% if aData.SROC_Assessment_Fireplan == "Yes" and aData.SROC_Assessment_Odour == "Yes"  %}
+                      {% set title = aData.D_Activity_Title + " - includes assessment of fire prevention plan and odour management plan" %}
+                      {% set fpp = "Yes" %}
+                      {% set omp = "Yes" %}
+                  {% elif aData.SROC_Assessment_Fireplan == "Yes" %}
+                      {% set title = aData.D_Activity_Title + " - includes assessment of fire prevention plan" %}
+                      {% set fpp = "Yes" %}
+                  {% elif aData.SROC_Assessment_Odour == "Yes" %}
+                      {% set title = aData.D_Activity_Title + " - includes assessment of the odour management plan" %}
+                      {% set omp = "Yes" %}
+                  {% else %}
+                      {% set title = aData.D_Activity_Title %}
+                  {% endif %}
+
+            <!-- Output as a CYA styled row ============================== --> 
+                  {{ macros.checklist( 
+                    ref, 
+                    aData.SRoC_Activity_Title, 
+                    aData.SROC_Application_Charge | formatnumber 
+                    ) }}
+
+            <!-- Set lowest cost ========================================== --> 
+                  {% if aData.SROC_Application_Charge < lowestcost %}
+                      {% set lowestcost = aData.SROC_Application_Charge %}
+                  {% endif %}
+
+            <!-- Get total =============================================== --> 
+                  {% set totalcost = totalcost + aData.SROC_Application_Charge %}
+                
+            <!-- Count activities to use in discount ===================== --> 
+                {% set numactivities = numactivities+1 %}
+                
+            {% endif %}
+            
+      {% else %}
+      <p>No activities</p>
+      {% endfor %}
+
+{% else %}
+    <p>You must select at least one activity</p>
+{% endfor %}
+
+
+{% if numactivities > 1 %}
+
+    {% set discountrate = 0.5 %}
+    {% set discount = lowestcost * discountrate * -1 %}
+
+    <div>
+      <dt class="cya-question">Associated activity discount</dt>
+      <dd class="cya-answer">{{ discountrate*100 }}% of lowest fees for associated activities</dd>
+      <dd class="cya-change" style="white-space: nowrap">{{ discount | formatnumber }}</dd>
+    </div>
+
+{% endif %}
+
+</dl>
+
+<div class="panel panel-border-wide">
+      <p>Some activities include assessments. You do not need to add them again.
+</p>
+</div>
+
+
+      <form method="post" action="{{formAction}}">
+
+
+        <div class="form-group">
+          <fieldset aria-labelledby="radio_label">
+            <legend class="Permit type visuallyhidden">{{title}}</legend>
+
+            {% for a in assessments %}
+
+                <div class="multiple-choice">
+                  <input id="{{a.SRoC_Ref}}" type="checkbox" name="assessment" value="{{a.D_Assessment_Title}}"{{ disabled }}>
+                  <label for="{{a.SRoC_Ref}}">
+                    {{a.D_Assessment_Title}}
+                  </label>
+                </div>
+
+            {% else %}
+                <p>No assessments</p>
+            {% endfor %}
+          </div>
+
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+
+
+      </form>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% set title = "What do you want the permit for?" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+
+
+      {% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/custom_inc/category-list-new-json3.html" import categories %}
+
+
+      <form method="post" action="{{formAction}}">
+        
+      <!-- STORE operatorType to pass on -->
+      <input type="hidden" name="operatorType" value="{{permit.operatorType}}">
+      
+        <div class="form-group">
+          <fieldset aria-labelledby="radio_label">
+            <legend class="Permit type visuallyhidden">{{title}}</legend>
+
+            {% for c in categories %}
+
+            <div class="multiple-choice">
+              <input id="{{c.category}}" type="radio" name="chosenCategory" value="{{c.category}}">
+              <label for="{{c.category}}">
+                {{c.category}} {{c.hint}}
+
+              </label>
+            </div>
+
+            {% else %}
+            <p>No categories</p>
+            {% endfor %}
+          </div>
+
+
+          <div class="form-group">
+            <details role="group">
+
+              <summary role="button" aria-controls="permit-not-found" aria-expanded="true"><span class="summary">I cannot find the permit I need</span></summary>
+
+              <div class="panel panel-border-narrow" id="permit-not-found" aria-hidden="false">
+
+                <p><a href="https://www.gov.uk/guidance/waste-environmental-permits">Read more about waste environmental permits on GOV.UK</a> or contact the Environment Agency.</p>
+
+                <p>We are open Monday to Friday, 8am to 6pm.</p>
+
+                <div class="email-url-number">
+                  <p class="email">
+                    <span class="type">Email</span>
+                    <a class="email" href="mailto:enquiries@environment-agency.gov.uk">enquiries@environment-agency.gov.uk</a>
+                  </p>
+                  <p class="tel">
+                    <span class="type">Telephone</span>
+                    03708 506 506
+                  </p>
+                  <p class="tel">
+                    <span class="type">Telephone from outside the UK</span>
+                    +44 (0) 114 282 5312
+                  </p>
+                  <p class="tel">
+                    <span class="type">Minicom (for the hard of hearing)</span>
+                    03702 422 549
+                  </p>
+                </div>
+
+              </div>
+
+            </details>
+
+          </fieldset>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+
+
+      </form>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

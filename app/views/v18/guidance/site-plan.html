@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Site plan
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="content-inner slides">
+      <div class="grid-row">
+        <div class="column-one-third">
+
+          <p>&nbsp;</p>
+          
+        </div>
+        <div class="column-two-thirds">
+          
+          <h1 class="heading-large">Site plan</h1>
+          
+          {% include folder+"/guidance/siteplan.html" %}
+
+          <div class="actions">
+            <p>
+              <a class="button" href="#" role="button">Next</a>
+            <span class="after-button">site condition report</span>
+          </p>
+          </div>
+          
+        </div>
+        
+      </div>
+  </div>
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,155 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+        <div class="govuk-box-highlight">
+          <h1 class="heading-xlarge">
+              Application sent
+          </h1>
+
+          <p class="font-large">
+            Your reference number is
+            <br />
+            <strong class="bold">{{ permit.permitRefNumber }}</strong>
+          </p>
+
+            {% if permit.paymentMethod=="Bank transfer" %}
+              <p class="font-large">
+                You should now pay by bank transfer
+              </p>
+            {% endif %}
+
+        </div>
+<p class="text">
+  We have sent a confirmation to jane.person@email.com. {% if permit.paymentMethod=="Bank transfer" %}The email includes the Bacs payment details.{% endif %}
+</p>
+<p class="text">
+  We will not start processing your application until we get your payment.
+</p>
+
+  {% if permit.paymentMethod=="Bank transfer" %}
+
+        <h2 class="heading-medium">Bacs payment details</h2>
+
+
+
+              <dl class="govuk-check-your-answers cya-questions-short">
+                <div>
+                  <dt class="cya-question">
+                  Payment reference
+                </dt>
+                <dd class="cya-answer">
+                  WP-{{ permit.permitRefNumber }}
+                </dd>
+                </div>
+
+                <div>
+                  <dt class="cya-question">
+                    Amount
+                  </dt>
+                  <dd class="cya-answer">
+
+                {% if permit.bespokePermit=="bespoke" %}
+                £{{permit.giveCost}}
+                {% else %}
+                {{permit.permitCost}}
+
+                {% endif %}
+                </dd>
+                </div>
+
+                <div>
+                  <dt class="cya-question">
+                  Sort code
+                  </dt>
+                  <dd class="cya-answer">
+                  60-70-80
+                </dd>
+                </div>
+
+            <div>
+              <dt class="cya-question">
+              Account number
+            </dt>
+            <dd class="cya-answer">
+              1001 4411
+            </dd>
+            </div>
+
+            </dl>
+
+
+
+            <details>
+
+              <summary><span class="summary">Overseas accounts</span></summary>
+
+              <div class="panel panel-border-narrow">
+
+                <p>
+                  Use the following details to pay from an overseas account.
+                </p>
+
+                <p>
+                  International bank account number (IBAN): GB23NWK60708010014411.<br>
+                  SWIFT bank identifier code (BIC): NWBKGB2L.<br>
+                  Use the payment reference above.
+                </p>
+
+                <p>
+                  The payment must be in sterling.
+                </p>
+
+              </div>
+
+            </details>
+
+            <p>
+              After you have paid, send an email confirming your payment to <a href="mailto:psc-bacs@environment-agency.gov.uk">psc-bacs@environment-agency.gov.uk</a>. Include the reference number, amount and the date you expect the payment to arrive.
+            </p>
+
+          {% endif %}
+
+{% if permit.paymentMethod=="Bank transfer" %}
+        <h2 class="heading-medium">When we get your payment</h2>
+{% else %}
+        <h2 class="heading-medium">What happens next</h2>
+{% endif %}
+
+          <p class="text">
+            We will check the documents you have uploaded, your technical qualification and any site location. We will also run checks on the permit holder and any other relevant people.
+          </p>
+
+          <p class="text">
+            It takes up to 13 weeks to issue a permit. It may take longer if the information you gave us does not meet our requirements.
+          </p>
+
+          <p class="text">
+            We will not issue a permit if we believe that your operation will pollute the environment or harm human health.
+          </p>
+
+
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>For testing:</p>
+        <ul class="list list-bullet">
+          <li><a href="/{{folder}}/done/email-confirm">Confirmation email</a></li>
+        </ul>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
