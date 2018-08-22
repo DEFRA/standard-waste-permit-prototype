@@ -350,18 +350,18 @@
 
               {% if permit.bespokePermit=="bespoke" %}
               <!--Waste codes--------------->
-              <li class="task-list-item {% if taskListError and permit.wasteCodes==null %} form-group-error{% endif %}" id="{{ tb2UploadForm  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
-                {% if taskListError and permit.b2DocFile==null %}
+              <li class="task-list-item {% if taskListError and permit.wasteCodesFile==null %} form-group-error{% endif %}" id="{{ tWasteCodes  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+                {% if taskListError and permit.wasteCodesFile==null %}
                 <span class="error-message">
                   Complete this task
                 </span>
                 {% endif %}
-                <a class="task-name" href="/{{folder}}/bespoke/waste-codes" {% if permit.b2DocFile!=null %} aria-describedby="/{{folder}}/bespoke/upload-B2-forms"{% endif %}>
+                <a class="task-name" href="/{{folder}}/bespoke/waste-codes" {% if permit.wasteCodesFile!=null %} aria-describedby="/{{folder}}/bespoke/waste-codes"{% endif %}>
                   {{ tWasteCodes }}
                 </a>
-                {% if permit.b2DocFile!=null %} <strong class="task-completed" id="B2-form-upload-completed">Completed</strong>
+                {% if permit.wasteCodesFile!=null %} <strong class="task-completed" id="waste-codes-upload-completed">Completed</strong>
                 {% else %}
-                <input type="hidden" name="complete[]" value="{{ tb2UploadForm }}">
+                <input type="hidden" name="complete[]" value="{{ tWasteCodes }}">
                 {% endif %}
               {% endif %}
 

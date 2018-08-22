@@ -754,6 +754,22 @@ router.get('/evidence/techcomp/industry-check-answer', function (req, res) {
 })
 
 
+// EWC waste codes upload =====================================================
+
+router.get('/bespoke/waste-codes', function (req, res) {
+  res.render(folder + '/bespoke/waste-codes',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+router.post('/bespoke/waste-codes', function (req, res) {
+  res.render(folder + '/bespoke/waste-codes',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+
+
 
 // Management system ==========================================================
 
