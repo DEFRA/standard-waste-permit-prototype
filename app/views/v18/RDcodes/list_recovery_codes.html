@@ -24,19 +24,16 @@
   <div class="hint">Select all that apply. Leave blank if there is no recovery for this activity.</div>
 </br>
 
-{% import folder+"/custom_inc/macros.html" as macros %}
-{% from folder+"/bespoke/v2-activities/json/bespoke_activity_types.html" import types %}
-
-{# bespoke_activity_types_dsub.html has the more granular categories #}
-{# bespoke_activity_types.html has the SRoC+D broader options categories #}
+{% from folder+"/bespoke/v2-activities/json/r-codes.html" import rcodes %}
 
 
-          {% for t in types %}
+
+          {% for t in rcodes %}
 
           <div class="multiple-choice">
-            <input id="{{t.category}}" type="checkbox" name="chosenCategory" value="{{t.category}}">
-            <label for="{{t.category}}">
-              {{t.category}} {{t.hint}}
+            <input id="{{t.rd_code}}" type="checkbox" name="chosenCategory" value="{{t.rd_code}}">
+            <label for="{{t.rd_code}}">
+              {{t.rd_code}} {{t.rd_title}} {{"-" if t.rd_hint!=""}} {{t.rd_hint}}
 
             </label>
           </div>

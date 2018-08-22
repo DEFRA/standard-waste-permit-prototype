@@ -24,16 +24,16 @@
   <div class="hint">Select all that apply. Leave blank if there is no recovery for this activity.</div>
 </br>
 
-  {% from folder+"/bespoke/v2-activities/json/d-codes.html" import d-codes %}
+  {% from folder+"/bespoke/v2-activities/json/d-codes.html" import dcodes %}
 
 
 
-            {% for t in d-codes %}
+            {% for t in dcodes %}
 
             <div class="multiple-choice">
-              <input id="{{t.rd-code}}" type="checkbox" name="chosenCategory" value="{{t.rd-code}}">
-              <label for="{{t.rd-code}}">
-                {{t.rd-code}} {{t.rd-hint}}
+              <input id="{{t.rd_code}}" type="checkbox" name="chosenCategory" value="{{t.rd_code}}">
+              <label for="{{t.rd_code}}">
+                {{t.rd_code}} {{t.rd_title}} {{"-" if t.rd_hint!=""}} {{t.rd_hint}}
 
               </label>
             </div>
