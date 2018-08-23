@@ -46,7 +46,7 @@
 {% set tWasteRecoveryPlan = "Upload the waste recovery plan" %}
 {% set tPreApp = "Tell us if you have discussed this application with us" %}
 {% set tContactDetails = "Give contact details" %}
-{% set tRdCodes = "Give R and D codes" %}
+{% set tRdCodes = "List R and D codes for each activity" %}
 {% set tPermitHolder = "Give permit holder details" %}
 {% set tb2UploadForm = "Complete and upload form B2" %}
 {% set tb4UploadForm = "Complete and upload form B4" %}
@@ -66,7 +66,6 @@
 
 <main id="content" role="main" class="task-list">
   {% include "includes/phase_banner_beta.html" %}
-
 
   <div class="grid-row">
     <div class="column-two-thirds column-minimum">
@@ -340,9 +339,9 @@
                   <a class="task-name" href="/{{folder}}/RDcodes/list_recovery_codes" {% if permit.contactFirstName!=null %} aria-describedby="contact-details-completed"{% endif %}>
                     {{ tRdCodes }}
                   </a>
-                  {% if permit.contactFirstName!=null %} <strong class="task-completed" id="contact-details-completed">Completed</strong>
+                  {% if permit.RDCode_entered!=null %} <strong class="task-completed" id="contact-details-completed">Completed</strong>
                   {% else %}
-                  <input type="hidden" name="complete[]" value="{{ tContactDetails }}">
+                  <input type="hidden" name="complete[]" value="{{ tRDCode_entered }}">
                   {% endif %}
                 </li>
 
