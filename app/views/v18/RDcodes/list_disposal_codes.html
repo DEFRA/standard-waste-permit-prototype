@@ -18,15 +18,30 @@
     {{title}}
   </h1>
 
-  <p>You can find guidance in the <a href="">waste R and D code flowchart.</a></p>
+<!-- Look up first chosen activity ############################################ -->
+{% from folder+"/bespoke/v3-activities/json/bespoke_activities.html" import activities %}
 
-  <h4 class="heading-small">D codes for household, commercial and industrial waste transfer station</h4>
+
+{% set activitytext = "NOT SET" %}
+
+<!-- Get ID of first activity ============================== -->
+{% set firstpermitID = permit.chosenPermitID | first %}
+
+{% for aNumber, aData in activities %}
+    {% if aNumber==firstpermitID %}
+        {% set activitytext = firstpermitID + " " + aData.D_Activity_Title | lower %}
+    {% endif %}
+{% endfor %}
+
+
+  <p>You can find guidance in the <a href="">waste R and D code flowchart.</a></p>
+  <h2 class="heading-medium">D codes for  {{activitytext}}</h2>
   <div class="hint">Select all that apply. Leave blank if there is no recovery for this activity.</div>
 </br>
 
   {% from folder+"/bespoke/v2-activities/json/d-codes.html" import dcodes %}
 
-
+  <form action="{{formAction}}" method="post">
 
             {% for t in dcodes %}
 
@@ -47,7 +62,7 @@
   <div class="form-group">
       {{submitButton|safe}}{{completeLink|safe}}
     </div>
-
+  </form>
 
   </div>
 </div>

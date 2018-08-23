@@ -46,6 +46,7 @@
 {% set tWasteRecoveryPlan = "Upload the waste recovery plan" %}
 {% set tPreApp = "Tell us if you have discussed this application with us" %}
 {% set tContactDetails = "Give contact details" %}
+{% set tRdCodes = "Give R and D codes" %}
 {% set tPermitHolder = "Give permit holder details" %}
 {% set tb2UploadForm = "Complete and upload form B2" %}
 {% set tb4UploadForm = "Complete and upload form B4" %}
@@ -329,6 +330,21 @@
                 <input type="hidden" name="complete[]" value="{{ tContactDetails }}">
                 {% endif %}
               </li>
+
+              <li class="task-list-item {% if taskListError and permit.contactFirstName==null %} form-group-error{% endif %}" id="{{ tContactDetails  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+                  {% if taskListError and permit.contactFirstName==null %}
+                  <span class="error-message">
+                    Complete this task
+                  </span>
+                  {% endif %}
+                  <a class="task-name" href="/{{folder}}/RDcodes/list_recovery_codes" {% if permit.contactFirstName!=null %} aria-describedby="contact-details-completed"{% endif %}>
+                    {{ tRdCodes }}
+                  </a>
+                  {% if permit.contactFirstName!=null %} <strong class="task-completed" id="contact-details-completed">Completed</strong>
+                  {% else %}
+                  <input type="hidden" name="complete[]" value="{{ tContactDetails }}">
+                  {% endif %}
+                </li>
 
 
               <li class="task-list-item {% if taskListError and permit.companyName==null %} form-group-error{% endif %}" id="{{ tPermitHolder  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
