@@ -133,7 +133,7 @@
       {{ macros.task( "Save your application", permit.saveReturnEmail, "/"+folder+"/save-and-return/email-or-phone", taskListError ) }}
 
       <!--Download forms--------------->
-      {{ macros.task( "Download the application forms", permit.DownloadForms, "/"+folder+"/bespoke/download-forms", taskListError ) if appType=="bespoke" }}
+      {{ macros.task( "Download the application form B12", permit.DownloadForms, "/"+folder+"/bespoke/download-forms", taskListError ) if appType=="bespoke" }}
 
       <!--Check rules--------------->
       {{ macros.task( "Confirm you can meet the rules", permit.readRules, "/"+folder+"/read-rules/index", taskListError ) if appType=="standard" }}
