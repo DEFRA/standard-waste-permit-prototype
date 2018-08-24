@@ -80,6 +80,7 @@
           <span class="visually-hidden">Task list:</span>
           Apply for a standard rules environmental permit
         </h1>
+        
 
         <p class="font-medium text">{{permit.permitName}} - {{permit.permitCode}}<br><a class="font-small" href="/{{folder}}/selectpermit/permit-category2">Select a different permit</a></p>
 
@@ -198,7 +199,7 @@
                        {{linkText}}
                     </a>
 
-                    {% if permit.specialCasePageVisited!==null %}
+                    {% if permit.specialCasePageVisited!=null %}
                       <strong class="task-completed" id="special-case-complete">Completed</strong>
                     {% else %}
                       <input type="hidden" name="complete[]" value="{{linkText}}">
@@ -361,7 +362,7 @@
       <a class="task-name" href="/{{folder}}/evidence/upload-fire-plan" {% if permit.firePlanFilename!==null %} aria-describedby="firepp-completed"{% endif %}>
         {{ tFirePlan }}
       </a>
-      {% if permit.firePlanFilename!==null %} <strong class="task-completed" id="firepp-completed">Completed</strong>
+      {% if permit.firePlanFilename!=null %} <strong class="task-completed" id="firepp-completed">Completed</strong>
       {% else %}
       <input type="hidden" name="complete[]" value="{{ tFirePlan }}">
       {% endif %}
