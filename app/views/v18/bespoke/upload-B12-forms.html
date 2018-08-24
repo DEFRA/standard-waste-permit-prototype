@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Complete and upload form B2" %}
+{% set title = "Complete and upload form B12" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -19,19 +19,19 @@
 
 
 
-    {% if permit.b2DocFile|typeof != "undefined"  %}
+    {% if permit.b12DocFile|typeof != "undefined"  %}
       <dl class="govuk-check-your-answers cya-questions-short">
 
         <div>
           <dt class="cya-question">
-            Form B2
+            Form B12
           </dt>
           <dd class="cya-answer">
-            {{permit.b2DocFile}}
+            {{permit.b12DocFile}}
           </dd>
           <dd class="cya-change">
-            <a href="/v16/remove-b2?removeFile=b2DocFile">
-              Remove file <span class="visuallyhidden">{{permit.b2DocFile}}</span>
+            <a href="/v16/remove-b12?removeFile=b12DocFile">
+              Remove file <span class="visuallyhidden">{{permit.b12DocFile}}</span>
             </a>
           </dd>
         </div>
@@ -43,19 +43,19 @@
   <form method="post" action="{{formAction}}" id="uploadForm">
 
 
-  {% if permit.b2DocFile|typeof == "undefined" %}
+  {% if permit.b12DocFile|typeof == "undefined" %}
       <div class="panel panel-border-wide">
-          <p>Complete form B2 on your computer. You can also print it out, fill it in and scan it.</p>
+          <p>Complete form B12 on your computer. You can also print it out, fill it in and scan it.</p>
           <p>Upload the completed file.</p>
       </div>
-      <p class="upload_head">Upload form B2</p>
+      <p class="upload_head">Upload form B12</p>
       <p class="text form-hint form-hint-upload">
         PDF or JPG<br>
         30MB maximum file size.
       </p>
       <div class="form-group form-uploader">
           <input id="upload" type="file" aria-labelelledby="upload-label">
-          <input id="filename" name="b2DocFile" type="hidden">
+          <input id="filename" name="b12DocFile" type="hidden">
       </div>
   {% endif %}
 

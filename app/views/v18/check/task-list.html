@@ -195,11 +195,8 @@
   <!--R and D codes--------------->
   {{ macros.task( "List R and D codes for each activity", permit.RDCode_entered, "/"+folder+"/RDcodes/list_recovery_codes", taskListError ) if appType=="bespoke" }}
 
-  <!--B2 Upload forms--------------->
-  {{ macros.task( "Complete and upload form B2", permit.b2DocFile, "/"+folder+"/bespoke/upload-B2-forms", taskListError ) if appType=="bespoke" }}
-
-  <!--B4 Upload forms--------------->
-  {{ macros.task( "Complete and upload form B4", permit.b4DocFile, "/"+folder+"/bespoke/upload-B4-forms", taskListError ) if appType=="bespoke" }}
+  <!--B12 Upload forms--------------->
+  {{ macros.task( "Complete and upload form B12", permit.b12DocFile, "/"+folder+"/bespoke/upload-B12-forms", taskListError ) if appType=="bespoke" }}
 
   <!--Upload supporting documents--------------->
   {{ macros.task( "Upload supporting documents", permit.sDocFile1, "/"+folder+"/bespoke/upload-supporting-docs", taskListError ) if appType=="bespoke" }}
