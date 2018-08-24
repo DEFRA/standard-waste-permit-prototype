@@ -147,12 +147,13 @@
   <ul class="task-list-items">
     
     <!--Cost and time standard--------------->
-    {{ macros.task( "Check costs and processing time", permit.costTime, "/"+folder+"/selectpermit/cost-and-time", taskListError ) if permit.bespokePermit=="standard" }}
-    <!--Cost and time besoke--------------->
-    {{ macros.task( "Enter the application cost", permit.costTime, "/"+folder+"/bespoke/give-cost-and-time", taskListError ) if permit.bespokePermit=="bespoke" }}
+    {{ macros.task( "Check costs and processing time", permit.costTime, "/"+folder+"/selectpermit/cost-and-time", taskListError ) if appType=="standard" }}
+    
+    <!--Cost and time bespoke--------------->
+    {{ macros.task( "Enter the application cost", permit.costTime, "/"+folder+"/bespoke/give-cost-and-time", taskListError ) if appType=="bespoke" }}
     
     <!--Rules--------------->
-    {{ macros.task( "Confirm you can meet the rules", permit.readRules, "/"+folder+"/read-rules/index", taskListError ) if permit.bespokePermit=="standard" }}
+    {{ macros.task( "Confirm you can meet the rules", permit.readRules, "/"+folder+"/read-rules/index", taskListError ) if appType=="standard" }}
 
   <!-- Special cases ------------------>
   {% if permit.permitID=="SR-2009-4" %}
@@ -195,19 +196,19 @@
   {{ macros.task( "Give permit holder details", permit.bankruptcyInsolvencyDetails, "/"+folder+HrefLink, taskListError ) }}
 
   <!--Waste codes--------------->
-  {{ macros.task( "List European waste codes", permit.wasteCodesFile, "/"+folder+"/bespoke/waste-codes", taskListError ) if permit.bespokePermit=="bespoke" }}
+  {{ macros.task( "List European waste codes", permit.wasteCodesFile, "/"+folder+"/bespoke/waste-codes", taskListError ) if appType=="bespoke" }}
   
   <!--R and D codes--------------->
-  {{ macros.task( "List R and D codes for each activity", permit.RDCode_entered, "/"+folder+"/RDcodes/list_recovery_codes", taskListError ) if permit.bespokePermit=="bespoke" }}
+  {{ macros.task( "List R and D codes for each activity", permit.RDCode_entered, "/"+folder+"/RDcodes/list_recovery_codes", taskListError ) if appType=="bespoke" }}
 
   <!--B2 Upload forms--------------->
-  {{ macros.task( "Complete and upload form B2", permit.b2DocFile, "/"+folder+"/bespoke/upload-B2-forms", taskListError ) if permit.bespokePermit=="bespoke" }}
+  {{ macros.task( "Complete and upload form B2", permit.b2DocFile, "/"+folder+"/bespoke/upload-B2-forms", taskListError ) if appType=="bespoke" }}
 
   <!--B4 Upload forms--------------->
-  {{ macros.task( "Complete and upload form B4", permit.b4DocFile, "/"+folder+"/bespoke/upload-B4-forms", taskListError ) if permit.bespokePermit=="bespoke" }}
+  {{ macros.task( "Complete and upload form B4", permit.b4DocFile, "/"+folder+"/bespoke/upload-B4-forms", taskListError ) if appType=="bespoke" }}
 
   <!--Upload supporting documents--------------->
-  {{ macros.task( "Upload supporting documents", permit.sDocFile1, "/"+folder+"/bespoke/upload-supporting-docs", taskListError ) if permit.bespokePermit=="bespoke" }}
+  {{ macros.task( "Upload supporting documents", permit.sDocFile1, "/"+folder+"/bespoke/upload-supporting-docs", taskListError ) if appType=="bespoke" }}
 
   <!-- Site name DONT'T SHOW SITE FOR MOBILE PERMITS -------->
   {% if
