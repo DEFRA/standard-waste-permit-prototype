@@ -14,7 +14,7 @@
 
 <main id="content" role="main">
   {% include "includes/phase_banner_beta.html" %}
-
+  {{permit|dump}}
   {{backlink|safe}}
 
 
@@ -39,7 +39,6 @@
 
             <!-- Output as a paragraph ============================== -->
                   {{ ref }} {{ aData.D_Activity_Title }}</br>
-
             {% endif %}
       {% else %}
       <p>No activities</p>
@@ -53,6 +52,28 @@
     <dd class="cya-change"><a href="/{{folder}}/bespoke/v3-activities/bespoke-category">Change</a></dd>
   </div>    
     
+
+<!-- Output chosen R and D codes ############################################ -->
+
+<div>
+    <dt class="cya-question">R and D codes</dt>
+    <dd class="cya-answer">
+      
+        {% for RCode in permit.RCodes %}
+          {{RCode}}
+        </br>
+        {% endfor %}
+        {% for DCode in permit.DCodes %}
+        {{DCode}}
+      </br>
+      {% endfor %}
+      
+  
+      </dd>
+      <dd class="cya-change"><a href="/{{folder}}/bespoke/v3-activities/bespoke-category">Change</a></dd>
+    </div>   
+
+
   <!-- Output chosen activities ############################################ -->
  
   <div>
@@ -76,6 +97,7 @@
     <dd class="cya-change"><a href="/{{folder}}/bespoke/v3-activities/bespoke-category">Change</a></dd>
   </div>
   
+
     
  <div>
    <dt class="cya-question">
