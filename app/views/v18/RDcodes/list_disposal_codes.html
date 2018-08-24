@@ -43,12 +43,14 @@
 
   <form action="{{formAction}}" method="post">
 
-          <!-- STORE R and D codes to pass on -->
-          <input type="hidden" name="rd_code" value="{{permit.DCodes}}">
+
+            <!-- R and D codes entered -->
+            <input type="hidden" name="RDCode_entered" value="Yes">
 
             {% for t in dcodes %}
 
             <div class="multiple-choice">
+                          <!-- R and D codes stored -->
               <input id="{{t.rd_code}}" type="checkbox" name="DCodes" value="{{t.rd_code}} {{t.rd_title}}">
               <label for="{{t.rd_code}}">
                 {{t.rd_code}} {{t.rd_title}} {{"-" if t.rd_hint!=""}} {{t.rd_hint}}
