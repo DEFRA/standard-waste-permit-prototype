@@ -54,7 +54,7 @@
     
 
 <!-- Output chosen R and D codes ############################################ -->
-
+{% if permit.bespokePermit=="bespoke" %}
 <div>
     <dt class="cya-question">R and D codes</dt>
     <dd class="cya-answer">
@@ -71,7 +71,8 @@
   
       </dd>
       <dd class="cya-change"><a href="/{{folder}}/bespoke/v3-activities/bespoke-category">Change</a></dd>
-    </div>   
+</div>  
+{% endif %} 
 
 
   <!-- Output chosen activities ############################################ -->
@@ -279,7 +280,9 @@
       </dd>
     </div>
     
-    
+
+<!-- Waste codes -->
+{% if permit.bespokePermit=="bespoke" %}  
     {% if permit.wasteCodesFile!="" %}
     <div>
       <dt class="cya-question">
@@ -295,6 +298,7 @@
       </dd>
     </div>
     {% endif %}
+{% endif %}
 
     <!-- DONT'T SHOW SITE FOR MOBILE PERMITS -->
     {% if
