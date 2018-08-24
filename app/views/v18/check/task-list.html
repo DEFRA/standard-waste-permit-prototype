@@ -149,9 +149,6 @@
     <!--Cost and time standard--------------->
     {{ macros.task( "Check costs and processing time", permit.costTime, "/"+folder+"/selectpermit/cost-and-time", taskListError ) if appType=="standard" }}
     
-    <!--Cost and time bespoke--------------->
-    {{ macros.task( "Enter the application cost", permit.costTime, "/"+folder+"/bespoke/give-cost-and-time", taskListError ) if appType=="bespoke" }}
-    
     <!--Rules--------------->
     {{ macros.task( "Confirm you can meet the rules", permit.readRules, "/"+folder+"/read-rules/index", taskListError ) if appType=="standard" }}
 
