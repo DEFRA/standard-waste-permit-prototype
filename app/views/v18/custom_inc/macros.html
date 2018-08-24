@@ -19,7 +19,7 @@
 {% endmacro %}
 
 
-{% macro uploadList( fileTitle,fileName,fileNameVar ) %}
+{% macro uploadList( fileTitle,fileName,fileNameVar,folder ) %}
 
 <div>
   <dt class="cya-question">
@@ -29,7 +29,7 @@
     {{ fileName }}
   </dd>
   <dd class="cya-change">
-    <a href="/v16/remove-supporting-doc?removeFile={{fileNameVar}}">
+    <a href="/{{folder}}/remove-supporting-doc?removeFile={{fileNameVar}}">
       Remove file <span class="visuallyhidden">{{ fileName }}</span>
     </a>
   </dd>
