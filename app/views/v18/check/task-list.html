@@ -71,6 +71,10 @@
           {% endif %}
         </h1>
 
+{% if appType=="standard" %}    
+    <p class="font-medium text">{{permit.permitName}} - {{permit.permitCode}}<br><a class="font-small" href="/{{folder}}/selectpermit/permit-category2">Select a different permit</a></p>
+{% endif %}
+
 
 {% if appType=="bespoke" %}
 <!-- Output chosen activities ############################################ -->
