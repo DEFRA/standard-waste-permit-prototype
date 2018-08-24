@@ -110,3 +110,31 @@
 </div>
 
 {% endmacro %}
+
+
+{% macro taskHead( number, heading ) %}
+<h2 class="task-list-section">
+  <span class="task-list-section-number">{{number}}. </span> {{heading}}
+</h2>
+{% endmacro %}
+
+{% macro task( taskTitle, permitValueToTest, pathToTaskPage, taskListErrorVariable  ) %}
+
+  <li class="task-list-item {% if taskListError and permitValueToTest==null %} form-group-error{% endif %}" id="{{ taskTitle  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+    
+    {% if taskListErrorVariable and permitValueToTest==null %}
+      <span class="error-message">
+        Complete this task
+      </span>
+    {% endif %}
+    
+    <a class="task-name" href="{{ pathToTaskPage }}">
+      {{ taskTitle }}
+    </a>
+    {% if permitValueToTest!=null %}
+      <strong class="task-completed" id="waste-codes-upload-completed">Completed</strong>
+    {% else %}
+      <input type="hidden" name="complete[]" value="{{ taskTitle }}">
+    {% endif %}
+
+{% endmacro %}
