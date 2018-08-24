@@ -417,6 +417,33 @@ details.inside-list{
     text-align: center;
 }
 
+.button-blue-box {
+  background-color: #dee0e2;
+  position: relative;
+  display: -moz-inline-stack;
+  display: inline-block;
+  padding: .526315em .789473em .263157em;
+  border: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  outline: 1px solid transparent;
+  outline-offset: -1px;
+  -webkit-appearance: none;
+  -webkit-box-shadow: 0 2px 0 #b5babe;
+  -moz-box-shadow: 0 2px 0 #b5babe;
+  box-shadow: 0 2px 0 #b5babe;
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 1.25;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+  color: #0C60A3;
+  text-align: center;
+}
+
+
 #upload{
   padding:1em 0;
   margin:1em 0 2em 0;
@@ -460,6 +487,10 @@ details.inside-list{
   border: 1px solid #bfc1c3;
 }
 
+.hint{
+  color: grey;
+}
+
 .govuk-check-your-answers.cya-questions-fileupload {
   margin-top:0;
 }
@@ -470,8 +501,9 @@ details.inside-list{
   margin-bottom:45px;
   font-size: 16px;
   line-height: 1.25;
+  color:#FFFFFF;
 
-    p,a{color:#FFFFFF;margin:0;font-weight: bold;}
+    p,a{color:#FFFFFF;}
     span{font-weight:normal;}
 
 }
