@@ -12,22 +12,23 @@
     <div class="column-two-thirds">
 
       <h1 class="heading-xlarge">
-		      Test 1
+		      File upload test
 	    </h1>
       
-    {% if numAccounts == "" %} 
-      {% set numAccounts = 1 %}
-    {% endif %} 
-
-    <p>On page load the number of accounts is {{numAccounts}} stored in GDS data object</p>
-
-    <p>We can then add one to it</p>
-    {% set numAccounts = numAccounts+1 %}
-
-    <p>There are now {{numAccounts}} accounts</p>
-
-
-    <input type="hidden" name="numAccounts" value="{{numAccounts}}">
+<form method="post" action="#">
+  
+  <div class="form-group">
+    <label class="form-label" for="file-upload-1">
+      Upload a file
+    </label>
+    <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+  </div>
+  
+  <div class="form-group">
+    <button type="submit" class="button" name="Continue">Continue</button>
+  </div>
+  
+</form>
 
 
 
