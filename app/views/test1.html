@@ -46,23 +46,8 @@
     
     $("#file-upload-1").keydown(function(e) {
       if (e.keyCode === 13) {
-      //if (e.keyCode === ' ' || e.keyCode === 'Spacebar' || e.keyCode === 0 || e.keyCode === 32) {
-        // ' ' is standard, 'Spacebar' was used by IE9 and Firefox < 37
-        // `0` works in mozilla and `32` in other browsers
+        // Enter key is keyCode 13
         e.preventDefault()
-        
-        $("#file-upload-1").css("background-color", "yellow")
-        
-        //alert('space')
-        //var ev = jQuery.Event("keydown")
-        //ev.which = 13 // Enter
-        //ev.keyCode = 13
-        //$("#file-upload-1").trigger(ev)
-        
-      //  $("#file-upload-1").trigger(
-      //     jQuery.Event('keydown', { which: 13, keyCode:13 })
-      //  );
-        
         $("#file-upload-1").trigger('click');
       }
     })
