@@ -1,0 +1,502 @@
+{% set permits = 
+  
+  {
+     "P01": {
+        "type": "Standard rules permit",
+        "subType": "Metal recovery/scrap metal",
+        "code": "SR2015 No 17",
+        "title": "Vehicle storage depollution and dismantling authorised treatment facility: less than 5,000 tonnes per site",
+        "keywords": "cars scrap breakers tyres",
+        "url": "https://www.gov.uk/government/publications/sr2015-no17-vehicle-storage-depollution-and-dismantling-authorised-treatment-facility"
+     },
+     "P02": {
+        "type": "Standard rules permit",
+        "subType": "Treatment to produce aggregate or construction materials",
+        "code": "SR2010 No 12",
+        "title": "Treatment of waste to produce soil, soil substitutes and aggregate: less than 75,000 tonnes per year",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2010-number-12"
+     },
+     "P03": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2015 No 6",
+        "title": "75kte household, commercial and industrial waste transfer station with treatment: less than 75,000 tonnes per year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no6-75kte-household-commercial-and-industrial-waste-transfer-station-with-treatment"
+     },
+     "P04": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2012 No 10",
+        "title": "On-farm anaerobic digestion facility using farm wastes only, including use of the resultant biogas: less than 100 tonnes per day",
+        "keywords": "biological",
+        "url": "https://www.gov.uk/government/publications/sr2012-no10-on-farm-anaerobic-digestion-facility-using-farm-wastes-only-including-use-of-the-resultant-biogas"
+     },
+     "P05": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2012 No 15",
+        "title": "Storage of electrical insulating oils: less than 500 tonnes a year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2012-no15-storage-of-electrical-insulating-oils"
+     },
+     "P06": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2008 No 9",
+        "title": "Asbestos waste transfer station: less than 3,650 tonnes per year",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2008-no9-asbestos-waste-transfer-station"
+     },
+     "P07": {
+        "type": "Standard rules permit",
+        "subType": "Recovery or use of waste on land",
+        "code": "SR2015 No 39",
+        "title": "Use of waste in a deposit for recovery operation: maximum volumetric capacity of recovery operation 60,000 m3",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no39-use-of-waste-in-a-deposit-for-recovery-operation"
+     },
+     "P08": {
+        "type": "Standard rules permit",
+        "subType": "Metal recovery/scrap metal",
+        "code": "SR2015 No 18",
+        "title": "Metal recycling, vehicle storage, depollution and dismantling facility: less than 25,000 tonnes a year of waste metal and less than 5,000 tonnes a year of waste motor vehicles",
+        "keywords": "cars scrap breakers",
+        "url": "https://www.gov.uk/government/publications/sr2015-no18-metal-recycling-vehicle-storage-depollution-and-dismantling-facility"
+     },
+     "P09": {
+        "type": "Standard rules permit",
+        "subType": "Metal recovery/scrap metal",
+        "code": "SR2015 No 15",
+        "title": "75kte WEEE authorised treatment facility excluding ozone depleting substances: less than 75,000 tonnes per year ",
+        "keywords": "electrical",
+        "url": "https://www.gov.uk/government/publications/sr2015-no15-75kte-weee-authorised-treatment-facility-excluding-ozone-depleting-substances"
+     },
+     "P10": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2015 No 4",
+        "title": "75kte household, commercial and industrial waste transfer station: less than 75,000 tonnes per year",
+        "keywords": "rubbish",
+        "url": "https://www.gov.uk/government/publications/sr2015-no4-75kte-household-commercial-and-industrial-waste-transfer-station"
+     },
+     "P11": {
+        "type": "Standard rules permit",
+        "subType": "Recovery or use of waste on land",
+        "code": "SR2008 No 27",
+        "title": "Mobile plant for the treatment of soils and contaminated material, substances or products: ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/standard-rules-sr2008-number-27"
+     },
+     "P12": {
+        "type": "Standard rules permit",
+        "subType": "Materials recovery and recycling",
+        "code": "SR2015 No 23",
+        "title": "Treatment of waste wood for recovery: less than 5,000 tonnes per year",
+        "keywords": "chipboard",
+        "url": "https://www.gov.uk/government/publications/sr2015-no23-treatment-of-waste-wood-for-recovery"
+     },
+     "P13": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2010 No 17",
+        "title": "Storage of digestate from anaerobic digestion plants: less than 75,000 tonnes storage at any one time",
+        "keywords": "biological",
+        "url": "https://www.gov.uk/government/publications/sr2010-no17-storage-of-digestate-from-anaerobic-digestion-plants"
+     },
+     "P14": {
+        "type": "Standard rules permit",
+        "subType": "Metal recovery/scrap metal",
+        "code": "SR2015 No 13",
+        "title": "75kte vehicle storage depollution and dismantling (authorised treatment) facility: less than 75,000 tonnes per year ",
+        "keywords": "cars",
+        "url": "https://www.gov.uk/government/publications/sr2015-no13-75kte-vehicle-storage-depollution-and-dismantling-authorised-treatment-facility"
+     },
+     "P15": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2013 No 1",
+        "title": "Treatment of 100 t/y of clinical and healthcare waste: less than 100 tonnes a year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2013-no-1-treatment-of-100-ty-of-clinical-and-healthcare-waste"
+     },
+     "P16": {
+        "type": "Standard rules permit",
+        "subType": "Onshore oil and gas exploration, and mining operation",
+        "code": "SR2009 No 8",
+        "title": "Management of inert wastes and unpolluted soil at mines and quarries: ",
+        "keywords": "quarry onshore",
+        "url": "https://www.gov.uk/government/publications/sr2009-no8-management-of-inert-wastes-and-unpolluted-soil-at-mines-and-quarries"
+     },
+     "P17": {
+        "type": "Standard rules permit",
+        "subType": "Metal recovery/scrap metal",
+        "code": "SR2015 No 14",
+        "title": "75kte metal recycling site: less than 75,000 tonnes per year ",
+        "keywords": "scrap",
+        "url": "https://www.gov.uk/government/publications/sr2015-no14-75kte-metal-recycling-site"
+     },
+     "P18": {
+        "type": "Standard rules permit",
+        "subType": "Metal recovery/scrap metal",
+        "code": "SR2015 No 16",
+        "title": "Metal recycling site: less than 25,000 tonnes per site ",
+        "keywords": "scrap",
+        "url": "https://www.gov.uk/government/publications/sr2015-no16-metal-recycling-site"
+     },
+     "P19": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2012 No 7",
+        "title": "Composting in open systems: limit of 75 tonnes per day",
+        "keywords": "biological compost",
+        "url": "https://www.gov.uk/government/publications/sr2012-no7-composting-in-open-systems"
+     },
+     "P20": {
+        "type": "Standard rules permit",
+        "subType": "Materials recovery and recycling",
+        "code": "SR2015 No 20",
+        "title": "75kte non-hazardous and hazardous household waste amenity site: less than 75,000 tonnes per year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no20-75kte-non-hazardous-and-hazardous-household-waste-amenity-site"
+     },
+     "P21": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2015 No 7",
+        "title": "Household, commercial and industrial waste transfer station with treatment (no building): less than 5,000 tonnes per year",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no7-household-commercial-and-industrial-waste-transfer-station-with-treatment-no-building"
+     },
+     "P22": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2015 No 8",
+        "title": "75kte household, commercial and industrial waste transfer station with asbestos storage: less than 75,000 tonnes per year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no8-75kte-household-commercial-and-industrial-waste-transfer-station-with-asbestos-storage"
+     },
+     "P23": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2012 No 12",
+        "title": "Anaerobic digestion facility including use of the resultant biogas (waste recovery operation): less than 75,000 tonnes per year",
+        "keywords": "biological compost",
+        "url": "https://www.gov.uk/government/publications/sr2012-no12-anaerobic-digestion-facility-including-use-of-the-resultant-biogas-waste-recovery-operation"
+     },
+     "P24": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2010 No 14",
+        "title": "500t composting biodegradable waste: open and contained  systems. less than 500 tonnes on site at any one time",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2010-no14-500t-composting-biodegradable-waste"
+     },
+     "P25": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2015 No 5",
+        "title": "Household, commercial and industrial waste transfer station (no building): less than 5,000 tonnes per year",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no5-household-commercial-and-industrial-waste-transfer-station-no-building"
+     },
+     "P26": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2015 No 10",
+        "title": "75kte household, commercial and industrial waste transfer station with treatment and asbestos storage: less than 75,000 tonnes per year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no10-75kte-household-commercial-and-industrial-waste-transfer-station-with-treatment-and-asbestos-storage"
+     },
+     "P27": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2009 No 4",
+        "title": "Combustion of biogas in engines at a sewage treatment works: ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2009-no4-combustion-of-biogas-in-engines-at-a-sewage-treatment-works"
+     },
+     "P28": {
+        "type": "Standard rules permit",
+        "subType": "Onshore oil and gas exploration, and mining operation",
+        "code": "SR2014 No 2",
+        "title": "The management of extractive waste: ",
+        "keywords": "onshore oil gas exploration mining operation",
+        "url": "https://www.gov.uk/government/publications/sr2014-no-2-the-management-of-extractive-waste"
+     },
+     "P29": {
+        "type": "Standard rules permit",
+        "subType": "Metal recovery/scrap metal",
+        "code": "SR2015 No 3",
+        "title": "Metal recycling and WEEE authorised treatment facility excluding ozone depleting substances: less than 75,000 tonnes per year ",
+        "keywords": "scrap",
+        "url": "https://www.gov.uk/government/publications/sr2015-no3-metal-recycling-and-weee-authorised-treatment-facility-excluding-ozone-depleting-substances"
+     },
+     "P30": {
+        "type": "Standard rules permit",
+        "subType": "Onshore oil and gas exploration, and mining operation",
+        "code": "SR2015 No 1",
+        "title": "Onshore oil exploration: only the activities described in 'ref. wmp3'",
+        "keywords": "onshore oil gas exploration mining operation",
+        "url": "https://www.gov.uk/government/publications/sr2015-no-1-onshore-oil-exploration"
+     },
+     "P31": {
+        "type": "Standard rules permit",
+        "subType": "Materials recovery and recycling",
+        "code": "SR2015 No 21",
+        "title": "75kte - materials recycling facility: less than 75,000 tonnes per year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no21-75kte-materials-recycling-facility"
+     },
+     "P32": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2010 No 15",
+        "title": "Anaerobic digestion facility including use of the resultant biogas",
+        "keywords": "biological",
+        "url": "https://www.gov.uk/government/publications/sr2010-no15-anaerobic-digestion-facility-including-use-of-the-resultant-biogas"
+     },
+     "P33": {
+        "type": "Standard rules permit",
+        "subType": "Installations",
+        "code": "SR2012 No 11",
+        "title": "Anaerobic digestion facility including use of the resultant biogas: over 100 tonnes per day and up to 100,000 tonnes per year and 5mw thermal input",
+        "keywords": "installation",
+        "url": "https://www.gov.uk/government/publications/sr2012-number-11-anaerobic-digestion-facility-including-use-of-the-resultant-biogas"
+     },
+     "P34": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2010 No 16",
+        "title": "On-farm anaerobic digestion facility",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2010-no16-on-farm-anaerobic-digestion-facility"
+     },
+     "P35": {
+        "type": "Standard rules permit",
+        "subType": "Radioactive substances for non-nuclear sites",
+        "code": "SR2010 No 1",
+        "title": "Category 5 sealed radioactive sources standard rules",
+        "keywords": "nuclear",
+        "url": "https://www.gov.uk/government/publications/sr2010-no1-category-5-sealed-radioactive-sources"
+     },
+     "P36": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2011 No 1",
+        "title": "500t composting biodegradable waste (in open and closed systems): less than 500 tonnes on site at any one time",
+        "keywords": "biological",
+        "url": "https://www.gov.uk/government/publications/sr2011-no1-500t-composting-biodegradable-waste-in-open-and-closed-systems"
+     },
+     "P37": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2012 No 3",
+        "title": "Composting in closed systems: limit of 75 tonnes per day",
+        "keywords": "biological",
+        "url": "https://www.gov.uk/government/publications/sr2012-no3-composting-in-closed-systems"
+     },
+     "P38": {
+        "type": "Standard rules permit",
+        "subType": "Installations",
+        "code": "SR2012 No 4",
+        "title": "Composting in closed systems: less than 75,000 tonnes",
+        "keywords": "installation",
+        "url": "https://www.gov.uk/government/publications/sr2012-number-4-composting-in-closed-systems"
+     },
+     "P39": {
+        "type": "Standard rules permit",
+        "subType": "Installations",
+        "code": "SR2012 No 8",
+        "title": "Composting in open systems: less than 75,000 tonnes",
+        "keywords": "installation",
+        "url": "https://www.gov.uk/government/publications/sr2012-number-8-composting-in-open-systems"
+     },
+     "P40": {
+        "type": "Standard rules permit",
+        "subType": "Water discharges",
+        "code": "SR2010 No 2",
+        "title": "Discharge to surface water: maximum volume 1,000 cubic metres per day",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/standard-rules-sr2010-number-2-discharge-to-surface-water"
+     },
+     "P41": {
+        "type": "Standard rules permit",
+        "subType": "Water discharges",
+        "code": "SR2010 No 3",
+        "title": "Discharge to surface water: maximum volume between 5 and 20 cubic metres per day",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2010-number-3-discharge-to-surface-water"
+     },
+     "P42": {
+        "type": "Standard rules permit",
+        "subType": "Materials recovery and recycling",
+        "code": "SR2015 No 19",
+        "title": "75kte non-hazardous household waste amenity site: less than 75,000 tonnes per year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no19-75kte-non-hazardous-household-waste-amenity-site"
+     },
+     "P43": {
+        "type": "Standard rules permit",
+        "subType": "Installations",
+        "code": "SR2012 No 13",
+        "title": "Treatment of Incinerator Bottom Ash (IBA): ",
+        "keywords": "installation",
+        "url": "https://www.gov.uk/government/publications/sr2012-number-13-treatment-of-incinerator-bottom-ash-iba"
+     },
+     "P44": {
+        "type": "Standard rules permit",
+        "subType": "Low impact installation",
+        "code": "SR2009 No 2",
+        "title": "Low impact part A installation: ",
+        "keywords": "installation",
+        "url": "https://www.gov.uk/government/publications/sr2009-number-2-low-impact-part-a-installation"
+     },
+     "P45": {
+        "type": "Standard rules permit",
+        "subType": "Low impact installation",
+        "code": "SR2009 No 3",
+        "title": "Low impact part A installation for the production of biodiesel: no more than 2,000 tonnes per year",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2009-number-3-low-impact-part-a-installation-for-the-production-of-biodiesel"
+     },
+     "P46": {
+        "type": "Standard rules permit",
+        "subType": "Recovery or use of waste on land",
+        "code": "SR2010 No 4",
+        "title": "Mobile plant for land-spreading: spreading waste for agricultural or ecological benefit. up to 10 waste types with 50 hectares per deployment",
+        "keywords": "recovery waste land",
+        "url": "https://www.gov.uk/government/publications/sr2010-no4-mobile-plant-for-land-spreading"
+     },
+     "P47": {
+        "type": "Standard rules permit",
+        "subType": "Recovery or use of waste on land",
+        "code": "SR2010 No 6",
+        "title": "Mobile plant for land-spreading of sewage sludge: deployment maximum 250 tonnes per hectare over 50 hectares",
+        "keywords": "recovery waste land",
+        "url": "https://www.gov.uk/government/publications/sr2010-no6-mobile-plant-for-land-spreading-of-sewage-sludge"
+     },
+     "P48": {
+        "type": "Standard rules permit",
+        "subType": "Recovery or use of waste on land",
+        "code": "SR2010 No 5",
+        "title": "Mobile plant for reclamation, restoration or improvement of land: spreading waste to create a soil profile. up to 10 waste types per hectare over 50 hectares",
+        "keywords": "recovery waste land",
+        "url": "https://www.gov.uk/government/publications/sr2010-no5-mobile-plant-for-reclamation-restoration-or-improvement-of-land"
+     },
+     "P49": {
+        "type": "Standard rules permit",
+        "subType": "Treatment to produce aggregate or construction materials",
+        "code": "SR2010 No 11",
+        "title": "Mobile plant for the treatment of waste to produce soil, soil substitutes and aggregate: less than 75,000 tonnes per deployment",
+        "keywords": "construction",
+        "url": "https://www.gov.uk/government/publications/sr2010-number-11"
+     },
+     "P50": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2015 No 12",
+        "title": "75kte non-hazardous mechanical biological (aerobic) treatment facility: less than 75,000 tonnes per year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no12-75kte-non-hazardous-mechanical-biological-aerobic-treatment-facility"
+     },
+     "P51": {
+        "type": "Standard rules permit",
+        "subType": "Radioactive substances for non-nuclear sites",
+        "code": "SR2014 No 4",
+        "title": "NORM waste from oil and gas production: ",
+        "keywords": "radioactive substances nuclear",
+        "url": "https://www.gov.uk/government/publications/sr2014-no-4-accumulation-and-disposal-of-radioactive-waste"
+     },
+     "P52": {
+        "type": "Standard rules permit",
+        "subType": "Installations",
+        "code": "SR2012 No 9",
+        "title": "On-farm anaerobic digestion using farm wastes: over 100 tonnes per day and up to 100,000 tonnes per year and 5mw thermal input",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2012-number-9-on-farm-anaerobic-digestion-using-farm-wastes"
+     },
+     "P53": {
+        "type": "Standard rules permit",
+        "subType": "Materials recovery and recycling",
+        "code": "SR2015 No 22",
+        "title": "Materials recycling facility (no building): less than 5,000 tonnes per year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no22-materials-recycling-facility-no-building"
+     },
+     "P54": {
+        "type": "Standard rules permit",
+        "subType": "Onshore oil and gas exploration, and mining operation",
+        "code": "SR2015 No 2",
+        "title": "Storage and handling of crude oil: storage capacity limited to 500 tonnes",
+        "keywords": "onshore oil gas exploration mining operation",
+        "url": "https://www.gov.uk/government/publications/sr2015-no-2-storage-and-handling-of-crude-oil"
+     },
+     "P55": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2010 No 18",
+        "title": "Storage and treatment of dredgings for recovery: less than 125,000 cubic metres at any one time",
+        "keywords": "biological",
+        "url": "https://www.gov.uk/government/publications/sr2010-no18-storage-and-treatment-of-dredgings-for-recovery"
+     },
+     "P56": {
+        "type": "Standard rules permit",
+        "subType": "Metal recovery/scrap metal",
+        "code": "SR2008 No 22 ",
+        "title": "75kte: storage of furnace ready scrap metal for recovery: less than 75,000 tonnes per year",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2008-no22-75kte-storage-of-furnace-ready-scrap-metal-for-recovery"
+     },
+     "P57": {
+        "type": "Standard rules permit",
+        "subType": "Metal recovery/scrap metal",
+        "code": "SR2009 No 7",
+        "title": "Storage of furnace ready scrap metal for recovery: less than 1,000,000 tonnes per year",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2009-no7-storage-of-furnace-ready-scrap-metal-for-recovery"
+     },
+     "P58": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2008 No 19 250kte",
+        "title": "250kte non-hazardous sludge biological chemical and physical treatment site: less than 250,000 tonnes per year",
+        "keywords": "biological",
+        "url": "https://www.gov.uk/government/publications/sr2008-no19-250kte-non-hazardous-sludge-biological-chemical-and-physical-treatment-site"
+     },
+     "P59": {
+        "type": "Standard rules permit",
+        "subType": "Biological treatment of waste",
+        "code": "SR2008 No 19 75kte ",
+        "title": "75kte non-hazardous sludge biological chemical and physical treatment site: less than 75,000 tonnes per year",
+        "keywords": "biological",
+        "url": "https://www.gov.uk/government/publications/sr2008-no19-75kte-non-hazardous-sludge-biological-chemical-and-physical-treatment-site"
+     },
+     "P60": {
+        "type": "Standard rules permit",
+        "subType": "Treatment to produce aggregate or construction materials",
+        "code": "SR2015 No 24",
+        "title": "Use of waste to manufacture timber or construction products: less than 75,000 tonnes per year ",
+        "keywords": "chipboard stirling",
+        "url": "https://www.gov.uk/government/publications/sr2015-no24-use-of-waste-to-manufacture-timber-or-construction-products"
+     },
+     "P61": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2015 No 9",
+        "title": "Household, commercial and industrial waste transfer station with asbestos storage (no building): less than 5,000 tonnes per year",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no9-household-commercial-and-industrial-waste-transfer-station-with-asbestos-storage-no-building"
+     },
+     "P62": {
+        "type": "Standard rules permit",
+        "subType": "Keeping/transfer of waste",
+        "code": "SR2015 No 11",
+        "title": "Household, commercial and industrial waste transfer station with treatment and asbestos storage (no building): less than 5,000 tonnes per year ",
+        "keywords": "",
+        "url": "https://www.gov.uk/government/publications/sr2015-no11-household-commercial-and-industrial-waste-transfer-station-with-treatment-and-asbestos-storage-no-building"
+     }
+  }
+  
+ -%}

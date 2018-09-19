@@ -1,0 +1,292 @@
+{% extends "layout.html" %}
+{% set version = folder %}
+
+{% set title = "Task list: apply for a standard rules environmental permit" %}
+
+{% set IndividualChecked = '' %}
+{% if permit.operatorType=='Individual' %}
+    {% set HrefLink = '/operator/individual/individual-details' %}
+{% endif %}
+
+{% set SoleTraderChecked = '' %}
+{% if permit.operatorType=='Sole trader' %}
+    {% set HrefLink = '/operator/sole-trader/sole-trader' %}
+{% endif %}
+
+{% set LimitedCompanyChecked = '' %}
+{% if permit.operatorType=='Limited company' %}
+    {% set HrefLink = '/operator/company/company-name' %}
+{% endif %}
+
+{% set LimitedLiabilityPartnershipChecked = '' %}
+{% if permit.operatorType=='Limited liability partnership' %}
+    {% set HrefLink = '/operator/ll-partnership/limited-liability-partnership' %}
+{% endif %}
+
+{% set appType = 'standard' %}
+{% if permit.bespokePermit=="bespoke" %}
+    {% set appType = 'bespoke' %}
+{% endif %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+{% import folder+"/custom_inc/macros.html" as macros %}
+{% from folder+"/custom_inc/permit-list-json.html" import permits %}
+{% from folder+"/bespoke/v3-activities/json/bespoke-assessment-list.html" import assessments %}
+{% from folder+"/bespoke/v3-activities/json/bespoke_activities.html" import activities %}
+
+<main id="content" role="main" class="task-list">
+  {% include "includes/phase_banner_beta.html" %}
+
+
+  <div class="grid-row">
+    <div class="column-two-thirds column-minimum">
+
+      <form method="post" action="/{{folder}}/check/check-answers" name="tasklist">
+
+        {% if taskListError %}
+        <div class="error-summary" role="alert" aria-labelledby="error-summary-heading" tabindex="-1">
+
+          <h2 class="heading-medium error-summary-heading" id="error-summary-heading">You need to complete these tasks</h2>
+
+          <ul class="error-summary-list">
+            {% for missingItem in permit.complete %}
+            <li><a href="#{{ missingItem  | lower | replace(' ', '-') | replace('\'', '') | safe }}">{{ missingItem }}</a></li>
+            {% endfor %}
+          </ul>
+
+        </div>
+        {% endif %}
+
+        <h1 class="heading-large">
+          <span class="visually-hidden">Task list:</span>
+          {% if appType=="standard" %}
+                    Apply for a standard rules environmental permit
+          {% else %}
+                    Apply for a bespoke environmental permit
+          {% endif %}
+        </h1>
+
+{% if appType=="standard" %}    
+    <p class="font-medium text">{{permit.permitName}} - {{permit.permitCode}}<br><a class="font-small" href="/{{folder}}/selectpermit/permit-category2">Select a different permit</a></p>
+{% endif %}
+
+
+{% if appType=="bespoke" %}
+<!-- Output chosen activities ############################################ -->
+{% for ref in permit.chosenPermitID %}
+      {% for aNumber, aData in activities %}
+            {% if aNumber==ref %}
+
+            <!-- Output as a paragraph ============================== -->
+                  {{ ref }} {{ aData.D_Activity_Title }}<br>
+
+            {% endif %}
+      {% else %}
+      <p>No activities</p>
+      {% endfor %}
+{% else %}
+    <p>You must select at least one activity</p>
+{% endfor %}
+
+
+<!-- Output chosen assessments ############################################ -->
+{% for assess in permit.assessment %}
+    {% for a in assessments %}
+        {% if assess==a.D_Assessment_Title %}
+            <span class="assessments">Assessment:</span> {{ a.SRoC_Ref }} {{ a.D_Assessment_Title }}<br>
+        {% endif %}
+    {% else %}
+        <!-- NO ASSESSMENTS PICKED -->
+    {% endfor %}
+{% else %}
+    <!-- NO ASSESSMENTS PICKED -->
+{% endfor %}
+
+<!-- Output chosen activities ############################################ -->
+<span class="totalCost">Total cost {{ permit.totalcost }}</span>
+
+
+<!-- Link to change permit activities ##################################### -->
+        <p>
+          <a href="/{{folder}}/bespoke/v3-activities/bespoke-category">
+            Change activities or assessments
+          </a>
+        </p>
+{% endif %}
+
+
+<!-- TASK LIST ############################################################ -->
+<!-- STARTS HERE ########################################################## -->
+
+<ol class="task-list">
+  
+  <li><!-- START TASK SECTION ##################################### -->
+    {{ macros.taskHead("1", "Before you apply" )}}
+    <ul class="task-list-items">
+
+      <!--Save and return--------------->
+      {{ macros.task( "Save your application", permit.saveReturnEmail, "/"+folder+"/save-and-return/email-or-phone", taskListError ) }}
+
+      <!--Download forms--------------->
+      {{ macros.task( "Download the application form B12", permit.DownloadForms, "/"+folder+"/bespoke/download-forms", taskListError ) if appType=="bespoke" }}
+
+      <!--Check rules--------------->
+      {{ macros.task( "Confirm you can meet the rules", permit.readRules, "/"+folder+"/read-rules/index", taskListError ) if appType=="standard" }}
+
+    </ul>
+  </li><!-- END TASK SECTION -->
+
+
+  <li><!-- START TASK SECTION ##################################### -->
+  {{ macros.taskHead("2", "Prepare application" )}}
+  <ul class="task-list-items">
+    
+    <!--Cost and time standard--------------->
+    {{ macros.task( "Check costs and processing time", permit.costTime, "/"+folder+"/selectpermit/cost-and-time", taskListError ) if appType=="standard" }}
+
+  <!-- Special cases ------------------>
+  {% if permit.permitID=="SR-2009-4" %}
+      {% set linkText="Give the stack height" %}
+  {% endif %}
+
+  {% if permit.permitID=="SR-2010-2" or permit.permitID=="SR-2010-3" %}
+      {% set linkText="Tell us the date when you want the permit to start" %}
+  {% endif %}
+
+  {% if permit.permitID=="SR-2014-2" %}
+      {% set linkText="Specify the type of mining waste plan" %}
+  {% endif %}
+
+  {% if permit.permitID=="SR-2015-17" or permit.permitID=="SR-2015-18"  or permit.permitID=="SR-2015-13" %}
+      {% set linkText="Confirm the drainage system for your site" %}
+  {% endif %}
+
+  {% if permit.permitID=="SR-2015-39" %}
+      {% set linkText="Upload the waste recovery plan" %}
+  {% endif %}
+
+  {% if
+  permit.permitID=="SR-2009-4" or
+  permit.permitID=="SR-2010-2" or
+  permit.permitID=="SR-2010-3" or
+  permit.permitID=="SR-2014-2" or
+  permit.permitID=="SR-2015-17" or
+  permit.permitID=="SR-2015-13" or
+  permit.permitID=="SR-2015-18" or
+  permit.permitID=="SR-2015-39"
+  %}
+      {{ macros.task( linkText, permit.specialCasePageVisited, "/"+folder+"/check-special-cases", taskListError ) }}
+  {% endif %}
+
+  <!--Contact details--------------->
+  {{ macros.task( "Give contact details", permit.contactFirstName, "/"+folder+"/contact/contact-details", taskListError ) }}
+
+  <!--Permit holder--------------->
+  {{ macros.task( "Give permit holder details", permit.bankruptcyInsolvencyDetails, "/"+folder+HrefLink, taskListError ) }}
+
+  <!--Waste codes--------------->
+  {{ macros.task( "List European waste codes", permit.wasteCodesFile, "/"+folder+"/bespoke/waste-codes", taskListError ) if appType=="bespoke" }}
+  
+  <!--R and D codes--------------->
+  {{ macros.task( "List R and D codes for each activity", permit.RDCode_entered, "/"+folder+"/RDcodes/list_recovery_codes", taskListError ) if appType=="bespoke" }}
+
+  <!--B12 Upload forms--------------->
+  {{ macros.task( "Complete and upload form B12", permit.b12DocFile, "/"+folder+"/bespoke/upload-B12-forms", taskListError ) if appType=="bespoke" }}
+
+  <!--Upload supporting documents--------------->
+  {{ macros.task( "Upload supporting documents", permit.sDocFile1, "/"+folder+"/bespoke/upload-supporting-docs", taskListError ) if appType=="bespoke" }}
+
+  <!-- Site name DONT'T SHOW SITE FOR MOBILE PERMITS -------->
+  {% if
+  permit.permitID=="SR-2010-4" or
+  permit.permitID=="SR-2010-5" or
+  permit.permitID=="SR-2010-6" or
+  permit.permitID=="SR-2010-11" or
+  permit.permitID=="SR-2008-27"
+  %}
+  <!-- DO NOT SHOW -->
+  {% else %}
+      {{ macros.task( "Give site name and location", permit.siteName, "/"+folder+"/site/site-name", taskListError ) if appType=="standard" }}
+  {% endif %}
+
+
+  <!-- Site plan ------------------------->
+  {% if permit.sitePlanNeeded=="Yes" %}
+      {{ macros.task( "Upload the site plan", permit.sitePlanFilename, "/"+folder+"/evidence/site-plan-check", taskListError ) if appType=="standard" }}
+  {% endif %}
+  
+  <!--Mining waste management plan 2009-8--------------->
+  {% if permit.miningWasteManagementPlanRequired=="Yes" %}
+      {{ macros.task( "Confirm you have a mining waste management plan", permit.miningWasteManagementPlanConfirmed, "/"+folder+"/specialcases/2009-8/sr-2009-8", taskListError ) if appType=="standard" }}
+  {% endif %}
+  
+  <!-- Tech competence ----------------------->
+  {% if permit.technicalAbilityEvidence=="Yes" %}
+      {{ macros.task( "Prove technical competence", permit.industryScheme, "/"+folder+"/evidence/techcomp/industry-scheme", taskListError ) if appType=="standard" }}
+  {% endif %}
+
+  <!-- Fire prevention plan ----------->
+  {% if permit.firePlanNeeded=="Yes" %}
+          {{ macros.task( "Upload fire prevention plan", permit.firePlanFilename, "/"+folder+"/evidence/upload-fire-plan", taskListError ) if appType=="standard" }}
+  {% endif %}
+
+  <!-- Confidentiality  ----------->
+  {{ macros.task( "Confirm confidentiality needs", permit.confidential, "/"+folder+"/check/claim-confidentiality", taskListError ) }}
+
+  <!-- Invoicing ---------------->
+  {{ macros.task( "Give invoicing details", permit.invoiceAddress, "/"+folder+"/billing/invoice-postcode", taskListError ) }}
+
+  </ul>
+</li>
+
+
+<li><!-- START TASK SECTION ##################################### -->
+  {{ macros.taskHead("3", "Apply" )}}
+  <ul class="task-list-items">
+    
+    <li class="task-list-item" id="submit-pay">
+      <a onclick="document.tasklist.submit(); return false;" class="task-name" href="#">
+        Send application and pay
+      </a>
+    </li>
+    
+  </ul>
+</li><!-- END TASK SECTION -->
+
+</ol>
+
+</form>
+</div>
+
+<!-- Only show if 'Tasklist Save' route -->
+{% if permit.saveReturnEmail!==null  %}
+{% endif %}
+
+</div>
+</main>
+
+{% endblock %}
+
+
+{% block page_scripts %}
+<script>
+  $(document).ready(function () {
+
+    $.ajax({
+      url: '/{{folder}}/task-list-visit',
+      success: function(){
+             //alert('reply')
+           },
+           error: function(){
+              //alert('timeout/error')
+            }
+          })
+
+  })
+</script>
+{% endblock %}

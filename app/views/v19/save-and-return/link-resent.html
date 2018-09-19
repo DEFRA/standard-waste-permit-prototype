@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% set title = "Check your email" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+        <h1 class="heading-large">Check your email</h1>
+
+        <p>We sent a secure link to <span class="bold">{{ permit.saveReturnEmail }}</span> that will allow you to return to your application.</p>
+
+          <details>
+
+            <summary><span class="summary">I cannot find the email</span></summary>
+
+            <div class="panel panel-border-narrow">
+              <ol class="list list-number">
+                <li>Check your spam folder.</li>
+                <li>Search for 'standard rules permit application' in your emails.</li>
+                <li>Wait for a few minutes - email can take a while to arrive.</li>
+                <li>Resend the email.</li>
+              </ol>
+            <form method="get" action="/{{folder}}/save-and-return/link-resent-again">
+
+                <fieldset>
+
+                    <div class="form-group">
+                      <label class="form-label" for="user_email">Email address you gave us</label>
+                      <span class="form-hint">This must be the email you used before</span>
+                      <input class="form-control form-control-3-4" id="user_email" name="saveReturnEmail" type="text" value="{{permit.saveReturnEmail}}">
+                    </div>
+
+                </fieldset>
+
+          <br>
+
+                <div class="form-group">
+                <button type="submit" class="button" name="Resend email">Resend email</button>
+                </div>
+
+            </div>
+
+          </details>
+
+    </div>
+  </div>
+
+</main>
+{% endblock %}

@@ -1,0 +1,164 @@
+{% extends "layout.html" %}
+
+{% set title = "Confirm activities and assessments" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      
+            <h1 class="heading-large" id="radio_label">{{title}}</h1>
+            
+            
+    <form method="post" action="{{formAction}}">      
+            
+      {% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/bespoke/v3-activities/json/bespoke-assessment-list.html" import assessments %}
+      {% from folder+"/bespoke/v3-activities/json/bespoke_activities.html" import activities %}
+
+
+<dl class="govuk-check-your-answers cya-questions-short">
+  <div>
+    <dt class="cya-question">Chosen activities</dt>
+    <dd class="cya-answer"></dd>
+    <dd class="cya-change"></dd>
+  </div>
+
+{% set num = cycler("01", "02", "03", "04", "05", "06", "07", "08", "09") %}
+{% set numactivities = 0 %}
+{% set totalcost = 0 %}
+{% set lowestcost = 100000 %}
+{% set isDepositForRecovery="No" %}
+
+<!-- Output chosen activities ############################################ -->
+{% for ref in permit.chosenPermitID %}
+
+      {% for aNumber, aData in activities %}
+      
+            {% if aNumber==ref %}
+
+            
+            <!-- Add text for included assessments ======================= -->            
+                  {% if aData.SROC_Assessment_Fireplan == "Yes" and aData.SROC_Assessment_Odour == "Yes"  %}
+                      {% set title = aData.D_Activity_Title + " - includes assessment of fire prevention plan and odour management plan" %}
+                  {% elif aData.SROC_Assessment_Fireplan == "Yes" %}
+                      {% set title = aData.D_Activity_Title + " - includes assessment of fire prevention plan" %}
+                  {% elif aData.SROC_Assessment_Odour == "Yes" %}
+                      {% set title = aData.D_Activity_Title + " - includes assessment of the odour management plan" %}
+                  {% else %}
+                      {% set title = aData.D_Activity_Title %}
+                  {% endif %}
+
+            <!-- Output as a CYA styled row ============================== --> 
+                  {{ macros.checklist( 
+                    ref, 
+                    title, 
+                    aData.SROC_Application_Charge | formatnumber 
+                    ) }}
+
+            <!-- Set lowest cost ========================================== --> 
+                  {% if aData.SROC_Application_Charge < lowestcost %}
+                      {% set lowestcost = aData.SROC_Application_Charge %}
+                  {% endif %}
+
+            <!-- Get total =============================================== --> 
+                  {% set totalcost = totalcost + aData.SROC_Application_Charge %}
+                
+            <!-- Count activities to use in discount ===================== --> 
+                {% set numactivities = numactivities+1 %}
+                
+            {% endif %}
+            
+      {% else %}
+      <p>No activities</p>
+      {% endfor %}
+
+{% else %}
+    <p>You must select at least one activity</p>
+{% endfor %}
+
+{% if numactivities > 1 %}
+
+    {% set discountrate = 0.5 %}
+    {% set discount = lowestcost * discountrate * -1 %}
+    {% set totalcost = totalcost + discount %}
+
+    <div>
+      <dt class="cya-question">Second activity discount</dt>
+      <dd class="cya-answer">{{ discountrate*100 }}% of lowest fee for associated activity</dd>
+      <dd class="cya-change" style="white-space: nowrap">{{ discount | formatnumber }}</dd>
+    </div>
+
+{% endif %}
+
+<!-- Output chosen activities ############################################ -->
+{% for assess in permit.assessment %}
+
+    {% for a in assessments %}
+    
+        {% if assess==a.D_Assessment_Title %}
+
+            <!-- Output as a CYA styled row ============================== -->  
+            <div>
+              <dt class="cya-question">{{ a.SRoC_Ref }}</dt>
+              <dd class="cya-answer">{{ a.D_Assessment_Title }}</dd>
+              <dd class="cya-change">{{ a.SROC_Assessment_Charge | formatnumber }}</dd>
+            </div>
+            
+            {% set totalcost = totalcost + a.SROC_Assessment_Charge %}
+        
+        {% endif %}
+
+    {% else %}
+        <!-- NO ASSESSMENTS PICKED -->
+    {% endfor %}
+            
+{% else %}
+    <!-- NO ASSESSMENTS PICKED -->
+{% endfor %}
+
+<div>
+  <dt class="cya-question"></dt>
+  <dd class="cya-answer heading-small">Total cost for the application</dd>
+  <dd class="cya-change heading-small" style="white-space: nowrap">{{ totalcost | formatnumber }}</dd>
+</div>
+
+</dl>
+
+<!-- Write COST to permit ======================= --> 
+    <input type="hidden" name="totalcost" value="{{ totalcost | formatnumber }}">
+
+<p>
+  You must pay these charges before we will start assessing your application. You do not pay VAT on these costs.
+</p>
+
+      
+        <div class="form-group">
+            <p>
+            <a href="/{{folder}}/bespoke/v3-activities/bespoke-category">Change activities or assessments</a>
+            </p>
+        </div>
+
+        <div class="form-group">  
+            <button type="submit" class="button" name="Continue">Confirm</button>
+        </div>
+
+      </form>
+      
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

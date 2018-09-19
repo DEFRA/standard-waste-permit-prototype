@@ -1,0 +1,140 @@
+
+{% macro radio_button(label,name,id,value,labelClass='') %}
+<div class="multiple-choice permitSelector">
+  <input id="{{name}}_{{id}}" type="radio" name="{{name}}" value="{{ value }}">
+  <label class="selection-button-radio{{labelClass}}" for="{{name}}_{{id}}">
+    {{ label }}
+  </label>
+ </div>
+{% endmacro %}
+
+
+{% macro checkbox(label,name,id,value,labelClass='') %}
+<div class="multiple-choice permitSelector">
+  <input id="{{name}}_{{id}}" type="checkbox" name="{{name}}" value="{{ value }}">
+  <label class="selection-button-radio{{labelClass}}" for="{{name}}_{{id}}">
+    {{ label }}
+  </label>
+ </div>
+{% endmacro %}
+
+
+{% macro uploadList( fileTitle,fileName,fileNameVar,folder ) %}
+
+<div>
+  <dt class="cya-question">
+    {{ fileTitle }}
+  </dt>
+  <dd class="cya-answer">
+    {{ fileName }}
+  </dd>
+  <dd class="cya-change">
+    <a href="/{{folder}}/remove-supporting-doc?removeFile={{fileNameVar}}">
+      Remove file <span class="visuallyhidden">{{ fileName }}</span>
+    </a>
+  </dd>
+</div>
+
+{% endmacro %}
+
+
+{% macro uploadListCheck( fileTitle,fileName ) %}
+
+<div>
+  <dt class="cya-question">
+    {{ fileTitle }}
+  </dt>
+  <dd class="cya-answer">
+    {{ fileName }}
+  </dd>
+  <dd class="cya-change">
+    <a href="#">
+      Change <span class="visuallyhidden">{{ fileName }}</span>
+    </a>
+  </dd>
+</div>
+
+{% endmacro %}
+
+{% macro uploadListB12( fileTitle,fileName,fileNameVar ) %}
+
+<div>
+  <dt class="cya-question">
+    {{ fileTitle }}
+  </dt>
+  <dd class="cya-answer">
+    {{ fileName }}
+  </dd>
+  <dd class="cya-change">
+    <a href="/v18/bespoke/upload-B12-forms?removeFile={{fileNameVar}}">
+      Remove file <span class="visuallyhidden">{{ fileName }}</span>
+    </a>
+  </dd>
+</div>
+
+{% endmacro %}
+
+
+{% macro uploadListB12Check( fileTitle,fileName ) %}
+
+<div>
+  <dt class="cya-question">
+    {{ fileTitle }}
+  </dt>
+  <dd class="cya-answer">
+    {{ fileName }}
+  </dd>
+  <dd class="cya-change">
+    <a href="#">
+      Change <span class="visuallyhidden">{{ fileName }}</span>
+    </a>
+  </dd>
+</div>
+
+{% endmacro %}
+
+
+
+{% macro checklist( col1,col2,col3 ) %}
+
+<div>
+  <dt class="cya-question">
+    {{ col1 }}
+  </dt>
+  <dd class="cya-answer">
+    {{ col2 }}
+  </dd>
+  <dd class="cya-change">
+    {{ col3 }}
+  </dd>
+</div>
+
+{% endmacro %}
+
+
+{% macro taskHead( number, heading ) %}
+<h2 class="task-list-section">
+  <span class="task-list-section-number">{{number}}. </span> {{heading}}
+</h2>
+{% endmacro %}
+
+{% macro task( taskTitle, permitValueToTest, pathToTaskPage, taskListErrorVariable  ) %}
+
+  <li class="task-list-item {% if taskListError and permitValueToTest==null %} form-group-error{% endif %}" id="{{ taskTitle  | lower | replace(' ', '-') | replace('\'', '') | safe }}">
+    
+    {% if taskListErrorVariable and permitValueToTest==null %}
+      <span class="error-message">
+        Complete this task
+      </span>
+    {% endif %}
+    
+    <a class="task-name" href="{{ pathToTaskPage }}">
+      {{ taskTitle }}
+    </a>
+    {% if permitValueToTest!=null %}
+      <strong class="task-completed" id="waste-codes-upload-completed">Completed</strong>
+    {% else %}
+      <input type="hidden" name="complete[]" value="{{ taskTitle }}">
+    {% endif %}
+
+{% endmacro %}

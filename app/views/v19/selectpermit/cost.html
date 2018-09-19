@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% set title = "Money you will need for the permit" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_beta.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+      
+      <form method="post" action="{{formAction}}">
+      
+      {% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/custom_inc/permit-list-json.html" import permits %}
+
+
+        {% for pNumber, pData in permits %}
+          {% if pNumber==chosenPermitID %}
+          
+          {% include folder+"/custom_inc/permit-inputs.html" %}
+
+              
+              <h2 class="heading-large">
+                {{ pData.nameGOVUK }}
+                <span class="font-medium">{{ pData.code }}</span>
+              </h2>
+              
+              <p class="change-permit">
+                <a href="/{{folder}}/selectpermit/choose-expanding-sections">Select a different permit</a>
+              </p>
+
+              <p class="lede text">Application charge: </p>
+
+              <p>
+                <span class="bold-xlarge">{{pData.charge}}</span>
+              </p>
+                
+
+
+              {% if pData.subsistenceFee=="N/A" %}
+                <p class="lede text">
+                You will also have to pay a fee every year in advance (the 'subsistence charge'). You pay this when you apply for a deployment.
+                </p>
+              {% else %}
+                <p class="lede text">
+                You will also have to pay <span class="bold-medium">{{pData.subsistenceFee}}</span> every year in advance (the 'subsistence charge').  We will invoice you for this if your application is successful. 
+                </p>
+              {% endif %}
+
+              
+              {% endif %}
+            {% endfor %}
+        
+
+        <div class="form-group">
+        <button type="submit" class="button" name="Apply for this permit">Apply for this permit</button>
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

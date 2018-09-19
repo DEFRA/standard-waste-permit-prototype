@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% set title = "Complete and upload form B12" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+          <h1 class="heading-large">{{title}}</h1>
+
+
+
+    {% if permit.b12DocFile|typeof != "undefined"  %}
+      <dl class="govuk-check-your-answers cya-questions-short">
+
+        <div>
+          <dt class="cya-question">
+            Form B12
+          </dt>
+          <dd class="cya-answer">
+            {{permit.b12DocFile}}
+          </dd>
+          <dd class="cya-change">
+            <a href="/v16/remove-b12?removeFile=b12DocFile">
+              Remove file <span class="visuallyhidden">{{permit.b12DocFile}}</span>
+            </a>
+          </dd>
+        </div>
+
+        </dl>
+    {% endif %}
+
+
+  <form method="post" action="{{formAction}}" id="uploadForm">
+
+
+  {% if permit.b12DocFile|typeof == "undefined" %}
+      <div class="panel panel-border-wide">
+          <p>Complete form B12 on your computer. You can also print it out, fill it in and scan it.</p>
+          <p>Upload the completed file.</p>
+      </div>
+      <p class="upload_head">Upload form B12</p>
+      <p class="text form-hint form-hint-upload">
+        PDF or JPG<br>
+        30MB maximum file size.
+      </p>
+      <div class="form-group form-uploader">
+          <input id="upload" type="file" aria-labelelledby="upload-label">
+          <input id="filename" name="b12DocFile" type="hidden">
+      </div>
+  {% endif %}
+
+
+
+
+      <script>
+        // captures uploaded filename and passes to hidden input
+        document.getElementById('upload').onchange = uploadOnChange;
+        function uploadOnChange() {
+            var filename = this.value;
+            var lastIndex = filename.lastIndexOf("\\");
+            if (lastIndex >= 0) {
+                filename = filename.substring(lastIndex + 1);
+            }
+            document.getElementById('filename').value = filename;
+        }
+      </script>
+
+    <div class="form-group">
+      {{submitButton|safe}}{{completeLink|safe}}
+    </div>
+
+  </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
