@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "What type of permit do you want?" %}
+{% set title = "Confirm the type of permit you want" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -20,6 +20,11 @@
 
       <fieldset>
         <legend class="visuallyhidden">{{title}}</legend>
+        
+        {% set bespokeChecked="" %}
+        {% if permit.permitSelected=="bespoke" %}
+          {% set bespokeChecked=" checked" %}
+        {% endif %}
 
 
         <div class="form-group">
@@ -32,16 +37,9 @@
           </div>
           
           <div class="multiple-choice">
-            <input id="bespoke" type="radio" name="bespokePermit" value="bespoke">
+            <input id="bespoke" type="radio" name="bespokePermit" value="bespoke"{{bespokeChecked}}>
             <label for="bespoke">
-              Bespoke permit for waste or mining waste activities
-            </label>
-          </div>
-          
-          <div class="multiple-choice">
-            <input id="bespoke-other" type="radio" name="bespokePermit" value="bespoke-other">
-            <label for="bespoke-other">
-              Other bespoke permits
+              Bespoke
             </label>
           </div>
           
@@ -65,13 +63,8 @@
 
       <!--  <input type="hidden" name="permitRefNumber" value="{{ refnum }}">  -->
 
-      <p>
-        Not sure? Call our helpline on <a href="tel:+443708506506">03708 506 506</a>.
-      </p>
-
-
       <div class="form-group">
-        <button type="submit" class="button" name="Continue">Continue</button>
+        <button type="submit" class="button" name="Continue">Confirm</button>
       </div>
 
     </form>

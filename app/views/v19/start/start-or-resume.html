@@ -38,6 +38,11 @@
         </div>
 
       </fieldset>
+      
+      <p>
+        When you apply for a permit you will need to give us some personal data such as your email address or date of birth.<br>
+        <a href="/{{folder}}/pages/privacy" target="_blank">Privacy: how we use your personal information (opens new tab)</a>
+      </p>
 
       <input type="hidden" name="seenSaveReturn" value="yes">
 
@@ -56,7 +61,7 @@
       <input type="hidden" name="permitRefNumber" value="{{ refnum }}">
 
       <div class="form-group">
-        <button type="submit" class="button" name="Continue">Continue</button>
+        {{submitButton|safe}}{{completeLink|safe}}
       </div>
 
     </form>

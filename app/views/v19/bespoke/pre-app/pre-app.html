@@ -17,37 +17,32 @@
     <form action="{{formAction}}" method="post">
 
       <h1 class="heading-large">{{title}}</h1>
+      
+      <fieldset>
 
-      <div class="form-group">
-        <fieldset>
+        <legend class="visuallyhidden">{{title}}</legend>
+        
+        <div class="form-group">
 
-    <legend>
+          <div class="multiple-choice" data-target="preAppRefPanel">
+              <input id="pre-app-yes" type="radio" name="preAppYesNo" value="yes">
+              <label for="pre-app-yes">Yes</label>
+          </div>
 
-    </legend>
+          <div class="panel panel-border-narrow js-hidden" id="preAppRefPanel">
+              Pre-application reference or name of person you dealt with
+              <input class="form-control form-control-3-4" id="preAppRef" name="preAppRef" type="text" value="{{permit.preAppRef}}">
+          </div>
 
+          <div class="multiple-choice">
+              <input id="pre-app-yes" type="radio" name="preAppYesNo" value="no">
+              <label for="pre-app-yes">No</label>
+          </div>
+          
+        </div>
 
+      </fieldset>
 
-  </fieldset>
-  <div class="multiple-choice" data-target="contact-by-email">
-      <input id="example-contact-by-email" type="radio" name="GOTEMAIL" value="YES">
-      <label for="example-contact-by-email">Yes</label>
-    </div>
-    <div class="panel panel-border-narrow js-hidden" id="contact-by-email">
-      Pre-application reference or name of person you dealt with
-<input class="form-control form-control-3-4" id="user_email" name="saveReturnEmail" type="text" value="{{permit.saveReturnEmail}}">
-    </div>
-    <div class="multiple-choice" data-target="contact-by-phone">
-      <input id="example-contact-by-phone" type="radio" name="GOTEMAIL" value="NO">
-      <label for="example-contact-by-phone">No</label>
-    </div>
-    </fieldset>
-  </div>
-        <button type="submit" class="button" name="Continue">Continue</button>
-      </div>
-
-    </form>
-
-      <input type="hidden" name="seenSaveReturn" value="yes">
 
       {% set letters = ["B","C","D","F","G","H","J","K","M","P","Q","R","T","V","W","X","Y"] %}
 
@@ -62,9 +57,12 @@
       {% set refnum = "EPR/"+let1+let2+num1+num2+num3+num4+let3+let4 %}
 
       <input type="hidden" name="permitRefNumber" value="{{ refnum }}">
-  </div>
 
-
+      <div class="form-group">
+        {{submitButton|safe}}{{completeLink|safe}}
+      </div>
+        
+        
     </form>
 
     </div>

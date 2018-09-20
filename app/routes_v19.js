@@ -70,7 +70,7 @@ router.post('/save-and-return/save-choice', function (req, res) {
 
       res.render(folder + '/operator/site-operator',{
           // "formAction":"/"+ folder + "/selectpermit/permit-category2"
-        "formAction":"/"+ folder + "/selectpermit/bespoke-or-standard"
+        "formAction":"/"+ folder + "/bespoke/pre-app/pre-app"
       })
   } else {
       res.render(folder + '/save-and-return/already-started',{
@@ -135,6 +135,25 @@ router.get('save-and-return/email-save-link', function (req, res) {
   })
 })
 
+// Pre-app ====================================================================
+
+router.post('/bespoke/pre-app/pre-app', function (req, res) {
+  res.render(folder + '/bespoke/pre-app/pre-app',{
+    "formAction":"/"+ folder + "/bespoke/pre-app/pre-app-check"
+  })
+})
+
+// Deal with what to show next
+router.post('/bespoke/pre-app/pre-app-check', function (req, res) {
+  var preAppYesNo = req.body.preAppYesNo
+
+  if (preAppYesNo === 'no') {
+    res.redirect("/"+ folder + "/bespoke/pre-app/get-pre-app")
+  } else {
+    res.redirect("/"+ folder + "/bespoke/whats-next")
+  }
+})
+
 // Confirm operator type=======================================================
 
 router.get('/operator/company/company-decision', function (req, res) {
@@ -194,14 +213,14 @@ router.post('/selectpermit/permit-category2', function (req, res) {
 // required for 'select a different permit' via start page or task list
 router.post('/selectpermit/bespoke-or-standard', function (req, res) {
     res.render(folder + '/selectpermit/bespoke-or-standard',{
-      "formAction":"/"+ folder + "/selectpermit/select-bespoke-or-standard"
+      "formAction":"/"+ folder + "/start/start-or-resume"
       // "chosenPermitID":req.body['chosenPermitID']
     })
 })
 
 router.get('/selectpermit/bespoke-or-standard', function (req, res) {
     res.render(folder + '/selectpermit/bespoke-or-standard',{
-      "formAction":"/"+ folder + "/selectpermit/select-bespoke-or-standard"
+      "formAction":"/"+ folder + "/start/start-or-resume"
       // "chosenPermitID":req.body['chosenPermitID']
     })
 })
@@ -216,8 +235,8 @@ router.post('/selectpermit/select-bespoke-or-standard', function (req, res) {
   } else if(req.body['bespokePermit']=="bespoke-other") {
       res.render(folder + '/selectpermit/bespoke-offline')
   } else {
-      res.render(folder + '/bespoke/v3-activities/bespoke-category',{
-          "formAction":"/"+ folder + "/bespoke/v3-activities/bespoke-choose-activity"
+      res.render(folder + '/bespoke/v2-activities/bespoke-category',{
+          "formAction":"/"+ folder + "/bespoke/v2-activities/bespoke-choose-activity"
       })
   }
 })
