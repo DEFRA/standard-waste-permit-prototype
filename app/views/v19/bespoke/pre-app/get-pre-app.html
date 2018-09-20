@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% set title = "Get help from your application" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+
+        <h1 class="heading-large">{{title}}</h1>
+        <p>
+          The Environment Agency offers free basic pre-application advice to:
+        </p>
+        <ul class="list list-bullet">
+          <li>check that your activity meets the criteria for a permit</li>
+          <li>carry out nature and heritage conservation screening</li>
+          <li>advise which risk assessments you may need to do to accompany your application</li>
+            
+        </ul>
+        
+      
+      <div class="panel panel-border-wide">
+        <p>
+          We strongly recommend that you get pre-application advice before you apply.
+        </p>
+      </div>
+
+        <form action="confirm" method="post">
+        <fieldset>
+          <legend class="visuallyhidden">
+            Save and return later
+          </legend>
+
+
+        </fieldset>
+
+
+        <div class="form-group">
+
+          <p>
+            If you need more in depth advice they offer an enhanced pre-application advice service which costs £100 an hour plus VAT.
+          </p>
+
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Request advice online</button> <span style="padding:20px;display: inline-block;"><a href="#">Continue with application
+          </a></span>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</main>
+{% endblock %}

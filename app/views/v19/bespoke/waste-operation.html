@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% set title = "Give details about the waste operation" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">{{title}}</h1>
+
+      <form action="/{{folder}}/evidence/declare-offences" method="post">
+
+        <div class="form-group">
+          <label class="form-label" for="companySecretaryEmail">
+            Name of the waste operation
+          </label>
+          <input class="form-control form-control-char-50" id="" name="" value="">
+<p>
+</br>
+</p>
+          <label class="form-label" for="companySecretaryEmail">
+            Description of the waste operation
+            <span class="form-hint">Use the description from the guidance. Include any extra detail that you think would help to accurately describe what you want to do.</span>
+
+          </label>
+        
+          <textarea class="form-control form-control-full" type="text"></textarea>
+
+        </div>
+
+
+        <div class="form-group">
+          <input type="submit" class="button" value="Continue">
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
