@@ -126,14 +126,11 @@
 <ol class="task-list">
   
   <li><!-- START TASK SECTION ##################################### -->
-    {{ macros.taskHead("1", "Before you apply" )}}
+    {{ macros.taskHead("1", "Get a save link" )}}
     <ul class="task-list-items">
 
       <!--Save and return--------------->
       {{ macros.task( "Save your application", permit.saveReturnEmail, "/"+folder+"/save-and-return/email-or-phone", taskListError ) }}
-
-      <!--Download forms--------------->
-      {{ macros.task( "Download the application form B12", permit.DownloadForms, "/"+folder+"/bespoke/download-forms", taskListError ) if appType=="bespoke" }}
 
       <!--Check rules--------------->
       {{ macros.task( "Confirm you can meet the rules", permit.readRules, "/"+folder+"/read-rules/index", taskListError ) if appType=="standard" }}
@@ -143,7 +140,63 @@
 
 
   <li><!-- START TASK SECTION ##################################### -->
-  {{ macros.taskHead("2", "Prepare application" )}}
+  {{ macros.taskHead("2", "About the application" )}}
+  <ul class="task-list-items">
+
+  <!--Contact details--------------->
+  {{ macros.task( "Give contact details", permit.contactFirstName, "/"+folder+"/contact/contact-details", taskListError ) }}
+
+  <!--Permit holder--------------->
+  {{ macros.task( "Give permit holder details", permit.bankruptcyInsolvencyDetails, "/"+folder+HrefLink, taskListError ) }}
+
+  <!-- Confidentiality  ----------->
+  {{ macros.task( "Confirm confidentiality needs", permit.confidential, "/"+folder+"/check/claim-confidentiality", taskListError ) }}
+
+  <!-- Invoicing ---------------->
+  {{ macros.task( "Give invoicing details", permit.invoiceAddress, "/"+folder+"/billing/invoice-postcode", taskListError ) }}
+
+  <!-- Confirm if you release to sewer, harbour or coastal waters ---------------->
+  {{ macros.task( "* Confirm if you release to sewer, harbour or coastal waters *", permit.invoiceAddress, "/"+folder+"/billing/invoice-postcode", taskListError ) }}
+
+
+</ul>
+</li><!-- END TASK SECTION -->
+<li><!-- START TASK SECTION ##################################### -->
+    {{ macros.taskHead("3", "Operations" )}}
+    <ul class="task-list-items">
+
+      <!-- Give basic details about the operation ---------------->
+      {{ macros.task( "* Give basic details about the operation *", permit.siteName, "/"+folder+"/site/site-name", taskListError ) }}
+
+      <!-- Provide a non-technical summary ---------------->
+      {{ macros.task( "* Provide a non-technical summary *", permit.siteName, "/"+folder+"/site/site-name", taskListError ) }}
+
+
+      <!-- Site name and location ---------------->
+      {{ macros.task( "Give site name and location", permit.siteName, "/"+folder+"/site/site-name", taskListError ) }}
+
+        <!-- Site plan ------------------------->
+      {{ macros.task( "Upload the site plan", permit.sitePlanFilename, "/"+folder+"/evidence/site-plan-check", taskListError ) }}
+
+    </ul>
+    </li><!-- END TASK SECTION -->
+
+<li><!-- START TASK SECTION ##################################### -->
+  {{ macros.taskHead("4", "Activities" )}}
+  <ul class="task-list-items">
+
+  <!--R and D codes--------------->
+  {{ macros.task( "List R and D codes for your activities", permit.RDCode_entered, "/"+folder+"/RDcodes/list_recovery_codes", taskListError ) if appType=="bespoke" }}
+
+  <!--Waste codes--------------->
+  {{ macros.task( "List European waste codes", permit.wasteCodesFile, "/"+folder+"/bespoke/waste-codes", taskListError ) if appType=="bespoke" }}
+
+</ul>
+</li><!-- END TASK SECTION -->
+
+<li><!-- START TASK SECTION ##################################### -->
+  {{ macros.taskHead("5", "Evidence" )}}
+
   <ul class="task-list-items">
     
     <!--Cost and time standard--------------->
@@ -183,23 +236,10 @@
       {{ macros.task( linkText, permit.specialCasePageVisited, "/"+folder+"/check-special-cases", taskListError ) }}
   {% endif %}
 
-  <!--Contact details--------------->
-  {{ macros.task( "Give contact details", permit.contactFirstName, "/"+folder+"/contact/contact-details", taskListError ) }}
+  <!-- Tech competence ----------------------->
 
-  <!--Permit holder--------------->
-  {{ macros.task( "Give permit holder details", permit.bankruptcyInsolvencyDetails, "/"+folder+HrefLink, taskListError ) }}
+      {{ macros.task( "Prove technical competence", permit.industryScheme, "/"+folder+"/evidence/techcomp/industry-scheme", taskListError ) }}
 
-  <!--Waste codes--------------->
-  {{ macros.task( "List European waste codes", permit.wasteCodesFile, "/"+folder+"/bespoke/waste-codes", taskListError ) if appType=="bespoke" }}
-  
-  <!--R and D codes--------------->
-  {{ macros.task( "List R and D codes for each activity", permit.RDCode_entered, "/"+folder+"/RDcodes/list_recovery_codes", taskListError ) if appType=="bespoke" }}
-
-  <!--B12 Upload forms--------------->
-  {{ macros.task( "Complete and upload form B12", permit.b12DocFile, "/"+folder+"/bespoke/upload-B12-forms", taskListError ) if appType=="bespoke" }}
-
-  <!--Upload supporting documents--------------->
-  {{ macros.task( "Upload supporting documents", permit.sDocFile1, "/"+folder+"/bespoke/upload-supporting-docs", taskListError ) if appType=="bespoke" }}
 
   <!-- Site name DONT'T SHOW SITE FOR MOBILE PERMITS -------->
   {% if
@@ -224,22 +264,18 @@
   {% if permit.miningWasteManagementPlanRequired=="Yes" %}
       {{ macros.task( "Confirm you have a mining waste management plan", permit.miningWasteManagementPlanConfirmed, "/"+folder+"/specialcases/2009-8/sr-2009-8", taskListError ) if appType=="standard" }}
   {% endif %}
-  
-  <!-- Tech competence ----------------------->
-  {% if permit.technicalAbilityEvidence=="Yes" %}
-      {{ macros.task( "Prove technical competence", permit.industryScheme, "/"+folder+"/evidence/techcomp/industry-scheme", taskListError ) if appType=="standard" }}
-  {% endif %}
+
 
   <!-- Fire prevention plan ----------->
-  {% if permit.firePlanNeeded=="Yes" %}
-          {{ macros.task( "Upload fire prevention plan", permit.firePlanFilename, "/"+folder+"/evidence/upload-fire-plan", taskListError ) if appType=="standard" }}
-  {% endif %}
+          {{ macros.task( "Upload fire prevention plan", permit.firePlanFilename, "/"+folder+"/evidence/upload-fire-plan", taskListError ) }}
 
-  <!-- Confidentiality  ----------->
-  {{ macros.task( "Confirm confidentiality needs", permit.confidential, "/"+folder+"/check/claim-confidentiality", taskListError ) }}
+  <!-- Upload environmental risk assessment ----------->
+  {{ macros.task( "* Upload environmental risk assessment *", permit.firePlanFilename, "/"+folder+"/evidence/upload-fire-plan", taskListError ) }}
 
-  <!-- Invoicing ---------------->
-  {{ macros.task( "Give invoicing details", permit.invoiceAddress, "/"+folder+"/billing/invoice-postcode", taskListError ) }}
+  <!-- Provide a management system summary ----------->
+  {{ macros.task( "* Provide a management system summary *", permit.firePlanFilename, "/"+folder+"/evidence/upload-fire-plan", taskListError ) }}
+
+
 
   </ul>
 </li>
