@@ -154,6 +154,31 @@ router.post('/bespoke/pre-app/pre-app-check', function (req, res) {
   }
 })
 
+// What's next ===============================================================
+router.get('/bespoke/whats-next', function (req, res) {
+  res.render(folder + '/bespoke/whats-next',{
+    "formAction":"/"+ folder + "/bespoke/facility/facility-type"
+  })
+})
+
+// Facility type ==============================================================
+router.get('/bespoke/facility/facility-type', function (req, res) {
+  res.render(folder + '/bespoke/facility/facility-type',{
+    "formAction":"/"+ folder + "/facility-check"
+  })
+})
+
+// Facility Check - not real page =============================================
+router.post('/facility-check', function (req, res) {
+  var facilityType = req.body.facilityType
+
+  if (facilityType === "waste") {
+    res.redirect("/"+ folder + "/bespoke/mobile-plant")
+  } else {
+    res.redirect("/"+ folder + "/bespoke/offline/bespoke-selection-offline")
+  }
+})
+
 // Confirm operator type=======================================================
 
 router.get('/operator/company/company-decision', function (req, res) {

@@ -21,25 +21,22 @@
 
 
       {% import folder+"/custom_inc/macros.html" as macros %}
-      {% from folder+"/custom_inc/category-list-new-json4.html" import categories %}
+      {% from folder+"/custom_inc/facility-list-json.html" import facilities %}
 
 
       <form method="post" action="{{formAction}}">
-        
-      <!-- STORE operatorType to pass on -->
-      <input type="hidden" name="operatorType" value="{{permit.operatorType}}">
+
       
         <div class="form-group">
           <fieldset aria-labelledby="radio_label">
             <legend class="Permit type visuallyhidden">{{title}}</legend>
 
-            {% for c in categories %}
+            {% for f in facilities %}
 
             <div class="multiple-choice">
-              <input id="{{c.category}}" type="radio" name="chosenCategory" value="{{c.category}}">
-              <label for="{{c.category}}">
-                {{c.category}} {{c.hint}}
-
+              <input id="{{f.value}}" type="radio" name="facilityType" value="{{f.value}}">
+              <label for="{{f.value}}">
+                {{f.text}}
               </label>
             </div>
 
