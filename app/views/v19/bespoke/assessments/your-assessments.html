@@ -19,40 +19,146 @@
 
       <h1 class="heading-large" id="radio_label">{{title}}</h1>
       
-      <p>
-        Based on your answers so far, you need to send us these plans as part of your application. The costs are to cover our time to assess the plans.
-      </p>
-      <p>
-        We will add these to your application checklist.
-      </p>
       
+      <p>
+        Based on your answers so far, you need to send us these plans as part of your application.
+      </p>
+
+{% import folder+"/custom_inc/macros.html" as macros %}
+{% from folder+"/bespoke/activities-assessments/json/bespoke-assessment-list.html" import assessments %}
+{% from folder+"/bespoke/activities-assessments/json/bespoke_activities.html" import activities %}
       
-      <dl class="govuk-check-your-answers cya-questions-short">
-        <div>
-          <dt class="cya-answer">Odour management plan assessment (1.16.1)</dt>
-          <dd class="cya-answer">Cost included in application</dd>
-        </div>
-        
-        <div>
-          <dt class="cya-answer">Fire prevention plan assessment (1.19.3)</dt>
-          <dd class="cya-answer">Cost included in application</dd>
-        </div>
-        
-        <div>
-          <dt class="cya-answer">Noise and vibration management plan assessment (1.19.7)</dt>
-          <dd class="cya-answer">£1,246</dd>
-        </div>
-      </dl>
+
+<!-- Initialise ############################################ -->
+{% set firePreventionPlan = "no" %}
+{% set firePreventionPlanIncluded = "no" %}
+{% set odourManagementPlan = "no" %}
+{% set odourManagementPlanIncluded = "no" %}
+{% set wasteRecoveryPlan="no" %}
+{% set ammoniaModelling="no" %}
+{% set dustPlan="no" %}
+{% set emissionsPlan="no" %}
+{% set habitatsAssessment="no" %}
+{% set noisePlan="no" %}
+{% set pestsPlan="no" %}
+
+<!-- Output chosen activities ############################################ -->
+{% for ref in permit.chosenPermitID %}
+      {% for aNumber, aData in activities %}
+            {% if aNumber==ref %}
+            
+            <!-- Check what assessments are needed, based on activities =========== -->
+                  {% if aNumber=="2.17.9" %}
+                      {% set wasteRecoveryPlan="yes" %}
+                  {% endif %}
+          
+                  {% if aData.SROC_Assessment_Fireplan == "Yes" and aData.SROC_Assessment_Odour == "Yes"  %}
+                      {% set firePreventionPlanIncluded = "yes" %}
+                      {% set odourManagementPlanIncluded = "yes" %}
+                          {% set firePreventionPlan = "yes" %}
+                          {% set odourManagementPlan = "yes" %}
+                  {% elif aData.SROC_Assessment_Fireplan == "Yes" %}
+                      {% set firePreventionPlanIncluded = "yes" %}
+                          {% set firePreventionPlan = "yes" %}
+                  {% elif aData.SROC_Assessment_Odour == "Yes" %}
+                      {% set odourManagementPlanIncluded = "yes" %}
+                          {% set odourManagementPlan = "yes" %}
+                  {% endif %}
+                
+            {% endif %}
+            
+      {% else %}
+        <p>No activities</p>
+      {% endfor %}
+
+{% else %}
+    <p>You must select at least one activity</p>
+{% endfor %}
 
 
-      <form method="post" action="{{formAction}}">
-      
+<!-- NOW WRITE THE ASSESSMENT LIST ========================================= -->
+
+<form method="post" action="{{formAction}}">
+
+<dl class="govuk-check-your-answers cya-questions-short">
+
+{% if firePreventionPlan=="yes" %}
+    {{ macros.assessmentlist( 
+      "Fire prevention plan assessment",
+      "Added because an activity you selected includes this assessment"
+      ) }}
+{% endif %}
+
+{% if firePreventionPlan=="no" and combustible=="yes" %}
+    {{ macros.assessmentlist( 
+      "Fire prevention plan assessment",
+      "Added because you deal with combustible waste"
+      ) }}
+{% endif %}
+
+{% if firePreventionPlan=="no" and wood=="yes" %}
+    {{ macros.assessmentlist( 
+      "Fire prevention plan assessment",
+      "Added because you deal with wood waste"
+      ) }}
+{% endif %}
+
+{% if odourManagementPlan=="yes" %}
+    {{ macros.assessmentlist( 
+      "Odour management plan assessment",
+      "Added because the activity includes this assessment"
+      ) }}
+{% endif %}
+
+{% if wasteRecoveryPlan=="yes" %}
+    {{ macros.assessmentlist( 
+      "Waste recovery plan",
+      "Added because your activity is 'Deposit of waste for recovery'"
+      ) }}
+{% endif %}
+
+<!-- OTHER VARIABLES
+sensitive-receptor
+aqma
+material
+combustible
+hazardous
+dusty
+aggregates
+wood
+-->
+
+
+</dl>
+
+<input type="hidden" name="firePreventionPlan" value="{{firePreventionPlan}}">
+<input type="hidden" name="odourManagementPlan" value="{{odourManagementPlan}}">
+<input type="hidden" name="firePreventionPlanIncluded" value="{{firePreventionPlanIncluded}}">
+<input type="hidden" name="odourManagementPlanIncluded" value="{{odourManagementPlanIncluded}}">
+<input type="hidden" name="wasteRecoveryPlan" value="{{wasteRecoveryPlan}}">
 
         
         <h2 class="heading-medium">Other assessments</h2>
         <p>
           If we told you during pre-application discussions that we need to assess other plans please add them.
         </p>
+        
+        
+<div class="form-group">
+
+{{ macros.checkbox("Ammonia modelling assessment","ammoniaModelling","a1","yes") if ammoniaModelling=="no" }}
+{{ macros.checkbox("Dust and bio-aerosol management plan","dustPlan","a2","yes") if dustPlan=="no" }}
+{{ macros.checkbox("Emissions management plan","emissionsPlan","a3","yes") if emissionsPlan=="no" }}
+{{ macros.checkbox("Fire prevention plan","firePreventionPlan","a4","yes") if firePreventionPlan=="no" }}
+{{ macros.checkbox("Habitats assessment","habitatsAssessment","a5","yes") if habitatsAssessment=="no" }}
+{{ macros.checkbox("Noise and vibration management plan","noisePlan","a6","yes") if noisePlan=="no" }}
+{{ macros.checkbox("Odour management plan","odourManagementPlan","a7","yes") if odourManagementPlan=="no" }}
+{{ macros.checkbox("Pests management plan","pestsPlan","a8","yes") if pestsPlan=="no" }}
+{{ macros.checkbox("Waste recovery plan","wasteRecoveryPlan","a9","yes") if wasteRecoveryPlan=="no" }}
+                          
+</div>
+
+
 
         
         <div class="form-group">

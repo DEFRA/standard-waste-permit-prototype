@@ -23,8 +23,6 @@
       Select all that apply
       </p>
 
-      {% import folder+"/custom_inc/macros.html" as macros %}
-      {% from folder+"/bespoke/check-assessments/json/waste-type-assessment-list.html" import materials %}
 
       <form method="post" action="{{formAction}}">
       
@@ -32,18 +30,62 @@
           <fieldset aria-labelledby="radio_label">
             <legend class="visuallyhidden">{{title}}</legend>
 
-            {% for m in materials %}
-
             <div class="multiple-choice">
-              <input id="{{m.value}}" type="checkbox" name="material" value="{{m.value}}">
-              <label for="{{m.value}}">
-                {{m.text}}
-              </label>
-            </div>
+                          <input id="combustible" type="checkbox" name="combustible" value="yes">
+                          <label for="combustible">
+                            Combustible materials
+                          </label>
+                        </div>
 
-            {% else %}
-            <p>No types</p>
-            {% endfor %}
+                        <div class="multiple-choice">
+                          <input id="hazardous" type="checkbox" name="hazardous" value="yes">
+                          <label for="hazardous">
+                            Hazardous waste
+                          </label>
+                        </div>
+
+                        <div class="multiple-choice">
+                          <input id="dusty" type="checkbox" name="dusty" value="yes">
+                          <label for="dusty">
+                            Dusty or fine materials
+                          </label>
+                        </div>
+
+                        <div class="multiple-choice">
+                          <input id="aggregates" type="checkbox" name="aggregates" value="yes">
+                          <label for="aggregates">
+                            Aggregates, soils, ashes or similar materials
+                          </label>
+                        </div>
+
+                        <div class="multiple-choice">
+                          <input id="wood" type="checkbox" name="wood" value="yes">
+                          <label for="wood">
+                            Wood
+                          </label>
+                        </div>
+
+                        <div class="multiple-choice">
+                          <input id="clinical" type="checkbox" name="clinical" value="yes">
+                          <label for="clinical">
+                            Clinical waste
+                          </label>
+                        </div>
+
+                        <div class="multiple-choice">
+                          <input id="batteries" type="checkbox" name="batteries" value="yes">
+                          <label for="batteries">
+                            Batteries for processing
+                          </label>
+                        </div>
+
+                        <div class="multiple-choice">
+                          <input id="ships" type="checkbox" name="ships" value="yes">
+                          <label for="ships">
+                            Ships for recycling
+                          </label>
+                        </div>
+                        
           </div>
         </div>
 

@@ -10,13 +10,14 @@
 
 
 {% macro checkbox(label,name,id,value,labelClass='') %}
-<div class="multiple-choice permitSelector">
+<div class="multiple-choice">
   <input id="{{name}}_{{id}}" type="checkbox" name="{{name}}" value="{{ value }}">
   <label class="selection-button-radio{{labelClass}}" for="{{name}}_{{id}}">
     {{ label }}
   </label>
  </div>
 {% endmacro %}
+
 
 
 {% macro uploadList( fileTitle,fileName,fileNameVar,folder ) %}
@@ -94,9 +95,7 @@
 {% endmacro %}
 
 
-
 {% macro checklist( col1,col2,col3 ) %}
-
 <div>
   <dt class="cya-question">
     {{ col1 }}
@@ -108,7 +107,18 @@
     {{ col3 }}
   </dd>
 </div>
+{% endmacro %}
 
+
+{% macro assessmentlist( col1,col2 ) %}
+<div>
+  <dt class="cya-answer">
+    {{ col1 }}
+  </dt>
+  <dd class="cya-change">
+    {{ col2 }}
+  </dd>
+</div>
 {% endmacro %}
 
 
