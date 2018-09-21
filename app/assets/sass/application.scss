@@ -580,3 +580,9 @@ h3.files-description{
 .total{
   font-weight: bold;
 }
+
+.govuk-check-your-answers:first-child,
+.govuk-check-your-answers div {
+    border-top: 1px solid #bfc1c3;
+    padding-top:0.47368em;
+}

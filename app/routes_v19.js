@@ -256,6 +256,12 @@ router.post('/bespoke/assessments/your-assessments', function (req, res) {
     })
 })
 
+router.get('/bespoke/assessments/your-assessments', function (req, res) {
+    res.render(folder + '/bespoke/assessments/your-assessments',{
+      "formAction":"/"+ folder + "/bespoke/activities-assessments/confirm"
+    })
+})
+
 // Confirm assessments
 router.post('/bespoke/activities-assessments/confirm', function (req, res) {
     res.render(folder + '/bespoke/activities-assessments/confirm',{
