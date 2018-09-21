@@ -15,6 +15,7 @@ Assessments - GOV.UK
     <div class="column-two-thirds">
 
 
+
 {% import folder+"/custom_inc/macros.html" as macros %}
 {% from folder+"/bespoke/activities-assessments/json/bespoke_activities.html" import activities %}
       
@@ -68,7 +69,8 @@ Assessments - GOV.UK
 {% endfor %}
 
 
-<!-- CHECK IF THERE ARE ASSESSMENTS ======================================== -->
+
+<!-- CHECK IF THERE ARE ASSESSMENTS CHOSEN ======================================== -->
 {% 
   if firePreventionPlan == "yes" or
      odourManagementPlan == "yes" or
@@ -82,6 +84,31 @@ Assessments - GOV.UK
 %}
     {% set assessments="yes" %}
 {% endif %}
+
+<!-- Run check for dust plan based on answers ============================== -->
+
+<!-- Check if category is relevant to dust plan ======= -->
+{% set categoryMayNeedDustPlan="no" %}
+{% for cat in permit.chosenCategory %}
+    {% if cat=="Waste transfer" or cat=="Recycling" %}
+        {% set categoryMayNeedDustPlan="yes" %}
+    {% endif %}
+{% endfor %}
+
+{% if permit.aqma=="inside" or permit.aqma=="within2km" or permit.sensitive-receptor=="100" or permit.sensitive-receptor=="100250" %}
+        {% if 
+          permit.wood=="yes" 
+          or permit.dusty=="yes" 
+          or permit.aggregates=="yes" 
+          or permit.scrapmetal=="yes"
+          or permit.wasteRecoveryPlan=="yes"
+          or permit.categoryMayNeedDustPlan=="yes"
+          %}
+              {% set assessments="yes" %}
+              {% set dustPlan="yes" %}
+        {% endif %}
+{% endif %}
+
 
 
 <form method="post" action="{{formAction}}">
@@ -133,9 +160,14 @@ Assessments - GOV.UK
       ) }}
 {% endif %}
 
+{% if dustPlan=="yes" %}
+            {{ macros.assessmentlist( 
+              "Dust management plan assessment",
+              "Added because your activities may emit dust in a sensitive area"
+              ) }}
+{% endif %}
 
-
-<!-- OTHER VARIABLES
+<!-- VARIABLES
 sensitive-receptor
 aqma
 material
@@ -150,13 +182,6 @@ wood
 {% if assessments=="yes" %}
     </dl>
 {% endif %}
-
-
-<input type="hidden" name="firePreventionPlan" value="{{firePreventionPlan}}">
-<input type="hidden" name="odourManagementPlan" value="{{odourManagementPlan}}">
-<input type="hidden" name="firePreventionPlanIncluded" value="{{firePreventionPlanIncluded}}">
-<input type="hidden" name="odourManagementPlanIncluded" value="{{odourManagementPlanIncluded}}">
-<input type="hidden" name="wasteRecoveryPlan" value="{{wasteRecoveryPlan}}">
 
 
 {% if assessments=="yes" %}
@@ -177,15 +202,42 @@ wood
         
 <div class="form-group">
 
-{{ macros.checkbox("Ammonia modelling assessment","ammoniaModelling","a1","yes") if ammoniaModelling=="no" }}
-{{ macros.checkbox("Dust and bio-aerosol management plan","dustPlan","a2","yes") if dustPlan=="no" }}
-{{ macros.checkbox("Emissions management plan","emissionsPlan","a3","yes") if emissionsPlan=="no" }}
-{{ macros.checkbox("Fire prevention plan","firePreventionPlan","a4","yes") if firePreventionPlan=="no" }}
-{{ macros.checkbox("Habitats assessment","habitatsAssessment","a5","yes") if habitatsAssessment=="no" }}
-{{ macros.checkbox("Noise and vibration management plan","noisePlan","a6","yes") if noisePlan=="no" }}
-{{ macros.checkbox("Odour management plan","odourManagementPlan","a7","yes") if odourManagementPlan=="no" }}
-{{ macros.checkbox("Pests management plan","pestsPlan","a8","yes") if pestsPlan=="no" }}
-{{ macros.checkbox("Waste recovery plan","wasteRecoveryPlan","a9","yes") if wasteRecoveryPlan=="no" }}
+<!-- Either output the checkbox OR a hidden field to pass on the data -->
+{{ macros.checkbox("Ammonia modelling assessment","ammoniaModelling","a1","yes") 
+  if ammoniaModelling=="no"
+  else macros.hidden("Ammonia modelling assessment",ammoniaModelling) }}
+
+{{ macros.checkbox("Dust and bio-aerosol management plan","dustPlan","a2","yes") 
+  if dustPlan=="no" 
+  else macros.hidden("dustPlan",dustPlan) }}
+
+{{ macros.checkbox("Emissions management plan","emissionsPlan","a3","yes") 
+  if emissionsPlan=="no"
+  else macros.hidden("emissionsPlan",emissionsPlan) }}
+
+{{ macros.checkbox("Fire prevention plan","firePreventionPlan","a4","yes") 
+  if firePreventionPlan=="no"
+  else macros.hidden("firePreventionPlan",firePreventionPlan) }}
+
+{{ macros.checkbox("Habitats assessment","habitatsAssessment","a5","yes") 
+  if habitatsAssessment=="no"
+  else macros.hidden("habitatsAssessment",habitatsAssessment) }}
+
+{{ macros.checkbox("Noise and vibration management plan","noisePlan","a6","yes") 
+  if noisePlan=="no" 
+  else macros.hidden("noisePlan",noisePlan) }}
+
+{{ macros.checkbox("Odour management plan","odourManagementPlan","a7","yes") 
+  if odourManagementPlan=="no" 
+  else macros.hidden("odourManagementPlan",odourManagementPlan) }}
+
+{{ macros.checkbox("Pests management plan","pestsPlan","a8","yes") 
+  if pestsPlan=="no" 
+  else macros.hidden("pestsPlan",pestsPlan) }}
+
+{{ macros.checkbox("Waste recovery plan","wasteRecoveryPlan","a9","yes") 
+  if wasteRecoveryPlan=="no" 
+  else macros.hidden("wasteRecoveryPlan",wasteRecoveryPlan) }}
                           
 </div>
 

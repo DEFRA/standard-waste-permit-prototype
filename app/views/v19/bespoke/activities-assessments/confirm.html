@@ -74,6 +74,15 @@
       {% set totalcost = totalcost + 0 %}
 {% endif %}
 
+{% if permit.odourManagementPlanIncluded=="yes" %}
+    {{ macros.confirmlist( 
+      "Odour management plan assessment - 
+      added because the activity includes this assessment", 
+      "Cost included in application" 
+      ) }}
+      {% set totalcost = totalcost + 0 %}
+{% endif %}
+
 {% if permit.firePreventionPlanIncluded=="no" and permit.combustible=="yes" %}
     {{ macros.confirmlist( 
       "Fire prevention plan assessment - 
@@ -92,14 +101,15 @@
       {% set totalcost = totalcost + 1241 %}
 {% endif %}
 
-{% if permit.odourManagementPlanIncluded=="yes" %}
+{% if permit.firePreventionPlan=="yes" %}
     {{ macros.confirmlist( 
-      "Odour management plan assessment - 
-      added because the activity includes this assessment", 
-      "Cost included in application" 
+      "Fire prevention plan assessment - 
+      added by you", 
+      1241 | formatnumber 
       ) }}
-      {% set totalcost = totalcost + 0 %}
+      {% set totalcost = totalcost + 1241 %}
 {% endif %}
+
 
 {% if permit.odourManagementPlanIncluded=="no" and permit.odourManagementPlan=="yes" %}
     {{ macros.confirmlist( 

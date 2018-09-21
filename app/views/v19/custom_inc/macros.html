@@ -18,6 +18,11 @@
  </div>
 {% endmacro %}
 
+{% macro hidden(name,value) %}
+  <input type="hidden" name="{{name}}" value="{{value}}">
+{% endmacro %}
+
+
 
 
 {% macro uploadList( fileTitle,fileName,fileNameVar,folder ) %}
@@ -115,7 +120,7 @@
   <dt class="cya-answer">
     {{ col1 }}
   </dt>
-  <dd class="cya-change">
+  <dd class="cya-answer">
     {{ col2 }}
   </dd>
 </div>
