@@ -17,6 +17,7 @@
     <div class="column-two-thirds">
       
             <h1 class="heading-large">{{title}}</h1>
+
             
             <form method="post" action="{{formAction}}">
             
@@ -37,7 +38,7 @@
             {% if aNumber==ref %}
             
             <!-- Output as a CYA styled row ============================== --> 
-                  {{ macros.assessmentlist(
+                  {{ macros.confirmlist(
                     aData.D_Activity_Title + " (" + ref + ")",
                     aData.SROC_Application_Charge | formatnumber 
                     ) }}
@@ -65,16 +66,16 @@
 
 
 {% if permit.firePreventionPlanIncluded=="yes" %}
-    {{ macros.assessmentlist( 
+    {{ macros.confirmlist( 
       "Fire prevention plan assessment - 
       added because an activity you selected includes this assessment", 
-      0 | formatnumber 
+      "Cost included in application" 
       ) }}
       {% set totalcost = totalcost + 0 %}
 {% endif %}
 
 {% if permit.firePreventionPlanIncluded=="no" and permit.combustible=="yes" %}
-    {{ macros.assessmentlist( 
+    {{ macros.confirmlist( 
       "Fire prevention plan assessment - 
       added because you deal with combustible waste", 
       1231 | formatnumber 
@@ -83,34 +84,34 @@
 {% endif %}
 
 {% if permit.firePreventionPlanIncluded=="no" and permit.wood=="yes" %}
-    {{ macros.assessmentlist( 
+    {{ macros.confirmlist( 
       "Fire prevention plan assessment - 
       added because you deal with wood waste", 
-      1231 | formatnumber 
+      1241 | formatnumber 
       ) }}
-      {% set totalcost = totalcost + 1231 %}
+      {% set totalcost = totalcost + 1241 %}
 {% endif %}
 
 {% if permit.odourManagementPlanIncluded=="yes" %}
-    {{ macros.assessmentlist( 
+    {{ macros.confirmlist( 
       "Odour management plan assessment - 
       added because the activity includes this assessment", 
-      0 | formatnumber 
+      "Cost included in application" 
       ) }}
       {% set totalcost = totalcost + 0 %}
 {% endif %}
 
 {% if permit.odourManagementPlanIncluded=="no" and permit.odourManagementPlan=="yes" %}
-    {{ macros.assessmentlist( 
+    {{ macros.confirmlist( 
       "Odour management plan assessment - 
       added by you", 
-      1231 | formatnumber 
+      1246 | formatnumber 
       ) }}
-      {% set totalcost = totalcost + 1231 %}
+      {% set totalcost = totalcost + 1246 %}
 {% endif %}
 
 {% if permit.wasteRecoveryPlan=="yes" %}
-    {{ macros.assessmentlist( 
+    {{ macros.confirmlist( 
       "Waste recovery plan - 
       added because your activity is 'Deposit of waste for recovery'", 
       1231 | formatnumber 
@@ -118,6 +119,53 @@
       {% set totalcost = totalcost + 1231 %}
 {% endif %}
 
+{% if permit.ammoniaModelling=="yes" %}
+    {{ macros.confirmlist( 
+      "Ammonia modelling assessment", 
+      620 | formatnumber 
+      ) }}
+      {% set totalcost = totalcost + 620 %}
+{% endif %}
+
+{% if permit.dustPlan=="yes" %}
+    {{ macros.confirmlist( 
+      "Dust and bio-aerosol management plan", 
+      620 | formatnumber 
+      ) }}
+      {% set totalcost = totalcost + 620 %}
+{% endif %}
+
+{% if permit.emissionsPlan=="yes" %}
+    {{ macros.confirmlist( 
+      "Emissions management plan", 
+      1241 | formatnumber 
+      ) }}
+      {% set totalcost = totalcost + 1241 %}
+{% endif %}
+
+{% if permit.habitatsAssessment=="yes" %}
+    {{ macros.confirmlist( 
+      "Habitats assessment", 
+      779 | formatnumber 
+      ) }}
+      {% set totalcost = totalcost + 779 %}
+{% endif %}
+
+{% if permit.noisePlan=="yes" %}
+    {{ macros.confirmlist( 
+      "Noise and vibration management plan", 
+      1246 | formatnumber 
+      ) }}
+      {% set totalcost = totalcost + 1246 %}
+{% endif %}
+
+{% if permit.pestsPlan=="yes" %}
+    {{ macros.confirmlist( 
+      "Pests management plan", 
+      1241 | formatnumber 
+      ) }}
+      {% set totalcost = totalcost + 1241 %}
+{% endif %}
 
 
 
@@ -128,15 +176,15 @@
     {% set totalcost = totalcost + discount %}
 
     <div>
-      <dt class="cya-answer">Second activity discount - {{ discountrate*100 }}% of lowest fee for associated activity</dd>
+      <dt class="cya-answer"><span class="total">Discount</span> {{ discountrate*100 }}% of lowest cost activity</dd>
       <dd class="cya-change">{{ discount | formatnumber }}</dd>
     </div>
 
 {% endif %}
 
 <div>
-  <dt class="cya-answer">Total cost</dt>
-  <dd class="cya-change">{{ totalcost | formatnumber }}</dd>
+  <dt class="cya-answer total">Total cost</dt>
+  <dd class="cya-change total">{{ totalcost | formatnumber }}</dd>
 </div>
 
 

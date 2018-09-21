@@ -45,18 +45,16 @@
             {% set label = [
             '<span class="permitName">',
             aData.D_Activity_Title,
-            '</span>',
-            '<span class="permitCode">',
+            ' (',
             aNumber,
-            '</span>'
+            ')</span>'
             ] %}
 
             {{ macros.checkbox(
             label | join | safe,
             "chosenPermitID",
             loop.index,
-            aNumber,
-            " permitItem"
+            aNumber
             ) }}
 
             {% endif %}

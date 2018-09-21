@@ -1,9 +1,7 @@
 {% extends "layout.html" %}
 
-{% set title = "These are the plans we need you to produce" %}
-
 {% block page_title %}
-{{title}} - GOV.UK
+Assessments - GOV.UK
 {% endblock %}
 
 {% block content %}
@@ -17,19 +15,13 @@
     <div class="column-two-thirds">
 
 
-      <h1 class="heading-large" id="radio_label">{{title}}</h1>
-      
-      
-      <p>
-        Based on your answers so far, you need to send us these plans as part of your application.
-      </p>
-
 {% import folder+"/custom_inc/macros.html" as macros %}
-{% from folder+"/bespoke/activities-assessments/json/bespoke-assessment-list.html" import assessments %}
 {% from folder+"/bespoke/activities-assessments/json/bespoke_activities.html" import activities %}
       
 
 <!-- Initialise ############################################ -->
+{% set assessments="no" %}
+
 {% set firePreventionPlan = "no" %}
 {% set firePreventionPlanIncluded = "no" %}
 {% set odourManagementPlan = "no" %}
@@ -76,11 +68,42 @@
 {% endfor %}
 
 
-<!-- NOW WRITE THE ASSESSMENT LIST ========================================= -->
+<!-- CHECK IF THERE ARE ASSESSMENTS ======================================== -->
+{% 
+  if firePreventionPlan == "yes" or
+     odourManagementPlan == "yes" or
+     wasteRecoveryPlan == "yes" or
+     ammoniaModelling == "yes" or
+     dustPlan == "yes" or
+     emissionsPlan == "yes" or
+     habitatsAssessment == "yes" or
+     noisePlan == "yes" or
+     pestsPlan == "yes"
+%}
+    {% set assessments="yes" %}
+{% endif %}
+
 
 <form method="post" action="{{formAction}}">
+  
+  
+<!-- NOW WRITE THE ASSESSMENT LIST IF THERE ARE SOME ======================= -->
 
-<dl class="govuk-check-your-answers cya-questions-short">
+{% if assessments=="yes" %}
+    <h1 class="heading-large" id="radio_label">These are the plans we need you to produce</h1>
+    <p>
+      Based on your answers so far, you need to send us these plans as part of your application.
+    </p>
+
+    <dl class="govuk-check-your-answers cya-questions-short">
+{% endif %}
+  
+{% if wasteRecoveryPlan=="yes" %}
+    {{ macros.assessmentlist( 
+      "Waste recovery plan",
+      "Added because your activity is 'Deposit of waste for recovery'"
+      ) }}
+{% endif %}
 
 {% if firePreventionPlan=="yes" %}
     {{ macros.assessmentlist( 
@@ -110,12 +133,7 @@
       ) }}
 {% endif %}
 
-{% if wasteRecoveryPlan=="yes" %}
-    {{ macros.assessmentlist( 
-      "Waste recovery plan",
-      "Added because your activity is 'Deposit of waste for recovery'"
-      ) }}
-{% endif %}
+
 
 <!-- OTHER VARIABLES
 sensitive-receptor
@@ -129,7 +147,10 @@ wood
 -->
 
 
-</dl>
+{% if assessments=="yes" %}
+    </dl>
+{% endif %}
+
 
 <input type="hidden" name="firePreventionPlan" value="{{firePreventionPlan}}">
 <input type="hidden" name="odourManagementPlan" value="{{odourManagementPlan}}">
@@ -137,11 +158,21 @@ wood
 <input type="hidden" name="odourManagementPlanIncluded" value="{{odourManagementPlanIncluded}}">
 <input type="hidden" name="wasteRecoveryPlan" value="{{wasteRecoveryPlan}}">
 
+
+{% if assessments=="yes" %}
+    <h2 class="heading-medium">Other assessments</h2>
+    <p>
+      If we told you during pre-application discussions that we need to assess other plans please add them.
+    </p>
+{% else %}  
+    <h1 class="heading-large">Tell us if we need to assess any plans</h1>
+    <p>
+      If we told you during pre-application discussions that we need to assess other plans please select them.
+    </p>
+{% endif %}
+
         
-        <h2 class="heading-medium">Other assessments</h2>
-        <p>
-          If we told you during pre-application discussions that we need to assess other plans please add them.
-        </p>
+
         
         
 <div class="form-group">
