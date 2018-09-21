@@ -182,11 +182,30 @@ router.post('/facility-check', function (req, res) {
 // Site or mobile =============================================
 router.get('/bespoke/mobile-plant', function (req, res) {
   res.render(folder + '/bespoke/mobile-plant',{
-    "formAction":"/"+ folder + "/bespoke/activities-assessments/bespoke-category"
+    "formAction":"/"+ folder + "/bespoke/mobile-plant-check"
   })
 })
 
-// Site or mobile =============================================
+// Site or mobile CHECK =============================================
+// not a real page
+router.post('/bespoke/mobile-plant-check', function (req, res) {
+  var siteOrMobile = req.body.siteOrMobile
+
+  if (siteOrMobile === "mobile") {
+    res.redirect("/"+ folder + "/bespoke/activities-assessments/select-mobile-activity")
+  } else {
+    res.redirect("/"+ folder + "/bespoke/activities-assessments/bespoke-category")
+  }
+})
+
+// Mobile activities =============================================
+router.get('/bespoke/activities-assessments/select-mobile-activity', function (req, res) {
+  res.render(folder + '/bespoke/activities-assessments/select-mobile-activity',{
+    // for mobile - jump to materials
+    "formAction":"/"+ folder + "/bespoke/check-assessments/materials-you-produce"
+  })
+})
+
 
 // Select type - GET
 router.get('/bespoke/activities-assessments/bespoke-category', function (req, res) {

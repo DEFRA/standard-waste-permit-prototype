@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% set title = "Select all the mobile activities you want the permit to cover" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+      
+      <p>
+        You can find a list of activities in the <a href="https://www.gov.uk/government/publications/environmental-permitting-charging-scheme" target="_blank">charging scheme guidance (opens new tab)</a>.
+      </p>
+
+
+      <form method="post" action="{{formAction}}">
+  
+        <div class="form-group">
+            
+            <div class="multiple-choice">
+                <input id="chosenPermitID_2" type="checkbox" name="chosenPermitID" value="2.16.23">
+                <label class="selection-button-radio" for="chosenPermitID_2">
+                <span class="permitName">Mobile plant – treatment of waste - not land spreading (2.16.23)</span>
+                </label>
+            </div>
+
+            <div class="multiple-choice">
+                <input id="chosenPermitID_1" type="checkbox" name="chosenPermitID" value="1.15.1">
+                <label class="selection-button-radio" for="chosenPermitID_1">
+                <span class="permitName">Mobile plant for land-spreading (1.15.1)</span>
+                </label>
+            </div>
+
+
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+
+
+      </form>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
