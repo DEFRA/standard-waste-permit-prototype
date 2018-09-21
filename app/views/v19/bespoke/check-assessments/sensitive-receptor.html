@@ -23,49 +23,38 @@
 
 
         <div class="form-group">
+          
           <div class="multiple-choice">
-            <input id="start-application" type="radio" name="started-application" value="no">
-            <label for="start-application">
+            <input id="sr100" type="radio" name="sensitive-receptor" value="100">
+            <label for="sr100">
               Within 100 metres
             </label>
           </div>
+          
           <div class="multiple-choice">
-            <input id="open-application" type="radio" name="started-application" value="yes">
-            <label for="open-application">
+            <input id="sr100250" type="radio" name="sensitive-receptor" value="100250">
+            <label for="sr100250">
               Between 100 metres and 250 metres
             </label>
           </div>
+          
           <div class="multiple-choice">
-            <input id="open-application" type="radio" name="started-application" value="yes">
-            <label for="open-application">
+            <input id="sr250" type="radio" name="sensitive-receptor" value="250">
+            <label for="sr250">
               Further than 250 metres
             </label>
           </div>
+          
           <div class="multiple-choice">
-            <input id="open-application" type="radio" name="started-application" value="yes">
-            <label for="open-application">
+            <input id="notsure" type="radio" name="sensitive-receptor" value="notsure">
+            <label for="notsure">
               I’m not sure
             </label>
           </div>
+          
         </div>
 
       </fieldset>
-
-      <input type="hidden" name="seenSaveReturn" value="yes">
-
-      {% set letters = ["B","C","D","F","G","H","J","K","M","P","Q","R","T","V","W","X","Y"] %}
-
-      {% set let1 = letters | random %}
-      {% set let2 = letters | random %}
-      {% set let3 = letters | random %}
-      {% set let4 = letters | random %}
-      {% set num1 = [1,2,3,4,5,6,7,8,9] | random %}
-      {% set num2 = [1,2,3,4,5,6,7,8,9,0] | random %}
-      {% set num3 = [1,2,3,4,5,6,7,8,9,0] | random %}
-      {% set num4 = [1,2,3,4,5,6,7,8,9,0] | random %}
-      {% set refnum = "EPR/"+let1+let2+num1+num2+num3+num4+let3+let4 %}
-
-      <input type="hidden" name="permitRefNumber" value="{{ refnum }}">
 
       <div class="form-group">
         <button type="submit" class="button" name="Continue">Continue</button>

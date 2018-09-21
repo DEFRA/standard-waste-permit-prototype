@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% set title = "These are the plans we need you to produce" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+      
+      <p>
+        Based on your answers so far, you need to send us these plans as part of your application. The costs are to cover our time to assess the plans.
+      </p>
+      <p>
+        We will add these to your application checklist.
+      </p>
+      
+      
+      <dl class="govuk-check-your-answers cya-questions-short">
+        <div>
+          <dt class="cya-answer">Odour management plan assessment (1.16.1)</dt>
+          <dd class="cya-answer">Cost included in application</dd>
+        </div>
+        
+        <div>
+          <dt class="cya-answer">Fire prevention plan assessment (1.19.3)</dt>
+          <dd class="cya-answer">Cost included in application</dd>
+        </div>
+        
+        <div>
+          <dt class="cya-answer">Noise and vibration management plan assessment (1.19.7)</dt>
+          <dd class="cya-answer">£1,246</dd>
+        </div>
+      </dl>
+
+
+      <form method="post" action="{{formAction}}">
+      
+
+        
+        <h2 class="heading-medium">Other assessments</h2>
+        <p>
+          If we told you during pre-application discussions that we need to assess other plans please add them.
+        </p>
+
+        
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

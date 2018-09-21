@@ -24,27 +24,20 @@
       </p>
 
       {% import folder+"/custom_inc/macros.html" as macros %}
-      {% from folder+"/bespoke/v2-activities/json/bespoke_activity_types.html" import types %}
-
-      {# bespoke_activity_types_dsub.html has the more granular categories #}
-      {# bespoke_activity_types.html has the SRoC+D broader options categories #}
+      {% from folder+"/bespoke/check-assessments/json/waste-type-assessment-list.html" import materials %}
 
       <form method="post" action="{{formAction}}">
-        
-      <!-- STORE operatorType to pass on -->
-      <input type="hidden" name="operatorType" value="{{permit.operatorType}}">
       
         <div class="form-group">
           <fieldset aria-labelledby="radio_label">
-            <legend class="Permit type visuallyhidden">{{title}}</legend>
+            <legend class="visuallyhidden">{{title}}</legend>
 
-            {% for t in types %}
+            {% for m in materials %}
 
             <div class="multiple-choice">
-              <input id="{{t.category}}" type="checkbox" name="chosenCategory" value="{{t.category}}">
-              <label for="{{t.category}}">
-                {{t.category}} {{t.hint}}
-
+              <input id="{{m.value}}" type="checkbox" name="material" value="{{m.value}}">
+              <label for="{{m.value}}">
+                {{m.text}}
               </label>
             </div>
 

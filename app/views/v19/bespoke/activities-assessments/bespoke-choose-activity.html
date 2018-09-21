@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Select the activities you want the permit to cover" %}
+{% set title = "Select all the activities you want the permit to cover" %}
 
 {% block page_title %}
 {{title}} - GOV.UK
@@ -18,18 +18,10 @@
 
       <h1 class="heading-large" id="radio_label">{{title}}</h1>
 
-        <p>Showing activities for:</p>
-        <ul class="list list-bullet">
-              {% for cat in permit.chosenCategory %}
-                  <li>{{ cat }}</li>
-              {% else %}
-                  <p>You must select at least one category</p>
-              {% endfor %}
-        </ul>
-        
-        
-        <p>Select all activities that apply</p>
-
+        <p>
+          Showing activities for: {{ permit.chosenCategory | join(", ") | lower }}.
+          <a href="/{{folder}}/bespoke/activities-assessments/bespoke-category">Change activity type</a>.
+        </p>
 
 
       {% import folder+"/custom_inc/macros.html" as macros %}
