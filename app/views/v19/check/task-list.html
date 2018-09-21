@@ -156,7 +156,7 @@
   {{ macros.task( "Give invoicing details", permit.invoiceAddress, "/"+folder+"/billing/invoice-postcode", taskListError ) }}
 
   <!-- Confirm if you release to sewer, harbour or coastal waters ---------------->
-  {{ macros.task( "* Confirm if you release to sewer, harbour or coastal waters *", permit.invoiceAddress, "/"+folder+"/billing/invoice-postcode", taskListError ) }}
+  {{ macros.task( "Confirm if you release to sewer, harbour or coastal waters", permit.substanceRelease, "/"+folder+"/bespoke/substance-release", taskListError ) }}
 
 
 </ul>
@@ -166,10 +166,10 @@
     <ul class="task-list-items">
 
       <!-- Give basic details about the operation ---------------->
-      {{ macros.task( "* Give basic details about the operation *", permit.siteName, "/"+folder+"/site/site-name", taskListError ) }}
+      {{ macros.task( "Give basic details about the operation", permit.wasteOperation, "/"+folder+"/bespoke/waste-operation", taskListError ) }}
 
       <!-- Provide a non-technical summary ---------------->
-      {{ macros.task( "* Provide a non-technical summary *", permit.siteName, "/"+folder+"/site/site-name", taskListError ) }}
+      {{ macros.task( "Provide a non-technical summary", permit.nonTechSummaryName, "/"+folder+"/bespoke/upload-non-technical-summary", taskListError ) }}
 
 
       <!-- Site name and location ---------------->
@@ -270,10 +270,10 @@
           {{ macros.task( "Upload fire prevention plan", permit.firePlanFilename, "/"+folder+"/evidence/upload-fire-plan", taskListError ) }}
 
   <!-- Upload environmental risk assessment ----------->
-  {{ macros.task( "* Upload environmental risk assessment *", permit.firePlanFilename, "/"+folder+"/evidence/upload-fire-plan", taskListError ) }}
+  {{ macros.task( "Upload environmental risk assessment", permit.enviroRiskAssessment, "/"+folder+"/bespoke/upload-environmental-risk-assessment", taskListError ) }}
 
   <!-- Provide a management system summary ----------->
-  {{ macros.task( "* Provide a management system summary *", permit.firePlanFilename, "/"+folder+"/evidence/upload-fire-plan", taskListError ) }}
+  {{ macros.task( "Provide a management system summary", permit.managementSystemSummary, "/"+folder+"/bespoke/management-system", taskListError ) }}
 
 
 
@@ -282,7 +282,7 @@
 
 
 <li><!-- START TASK SECTION ##################################### -->
-  {{ macros.taskHead("3", "Apply" )}}
+  {{ macros.taskHead("6", "Apply" )}}
   <ul class="task-list-items">
     
     <li class="task-list-item" id="submit-pay">

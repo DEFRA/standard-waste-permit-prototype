@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% set title = "Will the operation release any substance into a sewer, harbour or coastal or territorial waters?" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+
+
+      <form method="post" action="{{formAction}}">
+        
+             <!-- substanceRelease entered -->
+      <input type="hidden" name="substanceRelease" value="Yes">
+      
+        <div class="form-group">
+          <fieldset aria-labelledby="radio_label">
+            <legend class="Permit type visuallyhidden">{{title}}</legend>
+
+<p>If it does, we will ask the relevant organisation for their views on your permit application.</p>
+
+<h2 class="heading-small">Select all that you will release into</h2>
+</br>
+
+
+<div class="form-group">
+  <div class="multiple-choice" data-target="sewerageUndertakerName">
+    <input id="uploadOtherFile" name="uploadOtherFile" type="checkbox" value="yes">
+    <label for="uploadOtherFile">
+      A sewer managed by a sewerage undertaker
+    </label>
+  </div>
+</div>
+<div class="panel panel-border-narrow js-hidden" id="sewerageUndertakerName">
+  
+  <div class="form-group">
+    <label class="form-label" for="sewerageUndertakerName">
+      <p>Sewerage undertaker name</p>
+    </label>
+    <input class="form-control form-control-2-4" id="sewerageUndertakerName" name="{{sewerageUndertakerName}}" type="text">
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="multiple-choice" data-target="harbourAuthorityName">
+    <input id="uploadOtherFile" name="uploadOtherFile" type="checkbox" value="yes">
+    <label for="uploadOtherFile">
+      A harbour managed by a harbour authority
+    </label>
+  </div>
+</div>
+<div class="panel panel-border-narrow js-hidden" id="harbourAuthorityName">
+  
+  <div class="form-group">
+    <label class="form-label" for="harbourAuthorityName">
+      <p>Harbour authority name</p>
+    </label>
+    <input class="form-control form-control-2-4" id="harbourAuthorityName" name="{{harbourAuthorityName}}" type="text">
+  
+  </div>
+  
+
+</div>
+
+
+<div class="form-group">
+  <div class="multiple-choice" data-target="fisheriesComitteeName">
+    <input id="uploadOtherFile" name="uploadOtherFile" type="checkbox" value="yes">
+    <label for="uploadOtherFile">
+      Direct into relevant territorial waters or coastal waters within the sea fisheries district of a local fisheries committee
+    </label>
+  </div>
+</div>
+<div class="panel panel-border-narrow js-hidden" id="fisheriesComitteeName">
+  
+  <div class="form-group">
+    <label class="form-label" for="fisheriesComitteeName">
+      <p>Fisheries committee name</p>
+    </label>
+    <input class="form-control form-control-2-4" id="fisheriesComitteeName" name="{{fisheriesComitteeName}}" type="text">
+  
+  </div>
+  </div>
+
+          
+      
+
+
+          
+
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+
+
+      </form>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
