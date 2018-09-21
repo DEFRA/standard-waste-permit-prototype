@@ -179,6 +179,14 @@ router.post('/facility-check', function (req, res) {
   }
 })
 
+// Site or mobile =============================================
+router.get('/bespoke/mobile-plant', function (req, res) {
+  res.render(folder + '/bespoke/mobile-plant',{
+    "formAction":"/"+ folder + "/bespoke/activities-assessments/bespoke-category"
+  })
+})
+
+
 // Confirm operator type=======================================================
 
 router.get('/operator/company/company-decision', function (req, res) {
