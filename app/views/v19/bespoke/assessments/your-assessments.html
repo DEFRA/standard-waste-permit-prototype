@@ -48,14 +48,10 @@ Assessments - GOV.UK
                   {% if aData.SROC_Assessment_Fireplan == "Yes" and aData.SROC_Assessment_Odour == "Yes"  %}
                       {% set firePreventionPlanIncluded = "yes" %}
                       {% set odourManagementPlanIncluded = "yes" %}
-                          {% set firePreventionPlan = "yes" %}
-                          {% set odourManagementPlan = "yes" %}
                   {% elif aData.SROC_Assessment_Fireplan == "Yes" %}
                       {% set firePreventionPlanIncluded = "yes" %}
-                          {% set firePreventionPlan = "yes" %}
                   {% elif aData.SROC_Assessment_Odour == "Yes" %}
                       {% set odourManagementPlanIncluded = "yes" %}
-                          {% set odourManagementPlan = "yes" %}
                   {% endif %}
                 
             {% endif %}
@@ -73,7 +69,9 @@ Assessments - GOV.UK
 <!-- CHECK IF THERE ARE ASSESSMENTS CHOSEN ======================================== -->
 {% 
   if firePreventionPlan == "yes" or
+    firePreventionPlanIncluded == "yes" or
      odourManagementPlan == "yes" or
+     odourManagementPlanIncluded == "yes" or
      wasteRecoveryPlan == "yes" or
      ammoniaModelling == "yes" or
      dustPlan == "yes" or
@@ -132,28 +130,28 @@ Assessments - GOV.UK
       ) }}
 {% endif %}
 
-{% if firePreventionPlan=="yes" %}
+{% if firePreventionPlanIncluded=="yes" %}
     {{ macros.assessmentlist( 
       "Fire prevention plan assessment",
       "Added because an activity you selected includes this assessment"
       ) }}
 {% endif %}
 
-{% if firePreventionPlan=="no" and combustible=="yes" %}
+{% if firePreventionPlanIncluded=="no" and combustible=="yes" %}
     {{ macros.assessmentlist( 
       "Fire prevention plan assessment",
       "Added because you deal with combustible waste"
       ) }}
 {% endif %}
 
-{% if firePreventionPlan=="no" and wood=="yes" %}
+{% if firePreventionPlanIncluded=="no" and wood=="yes" %}
     {{ macros.assessmentlist( 
       "Fire prevention plan assessment",
       "Added because you deal with wood waste"
       ) }}
 {% endif %}
 
-{% if odourManagementPlan=="yes" %}
+{% if odourManagementPlanIncluded=="yes" %}
     {{ macros.assessmentlist( 
       "Odour management plan assessment",
       "Added because the activity includes this assessment"
@@ -201,6 +199,11 @@ wood
         
         
 <div class="form-group">
+
+  
+<!-- Output hidden field to pass on the data for included plans -->
+{{ macros.hidden("firePreventionPlanIncluded",firePreventionPlanIncluded) if firePreventionPlanIncluded=="yes" }}
+{{ macros.hidden("odourManagementPlanIncluded",odourManagementPlanIncluded) if odourManagementPlanIncluded=="yes" }}
 
 <!-- Either output the checkbox OR a hidden field to pass on the data -->
 {{ macros.checkbox("Ammonia modelling assessment","ammoniaModelling","a1","yes") 
