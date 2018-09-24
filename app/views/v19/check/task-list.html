@@ -47,6 +47,8 @@
     <div class="column-two-thirds column-minimum">
 
       <form method="post" action="/{{folder}}/check/check-answers" name="tasklist">
+        
+        {{permit|dump}}
 
         {% if taskListError %}
         <div class="error-summary" role="alert" aria-labelledby="error-summary-heading" tabindex="-1">
@@ -108,7 +110,7 @@
 {% endfor %}
 
 <!-- Output chosen activities ############################################ -->
-<span class="totalCost">Total cost {{ permit.totalcost }}</span>
+<span class="totalCost">Total cost {{ permit.totalcost | int | formatnumber }}</span>
 
 
 <!-- Link to change permit activities ##################################### -->
