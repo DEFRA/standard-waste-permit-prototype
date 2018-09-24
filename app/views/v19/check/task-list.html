@@ -47,8 +47,6 @@
     <div class="column-two-thirds column-minimum">
 
       <form method="post" action="/{{folder}}/check/check-answers" name="tasklist">
-        
-        {{permit|dump}}
 
         {% if taskListError %}
         <div class="error-summary" role="alert" aria-labelledby="error-summary-heading" tabindex="-1">
@@ -85,7 +83,7 @@
             {% if aNumber==ref %}
 
             <!-- Output as a paragraph ============================== -->
-                  {{ ref }} {{ aData.D_Activity_Title }}<br>
+                  {{ aData.D_Activity_Title }} ({{ ref }})<br>
 
             {% endif %}
       {% else %}
@@ -97,19 +95,38 @@
 
 
 <!-- Output chosen assessments ############################################ -->
-{% for assess in permit.assessment %}
-    {% for a in assessments %}
-        {% if assess==a.D_Assessment_Title %}
-            <span class="assessments">Assessment:</span> {{ a.SRoC_Ref }} {{ a.D_Assessment_Title }}<br>
-        {% endif %}
-    {% else %}
-        <!-- NO ASSESSMENTS PICKED -->
-    {% endfor %}
-{% else %}
-    <!-- NO ASSESSMENTS PICKED -->
-{% endfor %}
 
-<!-- Output chosen activities ############################################ -->
+{{ "Ammonia modelling assessment<br>" | safe
+  if permit.ammoniaModelling=="yes" }}
+
+{{ "Dust and bio-aerosol management plan<br>" | safe 
+  if permit.dustPlan=="yes" }}
+
+{{ "Emissions management plan assessment<br>" | safe
+  if permit.emissionsPlan=="yes" }}
+
+{{ "Fire prevention plan assessment<br>" | safe 
+  if firePreventionPlan=="yes" 
+  or permit.firePreventionPlanIncluded=="yes" }}
+
+{{ "Habitats assessment assessment<br>" | safe 
+  if permit.habitatsAssessment=="yes" }}
+
+{{ "Noise and vibration management plan assessment<br>" 
+  if permit.noisePlan=="yes" }}
+
+{{ "Odour management plan assessment<br>" | safe 
+  if permit.odourManagementPlan=="yes" 
+  or permit.odourManagementPlanIncluded=="yes" }}
+
+{{ "Pests management plan assessment<br>" | safe
+  if permit.pestsPlan=="yes" }}
+
+{{ "Waste recovery plan assessment<br>" | safe
+  if permit.wasteRecoveryPlan=="yes" }}
+  
+  
+<!-- Output cost ############################################ -->
 <span class="totalCost">Total cost {{ permit.totalcost | int | formatnumber }}</span>
 
 
