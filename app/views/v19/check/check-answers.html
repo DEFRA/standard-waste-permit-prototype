@@ -82,17 +82,36 @@
     <dd class="cya-answer">
     
       <!-- Output chosen assessments ############################################ -->
-      {% for assess in permit.assessment %}
-          {% for a in assessments %}
-              {% if assess==a.D_Assessment_Title %}
-                  {{ a.SRoC_Ref }} {{ a.D_Assessment_Title }}</br>
-              {% endif %}
-          {% else %}
-              No assessments
-          {% endfor %}
-      {% else %}
-          <!-- NO ASSESSMENTS PICKED -->
-      {% endfor %}  
+      <!-- Output chosen assessments ############################################ -->
+
+      {{ "Ammonia modelling assessment<br>" | safe
+        if permit.ammoniaModelling=="yes" }}
+
+      {{ "Dust and bio-aerosol management plan<br>" | safe 
+        if permit.dustPlan=="yes" }}
+
+      {{ "Emissions management plan assessment<br>" | safe
+        if permit.emissionsPlan=="yes" }}
+
+      {{ "Fire prevention plan assessment<br>" | safe 
+        if firePreventionPlan=="yes" 
+        or permit.firePreventionPlanIncluded=="yes" }}
+
+      {{ "Habitats assessment assessment<br>" | safe 
+        if permit.habitatsAssessment=="yes" }}
+
+      {{ "Noise and vibration management plan assessment<br>" 
+        if permit.noisePlan=="yes" }}
+
+      {{ "Odour management plan assessment<br>" | safe 
+        if permit.odourManagementPlan=="yes" 
+        or permit.odourManagementPlanIncluded=="yes" }}
+
+      {{ "Pests management plan assessment<br>" | safe
+        if permit.pestsPlan=="yes" }}
+
+      {{ "Waste recovery plan assessment<br>" | safe
+        if permit.wasteRecoveryPlan=="yes" }}
 
     </dd>
     <dd class="cya-change"><a href="/{{folder}}/bespoke/v3-activities/bespoke-category">Change</a></dd>
