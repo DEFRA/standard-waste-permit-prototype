@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Upload environmental risk assessment" %}
+{% set title = "Upload a non-technical summary" %}
 
 {% block page_title %}
     {{title}} - GOV.UK
@@ -18,7 +18,7 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
-{% if permit.enviroRiskAssessment|typeof != "undefined" %}
+{% if permit.nonTechSummaryName|typeof != "undefined" %}
   <dl class="govuk-check-your-answers cya-questions-short">
     <div>
       <dt class="cya-question">Uploaded files</dt>
@@ -29,50 +29,53 @@
   
   {% import folder+"/custom_inc/macros.html" as macros %}
   
-  {{ macros.uploadList( "Environmental risk assessment",permit.enviroRiskAssessment ) if permit.enviroRiskAssessment|typeof != "undefined" }}
-  {{ macros.uploadList( "Environmental risk assessment",permit.enviroRiskAssessment2 ) if permit.enviroRiskAssessment2|typeof != "undefined" }}
-  {{ macros.uploadList( "Environmental risk assessment",permit.enviroRiskAssessment3 ) if permit.enviroRiskAssessment3|typeof != "undefined" }}
-  {{ macros.uploadList( "Environmental risk assessment",permit.enviroRiskAssessment4 ) if permit.enviroRiskAssessment4|typeof != "undefined" }}
+  {{ macros.uploadList( "Non-technical summary",permit.nonTechSummaryName ) if permit.nonTechSummaryName|typeof != "undefined" }}
+  {{ macros.uploadList( "Non-technical summary",permit.nonTechSummaryName2 ) if permit.nonTechSummaryName2|typeof != "undefined" }}
+  {{ macros.uploadList( "Non-technical summary",permit.nonTechSummaryName3 ) if permit.nonTechSummaryName3|typeof != "undefined" }}
+  {{ macros.uploadList( "Non-technical summary",permit.nonTechSummaryName4 ) if permit.nonTechSummaryName4|typeof != "undefined" }}
 
 
-{% if permit.enviroRiskAssessment|typeof == "undefined" %}
-    {% set filename = "enviroRiskAssessment" %}
+{% if permit.nonTechSummaryName|typeof == "undefined" %}
+    {% set filename = "nonTechSummaryName" %}
     
-{% elif permit.enviroRiskAssessment2|typeof == "undefined" %}
-    {% set filename = "enviroRiskAssessment2" %}
+{% elif permit.nonTechSummaryName2|typeof == "undefined" %}
+    {% set filename = "nonTechSummaryName2" %}
     
-{% elif permit.enviroRiskAssessment3|typeof == "undefined" %}
-    {% set filename = "enviroRiskAssessment3" %}
+{% elif permit.nonTechSummaryName3|typeof == "undefined" %}
+    {% set filename = "nonTechSummaryName3" %}
     
-{% elif permit.enviroRiskAssessment4|typeof == "undefined" %}
-    {% set filename = "enviroRiskAssessment4" %}
+{% elif permit.nonTechSummaryName4|typeof == "undefined" %}
+    {% set filename = "nonTechSummaryName4" %}
     
-{% elif permit.enviroRiskAssessment5|typeof == "undefined" %}
-    {% set filename = "enviroRiskAssessment5" %}
+{% elif permit.nonTechSummaryName5|typeof == "undefined" %}
+    {% set filename = "nonTechSummaryName5" %}
     
-{% elif permit.enviroRiskAssessment6|typeof == "undefined" %}
-    {% set filename = "enviroRiskAssessment6" %}
+{% elif permit.nonTechSummaryName6|typeof == "undefined" %}
+    {% set filename = "nonTechSummaryName6" %}
     
-{% elif permit.enviroRiskAssessment7|typeof == "undefined" %}
-    {% set filename = "enviroRiskAssessment7" %}
+{% elif permit.nonTechSummaryName7|typeof == "undefined" %}
+    {% set filename = "nonTechSummaryName7" %}
     
-{% elif permit.enviroRiskAssessment8|typeof == "undefined" %}
-    {% set filename = "enviroRiskAssessment8" %}
+{% elif permit.nonTechSummaryName8|typeof == "undefined" %}
+    {% set filename = "nonTechSummaryName8" %}
     
 {% else %}
-    {% set filename = "enviroRiskAssessment9" %}
+    {% set filename = "nonTechSummaryName9" %}
 {% endif %}
 
 
-{% if permit.enviroRiskAssessment|typeof != "undefined" %}
+{% if permit.nonTechSummaryName|typeof != "undefined" %}
     </dl>
 {% endif %}
 
 
 <form method="post" action="{{formAction}}">
 
+        
 
-{% if permit.enviroRiskAssessment|typeof == "undefined" %}
+
+
+{% if permit.nonTechSummaryName|typeof == "undefined" %}
     <p class="upload_head">Upload files one at a time</p>
     <p class="text form-hint">
       PDF, JPG, DOC or DOCX files, 30MB maximum file size.<br>
@@ -124,12 +127,13 @@
     
 
   
-  <p><a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/government/publications/fire-prevention-plans-environmental-permits/fire-prevention-plans-environmental-permits">Fire prevention plan guidance on GOV.UK (opens new tab)</a></p>
 
   </br>
 
     <div class="form-group">
       {{submitButton|safe}}{{completeLink|safe}}
+                   <!-- substanceRelease entered -->
+                   <input type="hidden" name="nonTechSummary" value="Yes">
     </div>
 
   </form>

@@ -18,7 +18,7 @@
 
 <h1 class="heading-large">{{title}}</h1>
 
-{% if permit.firePlanFilename|typeof != "undefined" %}
+{% if permit.managementSystemSummary|typeof != "undefined" %}
   <dl class="govuk-check-your-answers cya-questions-short">
     <div>
       <dt class="cya-question">Uploaded files</dt>
@@ -29,42 +29,42 @@
   
   {% import folder+"/custom_inc/macros.html" as macros %}
   
-  {{ macros.uploadList( "Fire plan",permit.firePlanFilename ) if permit.firePlanFilename|typeof != "undefined" }}
-  {{ macros.uploadList( "Fire plan",permit.firePlanFilename2 ) if permit.firePlanFilename2|typeof != "undefined" }}
-  {{ macros.uploadList( "Fire plan",permit.firePlanFilename3 ) if permit.firePlanFilename3|typeof != "undefined" }}
-  {{ macros.uploadList( "Fire plan",permit.firePlanFilename4 ) if permit.firePlanFilename4|typeof != "undefined" }}
+  {{ macros.uploadList( "Management System",permit.managementSystemSummary ) if permit.managementSystemSummary|typeof != "undefined" }}
+  {{ macros.uploadList( "Management System",permit.managementSystemSummary2 ) if permit.managementSystemSummary2|typeof != "undefined" }}
+  {{ macros.uploadList( "Management System",permit.managementSystemSummary3 ) if permit.managementSystemSummary3|typeof != "undefined" }}
+  {{ macros.uploadList( "Management System",permit.managementSystemSummary4 ) if permit.managementSystemSummary4|typeof != "undefined" }}
 
 
-{% if permit.firePlanFilename|typeof == "undefined" %}
-    {% set filename = "firePlanFilename" %}
+{% if permit.managementSystemSummary|typeof == "undefined" %}
+    {% set filename = "managementSystemSummary" %}
     
-{% elif permit.firePlanFilename2|typeof == "undefined" %}
-    {% set filename = "firePlanFilename2" %}
+{% elif permit.managementSystemSummary2|typeof == "undefined" %}
+    {% set filename = "managementSystemSummary2" %}
     
-{% elif permit.firePlanFilename3|typeof == "undefined" %}
-    {% set filename = "firePlanFilename3" %}
+{% elif permit.managementSystemSummary3|typeof == "undefined" %}
+    {% set filename = "managementSystemSummary3" %}
     
-{% elif permit.firePlanFilename4|typeof == "undefined" %}
-    {% set filename = "firePlanFilename4" %}
+{% elif permit.managementSystemSummary4|typeof == "undefined" %}
+    {% set filename = "managementSystemSummary4" %}
     
-{% elif permit.firePlanFilename5|typeof == "undefined" %}
-    {% set filename = "firePlanFilename5" %}
+{% elif permit.managementSystemSummary5|typeof == "undefined" %}
+    {% set filename = "managementSystemSummary5" %}
     
-{% elif permit.firePlanFilename6|typeof == "undefined" %}
-    {% set filename = "firePlanFilename6" %}
+{% elif permit.managementSystemSummary6|typeof == "undefined" %}
+    {% set filename = "managementSystemSummary6" %}
     
-{% elif permit.firePlanFilename7|typeof == "undefined" %}
-    {% set filename = "firePlanFilename7" %}
+{% elif permit.managementSystemSummary7|typeof == "undefined" %}
+    {% set filename = "managementSystemSummary7" %}
     
-{% elif permit.firePlanFilename8|typeof == "undefined" %}
-    {% set filename = "firePlanFilename8" %}
+{% elif permit.managementSystemSummary8|typeof == "undefined" %}
+    {% set filename = "managementSystemSummary8" %}
     
 {% else %}
-    {% set filename = "firePlanFilename9" %}
+    {% set filename = "managementSystemSummary9" %}
 {% endif %}
 
 
-{% if permit.firePlanFilename|typeof != "undefined" %}
+{% if permit.managementSystemSummary|typeof != "undefined" %}
     </dl>
 {% endif %}
 
@@ -72,7 +72,7 @@
 <form method="post" action="{{formAction}}">
 
 
-{% if permit.firePlanFilename|typeof == "undefined" %}
+{% if permit.managementSystemSummary|typeof == "undefined" %}
     <p class="upload_head">Upload files one at a time</p>
     <p class="text form-hint">
       PDF, JPG, DOC or DOCX files, 30MB maximum file size.<br>

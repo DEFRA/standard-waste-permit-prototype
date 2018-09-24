@@ -711,6 +711,35 @@ router.get('/evidence/site-plan-check', function (req, res) {
 })
 
 
+// Environmental risk assessment ==========================================================
+router.get('/bespoke/upload-environmental-risk-assessment', function (req, res) {
+  res.render(folder + '/bespoke/upload-environmental-risk-assessment',{
+        "formAction":"/"+ folder + "/check-environmental-risk-assessment"
+    })
+})
+
+// fake route for first check of file uploads
+router.post('/check-environmental-risk-assessment', function (req, res) {
+    res.render(folder + '/bespoke/upload-environmental-risk-assessment',{
+      "formAction":"/"+ folder + "/check-environmental-risk-assessment2"
+    })
+})
+
+// fake route for second check of file uploads
+router.post('/check-environmental-risk-assessment2', function (req, res) {
+  if(req.session.data['uploadOtherFile']=="yes"){
+    res.render(folder + '/bespoke/upload-environmental-risk-assessment',{
+      "formAction":"/"+ folder + "/check-environmental-risk-assessment2"
+    })
+  } else {
+    // Display task list
+    res.render(folder + '/check/task-list',{
+        "formAction":"/"+ folder + "/check/task-list"
+    })
+  }
+})
+
+
 
 
 // Technical ability ==========================================================
@@ -836,6 +865,32 @@ router.get('/evidence/management-system', function (req, res) {
 router.get('/operator/company/company-name', function (req, res) {
   res.render(folder + '/operator/company/company-name',{
       "formAction":"/"+ folder + "/operator/company/check-company-details"
+  })
+})
+
+router.get('/bespoke/substance-release', function (req, res) {
+  res.render(folder + '/bespoke/substance-release',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+router.get('/bespoke/waste-operation', function (req, res) {
+  res.render(folder + '/bespoke/waste-operation',{
+      "formAction":"/"+ folder + "/bespoke/treatment-capacity"
+  })
+})
+
+
+
+router.get('/bespoke/treatment-capacity', function (req, res) {
+  res.render(folder + '/bespoke/treatment-capacity',{
+      "formAction":"/"+ folder + "/bespoke/waste-stored"
+  })
+})
+
+router.get('/bespoke/waste-stored', function (req, res) {
+  res.render(folder + '/bespoke/waste-stored',{
+      "formAction":"/"+ folder + "/check/task-list"
   })
 })
 
@@ -1120,6 +1175,11 @@ router.get('/evidence/bankruptcy-insolvency', function (req, res) {
   })
 })
 
+router.get('/bespoke/management-system', function (req, res) {
+  res.render(folder + '/bespoke/management-system',{
+      "formAction":"/"+ folder + "/bespoke/upload-management-system-summary"
+  })
+})
 
 // Upload B2 and B4 forms ========================================================
 
@@ -1330,6 +1390,66 @@ router.post('/check-fire-plan2', function (req, res) {
     })
   }
 })
+
+// Non Technical summary ========================================================
+
+router.get('/bespoke/upload-non-technical-summary', function (req, res) {
+  res.render(folder + '/bespoke/upload-non-technical-summary',{
+        "formAction":"/"+ folder + "/check-non-tech-plan"
+    })
+})
+
+// fake route for first check of file uploads
+router.post('/check-non-tech-plan', function (req, res) {
+    res.render(folder + '/bespoke/upload-non-technical-summary',{
+      "formAction":"/"+ folder + "/check-non-tech-plan2"
+    })
+})
+
+// fake route for second check of file uploads
+router.post('/check-non-tech-plan2', function (req, res) {
+  if(req.session.data['uploadOtherFile']=="yes"){
+    res.render(folder + '/bespoke/upload-non-technical-summary',{
+      "formAction":"/"+ folder + "/check-non-tech-plan2"
+    })
+  } else {
+    // Display task list
+    res.render(folder + '/check/task-list',{
+        "formAction":"/"+ folder + "/check/task-list"
+    })
+  }
+})
+
+
+// Management system ========================================================
+
+router.get('/bespoke/upload-management-system-summary', function (req, res) {
+  res.render(folder + '/bespoke/upload-management-system-summary',{
+        "formAction":"/"+ folder + "/check-management-system-plan"
+    })
+})
+
+// fake route for first check of file uploads
+router.post('/check-management-system-plan', function (req, res) {
+    res.render(folder + '/bespoke/upload-management-system-summary',{
+      "formAction":"/"+ folder + "/check-management-system-plan2"
+    })
+})
+
+// fake route for second check of file uploads
+router.post('/check-management-system-plan2', function (req, res) {
+  if(req.session.data['uploadOtherFile']=="yes"){
+    res.render(folder + '/bespoke/upload-management-system-summary',{
+      "formAction":"/"+ folder + "/check-management-system-plan2"
+    })
+  } else {
+    // Display task list
+    res.render(folder + '/check/task-list',{
+        "formAction":"/"+ folder + "/check/task-list"
+    })
+  }
+})
+
 
 // Claim confidentiality ========================================================
 
