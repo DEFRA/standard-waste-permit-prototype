@@ -1,0 +1,146 @@
+<!-- TASK LIST ############################################################ -->
+<!-- STARTS HERE ########################################################## -->
+
+<ol class="task-list">
+  
+    <li><!-- START TASK SECTION ##################################### -->
+      {{ macros.taskHead("1", "Get a save link" )}}
+      <ul class="task-list-items">
+  
+        <!--Save and return--------------->
+        {{ macros.task( "Save your application", permit.saveReturnEmail, "/"+folder+"/save-and-return/email-or-phone", taskListError ) }}
+  
+            </ul>
+    </li><!-- END TASK SECTION -->
+  
+  
+    <li><!-- START TASK SECTION ##################################### -->
+    {{ macros.taskHead("2", "About the application" )}}
+    <ul class="task-list-items">
+  
+    <!--Contact details--------------->
+    {{ macros.task( "Give contact details", permit.contactFirstName, "/"+folder+"/contact/contact-details", taskListError ) }}
+  
+    <!--Permit holder--------------->
+    {{ macros.task( "Give permit holder details", permit.bankruptcyInsolvencyDetails, "/"+folder+HrefLink, taskListError ) }}
+  
+    <!-- Confidentiality  ----------->
+    {{ macros.task( "Confirm confidentiality needs", permit.confidential, "/"+folder+"/check/claim-confidentiality", taskListError ) }}
+  
+    <!-- Invoicing ---------------->
+    {{ macros.task( "Give invoicing details", permit.invoiceAddress, "/"+folder+"/billing/invoice-postcode", taskListError ) }}
+  
+    <!-- Confirm if you release to sewer, harbour or coastal waters ---------------->
+    {{ macros.task( "Confirm if you release to sewer, harbour or coastal waters", permit.substanceRelease, "/"+folder+"/bespoke/substance-release", taskListError ) }}
+  
+  
+  </ul>
+  </li><!-- END TASK SECTION -->
+  <li><!-- START TASK SECTION ##################################### -->
+      {{ macros.taskHead("3", "Operations" )}}
+      <ul class="task-list-items">
+  
+        <!-- Give basic details about the operation ---------------->
+        {{ macros.task( "Give basic details about the operation", permit.wasteOperation, "/"+folder+"/bespoke/waste-operation", taskListError ) }}
+  
+        <!-- Provide a non-technical summary ---------------->
+        {{ macros.task( "Provide a non-technical summary", permit.nonTechSummaryName, "/"+folder+"/bespoke/upload-non-technical-summary", taskListError ) }}
+  
+  
+        <!-- Site name and location ---------------->
+        {{ macros.task( "Give site name and location", permit.siteName, "/"+folder+"/site/site-name", taskListError ) }}
+  
+          <!-- Site plan ------------------------->
+        {{ macros.task( "Upload the site plan", permit.sitePlanFilename, "/"+folder+"/evidence/site-plan-check", taskListError ) }}
+  
+      </ul>
+      </li><!-- END TASK SECTION -->
+  
+  <li><!-- START TASK SECTION ##################################### -->
+    {{ macros.taskHead("4", "Activities" )}}
+    <ul class="task-list-items">
+  
+    <!--R and D codes--------------->
+    {{ macros.task( "List R and D codes for your activities", permit.RDCode_entered, "/"+folder+"/RDcodes/list_recovery_codes", taskListError ) }}
+  
+    <!--Waste codes--------------->
+    {{ macros.task( "List European waste codes", permit.wasteCodesFile, "/"+folder+"/bespoke/waste-codes", taskListError ) }}
+  
+  </ul>
+  </li><!-- END TASK SECTION -->
+  
+  <li><!-- START TASK SECTION ##################################### -->
+    {{ macros.taskHead("5", "Evidence" )}}
+  
+    <ul class="task-list-items">
+      
+    <!-- Special cases ------------------>
+    {% if permit.permitID=="SR-2009-4" %}
+        {% set linkText="Give the stack height" %}
+    {% endif %}
+  
+    {% if permit.permitID=="SR-2010-2" or permit.permitID=="SR-2010-3" %}
+        {% set linkText="Tell us the date when you want the permit to start" %}
+    {% endif %}
+  
+    {% if permit.permitID=="SR-2014-2" %}
+        {% set linkText="Specify the type of mining waste plan" %}
+    {% endif %}
+  
+    {% if permit.permitID=="SR-2015-17" or permit.permitID=="SR-2015-18"  or permit.permitID=="SR-2015-13" %}
+        {% set linkText="Confirm the drainage system for your site" %}
+    {% endif %}
+  
+    {% if permit.permitID=="SR-2015-39" %}
+        {% set linkText="Upload the waste recovery plan" %}
+    {% endif %}
+  
+    {% if
+    permit.permitID=="SR-2009-4" or
+    permit.permitID=="SR-2010-2" or
+    permit.permitID=="SR-2010-3" or
+    permit.permitID=="SR-2014-2" or
+    permit.permitID=="SR-2015-17" or
+    permit.permitID=="SR-2015-13" or
+    permit.permitID=="SR-2015-18" or
+    permit.permitID=="SR-2015-39"
+    %}
+        {{ macros.task( linkText, permit.specialCasePageVisited, "/"+folder+"/check-special-cases", taskListError ) }}
+    {% endif %}
+  
+    <!-- Tech competence ----------------------->
+  
+        {{ macros.task( "Prove technical competence", permit.industryScheme, "/"+folder+"/evidence/techcomp/industry-scheme", taskListError ) }}
+  
+  
+    <!-- Fire prevention plan ----------->
+            {{ macros.task( "Upload fire prevention plan", permit.firePlanFilename, "/"+folder+"/evidence/upload-fire-plan", taskListError ) }}
+  
+    <!-- Upload environmental risk assessment ----------->
+    {{ macros.task( "Upload environmental risk assessment", permit.enviroRiskAssessment, "/"+folder+"/bespoke/upload-environmental-risk-assessment", taskListError ) }}
+  
+    <!-- Provide a management system summary ----------->
+    {{ macros.task( "Provide a management system summary", permit.managementSystemSummary, "/"+folder+"/bespoke/management-system", taskListError ) }}
+  
+  
+    </ul>
+  </li>
+  
+  
+  <li><!-- START TASK SECTION ##################################### -->
+    {{ macros.taskHead("6", "Apply" )}}
+    <ul class="task-list-items">
+      
+      <li class="task-list-item" id="submit-pay">
+        <a onclick="document.tasklist.submit(); return false;" class="task-name" href="#">
+          Send application and pay
+        </a>
+      </li>
+      
+    </ul>
+  </li><!-- END TASK SECTION -->
+  
+  </ol>
+  
+  </form>
+  </div>
