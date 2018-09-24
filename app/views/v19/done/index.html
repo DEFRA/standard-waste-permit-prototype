@@ -60,7 +60,7 @@
                   <dd class="cya-answer">
 
                 {% if permit.bespokePermit=="bespoke" %}
-                {{permit.totalcost}}
+                {{permit.totalcost | int | formatnumber }}
                 {% else %}
                 {{permit.permitCost}}
 
