@@ -219,7 +219,8 @@ wood
   else macros.hidden("emissionsPlan",emissionsPlan) }}
 
 {{ macros.checkbox("Fire prevention plan","firePreventionPlan","a4","yes") 
-  if firePreventionPlan=="no"
+  if firePreventionPlan=="no" 
+  and firePreventionPlanIncluded=="no" 
   else macros.hidden("firePreventionPlan",firePreventionPlan) }}
 
 {{ macros.checkbox("Habitats assessment","habitatsAssessment","a5","yes") 
@@ -232,6 +233,7 @@ wood
 
 {{ macros.checkbox("Odour management plan","odourManagementPlan","a7","yes") 
   if odourManagementPlan=="no" 
+  and odourManagementPlanIncluded=="no" 
   else macros.hidden("odourManagementPlan",odourManagementPlan) }}
 
 {{ macros.checkbox("Pests management plan","pestsPlan","a8","yes") 
