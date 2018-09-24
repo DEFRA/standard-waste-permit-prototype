@@ -19,7 +19,7 @@
   </h1>
 
 <!-- Look up first chosen activity ############################################ -->
-{% from folder+"/bespoke/v3-activities/json/bespoke_activities.html" import activities %}
+{% from folder+"/bespoke/activities-assessments/json/bespoke_activities.html" import activities %}
 
 
 {% set activitytext = "NOT SET" %}
@@ -39,7 +39,7 @@
   <div class="hint">Select all that apply. Leave blank if there is no recovery for this activity.</div>
 </br>
 
-  {% from folder+"/bespoke/v2-activities/json/d-codes.html" import dcodes %}
+  {% from folder+"/bespoke/activities-assessments/json/d-codes.html" import dcodes %}
 
   <form action="{{formAction}}" method="post">
 
