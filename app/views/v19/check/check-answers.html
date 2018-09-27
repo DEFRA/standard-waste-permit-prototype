@@ -515,11 +515,12 @@
       Fire prevention plan filename
     </dt>
     <dd class="cya-answer">
-      {{permit.firePlanFilename}}
+      {{ permit.FirePlan1+"<br>" if permit.FirePlan1 !="" }}
+      {{ permit.FirePlan2 if permit.FirePlan2 !="" }}
     </dd>
     <dd class="cya-change">
-      <a href="/{{folder}}/evidence/upload-fire-plan">
-        Change <span class="visuallyhidden">name</span>
+      <a href="/{{folder}}/upload-fire-plan">
+        Change <span class="visuallyhidden">fire plan</span>
       </a>
     </dd>
   </div>
