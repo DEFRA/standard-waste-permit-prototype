@@ -586,3 +586,18 @@ h3.files-description{
     border-top: 1px solid #bfc1c3;
     padding-top:0.47368em;
 }
+
+.cya-answer.filelist,
+.cya-answer.filelisthead
+{
+  width:80%;
+}
+
+.cya-answer.filelisthead
+{
+  font-weight:bold;
+}
+
+.cya-answer.changelinks{
+  width:20%;
+}

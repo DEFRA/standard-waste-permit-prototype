@@ -641,26 +641,6 @@ router.post('/site/grid-reference', function (req, res) {
   }
 })
 
-// Location check
-router.post('/screening/screening-site-plan', function (req, res) {
-  res.render(folder + '/screening/screening-site-plan',{
-      "formAction":"/"+ folder + "/screening/site-plan-check"
- })
-})
-
-// This is not a real page, just a URL for the route
-router.post('/screening/site-plan-check', function (req, res) {
-  if(req.body['screeningSitePlan']=="Yes"){
-      res.render(folder + '/evidence/upload-site-plan',{
-          "formAction":"/"+ folder + "/address/postcode"
-      })
-  } else {
-    res.render(folder + '/screening/distance-to-boundary',{
-      "formAction":"/"+ folder + "/address/postcode"
-   })
-  }
-})
-
 
 router.post('/address/postcode', function (req, res) {
   res.render(folder + '/address/postcode',{
@@ -752,30 +732,7 @@ router.get('/evidence/techcomp/industry-scheme', function (req, res) {
   })
 })
 
-// Not a page - juts a route to process the form
-router.post('/evidence/techcomp/get-evidence', function (req, res) {
-  if( req.body.industryScheme=='WAMITAB' ) {
-    // /evidence/techcomp/wamitab-details
-    res.render(folder + '/evidence/techcomp/wamitab-details',{
-        "formAction":"/"+ folder + "/evidence/techcomp/check-file"
-    })
-  } else if( req.body.industryScheme=='ESA-EU' ) {
-    // /evidence/techcomp/esa-eu-details
-    res.render(folder + '/evidence/techcomp/esa-eu-details',{
-        "formAction":"/"+ folder + "/evidence/techcomp/manager-details"
-    })
-  } else if( req.body.industryScheme=='deemed' ) {
-    // /evidence/techcomp/deemed
-    res.render(folder + '/evidence/techcomp/deemed',{
-        "formAction":"/"+ folder + "/evidence/techcomp/manager-details"
-    })
-  } else if( req.body.industryScheme=='getting-qualification' ) {
-    // /evidence/techcomp/getting-it
-    res.render(folder + '/evidence/techcomp/getting-it',{
-        "formAction":"/"+ folder + "/evidence/techcomp/manager-details"
-    })
-  }
-})
+
 
 // Not a page - just a route to process the form
 router.post('/evidence/techcomp/check-file', function (req, res) {
@@ -1177,278 +1134,10 @@ router.get('/evidence/bankruptcy-insolvency', function (req, res) {
 
 router.get('/bespoke/management-system', function (req, res) {
   res.render(folder + '/bespoke/management-system',{
-      "formAction":"/"+ folder + "/bespoke/upload-management-system-summary"
+      "formAction":"/"+ folder + "/upload-management-system-summary"
   })
 })
 
-// Upload B2 and B4 forms ========================================================
-
-router.get('/bespoke/upload-B12-forms', function (req, res) {
-  res.render(folder + '/bespoke/upload-B12-forms',{
-      "formAction":"/"+ folder + "/check/task-list"
-  })
-})
-
-router.get('/bespoke/upload-B4-forms', function (req, res) {
-  res.render(folder + '/bespoke/upload-B4-forms',{
-      "formAction":"/"+ folder + "/check/task-list"
-  })
-})
-
-
-
-
-
-// Upload supporting docs ========================================================
-
-router.get('/bespoke/upload-supporting-docs', function (req, res) {
-  if(req.session.data['sDocFile2']!="") { // no file uploaded so send to first route
-    res.render(folder + '/bespoke/upload-supporting-docs',{
-          "formAction":"/"+ folder + "/check-supporting-docs"
-    })
-  } else { // file uploaded so send to second route
-    res.render(folder + '/bespoke/upload-supporting-docs',{
-          "formAction":"/"+ folder + "/check-supporting-docs2"
-    })
-  }
-
-})
-
-// fake route for first check of file uploads
-router.post('/check-supporting-docs', function (req, res) {
-
-  // cleanup any blank files - set because hidden field is set on post
-  if(req.session.data['sDocFile2']=="") delete req.session.data['sDocFile2']
-  if(req.session.data['sDocFile3']=="") delete req.session.data['sDocFile3']
-  if(req.session.data['sDocFile4']=="") delete req.session.data['sDocFile4']
-  if(req.session.data['sDocFile5']=="") delete req.session.data['sDocFile5']
-  if(req.session.data['sDocFile6']=="") delete req.session.data['sDocFile6']
-  if(req.session.data['sDocFile7']=="") delete req.session.data['sDocFile7']
-  if(req.session.data['sDocFile8']=="") delete req.session.data['sDocFile8']
-  if(req.session.data['sDocFile9']=="") delete req.session.data['sDocFile9']
-
-    res.render(folder + '/bespoke/upload-supporting-docs',{
-      "formAction":"/"+ folder + "/check-supporting-docs2"
-    })
-})
-
-// fake route for second check of file uploads
-router.post('/check-supporting-docs2', function (req, res) {
-
-  // cleanup any blank files - set because hidden field is set on post
-  if(req.session.data['sDocFile2']=="") delete req.session.data['sDocFile2']
-  if(req.session.data['sDocFile3']=="") delete req.session.data['sDocFile3']
-  if(req.session.data['sDocFile4']=="") delete req.session.data['sDocFile4']
-  if(req.session.data['sDocFile5']=="") delete req.session.data['sDocFile5']
-  if(req.session.data['sDocFile6']=="") delete req.session.data['sDocFile6']
-  if(req.session.data['sDocFile7']=="") delete req.session.data['sDocFile7']
-  if(req.session.data['sDocFile8']=="") delete req.session.data['sDocFile8']
-  if(req.session.data['sDocFile9']=="") delete req.session.data['sDocFile9']
-
-  if(req.session.data['uploadOtherFile']=="yes"){
-    res.render(folder + '/bespoke/upload-supporting-docs',{
-      "formAction":"/"+ folder + "/check-supporting-docs2"
-    })
-  } else {
-    // Display task list
-    res.render(folder + '/check/task-list',{
-        "formAction":"/"+ folder + "/check/task-list"
-    })
-  }
-})
-
-// Remove file from LIST - fake route
-router.get('/remove-supporting-doc', nocache, function (req, res) {
-    // remove selected file (in query string)
-    // stored in req.query.removeFile
-    var removeFile = req.query['removeFile']
-    var fileNumber  = removeFile.substr(removeFile.length-1, 1)   // last part of sDocFile1
-    var titleStr = "sDocTitle"+fileNumber  // eg 2
-    var finished = false
-
-    if(req.query['removeFile']!="") {
-      // have to repeat deletion as it is stored in both session and locals objects
-      delete res.locals.data[removeFile] // remove filename string
-          delete req.session.data[removeFile] // remove filename string
-      delete res.locals.data[titleStr]   // and remove title string
-          delete req.session.data[titleStr]   // and remove title string
-      delete res.locals.data.removeFile // clean up
-          delete req.session.data.removeFile // clean up
-      var finished = true
-    }
-   console.log(res.locals.data)
-
-    // then re-display page
-    if(finished){
-      res.render(folder + '/bespoke/upload-supporting-docs',{
-        "formAction":"/"+ folder + "/check-supporting-docs"
-      })
-    }
-
-})
-
-
-// Remove B2 file from LIST - fake route
-router.get('/remove-b2', nocache, function (req, res) {
-    // remove selected file (in query string)
-    // stored in req.query.removeFile
-    var removeFile = req.query['removeFile']
-
-    if(req.query['removeFile']!="") {
-      // have to repeat deletion as it is stored in both session and locals objects
-      delete res.locals.data[removeFile] // remove filename string
-          delete req.session.data[removeFile] // remove filename string
-      delete res.locals.data.removeFile // clean up
-          delete req.session.data.removeFile // clean up
-      var finished = true
-    }
-
-    // then re-display page
-    if(finished){
-      res.render(folder + '/bespoke/upload-B2-forms',{
-        "formAction":"/"+ folder + "/check/task-list"
-      })
-    }
-
-})
-
-// Remove B4 file from LIST - fake route
-router.get('/remove-b4', nocache, function (req, res) {
-    // remove selected file (in query string)
-    // stored in req.query.removeFile
-    var removeFile = req.query['removeFile']
-
-    if(req.query['removeFile']!="") {
-      // have to repeat deletion as it is stored in both session and locals objects
-      delete res.locals.data[removeFile] // remove filename string
-          delete req.session.data[removeFile] // remove filename string
-      delete res.locals.data.removeFile // clean up
-          delete req.session.data.removeFile // clean up
-      var finished = true
-    }
-
-    // then re-display page
-    if(finished){
-      res.render(folder + '/bespoke/upload-B4-forms',{
-        "formAction":"/"+ folder + "/check/task-list"
-      })
-    }
-
-})
-
-// Remove any from LIST - fake route
-router.get('/remove-file', nocache, function (req, res) {
-    // remove selected file (in query string)
-    // stored in req.query.removeFile
-    var removeFile = req.query['removeFile']
-    var returnPath = req.query['returnPath']
-
-    if(req.query['removeFile']!="") {
-      // have to repeat deletion as it is stored in both session and locals objects
-      delete res.locals.data[removeFile] // remove filename string
-          delete req.session.data[removeFile] // remove filename string
-      delete res.locals.data.removeFile // clean up
-          delete req.session.data.removeFile // clean up
-      var finished = true
-    }
-
-    // then re-display page
-    if(finished){
-      res.render(folder + returnPath,{
-        "formAction":"/"+ folder + "/check/task-list"
-      })
-    }
-
-})
-
-
-// Fire prevention plan ========================================================
-
-router.get('/evidence/upload-fire-plan', function (req, res) {
-  res.render(folder + '/evidence/upload-fire-plan',{
-        "formAction":"/"+ folder + "/check-fire-plan"
-    })
-})
-
-// fake route for first check of file uploads
-router.post('/check-fire-plan', function (req, res) {
-    res.render(folder + '/evidence/upload-fire-plan',{
-      "formAction":"/"+ folder + "/check-fire-plan2"
-    })
-})
-
-// fake route for second check of file uploads
-router.post('/check-fire-plan2', function (req, res) {
-  if(req.session.data['uploadOtherFile']=="yes"){
-    res.render(folder + '/evidence/upload-fire-plan',{
-      "formAction":"/"+ folder + "/check-fire-plan2"
-    })
-  } else {
-    // Display task list
-    res.render(folder + '/check/task-list',{
-        "formAction":"/"+ folder + "/check/task-list"
-    })
-  }
-})
-
-// Non Technical summary ========================================================
-
-router.get('/bespoke/upload-non-technical-summary', function (req, res) {
-  res.render(folder + '/bespoke/upload-non-technical-summary',{
-        "formAction":"/"+ folder + "/check-non-tech-plan"
-    })
-})
-
-// fake route for first check of file uploads
-router.post('/check-non-tech-plan', function (req, res) {
-    res.render(folder + '/bespoke/upload-non-technical-summary',{
-      "formAction":"/"+ folder + "/check-non-tech-plan2"
-    })
-})
-
-// fake route for second check of file uploads
-router.post('/check-non-tech-plan2', function (req, res) {
-  if(req.session.data['uploadOtherFile']=="yes"){
-    res.render(folder + '/bespoke/upload-non-technical-summary',{
-      "formAction":"/"+ folder + "/check-non-tech-plan2"
-    })
-  } else {
-    // Display task list
-    res.render(folder + '/check/task-list',{
-        "formAction":"/"+ folder + "/check/task-list"
-    })
-  }
-})
-
-
-// Management system ========================================================
-
-router.get('/bespoke/upload-management-system-summary', function (req, res) {
-  res.render(folder + '/bespoke/upload-management-system-summary',{
-        "formAction":"/"+ folder + "/check-management-system-plan"
-    })
-})
-
-// fake route for first check of file uploads
-router.post('/check-management-system-plan', function (req, res) {
-    res.render(folder + '/bespoke/upload-management-system-summary',{
-      "formAction":"/"+ folder + "/check-management-system-plan2"
-    })
-})
-
-// fake route for second check of file uploads
-router.post('/check-management-system-plan2', function (req, res) {
-  if(req.session.data['uploadOtherFile']=="yes"){
-    res.render(folder + '/bespoke/upload-management-system-summary',{
-      "formAction":"/"+ folder + "/check-management-system-plan2"
-    })
-  } else {
-    // Display task list
-    res.render(folder + '/check/task-list',{
-        "formAction":"/"+ folder + "/check/task-list"
-    })
-  }
-})
 
 
 // Claim confidentiality ========================================================
@@ -1876,85 +1565,232 @@ router.post('/testscreen/grid-reference', function (req, res) {
   })
 })
 
-router.post('/testscreen/check-map', function (req, res) {
-  res.render(folder + '/testscreen/check-map',{
-     "formAction":"/"+ folder + "/testscreen/check-location"
-  })
+
+// FIRE PLAN UPLOAD ========================================================
+router.all('/upload-fire-plan', function (req, res) {
+  var path="/upload-fire-plan"
+  var title="Upload the fire prevention plan"
+  var fileName="FirePlan"
+  var guidanceTop="fireplantop"
+  var guidanceBot=""
+  var fileTypes="PDF, DOC, DOCX or JPG"
+  
+  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
+    var visitCount = 1
+  } else {
+    var visitCount = parseInt(req.session.data['visitCount'])+1
+  }
+  
+  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
+  } else {
+    delete req.session.data['visitCount']
+    // Where to go after the files have been uploaded
+    res.render(folder + "/check/task-list",{
+          "formAction":"/"+ folder + "/check/check-answers"
+    })
+  }
 })
 
-// Function to assemble query string
-function makeGISQuery(type,lat,long,distance){
-  var s1 = "https://services.arcgis.com/JJzESW51TqeY9uat/arcgis/rest/services/"
-  var s2 = "/FeatureServer/0/query?where=1%3D1&outFields=*&geometry="
-  var s3 = "%2C"
-  var s4 = "&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance="
-  var s5 = "&units=esriSRUnit_Meter&returnGeometry=false&returnCountOnly=true&outSR=4326&f=json"
-  var URLString = s1+type+s2+long+s3+lat+s4+distance+s5
-  return URLString
-}
+// SITE PLAN UPLOAD ========================================================
+router.all('/upload-site-plan', function (req, res) {
+  var path="/upload-site-plan"
+  var title="Upload a site plan"
+  var fileName="SitePlan"
+  var guidanceTop="siteplantop"
+  var guidanceBot=""
+  var fileTypes="PDF or JPG"
+  
+  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
+    var visitCount = 1
+  } else {
+    var visitCount = parseInt(req.session.data['visitCount'])+1
+  }
+  
+  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
+  } else {
+    delete req.session.data['visitCount']
+    // Where to go after the files have been uploaded
+    res.render(folder + "/check/task-list",{
+          "formAction":"/"+ folder + "/check/check-answers"
+    })
+  }
+})
 
-function doScreening(type, lat, long, distance) {
+// NON TECH SUMMARY UPLOAD ========================================================
+router.all('/upload-non-technical-summary', function (req, res) {
+  var path="/upload-non-technical-summary"
+  var title="Provide a non-technical summary"
+  var fileName="NonTechSummary"
+  var guidanceTop=""
+  var guidanceBot=""
+  var fileTypes="PDF, JPG, DOC or DOCX"
+  
+  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
+    var visitCount = 1
+  } else {
+    var visitCount = parseInt(req.session.data['visitCount'])+1
+  }
+  
+  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
+  } else {
+    delete req.session.data['visitCount']
+    // Where to go after the files have been uploaded
+    res.render(folder + "/check/task-list",{
+          "formAction":"/"+ folder + "/check/check-answers"
+    })
+  }
+})
 
-  return new Promise(function(resolve, reject) {
 
-    request({
-      url: makeGISQuery(type, lat, long, distance),
-      method: "GET"
-    }, function (error, response, body) {
-       if (error){
-         console.log(error)
-       } else {
-          var responseJSON = JSON.parse(body)
-          numSites=responseJSON.count
-          resolve(numSites)
-       } // end request
-    }) // end request
+// EUROPEAN WASTE CODES UPLOAD ========================================================
+router.all('/upload-waste-codes', function (req, res) {
+  var path="/upload-waste-codes"
+  var title="Upload a spreadsheet that lists the waste codes you want to accept"
+  var fileName="WasteCodes"
+  var guidanceTop=""
+  var guidanceBot=""
+  var fileTypes="XLSX, XLS, ODS or CSV"
+  
+  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
+    var visitCount = 1
+  } else {
+    var visitCount = parseInt(req.session.data['visitCount'])+1
+  }
+  
+  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
+  } else {
+    delete req.session.data['visitCount']
+    // Where to go after the files have been uploaded
+    res.render(folder + "/check/task-list",{
+          "formAction":"/"+ folder + "/check/check-answers"
+    })
+  }
+})
 
-  }) // end promise
 
-} // end function
+// ENVIRONMENTAL RISK ASSESSMENT UPLOAD ========================================================
+router.all('/upload-environmental-risk-assessment', function (req, res) {
+  var path="/upload-environmental-risk-assessment"
+  var title="Upload environmental risk assessment"
+  var fileName="EnvRiskAssessment"
+  var guidanceTop=""
+  var guidanceBot=""
+  var fileTypes="PDF, JPG, DOC or DOCX"
+  
+  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
+    var visitCount = 1
+  } else {
+    var visitCount = parseInt(req.session.data['visitCount'])+1
+  }
+  
+  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
+  } else {
+    delete req.session.data['visitCount']
+    // Where to go after the files have been uploaded
+    res.render(folder + "/check/task-list",{
+          "formAction":"/"+ folder + "/check/check-answers"
+    })
+  }
+})
 
-// router.post('/testscreen/check-location', function (req, res) {
-//   var screening = req.body['screening']
-//   var lat = req.body['lat']
-//   var long = req.body['long']
-//   var gridref = req.body['gridref']
-//   var distance = req.body['distance']
-//
-//   var screeningTypes = [
-//     {name:"Special Conservation Area", url:"Special_Areas_of_Conservation_England"},
-//     {name:"Proposed Ramsar site", url:"Proposed_Ramsar_England"},
-//     {name:"Area of Outstanding Natural Beauty", url:"Areas_of_Outstanding_Natural_Beauty_England"},
-//     {name:"Special Protection Area", url:"Special_Protection_Areas_England"},
-//     {name:"Ramsar site", url:"Ramsar_England"},
-//     {name:"Site of Special Scientific Interest", url:"SSSI_England"}
-//   ]
-//
-//   var screeningResults = []
-//
-//   async function getResults() {
-//     await Promise.all(screeningTypes.map(async (type) => {
-//       screeningResults[type.name] = doScreening(type.url, lat, long, distance)
-//     }))
-//   }
-//
-//   getResults()
-//
-//   if(screeningResults.length>2){
-//     console.info(screeningResults)
-//     res.render(folder + '/testscreen/check-location',{
-//       "screening": screening,
-//       "lat": lat,
-//       "long": long,
-//       "gridref": gridref,
-//       "distance": distance,
-//       "formAction":"/"+ folder + "/testscreen/check-location",
-//       "screeningResults": screeningResults
-//     })
-//   }
-//
-//
-// }) // end post
+// MANAGEMENT SYSTEM UPLOAD ========================================================
+router.all('/upload-management-system-summary', function (req, res) {
+  var path="/upload-management-system-summary"
+  var title="Upload a summary of your management system"
+  var fileName="ManSysSummary"
+  var guidanceTop=""
+  var guidanceBot=""
+  var fileTypes="PDF, JPG, DOC or DOCX"
+  
+  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
+    var visitCount = 1
+  } else {
+    var visitCount = parseInt(req.session.data['visitCount'])+1
+  }
+  
+  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
+  } else {
+    delete req.session.data['visitCount']
+    // Where to go after the files have been uploaded
+    res.render(folder + "/check/task-list",{
+          "formAction":"/"+ folder + "/check/check-answers"
+    })
+  }
+})
+
+
+// GET TECHNICAL COMPETENCE UPLOADS
+router.all('/evidence/techcomp/get-evidence', function (req, res) {
+  var path="/evidence/techcomp/get-evidence"
+  var fileTypes="PDF or JPG"
+  var fileName="TechnicalCompetenceFile"
+  var guidanceBot=""
+  
+  if( req.session.data['industryScheme']=='WAMITAB' ) {
+    var title="WAMITAB or EPOC: upload your evidence"
+    var guidanceTop="wamitabtop"
+  } else if( req.session.data['industryScheme']=='ESA-EU' ) {
+    var title="Energy &amp; Utility Skills / ESA: upload your evidence"
+    var guidanceTop="esaqualtop"
+  } else if( req.session.data['industryScheme']=='deemed' ) {
+    var title="Upload the evidence for your qualification"
+    var guidanceTop="deemedqualtop"
+  } else if( req.session.data['industryScheme']=='getting-qualification' ) {
+    var title="Getting a qualification: upload your evidence"
+    var guidanceTop="gettingqualtop"
+  }
+  
+  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
+    var visitCount = 1
+  } else {
+    var visitCount = parseInt(req.session.data['visitCount'])+1
+  }
+  
+  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
+  } else {
+    delete req.session.data['visitCount']
+    // Where to go after the files have been uploaded
+    //res.render(folder + "/upload-tech-manager-details",{
+    //      "formAction":"/"+ folder + "/check/task-list"
+    //})
+    res.redirect("/"+ folder + "/upload-tech-manager-details")
+  }
+})
+
+
+// TECHNICAL MANGER DETAILS UPLOAD ========================================================
+router.all('/upload-tech-manager-details', function (req, res) {
+  var path="/upload-tech-manager-details"
+  var title="Give details for all technically competent managers"
+  var fileName="TechManDetails"
+  var guidanceTop="tcmdetailstop"
+  var guidanceBot=""
+  var fileTypes="PDF, DOC, DOCX or ODT"
+  
+  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
+    var visitCount = 1
+  } else {
+    var visitCount = parseInt(req.session.data['visitCount'])+1
+  }
+  
+  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
+  } else {
+    delete req.session.data['visitCount']
+    // Where to go after the files have been uploaded
+    res.render(folder + "/check/task-list",{
+          "formAction":"/"+ folder + "/check/check-answers"
+    })
+  }
+})
+
 
 
 // Send permit data in session to every page ==================================

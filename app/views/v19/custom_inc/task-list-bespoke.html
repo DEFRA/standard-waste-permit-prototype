@@ -44,14 +44,14 @@
         {{ macros.task( "Give basic details about the operation", permit.wasteOperation, "/"+folder+"/bespoke/waste-operation", taskListError ) }}
   
         <!-- Provide a non-technical summary ---------------->
-        {{ macros.task( "Provide a non-technical summary", permit.nonTechSummaryName, "/"+folder+"/bespoke/upload-non-technical-summary", taskListError ) }}
+        {{ macros.task( "Provide a non-technical summary", permit.NonTechSummary1, "/"+folder+"/upload-non-technical-summary", taskListError ) }}
   
   
         <!-- Site name and location ---------------->
         {{ macros.task( "Give site name and location", permit.siteName, "/"+folder+"/site/site-name", taskListError ) }}
   
           <!-- Site plan ------------------------->
-        {{ macros.task( "Upload the site plan", permit.sitePlanFilename, "/"+folder+"/evidence/site-plan-check", taskListError ) }}
+        {{ macros.task( "Upload the site plan", permit.SitePlan1, "/"+folder+"/upload-site-plan", taskListError ) }}
   
       </ul>
       </li><!-- END TASK SECTION -->
@@ -64,7 +64,7 @@
     {{ macros.task( "List R and D codes for your activities", permit.RDCode_entered, "/"+folder+"/RDcodes/list_recovery_codes", taskListError ) }}
   
     <!--Waste codes--------------->
-    {{ macros.task( "List European waste codes", permit.wasteCodesFile, "/"+folder+"/bespoke/waste-codes", taskListError ) }}
+    {{ macros.task( "List European waste codes", permit.WasteCodes, "/"+folder+"/upload-waste-codes", taskListError ) }}
   
   </ul>
   </li><!-- END TASK SECTION -->
@@ -114,13 +114,13 @@
   
   
     <!-- Fire prevention plan ----------->
-            {{ macros.task( "Upload fire prevention plan", permit.firePlanFilename, "/"+folder+"/evidence/upload-fire-plan", taskListError ) }}
+            {{ macros.task( "Upload fire prevention plan", permit.FirePlan1, "/"+folder+"/upload-fire-plan", taskListError ) }}
   
     <!-- Upload environmental risk assessment ----------->
-    {{ macros.task( "Upload environmental risk assessment", permit.enviroRiskAssessment, "/"+folder+"/bespoke/upload-environmental-risk-assessment", taskListError ) }}
+    {{ macros.task( "Upload environmental risk assessment", permit.EnvRiskAssessment1, "/"+folder+"/upload-environmental-risk-assessment", taskListError ) }}
   
     <!-- Provide a management system summary ----------->
-    {{ macros.task( "Provide a management system summary", permit.managementSystemSummary, "/"+folder+"/bespoke/management-system", taskListError ) }}
+    {{ macros.task( "Provide a management system summary", permit.ManSysSummary, "/"+folder+"/bespoke/management-system", taskListError ) }}
   
   
     </ul>
