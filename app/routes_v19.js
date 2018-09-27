@@ -1650,7 +1650,7 @@ router.all('/upload-waste-codes', function (req, res) {
   var path="/upload-waste-codes"
   var title="Upload a spreadsheet that lists the waste codes you want to accept"
   var fileName="WasteCodes"
-  var guidanceTop=""
+  var guidanceTop="wastecodestop"
   var guidanceBot=""
   var fileTypes="XLSX, XLS, ODS or CSV"
   
