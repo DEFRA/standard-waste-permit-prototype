@@ -1592,6 +1592,7 @@ router.all('/upload-fire-plan', function (req, res) {
   }
 })
 
+
 // SITE PLAN UPLOAD ========================================================
 router.all('/upload-site-plan', function (req, res) {
   var path="/upload-site-plan"
