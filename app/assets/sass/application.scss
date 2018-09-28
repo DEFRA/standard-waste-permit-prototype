@@ -601,3 +601,18 @@ h3.files-description{
 .cya-answer.changelinks{
   width:20%;
 }
+
+
+#uploadForm input[type="file"]{
+    max-width:100%;
+    font-weight:bold
+}
+#uploadForm input[type="file"]::-webkit-file-upload-button{
+    font-size:2rem;
+    padding:0.5rem 1rem;
+    background:#dee0e2;
+    color:#000
+}
+#uploadForm input[type=file]:hover,#uploadForm input[type=file]::-webkit-file-upload-button:hover{
+    cursor:pointer
+}
