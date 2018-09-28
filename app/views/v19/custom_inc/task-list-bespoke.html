@@ -46,12 +46,13 @@
       <!-- Provide a non-technical summary ---------------->
       {{ macros.task( "Provide a non-technical summary", permit.NonTechSummary1, "/"+folder+"/upload-non-technical-summary", taskListError ) }}
 
-
+{% if permit.siteOrMobile=="site" %}
       <!-- Site name and location ---------------->
       {{ macros.task( "Give site name and location", permit.siteName, "/"+folder+"/site/site-name", taskListError ) }}
 
-        <!-- Site plan ------------------------->
+      <!-- Site plan ------------------------->
       {{ macros.task( "Upload the site plan", permit.SitePlan1, "/"+folder+"/upload-site-plan", taskListError ) }}
+{% endif %}
   
       </ul>
       </li><!-- END TASK SECTION -->
@@ -76,42 +77,45 @@
     
     <!-- Tech competence ----------------------->
     {{ macros.task( "Prove technical competence", permit.industryScheme, "/"+folder+"/evidence/techcomp/industry-scheme", taskListError ) }}
-  
-{% if permit.firePreventionPlan=="yes" or permit.firePreventionPlanIncluded=="yes" %}
-    {{ macros.task( "Upload fire prevention plan", permit.FirePlan1, "/"+folder+"/upload-fire-plan", taskListError ) }}
-{% endif %}
+    
+    <!-- Fire plan CONDTIONAL ----------------------->
+    {% if permit.firePreventionPlan=="yes" or permit.firePreventionPlanIncluded=="yes" %}
+        {{ macros.task( "Upload fire prevention plan", permit.FirePlan1, "/"+folder+"/upload-fire-plan", taskListError ) }}
+    {% endif %}
   
     <!-- Upload environmental risk assessment ----------->
     {{ macros.task( "Upload environmental risk assessment", permit.EnvRiskAssessment1, "/"+folder+"/upload-environmental-risk-assessment", taskListError ) }}
   
     <!-- Provide a management system summary ----------->
-    {{ macros.task( "Provide a management system summary", permit.ManSysSummary1, "/"+folder+"/bespoke/management-system", taskListError ) }}
+    {{ macros.task( "Provide a management system summary", permit.ManSysSummary1, "/"+folder+"/upload-management-system-summary", taskListError ) }}
     
-<!-- Provide a waste recovery plan ----------->
-{% if permit.wasteRecoveryPlan=="yes" %}
-    {{ macros.task( "Upload a waste recovery plan", permit.WasteRecoveryPlan1, "/"+folder+"/upload-waste-recovery-plan", taskListError ) }}
-{% endif %}
+    <!-- List technical standards ----------->
+    {{ macros.task( "List the technical standards you use", permit.TechStandards1, "/"+folder+"/list-technical-standards", taskListError ) }}
+    
+    <!-- Provide a waste recovery plan CONDTIONAL ----------->
+    {% if permit.wasteRecoveryPlan=="yes" %}
+        {{ macros.task( "Upload a waste recovery plan", permit.WasteRecoveryPlan1, "/"+folder+"/upload-waste-recovery-plan", taskListError ) }}
+    {% endif %}
 
-<!-- Provide a noise plan ----------->
-{% if permit.noisePlan=="yes" %}
-  {{ macros.task( "Upload the noise and vibration management plan", permit.NoisePlan1, "/"+folder+"/upload-noise-plan", taskListError ) }}
-{% endif %}
+    <!-- Provide a noise plan CONDTIONAL  ----------->
+    {% if permit.noisePlan=="yes" %}
+      {{ macros.task( "Upload the noise and vibration management plan", permit.NoisePlan1, "/"+folder+"/upload-noise-plan", taskListError ) }}
+    {% endif %}
 
-<!-- Emissions plan ----------->
-{% if permit.emissionsPlan=="yes" %}
-  {{ macros.task( "Upload the emissions management plan", permit.EmissionsPlan1, "/"+folder+"/upload-emissions-management-plan", taskListError ) }}
-{% endif %}
+    <!-- Emissions plan CONDTIONAL ----------->
+    {% if permit.emissionsPlan=="yes" %}
+      {{ macros.task( "Upload the emissions management plan", permit.EmissionsPlan1, "/"+folder+"/upload-emissions-management-plan", taskListError ) }}
+    {% endif %}
 
-<!-- Odour plan ----------->
-{% if permit.odourManagementPlan=="yes" or permit.odourManagementPlanIncluded=="yes" %}
-  {{ macros.task( "Upload the odour management plan", permit.OdourPlan1, "/"+folder+"/upload-odour-management-plan", taskListError ) }}
-{% endif %}
+    <!-- Odour plan CONDTIONAL ----------->
+    {% if permit.odourManagementPlan=="yes" or permit.odourManagementPlanIncluded=="yes" %}
+      {{ macros.task( "Upload the odour management plan", permit.OdourPlan1, "/"+folder+"/upload-odour-management-plan", taskListError ) }}
+    {% endif %}
 
-<!-- Dust plan ----------->
-{% if dustPlan=="yes" %}
-  {{ macros.task( "Upload the dust management plan", permit.DustPlan1, "/"+folder+"/upload-dust-management-plan", taskListError ) }}
-{% endif %}
-
+    <!-- Dust plan CONDTIONAL ----------->
+    {% if dustPlan=="yes" %}
+      {{ macros.task( "Upload the dust management plan", permit.DustPlan1, "/"+folder+"/upload-dust-management-plan", taskListError ) }}
+    {% endif %}
 
 
     </ul>

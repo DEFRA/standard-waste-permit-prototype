@@ -1927,6 +1927,33 @@ router.all('/upload-dust-management-plan', function (req, res) {
 })
 
 
+// LIST TECH STANDARDS UPLOAD ========================================================
+router.all('/list-technical-standards', function (req, res) {
+  var path="/list-technical-standards"
+  var title="List the technical standards you use"
+  var fileName="TechStandards"
+  var guidanceTop="techstandardslisttop"
+  var guidanceBot=""
+  var fileTypes="PDF, JPG, DOC or DOCX"
+  
+  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
+    var visitCount = 1
+  } else {
+    var visitCount = parseInt(req.session.data['visitCount'])+1
+  }
+  
+  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
+  } else {
+    delete req.session.data['visitCount']
+    // Where to go after the files have been uploaded
+    res.render(folder + "/check/task-list",{
+          "formAction":"/"+ folder + "/check/check-answers"
+    })
+  }
+})
+
+
 
 // Send permit data in session to every page ==================================
 router.all('*', function (req, res, next) {
