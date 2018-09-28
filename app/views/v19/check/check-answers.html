@@ -349,7 +349,17 @@
       <dd class="cya-answer">{{ permit.ManSysSummary1 }}</dd>
       <dd class="cya-change"><a href="/{{folder}}/upload-management-system-summary">Change</a></dd>
     </div>
-  
+    
+    
+    {% if permit.wasteRecoveryPlan=="yes" %}
+        <div>
+          <dt class="cya-question">Waste recovery plan</dt>
+          <dd class="cya-answer">{{ permit.WasteRecoveryPlan1 }}</dd>
+          <dd class="cya-change"><a href="/{{folder}}/upload-management-system-summary">Change</a></dd>
+        </div>   
+    {% endif %}
+ 
+
 {% endif %} 
 
 

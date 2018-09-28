@@ -84,8 +84,13 @@
     {{ macros.task( "Upload environmental risk assessment", permit.EnvRiskAssessment1, "/"+folder+"/upload-environmental-risk-assessment", taskListError ) }}
   
     <!-- Provide a management system summary ----------->
-    {{ macros.task( "Provide a management system summary", permit.ManSysSummary, "/"+folder+"/bespoke/management-system", taskListError ) }}
-  
+    {{ macros.task( "Provide a management system summary", permit.ManSysSummary1, "/"+folder+"/bespoke/management-system", taskListError ) }}
+    
+    <!-- Provide a waste recovery plan ----------->
+{% if permit.wasteRecoveryPlan=="yes" %}
+    {{ macros.task( "Upload a waste recovery plan", permit.WasteRecoveryPlan1, "/"+folder+"/upload-waste-recovery-plan", taskListError ) }}
+{% endif %}
+
     </ul>
   </li>
   
