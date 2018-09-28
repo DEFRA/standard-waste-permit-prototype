@@ -350,13 +350,20 @@
       <dd class="cya-change"><a href="/{{folder}}/upload-management-system-summary">Change</a></dd>
     </div>
     
-    
     {% if permit.wasteRecoveryPlan=="yes" %}
         <div>
           <dt class="cya-question">Waste recovery plan</dt>
           <dd class="cya-answer">{{ permit.WasteRecoveryPlan1 }}</dd>
-          <dd class="cya-change"><a href="/{{folder}}/upload-management-system-summary">Change</a></dd>
+          <dd class="cya-change"><a href="/{{folder}}/upload-waste-recovery-plan">Change</a></dd>
         </div>   
+    {% endif %}
+    
+    {% if permit.noisePlan=="yes" %}
+        <div>
+          <dt class="cya-question">Noise and vibration management plan</dt>
+          <dd class="cya-answer">{{ permit.NoisePlan1 }}</dd>
+          <dd class="cya-change"><a href="/{{folder}}/upload-noise-plan">Change</a></dd>
+        </div>  
     {% endif %}
  
 

@@ -86,10 +86,17 @@
     <!-- Provide a management system summary ----------->
     {{ macros.task( "Provide a management system summary", permit.ManSysSummary1, "/"+folder+"/bespoke/management-system", taskListError ) }}
     
-    <!-- Provide a waste recovery plan ----------->
+<!-- Provide a waste recovery plan ----------->
 {% if permit.wasteRecoveryPlan=="yes" %}
     {{ macros.task( "Upload a waste recovery plan", permit.WasteRecoveryPlan1, "/"+folder+"/upload-waste-recovery-plan", taskListError ) }}
 {% endif %}
+
+<!-- Provide a noise plan ----------->
+{% if permit.noisePlan=="yes" %}
+  {{ macros.task( "Upload the noise and vibration management plan", permit.NoisePlan1, "/"+folder+"/upload-noise-plan", taskListError ) }}
+{% endif %}
+
+
 
     </ul>
   </li>
