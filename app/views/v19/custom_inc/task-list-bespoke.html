@@ -107,6 +107,11 @@
   {{ macros.task( "Upload the odour management plan", permit.OdourPlan1, "/"+folder+"/upload-odour-management-plan", taskListError ) }}
 {% endif %}
 
+<!-- Dust plan ----------->
+{% if dustPlan="yes" %}
+  {{ macros.task( "Upload the dust management plan", permit.DustPlan1, "/"+folder+"/upload-dust-management-plan", taskListError ) }}
+{% endif %}
+
 
 
     </ul>

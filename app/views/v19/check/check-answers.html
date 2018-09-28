@@ -366,7 +366,7 @@
         </div>  
     {% endif %}
     
-    {% if emissionsPlan="yes" %}
+    {% if permit.emissionsPlan="yes" %}
         <div>
           <dt class="cya-question">Emissions management plan</dt>
           <dd class="cya-answer">{{ permit.EmissionsPlan1 }}</dd>
@@ -381,7 +381,14 @@
           <dd class="cya-change"><a href="/{{folder}}/upload-odour-management-plan">Change</a></dd>
         </div>  
     {% endif %}
- 
+
+    {% if dustPlan="yes" %}
+        <div>
+          <dt class="cya-question">Dust management plan</dt>
+          <dd class="cya-answer">{{ permit.DustPlan1 }}</dd>
+          <dd class="cya-change"><a href="/{{folder}}/upload-dust-management-plan">Change</a></dd>
+        </div>  
+    {% endif %}
 
 {% endif %} 
 
