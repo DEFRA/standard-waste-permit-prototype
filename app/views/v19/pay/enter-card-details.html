@@ -109,7 +109,7 @@
   			       <h3>Amount to pay:</h3>
   			       <p class="payment-amount">{{ permit.permitCost }}</p>
                {% if permit.bespokePermit=="bespoke" %}
-               <p class="payment-amount">{{permit.totalcost}}</p>
+               <p class="payment-amount">{{permit.totalcost | formatnumber }}</p>
                {% endif %}
   			</div>
   		</div>

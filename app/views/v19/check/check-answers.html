@@ -38,7 +38,7 @@
             {% if aNumber==ref %}
 
             <!-- Output as a paragraph ============================== -->
-                  {{ ref }} {{ aData.D_Activity_Title }}</br>
+                  {{ aData.D_Activity_Title }} ({{ ref }})</br>
             {% endif %}
       {% else %}
       <p>No activities</p>
@@ -48,28 +48,8 @@
 {% endfor %}
     
     </dd>
-    <dd class="cya-change"><a href="/{{folder}}/bespoke/v3-activities/bespoke-category">Change</a></dd>
+    <dd class="cya-change"><a href="/{{folder}}/bespoke/mobile-plant">Change</a></dd>
   </div> 
-
-
-<!-- Output chosen R and D codes ############################################ -->
-
-<div>
-    <dt class="cya-question">R and D codes</dt>
-    <dd class="cya-answer">
-      
-        {% for RCode in permit.RCodes %}
-          {{RCode}}
-        </br>
-        {% endfor %}
-        {% for DCode in permit.DCodes %}
-        {{DCode}}
-      </br>
-      {% endfor %}
-      
-      </dd>
-      <dd class="cya-change"><a href="/{{folder}}/bespoke/v3-activities/bespoke-category">Change</a></dd>
-</div>  
 
 
   <!-- Output assessments ############################################ -->
@@ -111,14 +91,14 @@
         if permit.wasteRecoveryPlan=="yes" }}
 
     </dd>
-    <dd class="cya-change"><a href="/{{folder}}/bespoke/v3-activities/bespoke-category">Change</a></dd>
+    <dd class="cya-change"><a href="/{{folder}}/bespoke/assessments/your-assessments">Change</a></dd>
   </div>
 
     
  <div>
    <dt class="cya-question">Application cost</dt>
-   <dd class="cya-answer">{{permit.totalcost}}</dd>
-   <dd class="cya-change"><a href="/{{folder}}/bespoke/give-cost-and-time">Change <span class="visuallyhidden">Give cost</span></a></dd>
+   <dd class="cya-answer">{{ permit.totalcost | formatnumber }}</dd>
+   <dd class="cya-change"></dd>
  </div>
 
 {% endif %}<!-- END IF BESPOKE -->
@@ -156,11 +136,7 @@
 
     <div>
       <dt class="cya-question">Company address</dt><dd class="cya-answer">{{permit.companyAddress}}</dd>
-      <dd class="cya-change">
-       <!-- <a href="/{{folder}}/operator/company/company-name">
-          Change <span class="visuallyhidden">company address</span>
-        </a> -->
-      </dd>
+      <dd class="cya-change"><a href="/{{folder}}/operator/company/company-name">Change</a></dd>
     </div>
 
 
@@ -196,9 +172,7 @@
     <br>
     {% endfor %}
   </dd>
-  <dd class="cya-change"><!-- <a href="/{{folder}}/operator/company/company-name">
-      Change <span class="visuallyhidden"> dates of birth</span>
-    </a> --></dd>
+  <dd class="cya-change"><a href="/{{folder}}/operator/company/company-name">Change</a></dd>
 </div>
 
 
@@ -206,7 +180,7 @@
     <div>
       <dt class="cya-question">Email address for permit and official notices</dt>
       <dd class="cya-answer">{{permit.companySecretaryEmail}}</dd>
-      <dd class="cya-change"><a href="/{{folder}}/operator/company/company-secretary">Change <span class="visuallyhidden"> email address for permit and official notices</span></a></dd>
+      <dd class="cya-change"><a href="/{{folder}}/contact/company-secretary">Change <span class="visuallyhidden"> email address for permit and official notices</span></a></dd>
     </div>
 {% endif %}
 
@@ -259,12 +233,26 @@
       <dd class="cya-answer">{{permit.annual_throughput}}</dd>
       <dd class="cya-change"><a href="/{{folder}}/bespoke/waste-stored">Change</a></dd>
     </div>
+
+
+<!-- Output chosen R and D codes ############################################ -->
+<div>
+    <dt class="cya-question">R and D codes</dt>
+    <dd class="cya-answer">
+        {% for RCode in permit.RCodes %}
+          {{RCode}}
+        </br>
+        {% endfor %}
+        {% for DCode in permit.DCodes %}
+        {{DCode}}
+      </br>
+      {% endfor %}
+    </dd>
+    <dd class="cya-change"><a href="/{{folder}}/RDcodes/list_recovery_codes">Change</a></dd>
+</div>   
     
-    
-    
-{% endif %}    
-    
-    
+
+{% endif %}   
     
     
 <!-- Substance release consultations -->
