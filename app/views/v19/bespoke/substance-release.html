@@ -35,8 +35,8 @@
 
 <div class="form-group">
   <div class="multiple-choice" data-target="sewerageUndertakerName">
-    <input id="uploadOtherFile" name="uploadOtherFile" type="checkbox" value="yes">
-    <label for="uploadOtherFile">
+    <input id="sewerage" name="sewerage" type="checkbox" value="yes">
+    <label for="sewerage">
       A sewer managed by a sewerage undertaker
     </label>
   </div>
@@ -45,12 +45,12 @@
       <label class="form-label" for="sewerageUndertakerName">
         <p>Sewerage undertaker name</p>
       </label>
-      <input class="form-control form-control-2-4" id="sewerageUndertakerName" name="{{sewerageUndertakerName}}" type="text">
+      <input class="form-control form-control-2-4" id="sewerageUndertakerName" name="sewerageUndertakerName" value="{{permit.sewerageUndertakerName}}" type="text">
   </div>
 
   <div class="multiple-choice" data-target="harbourAuthorityName">
-    <input id="uploadOtherFile" name="uploadOtherFile" type="checkbox" value="yes">
-    <label for="uploadOtherFile">
+    <input id="harbour" name="harbour" type="checkbox" value="yes">
+    <label for="harbour">
       A harbour managed by a harbour authority
     </label>
   </div>
@@ -59,13 +59,13 @@
       <label class="form-label" for="harbourAuthorityName">
         <p>Harbour authority name</p>
       </label>
-      <input class="form-control form-control-2-4" id="harbourAuthorityName" name="{{harbourAuthorityName}}" type="text">
+      <input class="form-control form-control-2-4" id="harbourAuthorityName" name="harbourAuthorityName"  value="{{permit.harbourAuthorityName}}" type="text">
   </div>
   
 
   <div class="multiple-choice" data-target="fisheriesComitteeName">
-    <input id="uploadOtherFile" name="uploadOtherFile" type="checkbox" value="yes">
-    <label for="uploadOtherFile">
+    <input id="fisheries" name="fisheries" type="checkbox" value="yes">
+    <label for="fisheries">
       Direct into relevant territorial waters or coastal waters within the sea fisheries district of a local fisheries committee
     </label>
   </div>
@@ -74,7 +74,7 @@
       <label class="form-label" for="fisheriesComitteeName">
         Fisheries committee name
       </label>
-      <input class="form-control form-control-2-4" id="fisheriesComitteeName" name="{{fisheriesComitteeName}}" type="text">
+      <input class="form-control form-control-2-4" id="fisheriesComitteeName" value="{{permit.fisheriesComitteeName}}" name="fisheriesComitteeName"  type="text">
   </div>
 </div>
 

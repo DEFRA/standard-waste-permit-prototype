@@ -222,6 +222,24 @@
       <dd class="cya-change"><a href="/{{folder}}/evidence/bankruptcy-insolvency">Change <span class="visuallyhidden"> bankruptcy or insolvency</span></a></dd>
     </div>
     
+<!-- Substance release consultations -->
+{% if permit.bespokePermit=="bespoke" %}
+{% if permit.sewerageUndertakerName!=="undefined"
+    or permit.harbourAuthorityName!=="undefined"
+    or permit.fisheriesComitteeName!=="undefined"
+    %} 
+    <div>
+      <dt class="cya-question">People we have to consult</dt>
+      <dd class="cya-answer">
+        {{permit.sewerageUndertakerName}}<br>
+        {{permit.harbourAuthorityName}}<br>
+        {{permit.fisheriesComitteeName}}<br>
+      </dd>
+      <dd class="cya-change"><a href="/{{folder}}/bespoke/substance-release">Change <span class="visuallyhidden">file</span></a></dd>
+    </div>
+  {% endif %}
+{% endif %}
+    
 <!-- Waste codes -->
 {% if permit.bespokePermit=="bespoke" %}  
     <div>
