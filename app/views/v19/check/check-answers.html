@@ -269,10 +269,7 @@
     
 <!-- Substance release consultations -->
 {% if permit.bespokePermit=="bespoke" %}
-{% if permit.sewerageUndertakerName!=="undefined"
-    or permit.harbourAuthorityName!=="undefined"
-    or permit.fisheriesComitteeName!=="undefined"
-    %} 
+  {% if permit.sewerageUndertakerName!=="undefined" or permit.harbourAuthorityName!=="undefined" or permit.fisheriesComitteeName!=="undefined" %} 
     <div>
       <dt class="cya-question">People we have to consult</dt>
       <dd class="cya-answer">
@@ -293,18 +290,6 @@
       <dd class="cya-change"><a href="/{{folder}}/bespoke/waste-codes">Change <span class="visuallyhidden">file</span></a></dd>
     </div>
 {% endif %}
-
-    <!-- DONT'T SHOW SITE FOR MOBILE PERMITS -->
-    {% if
-    permit.permitID=="SR-2010-4" or
-    permit.permitID=="SR-2010-5" or
-    permit.permitID=="SR-2010-6" or
-    permit.permitID=="SR-2010-11" or
-    permit.permitID=="SR-2008-27"
-    %}
-
-    <!-- DO NOT SHOW -->
-    {% else %}
 
 
 {% if permit.siteOrMobile=="site" %}
