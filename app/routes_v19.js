@@ -1573,7 +1573,7 @@ router.all('/upload-fire-plan', function (req, res) {
   var fileName="FirePlan"
   var guidanceTop="fireplantop"
   var guidanceBot=""
-  var fileTypes="PDF, DOC, DOCX or JPG"
+  var fileTypes="PDF, DOC, DOCX, XLS, XLSX, JPG, ODT or ODS"
   
   if ( typeof req.session.data['visitCount'] === 'undefined' ) {
     var visitCount = 1
