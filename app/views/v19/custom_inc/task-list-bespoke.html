@@ -77,7 +77,7 @@
     <!-- Tech competence ----------------------->
     {{ macros.task( "Prove technical competence", permit.industryScheme, "/"+folder+"/evidence/techcomp/industry-scheme", taskListError ) }}
   
-{% if permit.firePreventionPlan = "yes" or permit.firePreventionPlanIncluded = "yes" %}
+{% if permit.firePreventionPlan=="yes" or permit.firePreventionPlanIncluded=="yes" %}
     {{ macros.task( "Upload fire prevention plan", permit.FirePlan1, "/"+folder+"/upload-fire-plan", taskListError ) }}
 {% endif %}
   
@@ -98,17 +98,17 @@
 {% endif %}
 
 <!-- Emissions plan ----------->
-{% if permit.emissionsPlan="yes" %}
+{% if permit.emissionsPlan=="yes" %}
   {{ macros.task( "Upload the emissions management plan", permit.EmissionsPlan1, "/"+folder+"/upload-emissions-management-plan", taskListError ) }}
 {% endif %}
 
 <!-- Odour plan ----------->
-{% if permit.odourManagementPlan = "yes" or permit.odourManagementPlanIncluded = "yes" %}
+{% if permit.odourManagementPlan=="yes" or permit.odourManagementPlanIncluded=="yes" %}
   {{ macros.task( "Upload the odour management plan", permit.OdourPlan1, "/"+folder+"/upload-odour-management-plan", taskListError ) }}
 {% endif %}
 
 <!-- Dust plan ----------->
-{% if dustPlan="yes" %}
+{% if dustPlan=="yes" %}
   {{ macros.task( "Upload the dust management plan", permit.DustPlan1, "/"+folder+"/upload-dust-management-plan", taskListError ) }}
 {% endif %}
 

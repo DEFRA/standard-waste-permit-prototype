@@ -315,7 +315,7 @@
     </div>
 {% endif %}
 
-{% if permit.firePreventionPlan = "yes" or permit.firePreventionPlanIncluded = "yes" %}
+{% if permit.firePreventionPlan=="yes" or permit.firePreventionPlanIncluded=="yes" %}
     <div>
       <dt class="cya-question">Fire prevention plan filename</dt>
       <dd class="cya-answer">{{ permit.FirePlan1 }}</dd>
@@ -327,7 +327,7 @@
 {% if permit.bespokePermit=="bespoke" %}
 
     <div>
-      <dt class="cya-question">Non-tehnical summary</dt>
+      <dt class="cya-question">Non-technical summary</dt>
       <dd class="cya-answer">{{ permit.NonTechSummary1 }}</dd>
       <dd class="cya-change"><a href="/{{folder}}/upload-non-technical-summary">Change</a></dd>
     </div>
@@ -366,7 +366,7 @@
         </div>  
     {% endif %}
     
-    {% if permit.emissionsPlan="yes" %}
+    {% if permit.emissionsPlan=="yes" %}
         <div>
           <dt class="cya-question">Emissions management plan</dt>
           <dd class="cya-answer">{{ permit.EmissionsPlan1 }}</dd>
@@ -374,7 +374,7 @@
         </div>  
     {% endif %}
     
-    {% if permit.odourManagementPlan = "yes" or permit.odourManagementPlanIncluded = "yes" %}
+    {% if permit.odourManagementPlan== "yes" or permit.odourManagementPlanIncluded== "yes" %}
         <div>
           <dt class="cya-question">Odour management plan</dt>
           <dd class="cya-answer">{{ permit.OdourPlan1 }}</dd>
@@ -382,7 +382,7 @@
         </div>  
     {% endif %}
 
-    {% if dustPlan="yes" %}
+    {% if dustPlan=="yes" %}
         <div>
           <dt class="cya-question">Dust management plan</dt>
           <dd class="cya-answer">{{ permit.DustPlan1 }}</dd>
