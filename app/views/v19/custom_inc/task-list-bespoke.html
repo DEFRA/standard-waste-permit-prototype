@@ -96,6 +96,11 @@
   {{ macros.task( "Upload the noise and vibration management plan", permit.NoisePlan1, "/"+folder+"/upload-noise-plan", taskListError ) }}
 {% endif %}
 
+<!-- Emissions plan ----------->
+{% if emissionsPlan="yes" %}
+  {{ macros.task( "Upload the emissions management plan", permit.EmissionsPlan1, "/"+folder+"/upload-emissions-management-plan", taskListError ) }}
+{% endif %}
+
 
 
     </ul>

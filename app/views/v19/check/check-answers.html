@@ -365,6 +365,14 @@
           <dd class="cya-change"><a href="/{{folder}}/upload-noise-plan">Change</a></dd>
         </div>  
     {% endif %}
+    
+    {% if emissionsPlan="yes" %}
+        <div>
+          <dt class="cya-question">Emissions management plan</dt>
+          <dd class="cya-answer">{{ permit.EmissionsPlan1 }}</dd>
+          <dd class="cya-change"><a href="/{{folder}}/upload-noise-plan">Change</a></dd>
+        </div>  
+    {% endif %}
  
 
 {% endif %} 
