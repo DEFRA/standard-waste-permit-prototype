@@ -315,7 +315,7 @@
     </div>
 {% endif %}
 
-{% if permit.firePlanNeeded=="Yes" %}
+{% if permit.firePreventionPlan=="yes" or permit.firePreventionPlanIncluded=="yes" %}
     <div>
       <dt class="cya-question">Fire prevention plan filename</dt>
       <dd class="cya-answer">{{ permit.FirePlan1 }}</dd>
@@ -327,7 +327,7 @@
 {% if permit.bespokePermit=="bespoke" %}
 
     <div>
-      <dt class="cya-question">Non-tehnical summary</dt>
+      <dt class="cya-question">Non-technical summary</dt>
       <dd class="cya-answer">{{ permit.NonTechSummary1 }}</dd>
       <dd class="cya-change"><a href="/{{folder}}/upload-non-technical-summary">Change</a></dd>
     </div>
@@ -349,7 +349,47 @@
       <dd class="cya-answer">{{ permit.ManSysSummary1 }}</dd>
       <dd class="cya-change"><a href="/{{folder}}/upload-management-system-summary">Change</a></dd>
     </div>
-  
+    
+    {% if permit.wasteRecoveryPlan=="yes" %}
+        <div>
+          <dt class="cya-question">Waste recovery plan</dt>
+          <dd class="cya-answer">{{ permit.WasteRecoveryPlan1 }}</dd>
+          <dd class="cya-change"><a href="/{{folder}}/upload-waste-recovery-plan">Change</a></dd>
+        </div>   
+    {% endif %}
+    
+    {% if permit.noisePlan=="yes" %}
+        <div>
+          <dt class="cya-question">Noise and vibration management plan</dt>
+          <dd class="cya-answer">{{ permit.NoisePlan1 }}</dd>
+          <dd class="cya-change"><a href="/{{folder}}/upload-noise-plan">Change</a></dd>
+        </div>  
+    {% endif %}
+    
+    {% if permit.emissionsPlan=="yes" %}
+        <div>
+          <dt class="cya-question">Emissions management plan</dt>
+          <dd class="cya-answer">{{ permit.EmissionsPlan1 }}</dd>
+          <dd class="cya-change"><a href="/{{folder}}/upload-noise-plan">Change</a></dd>
+        </div>  
+    {% endif %}
+    
+    {% if permit.odourManagementPlan== "yes" or permit.odourManagementPlanIncluded== "yes" %}
+        <div>
+          <dt class="cya-question">Odour management plan</dt>
+          <dd class="cya-answer">{{ permit.OdourPlan1 }}</dd>
+          <dd class="cya-change"><a href="/{{folder}}/upload-odour-management-plan">Change</a></dd>
+        </div>  
+    {% endif %}
+
+    {% if dustPlan=="yes" %}
+        <div>
+          <dt class="cya-question">Dust management plan</dt>
+          <dd class="cya-answer">{{ permit.DustPlan1 }}</dd>
+          <dd class="cya-change"><a href="/{{folder}}/upload-dust-management-plan">Change</a></dd>
+        </div>  
+    {% endif %}
+
 {% endif %} 
 
 

@@ -14,7 +14,7 @@
   <div class="grid-row">
       <div class="column-two-thirds">
 
-<h1 class="heading-large">{{title}}</h1>
+<h1 class="heading-large">{{title | safe}}</h1>
 
 
 {% set currentFileName = fileName+visitCount %}
@@ -46,7 +46,7 @@
 {% endif %}
 
 
-<form method="post" action="{{formAction}}">
+<form method="post" action="{{formAction}}" id="uploadForm">
   <input id="visitCount" name="visitCount" value="{{visitCount}}" type="hidden">
   
 
@@ -55,8 +55,7 @@
     <p class="upload_head">Upload files one at a time</p>
     <p class="text form-hint">
       {{ fileTypes }} files<br>
-      30MB maximum file size.<br>
-      You can upload more than one file at a time.
+      30MB maximum file size.
     </p>
 
     <div class="form-group form-uploader">

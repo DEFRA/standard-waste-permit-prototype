@@ -1573,7 +1573,7 @@ router.all('/upload-fire-plan', function (req, res) {
   var fileName="FirePlan"
   var guidanceTop="fireplantop"
   var guidanceBot=""
-  var fileTypes="PDF, DOC, DOCX or JPG"
+  var fileTypes="PDF, DOC, DOCX, XLS, XLSX, JPG, ODT or ODS"
   
   if ( typeof req.session.data['visitCount'] === 'undefined' ) {
     var visitCount = 1
@@ -1774,6 +1774,140 @@ router.all('/upload-tech-manager-details', function (req, res) {
   var guidanceTop="tcmdetailstop"
   var guidanceBot=""
   var fileTypes="PDF, DOC, DOCX or ODT"
+  
+  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
+    var visitCount = 1
+  } else {
+    var visitCount = parseInt(req.session.data['visitCount'])+1
+  }
+  
+  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
+  } else {
+    delete req.session.data['visitCount']
+    // Where to go after the files have been uploaded
+    res.render(folder + "/check/task-list",{
+          "formAction":"/"+ folder + "/check/check-answers"
+    })
+  }
+})
+
+
+// WASTE RECOVERY PLAN UPLOAD ========================================================
+router.all('/upload-waste-recovery-plan', function (req, res) {
+  var path="/upload-waste-recovery-plan"
+  var title="Upload the waste recovery plan"
+  var fileName="WasteRecoveryPlan"
+  var guidanceTop="wasterecoveryplantop"
+  var guidanceBot=""
+  var fileTypes="PDF, DOC, DOCX or JPG"
+  
+  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
+    var visitCount = 1
+  } else {
+    var visitCount = parseInt(req.session.data['visitCount'])+1
+  }
+  
+  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
+  } else {
+    delete req.session.data['visitCount']
+    // Where to go after the files have been uploaded
+    res.render(folder + "/check/task-list",{
+          "formAction":"/"+ folder + "/check/check-answers"
+    })
+  }
+})
+
+
+// NOISE PLAN UPLOAD ========================================================
+router.all('/upload-noise-plan', function (req, res) {
+  var path="/upload-noise-plan"
+  var title="Upload the noise and vibration management plan"
+  var fileName="NoisePlan"
+  var guidanceTop="noiseplantop"
+  var guidanceBot=""
+  var fileTypes="PDF, DOC, DOCX or JPG"
+  
+  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
+    var visitCount = 1
+  } else {
+    var visitCount = parseInt(req.session.data['visitCount'])+1
+  }
+  
+  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
+  } else {
+    delete req.session.data['visitCount']
+    // Where to go after the files have been uploaded
+    res.render(folder + "/check/task-list",{
+          "formAction":"/"+ folder + "/check/check-answers"
+    })
+  }
+})
+
+
+// EMISSIONS PLAN UPLOAD ========================================================
+router.all('/upload-emissions-management-plan', function (req, res) {
+  var path="/upload-emissions-management-plan"
+  var title="Upload the emissions management plan"
+  var fileName="EmissionsPlan"
+  var guidanceTop="emissionsplantop"
+  var guidanceBot=""
+  var fileTypes="PDF, DOC, DOCX or JPG"
+  
+  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
+    var visitCount = 1
+  } else {
+    var visitCount = parseInt(req.session.data['visitCount'])+1
+  }
+  
+  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
+  } else {
+    delete req.session.data['visitCount']
+    // Where to go after the files have been uploaded
+    res.render(folder + "/check/task-list",{
+          "formAction":"/"+ folder + "/check/check-answers"
+    })
+  }
+})
+
+
+// ODOUR MANAGEMENT PLAN UPLOAD ========================================================
+router.all('/upload-odour-management-plan', function (req, res) {
+  var path="/upload-odour-management-plan"
+  var title="Upload the odour management plan"
+  var fileName="OdourPlan"
+  var guidanceTop="odourplantop"
+  var guidanceBot=""
+  var fileTypes="PDF, DOC, DOCX or JPG"
+  
+  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
+    var visitCount = 1
+  } else {
+    var visitCount = parseInt(req.session.data['visitCount'])+1
+  }
+  
+  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
+  } else {
+    delete req.session.data['visitCount']
+    // Where to go after the files have been uploaded
+    res.render(folder + "/check/task-list",{
+          "formAction":"/"+ folder + "/check/check-answers"
+    })
+  }
+})
+
+// DUST MANAGEMENT PLAN UPLOAD ========================================================
+router.all('/upload-dust-management-plan', function (req, res) {
+  var path="/upload-dust-management-plan"
+  var title="Upload the dust management plan"
+  var fileName="DustPlan"
+  var guidanceTop="dustplantop"
+  var guidanceBot=""
+  var fileTypes="PDF, DOC, DOCX or JPG"
   
   if ( typeof req.session.data['visitCount'] === 'undefined' ) {
     var visitCount = 1
