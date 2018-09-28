@@ -315,7 +315,7 @@
     </div>
 {% endif %}
 
-{% if permit.firePlanNeeded=="Yes" %}
+{% if permit.firePreventionPlan = "yes" or permit.firePreventionPlanIncluded = "yes" %}
     <div>
       <dt class="cya-question">Fire prevention plan filename</dt>
       <dd class="cya-answer">{{ permit.FirePlan1 }}</dd>
@@ -371,6 +371,14 @@
           <dt class="cya-question">Emissions management plan</dt>
           <dd class="cya-answer">{{ permit.EmissionsPlan1 }}</dd>
           <dd class="cya-change"><a href="/{{folder}}/upload-noise-plan">Change</a></dd>
+        </div>  
+    {% endif %}
+    
+    {% if permit.odourManagementPlan = "yes" or permit.odourManagementPlanIncluded = "yes" %}
+        <div>
+          <dt class="cya-question">Odour management plan</dt>
+          <dd class="cya-answer">{{ permit.OdourPlan1 }}</dd>
+          <dd class="cya-change"><a href="/{{folder}}/upload-odour-management-plan">Change</a></dd>
         </div>  
     {% endif %}
  
