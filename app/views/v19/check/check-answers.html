@@ -222,6 +222,51 @@
       <dd class="cya-change"><a href="/{{folder}}/evidence/bankruptcy-insolvency">Change <span class="visuallyhidden"> bankruptcy or insolvency</span></a></dd>
     </div>
     
+<!-- BASIC details -->
+{% if permit.bespokePermit=="bespoke" %}  
+    <div>
+      <dt class="cya-question">Name of operation</dt>
+      <dd class="cya-answer">{{permit.waste_operation_name}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/bespoke/waste-operation">Change</a></dd>
+    </div>
+    
+    <div>
+      <dt class="cya-question">Description of operation</dt>
+      <dd class="cya-answer">{{permit.waste_operation_description}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/bespoke/waste-operation">Change</a></dd>
+    </div>
+    
+    <div>
+      <dt class="cya-question">Total hazardous treatment capacity</dt>
+      <dd class="cya-answer">{{permit.hazardous_waste_treatment_capacity}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/bespoke/treatment-capacity">Change</a></dd>
+    </div>
+    
+    <div>
+      <dt class="cya-question">Total non-hazardous treatment capacity</dt>
+      <dd class="cya-answer">{{permit.nonhazardous_waste_treatment_capacity}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/bespoke/treatment-capacity">Change</a></dd>
+    </div>
+    
+    <div>
+      <dt class="cya-question">Maximum amount of waste stored</dt>
+      <dd class="cya-answer">{{permit.max_waste_stored}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/bespoke/waste-stored">Change</a></dd>
+    </div>
+    
+    <div>
+      <dt class="cya-question">Annual throughput</dt>
+      <dd class="cya-answer">{{permit.annual_throughput}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/bespoke/waste-stored">Change</a></dd>
+    </div>
+    
+    
+    
+{% endif %}    
+    
+    
+    
+    
 <!-- Substance release consultations -->
 {% if permit.bespokePermit=="bespoke" %}
 {% if permit.sewerageUndertakerName!=="undefined"

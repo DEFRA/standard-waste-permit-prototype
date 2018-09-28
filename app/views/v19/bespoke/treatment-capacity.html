@@ -19,29 +19,27 @@
 
       <form method="post" action="{{formAction}}">
 
-        <div class="form-group">
-          <label class="form-label" for="companySecretaryEmail">
-            Total hazardous waste treatment capacity (if this applies)
-            <span class="form-hint">Include the unit for total landfill capacity (cubic metres), deposit for recovery capacity (tonnes per day), waste treatment capacity or waste storage capacity (tonnes)</span>
+      <div class="form-group">
+          <label class="form-label" for="hazardous_waste_treatment_capacity">
+          Total hazardous waste treatment capacity (if this applies)
+          <span class="form-hint">Include the unit for total landfill capacity (cubic metres), deposit for recovery capacity (tonnes per day), waste treatment capacity or waste storage capacity (tonnes)</span>
           </label>
-          <input class="form-control form-control-char-20" id="" name="" value="">
-<p>
-</br>
-</p>
-          <label class="form-label" for="companySecretaryEmail">
-            Total non-hazardous waste treatment capacity (if this applies)
-            <span class="form-hint">Units as above</span>
+          <input class="form-control form-control-char-20" id="hazardous_waste_treatment_capacity" name="hazardous_waste_treatment_capacity" value="{{permit.hazardous_waste_treatment_capacity}}">
+      </div>
 
+      <div class="form-group">
+          <label class="form-label" for="nonhazardous_waste_treatment_capacity">
+          Total non-hazardous waste treatment capacity (if this applies)
+          <span class="form-hint">Units as above</span>
           </label>
-        
-          <input class="form-control form-control-char-20"></input>
+          <input class="form-control form-control-char-20" name="nonhazardous_waste_treatment_capacity" id="nonhazardous_waste_treatment_capacity" value="{{permit.nonhazardous_waste_treatment_capacity}}">
+      </div>
 
-        </div>
-
-
-        <div class="form-group">
+      <div class="form-group">
           <input type="submit" class="button" value="Continue">
-        </div>
+      </div>
+      
+      
       </form>
 
 
