@@ -88,6 +88,9 @@
     <!-- Provide a management system summary ----------->
     {{ macros.task( "Provide a management system summary", permit.ManSysSummary1, "/"+folder+"/upload-management-system-summary", taskListError ) }}
     
+    <!-- List technical standards ----------->
+    {{ macros.task( "List the technical standards you use", permit.TechStandards1, "/"+folder+"/list-technical-standards", taskListError ) }}
+    
     <!-- Provide a waste recovery plan CONDTIONAL ----------->
     {% if permit.wasteRecoveryPlan=="yes" %}
         {{ macros.task( "Upload a waste recovery plan", permit.WasteRecoveryPlan1, "/"+folder+"/upload-waste-recovery-plan", taskListError ) }}
