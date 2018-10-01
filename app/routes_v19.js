@@ -1624,7 +1624,7 @@ router.all('/upload-non-technical-summary', function (req, res) {
   var path="/upload-non-technical-summary"
   var title="Provide a non-technical summary"
   var fileName="NonTechSummary"
-  var guidanceTop="nontechsummary"
+  var guidanceTop="nontechsummarytop"
   var guidanceBot=""
   var fileTypes="PDF, JPG, DOC or DOCX"
   
@@ -1676,9 +1676,9 @@ router.all('/upload-waste-codes', function (req, res) {
 // ENVIRONMENTAL RISK ASSESSMENT UPLOAD ========================================================
 router.all('/upload-environmental-risk-assessment', function (req, res) {
   var path="/upload-environmental-risk-assessment"
-  var title="Upload environmental risk assessment"
+  var title="Upload the environmental risk assessment"
   var fileName="EnvRiskAssessment"
-  var guidanceTop=""
+  var guidanceTop="envriskassesstop"
   var guidanceBot=""
   var fileTypes="PDF, JPG, DOC or DOCX"
   
