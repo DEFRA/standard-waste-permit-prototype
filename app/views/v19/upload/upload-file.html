@@ -16,6 +16,8 @@
 
 <h1 class="heading-large">{{title | safe}}</h1>
 
+{{ permit|dump }}
+
 
 {% set currentFileName = fileName+visitCount %}
 {% set fileName1 = fileName+"1" %}
@@ -71,6 +73,7 @@
         <label for="uploadOtherFile">
           Upload another file
         </label>
+        <input id="dontUploadOtherFile" name="dontUploadOtherFile" type="hidden">
       </div>
     </div>
     <div class="panel panel-border-narrow js-hidden" id="uploadAnotherFile">
@@ -99,6 +102,12 @@
               filename = filename.substring(lastIndex + 1);
           }
           document.getElementById('filename').value = filename;
+      }
+      document.getElementById('uploadForm').onsubmit = setUploadOtherOnSubmit;
+      function setUploadOtherOnSubmit() {
+          if ( document.getElementById('uploadOtherFile').checked==false ) {
+              document.getElementById('dontUploadOtherFile').value="no";
+          }
       }
     </script>
     

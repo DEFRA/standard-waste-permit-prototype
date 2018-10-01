@@ -17,7 +17,7 @@ var sample = require('./views/'+folder+'/custom_inc/sample-permit.js')
 
 // HTML for standard buttons
 var backlink = '<a href="javascript:history.back()" class="link-back">Back</a>'
-var submitButton = '<button type="submit" class="button" name="Continue">Continue</button>'
+var submitButton = '<button type="submit" id="continueButton" class="button" name="Continue">Continue</button>'
 var completeLink = ''
 // completeLink WAS <span id="completeLink"><a href="#" id="completeLater">Complete later</a></span>
 
@@ -1608,10 +1608,16 @@ router.all('/upload-site-plan', function (req, res) {
     var visitCount = parseInt(req.session.data['visitCount'])+1
   }
   
-  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
+  // req.session.data[fileName+'Visited'] === 'undefined' && (
+  if(  visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
     res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
   } else {
     delete req.session.data['visitCount']
+    
+    if (req.session.data[fileName+'1']=="") delete req.session.data[fileName+'1']
+    if (req.session.data[fileName+'2']=="") delete req.session.data[fileName+'2']
+    req.session.data[fileName+'Visited']="yes"
+    
     // Where to go after the files have been uploaded
     res.render(folder + "/check/task-list",{
           "formAction":"/"+ folder + "/check/check-answers"
