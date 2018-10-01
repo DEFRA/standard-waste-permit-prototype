@@ -29,12 +29,11 @@
 
 {% for aNumber, aData in activities %}
     {% if aNumber==firstpermitID %}
-        {% set activitytext = firstpermitID + " " + aData.D_Activity_Title | lower %}
+        {% set activitytext = aData.D_Activity_Title | lower + " ("+firstpermitID + ")" %}
     {% endif %}
 {% endfor %}
 
 
-  <p>You can find guidance in the <a href="">waste R and D code flowchart.</a></p>
   <h2 class="heading-medium">D codes for  {{activitytext}}</h2>
   <div class="hint">Select all that apply. Leave blank if there is no recovery for this activity.</div>
 </br>
