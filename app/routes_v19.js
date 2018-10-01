@@ -1624,7 +1624,7 @@ router.all('/upload-non-technical-summary', function (req, res) {
   var path="/upload-non-technical-summary"
   var title="Provide a non-technical summary"
   var fileName="NonTechSummary"
-  var guidanceTop=""
+  var guidanceTop="nontechsummary"
   var guidanceBot=""
   var fileTypes="PDF, JPG, DOC or DOCX"
   
