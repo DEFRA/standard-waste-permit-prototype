@@ -1575,20 +1575,17 @@ router.all('/upload-fire-plan', function (req, res) {
   var guidanceBot=""
   var fileTypes="PDF, DOC, DOCX, XLS, XLSX, JPG, ODT or ODS"
   
-  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
-    var visitCount = 1
-  } else {
-    var visitCount = parseInt(req.session.data['visitCount'])+1
-  }
-  
-  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
-    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
-  } else {
-    delete req.session.data['visitCount']
-    // Where to go after the files have been uploaded
+  if ( req.session.data['dontUploadOtherFile']=="yes" ){ // show task list
+    delete req.session.data['dontUploadOtherFile']
+    if (req.session.data[fileName+'1']=="") delete req.session.data[fileName+'1']
+    if (req.session.data[fileName+'2']=="") delete req.session.data[fileName+'2']
+    if (req.session.data[fileName+'3']=="") delete req.session.data[fileName+'3']
+    // Back to the task list
     res.render(folder + "/check/task-list",{
           "formAction":"/"+ folder + "/check/check-answers"
     })
+  } else {  // show upload page
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
   }
 })
 
@@ -1602,26 +1599,17 @@ router.all('/upload-site-plan', function (req, res) {
   var guidanceBot=""
   var fileTypes="PDF or JPG"
   
-  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
-    var visitCount = 1
-  } else {
-    var visitCount = parseInt(req.session.data['visitCount'])+1
-  }
-  
-  // req.session.data[fileName+'Visited'] === 'undefined' && (
-  if(  visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
-    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
-  } else {
-    delete req.session.data['visitCount']
-    
+  if ( req.session.data['dontUploadOtherFile']=="yes" ){ // show task list
+    delete req.session.data['dontUploadOtherFile']
     if (req.session.data[fileName+'1']=="") delete req.session.data[fileName+'1']
     if (req.session.data[fileName+'2']=="") delete req.session.data[fileName+'2']
-    req.session.data[fileName+'Visited']="yes"
-    
-    // Where to go after the files have been uploaded
+    if (req.session.data[fileName+'3']=="") delete req.session.data[fileName+'3']
+    // Back to the task list
     res.render(folder + "/check/task-list",{
           "formAction":"/"+ folder + "/check/check-answers"
     })
+  } else {  // show upload page
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
   }
 })
 
@@ -1634,20 +1622,17 @@ router.all('/upload-non-technical-summary', function (req, res) {
   var guidanceBot=""
   var fileTypes="PDF, JPG, DOC or DOCX"
   
-  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
-    var visitCount = 1
-  } else {
-    var visitCount = parseInt(req.session.data['visitCount'])+1
-  }
-  
-  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
-    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
-  } else {
-    delete req.session.data['visitCount']
-    // Where to go after the files have been uploaded
+  if ( req.session.data['dontUploadOtherFile']=="yes" ){ // show task list
+    delete req.session.data['dontUploadOtherFile']
+    if (req.session.data[fileName+'1']=="") delete req.session.data[fileName+'1']
+    if (req.session.data[fileName+'2']=="") delete req.session.data[fileName+'2']
+    if (req.session.data[fileName+'3']=="") delete req.session.data[fileName+'3']
+    // Back to the task list
     res.render(folder + "/check/task-list",{
           "formAction":"/"+ folder + "/check/check-answers"
     })
+  } else {  // show upload page
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
   }
 })
 
@@ -1661,20 +1646,17 @@ router.all('/upload-waste-codes', function (req, res) {
   var guidanceBot=""
   var fileTypes="XLSX, XLS, ODS or CSV"
   
-  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
-    var visitCount = 1
-  } else {
-    var visitCount = parseInt(req.session.data['visitCount'])+1
-  }
-  
-  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
-    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
-  } else {
-    delete req.session.data['visitCount']
-    // Where to go after the files have been uploaded
+  if ( req.session.data['dontUploadOtherFile']=="yes" ){ // show task list
+    delete req.session.data['dontUploadOtherFile']
+    if (req.session.data[fileName+'1']=="") delete req.session.data[fileName+'1']
+    if (req.session.data[fileName+'2']=="") delete req.session.data[fileName+'2']
+    if (req.session.data[fileName+'3']=="") delete req.session.data[fileName+'3']
+    // Back to the task list
     res.render(folder + "/check/task-list",{
           "formAction":"/"+ folder + "/check/check-answers"
     })
+  } else {  // show upload page
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
   }
 })
 
@@ -1688,20 +1670,17 @@ router.all('/upload-environmental-risk-assessment', function (req, res) {
   var guidanceBot=""
   var fileTypes="PDF, JPG, DOC or DOCX"
   
-  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
-    var visitCount = 1
-  } else {
-    var visitCount = parseInt(req.session.data['visitCount'])+1
-  }
-  
-  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
-    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
-  } else {
-    delete req.session.data['visitCount']
-    // Where to go after the files have been uploaded
+  if ( req.session.data['dontUploadOtherFile']=="yes" ){ // show task list
+    delete req.session.data['dontUploadOtherFile']
+    if (req.session.data[fileName+'1']=="") delete req.session.data[fileName+'1']
+    if (req.session.data[fileName+'2']=="") delete req.session.data[fileName+'2']
+    if (req.session.data[fileName+'3']=="") delete req.session.data[fileName+'3']
+    // Back to the task list
     res.render(folder + "/check/task-list",{
           "formAction":"/"+ folder + "/check/check-answers"
     })
+  } else {  // show upload page
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
   }
 })
 
@@ -1714,20 +1693,17 @@ router.all('/upload-management-system-summary', function (req, res) {
   var guidanceBot=""
   var fileTypes="PDF, JPG, DOC or DOCX"
   
-  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
-    var visitCount = 1
-  } else {
-    var visitCount = parseInt(req.session.data['visitCount'])+1
-  }
-  
-  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
-    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
-  } else {
-    delete req.session.data['visitCount']
-    // Where to go after the files have been uploaded
+  if ( req.session.data['dontUploadOtherFile']=="yes" ){ // show task list
+    delete req.session.data['dontUploadOtherFile']
+    if (req.session.data[fileName+'1']=="") delete req.session.data[fileName+'1']
+    if (req.session.data[fileName+'2']=="") delete req.session.data[fileName+'2']
+    if (req.session.data[fileName+'3']=="") delete req.session.data[fileName+'3']
+    // Back to the task list
     res.render(folder + "/check/task-list",{
           "formAction":"/"+ folder + "/check/check-answers"
     })
+  } else {  // show upload page
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
   }
 })
 
@@ -1753,21 +1729,17 @@ router.all('/evidence/techcomp/get-evidence', function (req, res) {
     var guidanceTop="gettingqualtop"
   }
   
-  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
-    var visitCount = 1
-  } else {
-    var visitCount = parseInt(req.session.data['visitCount'])+1
-  }
-  
-  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
-    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
-  } else {
-    delete req.session.data['visitCount']
-    // Where to go after the files have been uploaded
-    //res.render(folder + "/upload-tech-manager-details",{
-    //      "formAction":"/"+ folder + "/check/task-list"
-    //})
-    res.redirect("/"+ folder + "/upload-tech-manager-details")
+  if ( req.session.data['dontUploadOtherFile']=="yes" ){ // show task list
+    delete req.session.data['dontUploadOtherFile']
+    if (req.session.data[fileName+'1']=="") delete req.session.data[fileName+'1']
+    if (req.session.data[fileName+'2']=="") delete req.session.data[fileName+'2']
+    if (req.session.data[fileName+'3']=="") delete req.session.data[fileName+'3']
+    // Back to the task list
+    res.render(folder + "/check/task-list",{
+          "formAction":"/"+ folder + "/check/check-answers"
+    })
+  } else {  // show upload page
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
   }
 })
 
@@ -1781,20 +1753,17 @@ router.all('/upload-tech-manager-details', function (req, res) {
   var guidanceBot=""
   var fileTypes="PDF, DOC, DOCX or ODT"
   
-  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
-    var visitCount = 1
-  } else {
-    var visitCount = parseInt(req.session.data['visitCount'])+1
-  }
-  
-  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
-    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
-  } else {
-    delete req.session.data['visitCount']
-    // Where to go after the files have been uploaded
+  if ( req.session.data['dontUploadOtherFile']=="yes" ){ // show task list
+    delete req.session.data['dontUploadOtherFile']
+    if (req.session.data[fileName+'1']=="") delete req.session.data[fileName+'1']
+    if (req.session.data[fileName+'2']=="") delete req.session.data[fileName+'2']
+    if (req.session.data[fileName+'3']=="") delete req.session.data[fileName+'3']
+    // Back to the task list
     res.render(folder + "/check/task-list",{
           "formAction":"/"+ folder + "/check/check-answers"
     })
+  } else {  // show upload page
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
   }
 })
 
@@ -1808,20 +1777,17 @@ router.all('/upload-waste-recovery-plan', function (req, res) {
   var guidanceBot=""
   var fileTypes="PDF, DOC, DOCX or JPG"
   
-  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
-    var visitCount = 1
-  } else {
-    var visitCount = parseInt(req.session.data['visitCount'])+1
-  }
-  
-  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
-    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
-  } else {
-    delete req.session.data['visitCount']
-    // Where to go after the files have been uploaded
+  if ( req.session.data['dontUploadOtherFile']=="yes" ){ // show task list
+    delete req.session.data['dontUploadOtherFile']
+    if (req.session.data[fileName+'1']=="") delete req.session.data[fileName+'1']
+    if (req.session.data[fileName+'2']=="") delete req.session.data[fileName+'2']
+    if (req.session.data[fileName+'3']=="") delete req.session.data[fileName+'3']
+    // Back to the task list
     res.render(folder + "/check/task-list",{
           "formAction":"/"+ folder + "/check/check-answers"
     })
+  } else {  // show upload page
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
   }
 })
 
@@ -1835,20 +1801,17 @@ router.all('/upload-noise-plan', function (req, res) {
   var guidanceBot=""
   var fileTypes="PDF, DOC, DOCX or JPG"
   
-  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
-    var visitCount = 1
-  } else {
-    var visitCount = parseInt(req.session.data['visitCount'])+1
-  }
-  
-  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
-    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
-  } else {
-    delete req.session.data['visitCount']
-    // Where to go after the files have been uploaded
+  if ( req.session.data['dontUploadOtherFile']=="yes" ){ // show task list
+    delete req.session.data['dontUploadOtherFile']
+    if (req.session.data[fileName+'1']=="") delete req.session.data[fileName+'1']
+    if (req.session.data[fileName+'2']=="") delete req.session.data[fileName+'2']
+    if (req.session.data[fileName+'3']=="") delete req.session.data[fileName+'3']
+    // Back to the task list
     res.render(folder + "/check/task-list",{
           "formAction":"/"+ folder + "/check/check-answers"
     })
+  } else {  // show upload page
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
   }
 })
 
@@ -1862,20 +1825,17 @@ router.all('/upload-emissions-management-plan', function (req, res) {
   var guidanceBot=""
   var fileTypes="PDF, DOC, DOCX or JPG"
   
-  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
-    var visitCount = 1
-  } else {
-    var visitCount = parseInt(req.session.data['visitCount'])+1
-  }
-  
-  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
-    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
-  } else {
-    delete req.session.data['visitCount']
-    // Where to go after the files have been uploaded
+  if ( req.session.data['dontUploadOtherFile']=="yes" ){ // show task list
+    delete req.session.data['dontUploadOtherFile']
+    if (req.session.data[fileName+'1']=="") delete req.session.data[fileName+'1']
+    if (req.session.data[fileName+'2']=="") delete req.session.data[fileName+'2']
+    if (req.session.data[fileName+'3']=="") delete req.session.data[fileName+'3']
+    // Back to the task list
     res.render(folder + "/check/task-list",{
           "formAction":"/"+ folder + "/check/check-answers"
     })
+  } else {  // show upload page
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
   }
 })
 
@@ -1888,20 +1848,17 @@ router.all('/upload-emissions-to-air-water-land', function (req, res) {
   var guidanceBot=""
   var fileTypes="PDF, DOC, DOCX or JPG"
   
-  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
-    var visitCount = 1
-  } else {
-    var visitCount = parseInt(req.session.data['visitCount'])+1
-  }
-  
-  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
-    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
-  } else {
-    delete req.session.data['visitCount']
-    // Where to go after the files have been uploaded
+  if ( req.session.data['dontUploadOtherFile']=="yes" ){ // show task list
+    delete req.session.data['dontUploadOtherFile']
+    if (req.session.data[fileName+'1']=="") delete req.session.data[fileName+'1']
+    if (req.session.data[fileName+'2']=="") delete req.session.data[fileName+'2']
+    if (req.session.data[fileName+'3']=="") delete req.session.data[fileName+'3']
+    // Back to the task list
     res.render(folder + "/check/task-list",{
           "formAction":"/"+ folder + "/check/check-answers"
     })
+  } else {  // show upload page
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
   }
 })
 
@@ -1915,20 +1872,17 @@ router.all('/upload-odour-management-plan', function (req, res) {
   var guidanceBot=""
   var fileTypes="PDF, DOC, DOCX or JPG"
   
-  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
-    var visitCount = 1
-  } else {
-    var visitCount = parseInt(req.session.data['visitCount'])+1
-  }
-  
-  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
-    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
-  } else {
-    delete req.session.data['visitCount']
-    // Where to go after the files have been uploaded
+  if ( req.session.data['dontUploadOtherFile']=="yes" ){ // show task list
+    delete req.session.data['dontUploadOtherFile']
+    if (req.session.data[fileName+'1']=="") delete req.session.data[fileName+'1']
+    if (req.session.data[fileName+'2']=="") delete req.session.data[fileName+'2']
+    if (req.session.data[fileName+'3']=="") delete req.session.data[fileName+'3']
+    // Back to the task list
     res.render(folder + "/check/task-list",{
           "formAction":"/"+ folder + "/check/check-answers"
     })
+  } else {  // show upload page
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
   }
 })
 
@@ -1941,20 +1895,17 @@ router.all('/upload-dust-management-plan', function (req, res) {
   var guidanceBot=""
   var fileTypes="PDF, DOC, DOCX or JPG"
   
-  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
-    var visitCount = 1
-  } else {
-    var visitCount = parseInt(req.session.data['visitCount'])+1
-  }
-  
-  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
-    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
-  } else {
-    delete req.session.data['visitCount']
-    // Where to go after the files have been uploaded
+  if ( req.session.data['dontUploadOtherFile']=="yes" ){ // show task list
+    delete req.session.data['dontUploadOtherFile']
+    if (req.session.data[fileName+'1']=="") delete req.session.data[fileName+'1']
+    if (req.session.data[fileName+'2']=="") delete req.session.data[fileName+'2']
+    if (req.session.data[fileName+'3']=="") delete req.session.data[fileName+'3']
+    // Back to the task list
     res.render(folder + "/check/task-list",{
           "formAction":"/"+ folder + "/check/check-answers"
     })
+  } else {  // show upload page
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
   }
 })
 
@@ -1968,20 +1919,17 @@ router.all('/list-technical-standards', function (req, res) {
   var guidanceBot=""
   var fileTypes="PDF, JPG, DOC or DOCX"
   
-  if ( typeof req.session.data['visitCount'] === 'undefined' ) {
-    var visitCount = 1
-  } else {
-    var visitCount = parseInt(req.session.data['visitCount'])+1
-  }
-  
-  if( visitCount===1 || visitCount===2 || req.session.data['uploadOtherFile']=="yes" ){
-    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"visitCount":visitCount,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
-  } else {
-    delete req.session.data['visitCount']
-    // Where to go after the files have been uploaded
+  if ( req.session.data['dontUploadOtherFile']=="yes" ){ // show task list
+    delete req.session.data['dontUploadOtherFile']
+    if (req.session.data[fileName+'1']=="") delete req.session.data[fileName+'1']
+    if (req.session.data[fileName+'2']=="") delete req.session.data[fileName+'2']
+    if (req.session.data[fileName+'3']=="") delete req.session.data[fileName+'3']
+    // Back to the task list
     res.render(folder + "/check/task-list",{
           "formAction":"/"+ folder + "/check/check-answers"
     })
+  } else {  // show upload page
+    res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
   }
 })
 
