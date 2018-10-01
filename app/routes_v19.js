@@ -1704,7 +1704,7 @@ router.all('/upload-management-system-summary', function (req, res) {
   var path="/upload-management-system-summary"
   var title="Upload a summary of your management system"
   var fileName="ManSysSummary"
-  var guidanceTop=""
+  var guidanceTop="mansyssummarytop"
   var guidanceBot=""
   var fileTypes="PDF, JPG, DOC or DOCX"
   
