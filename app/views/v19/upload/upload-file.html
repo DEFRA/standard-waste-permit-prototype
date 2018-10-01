@@ -16,11 +16,20 @@
 
 <h1 class="heading-large">{{title | safe}}</h1>
 
-
-{% set currentFileName = fileName+visitCount %}
 {% set fileName1 = fileName+"1" %}
 {% set fileName2 = fileName+"2" %}
+{% set fileName3 = fileName+"3" %}
+{% set fileName4 = fileName+"4" %}
 
+{% if permit[fileName1] | typeof == "undefined" %}
+  {% set currentFileName = fileName1 %}
+{% elseif permit[fileName2] | typeof == "undefined" %}
+    {% set currentFileName = fileName2 %}
+{% elseif permit[fileName3] | typeof == "undefined" %}
+      {% set currentFileName = fileName3 %}
+{% else %}
+  {% set currentFileName = fileName4 %}
+{% endif %}
 
 {% if guidanceTop!="" %}
   {% include folder+"/custom_inc/uploadGuidance/"+guidanceTop+".html" %}
@@ -39,6 +48,7 @@
 
 {{ macros.uploadList2( permit[fileName1],fileName1 ) if permit[fileName1] | typeof !== "undefined" and permit[fileName1] != "" }}
 {{ macros.uploadList2( permit[fileName2],fileName2 ) if permit[fileName2] | typeof !== "undefined" and permit[fileName2] != "" }}
+{{ macros.uploadList2( permit[fileName3],fileName3 ) if permit[fileName3] | typeof !== "undefined" and permit[fileName3] != "" }}
 
 
 {% if permit[fileName1] | typeof != "undefined" %}
@@ -47,10 +57,7 @@
 
 
 <form method="post" action="{{formAction}}" id="uploadForm">
-  <input id="visitCount" name="visitCount" value="{{visitCount}}" type="hidden">
   
-
-
 {% if permit[fileName1] | typeof == "undefined" %}
     <p class="upload_head">Upload files one at a time</p>
     <p class="text form-hint">
@@ -71,6 +78,7 @@
         <label for="uploadOtherFile">
           Upload another file
         </label>
+        <input id="dontUploadOtherFile" name="dontUploadOtherFile" type="hidden">
       </div>
     </div>
     <div class="panel panel-border-narrow js-hidden" id="uploadAnotherFile">
@@ -99,6 +107,12 @@
               filename = filename.substring(lastIndex + 1);
           }
           document.getElementById('filename').value = filename;
+      }
+      document.getElementById('uploadForm').onsubmit = setUploadOtherOnSubmit;
+      function setUploadOtherOnSubmit() {
+          if ( document.getElementById('uploadOtherFile').checked==false ) {
+              document.getElementById('dontUploadOtherFile').value="yes";
+          }
       }
     </script>
     
