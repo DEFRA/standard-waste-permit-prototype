@@ -25,7 +25,7 @@
       {% if permit.GOTEMAIL %}
 
 
-            <form action="/v12/check/task-list" method="post">
+            <form action="/{{folder}}/check/task-list" method="post">
 
 
       <p>We sent a secure link to <span class="bold">{{ permit.saveReturnEmail }}</span> that allows you to return to your application at any time.</p>
