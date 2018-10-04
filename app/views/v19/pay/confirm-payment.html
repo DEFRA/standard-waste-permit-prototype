@@ -50,10 +50,13 @@
   		      </tr>
   		      <tr>
   		        <td>Amount to pay</td>
-              {% if permit.bespokePermit=="bespoke" %}
-              <td class="table-info">{{permit.totalcost | formatnumber }}</td>
-              {% endif %}
-  		        <td class="table-info">{{ permit.permitCost }}</td>
+              <td class="table-info">
+                {% if permit.bespokePermit=="bespoke" %}
+                    {{ permit.totalcost | int | formatnumber }}
+                {% else %}
+                   {{ permit.permitCost }}
+                {% endif %}
+              </td>
   		      </tr>
   		    </tbody>
     		</table>
