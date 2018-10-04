@@ -77,7 +77,13 @@
         <span class="bold-small">
           Amount:
         </span>
-        <span class="text font-small">£1,630</span>
+        <span class="text font-small">
+          {% if permit.bespokePermit=="bespoke" %}
+            {{ permit.totalcost | int | formatnumber }}
+          {% else %}
+            {{ permit.permitCost }}
+          {% endif %}
+        </span>
       <br>
         <span class="bold-small">
           Sort code:
