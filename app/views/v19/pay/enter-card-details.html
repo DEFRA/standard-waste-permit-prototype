@@ -107,10 +107,13 @@
               {% endif %}
 
   			       <h3>Amount to pay:</h3>
-  			       <p class="payment-amount">{{ permit.permitCost }}</p>
-               {% if permit.bespokePermit=="bespoke" %}
-               <p class="payment-amount">{{permit.totalcost | formatnumber }}</p>
-               {% endif %}
+  			       <p class="payment-amount">
+                 {% if permit.bespokePermit=="bespoke" %}
+                     {{ permit.totalcost | int | formatnumber }}
+                 {% else %}
+                    {{ permit.permitCost }}
+                 {% endif %}
+               </p>
   			</div>
   		</div>
   	  </div>
@@ -121,7 +124,7 @@
   	 			<input class="button" type="submit" value="Continue">
   	 		</div>
   	 		<div class="back">
-  				<a href="/v16/pay/payment-method">Cancel payment</a>
+  				<a href="/{{folder}}/pay/payment-method">Cancel payment</a>
   			</div>
   	 </div>
     </div>

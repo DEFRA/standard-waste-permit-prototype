@@ -101,12 +101,12 @@
 
 {{ "Fire prevention plan assessment<br>" | safe 
   if firePreventionPlan=="yes" 
-  or permit.firePreventionPlanIncluded=="yes" }}
+  or permit.firePreventionPlan=="yes" }}
 
 {{ "Habitats assessment assessment<br>" | safe 
   if permit.habitatsAssessment=="yes" }}
 
-{{ "Noise and vibration management plan assessment<br>" 
+{{ "Noise and vibration management plan assessment<br>" | safe  
   if permit.noisePlan=="yes" }}
 
 {{ "Odour management plan assessment<br>" | safe 
