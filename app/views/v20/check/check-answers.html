@@ -1,0 +1,535 @@
+{% extends "layout.html" %}
+
+{% set title = "Check your answers" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+{% import folder+"/custom_inc/macros.html" as macros %}
+{% from folder+"/bespoke/activities-assessments/json/bespoke-assessment-list.html" import assessments %}
+{% from folder+"/bespoke/activities-assessments/json/bespoke_activities.html" import activities %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+  <h1 class="heading-large">{{title}}</h1>
+
+  <dl class="govuk-check-your-answers cya-questions-short">
+    
+    
+{% if permit.bespokePermit=="bespoke" %}
+    
+<!-- Output chosen activities ############################################ -->
+<div>
+  <dt class="cya-question">Activities</dt>
+  <dd class="cya-answer">
+    
+{% for ref in permit.chosenPermitID %}
+      {% for aNumber, aData in activities %}
+            {% if aNumber==ref %}
+
+            <!-- Output as a paragraph ============================== -->
+                  {{ aData.D_Activity_Title }} ({{ ref }})</br>
+            {% endif %}
+      {% else %}
+      <p>No activities</p>
+      {% endfor %}
+{% else %}
+    <p>You must select at least one activity</p>
+{% endfor %}
+    
+    </dd>
+    <dd class="cya-change"><a href="/{{folder}}/bespoke/mobile-plant">Change</a></dd>
+  </div> 
+
+
+  <!-- Output assessments ############################################ -->
+ 
+  <div>
+    <dt class="cya-question">Assessments</dt>
+    <dd class="cya-answer">
+    
+      <!-- Output chosen assessments ############################################ -->
+      <!-- Output chosen assessments ############################################ -->
+
+      {{ "Ammonia modelling assessment<br>" | safe
+        if permit.ammoniaModelling=="yes" }}
+
+      {{ "Dust and bio-aerosol management plan<br>" | safe 
+        if permit.dustPlan=="yes" }}
+
+      {{ "Emissions management plan assessment<br>" | safe
+        if permit.emissionsPlan=="yes" }}
+
+      {{ "Fire prevention plan assessment<br>" | safe 
+        if firePreventionPlan=="yes" 
+        or permit.firePreventionPlanIncluded=="yes" }}
+
+      {{ "Habitats assessment assessment<br>" | safe 
+        if permit.habitatsAssessment=="yes" }}
+
+      {{ "Noise and vibration management plan assessment<br>" 
+        if permit.noisePlan=="yes" }}
+
+      {{ "Odour management plan assessment<br>" | safe 
+        if permit.odourManagementPlan=="yes" 
+        or permit.odourManagementPlanIncluded=="yes" }}
+
+      {{ "Pests management plan assessment<br>" | safe
+        if permit.pestsPlan=="yes" }}
+
+      {{ "Waste recovery plan assessment<br>" | safe
+        if permit.wasteRecoveryPlan=="yes" }}
+
+    </dd>
+    <dd class="cya-change"><a href="/{{folder}}/bespoke/assessments/your-assessments">Change</a></dd>
+  </div>
+
+    
+ <div>
+   <dt class="cya-question">Application cost</dt>
+   <dd class="cya-answer">{{ permit.totalcost | formatnumber }}</dd>
+   <dd class="cya-change"></dd>
+ </div>
+
+{% endif %}<!-- END IF BESPOKE -->
+    
+    
+    <div>
+      <dt class="cya-question">Contact details</dt>
+      <dd class="cya-answer">
+        {{permit.contactFirstName}} {{permit.contactLastName}}<br>
+        {% if permit.isContactAnAgent == "yes" %}
+        This person is an agent or consultant<br>
+        {% endif %}
+        Telephone {{permit.contactTelephone}}<br>
+        {{permit.contactEmail}}
+      </dd>
+      <dd class="cya-change"><a href="/{{folder}}/contact/contact-details">Change <span class="visuallyhidden">Contact details</span></a></dd>
+    </div>
+
+
+    <div>
+      <dt class="cya-question">Company name</dt>
+      <dd class="cya-answer">{{permit.companyName}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/operator/company/company-name">Change <span class="visuallyhidden">company name</span></a></dd>
+    </div>
+
+
+{% if permit.useBusinessTradingName=="Yes" %}
+    <div>
+      <dt class="cya-question">Business trading name</dt>
+      <dd class="cya-answer">{{permit.businessTradingName}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/operator/company/company-name">Change <span class="visuallyhidden">trading name</span></a></dd>
+    </div>
+{% endif %}
+
+
+    <div>
+      <dt class="cya-question">Company address</dt><dd class="cya-answer">{{permit.companyAddress}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/operator/company/company-name">Change</a></dd>
+    </div>
+
+
+{% if permit.differentMainBusinessAddress=="Yes" %}
+    <div>
+      <dt class="cya-question">Main business address</dt>
+      <dd class="cya-answer">{{permit.mainBusinessAddress}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/operator/company/main-business-postcode">Change <span class="visuallyhidden">main business address</span></a></dd>
+    </div>
+{% endif %}
+
+
+{% if permit.differentBillingAddress=="Yes" or permit.mainAsBillingAddress =="Yes" %}
+    <div>
+      <dt class="cya-question">Billing address</dt>
+      <dd class="cya-answer">
+        {% if permit.mainAsBillingAddress =="Yes" %}
+        {{permit.mainBusinessAddress}}
+        {% else %}
+        {{permit.billingAddress}}
+        {% endif %}
+      </dd>
+      <dd class="cya-change"><a href="/{{folder}}/operator/company/billing-postcode">Change <span class="visuallyhidden">billing address</span></a></dd>
+    </div>
+{% endif %}
+
+<div>
+  <dt class="cya-question">Company directors' dates of birth</dt>
+  <dd class="cya-answer">
+    {% for d in permit.director %}
+    {{ d }}
+    {{ permit.directorDobDay[d]}}{{ permit.directorDobRest[d]}}
+    <br>
+    {% endfor %}
+  </dd>
+  <dd class="cya-change"><a href="/{{folder}}/operator/company/company-name">Change</a></dd>
+</div>
+
+
+{% if permit.companySecretaryEmail!=="" %}
+    <div>
+      <dt class="cya-question">Email address for permit and official notices</dt>
+      <dd class="cya-answer">{{permit.companySecretaryEmail}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/contact/company-secretary">Change <span class="visuallyhidden"> email address for permit and official notices</span></a></dd>
+    </div>
+{% endif %}
+
+    <div>
+      <dt class="cya-question">Relevant offences</dt>
+      <dd class="cya-answer">{{permit.offences}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/evidence/declare-offences">Change <span class="visuallyhidden"> relevant offences</span></a></dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">Bankruptcy or insolvency</dt>
+      <dd class="cya-answer">{{permit.bankruptcyInsolvency}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/evidence/bankruptcy-insolvency">Change <span class="visuallyhidden"> bankruptcy or insolvency</span></a></dd>
+    </div>
+    
+<!-- BASIC details -->
+{% if permit.bespokePermit=="bespoke" %}  
+    <div>
+      <dt class="cya-question">Name of operation</dt>
+      <dd class="cya-answer">{{permit.waste_operation_name}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/bespoke/waste-operation">Change</a></dd>
+    </div>
+    
+    <div>
+      <dt class="cya-question">Description of operation</dt>
+      <dd class="cya-answer">{{permit.waste_operation_description}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/bespoke/waste-operation">Change</a></dd>
+    </div>
+    
+    <div>
+      <dt class="cya-question">Total hazardous treatment capacity</dt>
+      <dd class="cya-answer">{{permit.hazardous_waste_treatment_capacity}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/bespoke/treatment-capacity">Change</a></dd>
+    </div>
+    
+    <div>
+      <dt class="cya-question">Total non-hazardous treatment capacity</dt>
+      <dd class="cya-answer">{{permit.nonhazardous_waste_treatment_capacity}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/bespoke/treatment-capacity">Change</a></dd>
+    </div>
+    
+    <div>
+      <dt class="cya-question">Maximum amount of waste stored</dt>
+      <dd class="cya-answer">{{permit.max_waste_stored}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/bespoke/waste-stored">Change</a></dd>
+    </div>
+    
+    <div>
+      <dt class="cya-question">Annual throughput</dt>
+      <dd class="cya-answer">{{permit.annual_throughput}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/bespoke/waste-stored">Change</a></dd>
+    </div>
+
+
+<!-- Output chosen R and D codes ############################################ -->
+<div>
+    <dt class="cya-question">R and D codes</dt>
+    <dd class="cya-answer">
+        {% for RCode in permit.RCodes %}
+          {{RCode}}
+        </br>
+        {% endfor %}
+        {% for DCode in permit.DCodes %}
+        {{DCode}}
+      </br>
+      {% endfor %}
+    </dd>
+    <dd class="cya-change"><a href="/{{folder}}/RDcodes/list_recovery_codes">Change</a></dd>
+</div>   
+    
+
+{% endif %}   
+    
+    
+<!-- Substance release consultations -->
+{% if permit.bespokePermit=="bespoke" %}
+  {% if permit.sewerageUndertakerName!=="undefined" or permit.harbourAuthorityName!=="undefined" or permit.fisheriesComitteeName!=="undefined" %} 
+    <div>
+      <dt class="cya-question">People we have to consult</dt>
+      <dd class="cya-answer">
+        {{permit.sewerageUndertakerName}}<br>
+        {{permit.harbourAuthorityName}}<br>
+        {{permit.fisheriesComitteeName}}<br>
+      </dd>
+      <dd class="cya-change"><a href="/{{folder}}/bespoke/substance-release">Change <span class="visuallyhidden">file</span></a></dd>
+    </div>
+  {% endif %}
+{% endif %}
+    
+<!-- Waste codes -->
+{% if permit.bespokePermit=="bespoke" %}  
+    <div>
+      <dt class="cya-question">Waste codes spreadsheet filename</dt>
+      <dd class="cya-answer">{{permit.WasteCodes1}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/bespoke/waste-codes">Change <span class="visuallyhidden">file</span></a></dd>
+    </div>
+{% endif %}
+
+
+{% if permit.siteOrMobile=="site" %}
+
+    <div>
+      <dt class="cya-question">Site name</dt>
+      <dd class="cya-answer">{{permit.siteName}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/site/site-name">Change <span class="visuallyhidden">site name</span></a></dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">Grid reference for the site</dt>
+      <dd class="cya-answer">{{permit.siteGridRef}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/site/grid-reference">Change <span class="visuallyhidden">grid reference</span></a>
+      </dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">Site address</dt>
+      <dd class="cya-answer">{{permit.siteAddress}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/address/address">Change <span class="visuallyhidden">site address</span></a></dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">Site contact details</dt>
+      <dd class="cya-answer">
+        {{permit.siteContactFirstName}} {{permit.siteContactLastName}}<br>
+        Telephone {{permit.siteContactTelephone}}<br>
+        {{permit.siteContactEmail}}
+      </dd>
+      <dd class="cya-change"><a href="/{{folder}}/site/site-contact">Change <span class="visuallyhidden">site contact details</span></a></dd>
+    </div>
+    
+    <div>
+      <dt class="cya-question">Site plan</dt>
+      <dd class="cya-answer">{{permit.SitePlan1}}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/evidence/upload-site-plan">Change <span class="visuallyhidden">site plan</span></a></dd>
+    </div>
+{% endif %}
+
+
+{% if permit.industryScheme=="WAMITAB" %}
+    <div>
+      <dt class="cya-question">WAMITAB certificate</dt>
+      <dd class="cya-answer">{{ permit.TechnicalCompetenceFile1 }}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/evidence/techcomp/wamitab-details">Change <span class="visuallyhidden">WAMITAB certificate</span></a></dd>
+    </div>
+{% endif %}
+
+{% if permit.industryScheme=="ESA-EU" %}
+    <div>
+      <dt class="cya-question">ESA EU Skills scheme certificate</dt>
+      <dd class="cya-answer">{{ permit.TechnicalCompetenceFile1 }}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/evidence/techcomp/esa-eu-details">Change <span class="visuallyhidden">ESA EU Skills scheme certificate</span></a></dd>
+    </div>
+{% endif %}
+
+{% if permit.industryScheme=="deemed" %}
+    <div>
+      <dt class="cya-question">Qualification evidence</dt>
+      <dd class="cya-answer">{{ permit.TechnicalCompetenceFile1 }}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/evidence/techcomp/deemed">Change <span class="visuallyhidden">qualification evidence</span></a></dd>
+    </div>
+{% endif %}
+
+{% if permit.industryScheme=="getting-qualification" %}
+    <div>
+      <dt class="cya-question">Course registration email or letter</dt>
+      <dd class="cya-answer">{{ permit.TechnicalCompetenceFile1 }}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/evidence/techcomp/getting-it">Change <span class="visuallyhidden">course registration email or letter</span></a></dd>
+    </div>
+{% endif %}
+
+{% if permit.firePreventionPlan=="yes" or permit.firePreventionPlanIncluded=="yes" %}
+    <div>
+      <dt class="cya-question">Fire prevention plan filename</dt>
+      <dd class="cya-answer">{{ permit.FirePlan1 }}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/upload-fire-plan">Change <span class="visuallyhidden">fire plan</span></a></dd>
+    </div>
+{% endif %}
+  
+  
+{% if permit.bespokePermit=="bespoke" %}
+
+    <div>
+      <dt class="cya-question">Non-technical summary</dt>
+      <dd class="cya-answer">{{ permit.NonTechSummary1 }}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/upload-non-technical-summary">Change</a></dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">Waste codes spreadsheet</dt>
+      <dd class="cya-answer">{{ permit.WasteCodes1 }}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/upload-waste-codes">Change</a></dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">Environmental risk assessment</dt>
+      <dd class="cya-answer">{{ permit.EnvRiskAssessment1 }}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/upload-environmental-risk-assessment">Change</a></dd>
+    </div>
+
+    <div>
+      <dt class="cya-question">Management system summary</dt>
+      <dd class="cya-answer">{{ permit.ManSysSummary1 }}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/upload-management-system-summary">Change</a></dd>
+    </div>
+    
+    <div>
+      <dt class="cya-question">List of technical standards</dt>
+      <dd class="cya-answer">{{ permit.TechStandards1 }}</dd>
+      <dd class="cya-change"><a href="/{{folder}}/list-technical-standards">Change</a></dd>
+    </div>
+    
+    {% if permit.wasteRecoveryPlan=="yes" %}
+        <div>
+          <dt class="cya-question">Waste recovery plan</dt>
+          <dd class="cya-answer">{{ permit.WasteRecoveryPlan1 }}</dd>
+          <dd class="cya-change"><a href="/{{folder}}/upload-waste-recovery-plan">Change</a></dd>
+        </div>   
+    {% endif %}
+    
+    {% if permit.noisePlan=="yes" %}
+        <div>
+          <dt class="cya-question">Noise and vibration management plan</dt>
+          <dd class="cya-answer">{{ permit.NoisePlan1 }}</dd>
+          <dd class="cya-change"><a href="/{{folder}}/upload-noise-plan">Change</a></dd>
+        </div>  
+    {% endif %}
+    
+    {% if permit.emissionsPlan=="yes" %}
+        <div>
+          <dt class="cya-question">Emissions management plan</dt>
+          <dd class="cya-answer">{{ permit.EmissionsPlan1 }}</dd>
+          <dd class="cya-change"><a href="/{{folder}}/upload-noise-plan">Change</a></dd>
+        </div>  
+    {% endif %}
+    
+    {% if permit.odourManagementPlan== "yes" or permit.odourManagementPlanIncluded== "yes" %}
+        <div>
+          <dt class="cya-question">Odour management plan</dt>
+          <dd class="cya-answer">{{ permit.OdourPlan1 }}</dd>
+          <dd class="cya-change"><a href="/{{folder}}/upload-odour-management-plan">Change</a></dd>
+        </div>  
+    {% endif %}
+
+    {% if dustPlan=="yes" %}
+        <div>
+          <dt class="cya-question">Dust management plan</dt>
+          <dd class="cya-answer">{{ permit.DustPlan1 }}</dd>
+          <dd class="cya-change"><a href="/{{folder}}/upload-dust-management-plan">Change</a></dd>
+        </div>  
+    {% endif %}
+
+{% endif %} 
+
+
+<div>
+  <dt class="cya-question">Claim confidentiality</dt>
+  <dd class="cya-answer">{{permit.confidential}}</dd>
+  <dd class="cya-change"><a href="/{{folder}}/check/claim-confidentiality">Change <span class="visuallyhidden">claim confidentiality</span></a></dd>
+</div>
+
+<div>
+  <dt class="cya-question">Invoice address</dt>
+  <dd class="cya-answer">{{permit.invoiceAddress}}</dd>
+  <dd class="cya-change"><a href="/{{folder}}/billing/invoice-postcode">Change <span class="visuallyhidden">invoice address</span></a></dd>
+</div>
+
+<div>
+  <dt class="cya-question">Invoice contact details</dt>
+  <dd class="cya-answer">
+    {{permit.invoiceName}}<br>
+    {% if permit.invoiceEmail!=="" %}
+    {{permit.invoiceEmail}}<br>
+    {% endif %}
+    {% if permit.invoiceTelephone!=="" %}
+    Telephone {{permit.invoiceTelephone}}<br>
+    {% endif %}
+  </dd>
+  <dd class="cya-change"><a href="/{{folder}}/billing/invoice-contact">Change <span class="visuallyhidden">Contact details</span></a></dd>
+</div>
+
+</dl>
+
+
+<h2 class="heading-medium">
+  Declaration
+</h2>
+
+<div class="form-group notice">
+  <i class="icon icon-important">
+    <span class="visually-hidden">Warning</span>
+  </i>
+  <strong class="bold-small">
+    You can be fined if you give false or misleading information.
+  </strong>
+</div>
+
+<p class="text">
+  I confirm that:
+</p>
+<ul class="list list-bullet">
+  <li>we will have a written <a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/guidance/develop-a-management-system-environmental-permits">management system (opens new tab)</a> in place before we start operating</li>
+  <li>I'm authorised to apply for this permit by the organisation or individual responsible</li>
+  <li>the information I have given is true</li>
+</ul>
+
+
+{% if permit.bespokePermit=="bespoke" %}
+    <h3 class="heading-small">Ecological survey data</h3>
+    <p>If you supply ecological survey data we may use your ecological survey data for other uses in addition to assessing your application. Contact us if you do not want us to use your data in this way.</p>
+
+    <details>
+      <summary><span class="summary">How we use your ecological survey data</span></summary>
+      <div class="panel panel-border-narrow">
+        <p>If you supply ecological survey data we will use it when we consider your application.</p>
+        <p>Unless you tell us not to, we may also use it for other uses in connection with our statutory and regulatory responsibilities.</p>
+        <p>We may:</p>
+        <ul class="list list-bullet">
+          <li>incorporate the information into our datasets and mapping - these are used for a variety of purposes</li>
+          <li>provide information to other applicants and organisations where this enables us to protect wildlife as we are directed to do in the Environment Act</li>
+          <li>respond to requests for information under the Freedom of Information Act and the associated Environmental Information Regulations 2004 and agree limited usage rights in accordance with our Standard Notices that we use when supplying our Information</li>
+          <li>license datasets and mapping derived from or containing information</li>
+        </ul>
+      </div>
+    </details>
+{% endif %}
+
+
+<div class="form-group">
+    <a target="_blank" rel="noopener noreferrer" href="/{{folder}}/pages/privacy">Privacy: how we use your personal information (opens new tab)</a>
+</div>
+
+<div class="panel panel-border-wide">
+  <p>
+    If you want a copy of your application, print this page now. You will not get a copy after you submit.
+  </p>
+</div>
+
+<form method="post" action="{{formAction}}">
+
+  <div class="form-group">
+    <button type="submit" class="button" name="Confirm and pay">Confirm and continue</button> <br>
+  </div>
+
+</form>
+
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

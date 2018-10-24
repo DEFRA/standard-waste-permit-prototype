@@ -1,0 +1,176 @@
+{% extends "layout.html" %}
+{% set version = folder %}
+
+{% set title = "Task list: apply for a standard rules environmental permit" %}
+
+{% set IndividualChecked = '' %}
+{% if permit.operatorType=='Individual' %}
+    {% set HrefLink = '/operator/individual/individual-details' %}
+{% endif %}
+
+{% set SoleTraderChecked = '' %}
+{% if permit.operatorType=='Sole trader' %}
+    {% set HrefLink = '/operator/sole-trader/sole-trader' %}
+{% endif %}
+
+{% set LimitedCompanyChecked = '' %}
+{% if permit.operatorType=='Limited company' %}
+    {% set HrefLink = '/operator/company/company-name' %}
+{% endif %}
+
+{% set LimitedLiabilityPartnershipChecked = '' %}
+{% if permit.operatorType=='Limited liability partnership' %}
+    {% set HrefLink = '/operator/ll-partnership/limited-liability-partnership' %}
+{% endif %}
+
+{% set appType = 'standard' %}
+{% if permit.bespokePermit=="bespoke" %}
+    {% set appType = 'bespoke' %}
+{% endif %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+{% import folder+"/custom_inc/macros.html" as macros %}
+{% from folder+"/custom_inc/permit-list-json.html" import permits %}
+{% from folder+"/bespoke/activities-assessments/json/bespoke-assessment-list.html" import assessments %}
+{% from folder+"/bespoke/activities-assessments/json/bespoke_activities.html" import activities %}
+
+<main id="content" role="main" class="task-list">
+  {% include "includes/phase_banner_beta.html" %}
+
+
+
+  <div class="grid-row">
+    <div class="column-two-thirds column-minimum">
+
+      <form method="post" action="/{{folder}}/check/check-answers" name="tasklist">
+
+        {% if taskListError %}
+        <div class="error-summary" role="alert" aria-labelledby="error-summary-heading" tabindex="-1">
+
+          <h2 class="heading-medium error-summary-heading" id="error-summary-heading">You need to complete these tasks</h2>
+
+          <ul class="error-summary-list">
+            {% for missingItem in permit.complete %}
+            <li><a href="#{{ missingItem  | lower | replace(' ', '-') | replace('\'', '') | safe }}">{{ missingItem }}</a></li>
+            {% endfor %}
+          </ul>
+
+        </div>
+        {% endif %}
+
+        <h1 class="heading-large">
+          <span class="visually-hidden">Task list:</span>
+                    Apply for a bespoke environmental permit
+        </h1>
+
+
+{% if appType=="bespoke" %}
+<!-- Output chosen activities ############################################ -->
+{% for ref in permit.chosenPermitID %}
+      {% for aNumber, aData in activities %}
+            {% if aNumber==ref %}
+
+            <!-- Output as a paragraph ============================== -->
+                  {{ aData.D_Activity_Title }} ({{ ref }})<br>
+
+            {% endif %}
+      {% else %}
+      <p>No activities</p>
+      {% endfor %}
+{% else %}
+    <p>You must select at least one activity</p>
+{% endfor %}
+
+
+<!-- Output chosen assessments ############################################ -->
+
+
+{{ "Ammonia modelling assessment<br>" | safe
+  if permit.ammoniaModelling=="yes" }}
+
+{{ "Dust and bio-aerosol management plan<br>" | safe 
+  if permit.dustPlan=="yes" }}
+
+{{ "Emissions management plan assessment<br>" | safe
+  if permit.emissionsPlan=="yes" }}
+
+{{ "Fire prevention plan assessment<br>" | safe 
+  if firePreventionPlan=="yes" 
+  or permit.firePreventionPlan=="yes" }}
+
+{{ "Habitats assessment assessment<br>" | safe 
+  if permit.habitatsAssessment=="yes" }}
+
+{{ "Noise and vibration management plan assessment<br>" | safe  
+  if permit.noisePlan=="yes" }}
+
+{{ "Odour management plan assessment<br>" | safe 
+  if permit.odourManagementPlan=="yes" 
+  or permit.odourManagementPlanIncluded=="yes" }}
+
+{{ "Pests management plan assessment<br>" | safe
+  if permit.pestsPlan=="yes" }}
+
+{{ "Waste recovery plan assessment<br>" | safe
+  if permit.wasteRecoveryPlan=="yes" }}
+  
+  
+<!-- Output cost ############################################ -->
+<span class="totalCost">Total cost {{ permit.totalcost | int | formatnumber }}</span>
+
+
+
+<!-- Link to change permit activities ##################################### -->
+        <p>
+          <a href="/{{folder}}/bespoke/activities-assessments/bespoke-category">
+            Change activities or assessments
+          </a>
+        </p>
+{% endif %}
+
+{% if appType=="bespoke" %}
+{% include folder+"/custom_inc/task-list-bespoke.html" %}
+{% endif %}
+
+
+{% if appType=="standard" %}
+{% include folder+"/custom_inc/task-list-standard.html" %}
+{% endif %}
+
+
+<!-- Only show if 'Tasklist Save' route -->
+{% if permit.saveReturnEmail!==null  %}
+{% endif %}
+
+
+</form>
+</div>
+
+</div>
+</main>
+
+{% endblock %}
+
+
+{% block page_scripts %}
+<script>
+  $(document).ready(function () {
+
+    $.ajax({
+      url: '/{{folder}}/task-list-visit',
+      success: function(){
+             //alert('reply')
+           },
+           error: function(){
+              //alert('timeout/error')
+            }
+          })
+
+  })
+</script>
+{% endblock %}

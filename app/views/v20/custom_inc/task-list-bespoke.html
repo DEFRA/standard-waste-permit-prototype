@@ -1,0 +1,141 @@
+<!-- TASK LIST ############################################################ -->
+<!-- STARTS HERE ########################################################## -->
+
+<ol class="task-list">
+  
+    <li><!-- START TASK SECTION ##################################### -->
+      {{ macros.taskHead("1", "Get a save link" )}}
+      <ul class="task-list-items">
+  
+    <!--Save and return--------------->
+    {{ macros.task( "Save your application", permit.saveReturnEmail, "/"+folder+"/save-and-return/email-or-phone", taskListError ) }}
+  
+            </ul>
+    </li><!-- END TASK SECTION -->
+  
+  
+    <li><!-- START TASK SECTION ##################################### -->
+    {{ macros.taskHead("2", "About the application" )}}
+    <ul class="task-list-items">
+  
+    <!--Contact details--------------->
+    {{ macros.task( "Give contact details", permit.contactFirstName, "/"+folder+"/contact/contact-details", taskListError ) }}
+  
+    <!--Permit holder--------------->
+    {{ macros.task( "Give permit holder details", permit.bankruptcyInsolvencyDetails, "/"+folder+HrefLink, taskListError ) }}
+  
+    <!-- Confidentiality  ----------->
+    {{ macros.task( "Confirm confidentiality needs", permit.confidential, "/"+folder+"/check/claim-confidentiality", taskListError ) }}
+  
+    <!-- Invoicing ---------------->
+    {{ macros.task( "Give invoicing details", permit.invoiceAddress, "/"+folder+"/billing/invoice-postcode", taskListError ) }}
+  
+    <!-- Confirm if you release to sewer, harbour or coastal waters ---------------->
+    {{ macros.task( "Confirm if you release to sewer, harbour or coastal waters", permit.substanceRelease, "/"+folder+"/bespoke/substance-release", taskListError ) }}
+  
+  
+  </ul>
+  </li><!-- END TASK SECTION -->
+  <li><!-- START TASK SECTION ##################################### -->
+      {{ macros.taskHead("3", "Operations" )}}
+      <ul class="task-list-items">
+  
+      <!-- Give basic details about the operation ---------------->
+      {{ macros.task( "Give basic details about the operation", permit.wasteOperation, "/"+folder+"/bespoke/waste-operation", taskListError ) }}
+
+      <!-- Provide a non-technical summary ---------------->
+      {{ macros.task( "Provide a non-technical summary", permit.NonTechSummary1, "/"+folder+"/upload-non-technical-summary", taskListError ) }}
+
+{% if permit.siteOrMobile=="site" %}
+      <!-- Site name and location ---------------->
+      {{ macros.task( "Give site name and location", permit.siteName, "/"+folder+"/site/site-name", taskListError ) }}
+
+      <!-- Site plan ------------------------->
+      {{ macros.task( "Upload the site plan", permit.SitePlan1, "/"+folder+"/upload-site-plan", taskListError ) }}
+{% endif %}
+  
+      </ul>
+      </li><!-- END TASK SECTION -->
+  
+  <li><!-- START TASK SECTION ##################################### -->
+    {{ macros.taskHead("4", "Activities" )}}
+    <ul class="task-list-items">
+  
+    <!--R and D codes--------------->
+    {{ macros.task( "List R and D codes for your activities", permit.RDCode_entered, "/"+folder+"/RDcodes/list_recovery_codes", taskListError ) }}
+  
+    <!--Waste codes--------------->
+    {{ macros.task( "List European waste codes", permit.WasteCodes1, "/"+folder+"/upload-waste-codes", taskListError ) }}
+  
+  </ul>
+  </li><!-- END TASK SECTION -->
+  
+  <li><!-- START TASK SECTION ##################################### -->
+    {{ macros.taskHead("5", "Evidence" )}}
+  
+    <ul class="task-list-items">
+    
+    <!-- Tech competence ----------------------->
+    {{ macros.task( "Prove technical competence", permit.industryScheme, "/"+folder+"/evidence/techcomp/industry-scheme", taskListError ) }}
+    
+    <!-- Fire plan CONDTIONAL ----------------------->
+    {% if permit.firePreventionPlan=="yes" or permit.firePreventionPlanIncluded=="yes" %}
+        {{ macros.task( "Upload fire prevention plan", permit.FirePlan1, "/"+folder+"/upload-fire-plan", taskListError ) }}
+    {% endif %}
+  
+    <!-- Upload environmental risk assessment ----------->
+    {{ macros.task( "Upload environmental risk assessment", permit.EnvRiskAssessment1, "/"+folder+"/upload-environmental-risk-assessment", taskListError ) }}
+  
+ <!-- Upload emissions air water and land ----------->
+ {{ macros.task( "Tell us about emissions and monitoring", permit.EmissionsAirWaterLand1, "/"+folder+"/upload-emissions-to-air-water-land", taskListError ) }}
+  
+    <!-- Provide a management system summary ----------->
+    {{ macros.task( "Provide a management system summary", permit.ManSysSummary1, "/"+folder+"/bespoke/management-system", taskListError ) }}
+    
+    <!-- List technical standards ----------->
+    {{ macros.task( "List the technical standards you use", permit.TechStandards1, "/"+folder+"/list-technical-standards", taskListError ) }}
+    
+    <!-- Provide a waste recovery plan CONDTIONAL ----------->
+    {% if permit.wasteRecoveryPlan=="yes" %}
+        {{ macros.task( "Upload a waste recovery plan", permit.WasteRecoveryPlan1, "/"+folder+"/upload-waste-recovery-plan", taskListError ) }}
+    {% endif %}
+
+    <!-- Provide a noise plan CONDTIONAL  ----------->
+    {% if permit.noisePlan=="yes" %}
+      {{ macros.task( "Upload the noise and vibration management plan", permit.NoisePlan1, "/"+folder+"/upload-noise-plan", taskListError ) }}
+    {% endif %}
+
+    <!-- Emissions plan CONDTIONAL ----------->
+    {% if permit.emissionsPlan=="yes" %}
+      {{ macros.task( "Upload the emissions management plan", permit.EmissionsPlan1, "/"+folder+"/upload-emissions-management-plan", taskListError ) }}
+    {% endif %}
+
+    <!-- Odour plan CONDTIONAL ----------->
+    {% if permit.odourManagementPlan=="yes" or permit.odourManagementPlanIncluded=="yes" %}
+      {{ macros.task( "Upload the odour management plan", permit.OdourPlan1, "/"+folder+"/upload-odour-management-plan", taskListError ) }}
+    {% endif %}
+
+    <!-- Dust plan CONDTIONAL ----------->
+    {% if dustPlan=="yes" %}
+      {{ macros.task( "Upload the dust management plan", permit.DustPlan1, "/"+folder+"/upload-dust-management-plan", taskListError ) }}
+    {% endif %}
+
+
+    </ul>
+  </li>
+  
+  
+  <li><!-- START TASK SECTION ##################################### -->
+    {{ macros.taskHead("6", "Apply" )}}
+    <ul class="task-list-items">
+      
+      <li class="task-list-item" id="submit-pay">
+        <a onclick="document.tasklist.submit(); return false;" class="task-name" href="#">
+          Send application and pay
+        </a>
+      </li>
+      
+    </ul>
+  </li><!-- END TASK SECTION -->
+  
+  </ol>

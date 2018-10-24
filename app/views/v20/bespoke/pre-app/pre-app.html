@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% set title = "Have you already had pre-application advice from us?" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+    <form action="{{formAction}}" method="post">
+
+      <h1 class="heading-large">{{title}}</h1>
+      
+      <fieldset>
+
+        <legend class="visuallyhidden">{{title}}</legend>
+        
+        <div class="form-group">
+
+          <div class="multiple-choice" data-target="preAppRefPanel">
+              <input id="pre-app-yes" type="radio" name="preAppYesNo" value="yes">
+              <label for="pre-app-yes">Yes</label>
+          </div>
+
+          <div class="panel panel-border-narrow js-hidden" id="preAppRefPanel">
+              Pre-application reference or name of person you dealt with
+              <input class="form-control form-control-3-4" id="preAppRef" name="preAppRef" type="text" value="{{permit.preAppRef}}">
+          </div>
+
+          <div class="multiple-choice">
+              <input id="pre-app-yes" type="radio" name="preAppYesNo" value="no">
+              <label for="pre-app-yes">No</label>
+          </div>
+          
+        </div>
+
+      </fieldset>
+
+
+      <div class="form-group">
+        {{submitButton|safe}}{{completeLink|safe}}
+      </div>
+        
+        
+    </form>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

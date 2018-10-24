@@ -1,0 +1,125 @@
+<!-- TASK LIST ############################################################ -->
+<!-- STARTS HERE ########################################################## -->
+
+<ol class="task-list">
+
+    <li><!-- START TASK SECTION ##################################### -->
+      {{ macros.taskHead("1", "Before you apply" )}}
+      <ul class="task-list-items">
+  
+        <!--Save and return--------------->
+        {{ macros.task( "Save your application", permit.saveReturnEmail, "/"+folder+"/save-and-return/email-or-phone", taskListError ) }}
+  
+        <!--Check rules--------------->
+        {{ macros.task( "Confirm you can meet the rules", permit.readRules, "/"+folder+"/read-rules/index", taskListError ) }}
+  
+      </ul>
+    </li><!-- END TASK SECTION -->
+  
+  
+    <li><!-- START TASK SECTION ##################################### -->
+    {{ macros.taskHead("2", "Prepare application" )}}
+    <ul class="task-list-items">
+      
+      <!--Cost and time standard--------------->
+      {{ macros.task( "Check costs and processing time", permit.costTime, "/"+folder+"/selectpermit/cost-and-time", taskListError ) }}
+  
+    <!-- Special cases ------------------>
+    {% if permit.permitID=="SR-2009-4" %}
+        {% set linkText="Give the stack height" %}
+    {% endif %}
+  
+    {% if permit.permitID=="SR-2010-2" or permit.permitID=="SR-2010-3" %}
+        {% set linkText="Tell us the date when you want the permit to start" %}
+    {% endif %}
+  
+    {% if permit.permitID=="SR-2014-2" %}
+        {% set linkText="Specify the type of mining waste plan" %}
+    {% endif %}
+  
+    {% if permit.permitID=="SR-2015-17" or permit.permitID=="SR-2015-18"  or permit.permitID=="SR-2015-13" %}
+        {% set linkText="Confirm the drainage system for your site" %}
+    {% endif %}
+  
+    {% if permit.permitID=="SR-2015-39" %}
+        {% set linkText="Upload the waste recovery plan" %}
+    {% endif %}
+  
+    {% if
+    permit.permitID=="SR-2009-4" or
+    permit.permitID=="SR-2010-2" or
+    permit.permitID=="SR-2010-3" or
+    permit.permitID=="SR-2014-2" or
+    permit.permitID=="SR-2015-17" or
+    permit.permitID=="SR-2015-13" or
+    permit.permitID=="SR-2015-18" or
+    permit.permitID=="SR-2015-39"
+    %}
+        {{ macros.task( linkText, permit.specialCasePageVisited, "/"+folder+"/check-special-cases", taskListError ) }}
+    {% endif %}
+  
+    <!--Contact details--------------->
+    {{ macros.task( "Give contact details", permit.contactFirstName, "/"+folder+"/contact/contact-details", taskListError ) }}
+  
+    <!--Permit holder--------------->
+    {{ macros.task( "Give permit holder details", permit.bankruptcyInsolvencyDetails, "/"+folder+HrefLink, taskListError ) }}
+
+    <!-- Site name DONT'T SHOW SITE FOR MOBILE PERMITS -------->
+    {% if
+    permit.permitID=="SR-2010-4" or
+    permit.permitID=="SR-2010-5" or
+    permit.permitID=="SR-2010-6" or
+    permit.permitID=="SR-2010-11" or
+    permit.permitID=="SR-2008-27"
+    %}
+    <!-- DO NOT SHOW -->
+    {% else %}
+        {{ macros.task( "Give site name and location", permit.siteName, "/"+folder+"/site/site-name", taskListError ) }}
+    {% endif %}
+  
+  
+    <!-- Site plan ------------------------->
+    {% if permit.sitePlanNeeded=="Yes" %}
+        {{ macros.task( "Upload the site plan", permit.sitePlanFilename, "/"+folder+"/evidence/site-plan-check", taskListError ) }}
+    {% endif %}
+    
+    <!--Mining waste management plan 2009-8--------------->
+    {% if permit.miningWasteManagementPlanRequired=="Yes" %}
+        {{ macros.task( "Confirm you have a mining waste management plan", permit.miningWasteManagementPlanConfirmed, "/"+folder+"/specialcases/2009-8/sr-2009-8", taskListError ) }}
+    {% endif %}
+    
+    <!-- Tech competence ----------------------->
+    {% if permit.technicalAbilityEvidence=="Yes" %}
+        {{ macros.task( "Prove technical competence", permit.industryScheme, "/"+folder+"/evidence/techcomp/industry-scheme", taskListError ) }}
+    {% endif %}
+  
+    <!-- Fire prevention plan ----------->
+    {% if permit.firePlanNeeded=="Yes" %}
+            {{ macros.task( "Upload fire prevention plan", permit.firePlanFilename, "/"+folder+"/evidence/upload-fire-plan", taskListError ) }}
+    {% endif %}
+  
+    <!-- Confidentiality  ----------->
+    {{ macros.task( "Confirm confidentiality needs", permit.confidential, "/"+folder+"/check/claim-confidentiality", taskListError ) }}
+  
+    <!-- Invoicing ---------------->
+    {{ macros.task( "Give invoicing details", permit.invoiceAddress, "/"+folder+"/billing/invoice-postcode", taskListError ) }}
+  
+    </ul>
+  </li>
+  
+  
+  <li><!-- START TASK SECTION ##################################### -->
+    {{ macros.taskHead("3", "Apply" )}}
+    <ul class="task-list-items">
+      
+      <li class="task-list-item" id="submit-pay">
+        <a onclick="document.tasklist.submit(); return false;" class="task-name" href="#">
+          Send application and pay
+        </a>
+      </li>
+      
+    </ul>
+  </li><!-- END TASK SECTION -->
+  
+  </ol>
+  

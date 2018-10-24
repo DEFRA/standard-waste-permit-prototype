@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% set title = "List the disposal D codes for this activity" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+  <h1 class="heading-large">
+    {{title}}
+  </h1>
+
+<!-- Look up first chosen activity ############################################ -->
+{% from folder+"/bespoke/activities-assessments/json/bespoke_activities.html" import activities %}
+
+
+{% set activitytext = "NOT SET" %}
+
+<!-- Get ID of first activity ============================== -->
+{% set firstpermitID = permit.chosenPermitID | first %}
+
+{% for aNumber, aData in activities %}
+    {% if aNumber==firstpermitID %}
+        {% set activitytext = aData.D_Activity_Title | lower + " ("+firstpermitID + ")" %}
+    {% endif %}
+{% endfor %}
+
+
+  <h2 class="heading-medium">D codes for  {{activitytext}}</h2>
+  <div class="hint">Select all that apply. Leave blank if there is no recovery for this activity.</div>
+</br>
+
+  {% from folder+"/bespoke/activities-assessments/json/d-codes.html" import dcodes %}
+
+  <form action="{{formAction}}" method="post">
+
+
+            <!-- R and D codes entered -->
+            <input type="hidden" name="RDCode_entered" value="Yes">
+
+            {% for t in dcodes %}
+
+            <div class="multiple-choice">
+                          <!-- R and D codes stored -->
+              <input id="{{t.rd_code}}" type="checkbox" name="DCodes" value="{{t.rd_code}} {{t.rd_title}}">
+              <label for="{{t.rd_code}}">
+                {{t.rd_code}} {{t.rd_title}} {{"-" if t.rd_hint!=""}} {{t.rd_hint}}
+
+              </label>
+            </div>
+
+            {% else %}
+            <p>No types</p>
+            {% endfor %}
+          </div>
+        </div>
+</br>
+  <div class="form-group">
+      {{submitButton|safe}}{{completeLink|safe}}
+    </div>
+  </form>
+
+  </div>
+</div>
+
+</main>
+
+{% endblock %}
