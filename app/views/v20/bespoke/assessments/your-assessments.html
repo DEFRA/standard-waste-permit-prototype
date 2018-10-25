@@ -205,9 +205,9 @@ wood
 {{ macros.hidden("odourManagementPlanIncluded",odourManagementPlanIncluded) if odourManagementPlanIncluded=="yes" }}
 
 <!-- Either output the checkbox OR a hidden field to pass on the data -->
-{{ macros.checkbox("Ammonia modelling assessment","ammoniaModelling","a1","yes") 
+{# macros.checkbox("Ammonia modelling assessment","ammoniaModelling","a1","yes") 
   if ammoniaModelling=="no"
-  else macros.hidden("Ammonia modelling assessment",ammoniaModelling) }}
+  else macros.hidden("Ammonia modelling assessment",ammoniaModelling) #}
 
 {{ macros.checkbox("Dust and bio-aerosol management plan","dustPlan","a2","yes") 
   if dustPlan=="no" 
@@ -235,13 +235,13 @@ wood
   and odourManagementPlanIncluded=="no" 
   else macros.hidden("odourManagementPlan",odourManagementPlan) }}
 
-{{ macros.checkbox("Pests management plan","pestsPlan","a8","yes") 
+{# macros.checkbox("Pests management plan","pestsPlan","a8","yes") 
   if pestsPlan=="no" 
-  else macros.hidden("pestsPlan",pestsPlan) }}
+  else macros.hidden("pestsPlan",pestsPlan) #}
 
-{{ macros.checkbox("Waste recovery plan","wasteRecoveryPlan","a9","yes") 
+{# macros.checkbox("Waste recovery plan","wasteRecoveryPlan","a9","yes") 
   if wasteRecoveryPlan=="no" 
-  else macros.hidden("wasteRecoveryPlan",wasteRecoveryPlan) }}
+  else macros.hidden("wasteRecoveryPlan",wasteRecoveryPlan) #}
                           
 </div>
 
