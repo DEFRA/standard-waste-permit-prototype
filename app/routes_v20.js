@@ -17,8 +17,8 @@ var sample = require('./views/'+folder+'/custom_inc/sample-permit.js')
 
 // HTML for standard buttons
 var backlink = '<a href="javascript:history.back()" class="link-back">Back</a>'
-var submitButton = '<button type="submit" id="continueButton" class="button" name="Continue">Continue</button>'
-var completeLink = ''
+var submitButton = '<button type="submit" id="continueButton" class="button" name="Continue">Save and continue</button>'
+var completeLink = '<a id="completeLink" href="/'+folder+'/save-and-return/complete-later">Continue later</a>'
 // completeLink WAS <span id="completeLink"><a href="#" id="completeLater">Complete later</a></span>
 
 function nocache(req, res, next) {
