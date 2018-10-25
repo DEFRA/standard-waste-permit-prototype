@@ -19,8 +19,8 @@
       <h1 class="heading-large" id="radio_label">{{title}}</h1>
 
         <p>
-          Showing activities for: {{ permit.facilityType | lower }}.
-          <a href="/{{folder}}/bespoke/activities-assessments/bespoke-category">Change activity type</a>.
+          Showing activities for waste operations. <!--: {{ permit.facilityType | lower }} -->
+          <a href="/{{folder}}/bespoke/activities-assessments/bespoke-category">Change facility type</a>.
         </p>
 
 
@@ -38,14 +38,14 @@
             
             {% if aData.D_Activity_Table=="Waste treatment" %}
             {# D_Bespoke_activity_types has the more granular categories #}
-            {# D_Activity_Table has the SRoC+D borader options categories #}
+            {# D_Activity_Table has the SRoC+D broader options categories #}
 
             {% set label = [
             '<span class="permitName">',
             aData.D_Activity_Title,
-            ' (',
+            ' &nbsp;<span class="hint">',
             aNumber,
-            ')</span>'
+            '</span></span>'
             ] %}
 
             {{ macros.checkbox(
