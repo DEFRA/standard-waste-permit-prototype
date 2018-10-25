@@ -85,7 +85,7 @@
 
 <div class="form-group">
   {% if permit.TCMdeatilsFileUploaded=="yes" %}
-    <input class="button" type="submit" value="Continue">
+    {{submitButton|safe}}{{completeLink|safe}}
   {% else %}
     <input class="button" type="submit" value="Continue" disabled="disabled" aria-disabled="true">
   {% endif %}
