@@ -150,7 +150,7 @@ router.post('/bespoke/pre-app/pre-app-check', function (req, res) {
   if (preAppYesNo === 'no') {
     res.redirect("/"+ folder + "/bespoke/pre-app/get-pre-app")
   } else {
-    res.redirect("/"+ folder + "/bespoke/whats-next")
+    res.redirect("/"+ folder + "/bespoke/activities-assessments/bespoke-type")
   }
 })
 
@@ -169,7 +169,7 @@ router.get('/bespoke/facility/facility-type', function (req, res) {
 })
 
 // Bespoke type ==============================================================
-router.post('/bespoke/activities-assessments/bespoke-type', function (req, res) {
+router.get('/bespoke/activities-assessments/bespoke-type', function (req, res) {
   res.render(folder + '/bespoke/activities-assessments/bespoke-type',{
     "formAction":"/"+ folder + "/bespoke-check"
   })
