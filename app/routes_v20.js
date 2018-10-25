@@ -175,12 +175,14 @@ router.post('/bespoke/activities-assessments/bespoke-type', function (req, res) 
   })
 })
 
-// Facility Check - not real page =============================================
+// Bespoke Check - not real page =============================================
 router.post('/bespoke-check', function (req, res) {
   var facilityType = req.body.facilityType
 
   if (facilityType === "Waste treatment") {
-    res.redirect("/"+ folder + "/bespoke/activities-assessments/bespoke-choose-activity")
+    res.render(folder + '/bespoke/activities-assessments/bespoke-choose-activity',{
+      "formAction":"/"+ folder + "/bespoke/assessments/your-assessments"
+    })
   } else {  
     res.redirect("/"+ folder + "/bespoke/offline/bespoke-selection-offline")
   }
