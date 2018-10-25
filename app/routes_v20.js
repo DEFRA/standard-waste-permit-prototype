@@ -157,7 +157,7 @@ router.post('/bespoke/pre-app/pre-app-check', function (req, res) {
 // What's next ===============================================================
 router.get('/bespoke/whats-next', function (req, res) {
   res.render(folder + '/bespoke/whats-next',{
-    "formAction":"/"+ folder + "/bespoke/activities-assessments/bespoke-choose-activity"
+    "formAction":"/"+ folder + "/bespoke/activities-assessments/bespoke-type"
   })
 })
 
@@ -168,11 +168,18 @@ router.get('/bespoke/facility/facility-type', function (req, res) {
   })
 })
 
+// Bespoke type ==============================================================
+router.post('/bespoke/activities-assessments/bespoke-type', function (req, res) {
+  res.render(folder + '/bespoke/activities-assessments/bespoke-type',{
+    "formAction":"/"+ folder + "/bespoke-check"
+  })
+})
+
 // Facility Check - not real page =============================================
-router.post('/facility-check', function (req, res) {
+router.post('/bespoke-check', function (req, res) {
   var facilityType = req.body.facilityType
 
-  if (facilityType === "waste") {
+  if (facilityType === "Waste treatment") {
     res.redirect("/"+ folder + "/bespoke/activities-assessments/bespoke-choose-activity")
   } else {  
     res.redirect("/"+ folder + "/bespoke/offline/bespoke-selection-offline")
