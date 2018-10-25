@@ -15,23 +15,6 @@ Assessments - GOV.UK
     <div class="column-two-thirds">
 
 
-        {% if assessments=="yes" %}
-      </dl>
-  {% endif %}
-  
-  
-  {% if assessments=="yes" %}
-      <h2 class="heading-medium">Select the plans we need you to produce</h2>
-      <p>
-          Based on your activity we’ve added the following assessments:
-      </p>
-  
-
-  {% else %}  
-      <h1 class="heading-large">Select the plans we need you to produce</h1>
-      <p>
-          Based on your activity we’ve added the following assessments:</p>
-  {% endif %}
 
 {% import folder+"/custom_inc/macros.html" as macros %}
 {% from folder+"/bespoke/activities-assessments/json/bespoke_activities.html" import activities %}
@@ -128,14 +111,13 @@ Assessments - GOV.UK
 
 <form method="post" action="{{formAction}}">
   
-    <P>You now need to add any other assessments we told you about in pre-app. 
-      </P>
+  
 <!-- NOW WRITE THE ASSESSMENT LIST IF THERE ARE SOME ======================= -->
 
 {% if assessments=="yes" %}
-    <h1 class="heading-large" id="radio_label">These are the plans we need you to produce</h1>
+    <h1 class="heading-large" id="radio_label">Select the plans we need you to produce</h1>
     <p>
-      Based on your answers so far, you need to send us these plans as part of your application.
+      Based on your activity we’ve added the following assessments:
     </p>
 
     <dl class="govuk-check-your-answers cya-questions-short">
@@ -195,6 +177,21 @@ wood
 -->
 
 
+{% if assessments=="yes" %}
+    </dl>
+{% endif %}
+
+
+{% if assessments=="yes" %}
+    <p>
+      You now need to add any other assessments we told you about in pre-app. 
+    </p>
+{% else %}  
+    <h1 class="heading-large">Tell us if we need to assess any plans</h1>
+    <p>
+      If we told you during pre-application discussions that we need to assess other plans please select them.
+    </p>
+{% endif %}
 
         
 
