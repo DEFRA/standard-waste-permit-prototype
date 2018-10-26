@@ -18,8 +18,6 @@
       
             <h1 class="heading-large">{{title}}</h1>
 
-
-            
             <form method="post" action="{{formAction}}">
             
       {% import folder+"/custom_inc/macros.html" as macros %}
@@ -40,7 +38,7 @@
             
             <!-- Output as a CYA styled row ============================== --> 
                   {{ macros.confirmlist(
-                    aData.D_Activity_Title + " (" + ref + ")",
+                    aData.D_Activity_Title + ' ' + ref,
                     aData.SROC_Application_Charge | formatnumber 
                     ) }}
 
@@ -214,8 +212,7 @@
 </p>
 
 <p>
-  <a href="/{{folder}}/bespoke/mobile-plant">Change activities or assessments</a><br>
-  <a href="/{{folder}}/bespoke/assessments/your-assessments">Change or remove extra assessments</a>
+  <a href="/{{folder}}/bespoke/activities-assessments/bespoke-choose-activity">Change activities or assessments</a><br>
 </p>
 
 

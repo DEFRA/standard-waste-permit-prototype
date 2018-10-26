@@ -236,6 +236,11 @@ router.post('/bespoke/activities-assessments/bespoke-choose-activity', function 
       "formAction":"/"+ folder + "/bespoke/assessments/your-assessments"
     })
 })
+router.get('/bespoke/activities-assessments/bespoke-choose-activity', function (req, res) {
+    res.render(folder + '/bespoke/activities-assessments/bespoke-choose-activity',{
+      "formAction":"/"+ folder + "/bespoke/assessments/your-assessments"
+    })
+})
 
 // Sensitive receptor
 router.post('/bespoke/check-assessments/sensitive-receptor', function (req, res) {

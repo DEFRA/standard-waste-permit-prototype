@@ -30,9 +30,6 @@
     <!-- Invoicing ---------------->
     {{ macros.task( "Give invoicing details", permit.invoiceAddress, "/"+folder+"/billing/invoice-postcode", taskListError ) }}
   
-    <!-- Confirm if you release to sewer, harbour or coastal waters ---------------->
-    {{ macros.task( "Confirm if you release to sewer, harbour or coastal waters", permit.substanceRelease, "/"+folder+"/bespoke/substance-release", taskListError ) }}
-  
   
   </ul>
   </li><!-- END TASK SECTION -->
@@ -41,10 +38,13 @@
       <ul class="task-list-items">
   
       <!-- Give basic details about the operation ---------------->
-      {{ macros.task( "Give basic details about the operation", permit.wasteOperation, "/"+folder+"/bespoke/waste-operation", taskListError ) }}
+      {{ macros.task( "Give basic details about the operation", permit.waste_operation_name, "/"+folder+"/bespoke/waste-operation", taskListError ) }}
 
       <!-- Provide a non-technical summary ---------------->
       {{ macros.task( "Provide a non-technical summary", permit.NonTechSummary1, "/"+folder+"/upload-non-technical-summary", taskListError ) }}
+      
+      <!-- Confirm if you release to sewer, harbour or coastal waters ---------------->
+      {{ macros.task( "Confirm if you release to sewer, harbour or coastal waters", permit.substanceRelease, "/"+folder+"/bespoke/substance-release", taskListError ) }}
 
 {% if permit.siteOrMobile=="site" %}
       <!-- Site name and location ---------------->

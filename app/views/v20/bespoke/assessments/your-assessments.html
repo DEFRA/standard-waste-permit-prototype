@@ -18,7 +18,6 @@ Assessments - GOV.UK
 
 {% import folder+"/custom_inc/macros.html" as macros %}
 {% from folder+"/bespoke/activities-assessments/json/bespoke_activities.html" import activities %}
-      
 
 <!-- Initialise ############################################ -->
 {% set assessments="no" %}
@@ -35,6 +34,8 @@ Assessments - GOV.UK
 {% set noisePlan="no" %}
 {% set pestsPlan="no" %}
 
+{% set activityList="" %}
+
 <!-- Output chosen activities ############################################ -->
 {% for ref in permit.chosenPermitID %}
       {% for aNumber, aData in activities %}
@@ -48,10 +49,13 @@ Assessments - GOV.UK
                   {% if aData.SROC_Assessment_Fireplan == "Yes" and aData.SROC_Assessment_Odour == "Yes"  %}
                       {% set firePreventionPlanIncluded = "yes" %}
                       {% set odourManagementPlanIncluded = "yes" %}
+                      {% set activityList = "The " + aData.D_Activity_Title | lower + " activity includes:" + activityList %}
                   {% elif aData.SROC_Assessment_Fireplan == "Yes" %}
                       {% set firePreventionPlanIncluded = "yes" %}
+                      {% set activityList = "The " + aData.D_Activity_Title | lower + " activity includes:" + activityList %}
                   {% elif aData.SROC_Assessment_Odour == "Yes" %}
                       {% set odourManagementPlanIncluded = "yes" %}
+                      {% set activityList = "The " + aData.D_Activity_Title | lower + " activity includes:" + activityList %}
                   {% endif %}
                 
             {% endif %}
@@ -115,12 +119,11 @@ Assessments - GOV.UK
 <!-- NOW WRITE THE ASSESSMENT LIST IF THERE ARE SOME ======================= -->
 
 {% if assessments=="yes" %}
-    <h1 class="heading-large" id="radio_label">Select the plans we need you to produce</h1>
-    <p>
-      Based on your activity we’ve added the following assessments:
-    </p>
+    <h1 class="heading-large" id="radio_label">What plans do we need to assess?</h1>
 
-    <dl class="govuk-check-your-answers cya-questions-short">
+    <p>{{ activityList }}</p>
+
+    <dl class="govuk-check-your-answers cya-questions-verywide">
 {% endif %}
   
 {% if wasteRecoveryPlan=="yes" %}
@@ -131,10 +134,11 @@ Assessments - GOV.UK
 {% endif %}
 
 {% if firePreventionPlanIncluded=="yes" %}
-    {{ macros.assessmentlist( 
-      "Fire prevention plan assessment",
-      "Added because an activity you selected includes this assessment"
-      ) }}
+      <div>
+        <dt class="cya-answer">
+          Fire prevention plan assessment
+        </dt>
+      </div>
 {% endif %}
 
 {% if firePreventionPlanIncluded=="no" and combustible=="yes" %}
@@ -152,10 +156,11 @@ Assessments - GOV.UK
 {% endif %}
 
 {% if odourManagementPlanIncluded=="yes" %}
-    {{ macros.assessmentlist( 
-      "Odour management plan assessment",
-      "Added because the activity includes this assessment"
-      ) }}
+      <div>
+        <dt class="cya-answer">
+          Odour management plan assessment
+        </dt>
+      </div>
 {% endif %}
 
 {% if dustPlan=="yes" %}
@@ -183,16 +188,12 @@ wood
 
 
 {% if assessments=="yes" %}
-    <p>
-      You now need to add any other assessments we told you about in pre-app. 
-    </p>
 {% else %}  
-    <h1 class="heading-large">Tell us if we need to assess any plans</h1>
-    <p>
-      If we told you during pre-application discussions that we need to assess other plans please select them.
-    </p>
+    <h1 class="heading-large">What plans do we need to assess?</h1>
 {% endif %}
-
+<p>
+  Select any other assessments identified by your risk assessment or as a result of pre-application advice. 
+</p>
         
 
         
