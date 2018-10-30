@@ -871,7 +871,11 @@ router.get('/operator/ll-partnership/limited-liability-partnership', function (r
   })
 })
 
-
+router.get('/operator/partnerships/partner1', function (req, res) {
+  res.render(folder + '/operator/partnerships/partner1',{
+      "formAction":"/"+ folder + "/operator/partnerships/postcode"
+  })
+})
 
 router.post('/operator/partnerships/postcode', function (req, res) {
   res.render(folder + '/operator/partnerships/postcode',{

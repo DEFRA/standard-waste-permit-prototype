@@ -23,6 +23,11 @@
     {% set HrefLink = '/operator/ll-partnership/limited-liability-partnership' %}
 {% endif %}
 
+{% set PartnershipChecked = '' %}
+{% if permit.operatorType=='Partnership' %}
+    {% set HrefLink = '/operator/partnerships/partner1' %}
+{% endif %}
+
 {% set appType = 'standard' %}
 {% if permit.bespokePermit=="bespoke" %}
     {% set appType = 'bespoke' %}
@@ -41,7 +46,6 @@
 
 <main id="content" role="main" class="task-list">
   {% include "includes/phase_banner_beta.html" %}
-
 
 
   <div class="grid-row">
