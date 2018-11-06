@@ -38,7 +38,7 @@
       <ul class="task-list-items">
   
       <!-- Give basic details about the operation ---------------->
-      {{ macros.task( "Give basic details about the operation", permit.waste_operation_name, "/"+folder+"/bespoke/waste-operation", taskListError ) }}
+      {{ macros.task( "Give basic details about the operation", permit.max_waste_stored, "/"+folder+"/bespoke/treatment-capacity", taskListError ) }}
 
       <!-- Provide a non-technical summary ---------------->
       {{ macros.task( "Provide a non-technical summary", permit.NonTechSummary1, "/"+folder+"/upload-non-technical-summary", taskListError ) }}
