@@ -22,6 +22,10 @@
           Showing activities for waste operations. <!--: {{ permit.facilityType | lower }} -->
           <a href="/{{folder}}/bespoke/activities-assessments/bespoke-type">Change facility type</a>.
         </p>
+        
+        <p>
+          You can select more than one.
+        </p>
 
 
       {% import folder+"/custom_inc/macros.html" as macros %}
@@ -43,9 +47,9 @@
             {% set label = [
             '<span class="permitName">',
             aData.D_Activity_Title,
-            ' &nbsp;<span class="hint">',
+            ' <!-- &nbsp;<span class="hint">',
             aNumber,
-            '</span></span>'
+            '</span> --></span>'
             ] %}
 
             {{ macros.checkbox(

@@ -80,7 +80,7 @@
             {% if aNumber==ref %}
 
             <!-- Output as a paragraph ============================== -->
-                  {{ aData.D_Activity_Title }} ({{ ref }})<br>
+                  {{ aData.D_Activity_Title }}<!-- ({{ ref }})--><br>
 
             {% endif %}
       {% else %}
@@ -97,7 +97,7 @@
 {{ "Ammonia modelling assessment<br>" | safe
   if permit.ammoniaModelling=="yes" }}
 
-{{ "Dust and bio-aerosol management plan<br>" | safe 
+{{ "Dust and bio-aerosol management plan assessment<br>" | safe 
   if permit.dustPlan=="yes" }}
 
 {{ "Emissions management plan assessment<br>" | safe
@@ -107,7 +107,7 @@
   if firePreventionPlan=="yes" 
   or permit.firePreventionPlan=="yes" }}
 
-{{ "Habitats assessment assessment<br>" | safe 
+{{ "Habitats assessment<br>" | safe 
   if permit.habitatsAssessment=="yes" }}
 
 {{ "Noise and vibration management plan assessment<br>" | safe  
