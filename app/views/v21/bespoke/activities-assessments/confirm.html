@@ -127,6 +127,15 @@
       {% set totalcost = totalcost + 1246 %}
 {% endif %}
 
+{% if permit.odourManagementPlan=="yes" %}
+    {{ macros.confirmlist( 
+      "Odour management plan assessment - 
+      added by you", 
+      1246 | formatnumber 
+      ) }}
+      {% set totalcost = totalcost + 1246 %}
+{% endif %}
+
 {% if permit.wasteRecoveryPlan=="yes" %}
     {{ macros.confirmlist( 
       "Waste recovery plan - 
