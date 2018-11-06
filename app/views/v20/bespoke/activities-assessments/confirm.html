@@ -33,8 +33,18 @@
 
 <!-- Output chosen activities ############################################ -->
 {% for ref in permit.chosenPermitID %}
+
+      <!-- Set siteOrMobile ============================== --> 
+      <!-- Over-ride default value set on /bespoke/activities-assessments/bespoke-type -->
+      {% if ref | string == "1.16.74" %}
+        <input type="hidden" name="siteOrMobile" value="mobile">
+      {% endif %}
+
       {% for aNumber, aData in activities %}
             {% if aNumber==ref %}
+            
+            
+
             
             <!-- Output as a CYA styled row ============================== --> 
                   {{ macros.confirmlist(
@@ -214,6 +224,7 @@
 <p>
   <a href="/{{folder}}/bespoke/activities-assessments/bespoke-choose-activity">Change activities or assessments</a><br>
 </p>
+
 
 
         <div class="form-group">
