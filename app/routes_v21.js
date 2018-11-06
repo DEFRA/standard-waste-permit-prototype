@@ -1833,6 +1833,24 @@ router.all('/upload-noise-plan', function (req, res) {
   }
 })
 
+router.get('/bespoke/emissions/emissions-check', function (req, res) {
+  res.render(folder + '/bespoke/emissions/emissions-check',{
+     "formAction":"/"+ folder + "/emissions-check"
+  })
+})
+
+// Deal with what to show after emissions question
+router.post('/emissions-check', function (req, res) {
+  if(req.body['emissionsYesNo']==="yes"){ 
+    // show upload
+    res.redirect("/"+ folder + "/upload-emissions-management-plan")
+  } else {
+    // show task list
+    res.render(folder + '/check/task-list',{
+    })
+  }
+})
+
 
 // EMISSIONS PLAN UPLOAD ========================================================
 router.all('/upload-emissions-management-plan', function (req, res) {

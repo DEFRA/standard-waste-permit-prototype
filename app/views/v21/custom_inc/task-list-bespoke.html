@@ -87,7 +87,7 @@
     {{ macros.task( "Upload environmental risk assessment", permit.EnvRiskAssessment1, "/"+folder+"/upload-environmental-risk-assessment", taskListError ) }}
   
  <!-- Upload emissions air water and land ----------->
- {{ macros.task( "Tell us about emissions and monitoring", permit.EmissionsAirWaterLand1, "/"+folder+"/upload-emissions-to-air-water-land", taskListError ) }}
+ {{ macros.task( "Tell us about emissions and monitoring", permit.emissionsYesNo, "/"+folder+"/bespoke/emissions/emissions-check", taskListError ) }}
   
     <!-- Provide a management system summary ----------->
     {{ macros.task( "Provide a management system summary", permit.ManSysSummary1, "/"+folder+"/bespoke/management-system", taskListError ) }}
