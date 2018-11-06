@@ -18,7 +18,7 @@ var sample = require('./views/'+folder+'/custom_inc/sample-permit.js')
 // HTML for standard buttons
 var backlink = '<a href="javascript:history.back()" class="link-back">Back</a>'
 var submitButton = '<button type="submit" id="continueButton" class="button" name="Continue">Save and continue</button>'
-var completeLink = '<a id="completeLink" href="/'+folder+'/save-and-return/complete-later">Continue later</a>'
+var completeLink = '<a id="completeLink" href="/'+folder+'/save-and-return/check">Continue later</a>'
 // completeLink WAS <span id="completeLink"><a href="#" id="completeLater">Complete later</a></span>
 
 function nocache(req, res, next) {
@@ -133,6 +133,19 @@ router.post('/save-and-return/email-or-phone', function (req, res) {
 router.get('save-and-return/email-save-link', function (req, res) {
   res.render(folder + 'save-and-return/email-save-link',{
   })
+})
+
+
+// This is not a real page, just a URL for the route
+router.get('/save-and-return/check', function (req, res) {
+  if( req.session.data['saveReturnEmail']==null ){ // not created save link yet
+      res.render(folder + '/save-and-return/email-or-phone',{
+        "formAction":"/"+ folder + "/save-and-return/confirm"
+      })  
+  } else {
+      res.render(folder + '/save-and-return/complete-later',{
+      })
+  }
 })
 
 // Pre-app ====================================================================
