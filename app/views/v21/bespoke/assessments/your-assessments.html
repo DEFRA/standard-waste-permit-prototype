@@ -119,7 +119,7 @@ Assessments - GOV.UK
 <!-- NOW WRITE THE ASSESSMENT LIST IF THERE ARE SOME ======================= -->
 
 {% if assessments=="yes" %}
-    <h1 class="heading-large" id="radio_label">What plans do we need to assess?</h1>
+    <h1 class="heading-large" id="radio_label">What do we need to assess?</h1>
 
     <p>{{ activityList }}</p>
 
@@ -210,11 +210,11 @@ wood
   if ammoniaModelling=="no"
   else macros.hidden("Ammonia modelling assessment",ammoniaModelling) #}
 
-{{ macros.checkbox("Dust and bio-aerosol management plan","dustPlan","a2","yes") 
+{# macros.checkbox("Dust and bio-aerosol management plan","dustPlan","a2","yes") 
   if dustPlan=="no" 
-  else macros.hidden("dustPlan",dustPlan) }}
+  else macros.hidden("dustPlan",dustPlan) #}
 
-{{ macros.checkbox("Emissions management plan","emissionsPlan","a3","yes") 
+{{ macros.checkbox("Emissions management plan (including dust)","emissionsPlan","a3","yes") 
   if emissionsPlan=="no"
   else macros.hidden("emissionsPlan",emissionsPlan) }}
 

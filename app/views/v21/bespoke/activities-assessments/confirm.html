@@ -48,7 +48,7 @@
             
             <!-- Output as a CYA styled row ============================== --> 
                   {{ macros.confirmlist(
-                    aData.D_Activity_Title + ' ' + ref,
+                    aData.D_Activity_Title,
                     aData.SROC_Application_Charge | formatnumber 
                     ) }}
 
@@ -138,7 +138,7 @@
 
 {% if permit.wasteRecoveryPlan=="yes" %}
     {{ macros.confirmlist( 
-      "Waste recovery plan - 
+      "Waste recovery plan assessment - 
       added because your activity is 'Deposit of waste for recovery'", 
       1231 | formatnumber 
       ) }}
@@ -156,7 +156,7 @@
 
 {% if permit.dustPlan=="yes" %}
     {{ macros.confirmlist( 
-      "Dust and bio-aerosol management plan - 
+      "Dust and bio-aerosol management plan assessment - 
       added by you", 
       620 | formatnumber 
       ) }}
@@ -165,7 +165,7 @@
 
 {% if permit.emissionsPlan=="yes" %}
     {{ macros.confirmlist( 
-      "Emissions management plan - 
+      "Emissions management plan assessment - 
       added by you", 
       1241 | formatnumber 
       ) }}
@@ -183,7 +183,7 @@
 
 {% if permit.noisePlan=="yes" %}
     {{ macros.confirmlist( 
-      "Noise and vibration management plan - 
+      "Noise and vibration management plan assessment - 
       added by you", 
       1246 | formatnumber 
       ) }}
@@ -192,7 +192,7 @@
 
 {% if permit.pestsPlan=="yes" %}
     {{ macros.confirmlist( 
-      "Pests management plan - 
+      "Pests management plan assessment - 
       added by you", 
       1241 | formatnumber 
       ) }}

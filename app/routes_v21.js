@@ -1658,11 +1658,11 @@ router.all('/upload-non-technical-summary', function (req, res) {
 // EUROPEAN WASTE CODES UPLOAD ========================================================
 router.all('/upload-waste-codes', function (req, res) {
   var path="/upload-waste-codes"
-  var title="Upload a spreadsheet that lists the waste codes you want to accept"
+  var title="Upload a document that lists the waste codes you want to accept"
   var fileName="WasteCodes"
   var guidanceTop="wastecodestop"
   var guidanceBot=""
-  var fileTypes="XLSX, XLS, ODS or CSV"
+  var fileTypes="PDF, DOC, DOCX, XLSX or XLS"
   
   if ( req.session.data['dontUploadOtherFile']=="yes" ){ // show task list
     delete req.session.data['dontUploadOtherFile']
@@ -1830,6 +1830,24 @@ router.all('/upload-noise-plan', function (req, res) {
     })
   } else {  // show upload page
     res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
+  }
+})
+
+router.get('/bespoke/emissions/emissions-check', function (req, res) {
+  res.render(folder + '/bespoke/emissions/emissions-check',{
+     "formAction":"/"+ folder + "/emissions-check"
+  })
+})
+
+// Deal with what to show after emissions question
+router.post('/emissions-check', function (req, res) {
+  if(req.body['emissionsYesNo']==="yes"){ 
+    // show upload
+    res.redirect("/"+ folder + "/upload-emissions-management-plan")
+  } else {
+    // show task list
+    res.render(folder + '/check/task-list',{
+    })
   }
 })
 
