@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% set title = "What you want the permit for" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+    <form action="{{formAction}}" method="post">
+        {{backlink|safe}}
+    <p></p>
+      <div class="blue-box">
+      <h1 class="heading-large">{{title}}</h1>
+
+      <p>In the next section we will ask you a few questions about your operation. This is so we can tell you what you will need to provide in your application and how much it will cost.</p>
+
+      <p>We recommend that you ask for free <a href="">pre-application advice</a> before you start your application. This will help you decide what to apply for.</p>
+
+    
+       
+   
+      </fieldset>
+
+
+
+
+      <div class="form-group">
+        <button type="submit" class="button-blue-box" name="Continue">Continue</button>
+
+      </div>
+
+    </form>
+  </div>
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

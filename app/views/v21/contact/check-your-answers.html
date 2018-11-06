@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% set title = "Contact for your application" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <h1 class="heading-large">
+    {{title}}
+  </h1>
+
+  <dl class="govuk-check-your-answers cya-questions-short">
+    <div>
+      <dt class="cya-question">
+        Contact details
+      </dt>
+      <dd class="cya-answer">
+        {{permit.contactFirstName}} {{permit.contactLastName}}<br>
+        {% if permit.isContactAnAgent == "yes" %}
+        This person is an agent or consultant<br>
+        {{permit.agentCompany}}<br>
+        {% endif %}
+        Telephone {{permit.contactTelephone}}<br>
+        {{permit.contactEmail}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/contact/contact-details"> 
+          Change <span class="visuallyhidden">Contact details</span>
+        </a>
+      </dd>
+    </div>
+  </dl>
+
+  <form method="post" action="{{formAction}}">
+
+    <div class="form-group">
+      <button type="submit" class="button" name="Return to task list">Return to task list</button>
+    </div>
+
+  </form>
+  
+</main>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% set title = "Confirm the type of permit you want" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+    <form action="{{formAction}}" method="post">
+
+      <h1 class="heading-large">{{title}}</h1>
+
+      <fieldset>
+        <legend class="visuallyhidden">{{title}}</legend>
+        
+        {% set bespokeChecked="" %}
+        {% if permit.permitSelected=="bespoke" %}
+          {% set bespokeChecked=" checked" %}
+        {% endif %}
+
+
+        <div class="form-group">
+          
+          <div class="multiple-choice">
+            <input id="standard" type="radio" name="bespokePermit" value="standard">
+            <label for="standard">
+              Standard rules permit
+            </label>
+          </div>
+          
+          <div class="multiple-choice">
+            <input id="bespoke" type="radio" name="bespokePermit" value="bespoke"{{bespokeChecked}}>
+            <label for="bespoke">
+              Bespoke
+            </label>
+          </div>
+          
+        </div>
+
+      </fieldset>
+
+      <div class="form-group">
+        <button type="submit" class="button" name="Continue">Confirm</button>
+      </div>
+
+    </form>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

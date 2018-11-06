@@ -1,0 +1,136 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title | safe}}</h1>
+
+{% set fileName1 = fileName+"1" %}
+{% set fileName2 = fileName+"2" %}
+{% set fileName3 = fileName+"3" %}
+{% set fileName4 = fileName+"4" %}
+
+{% if permit[fileName1] | typeof == "undefined" %}
+  {% set currentFileName = fileName1 %}
+{% elseif permit[fileName2] | typeof == "undefined" %}
+    {% set currentFileName = fileName2 %}
+{% elseif permit[fileName3] | typeof == "undefined" %}
+      {% set currentFileName = fileName3 %}
+{% else %}
+  {% set currentFileName = fileName4 %}
+{% endif %}
+
+{% if guidanceTop!="" %}
+  {% include folder+"/custom_inc/uploadGuidance/"+guidanceTop+".html" %}
+{% endif %}
+
+
+{% if permit[fileName1] | typeof !== "undefined" %}
+  <dl class="govuk-check-your-answers cya-questions-short">
+    <div>
+      <dt class="cya-answer filelisthead">Uploaded files</dt>
+      <dd class="cya-change changelinks"></dd>
+    </div>
+{% endif %}
+  
+{% import folder+"/custom_inc/macros.html" as macros %}
+
+{{ macros.uploadList2( permit[fileName1],fileName1 ) if permit[fileName1] | typeof !== "undefined" and permit[fileName1] != "" }}
+{{ macros.uploadList2( permit[fileName2],fileName2 ) if permit[fileName2] | typeof !== "undefined" and permit[fileName2] != "" }}
+{{ macros.uploadList2( permit[fileName3],fileName3 ) if permit[fileName3] | typeof !== "undefined" and permit[fileName3] != "" }}
+
+
+{% if permit[fileName1] | typeof != "undefined" %}
+    </dl>
+{% endif %}
+
+
+<form method="post" action="{{formAction}}" id="uploadForm">
+  
+{% if permit[fileName1] | typeof == "undefined" %}
+    <p class="upload_head">Upload files one at a time</p>
+    <p class="text form-hint">
+      {{ fileTypes }} files<br>
+      30MB maximum file size.
+    </p>
+
+    <div class="form-group form-uploader">
+        <input id="upload" type="file" aria-labelelledby="upload-label">
+        <input id="filename" name="{{currentFileName}}" type="hidden">
+    </div>
+    
+{% else %}
+
+    <div class="form-group">
+      <div class="multiple-choice" data-target="uploadAnotherFile">
+        <input id="uploadOtherFile" name="uploadOtherFile" type="checkbox" value="yes">
+        <label for="uploadOtherFile">
+          Upload another file
+        </label>
+        <input id="dontUploadOtherFile" name="dontUploadOtherFile" type="hidden">
+      </div>
+    </div>
+    <div class="panel panel-border-narrow js-hidden" id="uploadAnotherFile">
+      <p class="upload_head">Upload files one at a time</p>
+      <p class="text form-hint">
+        {{ fileTypes }} files<br>
+        30MB maximum file size.<br>
+        You can upload more than one file at a time.
+      </p>
+      <div class="form-group form-uploader">
+          <input id="upload" type="file" aria-labelelledby="upload-label">
+          <input id="filename" name="{{currentFileName}}" type="hidden">
+      </div>
+    </div>
+  {% endif %}  
+    
+    
+    
+    <script>
+      // captures uploaded filename and passes to hidden input
+      document.getElementById('upload').onchange = uploadOnChange;
+      function uploadOnChange() {
+          var filename = this.value;
+          var lastIndex = filename.lastIndexOf("\\");
+          if (lastIndex >= 0) {
+              filename = filename.substring(lastIndex + 1);
+          }
+          document.getElementById('filename').value = filename;
+      }
+      document.getElementById('uploadForm').onsubmit = setUploadOtherOnSubmit;
+      function setUploadOtherOnSubmit() {
+          if ( document.getElementById('uploadOtherFile').checked==false ) {
+              document.getElementById('dontUploadOtherFile').value="yes";
+          }
+      }
+    </script>
+    
+
+    {% if guidanceBot!="" %}
+      {% include folder+"/custom_inc/uploadGuidance/"+guidanceBot+".html" %}
+    {% endif %}
+
+  </br>
+
+    <div class="form-group">
+      {{submitButton|safe}}{{completeLink|safe}}
+    </div>
+
+  </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
