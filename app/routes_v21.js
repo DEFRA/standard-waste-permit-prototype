@@ -1843,7 +1843,7 @@ router.get('/bespoke/emissions/emissions-check', function (req, res) {
 router.post('/emissions-check', function (req, res) {
   if(req.body['emissionsYesNo']==="yes"){ 
     // show upload
-    res.redirect("/"+ folder + "/upload-emissions-management-plan")
+    res.redirect("/"+ folder + "/upload-emissions-to-air-water-land")
   } else {
     // show task list
     res.render(folder + '/check/task-list',{
