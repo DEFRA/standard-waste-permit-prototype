@@ -696,6 +696,27 @@ router.get('/address/address-manual', function (req, res) {
   })
 })
 
+// Site condition report ==========================================================
+
+router.get('/evidence/upload-site-condition-report', function (req, res) {
+  res.render(folder + '/evidence/upload-site-condition-report',{
+      "formAction":"/"+ folder + "/check/task-list"
+  })
+})
+
+// This is not a real page, just a URL for the route
+router.get('/evidence/site-condition-report-check', function (req, res) {
+  if(req.session.data['locationCheck']=="Yes"){
+    res.render(folder + '/evidence/make-site-condition-report',{
+      "formAction":"/"+ folder + "/evidence/upload-site-condition-report"
+    })
+  } else {
+    res.render(folder + '/evidence/upload-site-condition-report',{
+      "formAction":"/"+ folder + "/check/task-list"
+   })
+  }
+})
+
 // Upload a site plan ==========================================================
 
 router.get('/evidence/upload-site-plan', function (req, res) {
