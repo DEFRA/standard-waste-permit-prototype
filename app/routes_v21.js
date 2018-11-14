@@ -696,27 +696,6 @@ router.get('/address/address-manual', function (req, res) {
   })
 })
 
-// Site condition report ==========================================================
-
-router.get('/evidence/upload-site-condition-report', function (req, res) {
-  res.render(folder + '/evidence/upload-site-condition-report',{
-      "formAction":"/"+ folder + "/check/task-list"
-  })
-})
-
-// This is not a real page, just a URL for the route
-router.get('/evidence/site-condition-report-check', function (req, res) {
-  if(req.session.data['locationCheck']=="Yes"){
-    res.render(folder + '/evidence/make-site-condition-report',{
-      "formAction":"/"+ folder + "/evidence/upload-site-condition-report"
-    })
-  } else {
-    res.render(folder + '/evidence/upload-site-condition-report',{
-      "formAction":"/"+ folder + "/check/task-list"
-   })
-  }
-})
-
 // Upload a site plan ==========================================================
 
 router.get('/evidence/upload-site-plan', function (req, res) {
@@ -1955,6 +1934,31 @@ router.all('/upload-odour-management-plan', function (req, res) {
     res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
   }
 })
+
+// SITE CONDITION REPORT ==========================================================
+
+router.all('/upload-site-condition-report', function (req, res) {
+    var path="/upload-site-condition-report"
+    var title="Complete and upload a site condition report"
+    var fileName="SiteCondition"
+    var guidanceTop="odourplantop"
+    var guidanceBot=""
+    var fileTypes="PDF, DOC, DOCX or JPG"
+    
+    if ( req.session.data['dontUploadOtherFile']=="yes" ){ // show task list
+      delete req.session.data['dontUploadOtherFile']
+      if (req.session.data[fileName+'1']=="") delete req.session.data[fileName+'1']
+      if (req.session.data[fileName+'2']=="") delete req.session.data[fileName+'2']
+      if (req.session.data[fileName+'3']=="") delete req.session.data[fileName+'3']
+      // Back to the task list
+      res.render(folder + "/check/task-list",{
+            "formAction":"/"+ folder + "/check/check-answers"
+      })
+    } else {  // show upload page
+      res.render(folder + '/upload/upload-file',{"title":title,"fileName":fileName,"guidanceTop":guidanceTop,"guidanceBot":guidanceBot,"formAction":"/"+ folder + path,"fileTypes":fileTypes})
+    }
+  })
+
 
 // DUST MANAGEMENT PLAN UPLOAD ========================================================
 router.all('/upload-dust-management-plan', function (req, res) {
