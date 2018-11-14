@@ -1941,7 +1941,7 @@ router.all('/upload-site-condition-report', function (req, res) {
     var path="/upload-site-condition-report"
     var title="Complete and upload a site condition report"
     var fileName="SiteCondition"
-    var guidanceTop="odourplantop"
+    var guidanceTop="siteconditiontop"
     var guidanceBot=""
     var fileTypes="PDF, DOC, DOCX or JPG"
     

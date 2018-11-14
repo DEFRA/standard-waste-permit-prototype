@@ -41,6 +41,7 @@
       {{ macros.task( "Give basic details about the operation", permit.max_waste_stored, "/"+folder+"/bespoke/treatment-capacity", taskListError ) }}
 
       <!-- Provide a non-technical summary ---------------->
+  <!-- UPLOAD - NOTE FOR UPLOADS THE PERMIT.<FILENAME> ENDS IN A 1, IN REFERENCE TO THE SECOND UPLOAD ##################################### -->
       {{ macros.task( "Provide a non-technical summary", permit.NonTechSummary1, "/"+folder+"/upload-non-technical-summary", taskListError ) }}
       
       <!-- Confirm if you release to sewer, harbour or coastal waters ---------------->
@@ -51,7 +52,8 @@
       {{ macros.task( "Give site name and location", permit.siteName, "/"+folder+"/site/site-name", taskListError ) }}
 
       <!-- Site condition report ---------------->
-      {{ macros.task( "Site condition report", permit.siteCondition, "/"+folder+"/upload-site-condition-report", taskListError ) }}
+  <!-- UPLOAD - NOTE FOR UPLOADS THE PERMIT.<FILENAME> ENDS IN A 1, IN REFERENCE TO THE SECOND UPLOAD ##################################### -->
+      {{ macros.task( "Site condition report", permit.SiteCondition1, "/"+folder+"/upload-site-condition-report", taskListError ) }}
       
       <!-- Site plan ------------------------->
       {{ macros.task( "Upload the site plan", permit.SitePlan1, "/"+folder+"/upload-site-plan", taskListError ) }}
@@ -68,6 +70,7 @@
     {{ macros.task( "List R and D codes for your activities", permit.RDCode_entered, "/"+folder+"/RDcodes/list_recovery_codes", taskListError ) }}
   
     <!--Waste codes--------------->
+<!-- UPLOAD - NOTE FOR UPLOADS THE PERMIT.<FILENAME> ENDS IN A 1, IN REFERENCE TO THE SECOND UPLOAD ##################################### -->
     {{ macros.task( "List European waste codes", permit.WasteCodes1, "/"+folder+"/upload-waste-codes", taskListError ) }}
   
   </ul>
