@@ -194,12 +194,37 @@ router.post('/bespoke-check', function (req, res) {
 
   if (facilityType === "Waste treatment") {
     res.render(folder + '/bespoke/activities-assessments/bespoke-choose-activity',{
-      "formAction":"/"+ folder + "/bespoke/assessments/your-assessments"
+      "formAction":"/"+ folder + "/bespoke/activities-assessments/add-confirm-1"
     })
   } else {  
     res.redirect("/"+ folder + "/bespoke/offline/bespoke-selection-offline")
   }
 })
+
+
+// Add and confirm
+router.post('/bespoke/activities-assessments/add-confirm-1', function (req, res) {
+    res.render(folder + '/bespoke/activities-assessments/add-confirm-1',{
+      "formAction":"/"+ folder + "/bespoke/activities-assessments/name-activities"
+    })
+})
+
+// Add and confirm
+router.get('/bespoke/activities-assessments/add-confirm-1', function (req, res) {
+    var activityToAdd = req.query.add
+    req.session.data.chosenPermitID.push(activityToAdd)
+    res.render(folder + '/bespoke/activities-assessments/add-confirm-1',{
+      "formAction":"/"+ folder + "/bespoke/activities-assessments/name-activities"
+    })
+})
+
+// Add and confirm
+router.post('/bespoke/activities-assessments/name-activities', function (req, res) {
+    res.render(folder + '/bespoke/activities-assessments/name-activities',{
+      "formAction":"/"+ folder + "/bespoke/assessments/your-assessments"
+    })
+})
+
 
 // Site or mobile =============================================
 router.get('/bespoke/mobile-plant', function (req, res) {
