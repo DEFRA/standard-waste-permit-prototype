@@ -205,7 +205,7 @@ router.post('/bespoke-check', function (req, res) {
 // Add and confirm
 router.post('/bespoke/activities-assessments/add-confirm-1', function (req, res) {
     res.render(folder + '/bespoke/activities-assessments/add-confirm-1',{
-      "formAction":"/"+ folder + "/bespoke/activities-assessments/name-activities"
+      "formAction":"/"+ folder + "/name-check"
     })
 })
 
@@ -214,11 +214,25 @@ router.get('/bespoke/activities-assessments/add-confirm-1', function (req, res) 
     var activityToAdd = req.query.add
     req.session.data.chosenPermitID.push(activityToAdd)
     res.render(folder + '/bespoke/activities-assessments/add-confirm-1',{
-      "formAction":"/"+ folder + "/bespoke/activities-assessments/name-activities"
+      "formAction":"/"+ folder + "/name-check"
     })
 })
 
-// Add and confirm
+// function to use to check dupes
+function hasDuplicates(array) {
+   return (new Set(array)).size !== array.length;
+}
+
+// Name activity check - not real page =============================================
+router.post('/name-check', function (req, res) {
+  if (hasDuplicates(req.session.data.chosenPermitID)) {
+    res.redirect("/"+ folder + "/bespoke/activities-assessments/name-activities")
+  } else {  
+    res.redirect("/"+ folder + "/bespoke/assessments/your-assessments")
+  }
+})
+
+// Names, if needed
 router.post('/bespoke/activities-assessments/name-activities', function (req, res) {
     res.render(folder + '/bespoke/activities-assessments/name-activities',{
       "formAction":"/"+ folder + "/bespoke/assessments/your-assessments"
