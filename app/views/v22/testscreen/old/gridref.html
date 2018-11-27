@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Convert test</title>
+
+
+<script type="text/javascript" src="/public/javascripts/screening/geotools2.js"></script>
+
+<script>
+
+function onConvertGridRef()
+{
+	var gr=document.getElementById('gridref').value
+	var osgb = new GT_OSGB()
+
+	if (osgb.parseGridRef(gr))
+	{
+		var wgs84=osgb.getWGS84()
+
+		document.getElementById('lat').value = wgs84.latitude
+		document.getElementById('long').value = wgs84.longitude
+	}
+	else
+	{
+		document.getElementById('lat').value = "n/a"
+		document.getElementById('long').value = "n/a"
+	}
+}
+
+</script>
+
+</head>
+
+<body>
+<p>Convert grid ref</p>
+<form id="form1" name="form1" method="post" action="">
+  <p>
+    <label>Grid ref
+      <input type="text" name="gridref" id="gridref" onchange="onConvertGridRef()" />
+    </label>
+  </p>
+  <p>
+    <label>Latitude
+      <input type="text" name="lat" id="lat" />
+    </label>
+    </p>
+    <p>
+    
+        <label>Longitude
+      <input type="text" name="long" id="long" />
+    </label>
+  </p>
+</form>
+
+</body>
+</html>

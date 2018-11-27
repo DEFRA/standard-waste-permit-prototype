@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% set title = "Select permit: autocomplete" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_beta.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+      
+      {% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/custom_inc/permit-list-json.html" import permits %}
+      
+      
+      <form method="post" action="{{formAction}}">
+        <div class="form-group">
+          
+          <div class="autosearch form-group">
+            <label for="permitoptions" class="form-label">
+              Select permit
+                <span class="form-hint">Start typing part of the permit name</span>
+            </label>
+            <input id="permitInput" name="chosenPermit" placeholder="" list="permitoptions" class="form-control form-control-char-50">
+            <span class="fa fa-search"></span>
+          </div>
+          
+          <datalist id="permitoptions">
+            
+            {% for pNumber, pData in permits %}
+              {% if pData.digitalMVP=="Yes" %}
+                
+                  {% if pData.friendlyWeight!="" %}
+                    {% set weight=" - "+pData.friendlyWeight %}
+                  {% else %}
+                    {% set weight="" %}
+                  {% endif %}
+                
+                  {% set label = [
+                    pData.nameGOVUK,
+                    " ",
+                    weight | lower,
+                    " ",
+                    pData.code
+                    ] %}
+                    
+                    {% set labelhtml = label | join | safe %}
+                    
+                    <option value="{{labelhtml}}">
+        
+              {% endif %}
+            {% else %}
+              <p>No radios</p>
+            {% endfor %}
+            
+          </datalist>
+
+
+        </div>
+
+        <div class="form-group" style="margin-top:3em;">
+            {{submitButton|safe}}{{completeLink|safe}}
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

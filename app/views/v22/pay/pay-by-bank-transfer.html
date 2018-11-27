@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% set title = "You have chosen to pay by bank transfer using Bacs" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_beta.html" %}
+    {{backlink|safe}}
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+  <p>
+    The Bacs payment details are on the next screen. You will need to arrange the payment with your own bank.
+
+  </p>
+  <p>
+    We will also email you a copy of these payment details.
+  </p>
+
+
+<form method="post" action="{{formAction}}">
+  <div class="form-group">
+      <button type="submit" class="button" name="Continue">Send application</button>{{completeLink|safe}}
+  </div>
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

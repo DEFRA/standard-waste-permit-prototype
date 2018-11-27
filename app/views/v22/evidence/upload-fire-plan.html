@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+
+{% set title = "Upload the fire prevention plan" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+{{permit|dump}}
+
+
+<p>Upload a copy of your fire prevention plan. It should comply with the <a target="_blank" href="https://www.gov.uk/government/publications/fire-prevention-plans-environmental-permits/fire-prevention-plans-environmental-permits">fire prevention plan guidance on GOV.UK (opens new tab)</a>.</p>
+
+{% if permit.firePlanFilename|typeof != "undefined" %}
+  <dl class="govuk-check-your-answers cya-questions-short">
+    <div>
+      <dt class="cya-question">Uploaded files</dt>
+      <dd class="cya-answer"></dd>
+      <dd class="cya-change"></dd>
+    </div>
+{% endif %}
+  
+  {% import folder+"/custom_inc/macros.html" as macros %}
+  
+  {% set returnPath = "/evidence/upload-fire-plan" %}
+  
+  {{ macros.uploadList( "Fire plan",permit.firePlanFilename,"firePlanFilename",folder,returnPath ) if permit.firePlanFilename | typeof != "undefined" and permit.firePlanFilename != "" }}
+  {{ macros.uploadList( "Fire plan",permit.firePlanFilename2,"firePlanFilename2",folder,returnPath ) if permit.firePlanFilename2 | typeof != "undefined" and permit.firePlanFilename2 != "" }}
+  {{ macros.uploadList( "Fire plan",permit.firePlanFilename3,"firePlanFilename3",folder,returnPath ) if permit.firePlanFilename3 | typeof != "undefined" and permit.firePlanFilename3 != "" }}
+
+
+{% if permit.firePlanFilename|typeof == "undefined" %}
+    {% set filename = "firePlanFilename" %}
+    
+{% elif permit.firePlanFilename2|typeof == "undefined" %}
+    {% set filename = "firePlanFilename2" %}
+    
+{% else %}
+    {% set filename = "firePlanFilename3" %}
+{% endif %}
+
+
+{% if permit.firePlanFilename|typeof != "undefined" %}
+    </dl>
+{% endif %}
+
+
+<form method="post" action="{{formAction}}">
+
+
+{% if permit.firePlanFilename|typeof == "undefined" %}
+    <p class="upload_head">Upload files one at a time</p>
+    <p class="text form-hint">
+      PDF, JPG, DOC or DOCX files, 30MB maximum file size.<br>
+      You can upload more than one file at a time.
+    </p>
+
+    <div class="form-group form-uploader">
+        <input id="upload" type="file" aria-labelelledby="upload-label">
+        <input id="filename" name="{{filename}}" type="hidden">
+    </div>
+    
+{% else %}
+
+    <div class="form-group">
+      <div class="multiple-choice" data-target="uploadAnotherFile">
+        <input id="uploadOtherFile" name="uploadOtherFile" type="checkbox" value="yes">
+        <label for="uploadOtherFile">
+          Upload another file
+        </label>
+      </div>
+    </div>
+    <div class="panel panel-border-narrow js-hidden" id="uploadAnotherFile">
+      <p class="upload_head">Upload files one at a time</p>
+      <p class="text form-hint">
+        PDF, JPG, DOC or DOCX files, 30MB maximum file size.<br>
+        You can upload more than one file at a time.
+      </p>
+      <div class="form-group form-uploader">
+          <input id="upload" type="file" aria-labelelledby="upload-label">
+          <input id="filename" name="{{filename}}" type="hidden">
+      </div>
+    </div>
+  {% endif %}  
+    
+    
+    
+    <script>
+      // captures uploaded filename and passes to hidden input
+      document.getElementById('upload').onchange = uploadOnChange;
+      function uploadOnChange() {
+          var filename = this.value;
+          var lastIndex = filename.lastIndexOf("\\");
+          if (lastIndex >= 0) {
+              filename = filename.substring(lastIndex + 1);
+          }
+          document.getElementById('filename').value = filename;
+      }
+    </script>
+    
+
+
+
+  </br>
+
+    <div class="form-group">
+      {{submitButton|safe}}{{completeLink|safe}}
+    </div>
+
+  </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

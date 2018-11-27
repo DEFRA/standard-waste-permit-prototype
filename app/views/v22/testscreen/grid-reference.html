@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% set title = "What is the grid reference and distance to the boundary?" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<script type="text/javascript" src="/public/javascripts/screening/geotools2.js"></script>
+
+<script>
+
+function onConvertGridRef()
+{
+	var gr=document.getElementById('grid-reference').value
+	var osgb = new GT_OSGB()
+
+	if (osgb.parseGridRef(gr))
+	{
+		var wgs84=osgb.getWGS84()
+
+		document.getElementById('lat').value = wgs84.latitude
+		document.getElementById('long').value = wgs84.longitude
+	}
+	else
+	{
+		document.getElementById('lat').value = "n/a"
+		document.getElementById('long').value = "n/a"
+	}
+}
+
+</script>
+
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">{{title}}</h1>
+
+      <form method="post" action="{{formAction}}">
+        
+        <input type="hidden" id="lat" name="lat" value="">
+        <input type="hidden" id="long" name="long" value="">
+
+        <div class="form-group">
+					<label class="form-label" for="grid-reference">National Grid reference for the centre of the site
+				    <span class="form-hint text">Enter 2 letters and 10 digits. For example, ST 58132 72695.</span>
+				  </label>
+          <input class="form-control form-control-char-20" id="grid-reference" name="gridref" value="{{gridref}}" onblur="onConvertGridRef()" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="distance">Distance from the grid reference to the furthest boundary
+          </label>
+          <input class="form-control form-control-char-10" id="distance" name="distance" value="{{distance}}" /> metres
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

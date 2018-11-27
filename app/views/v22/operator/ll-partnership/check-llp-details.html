@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% if numberResults==0 %}
+    {% set title = "We cannot find that limited liability partnership" %}
+{% else %}
+    {% set title = "Is this the right limited liability partnership?" %}
+{% endif %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+
+{% if numberResults==0 %}
+
+<h1 class="heading-large">We cannot find that limited liability partnership</h1>
+
+    <p>We cannot find a partnership with the number {{searchTerm}} at Companies House.</p>
+
+    <p><a href="/{{folder}}/operator/ll-partnership/check-officers">Enter a different number</a></p>
+
+{% else %}
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+<form action="{{formAction}}" method="post">
+
+
+
+    <h2 class="heading-medium">{{company.title}}</h2>
+
+
+    <div class="panel panel-border-wide form-group">
+    <p>Company number {{company.company_number}}. <a href="/{{folder}}/operator/ll-partnership/check-officers">Enter a different number</a>.</p>
+    </div>
+
+    <h2 class="heading-medium">Check the registered address</h2>
+
+    <p>{{company.address_snippet}}</p>
+
+    <details>
+      <summary><span class="summary">That is not our registered office address</span></summary>
+
+      <div class="panel panel-border-narrow">
+        <p>
+        We can only accept applications using the address that is registered with Companies House. If your address has changed then you should <a href="https://www.gov.uk/file-changes-to-a-company-with-companies-house" target="_blank">tell Companies House about the change (opens new tab)</a> before you complete this application.
+        </p>
+      </div>
+
+    </details>
+
+    <input type="hidden" name="companyNumber" value="{{company.company_number}}">
+    <input type="hidden" name="companyName" value="{{company.title}}">
+    <input type="hidden" name="companyAddress" value="{{company.address_snippet}}">
+
+    <div class="form-group">
+        <fieldset>
+
+          <legend class="visually-hidden">
+            Trading name
+          </legend>
+
+          <div class="multiple-choice" data-target="give-business-trading-name">
+            <input id="useBusinessTradingName" name="useBusinessTradingName" type="checkbox" value="Yes">
+            <label for="useBusinessTradingName">We use a different trading name</label>
+          </div>
+          <div class="panel panel-border-narrow js-hidden" id="give-business-trading-name">
+            <label class="form-label" for="businessTradingName">Business trading name</label>
+            <input class="form-control form-control-char-40" type="text" id="businessTradingName" name="businessTradingName" value={{permit.businessTradingName}}>
+          </div>
+
+        </fieldset>
+      </div>
+
+<div class="form-group">
+{{submitButton|safe}}{{completeLink|safe}}
+</div>
+
+
+</form>
+
+{% endif %}
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% set title = "Is this where your site is?" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+{% set maplink = "https://osmaps.ordnancesurvey.co.uk/osmaps/"+permit.lat+","+permit.long+","+"20/pin" %}
+
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">{{title}}</h1>
+			
+			<div id="mapdivcontainer" style="padding:1em 0;"> 
+					<object type="text/html" data="{{maplink}}" id="mapdiv" width="600px" height="500px" style="overflow:auto;border:1px solid #DEDEDE;">
+					</object>
+			</div>
+
+      <form method="post" action="{{formAction}}">
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Yes - continue</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% set title = "How far is the site from an Air Quality Management Area (AQMA) for PM10 (particles of 10 micrometres or less)" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+    <form action="{{formAction}}" method="post">
+
+      <h1 class="heading-large">{{title}}</h1>
+
+      <fieldset>
+        <legend class="visuallyhidden">{{title}}</legend>
+
+
+        <div class="form-group">
+          
+          <div class="multiple-choice">
+            <input id="inside" type="radio" name="aqma" value="inside">
+            <label for="inside">
+              Inside the Air Quality Management Area
+            </label>
+          </div>
+          
+          <div class="multiple-choice">
+            <input id="within2km" type="radio" name="aqma" value="within2km">
+            <label for="within2km">
+              Within 2 kilometers of the area
+            </label>
+          </div>
+          
+          <div class="multiple-choice">
+            <input id="notin" type="radio" name="aqma" value="notin">
+            <label for="notin">
+              Not in, or further than 2 kilometers from, the area
+            </label>
+          </div>
+          
+        </div>
+         
+      </fieldset>
+
+
+      <div class="form-group">
+        <button type="submit" class="button" name="Continue">Continue</button>
+      </div>
+
+    </form>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

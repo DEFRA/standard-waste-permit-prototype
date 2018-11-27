@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% set title = "Give details about the waste operation" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">{{title}}</h1>
+
+      <form method="post" action="{{formAction}}">
+
+      <div class="form-group">
+          <label class="form-label" for="waste_operation_name">
+          Name of the waste operation
+          <span class="form-hint">If it does not have a name, chose a name such as the site or business name</span>
+          </label>
+          <input type="text" class="form-control form-control-char-50" id="waste_operation_name" name="waste_operation_name" value="{{permit.waste_operation_name}}">
+      </div>
+
+      <div class="form-group">
+          <label class="form-label" for="waste_operation_description">
+          Description of the waste operation
+          <span class="form-hint">You can use the descriptions below. Include any extra detail that you think would help to accurately describe what you want to do.</span>
+          </label>
+          <textarea class="form-control form-control-full" name="waste_operation_description" id="waste_operation_description">{{permit.waste_operation_description}}</textarea>
+      </div>
+      
+
+
+<details>
+  <summary><span class="summary">Description suggestions</span></summary>
+  <div class="panel panel-border-narrow">
+
+    <p>Use any of these or combine them. You can also use your own.</p>
+
+    <h2 class="heading-small">Sites</h2>
+    <ul class="list list-bullet">
+        <!-- <li>Closed landfill</li>  -->
+        <!-- <li>Deposit for recovery</li> -->
+        <!-- <li>Incineration</li> -->
+        <!-- <li>Inert landfill</li> -->
+        <!-- <li>Landfill gas engine (less than 3 megawatts)</li>  -->
+        <li>Anaerobic digestion</li> 
+        <li>Disposal of waste in lagoons</li>
+        <li>End of life vehicle authorised treatment (ELV ATF)</li>
+        <li>Household waste amenity</li>
+        <li>Materials recycling</li>
+        <li>Mechanical biological treatment</li> 
+        <li>Metal recycling</li>
+        <li>Transfer of waste: clinical</li>
+        <li>Transfer of waste: hazardous</li>
+        <li>Transfer of waste: household commercial and industrial</li>
+        <li>Transfer of waste: non-biodegradable</li>
+        <li>Treatment of waste: biological</li>
+        <li>Treatment of waste: chemical</li>
+        <li>Treatment of waste: physic chemical</li>
+        <li>Treatment of waste: physical</li>
+        <li>Waste electrical and electronic equipment authorised treatment facility (WEEE ATF)</li>
+    </ul>
+
+    <h2 class="heading-small">Mobile plant</h2> 
+    <ul class="list list-bullet">
+        <!-- <li>Incineration<li> -->
+        <li>Collection and storage of a controlled substance from any waste product, installation or equipment</li>
+        <li>Dechlorination of waste PCBs/PCTs</li> 
+        <li>Dewatering of muds, sludges, soils and dredgings</li> 
+        <li>Lime stabilisation of sludge</li>
+        <li>Treatment of clinical waste</li>
+        <li>Treatment of contaminated materials, substances or products to remediate land or controlled water</li>
+        <li>Treatment of waste soil</li>
+        <li>Vitrification of waste</li>
+        <li>Waste oil recovery</li> 
+    </ul>
+
+</div>
+</details>      
+      
+      
+      
+      
+
+      <div class="form-group">
+          {{submitButton|safe}}{{completeLink|safe}}
+      </div>
+      
+      </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

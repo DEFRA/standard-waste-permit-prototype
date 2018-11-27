@@ -1,0 +1,252 @@
+{% extends "layout.html" %}
+
+{% set title = "Confirm activities and assessments" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      
+            <h1 class="heading-large">{{title}}</h1>
+
+            <form method="post" action="{{formAction}}">
+            
+      {% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/bespoke/activities-assessments/json/bespoke-assessment-list.html" import assessments %}
+      {% from folder+"/bespoke/activities-assessments/json/bespoke_activities.html" import activities %}
+
+
+<dl class="govuk-check-your-answers cya-questions-short">
+
+{% set numactivities = 0 %}
+{% set totalcost = 0 %}
+{% set lowestcost = 100000 %}
+
+<!-- Output chosen activities ############################################ -->
+{% for ref in permit.chosenPermitID %}
+
+      <!-- Set siteOrMobile ============================== --> 
+      <!-- Over-ride default value set on /bespoke/activities-assessments/bespoke-type -->
+      {% if ref | string == "1.16.74" %}
+        <input type="hidden" name="siteOrMobile" value="mobile">
+      {% endif %}
+
+      {% for aNumber, aData in activities %}
+            {% if aNumber==ref %}
+            
+            
+
+            
+            <!-- Output as a CYA styled row ============================== --> 
+                  {{ macros.confirmlist(
+                    aData.D_Activity_Title,
+                    aData.SROC_Application_Charge | formatnumber 
+                    ) }}
+
+            <!-- Set lowest cost ========================================== --> 
+                  {% if aData.SROC_Application_Charge < lowestcost %}
+                      {% set lowestcost = aData.SROC_Application_Charge %}
+                  {% endif %}
+
+            <!-- Get total =============================================== --> 
+                  {% set totalcost = totalcost + aData.SROC_Application_Charge %}
+                  
+            <!-- Count activities to use in discount ===================== --> 
+                {% set numactivities = numactivities+1 %}
+                
+            {% endif %}
+            
+      {% else %}
+      <p>No activities</p>
+      {% endfor %}
+
+{% else %}
+    <p>You must select at least one activity</p>
+{% endfor %}
+
+
+{% if permit.firePreventionPlanIncluded=="yes" %}
+    {{ macros.confirmlist( 
+      "Fire prevention plan assessment - 
+      added because an activity you selected includes this assessment", 
+      "Cost included in application" 
+      ) }}
+      {% set totalcost = totalcost + 0 %}
+{% endif %}
+
+{% if permit.odourManagementPlanIncluded=="yes" %}
+    {{ macros.confirmlist( 
+      "Odour management plan assessment - 
+      added because the activity includes this assessment", 
+      "Cost included in application" 
+      ) }}
+      {% set totalcost = totalcost + 0 %}
+{% endif %}
+
+{% if permit.firePreventionPlanIncluded=="no" and permit.combustible=="yes" %}
+    {{ macros.confirmlist( 
+      "Fire prevention plan assessment - 
+      added because you deal with combustible waste", 
+      1231 | formatnumber 
+      ) }}
+      {% set totalcost = totalcost + 1231 %}
+{% endif %}
+
+{% if permit.firePreventionPlanIncluded=="no" and permit.wood=="yes" %}
+    {{ macros.confirmlist( 
+      "Fire prevention plan assessment - 
+      added because you deal with wood waste", 
+      1241 | formatnumber 
+      ) }}
+      {% set totalcost = totalcost + 1241 %}
+{% endif %}
+
+{% if permit.firePreventionPlan=="yes" %}
+    {{ macros.confirmlist( 
+      "Fire prevention plan assessment", 
+      1241 | formatnumber 
+      ) }}
+      {% set totalcost = totalcost + 1241 %}
+{% endif %}
+
+{% if permit.odourManagementPlanIncluded=="no" and permit.odourManagementPlan=="yes" %}
+    {{ macros.confirmlist( 
+      "Odour management plan assessment - 
+      added by you", 
+      1246 | formatnumber 
+      ) }}
+      {% set totalcost = totalcost + 1246 %}
+{% endif %}
+
+{% if permit.odourManagementPlan=="yes" %}
+    {{ macros.confirmlist( 
+      "Odour management plan assessment - 
+      added by you", 
+      1246 | formatnumber 
+      ) }}
+      {% set totalcost = totalcost + 1246 %}
+{% endif %}
+
+{% if permit.wasteRecoveryPlan=="yes" %}
+    {{ macros.confirmlist( 
+      "Waste recovery plan assessment - 
+      added because your activity is 'Deposit of waste for recovery'", 
+      1231 | formatnumber 
+      ) }}
+      {% set totalcost = totalcost + 1231 %}
+{% endif %}
+
+{% if permit.ammoniaModelling=="yes" %}
+    {{ macros.confirmlist( 
+      "Ammonia modelling assessment - 
+      added by you", 
+      620 | formatnumber 
+      ) }}
+      {% set totalcost = totalcost + 620 %}
+{% endif %}
+
+{% if permit.dustPlan=="yes" %}
+    {{ macros.confirmlist( 
+      "Dust and bio-aerosol management plan assessment - 
+      added by you", 
+      620 | formatnumber 
+      ) }}
+      {% set totalcost = totalcost + 620 %}
+{% endif %}
+
+{% if permit.emissionsPlan=="yes" %}
+    {{ macros.confirmlist( 
+      "Emissions management plan assessment - 
+      added by you", 
+      1241 | formatnumber 
+      ) }}
+      {% set totalcost = totalcost + 1241 %}
+{% endif %}
+
+{% if permit.habitatsAssessment=="yes" %}
+    {{ macros.confirmlist( 
+      "Habitats assessment - 
+      added by you", 
+      779 | formatnumber 
+      ) }}
+      {% set totalcost = totalcost + 779 %}
+{% endif %}
+
+{% if permit.noisePlan=="yes" %}
+    {{ macros.confirmlist( 
+      "Noise and vibration management plan assessment - 
+      added by you", 
+      1246 | formatnumber 
+      ) }}
+      {% set totalcost = totalcost + 1246 %}
+{% endif %}
+
+{% if permit.pestsPlan=="yes" %}
+    {{ macros.confirmlist( 
+      "Pests management plan assessment - 
+      added by you", 
+      1241 | formatnumber 
+      ) }}
+      {% set totalcost = totalcost + 1241 %}
+{% endif %}
+
+
+
+{% if numactivities > 1 %}
+
+    {% set discountrate = 0.5 %}
+    {% set discount = lowestcost * discountrate * -1 %}
+    {% set totalcost = totalcost + discount %}
+
+    <div>
+      <dt class="cya-answer"><span class="total">Discount</span> {{ discountrate*100 }}% of lowest cost activity</dd>
+      <dd class="cya-change">{{ discount | formatnumber }}</dd>
+    </div>
+
+{% endif %}
+
+<div>
+  <dt class="cya-answer total">Total cost</dt>
+  <dd class="cya-change total">{{ totalcost | formatnumber }}</dd>
+</div>
+
+<!-- Add cost to permit -->
+{{macros.hidden("totalcost",totalcost)}}
+
+
+
+</dl>
+
+<p>
+  You must pay these charges before we will start assessing your application. You do not pay VAT on these costs.
+</p>
+
+<p>
+  <a href="/{{folder}}/bespoke/activities-assessments/bespoke-choose-activity">Change activities or assessments</a><br>
+</p>
+
+
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Start application</button>
+        </div>
+
+
+      </form>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
