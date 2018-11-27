@@ -1,0 +1,145 @@
+{% extends "layout.html" %}
+
+{% set title = "Upload a non-technical summary" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  {{backlink|safe}}
+  
+  
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+<h1 class="heading-large">{{title}}</h1>
+
+{% if permit.nonTechSummaryName|typeof != "undefined" %}
+  <dl class="govuk-check-your-answers cya-questions-short">
+    <div>
+      <dt class="cya-question">Uploaded files</dt>
+      <dd class="cya-answer"></dd>
+      <dd class="cya-change"></dd>
+    </div>
+{% endif %}
+  
+  {% import folder+"/custom_inc/macros.html" as macros %}
+  
+  {{ macros.uploadList( "Non-technical summary",permit.nonTechSummaryName ) if permit.nonTechSummaryName|typeof != "undefined" }}
+  {{ macros.uploadList( "Non-technical summary",permit.nonTechSummaryName2 ) if permit.nonTechSummaryName2|typeof != "undefined" }}
+  {{ macros.uploadList( "Non-technical summary",permit.nonTechSummaryName3 ) if permit.nonTechSummaryName3|typeof != "undefined" }}
+  {{ macros.uploadList( "Non-technical summary",permit.nonTechSummaryName4 ) if permit.nonTechSummaryName4|typeof != "undefined" }}
+
+
+{% if permit.nonTechSummaryName|typeof == "undefined" %}
+    {% set filename = "nonTechSummaryName" %}
+    
+{% elif permit.nonTechSummaryName2|typeof == "undefined" %}
+    {% set filename = "nonTechSummaryName2" %}
+    
+{% elif permit.nonTechSummaryName3|typeof == "undefined" %}
+    {% set filename = "nonTechSummaryName3" %}
+    
+{% elif permit.nonTechSummaryName4|typeof == "undefined" %}
+    {% set filename = "nonTechSummaryName4" %}
+    
+{% elif permit.nonTechSummaryName5|typeof == "undefined" %}
+    {% set filename = "nonTechSummaryName5" %}
+    
+{% elif permit.nonTechSummaryName6|typeof == "undefined" %}
+    {% set filename = "nonTechSummaryName6" %}
+    
+{% elif permit.nonTechSummaryName7|typeof == "undefined" %}
+    {% set filename = "nonTechSummaryName7" %}
+    
+{% elif permit.nonTechSummaryName8|typeof == "undefined" %}
+    {% set filename = "nonTechSummaryName8" %}
+    
+{% else %}
+    {% set filename = "nonTechSummaryName9" %}
+{% endif %}
+
+
+{% if permit.nonTechSummaryName|typeof != "undefined" %}
+    </dl>
+{% endif %}
+
+
+<form method="post" action="{{formAction}}">
+
+        
+
+
+
+{% if permit.nonTechSummaryName|typeof == "undefined" %}
+    <p class="upload_head">Upload files one at a time</p>
+    <p class="text form-hint">
+      PDF, JPG, DOC or DOCX files, 30MB maximum file size.<br>
+      You can upload more than one file at a time.
+    </p>
+
+    <div class="form-group form-uploader">
+        <input id="upload" type="file" aria-labelelledby="upload-label">
+        <input id="filename" name="{{filename}}" type="hidden">
+    </div>
+    
+{% else %}
+
+    <div class="form-group">
+      <div class="multiple-choice" data-target="uploadAnotherFile">
+        <input id="uploadOtherFile" name="uploadOtherFile" type="checkbox" value="yes">
+        <label for="uploadOtherFile">
+          Upload another file
+        </label>
+      </div>
+    </div>
+    <div class="panel panel-border-narrow js-hidden" id="uploadAnotherFile">
+      <p class="upload_head">Upload files one at a time</p>
+      <p class="text form-hint">
+        PDF, JPG, DOC or DOCX files, 30MB maximum file size.<br>
+        You can upload more than one file at a time.
+      </p>
+      <div class="form-group form-uploader">
+          <input id="upload" type="file" aria-labelelledby="upload-label">
+          <input id="filename" name="{{filename}}" type="hidden">
+      </div>
+    </div>
+  {% endif %}  
+    
+    
+    
+    <script>
+      // captures uploaded filename and passes to hidden input
+      document.getElementById('upload').onchange = uploadOnChange;
+      function uploadOnChange() {
+          var filename = this.value;
+          var lastIndex = filename.lastIndexOf("\\");
+          if (lastIndex >= 0) {
+              filename = filename.substring(lastIndex + 1);
+          }
+          document.getElementById('filename').value = filename;
+      }
+    </script>
+    
+
+  
+
+  </br>
+
+    <div class="form-group">
+      {{submitButton|safe}}{{completeLink|safe}}
+                   <!-- substanceRelease entered -->
+                   <input type="hidden" name="nonTechSummary" value="Yes">
+    </div>
+
+  </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

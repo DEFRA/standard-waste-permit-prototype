@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% set title = "Pay by cheque" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_beta.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+<div class="panel panel-border-wide">
+  <p> 
+    <b>The application charge is {{ permit.permitCost }}.</b>
+  </p>
+</div>
+
+
+<p>Make your cheque payable to ‘Environment Agency’</p>
+
+<p>Make sure the cheque has ‘A/C Payee’ written across it, if it’s not already printed on it.</p> 
+
+<p>Write the name of your company and application reference number on the back of your cheque.</p>
+
+<p>Application reference number:</br>
+  <span class="font-large">{{ permit.permitRefNumber }}</span>
+</p>
+
+<p>We will not accept cheques with a future date.</p>
+
+<p><b>Send your cheque to:</b><br>
+Permitting Support Centre<br>
+Quadrant 2<br>
+99 Parkway Avenue<br>
+Parkway Business Park<br>
+Sheffield S9 4WF
+</p>
+
+<form method="post" action="{{formAction}}">
+  <div class="form-group">
+    {{submitButton|safe}}{{completeLink|safe}}
+  </div>
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,263 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Assessments - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+
+{% import folder+"/custom_inc/macros.html" as macros %}
+{% from folder+"/bespoke/activities-assessments/json/bespoke_activities.html" import activities %}
+
+<!-- Initialise ############################################ -->
+{% set assessments="no" %}
+
+{% set firePreventionPlan = "no" %}
+{% set firePreventionPlanIncluded = "no" %}
+{% set odourManagementPlan = "no" %}
+{% set odourManagementPlanIncluded = "no" %}
+{% set wasteRecoveryPlan="no" %}
+{% set ammoniaModelling="no" %}
+{% set dustPlan="no" %}
+{% set emissionsPlan="no" %}
+{% set habitatsAssessment="no" %}
+{% set noisePlan="no" %}
+{% set pestsPlan="no" %}
+
+{% set activityList="" %}
+
+<!-- Output chosen activities ############################################ -->
+{% for ref in permit.chosenPermitID %}
+      {% for aNumber, aData in activities %}
+            {% if aNumber==ref %}
+            
+            <!-- Check what assessments are needed, based on activities =========== -->
+                  {% if aNumber=="2.17.9" %}
+                      {% set wasteRecoveryPlan="yes" %}
+                  {% endif %}
+          
+                  {% if aData.SROC_Assessment_Fireplan == "Yes" and aData.SROC_Assessment_Odour == "Yes"  %}
+                      {% set firePreventionPlanIncluded = "yes" %}
+                      {% set odourManagementPlanIncluded = "yes" %}
+                      {% set activityList = "The " + aData.D_Activity_Title | lower + " activity includes:" + activityList %}
+                  {% elif aData.SROC_Assessment_Fireplan == "Yes" %}
+                      {% set firePreventionPlanIncluded = "yes" %}
+                      {% set activityList = "The " + aData.D_Activity_Title | lower + " activity includes:" + activityList %}
+                  {% elif aData.SROC_Assessment_Odour == "Yes" %}
+                      {% set odourManagementPlanIncluded = "yes" %}
+                      {% set activityList = "The " + aData.D_Activity_Title | lower + " activity includes:" + activityList %}
+                  {% endif %}
+                
+            {% endif %}
+            
+      {% else %}
+        <p>No activities</p>
+      {% endfor %}
+
+{% else %}
+    <p>You must select at least one activity</p>
+{% endfor %}
+
+
+
+<!-- CHECK IF THERE ARE ASSESSMENTS CHOSEN ======================================== -->
+{% 
+  if firePreventionPlan == "yes" or
+    firePreventionPlanIncluded == "yes" or
+     odourManagementPlan == "yes" or
+     odourManagementPlanIncluded == "yes" or
+     wasteRecoveryPlan == "yes" or
+     ammoniaModelling == "yes" or
+     dustPlan == "yes" or
+     emissionsPlan == "yes" or
+     habitatsAssessment == "yes" or
+     noisePlan == "yes" or
+     pestsPlan == "yes"
+%}
+    {% set assessments="yes" %}
+{% endif %}
+
+<!-- Run check for dust plan based on answers ============================== -->
+
+<!-- Check if category is relevant to dust plan ======= -->
+{% set categoryMayNeedDustPlan="no" %}
+{% for cat in permit.chosenCategory %}
+    {% if cat=="Waste transfer" or cat=="Recycling" %}
+        {% set categoryMayNeedDustPlan="yes" %}
+    {% endif %}
+{% endfor %}
+
+{% if permit.aqma=="inside" or permit.aqma=="within2km" or permit.sensitive-receptor=="100" or permit.sensitive-receptor=="100250" %}
+        {% if 
+          permit.wood=="yes" 
+          or permit.dusty=="yes" 
+          or permit.aggregates=="yes" 
+          or permit.scrapmetal=="yes"
+          or permit.wasteRecoveryPlan=="yes"
+          or permit.categoryMayNeedDustPlan=="yes"
+          %}
+              {% set assessments="yes" %}
+              {% set dustPlan="yes" %}
+        {% endif %}
+{% endif %}
+
+
+
+<form method="post" action="{{formAction}}">
+  
+  
+<!-- NOW WRITE THE ASSESSMENT LIST IF THERE ARE SOME ======================= -->
+
+{% if assessments=="yes" %}
+    <h1 class="heading-large" id="radio_label">What do we need to assess?</h1>
+
+    <p>{{ activityList }}</p>
+
+    <dl class="govuk-check-your-answers cya-questions-verywide">
+{% endif %}
+  
+{% if wasteRecoveryPlan=="yes" %}
+    {{ macros.assessmentlist( 
+      "Waste recovery plan",
+      "Added because your activity is 'Deposit of waste for recovery'"
+      ) }}
+{% endif %}
+
+{% if firePreventionPlanIncluded=="yes" %}
+      <div>
+        <dt class="cya-answer">
+          Fire prevention plan assessment
+        </dt>
+      </div>
+{% endif %}
+
+{% if firePreventionPlanIncluded=="no" and combustible=="yes" %}
+    {{ macros.assessmentlist( 
+      "Fire prevention plan assessment",
+      "Added because you deal with combustible waste"
+      ) }}
+{% endif %}
+
+{% if firePreventionPlanIncluded=="no" and wood=="yes" %}
+    {{ macros.assessmentlist( 
+      "Fire prevention plan assessment",
+      "Added because you deal with wood waste"
+      ) }}
+{% endif %}
+
+{% if odourManagementPlanIncluded=="yes" %}
+      <div>
+        <dt class="cya-answer">
+          Odour management plan assessment
+        </dt>
+      </div>
+{% endif %}
+
+{% if dustPlan=="yes" %}
+            {{ macros.assessmentlist( 
+              "Dust management plan assessment",
+              "Added because your activities may emit dust in a sensitive area"
+              ) }}
+{% endif %}
+
+<!-- VARIABLES
+sensitive-receptor
+aqma
+material
+combustible
+hazardous
+dusty
+aggregates
+wood
+-->
+
+
+{% if assessments=="yes" %}
+    </dl>
+{% endif %}
+
+
+{% if assessments=="yes" %}
+{% else %}  
+    <h1 class="heading-large">What plans do we need to assess?</h1>
+{% endif %}
+<p>
+  Select any other assessments identified by your risk assessment or as a result of pre-application advice. 
+</p>
+        
+
+        
+        
+<div class="form-group">
+
+  
+<!-- Output hidden field to pass on the data for included plans -->
+{{ macros.hidden("firePreventionPlanIncluded",firePreventionPlanIncluded) if firePreventionPlanIncluded=="yes" }}
+{{ macros.hidden("odourManagementPlanIncluded",odourManagementPlanIncluded) if odourManagementPlanIncluded=="yes" }}
+
+<!-- Either output the checkbox OR a hidden field to pass on the data -->
+{# macros.checkbox("Ammonia modelling assessment","ammoniaModelling","a1","yes") 
+  if ammoniaModelling=="no"
+  else macros.hidden("Ammonia modelling assessment",ammoniaModelling) #}
+
+{# macros.checkbox("Dust and bio-aerosol management plan","dustPlan","a2","yes") 
+  if dustPlan=="no" 
+  else macros.hidden("dustPlan",dustPlan) #}
+
+{{ macros.checkbox("Emissions management plan (including dust)","emissionsPlan","a3","yes") 
+  if emissionsPlan=="no"
+  else macros.hidden("emissionsPlan",emissionsPlan) }}
+
+{{ macros.checkbox("Fire prevention plan","firePreventionPlan","a4","yes") 
+  if firePreventionPlan=="no" 
+  and firePreventionPlanIncluded=="no" 
+  else macros.hidden("firePreventionPlan",firePreventionPlan) }}
+
+{{ macros.checkbox("Habitats assessment","habitatsAssessment","a5","yes") 
+  if habitatsAssessment=="no"
+  else macros.hidden("habitatsAssessment",habitatsAssessment) }}
+
+{{ macros.checkbox("Noise and vibration management plan","noisePlan","a6","yes") 
+  if noisePlan=="no" 
+  else macros.hidden("noisePlan",noisePlan) }}
+
+{{ macros.checkbox("Odour management plan","odourManagementPlan","a7","yes") 
+  if odourManagementPlan=="no" 
+  and odourManagementPlanIncluded=="no" 
+  else macros.hidden("odourManagementPlan",odourManagementPlan) }}
+
+{# macros.checkbox("Pests management plan","pestsPlan","a8","yes") 
+  if pestsPlan=="no" 
+  else macros.hidden("pestsPlan",pestsPlan) #}
+
+{# macros.checkbox("Waste recovery plan","wasteRecoveryPlan","a9","yes") 
+  if wasteRecoveryPlan=="no" 
+  else macros.hidden("wasteRecoveryPlan",wasteRecoveryPlan) #}
+                          
+</div>
+
+
+
+        
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

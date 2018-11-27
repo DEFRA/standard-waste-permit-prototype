@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% set title = "How much waste do you store and what is the throughput?" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">{{title}}</h1>
+
+      <form method="post" action="{{formAction}}">
+
+        <!-- wasteOperation entered -->
+        <input type="hidden" name="wasteOperation" value="Yes">
+
+        <div class="form-group">
+            <label class="form-label" for="max_waste_stored">
+            Maximum amount of waste you store on the site at any one time
+            </label>
+            <input class="form-control form-control-char-20" id="max_waste_stored" name="max_waste_stored" value="{{permit.max_waste_stored}}"> 
+            <span style="padding: 10px;inline:block">Tonnes</span>
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label" for="annual_throughput">
+            Annual throughput
+            </label>
+            <input class="form-control form-control-char-20" name="annual_throughput" id="annual_throughput" value="{{permit.annual_throughput}}"></input> 
+            <span style="padding: 10px;inline:block">Tonnes a year</span>
+        </div>
+
+        <div class="form-group">
+            {{submitButton|safe}}{{completeLink|safe}}
+        </div>
+        
+      </form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
