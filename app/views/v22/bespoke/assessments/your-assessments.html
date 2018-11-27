@@ -46,10 +46,11 @@ Assessments - GOV.UK
                       {% set wasteRecoveryPlan="yes" %}
                   {% endif %}
           
-                  {% if aData.SROC_Assessment_Fireplan == "Yes" and aData.SROC_Assessment_Odour == "Yes"  %}
+                  {% if aData.SROC_Assessment_Fireplan == "Yes" and aData.SROC_Assessment_Odour == "Yes" %}
                       {% set firePreventionPlanIncluded = "yes" %}
                       {% set odourManagementPlanIncluded = "yes" %}
                       {% set activityList = "The " + aData.D_Activity_Title | lower + " activity includes:" + activityList %}
+                      {% set doneFO = "yes" %}
                   {% elif aData.SROC_Assessment_Fireplan == "Yes" %}
                       {% set firePreventionPlanIncluded = "yes" %}
                       {% set activityList = "The " + aData.D_Activity_Title | lower + " activity includes:" + activityList %}

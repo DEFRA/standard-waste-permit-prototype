@@ -37,7 +37,7 @@
 {% set linkStrEnd = '">Add another</a>' %}
 
 <!-- Output chosen activities ############################################ -->
-{% for ref in permit.chosenPermitID %}
+{% for ref in permit.chosenPermitID|sort %}
 
       <!-- Set siteOrMobile ============================== --> 
       <!-- Over-ride default value set on /bespoke/activities-assessments/bespoke-type -->
