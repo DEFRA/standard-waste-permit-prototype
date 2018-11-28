@@ -22,6 +22,10 @@
             <p>
               <a href="/{{folder}}/bespoke/activities-assessments/bespoke-choose-activity">Change activities</a><br>
             </p>
+            
+            {% set addLinkText = "Add one of these" %}
+            
+            <p>If you need more than one of any activity select '{{ addLinkText }}'.</p>
 
             <form method="post" action="{{formAction}}">
             
@@ -34,7 +38,7 @@
 {% set numactivities = 0 %}
 
 {% set linkStrStart = '<a href="add-confirm-1?add=' %}
-{% set linkStrEnd = '">Add another</a>' %}
+{% set linkStrEnd = '">' + addLinkText + '</a>' %}
 
 <!-- Output chosen activities ############################################ -->
 {% for ref in permit.chosenPermitID|sort %}
@@ -50,7 +54,7 @@
 
                   <!-- Output as a CYA styled row ============================== --> 
                   {{ macros.confirmlist(
-                    aData.D_Activity_Title,
+                    aData.D_Activity_Title + ' activity',
                     linkStrStart + ref + linkStrEnd
                     ) }}
 
