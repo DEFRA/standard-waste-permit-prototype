@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% set title = "Check your details" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <div class="grid-row">
+      <div class="column-two-thirds">
+
+
+<h1 class="heading-large">{{title}}</h1>
+
+
+<form action="{{formAction}}" method="post">
+
+<h2 class="heading-small">Name</h2>
+  <p>
+  {{permit.individualFirstName}} {{permit.individualLastName}}
+  </p>
+
+<h2 class="heading-small">Date of birth</h2>
+  <p>
+  {{permit.individualDobDay}}/{{permit.individualDobMonth}}/
+   {{permit.individualDobYear}}
+  </p>
+
+{% if permit.businessTradingName!="" %}
+<h2 class="heading-small">Business trading name</h2>
+  <p>
+  {{permit.businessTradingName}}
+  </p>
+{% endif %}
+
+<h2 class="heading-small">Address</h2>
+  <p><b>3 Grange Road<br>
+  Bristol<br>
+  BS1 5AH</b></p>
+
+<input type="hidden" name="companyAddress" value="{{ indAddressAll }}">
+
+
+<!-- companyAddressIsMain -->
+
+  <div class="form-group">
+    <fieldset>
+      <legend class="visually-hidden">Is this your main UK business address?</legend>
+      <div class="multiple-choice">
+        <input id="radio-1" type="radio" name="companyAddressIsMain" value="This is our main UK business address">
+<label for="radio-1">
+        This is my main UK business address
+      </label>
+    </div>
+      <div class="multiple-choice">
+        <input id="radio-2" type="radio" name="companyAddressIsMain" value="We have a different main UK business address">
+<label for="radio-2">
+        I have a different main UK business address
+      </label>
+    </div>
+    </fieldset>
+  </div>
+
+
+<div class="form-group">
+{{submitButton|safe}}{{completeLink|safe}}
+</div>
+
+
+</form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

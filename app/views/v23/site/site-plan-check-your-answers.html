@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% set title = "Site plan" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <h1 class="heading-large">
+    {{title}}
+  </h1>
+
+  <dl class="govuk-check-your-answers cya-questions-short">
+    <div>
+      <dt class="cya-question">
+      Site plan file
+      </dt>
+      <dd class="cya-answer">
+      {{permit.sitePlanFilename}}
+      </dd>
+      <dd class="cya-change">
+        <a href="/{{folder}}/evidence/upload-site-plan"> 
+        Change <span class="visuallyhidden">site plan</span>
+        </a>
+      </dd>
+    </div>
+  </dl>
+
+
+      <form method="post" action="{{formAction}}">
+
+      <div class="form-group">
+        <button type="submit" class="button" name="Return to task list">Return to task list</button>
+      </div>
+
+    </form>
+    
+</main>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% set title = "Does the operation make any point source emissions to air or water?" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">{{title}}</h1>
+
+      <form method="post" action="{{formAction}}">
+
+        <div class="form-group">
+
+          <div class="multiple-choice">
+              <input id="emissions-yes" type="radio" name="emissionsYesNo" value="yes">
+              <label for="emissions-yes">Yes</label>
+          </div>
+
+          <div class="multiple-choice">
+              <input id="emissions-no" type="radio" name="emissionsYesNo" value="no">
+              <label for="pre-app-yes">No</label>
+          </div>
+          
+        </div>
+        
+      <div class="form-group">
+          {{submitButton|safe}}{{completeLink|safe}}
+      </div>
+      
+      
+      </form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

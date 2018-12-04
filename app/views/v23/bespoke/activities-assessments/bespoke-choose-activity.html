@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% set title = "Select all the activities you want the permit to cover" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+
+        <p>
+          Showing activities for waste operations. <!--: {{ permit.facilityType | lower }} -->
+          <a href="/{{folder}}/bespoke/activities-assessments/bespoke-type">Change facility type</a>.
+        </p>
+        
+        <p>
+          You can select more than one.
+        </p>
+
+
+      {% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/bespoke/activities-assessments/json/bespoke_activities.html" import activities %}
+
+
+      <form method="post" action="{{formAction}}">
+        <div class="form-group">
+          <fieldset class="permitList" aria-labelledby="radio_label">
+            <legend="Permit">
+
+
+{% for aNumber, aData in activities %}
+            
+            {% if aData.D_Activity_Table=="Waste treatment" %}
+            {# D_Bespoke_activity_types has the more granular categories #}
+            {# D_Activity_Table has the SRoC+D broader options categories #}
+
+            {% set label = [
+            '<span class="permitName">',
+            aData.D_Activity_Title,
+            ' <!-- &nbsp;<span class="hint">',
+            aNumber,
+            '</span> --></span>'
+            ] %}
+
+            {{ macros.checkbox(
+            label | join | safe,
+            "chosenPermitID",
+            loop.index,
+            aNumber
+            ) }}
+
+            {% endif %}
+
+{% else %}
+    <p>You must select at least one category</p>
+{% endfor %}
+
+          </fieldset>
+        </div>
+
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+
+
+
+      </form>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

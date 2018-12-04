@@ -31,6 +31,7 @@ router.use('/v19', require('./routes_v19'))
 router.use('/v20', require('./routes_v20'))
 router.use('/v21', require('./routes_v21'))
 router.use('/v22', require('./routes_v22'))
+router.use('/v23', require('./routes_v23'))
 
 
 // Route index page

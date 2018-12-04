@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% set title = "Who should we contact about this application?" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+  
+  <a href="javascript:history.back()" class="link-back">Back</a>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h2 class="heading-large">{{title}}</h2>
+
+      <form method="post" action="#">
+
+        <div class="form-group">
+          <label class="form-label" for="contact-firstname">
+            First name
+          </label>
+          <input class="form-control" id="contact-firstname" name="contact-firstname" type="text">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="contact-lastname">
+            Last name
+          </label>
+          <input class="form-control" id="contact-last-name" name="contact-lastname" type="text">
+        </div>
+        
+        <h1 class="heading-small">Telephone and email</h1>
+
+        <div class="form-group">
+          <label class="form-label" for="contact-telephone">
+            Telephone number
+            <span class="form-hint">
+              This can be a landline or mobile
+            </span>
+          </label>
+          <input class="form-control form-control-char-25" id="contact-telephone" name="contact-telephone">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="contact-email">
+            Email address
+          </label>
+          <span>
+            We will usually contact you about the application by email
+          </span>
+          <input class="form-control" id="contact-email" name="contact-email">
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Save and continue</button>
+          <span id="complete-link">
+            <a href="#" id="complete-later">Complete later</a>
+          </span>
+          
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
