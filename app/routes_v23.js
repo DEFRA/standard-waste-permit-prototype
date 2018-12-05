@@ -273,6 +273,15 @@ function hasDuplicates(array) {
 // Name activity check - not real page =============================================
 router.post('/name-check', function (req, res) {
   if (hasDuplicates(req.session.data.chosenPermitID)) {
+    // find duplicate ID
+    var input = req.session.data.chosenPermitID
+    // from stack overflow
+    // https://bit.ly/2Ec3VXf
+    var duplicates = input.reduce(function(acc, el, i, arr) {
+      if (arr.indexOf(el) !== i && acc.indexOf(el) < 0) acc.push(el); return acc;
+    }, []);
+    req.session.data={add:[duplicates]} // add back into data object to use on name page
+
     res.redirect("/"+ folder + "/bespoke/activities-assessments/name-activities")
   } else {  
     res.redirect("/"+ folder + "/bespoke/assessments/your-assessments")
