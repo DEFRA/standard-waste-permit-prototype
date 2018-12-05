@@ -18,6 +18,16 @@
  </div>
 {% endmacro %}
 
+
+{% macro radio_but_2(label,name,id,value,labelClass='') %}
+<div class="multiple-choice">
+  <input id="{{name}}_{{id}}" type="radio" name="{{name}}" value="{{ value }}">
+  <label class="selection-button-radio{{labelClass}}" for="{{name}}_{{id}}">
+    {{ label }}
+  </label>
+ </div>
+{% endmacro %}
+
 {% macro hidden(name,value) %}
   <input type="hidden" name="{{name}}" value="{{value}}">
 {% endmacro %}

@@ -193,12 +193,59 @@ router.post('/bespoke-check', function (req, res) {
   var facilityType = req.body.facilityType
 
   if (facilityType === "Waste treatment") {
-    res.render(folder + '/bespoke/activities-assessments/bespoke-choose-activity',{
-      "formAction":"/"+ folder + "/bespoke/activities-assessments/add-confirm-1"
+    res.render(folder + '/bespoke/activities-assessments/bespoke-choose-activity-radio',{
+      "formAction":"/"+ folder + "/bespoke/activities-assessments/add-confirm-radio"
     })
   } else {  
     res.redirect("/"+ folder + "/bespoke/offline/bespoke-selection-offline")
   }
+})
+
+// Add and confirm
+router.post('/bespoke/activities-assessments/add-confirm-radio', function (req, res) {
+  var showAddConfirmPage="No"
+  
+  // add activity to 'basket' 
+  if (req.session.data['activityID']){
+    if(req.session.data.chosenPermitID){
+      req.session.data.chosenPermitID.push(req.session.data['activityID']) 
+    } else {
+      req.session.data={chosenPermitID:[ req.session.data['activityID'] ]}
+    }
+    delete req.session.data['activityID']
+    var showAddConfirmPage="Yes"
+  }
+
+  if(req.body.addActivity=="Yes"){
+    // Add another activity so send back to select activity
+    res.render(folder + '/bespoke/activities-assessments/bespoke-choose-activity-radio',{
+      "formAction":"/"+ folder + "/bespoke/activities-assessments/add-confirm-radio"
+    })  
+  } else if(showAddConfirmPage=="Yes") {
+    // set page to go on to add confirm
+    res.render(folder + '/bespoke/activities-assessments/add-confirm-radio',{
+      "formAction":"/"+ folder + "/bespoke/activities-assessments/add-confirm-radio"
+    })
+  } else {
+    // set page to go on to name check
+    res.render(folder + '/bespoke/activities-assessments/add-confirm-radio',{
+      "formAction":"/"+ folder + "/name-check"
+    })
+  }
+
+})
+
+// Delete
+router.get('/bespoke/activities-assessments/add-confirm-radio', function (req, res) {
+    var activityIDtoDelete = req.query.del
+    for( var i = 0; i < req.session.data.chosenPermitID.length-1; i++){ 
+       if ( req.session.data.chosenPermitID[i] === activityIDtoDelete) {
+         req.session.data.chosenPermitID.splice(i, 1); 
+       }
+    }
+    res.render(folder + '/bespoke/activities-assessments/add-confirm-radio',{
+      "formAction":"/"+ folder + "/bespoke/activities-assessments/add-confirm-radio"
+    })
 })
 
 
