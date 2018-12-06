@@ -191,21 +191,18 @@ router.get('/bespoke/activities-assessments/bespoke-type', function (req, res) {
 // Bespoke Check - not real page =============================================
 router.post('/bespoke-check', function (req, res) {
   var facilityType = req.body.facilityType
-
   if (facilityType === "Waste treatment") {
-    res.render(folder + '/bespoke/activities-assessments/bespoke-choose-activity-radio',{
-      "formAction":"/"+ folder + "/bespoke/activities-assessments/add-confirm-radio"
-    })
+    res.redirect("/"+ folder + "/bespoke/activities-assessments/bespoke-choose-activity-radio")
   } else {  
     res.redirect("/"+ folder + "/bespoke/offline/bespoke-selection-offline")
   }
 })
 
-// Add and confirm
-router.post('/bespoke/activities-assessments/add-confirm-radio', function (req, res) {
-  var showAddConfirmPage="No"
+
+// Activity Check - not real page =============================================
+router.post('/activity-check', function (req, res) {
+  // If set, add activity to the list in chosenPermitID
   var {activityID,chosenPermitID = []} = req.session.data
-  // add activity to 'basket' 
   if (activityID){
     chosenPermitID.push(activityID) 
     delete req.session.data.activityID
@@ -213,28 +210,20 @@ router.post('/bespoke/activities-assessments/add-confirm-radio', function (req, 
     var showAddConfirmPage="Yes"
     res.locals.data.chosenPermitID = chosenPermitID
   }
-  //console.log(req.session.data.chosenPermitID)
 
-// TO DO - check dontAddActivity
   if(req.body.addActivity=="Yes"){
-    // Add another activity so send back to select activity
-    res.render(folder + '/bespoke/activities-assessments/bespoke-choose-activity-radio',{
-      "formAction":"/"+ folder + "/bespoke/activities-assessments/add-confirm-radio"
-    })
-  } else if(req.body.dontAddActivity=="Yes") {
-    // set page to go on to name check
-    res.render(folder + '/name-check',{})
-  } else if(showAddConfirmPage=="Yes") {
-    // set page to go on to add confirm
-    res.render(folder + '/bespoke/activities-assessments/add-confirm-radio',{
-      "formAction":"/"+ folder + "/bespoke/activities-assessments/add-confirm-radio"
-    })
+    res.redirect("/"+ folder + "/bespoke/activities-assessments/bespoke-choose-activity-radio")
+  } else if(req.body.addActivity=="_unchecked") {
+    res.redirect("/"+ folder + "/name-check") 
   } else {
-    // set page to go on to name check
-    res.render(folder + '/bespoke/activities-assessments/add-confirm-radio',{
-      "formAction":"/"+ folder + "/name-check"
-    })
+    res.redirect("/"+ folder + "/bespoke/activities-assessments/add-confirm-radio")
   }
+})
+
+
+// Add and confirm
+router.post('/bespoke/activities-assessments/add-confirm-radio', function (req, res) {
+  res.render(folder + '/bespoke/activities-assessments/add-confirm-radio',{})
 })
 
 // Delete
@@ -273,7 +262,7 @@ function hasDuplicates(array) {
 }
 
 // Name activity check - not real page =============================================
-router.post('/name-check', function (req, res) {
+router.all('/name-check', function (req, res) {
   if (hasDuplicates(req.session.data.chosenPermitID)) {
     // find duplicate ID
     var input = req.session.data.chosenPermitID
