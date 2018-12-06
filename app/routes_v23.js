@@ -204,23 +204,26 @@ router.post('/bespoke-check', function (req, res) {
 // Add and confirm
 router.post('/bespoke/activities-assessments/add-confirm-radio', function (req, res) {
   var showAddConfirmPage="No"
-  
+  var {activityID,chosenPermitID = []} = req.session.data
   // add activity to 'basket' 
-  if (req.session.data['activityID']){
-    if(req.session.data.chosenPermitID){
-      req.session.data.chosenPermitID.push(req.session.data['activityID']) 
-    } else {
-      req.session.data={chosenPermitID:[ req.session.data['activityID'] ]}
-    }
-    delete req.session.data['activityID']
+  if (activityID){
+    chosenPermitID.push(activityID) 
+    delete req.session.data.activityID
+    req.session.data.chosenPermitID = chosenPermitID
     var showAddConfirmPage="Yes"
+    res.locals.data.chosenPermitID = chosenPermitID
   }
+  //console.log(req.session.data.chosenPermitID)
 
+// TO DO - check dontAddActivity
   if(req.body.addActivity=="Yes"){
     // Add another activity so send back to select activity
     res.render(folder + '/bespoke/activities-assessments/bespoke-choose-activity-radio',{
       "formAction":"/"+ folder + "/bespoke/activities-assessments/add-confirm-radio"
-    })  
+    })
+  } else if(req.body.dontAddActivity=="Yes") {
+    // set page to go on to name check
+    res.render(folder + '/name-check',{})
   } else if(showAddConfirmPage=="Yes") {
     // set page to go on to add confirm
     res.render(folder + '/bespoke/activities-assessments/add-confirm-radio',{
@@ -232,7 +235,6 @@ router.post('/bespoke/activities-assessments/add-confirm-radio', function (req, 
       "formAction":"/"+ folder + "/name-check"
     })
   }
-
 })
 
 // Delete
