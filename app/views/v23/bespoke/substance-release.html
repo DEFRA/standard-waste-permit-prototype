@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% set title = "Will the operation release any substance into a sewer, harbour or coastal or territorial waters?" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+
+
+      <form method="post" action="{{formAction}}">
+        
+             <!-- substanceRelease entered -->
+      <input type="hidden" name="substanceRelease" value="Yes">
+      
+        <div class="form-group">
+          <fieldset aria-labelledby="radio_label">
+            <legend class="Permit type visuallyhidden">{{title}}</legend>
+
+<p>If it does, we will ask the relevant organisation for their views on your permit application.</p>
+
+<h2 class="heading-small">Select all that you will release into</h2>
+
+<div class="form-group">
+  <div class="multiple-choice" data-target="sewerageUndertakerName">
+    <input id="sewerage" name="sewerage" type="checkbox" value="yes">
+    <label for="sewerage">
+      A sewer managed by a sewerage undertaker
+      <span class="form-hint">This does not apply if the only release is foul or storm water</span>
+    </label>
+  </div>
+
+  <div class="panel panel-border-narrow js-hidden" id="sewerageUndertakerName" style="margin-bottom:1.5em;">
+      <label class="form-label" for="sewerageUndertakerName">
+        <p>Sewerage undertaker name</p>
+      </label>
+      <input class="form-control form-control-2-4" id="sewerageUndertakerName" name="sewerageUndertakerName" value="{{permit.sewerageUndertakerName}}" type="text">
+  </div>
+
+  <div class="multiple-choice" data-target="harbourAuthorityName">
+    <input id="harbour" name="harbour" type="checkbox" value="yes">
+    <label for="harbour">
+      A harbour managed by a harbour authority
+    </label>
+  </div>
+
+  <div class="panel panel-border-narrow js-hidden" id="harbourAuthorityName" style="margin-bottom:1.5em;">
+      <label class="form-label" for="harbourAuthorityName">
+        <p>Harbour authority name</p>
+      </label>
+      <input class="form-control form-control-2-4" id="harbourAuthorityName" name="harbourAuthorityName"  value="{{permit.harbourAuthorityName}}" type="text">
+  </div>
+  
+
+  <div class="multiple-choice" data-target="fisheriesComitteeName">
+    <input id="fisheries" name="fisheries" type="checkbox" value="yes">
+    <label for="fisheries">
+      Direct into relevant territorial waters or coastal waters within the sea fisheries district of a local fisheries committee
+    </label>
+  </div>
+
+  <div class="panel panel-border-narrow js-hidden" id="fisheriesComitteeName" style="margin-bottom:1.5em;">
+      <label class="form-label" for="fisheriesComitteeName">
+        Fisheries committee name
+      </label>
+      <input class="form-control form-control-2-4" id="fisheriesComitteeName" value="{{permit.fisheriesComitteeName}}" name="fisheriesComitteeName"  type="text">
+  </div>
+
+  <div class="multiple-choice">
+    <input id="noneOfThese" name="noneOfThese" type="checkbox" value="yes">
+    <label for="noneOfThese">
+      None of these
+    </label>
+  </div>
+  
+</div>
+
+
+        <div class="form-group">
+          {{submitButton|safe}}{{completeLink|safe}}
+        </div>
+
+
+      </form>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

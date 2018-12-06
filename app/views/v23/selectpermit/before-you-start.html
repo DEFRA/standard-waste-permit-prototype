@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% set title = "You cannot save so you will need all this information before you start" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_beta.html" %}
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+
+      <h1 class="heading-large">{{title}}</h1>
+      
+      <p class="print-link"><a href="javascript:window.print()">Print this page</a></p>
+
+      <p class="font-medium text">{{permit.permitName}} - {{permit.permitCode}} - applying as a {{permit.operatorType | lower }}<br>
+        <a class="font-small" href="/{{folder}}/selectpermit/permit-category2">Select a different permit
+        </a>
+      </p>
+
+
+      {% include folder+"/snippets/before-you-start-list.html" %}
+        
+        
+      <form method="post" action="{{formAction}}">
+        <!-- set needToApply to yes -->       
+        <input type="hidden" name="needToApply" value="yes">
+            
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+        
+      </form>
+      
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

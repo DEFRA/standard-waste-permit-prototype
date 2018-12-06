@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% set title = "Name these activities so we can tell them apart" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+  
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      
+            <h1 class="heading-large">{{title}}</h1>
+            
+            
+            <!-- <p>
+              <a href="/{{folder}}/bespoke/activities-assessments/bespoke-choose-activity">Change activities</a><br>
+            </p> -->
+
+            <form method="post" action="/{{folder}}/bespoke/assessments/your-assessments">
+              
+              
+              <!-- Output duplicate activities ############################################ -->
+              {% from folder+"/bespoke/activities-assessments/json/bespoke_activities.html" import activities %}
+              {% for aNumber, aData in activities %}
+                  {% if aNumber==permit.add %}
+                      {% set dupeActivityName = aData.D_Activity_Title %}
+                      
+              <div class="form-group">
+                <label class="form-label" for="activityname1">
+                  Short name for {{ dupeActivityName |lower }} 1
+                  <span class="form-hint">
+                    For example, wood chipping, metal shredding or soil screening
+                  </span>
+                </label>
+                <input class="form-control" id="activityname1" name="activityname1" type="text" value="">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="activityname1">
+                  Short name for {{ dupeActivityName |lower }} 2
+                </label>
+                <input class="form-control" id="activityname2" name="activityname2" type="text" value="">
+              </div>
+
+              {% endif %}
+          {% endfor %}
+          
+          
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+
+
+      </form>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% set title = "Add or confirm activities" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      
+            <h1 class="heading-large">{{title}}</h1>
+            
+            {% set addLinkText = "Delete" %}
+
+            <form method="post" action="/{{folder}}/activity-check" id="confirmForm">
+            
+      {% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/bespoke/activities-assessments/json/bespoke_activities.html" import activities %}
+
+
+<dl class="govuk-check-your-answers cya-questions-short">
+
+{% set numactivities = 0 %}
+
+{% set linkStrStart = '<a href="add-confirm-radio?del=' %}
+{% set linkStrEnd = '">' + addLinkText + '</a>' %}
+
+<!-- Output chosen activity ############################################ -->
+
+
+<!-- Set siteOrMobile ============================== --> 
+<!-- Over-ride default value set on /bespoke/activities-assessments/bespoke-type -->
+
+
+<!-- Output chosen activities ############################################ -->
+{% for ref in permit.chosenPermitID|sort %}
+
+      <!-- Set siteOrMobile ============================== --> 
+      <!-- Over-ride default value set on /bespoke/activities-assessments/bespoke-type -->
+      {% if ref | string == "1.16.74" %}
+        <input type="hidden" name="siteOrMobile" value="mobile">
+      {% endif %}
+
+      {% for aNumber, aData in activities %}
+            {% if aNumber==ref %}
+
+                  <!-- Output as a CYA styled row ============================== --> 
+                  {{ macros.confirmlist(
+                    aData.D_Activity_Title + ' activity',
+                    linkStrStart + ref + linkStrEnd
+                    ) }}
+
+            {% endif %}
+            
+      {% else %}
+      <p>No activities</p>
+      {% endfor %}
+
+{% else %}
+    <p>You must select at least one activity</p>
+{% endfor %}
+
+</dl>
+
+        <div class="form-group">
+          <div class="multiple-choice">
+            <input id="addActivity" name="addActivity" type="checkbox" value="Yes">
+            <label for="addActivity">Add another activity</label>
+          </div>
+        </div>
+
+        
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Confirm</button>
+        </div>
+
+
+      </form>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

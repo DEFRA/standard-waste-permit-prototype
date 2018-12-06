@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% set title = "What type of facility do you want the permit for?" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+
+
+      {% import folder+"/custom_inc/macros.html" as macros %}
+      {% from folder+"/custom_inc/facility-list-json.html" import facilities %}
+
+
+      <form method="post" action="{{formAction}}">
+
+      
+        <div class="form-group">
+          <fieldset aria-labelledby="radio_label">
+            <legend class="Permit type visuallyhidden">{{title}}</legend>
+
+            {% for f in facilities %}
+
+            <div class="multiple-choice">
+              <input id="{{f.value}}" type="radio" name="facilityType" value="{{f.value}}">
+              <label for="{{f.value}}">
+                {{f.text}}
+              </label>
+            </div>
+
+            {% else %}
+            <p>No categories</p>
+            {% endfor %}
+          </div>
+
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+
+
+      </form>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

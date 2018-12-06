@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% set title = "Which of these materials will you receive, keep, process or produce?" %}
+
+{% block page_title %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  {{backlink|safe}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+      <h1 class="heading-large" id="radio_label">{{title}}</h1>
+      
+      <p>
+      Select all that apply
+      </p>
+
+
+      <form method="post" action="{{formAction}}">
+      
+        <div class="form-group">
+          <fieldset aria-labelledby="radio_label">
+            <legend class="visuallyhidden">{{title}}</legend>
+
+            <div class="multiple-choice">
+                          <input id="combustible" type="checkbox" name="combustible" value="yes">
+                          <label for="combustible">
+                            Combustible materials
+                          </label>
+                        </div>
+
+                        <div class="multiple-choice">
+                          <input id="hazardous" type="checkbox" name="hazardous" value="yes">
+                          <label for="hazardous">
+                            Hazardous waste
+                          </label>
+                        </div>
+
+                        <div class="multiple-choice">
+                          <input id="dusty" type="checkbox" name="dusty" value="yes">
+                          <label for="dusty">
+                            Dusty or fine materials
+                          </label>
+                        </div>
+
+                        <div class="multiple-choice">
+                          <input id="aggregates" type="checkbox" name="aggregates" value="yes">
+                          <label for="aggregates">
+                            Aggregates, soils, ashes or similar materials
+                          </label>
+                        </div>
+
+                        <div class="multiple-choice">
+                          <input id="wood" type="checkbox" name="wood" value="yes">
+                          <label for="wood">
+                            Wood
+                          </label>
+                        </div>
+                        
+                        <div class="multiple-choice">
+                          <input id="scrapmetal" type="checkbox" name="scrapmetal" value="yes">
+                          <label for="scrapmetal">
+                            Scrap metal
+                          </label>
+                        </div>
+
+                        <div class="multiple-choice">
+                          <input id="clinical" type="checkbox" name="clinical" value="yes">
+                          <label for="clinical">
+                            Clinical waste
+                          </label>
+                        </div>
+
+                        <div class="multiple-choice">
+                          <input id="batteries" type="checkbox" name="batteries" value="yes">
+                          <label for="batteries">
+                            Batteries for processing
+                          </label>
+                        </div>
+
+                        <div class="multiple-choice">
+                          <input id="ships" type="checkbox" name="ships" value="yes">
+                          <label for="ships">
+                            Ships for recycling
+                          </label>
+                        </div>
+                        
+          </div>
+        </div>
+
+
+          
+
+          </fieldset>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="button" name="Continue">Continue</button>
+        </div>
+
+
+      </form>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

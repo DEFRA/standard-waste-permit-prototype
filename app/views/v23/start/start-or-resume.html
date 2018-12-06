@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% set title = "Apply for an environmental permit" %}
+
+{% block page_title %}
+    {{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_beta.html" %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+    <form action="{{formAction}}" method="post">
+
+      <h1 class="heading-large">{{title}}</h1>
+
+      <fieldset>
+        <legend class="visuallyhidden">{{title}}</legend>
+
+
+        <div class="form-group">
+          <div class="multiple-choice">
+            <input id="start-application" type="radio" name="started-application" value="no">
+            <label for="start-application">
+            Start a new application
+            </label>
+          </div>
+          <div class="multiple-choice">
+            <input id="open-application" type="radio" name="started-application" value="yes">
+            <label for="open-application">
+            Open a saved application
+            </label>
+          </div>
+        </div>
+
+      </fieldset>
+      
+      <p>
+        When you apply for a permit you will need to give us some personal data such as your email address or date of birth.<br>
+        <a href="/{{folder}}/pages/privacy" target="_blank">Privacy: how we use your personal information (opens new tab)</a>
+      </p>
+
+      {% set letters = ["B","C","D","F","G","H","J","K","M","P","Q","R","T","V","W","X","Y"] %}
+
+      {% set let1 = letters | random %}
+      {% set let2 = letters | random %}
+      {% set let3 = letters | random %}
+      {% set let4 = letters | random %}
+      {% set num1 = [1,2,3,4,5,6,7,8,9] | random %}
+      {% set num2 = [1,2,3,4,5,6,7,8,9,0] | random %}
+      {% set num3 = [1,2,3,4,5,6,7,8,9,0] | random %}
+      {% set num4 = [1,2,3,4,5,6,7,8,9,0] | random %}
+      {% set refnum = "EPR/"+let1+let2+num1+num2+num3+num4+let3+let4 %}
+
+      <input type="hidden" name="permitRefNumber" value="{{ refnum }}">
+
+      <div class="form-group">
+        <button type="submit" id="continueButton" class="button" name="Continue">Continue</button>
+      </div>
+
+    </form>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
