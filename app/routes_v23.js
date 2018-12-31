@@ -64,20 +64,25 @@ router.post('/start/start-or-resume', function (req, res) {
   })
 })
 
-// This is not a real page, just a URL for the route
+// Route to check if application has started and redirect
 router.post('/save-and-return/save-choice', function (req, res) {
-  if(req.body['started-application']=="no"){ // think you need square bracket for radios
-
-      res.render(folder + '/selectpermit/bespoke-or-standard',{
-          // "formAction":"/"+ folder + "/selectpermit/permit-category2"
-        "formAction":"/"+ folder + "/operator/site-operator"
-      })  
+  if (req.body['started-application']=="no") {
+    res.redirect("/"+ folder + "/selectpermit/bespoke-or-standard")
   } else {
-      res.render(folder + '/save-and-return/already-started',{
-          "formAction":"/"+ folder + "/save-and-return/link-resent"
-      })
+    res.redirect("/"+ folder + "/save-and-return/already-started")
   }
 })
+
+// After operator, route depends on permit type
+router.post('/after-operator-choice', function (req, res) {
+  if (req.session.data.bespokePermit=="bespoke") { // bespoke
+    res.redirect("/"+ folder + "/bespoke/pre-app/pre-app")
+  } else { // standard rule
+    res.redirect("/"+ folder + "/selectpermit/permit-category2")
+  }
+})
+
+
 
 router.post('/save-and-return/confirm', function (req, res) {
   res.render(folder + '/save-and-return/confirm',{
@@ -149,6 +154,12 @@ router.get('/save-and-return/check', function (req, res) {
 })
 
 // Pre-app ====================================================================
+
+router.get('/bespoke/pre-app/pre-app', function (req, res) {
+  res.render(folder + '/bespoke/pre-app/pre-app',{
+    "formAction":"/"+ folder + "/bespoke/pre-app/pre-app-check"
+  })
+})
 
 router.post('/bespoke/pre-app/pre-app', function (req, res) {
   res.render(folder + '/bespoke/pre-app/pre-app',{

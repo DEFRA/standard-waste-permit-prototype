@@ -67,74 +67,83 @@
         </div>
         {% endif %}
 
+
+
         <h1 class="heading-large">
           <span class="visually-hidden">Task list:</span>
-                    Apply for a bespoke environmental permit
+          {% if appType=="bespoke" %}
+              Apply for a bespoke environmental permit
+          {% else %}
+              Apply for a standard rules environmental permit
+          {% endif %}
         </h1>
+        
+        {# permit|dump #}
 
 
 {% if appType=="bespoke" %}
-<!-- Output chosen activities ############################################ -->
-{% for ref in permit.chosenPermitID %}
-      {% for aNumber, aData in activities %}
-            {% if aNumber==ref %}
+      <!-- Output chosen activities ############################################ -->
+      {% for ref in permit.chosenPermitID %}
+            {% for aNumber, aData in activities %}
+                  {% if aNumber==ref %}
 
-            <!-- Output as a paragraph ============================== -->
-                  {{ aData.D_Activity_Title }}<!-- ({{ ref }})--><br>
+                  <!-- Output as a paragraph ============================== -->
+                        {{ aData.D_Activity_Title }}<!-- ({{ ref }})--><br>
 
-            {% endif %}
+                  {% endif %}
+            {% else %}
+            <p>No activities</p>
+            {% endfor %}
       {% else %}
-      <p>No activities</p>
+          <p>You must select at least one activity</p>
       {% endfor %}
-{% else %}
-    <p>You must select at least one activity</p>
-{% endfor %}
 
+      <!-- Output chosen assessments ############################################ -->
+      {{ "Ammonia modelling assessment<br>" | safe
+        if permit.ammoniaModelling=="yes" }}
 
-<!-- Output chosen assessments ############################################ -->
+      {{ "Dust and bio-aerosol management plan assessment<br>" | safe 
+        if permit.dustPlan=="yes" }}
 
+      {{ "Emissions management plan assessment<br>" | safe
+        if permit.emissionsPlan=="yes" }}
 
-{{ "Ammonia modelling assessment<br>" | safe
-  if permit.ammoniaModelling=="yes" }}
+      {{ "Fire prevention plan assessment<br>" | safe 
+        if firePreventionPlan=="yes" 
+        or permit.firePreventionPlan=="yes" }}
 
-{{ "Dust and bio-aerosol management plan assessment<br>" | safe 
-  if permit.dustPlan=="yes" }}
+      {{ "Habitats assessment<br>" | safe 
+        if permit.habitatsAssessment=="yes" }}
 
-{{ "Emissions management plan assessment<br>" | safe
-  if permit.emissionsPlan=="yes" }}
+      {{ "Noise and vibration management plan assessment<br>" | safe  
+        if permit.noisePlan=="yes" }}
 
-{{ "Fire prevention plan assessment<br>" | safe 
-  if firePreventionPlan=="yes" 
-  or permit.firePreventionPlan=="yes" }}
+      {{ "Odour management plan assessment<br>" | safe 
+        if permit.odourManagementPlan=="yes" 
+        or permit.odourManagementPlanIncluded=="yes" }}
 
-{{ "Habitats assessment<br>" | safe 
-  if permit.habitatsAssessment=="yes" }}
+      {{ "Pests management plan assessment<br>" | safe
+        if permit.pestsPlan=="yes" }}
 
-{{ "Noise and vibration management plan assessment<br>" | safe  
-  if permit.noisePlan=="yes" }}
-
-{{ "Odour management plan assessment<br>" | safe 
-  if permit.odourManagementPlan=="yes" 
-  or permit.odourManagementPlanIncluded=="yes" }}
-
-{{ "Pests management plan assessment<br>" | safe
-  if permit.pestsPlan=="yes" }}
-
-{{ "Waste recovery plan assessment<br>" | safe
-  if permit.wasteRecoveryPlan=="yes" }}
-  
-  
-<!-- Output cost ############################################ -->
-<span class="totalCost">Total cost {{ permit.totalcost | int | formatnumber }}</span>
+      {{ "Waste recovery plan assessment<br>" | safe
+        if permit.wasteRecoveryPlan=="yes" }}
+        
+        
+      <!-- Output cost ############################################ -->
+      <span class="totalCost">Total cost {{ permit.totalcost | int | formatnumber }}</span>
 
 
 
-<!-- Link to change permit activities ##################################### -->
-        <p>
-          <a href="/{{folder}}/bespoke/activities-assessments/bespoke-choose-activity">
-            Change activities or assessments
-          </a>
-        </p>
+      <!-- Link to change permit activities ##################################### -->
+      <p>
+        <a href="/{{folder}}/bespoke/activities-assessments/bespoke-choose-activity">
+          Change activities or assessments
+        </a>
+      </p>
+{% endif %}
+
+{% if appType=="standard" %}
+    <p class="font-medium text">{{permit.permitName}} - {{permit.permitCode}}<br><a class="font-small" href="/{{folder}}/selectpermit/permit-category2">Select a different permit</a></p>
 {% endif %}
 
 {% if appType=="bespoke" %}
