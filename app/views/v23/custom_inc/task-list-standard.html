@@ -80,7 +80,8 @@
   
     <!-- Site plan ------------------------->
     {% if permit.sitePlanNeeded=="Yes" %}
-        {{ macros.task( "Upload the site plan", permit.sitePlanFilename, "/"+folder+"/evidence/site-plan-check", taskListError ) }}
+        <!-- Site plan ------------------------->
+        {{ macros.task( "Upload the site plan", permit.SitePlan1, "/"+folder+"/upload-site-plan", taskListError ) }}
     {% endif %}
     
     <!--Mining waste management plan 2009-8--------------->
